@@ -5,6 +5,7 @@ export const COLORS: StyledColors = {
   blackPearl: "#07132b",
   blushPink: "#FF8EFF",
   blueRibbon: "#005cff",
+  border: "#565656",
   curiousBlue: "#2383DA",
   cyprus: "#004442",
   doveGray: "#707070",
@@ -12,9 +13,10 @@ export const COLORS: StyledColors = {
   fuchasiaPink: "#B655B6",
   indiaKhaki: "#C3B693",
   endeavour: "#005099",
-  gradient1: "linear-gradient(#00b492 0%, #009fc7 100%)",
+  gradient1: "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
   mercury: "#E8E8E8",
   salem: "#078041",
+  silver: "#C9C9C9",
   snowyMint: "#d0ffdc",
   summerGreen: "#92C498",
   verdunGreen: "#4F7D00",
@@ -23,7 +25,6 @@ export const COLORS: StyledColors = {
   rustyNail: "#7F5108",
   white: "#ffffff",
 }
-
 interface StyledColors {
   anakiwa: string,
   anzac: string,
@@ -31,6 +32,7 @@ interface StyledColors {
   blackPearl: string,
   blushPink: string,
   blueRibbon: string,
+  border: string,
   curiousBlue: string,
   cyprus: string,
   doveGray: string,
@@ -41,6 +43,7 @@ interface StyledColors {
   gradient1: string,
   mercury: string,
   salem: string,
+  silver: string,
   snowyMint: string,
   summerGreen: string,
   verdunGreen: string,
