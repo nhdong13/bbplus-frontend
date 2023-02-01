@@ -1,4 +1,7 @@
-import HomePage from "./Home/index";
+import HomePage from "./Home";
+import LoginPage from "./Login";
+
 export {
-  HomePage
+  HomePage,
+  LoginPage
 };
