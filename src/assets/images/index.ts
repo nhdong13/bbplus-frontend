@@ -7,6 +7,7 @@ import iconSearch from "./icon-search.svg"
 import hotelBg from "./hotel-bg.svg";
 import leftQuotationMark from "./left-quotation-mark-icon.svg";
 import locationIcon from "./icon-location.svg";
+import pIcon from "./p-icon.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -18,6 +19,7 @@ const IMAGES = {
   hotelBg,
   leftQuotationMark,
   locationIcon,
+  pIcon
 }
 
 export default IMAGES;
