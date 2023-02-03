@@ -173,10 +173,11 @@ const CardInfo = styled(VerticalContainer)`
 
 interface CardData {
   data: HotelData
+  index?: number
 }
 
 
-export default function Card({ data }: CardData) {
+export default function Card({ data, index }: CardData) {
   const {
     title,
     location,

@@ -9,6 +9,9 @@ import BookingTable from "@/components/Table";
 import { COLORS } from "@/utils/colors";
 import { buttonItems, customItineraries, hotels, popularHolidays } from "@/utils/tempData";
 import { useState } from "react";
+import { CarouselProvider } from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
+import CarouselSlider from "@/components/Carousel/index";
 
 import {
   StyledHome,
@@ -23,7 +26,47 @@ import {
   StyledHomeBody,
   StyledCarouselTitle,
 } from "./styles";
+import styled from "styled-components";
 
+const CarouselWrapper = styled.div`
+  &.carousel-container {
+    margin: 12px auto;
+    max-width: 272px;
+    filter: drop-shadow(0px 12px 30px rgba(50, 50, 50, 0.2));
+
+    /* Total-width (including margin) + 1 additional margin */
+    @media (min-width: 832px) {
+      max-width: 704px;
+    }
+
+    @media (min-width: 1088px) {
+      max-width: 960px;
+    }
+
+    @media (min-width: 1272px) {
+      max-width: 1152px;
+    }
+
+    @media (min-width: 1504px) {
+      max-width: 1650px;
+    }
+  }
+
+  .carousel__inner-slide {
+    width: calc(100% - 16px);
+    margin-left: 8px;
+
+    @media (min-width: 1272px) {
+      width: calc(100% - 24px);
+      margin-left: 12px;
+    }
+
+    @media (min-width: 1272px) {
+      width: calc(100% - 32px);
+      margin-left: 16px;
+    }
+  }
+`;
 
 export default function Home() {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
@@ -39,6 +82,9 @@ export default function Home() {
   const showTravelerDropDown = () => {
     setTravelerDropDown(!travelerDropDown);
   }
+
+  const [slideCount, setSlideCount] = useState<number>(2);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   return (
     <>
@@ -117,75 +163,74 @@ export default function Home() {
 
         <StyledHomeBody>
           <div className="booking-section-container">
-            <StyledCarouselTitle>
-              <span>
-                Hot Deals
-              </span>
-            </StyledCarouselTitle>
-            <HorizontalContainer gap="30px" justifyContent="center">
-              {hotels.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Card data={item} />
-                  </div>
-                )
-              })}
+            <HorizontalContainer>
+              <CarouselWrapper className="carousel-container">
+                <CarouselProvider
+                  visibleSlides={slideCount}
+                  totalSlides={hotels.length}
+                  step={1}
+                  currentSlide={currentSlide}
+                  naturalSlideWidth={100}
+                  naturalSlideHeight={125}
+                  isIntrinsicHeight={true}
+                >
+                  <CarouselSlider
+                    setSlideCount={setSlideCount}
+                    setCurrentSlide={setCurrentSlide}
+                    data={hotels}
+                    carouselTitle={"Hot Deals"}
+                  />
+                </CarouselProvider>
+              </CarouselWrapper>
+            </HorizontalContainer>
+          </div>
+          <div className="booking-section-container">
+            <HorizontalContainer>
+              <CarouselWrapper className="carousel-container">
+                <CarouselProvider
+                  visibleSlides={slideCount}
+                  totalSlides={popularHolidays.length}
+                  step={1}
+                  currentSlide={currentSlide}
+                  naturalSlideWidth={100}
+                  naturalSlideHeight={125}
+                  isIntrinsicHeight={true}
+                >
+                  <CarouselSlider
+                    setSlideCount={setSlideCount}
+                    setCurrentSlide={setCurrentSlide}
+                    data={popularHolidays}
+                    carouselTitle={"Most popular holidays"}
+                  />
+                </CarouselProvider>
+              </CarouselWrapper>
+            </HorizontalContainer>
+          </div>
+          <div className="booking-section-container">
+            <HorizontalContainer>
+              <CarouselWrapper className="carousel-container">
+                <CarouselProvider
+                  visibleSlides={slideCount}
+                  totalSlides={customItineraries.length}
+                  step={1}
+                  currentSlide={currentSlide}
+                  naturalSlideWidth={100}
+                  naturalSlideHeight={125}
+                  isIntrinsicHeight={true}
+                >
+                  <CarouselSlider
+                    setSlideCount={setSlideCount}
+                    setCurrentSlide={setCurrentSlide}
+                    data={customItineraries}
+                    carouselTitle={"My custom itineraries"}
+                  />
+                </CarouselProvider>
+              </CarouselWrapper>
             </HorizontalContainer>
           </div>
 
           <div className="booking-section-container">
-            <StyledCarouselTitle>
-              <span>
-                Most popular holidays
-              </span>
-            </StyledCarouselTitle>
-            <HorizontalContainer gap="30px" justifyContent="center">
-              {popularHolidays.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Card data={item} />
-                  </div>
-                )
-              })}
-            </HorizontalContainer>
-          </div>
-
-          <div className="booking-section-container">
-            <StyledCarouselTitle>
-              <span>
-                Most popular holidays
-              </span>
-            </StyledCarouselTitle>
-            <HorizontalContainer gap="30px" justifyContent="center">
-              {popularHolidays.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Card data={item} />
-                  </div>
-                )
-              })}
-            </HorizontalContainer>
-          </div>
-
-          <div className="booking-section-container">
-            <StyledCarouselTitle>
-              <span>
-                My custom itineraries
-              </span>
-            </StyledCarouselTitle>
-            <HorizontalContainer gap="30px" justifyContent="center">
-              {customItineraries.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Card data={item} />
-                  </div>
-                )
-              })}
-            </HorizontalContainer>
-          </div>
-
-          <div className="booking-section-container">
-            <StyledCarouselTitle>
+            <StyledCarouselTitle justifyContent="space-between" style={{ maxWidth: "1641px", margin: "0 auto 27px" }}>
               <span>
                 Recent bookings
               </span>

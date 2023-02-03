@@ -37,12 +37,12 @@ const SearchContainer = styled(VerticalContainer)`
 `
 
 const SelectBookingDateTime = styled(HorizontalContainer).attrs((props: {
-isItinerary?: boolean
+  isItinerary?: boolean
 }) => props)`
   background: ${COLORS.white};
   border: none;
   border-radius: 16px;
-  justify-content: ${({isItinerary}) => isItinerary ? "none" : "space-between" };
+  justify-content: ${({ isItinerary }) => isItinerary ? "none" : "space-between"};
   width: 100%;
 `
 
@@ -84,7 +84,7 @@ const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
 }) => props)`
   background: ${COLORS.white};
   border-radius: 10px;
-  height: ${({isShown}) => isShown ? "375px" : "0"};
+  height: ${({ isShown }) => isShown ? "375px" : "0"};
   margin: 5px 0 0;
   width: 100%;
   transition: height .5s ease-in-out;
@@ -96,8 +96,8 @@ const SelectRoomContainer = styled(HorizontalContainer).attrs((props: {
   border: 1px solid ${COLORS.silver};
   border-radius: 10px;
   margin: 20px 36px;
-  height: ${({isShown}) => isShown ? "200px" : "0"};
-  opacity: ${({isShown}) => isShown ? "1" : "0"};
+  height: ${({ isShown }) => isShown ? "200px" : "0"};
+  opacity: ${({ isShown }) => isShown ? "1" : "0"};
   transition: height .3s ease-in-out, opacity 1s ease-in, opacity .5s ease-out;
 `
 
@@ -105,7 +105,7 @@ const ResultContainer = styled(HorizontalContainer).attrs((props: {
   isShown?: boolean
 }) => props)`
   margin: 20px 36px;
-  opacity: ${({isShown}) => isShown ? "1" : "0"};
+  opacity: ${({ isShown }) => isShown ? "1" : "0"};
   transition: opacity 0.5s ease-in, opacity 1s ease-out;
 `
 
@@ -118,8 +118,8 @@ const StyledHomeBody = styled(VerticalContainer)`
   }
 `
 
-const StyledCarouselTitle = styled.div`
-  margin: 0 128px 27px;
+const StyledCarouselTitle = styled(HorizontalContainer)`
+  margin: 0 56px 27px 25px;
 
   span {
     color: ${COLORS.cyprus};
