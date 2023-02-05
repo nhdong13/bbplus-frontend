@@ -24,7 +24,7 @@ export default function Divider({
 }: Divider) {
   return (
     <>
-      <StyledDivider color={color} height={height} width={width} />
+      <StyledDivider className="divider" color={color} height={height} width={width} />
     </>
   )
 }
