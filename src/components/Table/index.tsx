@@ -9,6 +9,7 @@ import { COLORS } from '@/utils/colors';
 import TableContainer from '@mui/material/TableContainer';
 import { FONTS } from '@/utils/fonts';
 import { useEffect, useState } from 'react';
+import { tableData } from '@/utils/tempData';
 
 const StyledTableContainer = styled(TableContainer)`
   border: 1px solid #7070702e;
@@ -100,55 +101,10 @@ const StyledTableRow = styled(TableRow)(() => ({
 }));
 
 
-interface tableData {
-  id: string,
-  guestName: string,
-  creationDate: string,
-  CreatedBy: string,
-  hotelName: string,
-  checkInOut: string,
-  totalPrice: string,
-  status: string,
-}
 
-const tableData = [
-  {
-    id: "1221",
-    guestName: "Jack Maa",
-    creationDate: "19-Aug-22 17:26",
-    createdBy: "UserA",
-    hotelName: "Hotel 1 Fiji",
-    checkIn: "19-Dec-22",
-    checkOut: "24-Dec-22",
-    totalPrice: "FJD 1000",
-    status: "paid",
-  },
-  {
-    id: "1221",
-    guestName: "Jack Maa",
-    creationDate: "19-Aug-22 17:26",
-    createdBy: "UserA",
-    hotelName: "Hotel 1 Fiji",
-    checkIn: "19-Dec-22",
-    checkOut: "24-Dec-22",
-    totalPrice: "FJD 1000",
-    status: "quote",
-  },
-  {
-    id: "1221",
-    guestName: "Jack Maa",
-    creationDate: "19-Aug-22 17:26",
-    createdBy: "UserA",
-    hotelName: "Hotel 1 Fiji",
-    checkIn: "19-Dec-22",
-    checkOut: "24-Dec-22",
-    totalPrice: "FJD 1000",
-    status: "refunded",
-  },
-]
+
 
 export default function BookingTable() {
-
   return (
     <StyledTableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

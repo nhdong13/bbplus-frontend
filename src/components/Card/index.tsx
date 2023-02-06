@@ -83,6 +83,14 @@ export default function Card({ data, index }: CardData) {
               </div>
             )
           })}
+          {
+            (!discountPercentage && rating) &&
+            <div className="custom-itineraries-price">
+              <span className="high-light-price">From </span>
+              <span className="price">{price}</span>
+              <span className="high-light-price">per person</span>
+            </div>
+          }
           <div style={{ margin: "16px auto 0" }}>
             <GradientButton
               color={COLORS.flushOrange}

@@ -19,8 +19,8 @@ const HeaderContainer = styled.div.attrs((props: {
 
   & > div {
     height: 77px;
-    max-width: 1650px;
-    padding: 80px 80px 0;
+    max-width: 1570px;
+    padding-top: 95px;
 
     @media ${BREAKPOINTS.tablet} {
       height: auto;

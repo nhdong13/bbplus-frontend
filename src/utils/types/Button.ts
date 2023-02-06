@@ -5,4 +5,6 @@ export interface GradientButton {
   height?: string
   maxWidth?: string
   width?: string
+  fontSize?: string
+  textPadding?: string
 }

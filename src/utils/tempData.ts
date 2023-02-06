@@ -334,3 +334,39 @@ export const notificationData = [
     text: "We would like to  inform all our users that we will be carrying out some maintenance work on Saturday 27th March 2017"
   }
 ]
+
+export const tableData = [
+  {
+    id: "1221",
+    guestName: "Jack Maa",
+    creationDate: "19-Aug-22 17:26",
+    createdBy: "UserA",
+    hotelName: "Hotel 1 Fiji",
+    checkIn: "19-Dec-22",
+    checkOut: "24-Dec-22",
+    totalPrice: "FJD 1000",
+    status: "paid",
+  },
+  {
+    id: "1221",
+    guestName: "Jack Maa",
+    creationDate: "19-Aug-22 17:26",
+    createdBy: "UserA",
+    hotelName: "Hotel 1 Fiji",
+    checkIn: "19-Dec-22",
+    checkOut: "24-Dec-22",
+    totalPrice: "FJD 1000",
+    status: "quote",
+  },
+  {
+    id: "1221",
+    guestName: "Jack Maa",
+    creationDate: "19-Aug-22 17:26",
+    createdBy: "UserA",
+    hotelName: "Hotel 1 Fiji",
+    checkIn: "19-Dec-22",
+    checkOut: "24-Dec-22",
+    totalPrice: "FJD 1000",
+    status: "refunded",
+  },
+]

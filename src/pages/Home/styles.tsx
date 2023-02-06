@@ -111,7 +111,7 @@ const ResultContainer = styled(HorizontalContainer).attrs((props: {
 
 const StyledHomeBody = styled(VerticalContainer)`
   max-width: 1920px;
-  margin: 50px auto;
+  margin: 50px auto 240px;
 
   .booking-section-container {
     margin-top: 90px;

@@ -188,11 +188,24 @@ export default function Home() {
         </div>
 
         <div className="booking-section-container">
-          <StyledCarouselTitle justifyContent="space-between" style={{ maxWidth: "1641px", margin: "0 auto 27px" }}>
-            <span>
-              Recent bookings
-            </span>
-          </StyledCarouselTitle>
+          <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1641px" margin="0 auto 27px">
+            <StyledCarouselTitle >
+              <span>
+                Recent bookings
+              </span>
+            </StyledCarouselTitle>
+            <div style={{ marginRight: "56px" }}>
+              <GradientButton
+                color={COLORS.gradient1}
+                text="VIEW ALL"
+                isSelected={true}
+                maxWidth="140px"
+                fontSize="17px"
+                height="42px"
+                textPadding="4px 33px"
+              />
+            </div>
+          </HorizontalContainer>
           <BookingTable />
         </div>
       </StyledHomeBody>

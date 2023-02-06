@@ -166,6 +166,27 @@ const CardInfo = styled(VerticalContainer)`
       line-height: 26px;
     }
   }
+
+  .custom-itineraries-price {
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .high-light-price {
+      color: ${COLORS.red};
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 23px;
+    }
+
+    .price {
+      color: ${COLORS.toryBlue};
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 38px;
+    }
+  }
 `
 
 export {

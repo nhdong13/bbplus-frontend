@@ -12,3 +12,14 @@ export interface HotelData {
 export interface TravelerDropDown {
   isShown?: boolean
 }
+
+export interface TableData {
+  id: string,
+  guestName: string,
+  creationDate: string,
+  CreatedBy: string,
+  hotelName: string,
+  checkInOut: string,
+  totalPrice: string,
+  status: string,
+}
