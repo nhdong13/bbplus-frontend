@@ -23,6 +23,8 @@ const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: COLORS.white,
     color: COLORS.oxfordBlue,
+    textAlign: "center",
+
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -38,6 +40,8 @@ const StyledTableRow = styled(TableRow)(() => ({
   },
   '& > .table-id': {
     color: `${COLORS.lapisLazuli}!important`,
+    display: "flex",
+    justifyContent: "center",
 
     '.id-container': {
       alignItems: 'center',
@@ -52,6 +56,7 @@ const StyledTableRow = styled(TableRow)(() => ({
   },
   '& > .table-data': {
     color: `${COLORS.oxfordBlue}!important`,
+    textAlign: "center",
   },
   '& > .table-status': {
     div: {
@@ -59,8 +64,7 @@ const StyledTableRow = styled(TableRow)(() => ({
       display: "flex",
       justifyContent: "center",
       height: "34px",
-      marginRight: 0,
-      marginLeft: "auto",
+      margin: "auto",
       textAlign: "center",
       width: "115px",
 
@@ -150,7 +154,7 @@ export default function BookingTable() {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Booking ID#</StyledTableCell>
+            <StyledTableCell className='header-center'>Booking ID#</StyledTableCell>
             <StyledTableCell align="right">Guest Name</StyledTableCell>
             <StyledTableCell align="right">Creation Date</StyledTableCell>
             <StyledTableCell align="right">Created By</StyledTableCell>
@@ -188,12 +192,12 @@ export default function BookingTable() {
                     {item.id}
                   </div>
                 </StyledTableCell>
-                <StyledTableCell className="table-data" align="right">{item.guestName}</StyledTableCell>
-                <StyledTableCell className="table-data" align="right">{item.creationDate}</StyledTableCell>
+                <StyledTableCell className="table-data center" align="right">{item.guestName}</StyledTableCell>
+                <StyledTableCell className="table-data center" align="right">{item.creationDate}</StyledTableCell>
                 <StyledTableCell className="table-data" align="right">{item.createdBy}</StyledTableCell>
                 <StyledTableCell className="table-data" align="right">{item.hotelName}</StyledTableCell>
                 <StyledTableCell className="table-data" align="right">{item.checkIn}<br />{item.checkOut}</StyledTableCell>
-                <StyledTableCell className="table-data" align="right">{item.totalPrice}</StyledTableCell>
+                <StyledTableCell className="table-data center" align="right">{item.totalPrice}</StyledTableCell>
                 <StyledTableCell className={`table-status ${statusColor}`} align="center">
                   <div className={statusColor}>
                     <span className={statusColor}>{item.status}</span>

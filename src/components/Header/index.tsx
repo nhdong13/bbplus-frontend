@@ -1,9 +1,13 @@
 import IMAGES from "@/assets/images";
 import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { useState } from "react";
 import styled from "styled-components";
+import useWindowSize from "@/utils/windowResize";
+import UserMenuDropDown from "./UserMenuDropDown";
+import NotificationDropDown from "./NotificationDropDown";
 
 const HeaderContainer = styled.div.attrs((props: {
   dropdown?: boolean
@@ -12,6 +16,31 @@ const HeaderContainer = styled.div.attrs((props: {
   display: flex;
   margin: auto;
   justify-content: center;
+
+  & > div {
+    height: 77px;
+    max-width: 1650px;
+    padding: 80px 80px 0;
+
+    @media ${BREAKPOINTS.tablet} {
+      height: auto;
+      max-width: 768px;
+      padding: 15px;
+    }
+
+    .logo {
+      position: relative;
+      z-index: 2;
+
+      @media ${BREAKPOINTS.tablet} {
+        width: 200px;
+      }
+
+      @media ${BREAKPOINTS.mobileSm} {
+        width: 150px;
+      }
+    }
+  }
 
   .header-group,
   .header-group-left,
@@ -22,6 +51,10 @@ const HeaderContainer = styled.div.attrs((props: {
 
   .header-group {
     gap: 60px;
+
+    @media ${BREAKPOINTS.tablet} {
+      display: none;
+    }
   }
 
   .header-group-left,
@@ -65,11 +98,19 @@ const HeaderContainer = styled.div.attrs((props: {
   }
 `
 
-
 export default function Header() {
   const [dropdown, setDropDown] = useState<boolean>(false);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [notificationDropDown, setNotificationDropDown] = useState<boolean>(false);
+
+  const screenWidth = useWindowSize();
+
   const handleDropdown = () => {
     setDropDown(!dropdown);
+  }
+
+  const handleNotificationDropDown = () => {
+    setNotificationDropDown(!notificationDropDown);
   }
 
   return (
@@ -78,25 +119,24 @@ export default function Header() {
         <HorizontalContainer
           alignItems="center"
           justifyContent="space-between"
-          height={"77px"}
-          maxWidth={"1650px"}
-          padding="80px 80px 0"
           width={"100%"}
         >
-          <img src={IMAGES.bbplusLogoWhite} alt="bbplusLogoWhite" width="260px" height="auto" />
+          <img src={IMAGES.bbplusLogoWhite} alt="bb-plus-logo" width="260px" height="auto" className="logo" />
           <div className="header-group">
             <div className="header-group-left">
-              <img src={IMAGES.iconLetter} alt="letter" width="34px" height="22px" />
+              <img src={IMAGES.iconLetter} alt="letter" width="34px" height="22px" onClick={handleNotificationDropDown} />
               <div className="alert-icon">
                 <span>2</span>
               </div>
               <span className="header-user-name">XYZ Travel</span>
             </div>
-            <div className="header-group-right">
+            <div className="header-group-right" onClick={handleDropdown} >
               <img src={IMAGES.defaultUser} alt="user" width="35px" height="35px" />
-              <div onClick={handleDropdown}>
+              <div style={{ height: "50px", display: "flex", alignItems: "center" }}>
                 <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" />
               </div>
+              <UserMenuDropDown dropdown={dropdown} />
+              <NotificationDropDown notificationDropDown={notificationDropDown} />
             </div>
           </div>
         </HorizontalContainer>
