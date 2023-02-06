@@ -13,6 +13,7 @@ import { TravelerDropDown } from "@/utils/types/CardHotel";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import useHome from "./hooks";
+import { Helmet } from "react-helmet";
 
 import {
   StyledHome,
@@ -45,6 +46,9 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Agent</title>
+      </Helmet>
       <div style={{ background: COLORS.cyprus }}>
         <Header />
         <StyledHome>
