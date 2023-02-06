@@ -1,4 +1,5 @@
 import IMAGES from "@/assets/images"
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
 import styled from "styled-components"
@@ -12,6 +13,35 @@ const StyledFooter = styled.div`
   margin: auto;
   justify-content: center;
   width: 100%;
+
+  @media ${BREAKPOINTS.tablet} {
+    flex-direction: column;
+  }
+`
+
+const FooterContainer = styled(HorizontalContainer)`
+  gap: 60px;
+
+  @media ${BREAKPOINTS.laptop} {
+    gap: 22px;
+  }
+
+  @media ${BREAKPOINTS.tablet} {
+    flex-direction: column;
+  }
+
+  .divider {
+    @media ${BREAKPOINTS.tablet} {
+      display: none;
+    }
+  }
+
+  .footer-logo-container {
+    @media ${BREAKPOINTS.tablet} {
+      display: flex;
+      width: 100%;
+    }
+  }
 `
 
 const Copyright = styled.div`
@@ -19,20 +49,34 @@ const Copyright = styled.div`
   background: ${COLORS.gradient1};
   display: flex;
   justify-content: center;
-  height: 53px;
   text-align: center;
   width: 100%;
+
+  @media ${BREAKPOINTS.tablet} {
+    height: auto;
+    padding: 15px;
+  }
 
   span {
     color: ${COLORS.white};
     font-family: ${FONTS.montserrat};
-    font-size: 21.45px;
+    font-size: 22px;
     font-weight: 100;
-    line-height: 14px;
+    line-height: 23px;
+    padding: 15px 0;
+
+    @media ${BREAKPOINTS.tablet} {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 `
 
 const StyledRightFooter = styled(VerticalContainer)`
+  @media ${BREAKPOINTS.tablet} {
+    width: 100%;
+  }
+
   p {
     color: ${COLORS.white};
     font-family: ${FONTS.montserrat};
@@ -47,6 +91,17 @@ const StyledRightFooter = styled(VerticalContainer)`
     font-weight: 100;
     line-height: 35px;
   }
+
+  .footer-company-name {
+    justify-content: left;
+  }
+
+  .footer-company-info {
+    @media ${BREAKPOINTS.tablet} {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
 `
 
 export default function Footer() {
@@ -54,19 +109,20 @@ export default function Footer() {
     <>
       <VerticalContainer>
         <StyledFooter>
-          <HorizontalContainer
+          <FooterContainer
             alignItems="center"
-            gap="22px"
             padding="12px"
           >
-            <img src={IMAGES.bbplusLogoWhite} alt="bbplusLogoWhite" width="260px" height="auto" />
+            <div className="footer-logo-container">
+              <img src={IMAGES.bbplusLogoWhite} alt="bbplusLogoWhite" width="260px" height="auto" />
+            </div>
             <Divider height="100%" width="0.2px" />
             <StyledRightFooter>
-              <HorizontalContainer>
+              <HorizontalContainer className="footer-company-name">
                 <p>GlobalBedbank Group</p>
               </HorizontalContainer>
 
-              <HorizontalContainer gap="60px" padding="10px">
+              <HorizontalContainer className="footer-company-info" gap="60px">
                 <VerticalContainer>
                   <span>HLB Building</span>
                   <span>Nadi, Fiji</span>
@@ -78,7 +134,7 @@ export default function Footer() {
                 </VerticalContainer>
               </HorizontalContainer>
             </StyledRightFooter>
-          </HorizontalContainer>
+          </FooterContainer>
         </StyledFooter>
         <HorizontalContainer>
           <Copyright>
