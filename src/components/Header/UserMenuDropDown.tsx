@@ -9,14 +9,23 @@ const StyledUserMenuDropDown = styled.div`
   min-width: 350px;
   transition: all 0.5s ease-in-out;
   z-index: 2;
+
+  &.open {
+    animation: fadeIn 0.5s;
+    display: block;
+    z-index: 3;
+  }
+
+  &.close {
+    animation: fadeOut 0.5s;
+    display: none;
+    z-index: -1;
+  }
 `
-const NavItemContainer = styled.div.attrs((props: {
-  dropdown?: boolean
-}) => props)`
+const NavItemContainer = styled.div`
   background: ${COLORS.white};
   border-radius: 10px;
   box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);
-  opacity: ${({ dropdown }) => dropdown ? "1" : "0"};
   transition: all 0.5s ease-in-out;
   padding: 40px 40px 20px;
 
@@ -44,12 +53,13 @@ const NavItem = styled(HorizontalContainer)`
 
 interface UserMenuDropDown {
   dropdown?: boolean
+  innerRef: any
 }
 
-const UserMenuDropDown = ({ dropdown }: UserMenuDropDown) => {
+const UserMenuDropDown = ({ innerRef, dropdown }: UserMenuDropDown) => {
   return (
-    <StyledUserMenuDropDown className={dropdown ? "open" : "close"}>
-      <NavItemContainer dropdown={dropdown}>
+    <StyledUserMenuDropDown ref={innerRef} className={dropdown ? "open" : "close"}>
+      <NavItemContainer >
         <NavItem><span>Account setting</span></NavItem>
         <NavItem><span>Report</span></NavItem>
         <NavItem><span>Help center</span></NavItem>

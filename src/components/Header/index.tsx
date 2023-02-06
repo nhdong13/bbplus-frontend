@@ -3,11 +3,11 @@ import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
-import { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import useWindowSize from "@/utils/windowResize";
 import UserMenuDropDown from "./UserMenuDropDown";
 import NotificationDropDown from "./NotificationDropDown";
+import useComponentVisible from "@/utils/clickOutSide";
 
 const HeaderContainer = styled.div.attrs((props: {
   dropdown?: boolean
@@ -100,22 +100,44 @@ const HeaderContainer = styled.div.attrs((props: {
 
 export default function Header() {
   const [dropdown, setDropDown] = useState<boolean>(false);
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [notificationDropDown, setNotificationDropDown] = useState<boolean>(false);
 
-  const screenWidth = useWindowSize();
+  const {
+    ref: userMenuRef,
+    isComponentVisible: userMenuVisible,
+    setIsComponentVisible: setUserMenuVisible,
+  } = useComponentVisible(false);
 
-  const handleDropdown = () => {
+  const {
+    ref: notificationRef,
+    isComponentVisible: notificationVisible,
+    setIsComponentVisible: setNotificationVisible,
+  } = useComponentVisible(false);
+
+  const handleDropdown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.persist();
+    if (notificationDropDown) setNotificationDropDown(!notificationDropDown);
     setDropDown(!dropdown);
-  }
+    setUserMenuVisible(!dropdown);
+  };
 
-  const handleNotificationDropDown = () => {
+  const handleNotificationDropDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    if (dropdown) setDropDown(!dropdown);
     setNotificationDropDown(!notificationDropDown);
-  }
+    setNotificationVisible(!notificationDropDown);
+  }, [dropdown]);
+
+  useEffect(() => {
+    if (!userMenuVisible) setDropDown(false);
+    if (!notificationVisible) setNotificationDropDown(false);
+  }, [userMenuVisible, notificationVisible])
+
 
   return (
     <>
-      <HeaderContainer dropdown={dropdown}>
+      <HeaderContainer>
         <HorizontalContainer
           alignItems="center"
           justifyContent="space-between"
@@ -124,19 +146,30 @@ export default function Header() {
           <img src={IMAGES.bbplusLogoWhite} alt="bb-plus-logo" width="260px" height="auto" className="logo" />
           <div className="header-group">
             <div className="header-group-left">
-              <img src={IMAGES.iconLetter} alt="letter" width="34px" height="22px" onClick={handleNotificationDropDown} />
-              <div className="alert-icon">
-                <span>2</span>
+              <div onClick={(e) => handleNotificationDropDown(e)}>
+                <div style={{ position: "relative" }}>
+                  <img
+                    src={IMAGES.iconLetter}
+                    alt="letter"
+                    width="34px"
+                    height="22px"
+                  />
+                </div>
+                <div className="alert-icon">
+                  <span>2</span>
+                </div>
+                <NotificationDropDown innerRef={notificationRef} notificationDropDown={notificationVisible} />
               </div>
               <span className="header-user-name">XYZ Travel</span>
             </div>
-            <div className="header-group-right" onClick={handleDropdown} >
-              <img src={IMAGES.defaultUser} alt="user" width="35px" height="35px" />
-              <div style={{ height: "50px", display: "flex", alignItems: "center" }}>
+            <div className="header-group-right" >
+              <img src={IMAGES.defaultUser} alt="user" width="35px" height="35px" onClick={(e) => handleDropdown(e)} />
+              <div
+                style={{ height: "50px", display: "flex", alignItems: "center" }}
+                onClick={(e) => handleDropdown(e)}>
                 <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" />
               </div>
-              <UserMenuDropDown dropdown={dropdown} />
-              <NotificationDropDown notificationDropDown={notificationDropDown} />
+              <UserMenuDropDown innerRef={userMenuRef} dropdown={userMenuVisible} />
             </div>
           </div>
         </HorizontalContainer>

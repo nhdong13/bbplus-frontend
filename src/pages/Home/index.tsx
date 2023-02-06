@@ -27,6 +27,8 @@ import {
   StyledCarouselTitle,
 } from "./styles";
 import styled from "styled-components";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const CarouselWrapper = styled.div`
   &.carousel-container {
@@ -88,7 +90,8 @@ export default function Home() {
 
   return (
     <>
-      <MainLayout>
+      <div style={{ background: COLORS.cyprus }}>
+        <Header />
         <StyledHome>
           <VerticalContainer
             maxWidth={"1570px"}
@@ -160,85 +163,85 @@ export default function Home() {
             <TravelerDropDown isShown={travelerDropDown} />
           </VerticalContainer>
         </StyledHome>
+      </div>
+      <StyledHomeBody>
+        <div className="booking-section-container">
+          <HorizontalContainer>
+            <CarouselWrapper className="carousel-container">
+              <CarouselProvider
+                visibleSlides={slideCount}
+                totalSlides={hotels.length}
+                step={1}
+                currentSlide={currentSlide}
+                naturalSlideWidth={100}
+                naturalSlideHeight={125}
+                isIntrinsicHeight={true}
+              >
+                <CarouselSlider
+                  setSlideCount={setSlideCount}
+                  setCurrentSlide={setCurrentSlide}
+                  data={hotels}
+                  carouselTitle={"Hot Deals"}
+                />
+              </CarouselProvider>
+            </CarouselWrapper>
+          </HorizontalContainer>
+        </div>
+        <div className="booking-section-container">
+          <HorizontalContainer>
+            <CarouselWrapper className="carousel-container">
+              <CarouselProvider
+                visibleSlides={slideCount}
+                totalSlides={popularHolidays.length}
+                step={1}
+                currentSlide={currentSlide}
+                naturalSlideWidth={100}
+                naturalSlideHeight={125}
+                isIntrinsicHeight={true}
+              >
+                <CarouselSlider
+                  setSlideCount={setSlideCount}
+                  setCurrentSlide={setCurrentSlide}
+                  data={popularHolidays}
+                  carouselTitle={"Most popular holidays"}
+                />
+              </CarouselProvider>
+            </CarouselWrapper>
+          </HorizontalContainer>
+        </div>
+        <div className="booking-section-container">
+          <HorizontalContainer>
+            <CarouselWrapper className="carousel-container">
+              <CarouselProvider
+                visibleSlides={slideCount}
+                totalSlides={customItineraries.length}
+                step={1}
+                currentSlide={currentSlide}
+                naturalSlideWidth={100}
+                naturalSlideHeight={125}
+                isIntrinsicHeight={true}
+              >
+                <CarouselSlider
+                  setSlideCount={setSlideCount}
+                  setCurrentSlide={setCurrentSlide}
+                  data={customItineraries}
+                  carouselTitle={"My custom itineraries"}
+                />
+              </CarouselProvider>
+            </CarouselWrapper>
+          </HorizontalContainer>
+        </div>
 
-        <StyledHomeBody>
-          <div className="booking-section-container">
-            <HorizontalContainer>
-              <CarouselWrapper className="carousel-container">
-                <CarouselProvider
-                  visibleSlides={slideCount}
-                  totalSlides={hotels.length}
-                  step={1}
-                  currentSlide={currentSlide}
-                  naturalSlideWidth={100}
-                  naturalSlideHeight={125}
-                  isIntrinsicHeight={true}
-                >
-                  <CarouselSlider
-                    setSlideCount={setSlideCount}
-                    setCurrentSlide={setCurrentSlide}
-                    data={hotels}
-                    carouselTitle={"Hot Deals"}
-                  />
-                </CarouselProvider>
-              </CarouselWrapper>
-            </HorizontalContainer>
-          </div>
-          <div className="booking-section-container">
-            <HorizontalContainer>
-              <CarouselWrapper className="carousel-container">
-                <CarouselProvider
-                  visibleSlides={slideCount}
-                  totalSlides={popularHolidays.length}
-                  step={1}
-                  currentSlide={currentSlide}
-                  naturalSlideWidth={100}
-                  naturalSlideHeight={125}
-                  isIntrinsicHeight={true}
-                >
-                  <CarouselSlider
-                    setSlideCount={setSlideCount}
-                    setCurrentSlide={setCurrentSlide}
-                    data={popularHolidays}
-                    carouselTitle={"Most popular holidays"}
-                  />
-                </CarouselProvider>
-              </CarouselWrapper>
-            </HorizontalContainer>
-          </div>
-          <div className="booking-section-container">
-            <HorizontalContainer>
-              <CarouselWrapper className="carousel-container">
-                <CarouselProvider
-                  visibleSlides={slideCount}
-                  totalSlides={customItineraries.length}
-                  step={1}
-                  currentSlide={currentSlide}
-                  naturalSlideWidth={100}
-                  naturalSlideHeight={125}
-                  isIntrinsicHeight={true}
-                >
-                  <CarouselSlider
-                    setSlideCount={setSlideCount}
-                    setCurrentSlide={setCurrentSlide}
-                    data={customItineraries}
-                    carouselTitle={"My custom itineraries"}
-                  />
-                </CarouselProvider>
-              </CarouselWrapper>
-            </HorizontalContainer>
-          </div>
-
-          <div className="booking-section-container">
-            <StyledCarouselTitle justifyContent="space-between" style={{ maxWidth: "1641px", margin: "0 auto 27px" }}>
-              <span>
-                Recent bookings
-              </span>
-            </StyledCarouselTitle>
-            <BookingTable />
-          </div>
-        </StyledHomeBody>
-      </MainLayout>
+        <div className="booking-section-container">
+          <StyledCarouselTitle justifyContent="space-between" style={{ maxWidth: "1641px", margin: "0 auto 27px" }}>
+            <span>
+              Recent bookings
+            </span>
+          </StyledCarouselTitle>
+          <BookingTable />
+        </div>
+      </StyledHomeBody>
+      <Footer />
     </>
   )
 }

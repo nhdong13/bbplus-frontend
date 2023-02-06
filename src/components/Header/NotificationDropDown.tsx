@@ -6,6 +6,7 @@ import { HorizontalContainer } from "../Layout/HorizontalContainer";
 
 interface NotificationDropDown {
   notificationDropDown: boolean
+  innerRef: any
 }
 
 const StyledNotificationDropDown = styled.div.attrs((props: {
@@ -60,22 +61,20 @@ const NotificationItem = styled(HorizontalContainer)`
   }
 `
 
-const NotificationDropDown = ({ notificationDropDown }: NotificationDropDown) => {
+const NotificationDropDown = ({ innerRef, notificationDropDown }: NotificationDropDown) => {
   return (
     <>
-      <StyledNotificationDropDown notificationDropDown={notificationDropDown} className={notificationDropDown ? "open" : "close"}>
+      <StyledNotificationDropDown ref={innerRef} notificationDropDown={notificationDropDown} className={notificationDropDown ? "open" : "close"}>
         <Title>
           <span>Notification</span>
         </Title>
         {
           notificationData?.map((item, index) => {
             return (
-              <>
-                <NotificationItem key={index}>
-                  <img src={item.avatar} width="20px" height="20px" />
-                  <span>{item.text}</span>
-                </NotificationItem>
-              </>
+              <NotificationItem key={index}>
+                <img src={item.avatar} width="20px" height="20px" />
+                <span>{item.text}</span>
+              </NotificationItem>
             )
           })
         }
