@@ -8,3 +8,7 @@ export interface HotelData {
   price?: string,
   extraInfo?: string[],
 }
+
+export interface TravelerDropDown {
+  isShown?: boolean
+}

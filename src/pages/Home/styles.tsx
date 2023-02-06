@@ -131,6 +131,47 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
   }
 `
 
+const CarouselWrapper = styled.div`
+  &.carousel-container {
+    margin: 12px auto;
+    max-width: 272px;
+    filter: drop-shadow(0px 12px 30px rgba(50, 50, 50, 0.2));
+
+    /* Total-width (including margin) + 1 additional margin */
+    @media (min-width: 832px) {
+      max-width: 704px;
+    }
+
+    @media (min-width: 1088px) {
+      max-width: 960px;
+    }
+
+    @media (min-width: 1272px) {
+      max-width: 1152px;
+    }
+
+    @media (min-width: 1504px) {
+      max-width: 1650px;
+    }
+  }
+
+  .carousel__inner-slide {
+    width: calc(100% - 16px);
+    margin-left: 8px;
+
+    @media (min-width: 1272px) {
+      width: calc(100% - 24px);
+      margin-left: 12px;
+    }
+
+    @media (min-width: 1272px) {
+      width: calc(100% - 32px);
+      margin-left: 16px;
+    }
+  }
+`;
+
+
 export {
   StyledHome,
   HomepageWelcomeTitle,
@@ -143,4 +184,5 @@ export {
   ResultContainer,
   StyledHomeBody,
   StyledCarouselTitle,
+  CarouselWrapper,
 }

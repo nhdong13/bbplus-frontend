@@ -1,17 +1,18 @@
 import IMAGES from "@/assets/images";
 import { GradientButton } from "@/components/Button";
-import Card from "@/components/Card";
 import Divider from "@/components/Layout/Divider";
 import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
-import MainLayout from "@/components/Layout/MainLayout";
 import { VerticalContainer } from "@/components/Layout/VerticalContainer";
 import BookingTable from "@/components/Table";
 import { COLORS } from "@/utils/colors";
 import { buttonItems, customItineraries, hotels, popularHolidays } from "@/utils/tempData";
-import { useState } from "react";
 import { CarouselProvider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import CarouselSlider from "@/components/Carousel/index";
+import { TravelerDropDown } from "@/utils/types/CardHotel";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import useHome from "./hooks";
 
 import {
   StyledHome,
@@ -25,68 +26,22 @@ import {
   ResultContainer,
   StyledHomeBody,
   StyledCarouselTitle,
+  CarouselWrapper,
 } from "./styles";
-import styled from "styled-components";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
-const CarouselWrapper = styled.div`
-  &.carousel-container {
-    margin: 12px auto;
-    max-width: 272px;
-    filter: drop-shadow(0px 12px 30px rgba(50, 50, 50, 0.2));
-
-    /* Total-width (including margin) + 1 additional margin */
-    @media (min-width: 832px) {
-      max-width: 704px;
-    }
-
-    @media (min-width: 1088px) {
-      max-width: 960px;
-    }
-
-    @media (min-width: 1272px) {
-      max-width: 1152px;
-    }
-
-    @media (min-width: 1504px) {
-      max-width: 1650px;
-    }
-  }
-
-  .carousel__inner-slide {
-    width: calc(100% - 16px);
-    margin-left: 8px;
-
-    @media (min-width: 1272px) {
-      width: calc(100% - 24px);
-      margin-left: 12px;
-    }
-
-    @media (min-width: 1272px) {
-      width: calc(100% - 32px);
-      margin-left: 16px;
-    }
-  }
-`;
 
 export default function Home() {
-  const [selectedBooking, setSelectedBooking] = useState<number>(0);
-  const [travelerDropDown, setTravelerDropDown] = useState<boolean>(false);
-  const [selectCreateItinerary, setSelectCreateItinerary] = useState<boolean>(true);
-  const handleSelectBookingType = (id: number) => {
-    setSelectedBooking(id);
-    if (id === 2) {
-      setSelectCreateItinerary(false);
-    } else setSelectCreateItinerary(true);
-  };
-
-  const showTravelerDropDown = () => {
-    setTravelerDropDown(!travelerDropDown);
-  }
-
-  const [slideCount, setSlideCount] = useState<number>(2);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const {
+    selectedBooking,
+    travelerDropDown,
+    selectCreateItinerary,
+    handleSelectBookingType,
+    showTravelerDropDown,
+    slideCount,
+    setSlideCount,
+    currentSlide,
+    setCurrentSlide
+  } = useHome();
 
   return (
     <>
@@ -244,10 +199,6 @@ export default function Home() {
       <Footer />
     </>
   )
-}
-
-interface TravelerDropDown {
-  isShown?: boolean
 }
 
 const TravelerDropDown = ({ isShown }: TravelerDropDown) => {

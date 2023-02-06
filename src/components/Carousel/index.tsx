@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import {
   ButtonBack,
   ButtonNext,
-  DotGroup,
   Slide,
   Slider
 } from "pure-react-carousel";
@@ -15,13 +14,8 @@ import Card from "../Card";
 import IMAGES from "@/assets/images";
 import { HotelData } from "@/utils/types/CardHotel";
 import { StyledCarouselTitle } from "@/pages/Home/styles";
+import { CarouselSlider } from "@/utils/types/Carousel";
 
-interface CarouselSlider {
-  data: HotelData[],
-  setSlideCount: any,
-  setCurrentSlide: any
-  carouselTitle: string
-}
 
 const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }: CarouselSlider) => {
   const screenWidth = useWindowSize();
