@@ -4,6 +4,7 @@
 
 First, run the development server:
 
+(Node version > 16.18.0)
 ```bash
 npm install
 npm start
