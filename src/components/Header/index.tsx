@@ -137,7 +137,7 @@ export default function Header() {
 
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer dropdown={dropdown}>
         <HorizontalContainer
           alignItems="center"
           justifyContent="space-between"
