@@ -10,6 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import { FONTS } from '@/utils/fonts';
 import { useEffect, useState } from 'react';
 import { tableData } from '@/utils/tempData';
+import { BREAKPOINTS } from '@/utils/breakpoints';
 
 const StyledTableContainer = styled(TableContainer)`
   border: 1px solid #7070702e;
@@ -18,6 +19,15 @@ const StyledTableContainer = styled(TableContainer)`
   max-width: 1641px;
   margin: auto;
   width: 100%;
+
+  @media ${BREAKPOINTS.desktopLg} {
+    width: 90%;
+  }
+
+  table {
+    min-width: 768px;
+    overflow: scroll;
+  }
 `
 
 const StyledTableCell = styled(TableCell)(() => ({
@@ -99,10 +109,6 @@ const StyledTableRow = styled(TableRow)(() => ({
     }
   }
 }));
-
-
-
-
 
 export default function BookingTable() {
   return (

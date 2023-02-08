@@ -4,6 +4,7 @@ import Divider from "@/components/Layout/Divider";
 import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
 import MainLayout from "@/components/Layout/MainLayout";
 import { VerticalContainer } from "@/components/Layout/VerticalContainer";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { useState } from "react";
@@ -121,6 +122,10 @@ const StyledHomeBody = styled(VerticalContainer)`
 const StyledCarouselTitle = styled(HorizontalContainer)`
   margin: 0 56px 27px 25px;
 
+  @media ${BREAKPOINTS.mobileLg} {
+    margin: 20px 15px;
+  }
+
   span {
     color: ${COLORS.cyprus};
     font-family: ${FONTS.manrope};
@@ -128,46 +133,86 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
     font-size: 53px;
     line-height: 63.6px;
     text-align: left;
+
+    @media ${BREAKPOINTS.mobileSm} {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  .btn-arrow {
+    @media ${BREAKPOINTS.mobileLg} {
+      border-radius: 5px!important;
+      height: 30px!important;
+      width: 30px!important;
+    }
+
+    img {
+      width: 10px;
+    }
+
   }
 `
 
 const CarouselWrapper = styled.div`
   &.carousel-container {
-    margin: 12px auto;
-    max-width: 272px;
-    filter: drop-shadow(0px 12px 30px rgba(50, 50, 50, 0.2));
+    max-width: 1650px;
+    width: 100%;
 
-    /* Total-width (including margin) + 1 additional margin */
-    @media (min-width: 832px) {
-      max-width: 704px;
+    @media only screen and (max-width: 1644px) {
+      max-width: 1366px;
     }
 
-    @media (min-width: 1088px) {
-      max-width: 960px;
+    @media only screen and (max-width: 1366px) {
+      max-width: 1160px;
     }
 
-    @media (min-width: 1272px) {
-      max-width: 1152px;
+    @media only screen and (max-width: 1160px) {
+      max-width: 992px;
     }
 
-    @media (min-width: 1504px) {
-      max-width: 1650px;
+    @media only screen and (max-width: 992px) {
+      max-width: 768px;
+    }
+
+    @media only screen and (max-width: 769px) {
+      max-width: 650px;
+    }
+
+    @media only screen and (max-width: 650px) {
+      max-width: 550px;
+    }
+
+    @media only screen and (max-width: 550px) {
+      max-width: 400px;
+    }
+
+  .carousel__slider-tray--horizontal {
+    gap: 26px;
+
+    @media only screen and (max-width: 1440px) {
+      width: 400%!important;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      width: 550%!important;
+    }
+
+    @media only screen and (max-width: 769px) {
+      width: 850%!important;
+    }
+    
+    @media only screen and (max-width: 475px) {
+      width: 800%!important;
+    }
+
+    @media only screen and (max-width: 475px) {
+      width: 850%!important;
     }
   }
 
-  .carousel__inner-slide {
-    width: calc(100% - 16px);
-    margin-left: 8px;
-
-    @media (min-width: 1272px) {
-      width: calc(100% - 24px);
-      margin-left: 12px;
-    }
-
-    @media (min-width: 1272px) {
-      width: calc(100% - 32px);
-      margin-left: 16px;
-    }
+  .carousel__slide {
+    width: 390px!important;
   }
 `;
 
