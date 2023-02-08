@@ -125,7 +125,7 @@ export default function Home() {
       </div>
       <StyledHomeBody>
         <div className="booking-section-container">
-          <HorizontalContainer>
+          <HorizontalContainer justifyContent="center">
             <CarouselWrapper className="carousel-container">
               <CarouselProvider
                 visibleSlides={slideCount}
@@ -147,7 +147,7 @@ export default function Home() {
           </HorizontalContainer>
         </div>
         <div className="booking-section-container">
-          <HorizontalContainer>
+          <HorizontalContainer justifyContent="center">
             <CarouselWrapper className="carousel-container">
               <CarouselProvider
                 visibleSlides={slideCount}
@@ -169,7 +169,7 @@ export default function Home() {
           </HorizontalContainer>
         </div>
         <div className="booking-section-container">
-          <HorizontalContainer>
+          <HorizontalContainer justifyContent="center">
             <CarouselWrapper className="carousel-container">
               <CarouselProvider
                 visibleSlides={slideCount}

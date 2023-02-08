@@ -8,6 +8,15 @@ const StyledCard = styled.div`
   cursor: pointer;
   height: auto;
   width: 390px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
+  @media only screen and (max-width: 475px) {
+    padding: 0 10px;
+    width: 92%;
+  }
 `
 
 const CardImage = styled(VerticalContainer)`
@@ -36,6 +45,11 @@ const CardImage = styled(VerticalContainer)`
       line-height: 36.81px;
       text-transform: uppercase;
       padding: 16px 35px 0;
+
+      @media only screen and (max-width: 475px) {
+        font-size: 18px;
+        padding: 16px 25px 0;
+      }
     }
   }
 
@@ -118,6 +132,10 @@ const CardInfo = styled(VerticalContainer)`
   border-bottom-right-radius: 17px;
   gap: 10px;
   padding: 50px 32px;
+
+  @media only screen and (max-width: 375px) {
+    padding: 40px 15px;
+  }
 
   .hotel-name {
     span {
