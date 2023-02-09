@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
@@ -72,6 +73,11 @@ export const H4 = styled.h4<TypographyStyle>`
   overflow: ${props => props.overflow};
   padding: ${props => props.padding};
   text-align: ${props => props.textAlign};
+
+  @media ${BREAKPOINTS.mobileLg} {
+    font-size: 12px;
+    line-height: 16px;
+  }
 `
 
 export const H5 = styled.h5<TypographyStyle>`
@@ -84,6 +90,11 @@ export const H5 = styled.h5<TypographyStyle>`
   overflow: ${props => props.overflow};
   padding: ${props => props.padding};
   text-align: ${props => props.textAlign};
+
+  @media ${BREAKPOINTS.mobileLg} {
+    font-size: 12px;
+    line-height: 16px;
+  }
 `
 
 export const FooterText = styled.span<TypographyStyle>`

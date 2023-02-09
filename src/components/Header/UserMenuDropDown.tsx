@@ -1,7 +1,9 @@
 import IMAGES from "@/assets/images"
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import styled from "styled-components"
 import HorizontalContainer from "../Layout/HorizontalContainer"
+import { H5 } from "../Typhography"
 
 const StyledUserMenuDropDown = styled.div`
   position: absolute;
@@ -11,6 +13,10 @@ const StyledUserMenuDropDown = styled.div`
   transition: all 0.5s ease-in-out;
   width: 100%;
   z-index: 2;
+
+  @media ${BREAKPOINTS.mobileLg} {
+    min-width: 250px;
+  }
 
   &.open {
     animation: fadeIn 0.5s;
@@ -30,6 +36,10 @@ const NavItemContainer = styled.div`
   box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);
   transition: all 0.5s ease-in-out;
   padding: 40px 40px 20px;
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 20px;
+  }
 
   &.open {
     animation: fadeIn 0.5s;
@@ -52,6 +62,12 @@ const NavItemContainer = styled.div`
 const NavItem = styled(HorizontalContainer)`
   cursor: pointer;
   gap: 33px;
+
+  h5 {
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 14px;
+    }
+  }
 `
 
 interface UserMenuDropDown {
@@ -65,19 +81,19 @@ const UserMenuDropDown = ({ innerRef, dropdown }: UserMenuDropDown) => {
       <NavItemContainer >
         <NavItem>
           <img src={IMAGES.iconEye} />
-          <span>Account setting</span>
+          <H5>Account setting</H5>
         </NavItem>
         <NavItem>
           <img src={IMAGES.iconChartBlue} />
-          <span>Report</span>
+          <H5>Report</H5>
         </NavItem>
         <NavItem>
           <img src={IMAGES.iconQuestionMarkBlue} />
-          <span>Help center</span>
+          <H5>Help center</H5>
         </NavItem>
         <NavItem>
           <img src={IMAGES.iconArrowBackBlue} />
-          <span>Logout</span>
+          <H5>Logout</H5>
         </NavItem>
       </NavItemContainer>
     </StyledUserMenuDropDown>

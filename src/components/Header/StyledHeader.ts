@@ -34,8 +34,9 @@ const HeaderContainer = styled.div.attrs((props: {
         width: 200px;
       }
 
-      @media ${BREAKPOINTS.mobileSm} {
-        width: 150px;
+      @media ${BREAKPOINTS.mobileLg} {
+        height: 17px;
+        width: 85px;
       }
     }
   }
@@ -51,7 +52,7 @@ const HeaderContainer = styled.div.attrs((props: {
     gap: 63px;
 
     @media ${BREAKPOINTS.tablet} {
-      display: none;
+      gap: 30px;
     }
   }
 
@@ -72,16 +73,51 @@ const HeaderContainer = styled.div.attrs((props: {
     left: 22px;
     width: 18px;
 
+    @media ${BREAKPOINTS.mobileLg} {
+      height: 14px;
+      top: -8px;
+      left: 15px;
+      width: 14px;
+    }
+
     span {
       position: relative;
       top: -2px;
       left: 30%;
+
+      @media ${BREAKPOINTS.mobileLg} {
+        font-size: 10px;
+        top: -4px;
+      }
     }
   }
 
   .header-group-right > div > img {
     transform: ${({ dropdown }) => dropdown ? "rotate(180deg)" : "rotate(0)"};
     transition: all 0.5s ease-in-out;
+  }
+
+  .header-group-right {
+    .user-icon {
+      @media ${BREAKPOINTS.mobileLg} {
+        height: 20px;
+        width: 20px;
+      }
+    }
+    .icon-dropdown {
+        @media ${BREAKPOINTS.mobileLg} {
+          width: 12px;
+        }
+    }
+  }
+
+  .header-group-left {
+    .letter-icon {
+      @media ${BREAKPOINTS.mobileLg} {
+        height: 16px;
+        width: 20px;
+      }
+    }
   }
 `
 

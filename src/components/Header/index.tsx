@@ -65,6 +65,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
                 <div style={{ position: "relative" }}>
                   <div style={{ position: "relative" }}>
                     <img
+                      className="letter-icon"
                       src={IMAGES.iconLetter}
                       alt="letter"
                       width="34px"
@@ -89,11 +90,11 @@ export default function Header({ hasDivider }: HeaderInterface) {
               </H4>
             </div>
             <div className="header-group-right" >
-              <img src={IMAGES.defaultUser} alt="user" width="31px" height="31px" onClick={(e) => handleDropdown(e)} />
+              <img className="user-icon" src={IMAGES.defaultUser} alt="user" width="31px" height="31px" onClick={(e) => handleDropdown(e)} />
               <div
                 style={{ height: "50px", display: "flex", alignItems: "center" }}
                 onClick={(e) => handleDropdown(e)}>
-                <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" />
+                <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" className="icon-dropdown" />
               </div>
               <NotificationDropDown innerRef={notificationRef} notificationDropDown={notificationVisible} />
               <UserMenuDropDown innerRef={userMenuRef} dropdown={userMenuVisible} />

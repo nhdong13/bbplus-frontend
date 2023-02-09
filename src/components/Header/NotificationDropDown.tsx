@@ -1,4 +1,5 @@
 import IMAGES from "@/assets/images";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { notificationData } from "@/utils/tempData";
@@ -34,6 +35,10 @@ const StyledNotificationDropDown = styled.div.attrs((props: {
     animation: fadeOut 0.5s;
     display: none;
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    min-width: 375px;
+  }
 `
 
 const Title = styled.div`
@@ -54,6 +59,9 @@ const NotificationItem = styled(HorizontalContainer).attrs((props: {
   max-height: 105px;
   padding: 0 20px 0 38px;
 
+  @media ${BREAKPOINTS.mobileLg} {
+    gap: 12px;
+  }
 
   &:hover {
     background: ${COLORS.silver};
@@ -74,6 +82,12 @@ const NotificationItem = styled(HorizontalContainer).attrs((props: {
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
+  }
+
+  img {
+    @media ${BREAKPOINTS.mobileLg} {
+      width: 50px;
+    }
   }
 `
 
