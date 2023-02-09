@@ -9,6 +9,11 @@ import leftQuotationMark from "./left-quotation-mark-icon.svg";
 import locationIcon from "./icon-location.svg";
 import pIcon from "./p-icon.svg";
 import iconAnchorGrey from "./icon-anchor-grey.svg";
+import faviconSVG from "./favicon.svg";
+import iconEye from "./icon-eye-blue.svg";
+import iconArrowBackBlue from "./icon-arrow-back-blue.svg";
+import iconChartBlue from "./icon-chart-blue.svg";
+import iconQuestionMarkBlue from "./icon-question-mark-blue.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -22,6 +27,11 @@ const IMAGES = {
   locationIcon,
   pIcon,
   iconAnchorGrey,
+  faviconSVG,
+  iconEye,
+  iconArrowBackBlue,
+  iconChartBlue,
+  iconQuestionMarkBlue,
 }
 
 export default IMAGES;

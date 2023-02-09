@@ -167,7 +167,7 @@ const CardInfo = styled(VerticalContainer)`
     gap: 15px;
 
     span {
-      color: #383838;
+      color: ${COLORS.onyx};
       font-family: ${FONTS.manrope};
       font-weight: 400;
       font-size: 18px;

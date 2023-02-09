@@ -31,18 +31,17 @@ export default function Header({ hasDivider }: HeaderInterface) {
 
   const handleDropdown = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.persist();
     if (notificationDropDown) setNotificationDropDown(!notificationDropDown);
     setDropDown(!dropdown);
     setUserMenuVisible(!dropdown);
   };
 
-  const handleNotificationDropDown = useCallback((e: React.MouseEvent) => {
+  const handleNotificationDropDown = (e: React.MouseEvent) => {
     e.preventDefault();
     if (dropdown) setDropDown(!dropdown);
     setNotificationDropDown(!notificationDropDown);
     setNotificationVisible(!notificationDropDown);
-  }, [dropdown]);
+  };
 
   useEffect(() => {
     if (!userMenuVisible) setDropDown(false);
