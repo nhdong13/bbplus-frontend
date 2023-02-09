@@ -1,6 +1,6 @@
 import { COLORS } from "@/utils/colors"
 import styled from "styled-components"
-import { HorizontalContainer } from "../Layout/HorizontalContainer"
+import HorizontalContainer from "../Layout/HorizontalContainer"
 
 const StyledUserMenuDropDown = styled.div`
   position: absolute;
