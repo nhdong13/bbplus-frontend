@@ -3,12 +3,13 @@ import Header from "../Header";
 
 interface MainLayout {
   children: JSX.Element | JSX.Element[]
+  hasDivider?: boolean
 }
 
-export default function MainLayout({ children }: MainLayout) {
+export default function MainLayout({ children, hasDivider }: MainLayout) {
   return (
     <>
-      <Header />
+      <Header hasDivider={hasDivider} />
        {children}
       <Footer />
     </>

@@ -6,9 +6,16 @@ const StyledDivider = styled.div.attrs((props: {
   height?: string
   width?: string
 }) => props)`
-  background: ${props => props.color || COLORS.white};
-  height: ${props => props.height};
-  width: ${props => props.width};
+  background: ${COLORS.cyprus};
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  & > div {
+    background: ${props => props.color || COLORS.white};
+    height: ${props => props.height};
+    width: ${props => props.width};
+  }
 `
 
 interface Divider {
@@ -24,7 +31,9 @@ export default function Divider({
 }: Divider) {
   return (
     <>
-      <StyledDivider className="divider" color={color} height={height} width={width} />
+      <StyledDivider className="divider" color={color} height={height} width={width}>
+        <div />
+      </StyledDivider>
     </>
   )
 }

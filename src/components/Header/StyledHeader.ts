@@ -1,3 +1,4 @@
+import { VerticalContainer } from '@/components/Layout/VerticalContainer';
 import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
@@ -11,10 +12,13 @@ const HeaderContainer = styled.div.attrs((props: {
   margin: auto;
   justify-content: center;
 
-  & > div {
-    height: 77px;
-    max-width: 1570px;
-    padding-top: 95px;
+  .header-horizontal-container {
+    height: auto;
+    max-width: 1400px;
+    margin-top: 84px;
+    margin-bottom: 37px;
+    padding: 0 20px;
+    width: 100%;
 
     @media ${BREAKPOINTS.tablet} {
       height: auto;
@@ -44,7 +48,7 @@ const HeaderContainer = styled.div.attrs((props: {
   }
 
   .header-group {
-    gap: 60px;
+    gap: 63px;
 
     @media ${BREAKPOINTS.tablet} {
       display: none;
@@ -54,35 +58,24 @@ const HeaderContainer = styled.div.attrs((props: {
   .header-group-left,
   .header-group-right {
     cursor: pointer;
-    gap: 20px;
+    gap: 9px;
     position: relative;
-  }
-
-  .header-user-name {
-    color: ${COLORS.white};
-    font-family: ${FONTS.manrope};
-    font-size: 25px;
-    line-height: 43px;
-    text-align: left;
   }
 
   .alert-icon {
     background: ${COLORS.red};
     border: none;
     border-radius: 50px;
-    height: 20px;
+    height: 18px;
     position: absolute;
-    top: 0;
+    top: -11px;
     left: 22px;
-    width: 20px;
+    width: 18px;
 
     span {
-      font-family: ${FONTS.manrope};
-      color: ${COLORS.white};
-      font-size: 14px;
-      line-height: 14px;
       position: relative;
-      left: 32%;
+      top: -2px;
+      left: 30%;
     }
   }
 
@@ -91,6 +84,13 @@ const HeaderContainer = styled.div.attrs((props: {
     transition: all 0.5s ease-in-out;
   }
 `
+
+const DividerContainer = styled(VerticalContainer)`
+  background: ${COLORS.cyprus};
+  width: 100%;
+`
+
 export {
-  HeaderContainer
+  HeaderContainer,
+  DividerContainer,
 }
