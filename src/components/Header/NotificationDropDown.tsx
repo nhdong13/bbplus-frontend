@@ -2,7 +2,8 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { notificationData } from "@/utils/tempData";
 import styled from "styled-components";
-import { HorizontalContainer } from "../Layout/HorizontalContainer";
+import HorizontalContainer from "../Layout/HorizontalContainer";
+
 
 interface NotificationDropDown {
   notificationDropDown: boolean

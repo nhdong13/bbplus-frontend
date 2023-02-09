@@ -4,7 +4,7 @@ import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
 import styled from "styled-components"
 import Divider from "../Layout/Divider"
-import { HorizontalContainer } from "../Layout/HorizontalContainer"
+import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
 
 const StyledFooter = styled.div`

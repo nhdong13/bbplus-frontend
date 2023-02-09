@@ -4,7 +4,7 @@ import { FONTS } from "@/utils/fonts"
 import { HotelData } from "@/utils/types/CardHotel"
 import styled from "styled-components"
 import { GradientButton } from "../Button"
-import { HorizontalContainer } from "../Layout/HorizontalContainer"
+import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
 import {
   StyledCard,

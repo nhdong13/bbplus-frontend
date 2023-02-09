@@ -13,9 +13,11 @@ interface HorizontalInterface {
   alignItems?: string
   gap?: string
   padding?: string
+  className?: string
+  children: JSX.Element | JSX.Element[]
 }
 
-export const HorizontalContainer = styled.div<HorizontalInterface>`
+const StyledHorizontalContainer = styled.div<HorizontalInterface>`
   align-items: ${props => props.alignItems};
   display: flex;
   flex-direction: row;
@@ -30,3 +32,42 @@ export const HorizontalContainer = styled.div<HorizontalInterface>`
   padding: ${props => props.padding};
   width: ${props => props.width};
 `
+const HorizontalContainer = ({
+  backgroundColor,
+  backgroundImage,
+  justifyContent,
+  height,
+  margin,
+  maxHeight,
+  maxWidth,
+  textAlign,
+  width,
+  alignItems,
+  gap,
+  padding,
+  className,
+  children,
+}: HorizontalInterface
+) => {
+  return (
+    <StyledHorizontalContainer
+      className={className}
+      backgroundColor={backgroundColor}
+      backgroundImage={backgroundImage}
+      justifyContent={justifyContent}
+      height={height}
+      margin={margin}
+      maxHeight={maxHeight}
+      maxWidth={maxWidth}
+      textAlign={textAlign}
+      width={width}
+      alignItems={alignItems}
+      gap={gap}
+      padding={padding}
+    >
+      {children}
+    </StyledHorizontalContainer>
+  )
+}
+
+export default HorizontalContainer;

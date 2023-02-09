@@ -1,5 +1,5 @@
 import IMAGES from "@/assets/images";
-import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
+import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";

@@ -1,7 +1,7 @@
 import IMAGES from "@/assets/images";
 import { GradientButton } from "@/components/Button";
 import Divider from "@/components/Layout/Divider";
-import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
+import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import MainLayout from "@/components/Layout/MainLayout";
 import { VerticalContainer } from "@/components/Layout/VerticalContainer";
 import { BREAKPOINTS } from "@/utils/breakpoints";

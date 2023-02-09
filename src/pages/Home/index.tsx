@@ -1,7 +1,7 @@
 import IMAGES from "@/assets/images";
 import { GradientButton } from "@/components/Button";
 import Divider from "@/components/Layout/Divider";
-import { HorizontalContainer } from "@/components/Layout/HorizontalContainer";
+import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { VerticalContainer } from "@/components/Layout/VerticalContainer";
 import BookingTable from "@/components/Table";
 import { COLORS } from "@/utils/colors";
