@@ -3,7 +3,7 @@ import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import styled from "styled-components"
 import HorizontalContainer from "../Layout/HorizontalContainer"
-import { H5 } from "../Typhography"
+import { H5 } from "../Typography"
 
 const StyledUserMenuDropDown = styled.div`
   position: absolute;

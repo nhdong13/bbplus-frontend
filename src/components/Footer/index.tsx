@@ -6,7 +6,7 @@ import styled from "styled-components"
 import Divider from "../Layout/Divider"
 import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
-import { FooterText, Typography } from "../Typhography"
+import { FooterText, Typography } from "../Typography"
 
 const StyledFooter = styled.div`
   background-color: ${COLORS.cyprus};

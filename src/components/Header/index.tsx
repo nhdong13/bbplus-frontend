@@ -6,7 +6,7 @@ import UserMenuDropDown from "./UserMenuDropDown";
 import NotificationDropDown from "./NotificationDropDown";
 import useComponentVisible from "@/utils/clickOutSide";
 import { DividerContainer, HeaderContainer } from "./StyledHeader";
-import { H4, Typography } from "../Typhography";
+import { H4, Typography } from "../Typography";
 import Divider from "../Layout/Divider";
 
 interface HeaderInterface {

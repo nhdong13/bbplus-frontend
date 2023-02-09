@@ -5,7 +5,7 @@ import { FONTS } from "@/utils/fonts";
 import { notificationData } from "@/utils/tempData";
 import styled from "styled-components";
 import HorizontalContainer from "../Layout/HorizontalContainer";
-import { H4, H5 } from "../Typhography";
+import { H4, H5 } from "../Typography";
 
 
 interface NotificationDropDown {
