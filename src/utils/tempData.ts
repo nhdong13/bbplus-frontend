@@ -315,22 +315,22 @@ export const customItineraries: HotelData[] = [
 export const notificationData = [
   {
     id: '1',
-    avatar: "/",
+    avatar: "",
     text: "We would like to  inform all our users that we will be carrying out some maintenance work on Saturday 27th March 2017"
   },
   {
     id: '2',
-    avatar: "/",
+    avatar: "",
     text: "We would like to  inform all our users that we will be carrying out some maintenance work on Saturday 27th March 2017"
   },
   {
     id: '3',
-    avatar: "/",
+    avatar: "",
     text: "We would like to  inform all our users that we will be carrying out some maintenance work on Saturday 27th March 2017"
   },
   {
     id: '3',
-    avatar: "/",
+    avatar: "",
     text: "We would like to  inform all our users that we will be carrying out some maintenance work on Saturday 27th March 2017"
   }
 ]

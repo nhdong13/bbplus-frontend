@@ -1,27 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.11 36.03">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-      }
-
-      .cls-2 {
-        fill: none;
-        stroke: #fff;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: .6px;
-      }
-    </style>
-  </defs>
-  <g id="Single_Hotel" data-name="Single Hotel">
-    <g id="Layer_26" data-name="Layer 26">
-      <g>
-        <path class="cls-2" d="M35.81,18.01c0,9.78-7.95,17.71-17.75,17.71S.3,27.79,.3,18.01,8.25,.3,18.06,.3s17.75,7.93,17.75,17.71Z"/>
-        <path class="cls-1" d="M23.95,16.17c0,3.25-2.64,5.88-5.89,5.88s-5.89-2.63-5.89-5.88,2.64-5.88,5.89-5.88,5.89,2.63,5.89,5.88Z"/>
-        <path class="cls-1" d="M18.06,35.73c4.27,0,8.18-1.5,11.24-4.01-1.65-4.61-6.06-7.91-11.24-7.91s-9.59,3.3-11.24,7.91c3.06,2.5,6.98,4.01,11.24,4.01Z"/>
-      </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="32.99" height="32.916" viewBox="0 0 32.99 32.916">
+  <g id="Group_24" data-name="Group 24" transform="translate(-1594.391 -94.519)">
+    <path id="Path_150" data-name="Path 150" d="M1626.381,110.976a15.5,15.5,0,1,1-15.494-15.457A15.476,15.476,0,0,1,1626.381,110.976Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_151" data-name="Path 151" d="M1616.029,109.371a5.143,5.143,0,1,1-5.142-5.131A5.135,5.135,0,0,1,1616.029,109.371Z" fill="#fff"/>
+    <path id="Path_152" data-name="Path 152" d="M1610.887,126.435a15.443,15.443,0,0,0,9.812-3.5,10.423,10.423,0,0,0-19.624,0A15.439,15.439,0,0,0,1610.887,126.435Z" fill="#fff"/>
   </g>
 </svg>
