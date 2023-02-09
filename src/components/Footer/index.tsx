@@ -6,6 +6,7 @@ import styled from "styled-components"
 import Divider from "../Layout/Divider"
 import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
+import { FooterText, Typography } from "../Typhography"
 
 const StyledFooter = styled.div`
   background-color: ${COLORS.cyprus};
@@ -20,8 +21,6 @@ const StyledFooter = styled.div`
 `
 
 const FooterContainer = styled(HorizontalContainer)`
-  gap: 60px;
-
   @media ${BREAKPOINTS.laptop} {
     gap: 22px;
   }
@@ -56,40 +55,11 @@ const Copyright = styled.div`
     height: auto;
     padding: 15px;
   }
-
-  span {
-    color: ${COLORS.white};
-    font-family: ${FONTS.montserrat};
-    font-size: 22px;
-    font-weight: 100;
-    line-height: 23px;
-    padding: 15px 0;
-
-    @media ${BREAKPOINTS.tablet} {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
 `
 
 const StyledRightFooter = styled(VerticalContainer)`
   @media ${BREAKPOINTS.tablet} {
     width: 100%;
-  }
-
-  p {
-    color: ${COLORS.white};
-    font-family: ${FONTS.montserrat};
-    font-size: 26px;
-    line-height: 14px;
-  }
-
-  span {
-    color: ${COLORS.white};
-    font-family: ${FONTS.montserrat};
-    font-size: 23px;
-    font-weight: 100;
-    line-height: 35px;
   }
 
   .footer-company-name {
@@ -116,21 +86,21 @@ export default function Footer() {
             <div className="footer-logo-container">
               <img src={IMAGES.bbplusLogoWhite} alt="bbplusLogoWhite" width="260px" height="auto" />
             </div>
-            <Divider height="100%" width="0.2px" />
+            <Divider color={COLORS.white} height="100%" width="0.2px" margin="0 27px 0 38px" />
             <StyledRightFooter>
               <HorizontalContainer className="footer-company-name">
-                <p>GlobalBedbank Group</p>
+                <FooterText fontSize="13px" lineHeight="32px" fontWeight="400">GlobalBedbank Group</FooterText>
               </HorizontalContainer>
 
               <HorizontalContainer className="footer-company-info" gap="60px">
-                <VerticalContainer>
-                  <span>HLB Building</span>
-                  <span>Nadi, Fiji</span>
+                <VerticalContainer width="100px">
+                  <FooterText>HLB Building</FooterText>
+                  <FooterText>Nadi, Fiji</FooterText>
                 </VerticalContainer>
 
                 <VerticalContainer>
-                  <span>Tel : (679) 6724244</span>
-                  <span>Email : info@pacificbedbank.com</span>
+                  <FooterText>Tel : (679) 6724244</FooterText>
+                  <FooterText>Email : info@pacificbedbank.com</FooterText>
                 </VerticalContainer>
               </HorizontalContainer>
             </StyledRightFooter>
@@ -138,7 +108,9 @@ export default function Footer() {
         </StyledFooter>
         <HorizontalContainer>
           <Copyright>
-            <span>Copyright c GlobalBedbank Group. All rights reserved</span>
+            <Typography color={COLORS.white} fontSize="11px" fontFamily={FONTS.montserrat} lineHeight="31px">
+              Copyright c GlobalBedbank Group. All rights reserved
+            </Typography>
           </Copyright>
         </HorizontalContainer>
       </VerticalContainer>

@@ -139,7 +139,7 @@ export default function Home() {
             <BookingTable />
           </div>
         </StyledHomeBody>
-        <Footer /> */}
+         */}
       </MainLayout>
     </>
   )

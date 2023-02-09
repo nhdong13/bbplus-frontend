@@ -1,3 +1,4 @@
+import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
@@ -79,6 +80,18 @@ export const H5 = styled.h5<TypographyStyle>`
   font-size: 16px;
   font-weight: ${props => props.fontWeight || 400};
   line-height: ${props => props.lineHeight || "20px"};
+  margin: ${props => props.margin};
+  overflow: ${props => props.overflow};
+  padding: ${props => props.padding};
+  text-align: ${props => props.textAlign};
+`
+
+export const FooterText = styled.span<TypographyStyle>`
+  color: ${props => props.color || COLORS.white};
+  font-family: ${props => props.fontFamily || FONTS.montserrat};
+  font-size: ${props => props.fontSize || "12px"};
+  font-weight: ${props => props.fontWeight || 200};
+  line-height: ${props => props.lineHeight || "17px"};
   margin: ${props => props.margin};
   overflow: ${props => props.overflow};
   padding: ${props => props.padding};
