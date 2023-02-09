@@ -99,7 +99,7 @@ export const H5 = styled.h5<TypographyStyle>`
 
 export const FooterText = styled.span<TypographyStyle>`
   color: ${props => props.color || COLORS.white};
-  font-family: ${props => props.fontFamily || FONTS.montserrat};
+  font-family: ${props => props.fontFamily || FONTS.manrope};
   font-size: ${props => props.fontSize || "12px"};
   font-weight: ${props => props.fontWeight || 200};
   line-height: ${props => props.lineHeight || "17px"};
@@ -107,4 +107,10 @@ export const FooterText = styled.span<TypographyStyle>`
   overflow: ${props => props.overflow};
   padding: ${props => props.padding};
   text-align: ${props => props.textAlign};
+
+  @media ${BREAKPOINTS.mobileLg}  {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
 `

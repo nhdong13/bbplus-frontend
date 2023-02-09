@@ -23,7 +23,12 @@ const HeaderContainer = styled.div.attrs((props: {
     @media ${BREAKPOINTS.tablet} {
       height: auto;
       max-width: 768px;
+      margin: 0;
       padding: 15px;
+    }
+
+    @media ${BREAKPOINTS.mobileLg} {
+      padding: 0 25px;
     }
 
     .logo {

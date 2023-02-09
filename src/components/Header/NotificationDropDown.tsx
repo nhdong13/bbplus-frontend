@@ -36,6 +36,10 @@ const StyledNotificationDropDown = styled.div.attrs((props: {
     display: none;
   }
 
+  @media ${BREAKPOINTS.tablet} {
+    min-width: 450px;
+  }
+
   @media ${BREAKPOINTS.mobileLg} {
     min-width: 375px;
   }

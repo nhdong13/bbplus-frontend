@@ -27,6 +27,7 @@ const FooterContainer = styled(HorizontalContainer)`
 
   @media ${BREAKPOINTS.tablet} {
     flex-direction: column;
+    padding: 10px;
   }
 
   .divider {
@@ -36,9 +37,8 @@ const FooterContainer = styled(HorizontalContainer)`
   }
 
   .footer-logo-container {
-    @media ${BREAKPOINTS.tablet} {
-      display: flex;
-      width: 100%;
+    @media ${BREAKPOINTS.mobileLg} {
+      display: none;
     }
   }
 `
@@ -55,6 +55,10 @@ const Copyright = styled.div`
     height: auto;
     padding: 15px;
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 3px 0;
+  }
 `
 
 const StyledRightFooter = styled(VerticalContainer)`
@@ -64,12 +68,21 @@ const StyledRightFooter = styled(VerticalContainer)`
 
   .footer-company-name {
     justify-content: left;
+
+    @media ${BREAKPOINTS.tablet} {
+      justify-content: center;
+    }
   }
 
   .footer-company-info {
     @media ${BREAKPOINTS.tablet} {
-      flex-direction: column;
-      gap: 16px;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    @media ${BREAKPOINTS.mobileLg} {
+      justify-content: space-between;
+      padding: 10px 20px 0;
     }
   }
 `

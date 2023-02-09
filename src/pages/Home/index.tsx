@@ -34,7 +34,7 @@ export default function Home() {
         <title>Agent</title>
       </Helmet>
       <MainLayout hasDivider>
-        {/* <div style={{ background: COLORS.cyprus }}>
+        <div style={{ background: COLORS.cyprus }}>
           <StyledHome>
             <VerticalContainer
               maxWidth={"1570px"}
@@ -139,7 +139,6 @@ export default function Home() {
             <BookingTable />
           </div>
         </StyledHomeBody>
-         */}
       </MainLayout>
     </>
   )
