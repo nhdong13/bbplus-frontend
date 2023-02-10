@@ -10,7 +10,7 @@ import CarouselSlider from "@/components/Carousel/index";
 import Footer from "@/components/Footer";
 import useHome from "./hooks";
 import { Helmet } from "react-helmet";
-import FullSearchWidget from "@/components/Search/fullSearchWidget";
+import FullSearchWidget from "@/components/Search/FullSearchWidget";
 import MainLayout from "@/components/Layout/MainLayout";
 import {
   StyledHome,
@@ -19,6 +19,7 @@ import {
   StyledCarouselTitle,
   CarouselWrapper,
 } from "./styles";
+import { H1, H2 } from "@/components/Typography";
 
 export default function Home() {
   const {
@@ -37,19 +38,23 @@ export default function Home() {
         <div style={{ background: COLORS.cyprus }}>
           <StyledHome>
             <VerticalContainer
-              maxWidth={"1570px"}
-              padding={"20px 0 150px"}
+              maxWidth={"1400px"}
+              padding={"20px 10px 150px"}
               margin={"auto"}
             >
               <HomepageWelcomeTitle>
-                <p className="welcome-user-name">Hello, Mark.</p>
-                <p className="welcome-description">At Bedbank Plus, we believe in ease and simplicity</p>
+                <H2
+                  color={COLORS.anakiwa}
+                >Hello, Mark.</H2>
+                <H1
+                  color={COLORS.white}
+                >At Bedbank Plus, we believe in ease and simplicity</H1>
               </HomepageWelcomeTitle>
               <FullSearchWidget />
             </VerticalContainer>
           </StyledHome>
         </div>
-        <StyledHomeBody>
+        {/* <StyledHomeBody>
           <div className="booking-section-container">
             <HorizontalContainer justifyContent="center">
               <CarouselWrapper className="carousel-container">
@@ -138,7 +143,7 @@ export default function Home() {
             </HorizontalContainer>
             <BookingTable />
           </div>
-        </StyledHomeBody>
+        </StyledHomeBody> */}
       </MainLayout>
     </>
   )

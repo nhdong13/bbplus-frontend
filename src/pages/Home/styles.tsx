@@ -1,13 +1,8 @@
-import IMAGES from "@/assets/images";
-import { GradientButton } from "@/components/Button";
-import Divider from "@/components/Layout/Divider";
 import HorizontalContainer from "@/components/Layout/HorizontalContainer";
-import MainLayout from "@/components/Layout/MainLayout";
 import { VerticalContainer } from "@/components/Layout/VerticalContainer";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
-import { useState } from "react";
 import styled from "styled-components";
 
 const StyledHome = styled.div`
@@ -16,20 +11,9 @@ const StyledHome = styled.div`
 
 const HomepageWelcomeTitle = styled.div`
   margin: 70px 0 0;
-  .welcome-user-name {
-    color: ${COLORS.anakiwa};
-    font-family: ${FONTS.manrope};
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 38px;
-  }
 
-  .welcome-description {
-    color: ${COLORS.white};
-    font-family: ${FONTS.manrope};
-    font-weight: 500;
-    font-size: 50px;
-    line-height: 60px;
+  @media ${BREAKPOINTS.laptop} {
+    display: none;
   }
 `
 
@@ -143,13 +127,6 @@ const CarouselWrapper = styled.div`
 export {
   StyledHome,
   HomepageWelcomeTitle,
-  SearchContainer,
-  SelectBookingDateTime,
-  FromContainer,
-  SearchButtonContainer,
-  StyledTravelerDropDown,
-  SelectRoomContainer,
-  ResultContainer,
   StyledHomeBody,
   StyledCarouselTitle,
   CarouselWrapper,

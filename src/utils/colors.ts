@@ -17,6 +17,7 @@ export const COLORS: StyledColors = {
   endeavour: "#005099",
   gradient1: "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
   mercury: "#E8E8E8",
+  outerSpace: "#494949",
   oxfordBlue: "#002145",
   onyx: "#383838",
   salem: "#078041",
@@ -49,6 +50,7 @@ interface StyledColors {
   endeavour: string,
   gradient1: string,
   mercury: string,
+  outerSpace: string
   oxfordBlue: string,
   onyx: string,
   salem: string,

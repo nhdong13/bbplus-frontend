@@ -129,6 +129,16 @@ const HeaderContainer = styled.div.attrs((props: {
 const DividerContainer = styled(VerticalContainer)`
   background: ${COLORS.cyprus};
   width: 100%;
+
+  & > div {
+    @media ${BREAKPOINTS.laptop} {
+      max-width: 97%;
+    }
+
+    @media ${BREAKPOINTS.mobileLg} {
+      max-width: 95%;
+    }
+  }
 `
 
 export {

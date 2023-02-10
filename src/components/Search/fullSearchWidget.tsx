@@ -1,12 +1,23 @@
 import { COLORS } from "@/utils/colors"
 import Divider from "../Layout/Divider"
 import HorizontalContainer from "../Layout/HorizontalContainer"
-import { FromContainer, ResultContainer, SearchButtonContainer, SearchContainer, SelectBookingDateTime, SelectRoomContainer, StyledTravelerDropDown } from "./StyledFullSearchWidget"
+import {
+  FromContainer,
+  ResultContainer,
+  SearchButtonContainer,
+  SearchContainer,
+  SelectBookingDateTime,
+  SelectRoomContainer,
+  StyledTravelerDropDown,
+  SelectBookingDateTimeContainer,
+  FilterGradientButtonContainer,
+} from "./StyledFullSearchWidget"
 import { TravelerDropDown } from "@/utils/types/CardHotel";
 import { GradientButton } from "../Button";
 import { buttonItems } from "@/utils/tempData";
 import useFullSearchWidget from "./useFullSearch";
 import IMAGES from "@/assets/images";
+import { H5 } from "../Typography";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -18,61 +29,69 @@ export default function FullSearchWidget() {
   return (
     <>
       <SearchContainer>
-        <HorizontalContainer gap="13px">
+        <FilterGradientButtonContainer gap="13px">
           {buttonItems.map((item, index) => {
             return (
-              <div key={index} onClick={() => handleSelectBookingType(index)}>
-                <GradientButton color={COLORS.gradient1} text={item.title} isSelected={selectedBooking === index ? true : false} />
+              <div className="filter-gradient-button" key={index} onClick={() => handleSelectBookingType(index)}>
+                <GradientButton
+                  color={COLORS.gradient1}
+                  text={item.title}
+                  isSelected={selectedBooking === index ? true : false}
+                />
               </div>
             )
           })}
-        </HorizontalContainer>
-        <SelectBookingDateTime isItinerary={selectCreateItinerary}>
-          <HorizontalContainer>
-            <FromContainer>
+        </FilterGradientButtonContainer>
+        <SelectBookingDateTime>
+          <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
+            <FromContainer className="leaving-from">
               <div>
-                <p>Leaving from</p>
-                <span>Search by city or airport</span>
+                <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
             </FromContainer>
             {selectCreateItinerary ?
               <>
-                <Divider width="1px" height="auto" color={COLORS.silver} />
-                <FromContainer>
+                <FromContainer className="going-to">
                   <div>
-                    <p>Going to</p>
-                    <span>Search by city or airport</span>
+                    <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
                 </FromContainer>
               </> : <></>
             }
-            <Divider width="1px" height="auto" color={COLORS.silver} />
-            <FromContainer>
-              <div>
-                <p>Arrival date</p>
-                <span>Day|Date|Month</span>
-              </div>
+            <FromContainer className="arrive-days">
+              <HorizontalContainer gap="55px">
+                <div>
+                  <H5 lineHeight="10px" fontWeight="700">Arrival date</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
+                </div>
+              </HorizontalContainer>
             </FromContainer>
-            <FromContainer>
-              <div>
-                <p>No. of days</p>
-                <span>x days</span>
-              </div>
+            <FromContainer className="no-days">
+              <HorizontalContainer gap="55px">
+                <div>
+                  <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>x days</H5>
+                </div>
+              </HorizontalContainer>
             </FromContainer>
-            <Divider width="1px" height="auto" color={COLORS.silver} />
-            <FromContainer>
+            <FromContainer className="travellers" style={{ border: "none" }}>
               <div onClick={showTravelerDropDown}>
-                <p>Travellers</p>
-                <span>X guests (X rooms)</span>
+                <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
               </div>
             </FromContainer>
-          </HorizontalContainer>
-          <HorizontalContainer margin={selectCreateItinerary ? "0" : "0 49.5px 0 0"}>
-            <SearchButtonContainer>
-              <img src={IMAGES.iconSearch} width="42px" height="42px" />
-            </SearchButtonContainer>
-          </HorizontalContainer>
+          </SelectBookingDateTimeContainer>
+          <div style={{ display: "flex" }} className="search-button-container">
+            <HorizontalContainer margin={"0 25px 0 0"}>
+              <SearchButton />
+            </HorizontalContainer>
+          </div>
         </SelectBookingDateTime>
+        <div className="mobile-search-button">
+          <SearchButton />
+        </div>
       </SearchContainer>
     </>
   )
@@ -94,6 +113,16 @@ const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
           <GradientButton color={COLORS.gradient1} text="Apply" isSelected={true} width="68px" height="72px" />
         </ResultContainer>
       </StyledTravelerDropDown>
+    </>
+  )
+}
+
+const SearchButton = () => {
+  return (
+    <>
+      <SearchButtonContainer>
+        <img src={IMAGES.iconSearch} width="25px" height="25px" />
+      </SearchButtonContainer>
     </>
   )
 }
