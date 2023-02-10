@@ -7,6 +7,12 @@ import styled from "styled-components";
 
 const StyledHome = styled.div`
   background: ${COLORS.cyprus};
+
+  & > div {
+    @media ${BREAKPOINTS.laptop} {
+      padding: 10px;
+    }
+  }
 `
 
 const HomepageWelcomeTitle = styled.div`
@@ -21,15 +27,23 @@ const StyledHomeBody = styled(VerticalContainer)`
   max-width: 1920px;
   margin: 50px auto 240px;
 
+  @media ${BREAKPOINTS.tablet} {
+    margin: 0 auto 20px;
+  }
+
   .booking-section-container {
     margin-top: 90px;
+
+    @media ${BREAKPOINTS.tablet} {
+      margin: 0;
+    }
   }
 `
 
 const StyledCarouselTitle = styled(HorizontalContainer)`
   margin: 0 56px 27px 25px;
 
-  @media ${BREAKPOINTS.mobileLg} {
+  @media ${BREAKPOINTS.laptop} {
     margin: 20px 15px;
   }
 
@@ -41,29 +55,23 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
     line-height: 63.6px;
     text-align: left;
 
-    @media ${BREAKPOINTS.mobileSm} {
-      font-size: 24px;
+    @media ${BREAKPOINTS.tablet} {
+      font-size: 18px;
       line-height: 28px;
     }
   }
 
-  .btn-arrow {
-    @media ${BREAKPOINTS.mobileLg} {
-      border-radius: 5px!important;
-      height: 30px!important;
-      width: 30px!important;
+  .controls {
+    @media ${BREAKPOINTS.tablet} {
+      display: none!important;
     }
-
-    img {
-      width: 10px;
-    }
-
   }
 `
 
 const CarouselWrapper = styled.div`
   &.carousel-container {
-    max-width: 1650px;
+    max-width: 1400px;
+    padding: 0 20px;
     width: 100%;
 
     @media only screen and (max-width: 1644px) {
@@ -91,11 +99,11 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 550px) {
-      max-width: 400px;
+      max-width: 390px;
     }
 
   .carousel__slider-tray--horizontal {
-    gap: 26px;
+    gap: 25px;
 
     @media only screen and (max-width: 1440px) {
       width: 400%!important;
@@ -114,12 +122,13 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 475px) {
+      gap: 0;
       width: 850%!important;
     }
   }
 
   .carousel__slide {
-    width: 390px!important;
+    width: 340px!important;
   }
 `;
 

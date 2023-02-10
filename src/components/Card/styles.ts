@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from './../../utils/breakpoints';
 import IMAGES from "@/assets/images"
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
@@ -7,7 +8,7 @@ import { VerticalContainer } from "../Layout/VerticalContainer"
 const StyledCard = styled.div`
   cursor: pointer;
   height: auto;
-  width: 390px;
+  width: 340px;
 
   @media only screen and (max-width: 768px) {
     padding: 0 15px;
@@ -26,8 +27,14 @@ const CardImage = styled(VerticalContainer)`
   background-size: cover;
   border-top-left-radius: 17px;
   border-top-right-radius: 17px;
-  height: 200px;
+  min-height: 188px;
   position: relative;
+
+
+  @media ${BREAKPOINTS.tablet} {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
 
   .save-percentage, .rating {
     width: 50%;
@@ -38,25 +45,29 @@ const CardImage = styled(VerticalContainer)`
     border-top-left-radius: 17px;
 
     span {
+      align-items: center;
       color: ${COLORS.white};
+      display: flex;
       font-family: ${FONTS.manrope};
       font-weight: 700;
-      font-size: 25px;
-      line-height: 36.81px;
+      font-size: 16px;
+      line-height: 32px;
       text-transform: uppercase;
-      padding: 16px 35px 0;
+      justify-content: center;
+      min-height: 41px;
 
-      @media only screen and (max-width: 475px) {
-        font-size: 18px;
-        padding: 16px 25px 0;
+      @media ${BREAKPOINTS.laptop} {
+        font-size: 16px;
       }
     }
   }
 
   .rating {
-    align-items: center;
+    align-items: flex-end;
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    margin-right: 38px;
+    border-top-right-radius: 17px;
 
     span {
       color: ${COLORS.black};
@@ -69,10 +80,16 @@ const CardImage = styled(VerticalContainer)`
     .rating-container {
       align-items: center;
       background: ${COLORS.white};
-      border-radius: 20px;
+      border-radius: 5px;
       display: flex;
       justify-content: center;
-      padding: 0 18px;
+      max-height: 25px;
+      max-width: 60px;
+      span {
+        justify-content: right!important;
+        width: 100%;
+        margin: 15px;
+      }
     }
   }
 
@@ -90,6 +107,10 @@ const PriceContainer = styled.div`
   position: absolute;
   bottom: -25px;
 
+  @media ${BREAKPOINTS.tablet} {
+    right: 0;
+  }
+
   .inner-trapezoid {
     height: 120px;
     width: 153px;
@@ -97,6 +118,11 @@ const PriceContainer = styled.div`
     clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
     position: absolute;
     right: 0;
+
+    @media ${BREAKPOINTS.tablet} {
+      height: 62px;
+      width: 92px;
+    }
   }
 
   .outer-trapezoid {
@@ -105,6 +131,15 @@ const PriceContainer = styled.div`
     background: ${COLORS.cyprus};
     clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
     position: relative;
+
+    @media ${BREAKPOINTS.tablet} {
+      position: absolute;
+      top: 50px;
+      right: 0;
+
+      height: 70px;
+      width: 100px;
+    }
   }
 
   p {
@@ -138,26 +173,23 @@ const CardInfo = styled(VerticalContainer)`
   }
 
   .hotel-name {
-    span {
+    h4 {
       color: ${COLORS.toryBlue};
-      font-family: ${FONTS.manrope};
-      font-weight: 600;
-      font-size: 27px;
-      line-height: 32.4px;
-      text-align: left;
     }
   }
 
   .location {
     display: flex;
-    gap: 7px;
+    gap: 12px;
 
     span {
+      align-items: flex-end;
       color: ${COLORS.black};
+      display: flex;
       font-family: ${FONTS.manrope};
       font-weight: 400;
-      font-size: 20px;
-      line-height: 38.59px;
+      font-size: 16px;
+      line-height: 22px;
     }
   }
 

@@ -20,7 +20,7 @@ const HeaderContainer = styled.div.attrs((props: {
     padding: 0 20px;
     width: 100%;
 
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       height: auto;
       max-width: 768px;
       margin: 0;

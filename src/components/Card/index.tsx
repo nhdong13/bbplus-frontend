@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { GradientButton } from "../Button"
 import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
+import { H4 } from "../Typography"
 import {
   StyledCard,
   CardImage,
@@ -37,18 +38,19 @@ export default function Card({ data, index }: CardData) {
       <StyledCard>
         <CardImage>
           <HorizontalContainer>
-            {discountPercentage &&
+            {discountPercentage ?
               <div className="save-percentage">
                 <span>save {discountPercentage} %</span>
-              </div>
+              </div> : <></>
             }
-            {rating &&
+            {rating ?
               <div className={!discountPercentage ? "rating rating-without-discount " : "rating"}>
                 <div className="rating-container">
-                  <img src={IMAGES.leftQuotationMark} width="14px" height="26px" />
+                  <img src={IMAGES.iconStar} width="14px" height="26px" />
                   <span>4.1</span>
                 </div>
-              </div>
+              </div> : <></>
+
             }
           </HorizontalContainer>
           {discountPercentage &&
@@ -66,10 +68,10 @@ export default function Card({ data, index }: CardData) {
         </CardImage>
         <CardInfo>
           <div className="hotel-name">
-            <span>{title}</span>
+            <H4>{title}</H4>
           </div>
           <div className="location">
-            <img src={IMAGES.locationIcon} alt="location" width="20px" height="30px" />
+            <img src={IMAGES.locationIcon} alt="location" width="17px" height="25px" />
             <span>{location}</span>
           </div>
           <div className="description">
@@ -96,8 +98,8 @@ export default function Card({ data, index }: CardData) {
               color={COLORS.flushOrange}
               text="View Details"
               isSelected={true}
-              maxWidth="285px"
-              height="72px"
+              maxWidth="250px"
+              height="62px"
             />
           </div>
         </CardInfo>

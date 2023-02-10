@@ -54,7 +54,7 @@ export default function Home() {
             </VerticalContainer>
           </StyledHome>
         </div>
-        {/* <StyledHomeBody>
+        <StyledHomeBody>
           <div className="booking-section-container">
             <HorizontalContainer justifyContent="center">
               <CarouselWrapper className="carousel-container">
@@ -143,7 +143,7 @@ export default function Home() {
             </HorizontalContainer>
             <BookingTable />
           </div>
-        </StyledHomeBody> */}
+        </StyledHomeBody>
       </MainLayout>
     </>
   )
