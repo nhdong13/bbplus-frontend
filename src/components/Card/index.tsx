@@ -54,7 +54,7 @@ export default function Card({ data, index }: CardData) {
 
             }
           </HorizontalContainer>
-          {/* {discountPercentage &&
+          {discountPercentage &&
             <PriceContainer>
               <div className="outer-trapezoid">
                 <div className="inner-trapezoid">
@@ -65,7 +65,7 @@ export default function Card({ data, index }: CardData) {
                 </div>
               </div>
             </PriceContainer>
-          } */}
+          }
         </CardImage>
         <CardInfo>
           <div className="hotel-name">

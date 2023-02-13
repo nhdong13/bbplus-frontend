@@ -11,7 +11,6 @@ const StyledCard = styled.div`
   width: 340px;
 
   @media ${BREAKPOINTS.mobileLg}  {
-    
     max-width: 320px;
     width: 100%;
   }
@@ -68,10 +67,10 @@ const CardImage = styled(VerticalContainer)`
 
   .rating {
     align-items: flex-end;
+    border-top-right-radius: 17px;
     display: flex;
     justify-content: right;
     margin-right: 38px;
-    border-top-right-radius: 17px;
 
     @media ${BREAKPOINTS.mobileLg} {
       border-top-right-radius: 5px;
@@ -96,9 +95,10 @@ const CardImage = styled(VerticalContainer)`
       background: ${COLORS.white};
       border-radius: 5px;
       display: flex;
+      gap: 11px;
       justify-content: center;
-      max-height: 25px;
-      max-width: 60px;
+      padding: 0 10px;
+      
       span {
         justify-content: right!important;
         width: 100%;
@@ -113,8 +113,8 @@ const CardImage = styled(VerticalContainer)`
 
   .rating-without-discount {
     justify-content: right!important;
-    width: 100%;
     margin: 15px;
+    width: 100%;
 
     @media ${BREAKPOINTS.mobileLg} {
       margin: 18px 37px;
@@ -124,62 +124,70 @@ const CardImage = styled(VerticalContainer)`
 
 const PriceContainer = styled.div`
   height: 120px;
-  width: 153px;
   right: 8px;
   position: absolute;
   bottom: -25px;
-
-  // @media ${BREAKPOINTS.tablet} {
-  //   right: 0;
-  // }
+  width: 153px;
 
   .inner-trapezoid {
-    height: 120px;
-    width: 153px;
+    align-items: center;
     background: ${COLORS.flushOrange};
     clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 120px;
     position: absolute;
     right: 0;
+    width: 153px;
 
-    // @media ${BREAKPOINTS.tablet} {
-    //   height: 62px;
-    //   width: 92px;
-    // }
+    @media ${BREAKPOINTS.tablet} {
+      height: 62px;
+      width: 92px;
+    }
   }
 
   .outer-trapezoid {
-    height: 125px;
-    width: 161px;
     background: ${COLORS.cyprus};
     clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
+    height: 125px;
     position: relative;
+    width: 161px;
 
-    // @media ${BREAKPOINTS.tablet} {
-    //   position: absolute;
-    //   top: 50px;
-    //   right: 0;
+    @media ${BREAKPOINTS.tablet} {
+      position: absolute;
+      top: 50px;
+      right: 0;
 
-    //   height: 70px;
-    //   width: 100px;
-    // }
+      height: 67px;
+      width: 97px;
+    }
   }
 
   p {
     color: ${COLORS.white};
     font-family: ${FONTS.manrope};
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 0;
-    padding-left: 7px;
+    font-size: 28px;
+    line-height: 34px;
+
+    @media ${BREAKPOINTS.laptop} {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 
   span {
     color: ${COLORS.white};
     font-family: ${FONTS.manrope};
     font-weight: 400;
-    font-size: 22px;
-    line-height: 0;
+    font-size: 16px;
+    line-height: 20px;
     padding-left: 7px;
+
+    @media ${BREAKPOINTS.laptop} {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 `
 
@@ -193,10 +201,10 @@ const CardInfo = styled(VerticalContainer)`
   padding: 50px 32px;
 
   @media ${BREAKPOINTS.mobileLg} {
-    padding: 38px 10px 43px;
-    text-align: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    padding: 38px 10px 43px;
+    text-align: center;
   }
 
   .hotel-name {
@@ -244,8 +252,8 @@ const CardInfo = styled(VerticalContainer)`
   }
 
   .extra-info {
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 15px;
 
     @media ${BREAKPOINTS.mobileLg} {
@@ -326,17 +334,24 @@ const ViewDetailButtonContainer = styled.div`
   }
 
   div {
-    border-radius: 3px;
-    height: 39px;
-    max-width: 143px;
-    padding: 0;
+    width: 250px;
+
+    @media ${BREAKPOINTS.mobileLg} {
+      border-radius: 3px;
+      height: 39px;
+      max-width: 143px;
+      padding: 0;
+    }
   }
 
   span {
-    font-size: 14px;
     font-weight: 700;
-    line-height: 19px;
-    padding: 10px 30px;
+
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 14px;
+      line-height: 19px;
+      padding: 10px 30px;
+    }
   }
 `
 

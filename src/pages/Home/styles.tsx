@@ -32,10 +32,43 @@ const StyledHomeBody = styled(VerticalContainer)`
   }
 
   .booking-section-container {
-    margin-top: 90px;
+    margin: 90px auto 0;
+    max-width: 1400px;
+    width: 100%;
 
     @media ${BREAKPOINTS.tablet} {
-      margin: 0;
+      margin: 20px 0;
+    }
+
+    & > div {
+      max-width: 1400px;
+      width: 90%;
+
+      @media ${BREAKPOINTS.tablet} {
+        margin: 10px 20px;
+        width: auto;
+      }
+    }
+
+    .recent-booking-table-button {
+      margin: 56px;
+
+      @media ${BREAKPOINTS.laptop} {
+        margin: 0;
+      }
+
+      & > div {
+        @media ${BREAKPOINTS.laptop} {
+          border-radius: 5px;
+        }
+      }
+
+      span {
+        @media ${BREAKPOINTS.tablet} {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
     }
   }
 `

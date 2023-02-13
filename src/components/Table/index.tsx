@@ -16,7 +16,7 @@ const StyledTableContainer = styled(TableContainer)`
   border: 1px solid #7070702e;
   border-radius: 17px;
   box-shadow: 0px 0px 0.85px rgba(0, 0, 0, 0.4);
-  max-width: 1641px;
+  max-width: 1400px;
   margin: auto;
   width: 100%;
 
@@ -54,6 +54,10 @@ const StyledTableRow = styled(TableRow)(() => ({
     display: "flex",
     justifyContent: "center",
 
+    "@media only screen and (max-width: 1024px)": {
+      border: "0px",
+    },
+
     '.id-container': {
       alignItems: 'center',
       background: 'transparent',
@@ -68,8 +72,17 @@ const StyledTableRow = styled(TableRow)(() => ({
   '& > .table-data': {
     color: `${COLORS.oxfordBlue}!important`,
     textAlign: "center",
+
+    "@media only screen and (max-width: 1024px)": {
+      border: "0px",
+      padding: "0px",
+    },
   },
   '& > .table-status': {
+    "@media only screen and (max-width: 1024px)": {
+      border: "0px",
+    },
+
     div: {
       alignItems: "center",
       display: "flex",
@@ -96,6 +109,11 @@ const StyledTableRow = styled(TableRow)(() => ({
       fontSize: "18px",
       lineHeight: "22px",
       textTransform: 'uppercase',
+
+      "@media only screen and (max-width: 1024px)": {
+        fontSize: "14px",
+        lineHeight: "20px",
+      },
 
       '&.paid': {
         color: COLORS.salem,
