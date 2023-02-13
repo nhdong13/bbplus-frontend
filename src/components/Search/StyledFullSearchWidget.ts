@@ -121,9 +121,8 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     }
 
     h5 {
-      @media ${BREAKPOINTS.mobileLg} {
-        line-height: 6px;
-      }
+      line-height: 20px;
+      padding: 8px 0;
     }
   }
 
@@ -143,7 +142,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
 const FromContainer = styled(VerticalContainer)`
   border-right: 1px solid ${COLORS.silver};
   cursor: pointer;
-  padding: 0 42px;
+  padding: 10px 42px;
 
   @media only screen and (max-width: 1240px) {
     padding: 0 20px;
