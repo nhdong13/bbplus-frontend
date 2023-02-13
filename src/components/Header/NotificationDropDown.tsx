@@ -29,6 +29,7 @@ const StyledNotificationDropDown = styled.div.attrs((props: {
   &.open {
     animation: fadeIn 0.5s;
     display: block;
+    z-index: 999;
   }
 
   &.close {
@@ -46,12 +47,12 @@ const StyledNotificationDropDown = styled.div.attrs((props: {
 `
 
 const Title = styled.div`
-  padding: 0 38px;
+  padding: 38px 38px 21px;
   span {
     color: ${COLORS.black};
     font-family: ${FONTS.manrope};
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 21px;
   }
 `
 
@@ -61,7 +62,7 @@ const NotificationItem = styled(HorizontalContainer).attrs((props: {
   gap: 30px;
   border-bottom: 0.75px solid ${COLORS.darkSilver};
   max-height: 105px;
-  padding: 0 20px 0 38px;
+  padding: 30px 38px 17px;
 
   @media ${BREAKPOINTS.mobileLg} {
     gap: 12px;
