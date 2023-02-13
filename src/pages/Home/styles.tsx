@@ -47,6 +47,12 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
     margin: 20px 15px;
   }
 
+  @media ${BREAKPOINTS.mobileLg} {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+  }
+
   span {
     color: ${COLORS.cyprus};
     font-family: ${FONTS.manrope};
@@ -99,7 +105,8 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 550px) {
-      max-width: 390px;
+      margin-top: 15px;
+      max-width: 320px;
     }
 
   .carousel__slider-tray--horizontal {

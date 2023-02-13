@@ -11,7 +11,8 @@ import {
   StyledCard,
   CardImage,
   PriceContainer,
-  CardInfo
+  CardInfo,
+  ViewDetailButtonContainer,
 } from "./styles"
 
 
@@ -37,7 +38,7 @@ export default function Card({ data, index }: CardData) {
     <>
       <StyledCard>
         <CardImage>
-          <HorizontalContainer>
+          <HorizontalContainer justifyContent="space-between">
             {discountPercentage ?
               <div className="save-percentage">
                 <span>save {discountPercentage} %</span>
@@ -53,7 +54,7 @@ export default function Card({ data, index }: CardData) {
 
             }
           </HorizontalContainer>
-          {discountPercentage &&
+          {/* {discountPercentage &&
             <PriceContainer>
               <div className="outer-trapezoid">
                 <div className="inner-trapezoid">
@@ -64,7 +65,7 @@ export default function Card({ data, index }: CardData) {
                 </div>
               </div>
             </PriceContainer>
-          }
+          } */}
         </CardImage>
         <CardInfo>
           <div className="hotel-name">
@@ -93,7 +94,7 @@ export default function Card({ data, index }: CardData) {
               <span className="high-light-price">per person</span>
             </div>
           }
-          <div style={{ margin: "16px auto 0" }}>
+          <ViewDetailButtonContainer>
             <GradientButton
               color={COLORS.flushOrange}
               text="View Details"
@@ -101,7 +102,7 @@ export default function Card({ data, index }: CardData) {
               maxWidth="250px"
               height="62px"
             />
-          </div>
+          </ViewDetailButtonContainer>
         </CardInfo>
       </StyledCard>
     </>
