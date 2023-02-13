@@ -12,7 +12,6 @@ import styled from "styled-components";
 import useWindowSize from "@/utils/windowResize";
 import Card from "../Card";
 import IMAGES from "@/assets/images";
-import { HotelData } from "@/utils/types/CardHotel";
 import { StyledCarouselTitle } from "@/pages/Home/styles";
 import { CarouselSlider } from "@/utils/types/Carousel";
 
@@ -39,29 +38,10 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
       }
     };
 
-    // if (screenWidth < 832) {
-    //   updateCarouselSlide(1);
-    // } else if (screenWidth < 1088) {
-    //   updateCarouselSlide(2);
-    // } else if (screenWidth < 1650) {
-    //   updateCarouselSlide(3);
-    // }
-    // else {
-    //   updateCarouselSlide(4);
-    // }
-    // if (screenWidth < 1649) {
-    //   updateCarouselSlide(2.5);
-    // } else if (screenWidth < 1272) {
-    //   updateCarouselSlide(4);
-    // }
-    // else if (screenWidth < 475) {
-    //   updateCarouselSlide(1);
-    // }
-    // else updateCarouselSlide(4);
     if (screenWidth < 500) {
       updateCarouselSlide(1);
     }
-    else updateCarouselSlide(4);
+    else updateCarouselSlide(3.5);
   }, [screenWidth, setSlideCount, setCurrentSlide, carouselContext]);
 
   return (

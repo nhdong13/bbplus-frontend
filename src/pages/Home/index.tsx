@@ -54,7 +54,7 @@ export default function Home() {
             </VerticalContainer>
           </StyledHome>
         </div>
-        {/* <StyledHomeBody>
+        <StyledHomeBody>
           <div className="booking-section-container">
             <HorizontalContainer justifyContent="center">
               <CarouselWrapper className="carousel-container">
@@ -123,13 +123,13 @@ export default function Home() {
           </div>
 
           <div className="booking-section-container">
-            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1641px" margin="0 auto 27px">
+            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1440px" margin="0 auto 27px">
               <StyledCarouselTitle >
                 <span>
                   Recent bookings
                 </span>
               </StyledCarouselTitle>
-              <div style={{ marginRight: "56px" }}>
+              <div className="recent-booking-table-button">
                 <GradientButton
                   color={COLORS.gradient1}
                   text="VIEW ALL"
@@ -143,7 +143,7 @@ export default function Home() {
             </HorizontalContainer>
             <BookingTable />
           </div>
-        </StyledHomeBody> */}
+        </StyledHomeBody>
       </MainLayout>
     </>
   )

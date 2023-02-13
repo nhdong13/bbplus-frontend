@@ -25,7 +25,7 @@ const StyledButton = styled.div.attrs((props: {
     align-items: center;
     font-family: ${FONTS.manrope};
     font-size: ${props => props.fontSize || "16px"};
-    line-height: "20px";
+    line-height: 20px;
     padding: ${props => props.textPadding || "0 50px 0 38px"};
   }
 `
