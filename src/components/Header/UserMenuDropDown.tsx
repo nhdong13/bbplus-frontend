@@ -21,7 +21,7 @@ const StyledUserMenuDropDown = styled.div`
   &.open {
     animation: fadeIn 0.5s;
     display: block;
-    z-index: 3;
+    z-index: 999;
   }
 
   &.close {
@@ -34,6 +34,10 @@ const NavItemContainer = styled.div`
   background: ${COLORS.white};
   border-radius: 12px;
   box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
   transition: all 0.5s ease-in-out;
   padding: 40px 40px 20px;
 
