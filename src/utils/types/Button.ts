@@ -9,3 +9,10 @@ export interface GradientButton {
   textPadding?: string
   showButtonAnimation?: boolean
 }
+
+
+export interface QuantityButton {
+  onClickDecreaseNumber: () => void,
+  onClickIncreaseNumber: () => void,
+  numberOfPeople: number,
+}

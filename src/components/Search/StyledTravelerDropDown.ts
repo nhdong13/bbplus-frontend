@@ -1,5 +1,6 @@
+import { FONTS } from './../../utils/fonts';
 import { COLORS } from "@/utils/colors"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import HorizontalContainer from "../Layout/HorizontalContainer"
 import { VerticalContainer } from "../Layout/VerticalContainer"
 
@@ -10,33 +11,23 @@ const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
   border-radius: 10px;
   margin: 5px 0 0;
   width: 100%;
-  transition: height .5s ease-in-out;
 
-  &.open {
-    height: 375px;
-    transition: all 0.5s ease-in-out;
-  }
+  ${props => props.isShown && css`
+    display: block;
+    animation: fadeIn 1s;
+  `}
 
-  &.close {
-    height: 0;
-    transition: all 0.5s ease-in-out;
-  }
+  ${props => !props.isShown && css`
+    display: none;
+    animation: fadeOut 1s;
+  `}
 `
 
-const StyledRoomOptions = styled(VerticalContainer).attrs((props: {
-  isShown?: boolean
-}) => props)`
+const StyledRoomOptions = styled(VerticalContainer)`
   border: 1px solid ${COLORS.silver};
   border-radius: 10px;
-  margin: 36px 35px;
+  margin: 36px 35px 24px;
   height: 100%;
-  &.open {
-    transition: all 0.5s ease-in-out;
-  }
-
-  &.close {
-    transition: all 0.5s ease-in-out;
-  }
 
   .room-option__container {
     display: flex;
@@ -68,7 +59,7 @@ const StyledRoomOptions = styled(VerticalContainer).attrs((props: {
       width: 100%;
 
       &:focus {
-        outline: none;
+        outline: none; 
       }
     }
   }
@@ -76,6 +67,7 @@ const StyledRoomOptions = styled(VerticalContainer).attrs((props: {
   .room-option__adults-children-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 50px;
     margin-top: 35px;
 
@@ -89,13 +81,13 @@ const StyledRoomOptions = styled(VerticalContainer).attrs((props: {
       color: ${COLORS.doveGray};
     }
   }
-`
 
-
-const ButtonContainer = styled.div.attrs((props: {
-  isShown?: boolean
-}) => props)`
-
+  .room-option__children-container {
+    display: flex;
+    flex-direction: row;
+    gap: 33px;
+    flex-wrap: wrap;
+  }
 `
 
 const StyledQuantityButton = styled.div`
@@ -118,16 +110,18 @@ const StyledQuantityButton = styled.div`
     cursor: pointer;
     font-weight: 700;
     font-size: 27px;
-    line-height: auto;
     outline: none;
   }
 `
 
-const StyledSelectAges = styled.div`
+const StyledSelectAges = styled.div.attrs((props: {
+  isOpen?: boolean
+}) => props)`
   align-items: center;
   background: transparent;
   border-radius: 8px;
   border: 1px solid ${COLORS.doveGray};
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -135,12 +129,42 @@ const StyledSelectAges = styled.div`
   height: 52px;
   padding: 0 16px;
   width: 122px;
+
+  .select-ages__dropdown-icon {
+    transform: ${({ isOpen }) => isOpen ? "rotate(180deg)" : "rotate(0)"};
+    transition: all 0.5s ease-in-out;
+  }
+`
+
+const StyledAddAnotherRoom = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 65px 20px;
+
+  h4 {
+    color: ${COLORS.blueRYB};
+
+  }
+`
+
+const ResultContainer = styled(HorizontalContainer)`
+  align-items: center;
+  margin: 0 65px 10px 88px;
+
+  span {
+    font-family: ${FONTS.manrope};
+    font-size: 16px;
+    line-height: 30px;
+  }
 `
 
 export {
   StyledTravelerDropDown,
   StyledRoomOptions,
-  ButtonContainer,
   StyledQuantityButton,
   StyledSelectAges,
+  StyledAddAnotherRoom,
+  ResultContainer,
 }

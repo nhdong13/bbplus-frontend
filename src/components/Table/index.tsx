@@ -130,7 +130,7 @@ const StyledTableRow = styled(TableRow)(() => ({
 
 export default function BookingTable() {
   return (
-    <StyledTableContainer component={Paper}>
+    <StyledTableContainer component={Paper} className="booking-table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>

@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <StyledHomeBody>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -78,7 +78,7 @@ export default function Home() {
             </HorizontalContainer>
           </div>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -100,7 +100,7 @@ export default function Home() {
             </HorizontalContainer>
           </div>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -123,7 +123,7 @@ export default function Home() {
           </div>
 
           <div className="booking-section-container">
-            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1440px" margin="0 auto 27px">
+            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1440px" margin="0 auto 27px" padding="0 20px">
               <StyledCarouselTitle >
                 <span>
                   Recent bookings
