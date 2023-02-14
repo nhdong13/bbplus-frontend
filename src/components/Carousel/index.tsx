@@ -40,8 +40,10 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
 
     if (screenWidth < 500) {
       updateCarouselSlide(1);
+    } else if (screenWidth > 1920) {
+      updateCarouselSlide(3.5);
     }
-    else updateCarouselSlide(3.5);
+    else updateCarouselSlide(4);
   }, [screenWidth, setSlideCount, setCurrentSlide, carouselContext]);
 
   return (

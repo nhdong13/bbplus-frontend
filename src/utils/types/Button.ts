@@ -7,4 +7,5 @@ export interface GradientButton {
   width?: string
   fontSize?: string
   textPadding?: string
+  showButtonAnimation?: boolean
 }

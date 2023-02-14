@@ -42,7 +42,7 @@ const StyledHomeBody = styled(VerticalContainer)`
 
     & > div {
       max-width: 1400px;
-      width: 90%;
+      width: 100%;
 
       @media ${BREAKPOINTS.tablet} {
         margin: 10px 20px;
@@ -78,6 +78,7 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
 
   @media ${BREAKPOINTS.laptop} {
     margin: 20px 15px;
+    padding: 0 20px;
   }
 
   @media ${BREAKPOINTS.mobileLg} {

@@ -144,10 +144,6 @@ const FromContainer = styled(VerticalContainer)`
   cursor: pointer;
   padding: 10px 42px;
 
-  @media only screen and (max-width: 1240px) {
-    padding: 0 20px;
-  }
-
   @media ${BREAKPOINTS.laptop} {
     border: none;
   }
@@ -165,44 +161,11 @@ const SearchButtonContainer = styled.div`
   width: 71px;
 `
 
-const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
-  isShown?: boolean
-}) => props)`
-  background: ${COLORS.white};
-  border-radius: 10px;
-  height: ${({ isShown }) => isShown ? "375px" : "0"};
-  margin: 5px 0 0;
-  width: 100%;
-  transition: height .5s ease-in-out;
-`
-
-const SelectRoomContainer = styled(HorizontalContainer).attrs((props: {
-  isShown?: boolean
-}) => props)`
-  border: 1px solid ${COLORS.silver};
-  border-radius: 10px;
-  margin: 20px 36px;
-  height: ${({ isShown }) => isShown ? "200px" : "0"};
-  opacity: ${({ isShown }) => isShown ? "1" : "0"};
-  transition: height .3s ease-in-out, opacity 1s ease-in, opacity .5s ease-out;
-`
-
-const ResultContainer = styled(HorizontalContainer).attrs((props: {
-  isShown?: boolean
-}) => props)`
-  margin: 20px 36px;
-  opacity: ${({ isShown }) => isShown ? "1" : "0"};
-  transition: opacity 0.5s ease-in, opacity 1s ease-out;
-`
-
 export {
   SearchContainer,
   SelectBookingDateTime,
   FromContainer,
   SearchButtonContainer,
-  StyledTravelerDropDown,
-  SelectRoomContainer,
-  ResultContainer,
   SelectBookingDateTimeContainer,
   FilterGradientButtonContainer,
 }

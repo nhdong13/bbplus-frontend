@@ -8,6 +8,7 @@ const StyledButton = styled.div.attrs((props: {
   fontSize?: string
   height?: string
   textPadding?: string
+  showButtonAnimation?: boolean
 }) => props)`
   align-items: center;
   background: ${props => props.color};
@@ -28,11 +29,22 @@ const StyledButton = styled.div.attrs((props: {
     line-height: 20px;
     padding: ${props => props.textPadding || "0 50px 0 38px"};
   }
+
+  &.open {
+    opacity: 1;
+    transition: all 2s ease-in-out;
+  }
+
+  &.close {
+    opacity: 0;
+    transition: all 2s ease-in-out;
+  }
 `
 
 const Overlay = styled.div.attrs((props: {
   isSelected?: boolean
   height?: string
+  showButtonAnimation?: boolean
 }) => props)`
   background: ${({ isSelected }) => isSelected ? 'transparent' : COLORS.cyprus};
   border-radius: 10px;
@@ -41,6 +53,16 @@ const Overlay = styled.div.attrs((props: {
   height: ${props => props.height || "52px"};
   transition: all 0.5s ease-in-out;
   width: 100%;
+
+  &.open {
+    opacity: 1;
+    transition: all 2s ease-in-out;
+  }
+
+  &.close {
+    opacity: 0;
+    transition: all 2s ease-in-out;
+  }
 `
 export {
   StyledButton,
