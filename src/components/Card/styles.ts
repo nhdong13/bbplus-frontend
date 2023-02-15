@@ -246,8 +246,10 @@ const CardInfo = styled(VerticalContainer)`
     }
 
     img {
-      height: 16px;
-      width: 16px;
+      @media ${BREAKPOINTS.mobileLg} {
+        height: 16px;
+        width: 16px;
+      }
     }
   }
 
@@ -345,6 +347,7 @@ const ViewDetailButtonContainer = styled.div`
   }
 
   span {
+    font-size: 18px;
     font-weight: 700;
 
     @media ${BREAKPOINTS.mobileLg} {

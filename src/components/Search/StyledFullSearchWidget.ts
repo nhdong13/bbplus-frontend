@@ -62,6 +62,7 @@ const SelectBookingDateTime = styled(HorizontalContainer)`
   border: none;
   border-radius: 16px;
   justify-content: space-between;
+  max-width: 1232px;
   width: 100%;
 
   @media ${BREAKPOINTS.mobileLg} {

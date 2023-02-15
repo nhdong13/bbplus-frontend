@@ -10,6 +10,7 @@ const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
   background: ${COLORS.white};
   border-radius: 10px;
   margin: 5px 0 0;
+  max-width: 1230px;
   width: 100%;
 
   ${props => props.isShown && css`
@@ -91,8 +92,18 @@ const StyledRoomOptions = styled(VerticalContainer)`
   }
 
   .room-option__remove-room {
-    color: ${COLORS.blueRibbon};
+    border-radius: 5px;
     cursor: pointer;
+    padding: 10px;
+
+    &:hover {
+      background-color: #c9c9c959;
+      transition: background 0.3s ease-in-out;
+    }
+
+    span {
+      color: ${COLORS.blueRibbon};
+    }
   }
 `
 

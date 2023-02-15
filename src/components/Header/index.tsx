@@ -105,7 +105,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
       </HeaderContainer>
       {hasDivider &&
         <DividerContainer>
-          <Divider color={COLORS.gradient1} height="2px" width="1440px" />
+          <Divider color={COLORS.gradient1} height="2px" width="100%" maxWidth="1440px" />
         </DividerContainer>
       }
     </>

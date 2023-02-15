@@ -123,7 +123,7 @@ export default function Home() {
           </div>
 
           <div className="booking-section-container">
-            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1440px" margin="0 auto 27px" padding="0 20px">
+            <HorizontalContainer alignItems="center" justifyContent="space-between!important" maxWidth="1440px" padding="0 20px">
               <StyledCarouselTitle >
                 <span>
                   Recent bookings
@@ -135,7 +135,7 @@ export default function Home() {
                   text="VIEW ALL"
                   isSelected={true}
                   maxWidth="140px"
-                  fontSize="17px"
+                  fontSize="16px"
                   height="42px"
                   textPadding="4px 33px"
                 />

@@ -41,7 +41,7 @@ const StyledHomeBody = styled(VerticalContainer)`
     }
 
     & > div {
-      justify-content: left;
+      justify-content: center;
       width: 100%;
 
       @media ${BREAKPOINTS.desktopSm} {
@@ -67,7 +67,7 @@ const StyledHomeBody = styled(VerticalContainer)`
     }
 
     .recent-booking-table-button {
-      margin: 56px;
+      margin: 0 56px;
 
       @media ${BREAKPOINTS.laptop} {
         margin: 0;
@@ -90,7 +90,7 @@ const StyledHomeBody = styled(VerticalContainer)`
 `
 
 const StyledCarouselTitle = styled(HorizontalContainer)`
-  margin: 0 56px 27px 25px;
+  margin: 0 56px 20px 25px;
 
   @media ${BREAKPOINTS.laptop} {
     margin: 20px 15px;
@@ -107,7 +107,7 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
     color: ${COLORS.cyprus};
     font-family: ${FONTS.manrope};
     font-weight: 600;
-    font-size: 53px;
+    font-size: 40px;
     line-height: 63.6px;
     text-align: left;
 
