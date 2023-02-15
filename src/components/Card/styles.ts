@@ -254,7 +254,7 @@ const CardInfo = styled(VerticalContainer)`
   }
 
   .extra-info {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     gap: 15px;
 
@@ -275,6 +275,7 @@ const CardInfo = styled(VerticalContainer)`
     }
 
     img {
+      padding-top: 5px;
       @media ${BREAKPOINTS.mobileLg} {
         width: 16px;
       }
