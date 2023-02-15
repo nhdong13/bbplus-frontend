@@ -33,7 +33,7 @@ const StyledHomeBody = styled(VerticalContainer)`
 
   .booking-section-container {
     margin: 90px auto 0;
-    max-width: 1400px;
+    max-width: 1440px;
     width: 100%;
 
     @media ${BREAKPOINTS.tablet} {
@@ -41,8 +41,12 @@ const StyledHomeBody = styled(VerticalContainer)`
     }
 
     & > div {
-      max-width: 1400px;
-      width: 90%;
+      justify-content: center;
+      width: 100%;
+
+      @media ${BREAKPOINTS.desktopSm} {
+        justify-content: center;
+      }
 
       @media ${BREAKPOINTS.tablet} {
         margin: 10px 20px;
@@ -50,8 +54,20 @@ const StyledHomeBody = styled(VerticalContainer)`
       }
     }
 
+    .booking-carousel > table {
+      @media ${BREAKPOINTS.desktopSm} {
+        padding: 0 20px;
+      }
+    }
+
+    & > .booking-table{
+      @media ${BREAKPOINTS.desktopSm} {
+        width: 95%!important;
+      }
+    }
+
     .recent-booking-table-button {
-      margin: 56px;
+      margin: 0 56px;
 
       @media ${BREAKPOINTS.laptop} {
         margin: 0;
@@ -74,10 +90,11 @@ const StyledHomeBody = styled(VerticalContainer)`
 `
 
 const StyledCarouselTitle = styled(HorizontalContainer)`
-  margin: 0 56px 27px 25px;
+  margin: 0 56px 20px 25px;
 
   @media ${BREAKPOINTS.laptop} {
     margin: 20px 15px;
+    padding: 0 20px;
   }
 
   @media ${BREAKPOINTS.mobileLg} {
@@ -90,7 +107,7 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
     color: ${COLORS.cyprus};
     font-family: ${FONTS.manrope};
     font-weight: 600;
-    font-size: 53px;
+    font-size: 40px;
     line-height: 63.6px;
     text-align: left;
 
@@ -108,21 +125,34 @@ const StyledCarouselTitle = styled(HorizontalContainer)`
 `
 
 const CarouselWrapper = styled.div`
+  .carousel {
+    width: 1440px!important;
+  }
+
   &.carousel-container {
     max-width: 1400px;
-    padding: 0 20px;
     width: 100%;
+  }
 
+  .carousel, &.carousel-container {
     @media only screen and (max-width: 1644px) {
       max-width: 1366px;
     }
 
-    @media only screen and (max-width: 1366px) {
-      max-width: 1160px;
+    @media only screen and (max-width: 1520px) {
+      max-width: 1300px;
+    }
+
+    @media only screen and (max-width: 1445px) {
+      max-width: 1250px;
+    }
+
+    @media only screen and (max-width: 1380px) {
+      max-width: 1120px;
     }
 
     @media only screen and (max-width: 1160px) {
-      max-width: 992px;
+      max-width: 900px;
     }
 
     @media only screen and (max-width: 992px) {
@@ -134,7 +164,7 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 650px) {
-      max-width: 550px;
+      max-width: 450px;
     }
 
     @media only screen and (max-width: 550px) {
@@ -142,36 +172,36 @@ const CarouselWrapper = styled.div`
       max-width: 320px;
     }
 
-  .carousel__slider-tray--horizontal {
-    gap: 25px;
+    .carousel__slider-tray--horizontal {
+      gap: 25px;
 
-    @media only screen and (max-width: 1440px) {
-      width: 400%!important;
+      @media only screen and (max-width: 1440px) {
+        width: 400%!important;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        width: 550%!important;
+      }
+
+      @media only screen and (max-width: 769px) {
+        width: 850%!important;
+      }
+      
+      @media only screen and (max-width: 475px) {
+        width: 800%!important;
+      }
+
+      @media only screen and (max-width: 475px) {
+        gap: 0;
+        width: 850%!important;
+      }
     }
 
-    @media only screen and (max-width: 1024px) {
-      width: 550%!important;
-    }
-
-    @media only screen and (max-width: 769px) {
-      width: 850%!important;
-    }
-    
-    @media only screen and (max-width: 475px) {
-      width: 800%!important;
-    }
-
-    @media only screen and (max-width: 475px) {
-      gap: 0;
-      width: 850%!important;
+    .carousel__slide {
+      width: 340px!important;
     }
   }
-
-  .carousel__slide {
-    width: 340px!important;
-  }
-`;
-
+`
 
 export {
   StyledHome,

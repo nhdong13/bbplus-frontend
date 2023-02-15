@@ -38,7 +38,8 @@ const StyledTableCell = styled(TableCell)(() => ({
 
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: FONTS.manrope,
   },
 }));
 
@@ -108,7 +109,7 @@ const StyledTableRow = styled(TableRow)(() => ({
       fontWeight: 500,
       fontSize: "18px",
       lineHeight: "22px",
-      textTransform: 'uppercase',
+      textTransform: 'capitalize',
 
       "@media only screen and (max-width: 1024px)": {
         fontSize: "14px",
@@ -130,7 +131,7 @@ const StyledTableRow = styled(TableRow)(() => ({
 
 export default function BookingTable() {
   return (
-    <StyledTableContainer component={Paper}>
+    <StyledTableContainer component={Paper} className="booking-table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>

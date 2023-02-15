@@ -1,29 +1,27 @@
 import { COLORS } from "@/utils/colors"
-import Divider from "../Layout/Divider"
 import HorizontalContainer from "../Layout/HorizontalContainer"
 import {
   FromContainer,
-  ResultContainer,
   SearchButtonContainer,
   SearchContainer,
   SelectBookingDateTime,
-  SelectRoomContainer,
-  StyledTravelerDropDown,
   SelectBookingDateTimeContainer,
   FilterGradientButtonContainer,
 } from "./StyledFullSearchWidget"
-import { TravelerDropDown } from "@/utils/types/CardHotel";
 import { GradientButton } from "../Button";
 import { buttonItems } from "@/utils/tempData";
 import useFullSearchWidget from "./useFullSearch";
 import IMAGES from "@/assets/images";
 import { H5 } from "../Typography";
+import TravelerDropDown from "./TravelerDropDown";
+import DatePicker from "./DatePicker";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
     selectCreateItinerary,
     handleSelectBookingType,
     showTravelerDropDown,
+    travelerDropDown,
   } = useFullSearchWidget();
 
   return (
@@ -89,30 +87,12 @@ export default function FullSearchWidget() {
             </HorizontalContainer>
           </div>
         </SelectBookingDateTime>
+        {/* <DatePicker /> */}
         <div className="mobile-search-button">
           <SearchButton />
         </div>
+        <TravelerDropDown isShown={travelerDropDown} />
       </SearchContainer>
-    </>
-  )
-}
-
-const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
-  return (
-    <>
-      <StyledTravelerDropDown gap="20px" isShown={isShown}>
-        <SelectRoomContainer margin="20px 0 0" isShown={isShown}>
-          <div style={{ padding: "0 30px" }}>
-            <p>Room 1</p>
-          </div>
-          <Divider color={COLORS.silver} height="100%" width="1px" />
-        </SelectRoomContainer>
-        <Divider color={COLORS.silver} width="100%" height="1px" />
-        <ResultContainer justifyContent="space-between" isShown={isShown}>
-          <p>2 adults, 2 children (1 room)</p>
-          <GradientButton color={COLORS.gradient1} text="Apply" isSelected={true} width="68px" height="72px" />
-        </ResultContainer>
-      </StyledTravelerDropDown>
     </>
   )
 }
