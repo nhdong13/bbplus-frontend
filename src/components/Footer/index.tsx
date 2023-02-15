@@ -57,7 +57,7 @@ const Copyright = styled.div`
   }
 
   @media ${BREAKPOINTS.mobileLg} {
-    padding: 3px 0;
+    padding: 10px 0;
   }
 
   span {
@@ -70,6 +70,10 @@ const Copyright = styled.div`
 `
 
 const StyledRightFooter = styled(VerticalContainer)`
+  @media ${BREAKPOINTS.laptop} {
+    gap: 10px;
+  }
+
   @media ${BREAKPOINTS.tablet} {
     width: 100%;
   }
@@ -77,8 +81,13 @@ const StyledRightFooter = styled(VerticalContainer)`
   .footer-company-name {
     justify-content: left;
 
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       justify-content: center;
+    }
+
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 12px!important;
+      line-height: 17px!important;
     }
   }
 
@@ -90,7 +99,7 @@ const StyledRightFooter = styled(VerticalContainer)`
 
     @media ${BREAKPOINTS.mobileLg} {
       justify-content: space-between;
-      padding: 10px 0 0;
+      padding: 10px 10px 0;
     }
 
     & > div {

@@ -64,6 +64,10 @@ const StyledHomeBody = styled(VerticalContainer)`
       @media ${BREAKPOINTS.desktopSm} {
         width: 95%!important;
       }
+
+      @media ${BREAKPOINTS.tablet} {
+        width: auto!important;;
+      }
     }
 
     .recent-booking-table-button {
