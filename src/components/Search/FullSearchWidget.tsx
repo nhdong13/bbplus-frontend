@@ -14,6 +14,7 @@ import useFullSearchWidget from "./useFullSearch";
 import IMAGES from "@/assets/images";
 import { H5 } from "../Typography";
 import TravelerDropDown from "./TravelerDropDown";
+import SelectDate from "./SelectDate";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -86,7 +87,7 @@ export default function FullSearchWidget() {
             </HorizontalContainer>
           </div>
         </SelectBookingDateTime>
-        {/* <DatePicker /> */}
+        <SelectDate />
         <div className="mobile-search-button">
           <SearchButton />
         </div>
