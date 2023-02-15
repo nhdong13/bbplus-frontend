@@ -16,6 +16,7 @@ import { Children, useCallback, useEffect, useState } from "react";
 import { QuantityButton } from "@/utils/types/Button";
 import _ from "lodash";
 import { GradientButton } from "../Button";
+import HorizontalContainer from "../Layout/HorizontalContainer";
 
 interface ListRoom {
   adults?: number,
@@ -60,6 +61,7 @@ const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
             adults={(e: number) => setShowNumberOfAdults(e)}
             children={(e: number) => setShowNUmberOfChildren(e)}
             numberOfRoom={index}
+            handleRemoveRoom={() => numberOfRoom > 1 ? setNumberOfRoom(numberOfRoom - 1) : false}
           />
         </div>
       )}
@@ -88,17 +90,18 @@ interface RoomOptions {
   adults: (n: number) => void,
   children: (n: number) => void,
   numberOfRoom: number,
+  handleRemoveRoom: any,
 }
 
-const RoomOptions = ({ isShown, adults, children, numberOfRoom }: RoomOptions) => {
+const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom }: RoomOptions) => {
   const [numberOfAdults, setNumberOfAdults] = useState<number>(0);
   const [numberOfChildren, setNumberOfChildren] = useState<number>(0);
 
   useEffect(() => {
     adults(numberOfAdults);
     children(numberOfChildren);
-  }, [numberOfAdults, numberOfChildren])
-
+    handleRemoveRoom;
+  }, [numberOfAdults, numberOfChildren]);
 
   return (
     <>
@@ -109,11 +112,17 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom }: RoomOptions) =
           </div>
           <Divider color={COLORS.silver} height="auto" width="1px" margin="0" />
           <div className="room-option__right">
-            <H4>Primary party name (Optional)</H4>
-
-            <div className="room-option__name-input-container">
-              <input placeholder="Name of primary contact" />
-            </div>
+            <HorizontalContainer justifyContent="space-between" width="100%">
+              <VerticalContainer>
+                <H4>Primary party name (Optional)</H4>
+                <div className="room-option__name-input-container">
+                  <input placeholder="Name of primary contact" />
+                </div>
+              </VerticalContainer>
+              <VerticalContainer>
+                <span onClick={handleRemoveRoom} className="room-option__remove-room">Remove</span>
+              </VerticalContainer>
+            </HorizontalContainer>
 
             <div className="room-option__adults-children-container">
               <VerticalContainer>
@@ -145,6 +154,7 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom }: RoomOptions) =
                   </div>
                 </VerticalContainer>
               }
+
             </div>
           </div>
         </div>

@@ -45,6 +45,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
 
   .room-option__right {
     margin: 31px 34px;
+    width: 100%;
   }
 
   .room-option__name-input-container {
@@ -87,6 +88,11 @@ const StyledRoomOptions = styled(VerticalContainer)`
     flex-direction: row;
     gap: 33px;
     flex-wrap: wrap;
+  }
+
+  .room-option__remove-room {
+    color: ${COLORS.blueRibbon};
+    cursor: pointer;
   }
 `
 
@@ -151,7 +157,7 @@ const StyledAddAnotherRoom = styled.div`
 
 const ResultContainer = styled(HorizontalContainer)`
   align-items: center;
-  margin: 0 65px 10px 88px;
+  margin: 8px 65px 8px 88px;
 
   span {
     font-family: ${FONTS.manrope};
