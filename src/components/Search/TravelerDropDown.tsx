@@ -136,6 +136,10 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
     handleResetRoom;
   }, [numberOfAdults, numberOfChildren]);
 
+  const onChangeValue = (e: React.KeyboardEvent) => {
+    console.log(e?.target?.value)
+  }
+
   return (
     <>
       <StyledRoomOptions>
@@ -174,7 +178,9 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
                 <QuantityButton
                   onClickDecreaseNumber={() => numberOfAdults > 0 ? setNumberOfAdults(numberOfAdults - 1) : false}
                   onClickIncreaseNumber={() => setNumberOfAdults(numberOfAdults + 1)}
-                  numberOfPeople={numberOfAdults} />
+                  numberOfPeople={numberOfAdults}
+                  watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
+                />
               </VerticalContainer>
               <VerticalContainer>
                 <H5>Children</H5>
@@ -182,7 +188,9 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
                 <QuantityButton
                   onClickDecreaseNumber={() => numberOfChildren > 0 ? setNumberOfChildren(numberOfChildren - 1) : false}
                   onClickIncreaseNumber={() => setNumberOfChildren(numberOfChildren + 1)}
-                  numberOfPeople={numberOfChildren} />
+                  numberOfPeople={numberOfChildren}
+                  watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
+                />
               </VerticalContainer>
               {numberOfChildren !== 0 &&
                 <VerticalContainer>
@@ -206,12 +214,12 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
   )
 }
 
-const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOfPeople }: QuantityButton) => {
+const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOfPeople, watchInputValue }: QuantityButton) => {
   return (
     <>
       <StyledQuantityButton>
         <button className="button" onClick={onClickDecreaseNumber}>-</button>
-        <span>{numberOfPeople}</span>
+        <input />
         <button className="button" onClick={onClickIncreaseNumber}>+</button>
       </StyledQuantityButton>
     </>
