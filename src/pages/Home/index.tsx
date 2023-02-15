@@ -123,7 +123,7 @@ export default function Home() {
           </div>
 
           <div className="booking-section-container">
-            <HorizontalContainer alignItems="center" justifyContent="space-between!important" maxWidth="1440px" padding="0 20px">
+            <HorizontalContainer alignItems="center" justifyContent="space-between!important" width="auto!important" maxWidth="1440px" padding="0 20px">
               <StyledCarouselTitle >
                 <span>
                   Recent bookings

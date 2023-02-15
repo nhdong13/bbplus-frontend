@@ -140,7 +140,7 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 1520px) {
-      max-width: 1300px;
+      max-width: 1000px;
     }
 
     @media only screen and (max-width: 1445px) {

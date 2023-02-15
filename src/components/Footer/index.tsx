@@ -31,13 +31,13 @@ const FooterContainer = styled(HorizontalContainer)`
   }
 
   .divider {
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       display: none;
     }
   }
 
   .footer-logo-container {
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       display: none;
     }
   }
