@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useFullSearchWidget = () => {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
@@ -7,6 +7,8 @@ const useFullSearchWidget = () => {
   const [slideCount, setSlideCount] = useState<number>(2);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [selectDateDropDown, setSelectDateDropDown] = useState<boolean>(false);
+  const [getArriveDate, setGetArriveDate] = useState<string>("");
+  const [totalDates, setTotalDates] = useState<number>(0);
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
@@ -16,12 +18,19 @@ const useFullSearchWidget = () => {
   };
 
   const showTravelerDropDown = () => {
+    if (selectDateDropDown) setSelectDateDropDown(false)
     setTravelerDropDown(!travelerDropDown);
   }
 
   const showDatePicker = () => {
+    if (travelerDropDown) setTravelerDropDown(false)
     setSelectDateDropDown(!selectDateDropDown);
   }
+
+  useEffect(() => {
+    console.log("getArriveDate", getArriveDate)
+    console.log("totalDates", totalDates)
+  }, [getArriveDate, totalDates])
 
   return {
     selectedBooking,
@@ -37,7 +46,11 @@ const useFullSearchWidget = () => {
     currentSlide,
     setCurrentSlide,
     selectDateDropDown,
-    showDatePicker
+    showDatePicker,
+    setGetArriveDate,
+    getArriveDate,
+    totalDates,
+    setTotalDates,
   }
 }
 

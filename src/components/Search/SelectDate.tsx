@@ -5,21 +5,37 @@ import Divider from "../Layout/Divider";
 import { COLORS } from "@/utils/colors";
 import { GradientButton } from "../Button";
 import HorizontalContainer from "../Layout/HorizontalContainer";
+import moment from "moment";
+import IMAGES from "@/assets/images";
 
 interface SelectDate {
   isShown?: boolean
+  getArriveDate: (n: string) => void,
+  totalDates: (n: number) => void,
 }
-export default function SelectDate({ isShown }: SelectDate) {
+export default function SelectDate({ isShown, getArriveDate, totalDates }: SelectDate) {
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const [dates, setDates] = useState<any>([]);
   const [resetDates, setResetDates] = useState<boolean>(false);
+  const [arriveDate, setArriveDate] = useState<string>();
+  const [leavingDate, setLeavingDate] = useState<string>();
 
   useEffect(() => {
     if (resetDates) {
       setDates([])
       setResetDates(false)
     }
-  }, [resetDates])
+
+    if (dates.length) {
+      setArriveDate(dates[0].format("DD MMMM YYYY"))
+      setLeavingDate(dates[1]?.format("DD MMMM YYYY"))
+      getArriveDate(dates[0].format("DD MMMM YYYY"))
+    }
+
+    const diffInMs: number = ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
+    const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
+    totalDates(diffInDays)
+  }, [resetDates, dates, arriveDate, leavingDate])
 
   return (
     <>
@@ -30,6 +46,7 @@ export default function SelectDate({ isShown }: SelectDate) {
           rangeHover
           weekDays={weekDays}
           minDate={new Date()}
+          maxDate="30"
           format="YYYY/MM/DD"
           onChange={(dateObjects: any) => {
             setDates(dateObjects)
@@ -40,9 +57,11 @@ export default function SelectDate({ isShown }: SelectDate) {
         <ResultContainer>
           {dates[0] &&
             <HorizontalContainer gap="20px">
-              <span className="result-dates">
-                {dates[0]?.format("dddd, DD MMMM YYYY")} {`-->`} {dates[1]?.format("dddd, DD MMMM YYYY")}
-              </span>
+              <HorizontalContainer gap="20px" className="result-dates">
+                <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
+                {dates[1] && <img src={IMAGES.iconArrowRight} />}
+                <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+              </HorizontalContainer>
               <div
                 className="result-cancel-button"
                 onClick={() => setResetDates(true)}

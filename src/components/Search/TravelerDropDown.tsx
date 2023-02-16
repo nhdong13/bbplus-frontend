@@ -219,7 +219,7 @@ const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOf
     <>
       <StyledQuantityButton>
         <button className="button" onClick={onClickDecreaseNumber}>-</button>
-        <input />
+        <input type="number" />
         <button className="button" onClick={onClickIncreaseNumber}>+</button>
       </StyledQuantityButton>
     </>

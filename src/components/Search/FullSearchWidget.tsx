@@ -25,6 +25,10 @@ export default function FullSearchWidget() {
     travelerDropDown,
     selectDateDropDown,
     showDatePicker,
+    setGetArriveDate,
+    getArriveDate,
+    totalDates,
+    setTotalDates,
   } = useFullSearchWidget();
 
   return (
@@ -66,7 +70,7 @@ export default function FullSearchWidget() {
               <HorizontalContainer gap="55px">
                 <div>
                   <H5 lineHeight="10px" fontWeight="700">Arrival date</H5>
-                  <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{getArriveDate ? getArriveDate : "Day|Date|Month"}</H5>
                 </div>
               </HorizontalContainer>
             </FromContainer>
@@ -75,7 +79,7 @@ export default function FullSearchWidget() {
                 <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
                   <HorizontalContainer alignItems="center" gap="32px">
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>x days</H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalDates ? totalDates : "x"} days</H5>
                     <img className="select-dates__dropdown-icon" src={IMAGES.iconDropDownBlue} width="13px" height="9px" />
                   </HorizontalContainer>
                 </div>
@@ -94,7 +98,11 @@ export default function FullSearchWidget() {
             </HorizontalContainer>
           </div>
         </SelectBookingDateTime>
-        <SelectDate isShown={selectDateDropDown} />
+        <SelectDate
+          isShown={selectDateDropDown}
+          getArriveDate={(e) => setGetArriveDate(e)}
+          totalDates={(e) => setTotalDates(e)}
+        />
         <div className="mobile-search-button">
           <SearchButton />
         </div>

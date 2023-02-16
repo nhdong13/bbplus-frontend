@@ -136,6 +136,15 @@ const StyledQuantityButton = styled.div`
     border: none;
     outline: none;
   }
+
+  input[type='number'] {
+    -moz-appearance:textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `
 
 const StyledSelectAges = styled.div.attrs((props: {
