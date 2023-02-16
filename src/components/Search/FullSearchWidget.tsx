@@ -54,7 +54,7 @@ export default function FullSearchWidget() {
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
-              {/* <SelectLocationDropDown /> */}
+              <SelectLocationDropDown />
             </FromContainer>
             {selectCreateItinerary ?
               <>

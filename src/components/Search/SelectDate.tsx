@@ -7,6 +7,7 @@ import { GradientButton } from "../Button";
 import HorizontalContainer from "../Layout/HorizontalContainer";
 import moment from "moment";
 import IMAGES from "@/assets/images";
+import useWindowSize from "@/utils/windowResize";
 
 interface SelectDate {
   isShown?: boolean
@@ -19,6 +20,8 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
   const [resetDates, setResetDates] = useState<boolean>(false);
   const [arriveDate, setArriveDate] = useState<string>();
   const [leavingDate, setLeavingDate] = useState<string>();
+  const [showMonths, setShowMonths] = useState<number>(3);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     if (resetDates) {
@@ -32,16 +35,29 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
       getArriveDate(dates[0].format("DD MMMM YYYY"))
     }
 
-    const diffInMs: number = ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
+    const diffInMs: number = 
+      ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
     const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
     totalDates(diffInDays)
   }, [resetDates, dates, arriveDate, leavingDate])
 
+  const screenWidth = useWindowSize();
+
+  useEffect(() => {
+    if (screenWidth > 1250) {
+      setShowMonths(3);
+    } else if (screenWidth < 1249) {
+      setShowMonths(2);
+    } else if (screenWidth < 768) {
+      setIsMobile(true);
+    }
+  }, [screenWidth, showMonths, isMobile])
+
   return (
     <>
-      <StyledSelectDate isShown={isShown}>
+      <StyledSelectDate isShown={screenWidth < 768 ? false : isShown}>
         <Calendar
-          numberOfMonths={3}
+          numberOfMonths={showMonths}
           range
           rangeHover
           weekDays={weekDays}
@@ -56,7 +72,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
         <Divider color={COLORS.silver} width="100%" max-maxWidth="1232px" height="1px" />
         <ResultContainer>
           {dates[0] &&
-            <HorizontalContainer gap="20px">
+            <HorizontalContainer gap="20px" alignItems="center">
               <HorizontalContainer gap="20px" className="result-dates">
                 <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
                 {dates[1] && <img src={IMAGES.iconArrowRight} />}
@@ -80,7 +96,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
             width="100%"
             textPadding="4px 33px" />
         </ResultContainer>
-      </StyledSelectDate>
+      </StyledSelectDate>    
     </>
   )
 }

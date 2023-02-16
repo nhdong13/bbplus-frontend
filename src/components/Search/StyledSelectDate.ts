@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from './../../utils/breakpoints';
 import { FONTS } from '@/utils/fonts';
 import { COLORS } from './../../utils/colors';
 import styled from "styled-components";
@@ -29,6 +30,14 @@ const StyledSelectDate = styled.div.attrs((props: {
     padding: 24px 20px;
     max-width: 1192px;
     margin: auto;
+
+    @media only screen and (max-width: 1249px) {
+      max-width: 900px;
+    }
+
+    @media only screen and (max-width: 972px) {
+      max-width: 650px;
+    }
   }
 
   .rmdp-day-picker {
@@ -36,6 +45,10 @@ const StyledSelectDate = styled.div.attrs((props: {
     gap: 50px;
     max-width: 1140px;
     margin: auto;
+
+    @media only screen and (max-width: 972px) {
+      gap: 25px;
+    }
 
     & > div {
       margin-right: 0!important;
