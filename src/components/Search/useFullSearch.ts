@@ -9,6 +9,8 @@ const useFullSearchWidget = () => {
   const [selectDateDropDown, setSelectDateDropDown] = useState<boolean>(false);
   const [getArriveDate, setGetArriveDate] = useState<string>("");
   const [totalDates, setTotalDates] = useState<number>(0);
+  const [selectLeavingPlaces, setSelectLeavingPlaces] = useState<boolean>(false);
+  const [selectGoingPlaces, setGoingPlaces] = useState<boolean>(false);
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
@@ -27,10 +29,19 @@ const useFullSearchWidget = () => {
     setSelectDateDropDown(!selectDateDropDown);
   }
 
-  useEffect(() => {
-    console.log("getArriveDate", getArriveDate)
-    console.log("totalDates", totalDates)
-  }, [getArriveDate, totalDates])
+  const showLeavingPlaces = () => {
+    if (selectDateDropDown) setSelectDateDropDown(false)
+    if (travelerDropDown) setTravelerDropDown(false)
+    if (selectGoingPlaces) setGoingPlaces(false)
+    setSelectLeavingPlaces(!selectLeavingPlaces);
+  }
+
+  const showGoingToPlaces = () => {
+    if (selectDateDropDown) setSelectDateDropDown(false)
+    if (travelerDropDown) setTravelerDropDown(false)
+    if (selectGoingPlaces) setGoingPlaces(false)
+    setGoingPlaces(!selectGoingPlaces);
+  }
 
   return {
     selectedBooking,
@@ -51,6 +62,12 @@ const useFullSearchWidget = () => {
     getArriveDate,
     totalDates,
     setTotalDates,
+    showLeavingPlaces,
+    showGoingToPlaces,
+    selectLeavingPlaces,
+    setSelectLeavingPlaces,
+    selectGoingPlaces,
+    setGoingPlaces,
   }
 }
 

@@ -1,4 +1,4 @@
-import { StyledSelectDate, ResultContainer } from "./StyledSelectDate";
+import { StyledSelectDate, ResultContainer, StyledPopupSelectDate } from "./StyledSelectDate";
 import { Calendar } from "react-multi-date-picker"
 import { useEffect, useState } from "react";
 import Divider from "../Layout/Divider";
@@ -35,7 +35,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
       getArriveDate(dates[0].format("DD MMMM YYYY"))
     }
 
-    const diffInMs: number = 
+    const diffInMs: number =
       ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
     const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
     totalDates(diffInDays)
@@ -55,7 +55,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
 
   return (
     <>
-      <StyledSelectDate isShown={screenWidth < 768 ? false : isShown}>
+      {/* <StyledSelectDate isShown={screenWidth < 768 ? false : isShown}>
         <Calendar
           numberOfMonths={showMonths}
           range
@@ -96,7 +96,18 @@ export default function SelectDate({ isShown, getArriveDate, totalDates }: Selec
             width="100%"
             textPadding="4px 33px" />
         </ResultContainer>
-      </StyledSelectDate>    
+      </StyledSelectDate> */}
+      <PopupSelectDate />
+    </>
+  )
+}
+
+const PopupSelectDate = () => {
+  return (
+    <>
+      <StyledPopupSelectDate>
+
+      </StyledPopupSelectDate>
     </>
   )
 }

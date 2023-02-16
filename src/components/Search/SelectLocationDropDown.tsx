@@ -3,10 +3,14 @@ import HorizontalContainer from "../Layout/HorizontalContainer";
 import { H4 } from "../Typography";
 import { StyledSelectLocationDropDown } from "./StyledSelectLocationDropDown";
 
-export default function SelectLocationDropDown() {
+interface SelectLocationDropDown {
+  isShown?: boolean
+}
+
+export default function SelectLocationDropDown({ isShown }: SelectLocationDropDown) {
   return (
     <>
-      <StyledSelectLocationDropDown>
+      <StyledSelectLocationDropDown isShown={isShown}>
         <div className="popular-places__container">
           <div className="popular-places">
             <div className="popular-places__title">

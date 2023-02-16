@@ -29,6 +29,12 @@ export default function FullSearchWidget() {
     getArriveDate,
     totalDates,
     setTotalDates,
+    showLeavingPlaces,
+    showGoingToPlaces,
+    selectLeavingPlaces,
+    setSelectLeavingPlaces,
+    selectGoingPlaces,
+    setGoingPlaces,
   } = useFullSearchWidget();
 
   return (
@@ -50,16 +56,16 @@ export default function FullSearchWidget() {
         <SelectBookingDateTime>
           <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
             <FromContainer className="leaving-from">
-              <div>
+              <div onClick={showLeavingPlaces}>
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
-              <SelectLocationDropDown />
+              {/* <SelectLocationDropDown /> */}
             </FromContainer>
             {selectCreateItinerary ?
               <>
                 <FromContainer className="going-to">
-                  <div>
+                  <div onClick={showGoingToPlaces}>
                     <H5 lineHeight="10px" fontWeight="700">Going to</H5>
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
@@ -107,6 +113,8 @@ export default function FullSearchWidget() {
           <SearchButton />
         </div>
         <TravelerDropDown isShown={travelerDropDown} />
+        <SelectLocationDropDown isShown={selectLeavingPlaces}/>
+        <SelectLocationDropDown isShown={selectGoingPlaces}/>
       </SearchContainer>
     </>
   )
