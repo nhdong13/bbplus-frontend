@@ -69,7 +69,7 @@ const HeaderContainer = styled.div.attrs((props: {
   }
 
   .alert-icon {
-    background: ${COLORS.red};
+    background: ${COLORS.tartOrange};
     border: none;
     border-radius: 50px;
     height: 18px;
