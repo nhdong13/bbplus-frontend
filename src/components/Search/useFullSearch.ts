@@ -6,6 +6,7 @@ const useFullSearchWidget = () => {
   const [selectCreateItinerary, setSelectCreateItinerary] = useState<boolean>(true);
   const [slideCount, setSlideCount] = useState<number>(2);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [selectDateDropDown, setSelectDateDropDown] = useState<boolean>(false);
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
@@ -16,6 +17,10 @@ const useFullSearchWidget = () => {
 
   const showTravelerDropDown = () => {
     setTravelerDropDown(!travelerDropDown);
+  }
+
+  const showDatePicker = () => {
+    setSelectDateDropDown(!selectDateDropDown);
   }
 
   return {
@@ -30,7 +35,9 @@ const useFullSearchWidget = () => {
     slideCount,
     setSlideCount,
     currentSlide,
-    setCurrentSlide
+    setCurrentSlide,
+    selectDateDropDown,
+    showDatePicker
   }
 }
 

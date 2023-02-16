@@ -140,13 +140,20 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
   }
 `
 
-const FromContainer = styled(VerticalContainer)`
+const FromContainer = styled(VerticalContainer).attrs((props: {
+  isOpen?: boolean
+}) => props)`
   border-right: 1px solid ${COLORS.silver};
   cursor: pointer;
   padding: 10px 42px;
 
   @media ${BREAKPOINTS.laptop} {
     border: none;
+  }
+
+  .select-dates__dropdown-icon {
+    transform: ${({ isOpen }) => isOpen ? "rotate(180deg)" : "rotate(0)"};
+    transition: all 0.5s ease-in-out;
   }
 `
 

@@ -2,10 +2,16 @@ import { FONTS } from '@/utils/fonts';
 import { COLORS } from './../../utils/colors';
 import styled from "styled-components";
 
-const StyledSelectDate = styled.div`
+const StyledSelectDate = styled.div.attrs((props: {
+  isShown?: boolean
+}) => props)`
   background-color: ${COLORS.white};
+  border-radius: 5px;
+  box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);;
   max-width: 1232px;
   width: 100%;
+
+  display: ${({ isShown }) => isShown ? "block" : "none"};
 
   .rmdp-wrapper,
   .rmdp-top-class,
@@ -20,14 +26,14 @@ const StyledSelectDate = styled.div`
   }
 
   .rmdp-header {
-    padding: 0 20px;
+    padding: 24px 20px;
     max-width: 1192px;
     margin: auto;
   }
 
   .rmdp-day-picker {
     justify-content: space-evenly;
-    gap: 125px;
+    gap: 50px;
     max-width: 1140px;
     margin: auto;
 
@@ -45,24 +51,95 @@ const StyledSelectDate = styled.div`
 
   }
 
+  .rmdp-arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+  }
+
+  .rmdp-header-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
+
+  .rmdp-header-values span {
+    font-family: ${FONTS.manrope};
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+  }
+
+  .rmdp-range {
+    box-shadow: none;
+    justify-content: unset;
+  }
+
+  .rmdp-day span {
+    font-size: 16px;
+    line-height: 41px;
+  }
+
   .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
-    color: ${COLORS.white};
-    background-color: ${COLORS.summerGreen};
+    color: ${COLORS.black};
+    background-color: ${COLORS.crayola};
     border-radius: 0px;
   }
 
-  .rmdp-range, .rmdp-range-hover {
-    background-color: ${COLORS.summerGreen};
+  .rmdp-range.start, .rmdp-range.end, .rmdp-range-hover {
+    color: ${COLORS.black};
+    background-color: ${COLORS.crayola}!important;
+  }
+
+  .rmdp-range {
+    background-color: ${COLORS.bubbles};
+    color: ${COLORS.black};
   }
 
   .rmdp-day.rmdp-range.start,
   .rmdp-day.rmdp-range.end,
-  .rmdp-range-hover.end{
+  .rmdp-range-hover.start,
+  .rmdp-range-hover.end {
     border-radius: 0px;
+  }
+
+  .rmdp-day.rmdp-today span {
+    background-color: transparent;
+    color: ${COLORS.black};
+  }
+
+  .rmdp-week {
+    gap: 0;
+    justify-content: center;
+  }
+
+  .rmdp-week-day, .rmdp-day {
+    padding: 0 10px;
   }
 `
 
-const ResultContainer = styled.div``
+const ResultContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 34px;
+  padding: 10px 77px;
+
+  .result-dates {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  .result-cancel-button {
+    color: ${COLORS.spanishBlue};
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 17px;
+    text-decoration: underline;
+  }
+`
 
 export {
   StyledSelectDate,

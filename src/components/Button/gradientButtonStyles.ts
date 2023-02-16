@@ -9,6 +9,7 @@ const StyledButton = styled.div.attrs((props: {
   height?: string
   textPadding?: string
   showButtonAnimation?: boolean
+  width?: string
 }) => props)`
   align-items: center;
   background: ${props => props.color};
@@ -19,6 +20,7 @@ const StyledButton = styled.div.attrs((props: {
   height: ${props => props.height || "52px"};
   max-width: ${props => props.maxWidth};
   padding: 1px;
+  width: ${props => props.width};
 
   span {
     color: ${COLORS.white};
