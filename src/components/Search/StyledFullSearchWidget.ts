@@ -156,6 +156,12 @@ const FromContainer = styled(VerticalContainer).attrs((props: {
     transform: ${({ isOpen }) => isOpen ? "rotate(180deg)" : "rotate(0)"};
     transition: all 0.5s ease-in-out;
   }
+
+  .select-dates__container {
+    @media ${BREAKPOINTS.mobileLg} {
+      gap: 10px;
+    }
+  }
 `
 
 const SearchButtonContainer = styled.div`

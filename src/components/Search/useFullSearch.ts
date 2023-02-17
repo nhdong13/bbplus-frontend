@@ -68,6 +68,7 @@ const useFullSearchWidget = () => {
     setSelectLeavingPlaces,
     selectGoingPlaces,
     setGoingPlaces,
+    setSelectDateDropDown,
   }
 }
 

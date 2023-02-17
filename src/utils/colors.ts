@@ -1,6 +1,7 @@
 export const COLORS: StyledColors = {
   anakiwa: "#A8FFF6",
   anzac: "#d9bf50",
+  areoBlue: "#C8FFF5",
   black: "#000000",
   blackPearl: "#07132b",
   blushPink: "#FF8EFF",
@@ -14,6 +15,7 @@ export const COLORS: StyledColors = {
   darkSilver:  "#B7B7B7",
   doveGray: "#707070",
   electricRed: "#E00000",
+  eerieBlack: "#1C1B1F",
   flushOrange: "#FF8003",
   fuchasiaPink: "#B655B6",
   lapisLazuli: "#3069b1",
@@ -24,6 +26,7 @@ export const COLORS: StyledColors = {
   outerSpace: "#494949",
   oxfordBlue: "#002145",
   onyx: "#383838",
+  persianGreen: "#00B593",
   salem: "#078041",
   silver: "#C9C9C9",
   snowyMint: "#d0ffdc",
@@ -40,6 +43,7 @@ export const COLORS: StyledColors = {
 interface StyledColors {
   anakiwa: string,
   anzac: string,
+  areoBlue: string,
   black: string,
   blackPearl: string,
   blushPink: string,
@@ -53,6 +57,7 @@ interface StyledColors {
   darkSilver: string
   doveGray: string,
   electricRed: string,
+  eerieBlack: string,
   flushOrange: string,
   fuchasiaPink: string,
   lapisLazuli: string,
@@ -63,6 +68,7 @@ interface StyledColors {
   outerSpace: string
   oxfordBlue: string,
   onyx: string,
+  persianGreen: string,
   salem: string,
   silver: string,
   snowyMint: string,

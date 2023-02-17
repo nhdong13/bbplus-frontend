@@ -35,6 +35,7 @@ export default function FullSearchWidget() {
     setSelectLeavingPlaces,
     selectGoingPlaces,
     setGoingPlaces,
+    setSelectDateDropDown,
   } = useFullSearchWidget();
 
   return (
@@ -84,7 +85,7 @@ export default function FullSearchWidget() {
               <HorizontalContainer gap="55px">
                 <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
-                  <HorizontalContainer alignItems="center" gap="32px">
+                  <HorizontalContainer className="select-dates__container" alignItems="center" gap="32px">
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalDates ? totalDates : "x"} days</H5>
                     <img className="select-dates__dropdown-icon" src={IMAGES.iconDropDownBlue} width="13px" height="9px" />
                   </HorizontalContainer>
@@ -106,15 +107,16 @@ export default function FullSearchWidget() {
         </SelectBookingDateTime>
         <SelectDate
           isShown={selectDateDropDown}
-          getArriveDate={(e) => setGetArriveDate(e)}
-          totalDates={(e) => setTotalDates(e)}
+          getArriveDate={(e: string) => setGetArriveDate(e)}
+          totalDates={(e: number) => setTotalDates(e)}
+          closePopup={(e: boolean) => setSelectDateDropDown(e)}
         />
         <div className="mobile-search-button">
           <SearchButton />
         </div>
         <TravelerDropDown isShown={travelerDropDown} />
-        <SelectLocationDropDown isShown={selectLeavingPlaces}/>
-        <SelectLocationDropDown isShown={selectGoingPlaces}/>
+        <SelectLocationDropDown isShown={selectLeavingPlaces} />
+        <SelectLocationDropDown isShown={selectGoingPlaces} />
       </SearchContainer>
     </>
   )
