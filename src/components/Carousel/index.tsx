@@ -14,6 +14,7 @@ import Card from "../Card";
 import IMAGES from "@/assets/images";
 import { StyledCarouselTitle } from "@/pages/Home/styles";
 import { CarouselSlider } from "@/utils/types/Carousel";
+import { COLORS } from "@/utils/colors";
 
 
 const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }: CarouselSlider) => {
@@ -84,14 +85,25 @@ const Wrapper = styled.div`
 
     .btn-arrow {
       align-items: center;
-      border-radius: 9.64px;
+      border-radius: 10px;
       background: transparent;
       border: 1px solid #898989;
+      border-image-slice: 1;
       cursor: pointer;
       display: flex;
       justify-content: center;
-      height: 65.62px;
-      width: 65.78px;
+      height: 58px;
+      width: 58px;
+
+      &:hover {
+        border: double 1px transparent;
+        border-radius: 10px;
+        background-image: linear-gradient(white, white), ${COLORS.gradient1};
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        transition: all .5s ease-in-out;
+      }
+      
     }
 
     .reverse-arrow {
