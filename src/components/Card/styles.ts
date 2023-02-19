@@ -266,7 +266,7 @@ const CardInfo = styled(VerticalContainer)`
       color: ${COLORS.onyx};
       font-family: ${FONTS.manrope};
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 28px;
 
       @media ${BREAKPOINTS.mobileLg} {
@@ -304,6 +304,7 @@ const CardInfo = styled(VerticalContainer)`
 
     .high-light-price {
       color: ${COLORS.electricRed};
+      font-family: ${FONTS.manrope};
       font-size: 16px;
       font-weight: 400;
       line-height: 19px;
@@ -316,6 +317,7 @@ const CardInfo = styled(VerticalContainer)`
 
     .price {
       color: ${COLORS.toryBlue};
+      font-family: ${FONTS.manrope};
       font-size: 28px;
       font-weight: 700;
       line-height: 33px;

@@ -34,6 +34,7 @@ const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: COLORS.white,
     color: COLORS.oxfordBlue,
+    fontFamily: FONTS.manrope,
     textAlign: "center",
 
     "@media only screen and (max-width: 768px)": {
@@ -121,7 +122,7 @@ const StyledTableRow = styled(TableRow)(() => ({
     span: {
       fontFamily: FONTS.manrope,
       fontWeight: 500,
-      fontSize: "18px",
+      fontSize: "16px",
       lineHeight: "22px",
       textTransform: 'capitalize',
 
