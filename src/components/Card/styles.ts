@@ -236,7 +236,7 @@ const CardInfo = styled(VerticalContainer)`
       font-family: ${FONTS.manrope};
       font-weight: 400;
       font-size: 16px;
-      line-height: 22px;
+      line-height: 34px;
 
       @media ${BREAKPOINTS.mobileLg} {
         font-weight: 400;
@@ -275,7 +275,6 @@ const CardInfo = styled(VerticalContainer)`
     }
 
     img {
-      padding-top: 5px;
       @media ${BREAKPOINTS.mobileLg} {
         width: 16px;
       }
@@ -287,8 +286,8 @@ const CardInfo = styled(VerticalContainer)`
       color: ${COLORS.blackPearl};
       font-family: ${FONTS.manrope};
       font-weight: 400;
-      font-size: 18px;
-      line-height: 26px;
+      font-size: 16px;
+      line-height: 25px;
 
       @media ${BREAKPOINTS.mobileLg} {
         font-size: 14px;
@@ -304,10 +303,10 @@ const CardInfo = styled(VerticalContainer)`
     gap: 10px;
 
     .high-light-price {
-      color: ${COLORS.red};
-      font-size: 19px;
+      color: ${COLORS.electricRed};
+      font-size: 16px;
       font-weight: 400;
-      line-height: 23px;
+      line-height: 19px;
 
        @media ${BREAKPOINTS.mobileLg} {
         font-size: 14px;
@@ -317,9 +316,9 @@ const CardInfo = styled(VerticalContainer)`
 
     .price {
       color: ${COLORS.toryBlue};
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 38px;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 33px;
 
        @media ${BREAKPOINTS.mobileLg} {
         font-size: 28px;

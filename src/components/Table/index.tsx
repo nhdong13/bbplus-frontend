@@ -75,7 +75,7 @@ const StyledTableRow = styled(TableRow)(() => ({
       borderRadius: '7px',
       display: 'flex',
       justifyContent: 'center',
-      height: "41.44px",
+      height: "44px",
       width: '100.44px',
 
       "@media only screen and (max-width: 768px)": {

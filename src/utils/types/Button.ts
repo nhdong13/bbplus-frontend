@@ -15,4 +15,5 @@ export interface QuantityButton {
   onClickDecreaseNumber: () => void,
   onClickIncreaseNumber: () => void,
   numberOfPeople: number,
+  watchInputValue?: (e: React.KeyboardEvent) => void,
 }

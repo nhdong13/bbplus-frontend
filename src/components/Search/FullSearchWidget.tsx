@@ -14,6 +14,8 @@ import useFullSearchWidget from "./useFullSearch";
 import IMAGES from "@/assets/images";
 import { H5 } from "../Typography";
 import TravelerDropDown from "./TravelerDropDown";
+import SelectDate from "./SelectDate";
+import SelectLocationDropDown from "./SelectLocationDropDown";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -21,6 +23,19 @@ export default function FullSearchWidget() {
     handleSelectBookingType,
     showTravelerDropDown,
     travelerDropDown,
+    selectDateDropDown,
+    showDatePicker,
+    setGetArriveDate,
+    getArriveDate,
+    totalDates,
+    setTotalDates,
+    showLeavingPlaces,
+    showGoingToPlaces,
+    selectLeavingPlaces,
+    setSelectLeavingPlaces,
+    selectGoingPlaces,
+    setGoingPlaces,
+    setSelectDateDropDown,
   } = useFullSearchWidget();
 
   return (
@@ -42,15 +57,16 @@ export default function FullSearchWidget() {
         <SelectBookingDateTime>
           <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
             <FromContainer className="leaving-from">
-              <div>
+              <div onClick={showLeavingPlaces}>
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
+              {/* <SelectLocationDropDown /> */}
             </FromContainer>
             {selectCreateItinerary ?
               <>
                 <FromContainer className="going-to">
-                  <div>
+                  <div onClick={showGoingToPlaces}>
                     <H5 lineHeight="10px" fontWeight="700">Going to</H5>
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
@@ -61,15 +77,18 @@ export default function FullSearchWidget() {
               <HorizontalContainer gap="55px">
                 <div>
                   <H5 lineHeight="10px" fontWeight="700">Arrival date</H5>
-                  <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{getArriveDate ? getArriveDate : "Day|Date|Month"}</H5>
                 </div>
               </HorizontalContainer>
             </FromContainer>
-            <FromContainer className="no-days">
+            <FromContainer className="no-days" isOpen={selectDateDropDown}>
               <HorizontalContainer gap="55px">
-                <div>
+                <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
-                  <H5 lineHeight="10px" color={COLORS.outerSpace}>x days</H5>
+                  <HorizontalContainer className="select-dates__container" alignItems="center" gap="32px">
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalDates ? totalDates : "x"} days</H5>
+                    <img className="select-dates__dropdown-icon" src={IMAGES.iconDropDownBlue} width="13px" height="9px" />
+                  </HorizontalContainer>
                 </div>
               </HorizontalContainer>
             </FromContainer>
@@ -86,11 +105,18 @@ export default function FullSearchWidget() {
             </HorizontalContainer>
           </div>
         </SelectBookingDateTime>
-        {/* <DatePicker /> */}
+        <SelectDate
+          isShown={selectDateDropDown}
+          getArriveDate={(e: string) => setGetArriveDate(e)}
+          totalDates={(e: number) => setTotalDates(e)}
+          closePopup={(e: boolean) => setSelectDateDropDown(e)}
+        />
         <div className="mobile-search-button">
           <SearchButton />
         </div>
         <TravelerDropDown isShown={travelerDropDown} />
+        <SelectLocationDropDown isShown={selectLeavingPlaces} />
+        <SelectLocationDropDown isShown={selectGoingPlaces} />
       </SearchContainer>
     </>
   )
