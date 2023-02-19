@@ -139,28 +139,32 @@ const CarouselWrapper = styled.div`
   }
 
   .carousel, &.carousel-container {
-    @media only screen and (max-width: 1644px) {
-      max-width: 1366px;
+    @media only screen and (min-width: 1521px) {
+      max-width: 1440px;
     }
 
     @media only screen and (max-width: 1520px) {
-      max-width: 1000px;
+      max-width: 1440px;
     }
 
-    @media only screen and (max-width: 1445px) {
-      max-width: 1250px;
+     @media only screen and (max-width: 1475px) {
+      max-width: 1095px;
+    }
+
+    @media only screen and (max-width: 1439px) {
+      max-width: 1095px;
     }
 
     @media only screen and (max-width: 1380px) {
-      max-width: 1120px;
+      max-width: 1095px;
     }
 
     @media only screen and (max-width: 1160px) {
-      max-width: 900px;
+      max-width: 720px;
     }
 
     @media only screen and (max-width: 992px) {
-      max-width: 768px;
+      max-width: 720px;
     }
 
     @media only screen and (max-width: 769px) {
@@ -172,6 +176,11 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 550px) {
+      margin-top: 15px;
+      max-width: 340px;
+    }
+
+    @media only screen and (max-width: 475px) {
       margin-top: 15px;
       max-width: 320px;
     }

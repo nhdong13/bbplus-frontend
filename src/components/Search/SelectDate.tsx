@@ -145,6 +145,10 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
   }, [document.querySelectorAll(".rmdp-month-name")])
 
   const handleClosePopup = () => {
+    const getBodyElement = document.querySelector("body");
+    if (getBodyElement) {
+      getBodyElement.style.overflow = "scroll";
+    }
     setPopup(false);
     closePopup(false);
   };
