@@ -40,6 +40,10 @@ const StyledHomeBody = styled(VerticalContainer)`
       margin: 20px 0;
     }
 
+    @media ${BREAKPOINTS.mobileLg} {
+      margin: 0;
+    }
+
     & > div {
       justify-content: center;
       width: 100%;
@@ -51,6 +55,17 @@ const StyledHomeBody = styled(VerticalContainer)`
       @media ${BREAKPOINTS.tablet} {
         margin: 10px 20px;
         width: auto;
+      }
+
+      @media ${BREAKPOINTS.mobileLg} {
+        margin: 0 20px;
+        width: auto;
+      }
+    }
+
+    & > .booking-table-container {
+      @media ${BREAKPOINTS.mobileLg} {
+        margin: 15px;
       }
     }
 
@@ -176,12 +191,10 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 550px) {
-      margin-top: 15px;
       max-width: 340px;
     }
 
     @media only screen and (max-width: 475px) {
-      margin-top: 15px;
       max-width: 320px;
     }
 
