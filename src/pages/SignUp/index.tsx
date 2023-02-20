@@ -4,6 +4,7 @@ import { FormInput } from "@/components/FormInput";
 import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H2, H3, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
+import useWindowSize from "@/utils/windowResize";
 import useSignUp from "./hooks";
 import { SignUpFormContainer } from "./styles";
 
@@ -24,6 +25,8 @@ export default function SignUp() {
     setRequestSent,
     handleFormSubmit,
   } = useSignUp();
+  const wd = useWindowSize();
+
   return (
     <>
       <MainLayout>
@@ -61,13 +64,13 @@ export default function SignUp() {
             </div>
           </div>
           <div className="right-side-column">
-            <div className="step-bullet-column">
+            {/* <div className="step-bullet-column">
               <div className="step-bullet">1</div>
               <svg width="64" height="292">
                 <line
-                  x1="31"
+                  x1={wd <= 430 ? "25" : "31"}
                   y1="0"
-                  x2="31"
+                  x2={wd <= 430 ? "25" : "31"}
                   y2="295"
                   stroke={COLORS.blueRibbon}
                   strokeWidth="2"
@@ -77,115 +80,152 @@ export default function SignUp() {
               <div className="step-bullet">2</div>
               <svg width="64" height="197">
                 <line
-                  x1="31"
+                  x1={wd <= 430 ? "25" : "31"}
                   y1="0"
-                  x2="31"
+                  x2={wd <= 430 ? "25" : "31"}
                   y2="200"
                   stroke={COLORS.blueRibbon}
                   strokeWidth="2"
                 />
               </svg>
               <div className="step-bullet">3</div>
-            </div>
+            </div> */}
             <div className="form-container">
               <div className="step-1">
-                <H2>AGENCY INFORMATION</H2>
-                <FormInput
-                  label="Bussiness name"
-                  isImportant={true}
-                  marginTop="16px"
-                  maxHeight="60px"
-                  handleChange={(e) => setBussinessName(e.target.value)}
-                />
-                <div className="flex">
-                  <FormInput
-                    label="Phone number"
-                    isImportant={true}
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                  <FormInput
-                    label="Email address"
-                    isImportant={true}
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setEmail(e.target.value)}
-                  />
+                <div className="sub-header">
+                  <div className="step-bullet">1</div>
+                  <H2>AGENCY INFORMATION</H2>
+                  <svg width="64" height="197">
+                    <line
+                      x1={wd <= 430 ? "25" : "31"}
+                      y1="0"
+                      x2={wd <= 430 ? "25" : "31"}
+                      y2={wd <= 430 ? "350" : "400"}
+                      stroke={COLORS.blueRibbon}
+                      strokeWidth="2"
+                    />
+                  </svg>
                 </div>
-                <div className="registrationid-input">
-                  Upload Taxpayer ID/Bussiness Registration
-                  <input type="file" />
+
+                <div className="form-input-fields">
+                  <FormInput
+                    label="Bussiness name"
+                    isImportant={true}
+                    marginTop="16px"
+                    maxHeight="60px"
+                    handleChange={(e) => setBussinessName(e.target.value)}
+                  />
+                  <div className="flex">
+                    <FormInput
+                      label="Phone number"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                    <FormInput
+                      label="Email address"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="registrationid-input">
+                    <span>Upload Taxpayer ID/Bussiness Registration</span>
+                    <input type="file" />
+                  </div>
                 </div>
               </div>
 
               <div className="step-2">
-                <H2>AGENCY ADDRESS</H2>
-                <FormInput
-                  label="Physical location"
-                  isImportant={true}
-                  marginTop="16px"
-                  maxHeight="60px"
-                  handleChange={(e) => setLocation(e.target.value)}
-                />
-                <div className="flex">
+                <div className="sub-header">
+                  <div className="step-bullet">2</div>
+                  <H2>AGENCY ADDRESS</H2>
+                  <svg width="64" height="197">
+                    <line
+                      x1={wd <= 430 ? "25" : "31"}
+                      y1="0"
+                      x2={wd <= 430 ? "25" : "31"}
+                      y2={wd <= 430 ? "220" : "350"}
+                      stroke={COLORS.blueRibbon}
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+
+                <div className="form-input-fields">
                   <FormInput
-                    label="Select Country"
+                    label="Physical location"
                     isImportant={true}
-                    marginTop="21.6px"
+                    marginTop="16px"
                     maxHeight="60px"
-                    handleChange={(e) => setCountry(e.target.value)}
+                    handleChange={(e) => setLocation(e.target.value)}
                   />
-                  <FormInput
-                    label="Website address"
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setWebsite(e.target.value)}
-                  />
+                  <div className="flex">
+                    <FormInput
+                      label="Select Country"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setCountry(e.target.value)}
+                    />
+                    <FormInput
+                      label="Website address"
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="step-3">
-                <H2>ADMIN DETAILS</H2>
+                <div className="sub-header">
+                  <div className="step-bullet">3</div>
+                  <H2>ADMIN DETAILS</H2>
+                </div>
 
-                <div className="flex">
+                <div className="form-input-fields">
+                  <div className="flex">
+                    <FormInput
+                      label="First Name"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setFirstname(e.target.value)}
+                    />
+                    <FormInput
+                      label="Last Name"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setLastname(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex">
+                    <FormInput
+                      label="Phone number"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setAdminPhoneNumber(e.target.value)}
+                    />
+                    <FormInput
+                      label="Address"
+                      isImportant={true}
+                      marginTop="21.6px"
+                      maxHeight="60px"
+                      handleChange={(e) => setAdminEmail(e.target.value)}
+                    />
+                  </div>
                   <FormInput
-                    label="First Name"
-                    isImportant={true}
-                    marginTop="21.6px"
+                    label="How hid you hear about us?"
+                    marginTop="16px"
                     maxHeight="60px"
-                    handleChange={(e) => setFirstname(e.target.value)}
-                  />
-                  <FormInput
-                    label="Last Name"
-                    isImportant={true}
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setLastname(e.target.value)}
+                    handleChange={(e) => setHearBy(e.target.value)}
                   />
                 </div>
-                <div className="flex">
-                  <FormInput
-                    label="Phone number"
-                    isImportant={true}
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setAdminPhoneNumber(e.target.value)}
-                  />
-                  <FormInput
-                    label="Address"
-                    isImportant={true}
-                    marginTop="21.6px"
-                    maxHeight="60px"
-                    handleChange={(e) => setAdminEmail(e.target.value)}
-                  />
-                </div>
-                <FormInput
-                  label="How hid you hear about us?"
-                  marginTop="16px"
-                  maxHeight="60px"
-                  handleChange={(e) => setHearBy(e.target.value)}
-                />
               </div>
 
               <div className="form-confirmation">

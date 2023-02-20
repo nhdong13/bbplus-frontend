@@ -8,28 +8,57 @@ import { AuthenticationFormContainer } from "./styles";
 import Switch from "react-switch";
 import useLogin from "./hooks";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "@/utils/windowResize";
 
 export default function Login() {
-  const {
-    rememberMe,
-    handleRememberMeSwitcher
-  } = useLogin();
+  const { rememberMe, handleRememberMeSwitcher } = useLogin();
   const navigate = useNavigate();
+
+  const wd = useWindowSize();
+  console.log(wd);
+
   return (
     <>
       <MainLayout>
         <AuthenticationFormContainer>
-          <H2 className="header" lineHeight="32px">Welcome</H2>
+          <H2 className="header" lineHeight="32px">
+            Welcome
+          </H2>
           <div className="sub-header">
-            <p>Do you need an account? <span><a href="#">Register now</a></span></p>
+            <p>
+              Do you need an account?{" "}
+              <span>
+                <a href="/sign-up">Register now</a>
+              </span>
+            </p>
             <p>Log in to your account using username & password</p>
           </div>
           <div className="body">
-            <FormInput label="Username" iconUrl={IMAGES.iconUserFormInput} isImportant={false} marginTop="30.1px" />
-            <FormInput label="Password" iconUrl={IMAGES.iconPasswordFormInput} isImportant={false} />
+            <FormInput
+              label="Username"
+              iconUrl={IMAGES.iconUserFormInput}
+              isImportant={false}
+              marginTop="30.1px"
+            />
+            <FormInput
+              label="Password"
+              iconUrl={IMAGES.iconPasswordFormInput}
+              isImportant={false}
+            />
             <div className="remember-me-n-forgot-password-container">
               <div className="remember-me-container">
-                <Switch onChange={handleRememberMeSwitcher} checked={rememberMe} className="remember-me-switcher" onColor={COLORS.darkGreen} uncheckedIcon={false} checkedIcon={false} />
+                {wd <= 430 ? (
+                  <input type="checkbox" className="remember-me-switcher" />
+                ) : (
+                  <Switch
+                    onChange={handleRememberMeSwitcher}
+                    checked={rememberMe}
+                    className="remember-me-switcher"
+                    onColor={COLORS.darkGreen}
+                    uncheckedIcon={false}
+                    checkedIcon={false}
+                  />
+                )}
                 <span>Remember Me</span>
               </div>
               <a href="/forgot-password">Forgot Password?</a>
@@ -47,7 +76,10 @@ export default function Login() {
               borderRadius="unset"
               handleSubmit={() => navigate("/")}
             />
-            <p>By clicking "Login" you confirm that you accept the <a href="#">Terms of Service</a></p>
+            <p>
+              By clicking "Login" you confirm that you accept the{" "}
+              <a href="#">Terms of Service</a>
+            </p>
           </div>
         </AuthenticationFormContainer>
       </MainLayout>

@@ -1,4 +1,5 @@
 import IMAGES from "@/assets/images";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
@@ -41,6 +42,24 @@ const StyledInputContainer = styled.div.attrs(
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
+    border: none;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    margin-top: 10px;
+    border: 1px solid ${COLORS.parkinglotGray};
+    border-radius: 3px;
+
+    input {
+      height: 40px;
+      padding: 0px 31px;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .icon {
+      display: none;
+    }
   }
 `;
 

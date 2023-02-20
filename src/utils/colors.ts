@@ -42,6 +42,7 @@ export const COLORS: StyledColors = {
   darkGreen: "#003630",
   linkBlue: "#086FFF",
   whiteFligt: "#F2F2F2",
+  parkinglotGray: "#CECFD1",
 }
 interface StyledColors {
   anakiwa: string,
@@ -86,5 +87,6 @@ interface StyledColors {
   white: string,
   darkGreen: string,
   linkBlue: string,
-  whiteFligt: string
+  whiteFligt: string,
+  parkinglotGray: string,
 }

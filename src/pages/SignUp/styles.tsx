@@ -52,35 +52,47 @@ const SignUpFormContainer = styled.div`
     width: 100%;
     color: ${COLORS.black};
 
-    .step-bullet-column {
-      margin-left: 18.7px;
-      margin-top: 48.6px;
-      width: 64px;
-
-      .step-bullet {
-        width: 64px;
-        line-height: 64px;
-        border-radius: 50%;
-        background: ${COLORS.gradient1};
-        font-size: 20px;
-        font-family: ${FONTS.montserrat};
-        position: relative;
-        z-index: 99;
-      }
-
-      svg {
-        overflow: initial;
-      }
-    }
-
     .form-container {
       width: 100%;
       text-align: left;
-      margin: 60.7px 180px 72px 35px;
+      margin: 60.7px 180px 72px 18.7px;
+
       .flex {
         display: flex;
         gap: 12.5px;
       }
+
+      .sub-header {
+        display: flex;
+        align-items: baseline;
+
+        .step-bullet {
+          width: 64px;
+          line-height: 64px;
+          border-radius: 50%;
+          background: ${COLORS.gradient1};
+          font-size: 20px;
+          font-family: ${FONTS.montserrat};
+          position: relative;
+          z-index: 99;
+          color: ${COLORS.white};
+          text-align: center;
+        }
+
+        svg {
+          overflow: initial;
+          position: absolute;
+        }
+
+        h2 {
+          padding-left: 35px;
+        }
+      }
+
+      .form-input-fields {
+        padding-left: 99px;
+      }
+
       .step-1 .registrationid-input {
         width: calc(100% - 49.4px);
         height: 84px;
@@ -96,14 +108,17 @@ const SignUpFormContainer = styled.div`
         }
       }
 
-      .step-2, .step-3 {
+      .step-2,
+      .step-3 {
         margin-top: 55px;
       }
 
       .form-confirmation {
         margin-top: 48px;
+        padding-left: 99px;
         input {
-          width: 23.12px;height:20px;
+          width: 23.12px;
+          height: 20px;
         }
         & > span {
           margin-left: 20px;
@@ -115,55 +130,113 @@ const SignUpFormContainer = styled.div`
     }
   }
 
-  
-  & > div {
-    @media ${BREAKPOINTS.laptop} {
-      padding: 10px;
-    }
-  }
-
   a {
     color: ${COLORS.linkBlue};
     text-decoration: none;
   }
 
-  h2.header {
-    margin-top: 10px;
-  }
+  @media ${BREAKPOINTS.mobileLg} {
+    width: 350px;
+    height: auto;
+    margin: 20px;
+    box-shadow: none;
+    border: 2px solid ${COLORS.parkinglotGray};
+    border-radius: 10px;
+    padding: 20px;
 
-  .sub-header p {
-    margin-top: 25px;
-  }
+    .left-side-column {
+      display: none;
+    }
 
-  .sub-header p:nth-child(2) {
-    color: ${COLORS.doveGray};
-  }
+    .right-side-column {
+      .form-container {
+        width: 100%;
+        text-align: left;
+        margin: 0;
 
-  .body {
-    height: 100%;
-    .remember-me-n-forgot-password-container {
-      margin-top: 30px;
-      display: flex;
-      .remember-me-container {
-        margin-right: auto;
-        span {
-          position: absolute;
-          padding-left: 10px;
-          transform: translateY(7px);
+        .flex {
+          display: block;
+        }
+
+        .sub-header {
+          .step-bullet {
+            width: 47px;
+            line-height: 47px;
+            font-size: 24px;
+            font-family: ${FONTS.manrope};
+            font-weight: 700;
+            z-index: 99;
+          }
+
+          svg {
+            overflow: initial;
+            position: absolute;
+            display: none;
+          }
+
+          h2 {
+            padding-left: 10px;
+            font-family: ${FONTS.manrope};
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+
+        .form-input-fields {
+          padding-left: 0;
+        }
+
+        .step-1 .registrationid-input {
+          width: 288px;
+          height: 32px;
+          text-align: left;
+          padding: 7px 31px;
+          margin-top: 10px;
+          background: ${COLORS.white};
+          border: 1px solid ${COLORS.parkinglotGray};
+          border-radius: 3px;
+          font-family: ${FONTS.manrope};
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+
+          span {
+            width: 150px;
+            display: block;
+          }
+          input {
+            display: none;
+          }
+        }
+
+        .step-2,
+        .step-3 {
+          margin-top: 30px;
+        }
+
+        .form-confirmation {
+          margin-top: 30px;
+          padding-left: 0;
+          input {
+            width: 16px;
+            height: 16px;
+          }
+          & > span {
+            margin-left: 10px;
+            font-family: ${FONTS.manrope};
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            vertical-align: text-top;
+          }
+          .submit-btn {
+            float: right;
+          }
         }
       }
     }
   }
+`;
 
-  .footer {
-    margin-top: auto;
-    p {
-      margin-top: 25px;
-    }
-  }
-`
-
-
-export {
-  SignUpFormContainer
-}
+export { SignUpFormContainer };

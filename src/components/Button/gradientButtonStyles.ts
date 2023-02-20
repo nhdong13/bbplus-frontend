@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
 import styled from "styled-components"
@@ -41,6 +42,18 @@ const StyledButton = styled.div.attrs((props: {
   &.close {
     opacity: 0;
     transition: all 2s ease-in-out;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px 30px;
+    height: 20px;
+    margin-top: 10px;
+    border-radius: 3px;
+
+    span {
+      font-weight: 700;
+      font-size: 12px;
+    }
   }
 `
 

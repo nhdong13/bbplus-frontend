@@ -19,12 +19,6 @@ const AuthenticationFormContainer = styled.div.attrs(
   flex-direction: column !important;
   text-align: ${(props) => (props.centralizeItems ? "center" : "")};
 
-  & > div {
-    @media ${BREAKPOINTS.laptop} {
-      padding: 10px;
-    }
-  }
-
   a {
     color: ${COLORS.linkBlue};
     text-decoration: none;
@@ -35,6 +29,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .sub-header {
+    font-family: ${FONTS.manrope};
     p {
       margin-top: 20.2px;
     }
@@ -99,6 +94,115 @@ const AuthenticationFormContainer = styled.div.attrs(
 
   .footer.lower-footer {
     transform: translateY(25px);
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: 350px;
+    height: auto;
+    padding: 10px 20px;
+    margin: 20px;
+    border: 2px solid ${COLORS.parkinglotGray};
+    border-radius: 10px;
+    box-shadow: none;
+
+    a {
+      font-size: 12px;
+    }
+
+    h2.header {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .sub-header {
+      p {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+      p:nth-child(2) {
+        color: ${COLORS.doveGray};
+      }
+    }
+
+    .body {
+      font-family: ${FONTS.manrope};
+
+      img.form-sent-success-icn {
+        margin-top: 12px;
+        width: 70px;
+        height: 70px;
+      }
+
+      p.sub-text-under-form-sent-icon {
+        margin-top: 12px;
+        font-family: ${FONTS.manrope};
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .remember-me-n-forgot-password-container {
+        margin-top: 20px;
+        .remember-me-container {
+          .remember-me-switcher {
+            width: 16px;
+            height: 16px;
+            outline: 1px solid ${COLORS.parkinglotGray};
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -o-appearance: none;
+            border-radius: 3px;
+          }
+          span {
+            font-size: 12px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .footer {
+      margin-top: auto;
+
+      p {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: ${FONTS.manrope};
+      }
+
+      p.retry-forgot-password {
+        margin: 10px auto;
+        width: auto;
+      }
+
+      .password-conditions {
+        margin-top: 10px;
+
+        p {
+          margin-top: 10px;
+          padding-left: 0px;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          display: flex;
+
+          img {
+            width: 20px;
+            height: 20px;
+            transform: none;
+            position: unset;
+          }
+        }
+      }
+    }
+
+    .footer.lower-footer {
+      transform: translateY(0);
+    }
   }
 `;
 

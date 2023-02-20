@@ -25,8 +25,13 @@ export default function ResetPassword() {
             <React.Fragment>
               <H2 className="header">Password Updated</H2>
               <div className="body">
-                <img src={IMAGES.iconSuccessSubmitForm} className="form-sent-success-icn"/>
-                <p className="sub-text-under-form-sent-icon">Your password has been updated successfully</p>
+                <img
+                  src={IMAGES.iconSuccessSubmitForm}
+                  className="form-sent-success-icn"
+                />
+                <p className="sub-text-under-form-sent-icon">
+                  Your password has been updated successfully
+                </p>
               </div>
               <div className="footer">
                 <GradientButton
@@ -51,7 +56,6 @@ export default function ResetPassword() {
                 <p>
                   <a href="#">Please create your account password below.</a>
                 </p>
-                <p>Log in to your account using username & password</p>
               </div>
               <div className="body">
                 <FormInput
