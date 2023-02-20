@@ -10,6 +10,10 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   display: ${({ isShown }) => isShown ? "block" : "none"};
   padding: 33px 0;
   max-width: 555px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  max-height: 200px;
   width: 100%;
 
   .popular-places__container {

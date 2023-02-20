@@ -61,7 +61,7 @@ export default function FullSearchWidget() {
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
-              {/* <SelectLocationDropDown /> */}
+              <SelectLocationDropDown isShown={selectLeavingPlaces} />
             </FromContainer>
             {selectCreateItinerary ?
               <>
@@ -70,6 +70,7 @@ export default function FullSearchWidget() {
                     <H5 lineHeight="10px" fontWeight="700">Going to</H5>
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
+                  <SelectLocationDropDown isShown={selectGoingPlaces} />
                 </FromContainer>
               </> : <></>
             }
@@ -115,8 +116,6 @@ export default function FullSearchWidget() {
           <SearchButton />
         </div>
         <TravelerDropDown isShown={travelerDropDown} />
-        <SelectLocationDropDown isShown={selectLeavingPlaces} />
-        <SelectLocationDropDown isShown={selectGoingPlaces} />
       </SearchContainer>
     </>
   )
