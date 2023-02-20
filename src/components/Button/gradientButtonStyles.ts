@@ -10,11 +10,12 @@ const StyledButton = styled.div.attrs((props: {
   textPadding?: string
   showButtonAnimation?: boolean
   width?: string
+  borderRadius?: string
 }) => props)`
   align-items: center;
   background: ${props => props.color};
   border: none;
-  border-radius: 10px;
+  border-radius: ${props => props.borderRadius || "10px"};
   cursor: pointer;
   display: flex;
   height: ${props => props.height || "52px"};
