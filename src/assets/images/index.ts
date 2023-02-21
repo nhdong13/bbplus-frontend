@@ -26,6 +26,9 @@ import iconCondtionResetPassword from "./icon-condition-reset-password.svg";
 import registrationFormIcon1 from "./registration-form-icon-1.svg";
 import registrationFormIcon2 from "./registration-form-icon-2.svg";
 import registrationFormIcon3 from "./registration-form-icon-3.svg";
+import backgroundSignUpSuccess from "./background.svg";
+import iconSelectDown from "./icon-select-down.svg";
+import iconUS from "./icon-us.png";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -56,6 +59,9 @@ const IMAGES = {
   registrationFormIcon1,
   registrationFormIcon2,
   registrationFormIcon3,
+  backgroundSignUpSuccess,
+  iconSelectDown,
+  iconUS
 }
 
 export default IMAGES;

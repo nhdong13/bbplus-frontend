@@ -18,7 +18,17 @@ const AuthenticationFormContainer = styled.div.attrs(
   -ms-flex-direction: column !important;
   flex-direction: column !important;
   text-align: ${(props) => (props.centralizeItems ? "center" : "")};
-
+ 
+  @media ${BREAKPOINTS.desktopLg} {
+    margin-left:800.3px;
+  }
+  @media ${BREAKPOINTS.desktopSm} {
+    margin-left:687.3px;
+  }
+  @media ${BREAKPOINTS.laptop} {
+    margin: 40px auto;
+  }
+ 
   a {
     color: ${COLORS.linkBlue};
     text-decoration: none;
@@ -97,7 +107,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   @media ${BREAKPOINTS.mobileLg} {
-    width: 350px;
+    width: auto;
     height: auto;
     padding: 10px 20px;
     margin: 20px;

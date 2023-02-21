@@ -16,10 +16,7 @@ const useSignUp = () => {
   const [requestSent, setRequestSent] = useState<boolean>(false);
 
   const handleFormSubmit = () => {
-    if (true) {
-      setRequestSent(true);
-    } else {
-    }
+    setRequestSent(true);
   };
 
   return {
