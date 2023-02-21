@@ -1,5 +1,5 @@
 import { COLORS } from "@/utils/colors";
-import Divider from "../Layout/Divider"
+import Divider from "../../Layout/Divider"
 import {
   StyledRoomOptions,
   StyledTravelerDropDown,
@@ -9,14 +9,14 @@ import {
   ResultContainer,
 } from "./StyledTravelerDropDown";
 import { TravelerDropDown } from "@/utils/types/CardHotel";
-import { H4, H5 } from "../Typography";
-import { VerticalContainer } from "../Layout/VerticalContainer";
+import { H4, H5 } from "../../Typography";
+import { VerticalContainer } from "../../Layout/VerticalContainer";
 import IMAGES from "@/assets/images";
 import { useEffect, useMemo, useState } from "react";
 import { QuantityButton } from "@/utils/types/Button";
 import _ from "lodash";
-import { GradientButton } from "../Button";
-import HorizontalContainer from "../Layout/HorizontalContainer";
+import { GradientButton } from "../../Button";
+import HorizontalContainer from "../../Layout/HorizontalContainer";
 
 const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
   const [showNumberOfAdults, setShowNumberOfAdults] = useState<number>(0);

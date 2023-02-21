@@ -1,14 +1,14 @@
 import { StyledSelectDate, ResultContainer, StyledPopupSelectDate } from "./StyledSelectDate";
 import { Calendar, DateObject } from "react-multi-date-picker"
 import { useEffect, useRef, useState } from "react";
-import Divider from "../Layout/Divider";
+import Divider from "../../Layout/Divider";
 import { COLORS } from "@/utils/colors";
-import { GradientButton } from "../Button";
-import HorizontalContainer from "../Layout/HorizontalContainer";
+import { GradientButton } from "../../Button";
+import HorizontalContainer from "../../Layout/HorizontalContainer";
 import moment from "moment";
 import IMAGES from "@/assets/images";
 import useWindowSize from "@/utils/windowResize";
-import { H4 } from "../Typography";
+import { H4 } from "../../Typography";
 
 interface SelectDate {
   isShown?: boolean

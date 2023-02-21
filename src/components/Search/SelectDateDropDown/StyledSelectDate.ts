@@ -1,6 +1,6 @@
-import { BREAKPOINTS } from './../../utils/breakpoints';
+import { BREAKPOINTS } from '../../../utils/breakpoints';
 import { FONTS } from '@/utils/fonts';
-import { COLORS } from './../../utils/colors';
+import { COLORS } from '../../../utils/colors';
 import styled from "styled-components";
 
 const StyledSelectDate = styled.div.attrs((props: {
@@ -11,6 +11,9 @@ const StyledSelectDate = styled.div.attrs((props: {
   box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);;
   max-width: 1232px;
   width: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 2;
 
   display: ${({ isShown }) => isShown ? "block" : "none"};
 

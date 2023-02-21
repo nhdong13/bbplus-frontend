@@ -1,17 +1,21 @@
-import { FONTS } from './../../utils/fonts';
+import { FONTS } from '../../../utils/fonts';
 import { COLORS } from "@/utils/colors"
 import styled, { css } from "styled-components"
-import HorizontalContainer from "../Layout/HorizontalContainer"
-import { VerticalContainer } from "../Layout/VerticalContainer"
+import HorizontalContainer from "../../Layout/HorizontalContainer"
+import { VerticalContainer } from "../../Layout/VerticalContainer"
 
 const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
   isShown?: boolean
 }) => props)`
   background: ${COLORS.white};
   border-radius: 10px;
+  box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);
   margin: 5px 0 0;
   max-width: 1230px;
   width: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 2;
 
   ${props => props.isShown && css`
     display: block;

@@ -1,3 +1,4 @@
+import useWindowSize from "@/utils/windowResize";
 import { useEffect, useState } from "react";
 
 const useFullSearchWidget = () => {
@@ -11,6 +12,9 @@ const useFullSearchWidget = () => {
   const [totalDates, setTotalDates] = useState<number>(0);
   const [selectLeavingPlaces, setSelectLeavingPlaces] = useState<boolean>(false);
   const [selectGoingPlaces, setGoingPlaces] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const screenWidth = useWindowSize();
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
@@ -21,11 +25,15 @@ const useFullSearchWidget = () => {
 
   const showTravelerDropDown = () => {
     if (selectDateDropDown) setSelectDateDropDown(false)
+    if (selectGoingPlaces) setGoingPlaces(false)
+    if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setTravelerDropDown(!travelerDropDown);
   }
 
   const showDatePicker = () => {
     if (travelerDropDown) setTravelerDropDown(false)
+    if (selectGoingPlaces) setGoingPlaces(false)
+    if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setSelectDateDropDown(!selectDateDropDown);
   }
 
@@ -39,9 +47,15 @@ const useFullSearchWidget = () => {
   const showGoingToPlaces = () => {
     if (selectDateDropDown) setSelectDateDropDown(false)
     if (travelerDropDown) setTravelerDropDown(false)
-    if (selectGoingPlaces) setGoingPlaces(false)
+    if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setGoingPlaces(!selectGoingPlaces);
   }
+
+  useEffect(() => {
+    if (screenWidth < 768) {
+      setIsMobile(true);
+    } else setIsMobile(false);
+  }, [screenWidth, isMobile])
 
   return {
     selectedBooking,
@@ -69,6 +83,7 @@ const useFullSearchWidget = () => {
     selectGoingPlaces,
     setGoingPlaces,
     setSelectDateDropDown,
+    isMobile,
   }
 }
 

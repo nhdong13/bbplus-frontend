@@ -13,9 +13,10 @@ import { buttonItems } from "@/utils/tempData";
 import useFullSearchWidget from "./useFullSearch";
 import IMAGES from "@/assets/images";
 import { H5 } from "../Typography";
-import TravelerDropDown from "./TravelerDropDown";
-import SelectDate from "./SelectDate";
-import SelectLocationDropDown from "./SelectLocationDropDown";
+import TravelerDropDown from "./TravellerDropDown/TravelerDropDown";
+import SelectDate from "./SelectDateDropDown/SelectDate";
+import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
+import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -36,6 +37,7 @@ export default function FullSearchWidget() {
     selectGoingPlaces,
     setGoingPlaces,
     setSelectDateDropDown,
+    isMobile,
   } = useFullSearchWidget();
 
   return (
@@ -61,7 +63,7 @@ export default function FullSearchWidget() {
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
-              <SelectLocationDropDown isShown={selectLeavingPlaces} />
+              {!isMobile ? <SelectLocationDropDown leaving isShown={selectLeavingPlaces} /> : <></>}
             </FromContainer>
             {selectCreateItinerary ?
               <>
@@ -70,7 +72,7 @@ export default function FullSearchWidget() {
                     <H5 lineHeight="10px" fontWeight="700">Going to</H5>
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
-                  <SelectLocationDropDown isShown={selectGoingPlaces} />
+                  {!isMobile ? <SelectLocationDropDown isShown={selectGoingPlaces} /> : <></>}
                 </FromContainer>
               </> : <></>
             }
@@ -105,17 +107,35 @@ export default function FullSearchWidget() {
               <SearchButton />
             </HorizontalContainer>
           </div>
+          {!isMobile ?
+            <SelectDate
+              isShown={selectDateDropDown}
+              getArriveDate={(e: string) => setGetArriveDate(e)}
+              totalDates={(e: number) => setTotalDates(e)}
+              closePopup={(e: boolean) => setSelectDateDropDown(e)}
+            /> : <></>}
+          <TravelerDropDown isShown={travelerDropDown} />
         </SelectBookingDateTime>
-        <SelectDate
-          isShown={selectDateDropDown}
-          getArriveDate={(e: string) => setGetArriveDate(e)}
-          totalDates={(e: number) => setTotalDates(e)}
-          closePopup={(e: boolean) => setSelectDateDropDown(e)}
-        />
+        {isMobile ?
+          <>
+            <SelectDate
+              isShown={selectDateDropDown}
+              getArriveDate={(e: string) => setGetArriveDate(e)}
+              totalDates={(e: number) => setTotalDates(e)}
+              closePopup={(e: boolean) => setSelectDateDropDown(e)}
+            />
+            <MobileSelectLocationDropDown
+              isShown={true}
+            />
+            <MobileSelectLocationDropDown
+              isShown={selectGoingPlaces}
+            />
+          </>
+          : <></>
+        }
         <div className="mobile-search-button">
           <SearchButton />
         </div>
-        <TravelerDropDown isShown={travelerDropDown} />
       </SearchContainer>
     </>
   )

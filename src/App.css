@@ -5,6 +5,8 @@
 
 body {
   overflow-x: hidden;
+  /* background-color: green;
+  opacity: 0.5; */
 }
 
 @font-face {
