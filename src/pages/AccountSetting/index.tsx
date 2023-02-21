@@ -10,9 +10,9 @@ import {
   LabelText,
   LegendText,
   InputDetails,
-  LegendBoxFinance,
   AccountSettingHeader,
-  LegendBoxLogo,
+  NextStepBox,
+  ButtonNextStep,
 } from "./styles";
 import {
   TextField,
@@ -21,7 +21,7 @@ import {
   Button,
   Autocomplete,
 } from "@mui/material";
-import FileInput from "@/components/FileInput";
+import FileInput from "./FileInput";
 
 interface Props {}
 interface State {}
@@ -48,12 +48,10 @@ function AccountSetting() {
               setup
             </div>
           </AccountSettingHeader>
-          <div id="body-section">
-            <div id="body-section-1">
+          <div className="body-section">
+            <div className="body-section-item">
               <LegendBox>
-                <LegendText className="LegendText-title">
-                  Agency details
-                </LegendText>
+                <LegendText>Agency details</LegendText>
                 <div className="contact-title">
                   Primary contact method <span className="red-start">*</span>
                 </div>
@@ -78,11 +76,15 @@ function AccountSetting() {
                   <Input type="text" />
                 </InputDetails>
               </LegendBox>
+              <LegendBox className="legenbox-right">
+                <LegendText>Agency Logo</LegendText>
+                <FileInput />
+              </LegendBox>
+            </div>
 
-              <LegendBoxFinance className="final-details">
-                <LegendText className="LegendText-title">
-                  Finance details
-                </LegendText>
+            <div className="body-section-item">
+              <LegendBox>
+                <LegendText>Finance details</LegendText>
                 <div className="contact-title">
                   Contact for handling accounting and finance{" "}
                   <span className="red-start">*</span>
@@ -95,16 +97,10 @@ function AccountSetting() {
                   <LabelText>Phone number</LabelText>
                   <Input type="text" />
                 </InputDetails>
-              </LegendBoxFinance>
-            </div>
-
-            <div id="body-section-2">
-              <LegendBoxLogo>
-                <LegendText className="LegendText-title">
-                  Agency details
-                </LegendText>
-                <FileInput />
-              </LegendBoxLogo>
+              </LegendBox>
+              <NextStepBox>
+                <ButtonNextStep>Next Step</ButtonNextStep>
+              </NextStepBox>
             </div>
           </div>
         </div>

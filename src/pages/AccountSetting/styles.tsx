@@ -1,30 +1,50 @@
 import styled from "styled-components";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
-import { TextField } from "@mui/material";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const AccountSettingContainer = styled.div`
-  width: 1920;
+  /* width: 1920; */
   margin: auto;
 
   #account-setting-section {
-    width: 1400px;
+    max-width: 1400px;
     margin: auto;
-
+    @media ${BREAKPOINTS.laptop}  {
+      max-width: 768px;
+      padding: 15px;
+    }
     .fill-information-title {
-      font-family: "Manrope";
+      font-family: ${FONTS.manrope};
       font-weight: 400;
       font-size: 18px;
       line-height: 35px;
     }
 
-    #body-section {
-      display: flex;
-      flex-direction: row;
-      #body-section-1 {
-        width: 50%;
+    .body-section {
+      margin-top: 50px;
+      .body-section-item{
+        display: flex;
+        &:last-child{
+          margin-top: 28px;
+          margin-bottom: 28px;
+        }
+        @media ${BREAKPOINTS.laptop}  {
+          display: grid;
+        }
       }
     }
+    .legenbox-right{
+      margin-left: 28px;
+      padding-right: 28px;
+      @media ${BREAKPOINTS.laptop}  {
+        margin-left: 0;
+        margin-top: 28px;
+        padding-right: 35px;
+        padding-bottom: 28px;
+      }
+    }
+    
   }
 `;
 
@@ -36,17 +56,15 @@ const InputSection = styled.div`
 const BreadcrumbContainer = styled.div`
   width: 100%;
   height: 49px;
-
   background-color: ${COLORS.periwinkleapprox};
 `;
 
 const BreadcrumbBody = styled.div`
-  width: 1400px;
+  max-width: 1400px;
   height: 100%;
   margin: auto;
-
   font-size: 17px;
-  font-family: "Manrope";
+  font-family: ${FONTS.manrope};
   line-height: 40px;
   font-weight: 500;
 
@@ -62,14 +80,18 @@ const BreadcrumbBody = styled.div`
     color: ${COLORS.black};
     content: "  >";
   }
+  @media ${BREAKPOINTS.laptop}  {
+    max-width: 768px;
+    padding: 0 15px;
+  }
 `;
 
 const Input = styled.input`
-  width: 305px;
+  width: 339px;
   height: 68px;
   padding: 0px 16px;
 
-  background: #fff;
+  background: ${COLORS.white};
   border: 2px solid #000;
   border-radius: 8px;
 
@@ -80,7 +102,7 @@ const Input = styled.input`
 `;
 
 const TitleInput = styled.div`
-  font-family: "Manrope";
+  font-family: ${FONTS.manrope};
   font-weight: normal;
   font-size: 16px;
   line-height: 88px;
@@ -90,15 +112,17 @@ const TitleInput = styled.div`
 
 const LegendBox = styled.fieldset`
   border: 1px solid #000;
-  padding: 20px 40px;
-
-  margin-top: 50px;
-
+  padding: 0 35px;
+  width: 50%;
+  @media ${BREAKPOINTS.laptop}  {
+    width: auto;
+  }
   .contact-title {
-    font-family: "Manrope-Bold";
+    /* font-family: ${FONTS.manropeBold}; */
     font-weight: normal;
     font-size: 20px;
     line-height: 35px;
+    margin-top: 9px;
     text-align: left;
     color: #000;
   }
@@ -107,17 +131,9 @@ const LegendBox = styled.fieldset`
   }
 `;
 
-const LegendBoxFinance = styled(LegendBox)`
-  margin-top: 100px;
-  margin-bottom: 150px;
-`;
-
-const LegendBoxLogo = styled(LegendBox)`
-  margin-left: 28px;
-`;
 
 const LabelText = styled.label`
-  font-family: "Manrope-Regular";
+  /* font-family: ${FONTS.manropeRegular}; */
   font-weight: normal;
   font-size: 16px;
   text-align: left;
@@ -125,7 +141,7 @@ const LabelText = styled.label`
 `;
 
 const LegendText = styled.legend`
-  font-family: "Montserrat-Regular";
+  /* font-family: ${FONTS.montserratRegular}; */
   font-weight: normal;
   font-size: 23px;
   line-height: 27px;
@@ -145,6 +161,36 @@ const InputDetails = styled.legend`
 const AccountSettingHeader = styled.div`
   margin-top: 50px;
 `;
+const NextStepBox = styled.div`
+  padding: 0 35px;
+  width: 50%;
+  margin-left: 28px;
+  position: relative;
+  @media ${BREAKPOINTS.laptop}  {
+    margin-left: 0;
+    margin-top: 28px;
+    padding:0;
+  }
+`;
+
+const ButtonNextStep = styled.div`
+  position: absolute;
+  right: 0;
+  bottom:0;
+  background: ${COLORS.gradient1};
+  width: 207px;
+  height: 64px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: ${COLORS.white};
+  @media ${BREAKPOINTS.laptop}  {
+    position: relative;
+  }
+`
+
 
 export {
   AccountSettingContainer,
@@ -157,7 +203,7 @@ export {
   LabelText,
   LegendText,
   InputDetails,
-  LegendBoxFinance,
   AccountSettingHeader,
-  LegendBoxLogo,
+  NextStepBox,
+  ButtonNextStep
 };
