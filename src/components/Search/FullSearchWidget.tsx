@@ -125,10 +125,12 @@ export default function FullSearchWidget() {
               closePopup={(e: boolean) => setSelectDateDropDown(e)}
             />
             <MobileSelectLocationDropDown
-              isShown={true}
+              isShown={selectLeavingPlaces}
+              closePopup={(e: boolean) => setSelectLeavingPlaces(e)}
             />
             <MobileSelectLocationDropDown
               isShown={selectGoingPlaces}
+              closePopup={(e: boolean) => setGoingPlaces(e)}
             />
           </>
           : <></>
