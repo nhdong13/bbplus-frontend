@@ -28,7 +28,7 @@ const SearchContainer = styled(VerticalContainer)`
 
 const FilterGradientButtonContainer = styled(HorizontalContainer)`
   @media ${BREAKPOINTS.mobileLg} {
-    gap: 5px;
+    gap: 10px;
   }
   .filter-gradient-button {
     div {

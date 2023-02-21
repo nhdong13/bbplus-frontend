@@ -19,13 +19,7 @@ import iconDropDownBlue from "./icon-anchor-dropdown-blue.svg";
 import iconTick from "./icon-tick.svg";
 import iconArrowRight from "./icon-arrow-right.svg";
 import iconClose from "./icon-close.svg";
-import iconUserFormInput from "./icon-user-form-input.svg";
-import iconPasswordFormInput from "./icon-password-form-input.svg";
-import iconSuccessSubmitForm from "./icon-success-submit-form.svg";
-import iconCondtionResetPassword from "./icon-condition-reset-password.svg";
-import registrationFormIcon1 from "./registration-form-icon-1.svg";
-import registrationFormIcon2 from "./registration-form-icon-2.svg";
-import registrationFormIcon3 from "./registration-form-icon-3.svg";
+import iconAnchorLinearGradient from "./icon-anchor-linear-gradient.svg";
 import backgroundSignUpSuccess from "./background.svg";
 import iconSelectDown from "./icon-select-down.svg";
 import iconUS from "./icon-us.png";
@@ -52,13 +46,7 @@ const IMAGES = {
   iconTick,
   iconArrowRight,
   iconClose,
-  iconUserFormInput,
-  iconPasswordFormInput,
-  iconSuccessSubmitForm,
-  iconCondtionResetPassword,
-  registrationFormIcon1,
-  registrationFormIcon2,
-  registrationFormIcon3,
+  iconAnchorLinearGradient,
   backgroundSignUpSuccess,
   iconSelectDown,
   iconUS

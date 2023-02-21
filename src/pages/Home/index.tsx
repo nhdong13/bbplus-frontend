@@ -71,7 +71,7 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={hotels}
-                    carouselTitle={"Hot Deals"}
+                    carouselTitle={"Hot deals"}
                   />
                 </CarouselProvider>
               </CarouselWrapper>
