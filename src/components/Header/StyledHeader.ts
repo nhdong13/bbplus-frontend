@@ -51,6 +51,11 @@ const HeaderContainer = styled.div.attrs((props: {
   .header-group-right {
     display: flex;
     align-items: center;
+
+    button {
+      align-items: center;
+      display: flex;
+    }
   }
 
   .header-group {
@@ -62,14 +67,14 @@ const HeaderContainer = styled.div.attrs((props: {
   }
 
   .header-group-left,
-  .header-group-right {
+  .header-group-right button {
     cursor: pointer;
     gap: 9px;
     position: relative;
   }
 
   .alert-icon {
-    background: ${COLORS.red};
+    background: ${COLORS.tartOrange};
     border: none;
     border-radius: 50px;
     height: 18px;
@@ -97,7 +102,7 @@ const HeaderContainer = styled.div.attrs((props: {
     }
   }
 
-  .header-group-right > div > img {
+  .header-group-right > button > div > img {
     transform: ${({ dropdown }) => dropdown ? "rotate(180deg)" : "rotate(0)"};
     transition: all 0.5s ease-in-out;
   }
@@ -117,6 +122,31 @@ const HeaderContainer = styled.div.attrs((props: {
   }
 
   .header-group-left {
+    button {
+      position: relative;
+
+      &::before {
+        content: attr(data-count);
+        position: absolute;
+        top: -0.75em;
+        right: -0.75em;
+        z-index: 2;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: ${COLORS.tartOrange};
+        color: ${COLORS.white};
+        font-size: 12px;
+
+        @media ${BREAKPOINTS.mobileLg} {
+          height: 14px;
+          width: 15px;
+        }
+      }
+    }
     .letter-icon {
       @media ${BREAKPOINTS.mobileLg} {
         height: 16px;

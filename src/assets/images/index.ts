@@ -15,6 +15,11 @@ import iconArrowBackBlue from "./icon-arrow-back-blue.svg";
 import iconChartBlue from "./icon-chart-blue.svg";
 import iconQuestionMarkBlue from "./icon-question-mark-blue.svg";
 import iconStar from "./icon-star.svg";
+import iconDropDownBlue from "./icon-anchor-dropdown-blue.svg";
+import iconTick from "./icon-tick.svg";
+import iconArrowRight from "./icon-arrow-right.svg";
+import iconClose from "./icon-close.svg";
+import iconAnchorLinearGradient from "./icon-anchor-linear-gradient.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -34,6 +39,11 @@ const IMAGES = {
   iconChartBlue,
   iconQuestionMarkBlue,
   iconStar,
+  iconDropDownBlue,
+  iconTick,
+  iconArrowRight,
+  iconClose,
+  iconAnchorLinearGradient,
 }
 
 export default IMAGES;

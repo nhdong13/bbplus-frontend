@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   ButtonBack,
@@ -14,11 +14,14 @@ import Card from "../Card";
 import IMAGES from "@/assets/images";
 import { StyledCarouselTitle } from "@/pages/Home/styles";
 import { CarouselSlider } from "@/utils/types/Carousel";
+import { COLORS } from "@/utils/colors";
 
 
 const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }: CarouselSlider) => {
   const screenWidth = useWindowSize();
   const carouselContext = useContext(CarouselContext);
+  const [arrowRightBtnColor, setArrowRightBtnColor] = useState<boolean>(false);
+  const [arrowLeftBtnColor, setArrowLeftBtnColor] = useState<boolean>(false);
 
   useEffect(() => {
     const updateCarouselSlide = (slideToBeVisible: number) => {
@@ -40,9 +43,16 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
 
     if (screenWidth < 500) {
       updateCarouselSlide(1);
+    } else if (screenWidth > 1920) {
+      updateCarouselSlide(3.5);
     }
-    else updateCarouselSlide(3.5);
+    else updateCarouselSlide(4);
   }, [screenWidth, setSlideCount, setCurrentSlide, carouselContext]);
+
+  const handleHoverArrowBtn = (rightSide: boolean) => {
+    if (rightSide) setArrowRightBtnColor(!arrowRightBtnColor)
+    if (!rightSide) setArrowLeftBtnColor(!arrowLeftBtnColor)
+  }
 
   return (
     <Wrapper>
@@ -51,11 +61,17 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
           {carouselTitle}
         </span>
         <div className="controls">
-          <ButtonBack className="btn-arrow reverse-arrow">
-            <img src={IMAGES.iconAnchorGrey} alt="arrow" />
-          </ButtonBack>
-          <ButtonNext className="btn-arrow">
-            <img src={IMAGES.iconAnchorGrey} alt="arrow" />
+          <ButtonNext className="btn-arrow reverse-arrow"
+            onMouseEnter={() => handleHoverArrowBtn(false)}
+            onMouseLeave={() => handleHoverArrowBtn(false)}
+          >
+            <img src={arrowLeftBtnColor ? IMAGES.iconAnchorLinearGradient : IMAGES.iconAnchorGrey} alt="arrow" />
+          </ButtonNext>
+          <ButtonNext className="btn-arrow"
+            onMouseEnter={() => handleHoverArrowBtn(true)}
+            onMouseLeave={() => handleHoverArrowBtn(true)}
+          >
+            <img src={arrowRightBtnColor ? IMAGES.iconAnchorLinearGradient : IMAGES.iconAnchorGrey} alt="arrow" />
           </ButtonNext>
         </div>
       </StyledCarouselTitle>
@@ -82,14 +98,25 @@ const Wrapper = styled.div`
 
     .btn-arrow {
       align-items: center;
-      border-radius: 9.64px;
+      border-radius: 10px;
       background: transparent;
       border: 1px solid #898989;
+      border-image-slice: 1;
       cursor: pointer;
       display: flex;
       justify-content: center;
-      height: 65.62px;
-      width: 65.78px;
+      height: 58px;
+      width: 58px;
+
+      &:hover {
+        border: double 1px transparent;
+        border-radius: 10px;
+        background-image: linear-gradient(white, white), ${COLORS.gradient1};
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        transition: all .5s ease-in-out;
+      }
+      
     }
 
     .reverse-arrow {

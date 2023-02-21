@@ -54,7 +54,7 @@ export default function Card({ data, index }: CardData) {
 
             }
           </HorizontalContainer>
-          {discountPercentage &&
+          {(discountPercentage || extraInfo) &&
             <PriceContainer>
               <div className="outer-trapezoid">
                 <div className="inner-trapezoid">
@@ -81,7 +81,7 @@ export default function Card({ data, index }: CardData) {
           {extraInfo && extraInfo.map((item, index) => {
             return (
               <div className="extra-info" key={index}>
-                <img src={IMAGES.pIcon} />
+                <img src={IMAGES.iconTick} width="30px" height="30px" />
                 <span>{item}</span>
               </div>
             )

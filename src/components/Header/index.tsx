@@ -61,7 +61,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
           <img src={IMAGES.bbplusLogoWhite} alt="bb-plus-logo" width="260px" height="auto" className="logo" />
           <div className="header-group">
             <div className="header-group-left">
-              <div onClick={(e) => handleNotificationDropDown(e)}>
+              <button onClick={(e) => handleNotificationDropDown(e)} data-count="2">
                 <div style={{ position: "relative" }}>
                   <div style={{ position: "relative" }}>
                     <img
@@ -72,15 +72,8 @@ export default function Header({ hasDivider }: HeaderInterface) {
                       height="22px"
                     />
                   </div>
-                  <div className="alert-icon">
-                    <Typography
-                      color={COLORS.white}
-                      fontSize="12px"
-                      lineHeight="18px"
-                    >2</Typography>
-                  </div>
                 </div>
-              </div>
+              </button>
               <H4
                 color={COLORS.white}
                 fontWeight="400"
@@ -90,14 +83,21 @@ export default function Header({ hasDivider }: HeaderInterface) {
               </H4>
             </div>
             <div className="header-group-right" >
-              <img className="user-icon" src={IMAGES.defaultUser} alt="user" width="31px" height="31px" onClick={(e) => handleDropdown(e)} />
-              <div
-                style={{ height: "50px", display: "flex", alignItems: "center" }}
-                onClick={(e) => handleDropdown(e)}>
-                <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" className="icon-dropdown" />
-              </div>
-              <NotificationDropDown innerRef={notificationRef} notificationDropDown={notificationVisible} />
-              <UserMenuDropDown innerRef={userMenuRef} dropdown={userMenuVisible} />
+              <button onClick={(e) => handleDropdown(e)}>
+                <img
+                  className="user-icon"
+                  src={IMAGES.defaultUser}
+                  alt="user" width="31px"
+                  height="31px"
+                />
+                <div
+                  style={{ height: "50px", display: "flex", alignItems: "center" }}
+                  onClick={(e) => handleDropdown(e)}>
+                  <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" className="icon-dropdown" />
+                </div>
+                <NotificationDropDown innerRef={notificationRef} notificationDropDown={notificationVisible} />
+                <UserMenuDropDown innerRef={userMenuRef} dropdown={userMenuVisible} />
+              </button>
             </div>
           </div>
         </HorizontalContainer>
@@ -105,7 +105,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
       </HeaderContainer>
       {hasDivider &&
         <DividerContainer>
-          <Divider color={COLORS.gradient1} height="2px" width="1440px" />
+          <Divider color={COLORS.gradient1} height="2px" width="100%" maxWidth="1440px" />
         </DividerContainer>
       }
     </>

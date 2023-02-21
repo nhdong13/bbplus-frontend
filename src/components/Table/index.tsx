@@ -34,11 +34,23 @@ const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: COLORS.white,
     color: COLORS.oxfordBlue,
+    fontFamily: FONTS.manrope,
+    fontSize: 16,
     textAlign: "center",
 
+    "@media only screen and (max-width: 768px)": {
+      fontSize: 14,
+      lineHeight: "20px",
+    },
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: FONTS.manrope,
+
+    "@media only screen and (max-width: 768px)": {
+      fontSize: "12px",
+      lineHeight: "17px",
+    },
   },
 }));
 
@@ -65,8 +77,13 @@ const StyledTableRow = styled(TableRow)(() => ({
       borderRadius: '7px',
       display: 'flex',
       justifyContent: 'center',
-      height: "41.44px",
+      height: "44px",
       width: '100.44px',
+
+      "@media only screen and (max-width: 768px)": {
+        height: "30px",
+        width: '60px',
+      },
     }
   },
   '& > .table-data': {
@@ -106,13 +123,18 @@ const StyledTableRow = styled(TableRow)(() => ({
     span: {
       fontFamily: FONTS.manrope,
       fontWeight: 500,
-      fontSize: "18px",
+      fontSize: "16px",
       lineHeight: "22px",
-      textTransform: 'uppercase',
+      textTransform: 'capitalize',
 
       "@media only screen and (max-width: 1024px)": {
         fontSize: "14px",
         lineHeight: "20px",
+      },
+
+      "@media only screen and (max-width: 768px)": {
+        fontSize: "12px",
+        lineHeight: "17px",
       },
 
       '&.paid': {
@@ -130,7 +152,7 @@ const StyledTableRow = styled(TableRow)(() => ({
 
 export default function BookingTable() {
   return (
-    <StyledTableContainer component={Paper}>
+    <StyledTableContainer component={Paper} className="booking-table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>

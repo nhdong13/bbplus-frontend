@@ -31,13 +31,13 @@ const FooterContainer = styled(HorizontalContainer)`
   }
 
   .divider {
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       display: none;
     }
   }
 
   .footer-logo-container {
-    @media ${BREAKPOINTS.mobileLg} {
+    @media ${BREAKPOINTS.laptop} {
       display: none;
     }
   }
@@ -57,11 +57,23 @@ const Copyright = styled.div`
   }
 
   @media ${BREAKPOINTS.mobileLg} {
-    padding: 3px 0;
+    padding: 10px 0;
+  }
+
+  span {
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 17px;
+    }
   }
 `
 
 const StyledRightFooter = styled(VerticalContainer)`
+  @media ${BREAKPOINTS.laptop} {
+    gap: 10px;
+  }
+
   @media ${BREAKPOINTS.tablet} {
     width: 100%;
   }
@@ -69,8 +81,13 @@ const StyledRightFooter = styled(VerticalContainer)`
   .footer-company-name {
     justify-content: left;
 
-    @media ${BREAKPOINTS.tablet} {
+    @media ${BREAKPOINTS.laptop} {
       justify-content: center;
+    }
+
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 12px!important;
+      line-height: 17px!important;
     }
   }
 
@@ -82,7 +99,13 @@ const StyledRightFooter = styled(VerticalContainer)`
 
     @media ${BREAKPOINTS.mobileLg} {
       justify-content: space-between;
-      padding: 10px 20px 0;
+      padding: 10px 10px 0;
+    }
+
+    & > div {
+      @media ${BREAKPOINTS.tablet} {
+        width: 200px;
+      }
     }
   }
 `
@@ -94,24 +117,24 @@ export default function Footer() {
         <StyledFooter>
           <FooterContainer
             alignItems="center"
-            padding="12px"
+            padding="36px 0"
           >
             <div className="footer-logo-container">
               <img src={IMAGES.bbplusLogoWhite} alt="bbplusLogoWhite" width="260px" height="auto" />
             </div>
-            <Divider color={COLORS.white} height="100%" width="0.2px" margin="0 27px 0 38px" />
+            <Divider color={COLORS.white} height="170px" width="1px" margin="0 78px 0 82px" />
             <StyledRightFooter>
               <HorizontalContainer className="footer-company-name">
-                <FooterText fontSize="13px" lineHeight="32px" fontWeight="400">GlobalBedbank Group</FooterText>
+                <FooterText fontSize="27px" lineHeight="32px" fontWeight="400">GlobalBedbank Group</FooterText>
               </HorizontalContainer>
 
               <HorizontalContainer className="footer-company-info" gap="60px">
-                <VerticalContainer width="100px">
+                <VerticalContainer width="140px">
                   <FooterText>HLB Building</FooterText>
                   <FooterText>Nadi, Fiji</FooterText>
                 </VerticalContainer>
 
-                <VerticalContainer>
+                <VerticalContainer width="300px">
                   <FooterText>Tel : (679) 6724244</FooterText>
                   <FooterText>Email : info@pacificbedbank.com</FooterText>
                 </VerticalContainer>
@@ -121,7 +144,7 @@ export default function Footer() {
         </StyledFooter>
         <HorizontalContainer>
           <Copyright>
-            <Typography color={COLORS.white} fontSize="11px" fontFamily={FONTS.montserrat} lineHeight="31px">
+            <Typography color={COLORS.white} fontSize="16px" fontFamily={FONTS.montserrat} lineHeight="65px">
               Copyright c GlobalBedbank Group. All rights reserved
             </Typography>
           </Copyright>

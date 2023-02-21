@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <StyledHomeBody>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -71,14 +71,14 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={hotels}
-                    carouselTitle={"Hot Deals"}
+                    carouselTitle={"Hot deals"}
                   />
                 </CarouselProvider>
               </CarouselWrapper>
             </HorizontalContainer>
           </div>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -100,7 +100,7 @@ export default function Home() {
             </HorizontalContainer>
           </div>
           <div className="booking-section-container">
-            <HorizontalContainer justifyContent="center">
+            <HorizontalContainer justifyContent="center" className="booking-carousel">
               <CarouselWrapper className="carousel-container">
                 <CarouselProvider
                   visibleSlides={slideCount}
@@ -123,7 +123,13 @@ export default function Home() {
           </div>
 
           <div className="booking-section-container">
-            <HorizontalContainer alignItems="center" justifyContent="space-between" maxWidth="1440px" margin="0 auto 27px">
+            <HorizontalContainer
+              alignItems="center"
+              justifyContent="space-between!important"
+              width="auto!important"
+              maxWidth="1440px" padding="0 20px"
+              className="booking-table-container"
+            >
               <StyledCarouselTitle >
                 <span>
                   Recent bookings
@@ -135,7 +141,7 @@ export default function Home() {
                   text="VIEW ALL"
                   isSelected={true}
                   maxWidth="140px"
-                  fontSize="17px"
+                  fontSize="16px"
                   height="42px"
                   textPadding="4px 33px"
                 />
