@@ -48,6 +48,7 @@ const StyledNotificationDropDown = styled.div.attrs((props: {
 
 const Title = styled.div`
   padding: 38px 38px 21px;
+  text-align: left;
   span {
     color: ${COLORS.black};
     font-family: ${FONTS.manrope};
