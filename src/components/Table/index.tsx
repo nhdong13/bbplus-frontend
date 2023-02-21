@@ -35,6 +35,7 @@ const StyledTableCell = styled(TableCell)(() => ({
     backgroundColor: COLORS.white,
     color: COLORS.oxfordBlue,
     fontFamily: FONTS.manrope,
+    fontSize: 16,
     textAlign: "center",
 
     "@media only screen and (max-width: 768px)": {

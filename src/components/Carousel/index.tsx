@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   ButtonBack,
@@ -20,6 +20,8 @@ import { COLORS } from "@/utils/colors";
 const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }: CarouselSlider) => {
   const screenWidth = useWindowSize();
   const carouselContext = useContext(CarouselContext);
+  const [arrowRightBtnColor, setArrowRightBtnColor] = useState<boolean>(false);
+  const [arrowLeftBtnColor, setArrowLeftBtnColor] = useState<boolean>(false);
 
   useEffect(() => {
     const updateCarouselSlide = (slideToBeVisible: number) => {
@@ -47,6 +49,11 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
     else updateCarouselSlide(4);
   }, [screenWidth, setSlideCount, setCurrentSlide, carouselContext]);
 
+  const handleHoverArrowBtn = (rightSide: boolean) => {
+    if (rightSide) setArrowRightBtnColor(!arrowRightBtnColor)
+    if (!rightSide) setArrowLeftBtnColor(!arrowLeftBtnColor)
+  }
+
   return (
     <Wrapper>
       <StyledCarouselTitle justifyContent="space-between">
@@ -54,11 +61,17 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
           {carouselTitle}
         </span>
         <div className="controls">
-          <ButtonBack className="btn-arrow reverse-arrow">
-            <img src={IMAGES.iconAnchorGrey} alt="arrow" />
-          </ButtonBack>
-          <ButtonNext className="btn-arrow">
-            <img src={IMAGES.iconAnchorGrey} alt="arrow" />
+          <ButtonNext className="btn-arrow reverse-arrow"
+            onMouseEnter={() => handleHoverArrowBtn(false)}
+            onMouseLeave={() => handleHoverArrowBtn(false)}
+          >
+            <img src={arrowLeftBtnColor ? IMAGES.iconAnchorLinearGradient : IMAGES.iconAnchorGrey} alt="arrow" />
+          </ButtonNext>
+          <ButtonNext className="btn-arrow"
+            onMouseEnter={() => handleHoverArrowBtn(true)}
+            onMouseLeave={() => handleHoverArrowBtn(true)}
+          >
+            <img src={arrowRightBtnColor ? IMAGES.iconAnchorLinearGradient : IMAGES.iconAnchorGrey} alt="arrow" />
           </ButtonNext>
         </div>
       </StyledCarouselTitle>
