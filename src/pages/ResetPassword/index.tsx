@@ -54,7 +54,7 @@ export default function ResetPassword() {
               </H2>
               <div className="sub-header">
                 <p>
-                  <a href="#">Please create your account password below.</a>
+                  <a>Please create your account password below.</a>
                 </p>
               </div>
               <div className="body">

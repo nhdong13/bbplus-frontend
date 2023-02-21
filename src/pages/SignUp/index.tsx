@@ -80,32 +80,6 @@ export default function SignUp() {
                 </div>
               </div>
               <div className="right-side-column">
-                {/* <div className="step-bullet-column">
-                <div className="step-bullet">1</div>
-                <svg width="64" height="292">
-                  <line
-                    x1={wd <= 430 ? "25" : "31"}
-                    y1="0"
-                    x2={wd <= 430 ? "25" : "31"}
-                    y2="295"
-                    stroke={COLORS.blueRibbon}
-                    strokeWidth="2"
-                  />
-                </svg>
-  
-                <div className="step-bullet">2</div>
-                <svg width="64" height="197">
-                  <line
-                    x1={wd <= 430 ? "25" : "31"}
-                    y1="0"
-                    x2={wd <= 430 ? "25" : "31"}
-                    y2="200"
-                    stroke={COLORS.blueRibbon}
-                    strokeWidth="2"
-                  />
-                </svg>
-                <div className="step-bullet">3</div>
-              </div> */}
                 <div className="form-container">
                   <div className="step-1">
                     <div className="sub-header">
@@ -247,7 +221,7 @@ export default function SignUp() {
                   <div className="form-confirmation">
                     <div className="center-div">
                       <input type="checkbox" />
-                      I agree to the <a href="#">Terns and Conditions</a>
+                      I agree to the <a >Terns and Conditions</a>
                     </div>
                     <div className="checked-robot">
                       <div className="center-div form-check">

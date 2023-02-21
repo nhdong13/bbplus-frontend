@@ -179,7 +179,8 @@ const SignUpFormContainer = styled.div`
   a {
     color: ${COLORS.linkBlue};
     padding-left: 5px;
-    /* text-decoration: none; */
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   @media ${BREAKPOINTS.mobileLg} {

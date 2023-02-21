@@ -15,7 +15,6 @@ export default function Login() {
   const navigate = useNavigate();
 
   const wd = useWindowSize();
-  console.log(wd);
 
   return (
     <>
@@ -28,7 +27,7 @@ export default function Login() {
             <p>
               Do you need an account?{" "}
               <span>
-                <a href="/sign-up">Register now</a>
+                <a onClick={() => navigate("/sign-up")}>Register now</a>
               </span>
             </p>
             <p>Log in to your account using username & password</p>
@@ -61,7 +60,7 @@ export default function Login() {
                 )}
                 <span>Remember Me</span>
               </div>
-              <a href="/forgot-password">Forgot Password?</a>
+              <a onClick={() => navigate("/forgot-password")}>Forgot Password?</a>
             </div>
           </div>
           <div className="footer">
@@ -78,7 +77,7 @@ export default function Login() {
             />
             <p>
               By clicking "Login" you confirm that you accept the{" "}
-              <a href="#">Terms of Service</a>
+              <a>Terms of Service</a>
             </p>
           </div>
         </AuthenticationFormContainer>

@@ -7,6 +7,7 @@ import { AuthenticationFormContainer } from "../Login/styles";
 import useForgotPassword from "./hooks";
 import React from "react";
 import IMAGES from "@/assets/images";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
   const {
@@ -15,6 +16,8 @@ export default function ForgotPassword() {
     handleResetPassword,
     requestSent,
   } = useForgotPassword();
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -35,7 +38,7 @@ export default function ForgotPassword() {
               <div className="footer">
                 <p className="retry-forgot-password">
                   Did not receive that email? Check your spam folder, or{" "}
-                  <a href="/forgot-password">try another email address</a>
+                  <a onClick={() => navigate("/forgot-password")}>try another email address</a>
                 </p>
               </div>
             </React.Fragment>

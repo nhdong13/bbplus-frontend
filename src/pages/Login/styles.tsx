@@ -31,6 +31,7 @@ const AuthenticationFormContainer = styled.div.attrs(
  
   a {
     color: ${COLORS.linkBlue};
+    cursor: pointer;
     text-decoration: none;
   }
 
