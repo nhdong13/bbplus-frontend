@@ -27,6 +27,7 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
   .dropdown-header {
     width: 100%;
     max-width: 430px;
+    margin: auto;
   }
 
   .dropdown-header__container {
@@ -48,19 +49,21 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
     flex-direction: column;
     margin: 15px 10px 0;
 
-    .dropdown-search__container  input {
-      border: 1px solid ${COLORS.blackPearl};
-      border-radius: 5px;
-      min-height: 50px;
-      max-width: 410px;
-      width: 100%;
-      padding: 0 30px;
-
-      &::placeholder {
+    .dropdown-search__container  {
+      margin: 0 10px;
+      input {
+        border: 1px solid ${COLORS.blackPearl};
+        border-radius: 5px;
         font-size: 18px;
         font-weight: 700;
         line-height: 25px;
-        padding: 10px 30px;
+        min-height: 50px;
+        padding: 0 30px;
+        width: -webkit-fill-available;
+
+        &::placeholder {
+          padding: 10px 0;
+        }
       }
     }
 
@@ -69,6 +72,7 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
     }
 
     .popular-places__list {
+      cursor: pointer;
       height: 100%;
       max-height: 300px;
 

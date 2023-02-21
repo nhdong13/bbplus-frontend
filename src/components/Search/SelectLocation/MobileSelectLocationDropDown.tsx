@@ -12,9 +12,9 @@ interface MobileSelectLocationDropDown {
 
 export default function MobileSelectLocationDropDown({ isShown, closePopup }: MobileSelectLocationDropDown) {
   const [popup, setPopup] = useState<boolean>(false);
+  let getBodyElement: any = document.querySelector("body");
 
   const handleClosePopup = () => {
-    const getBodyElement = document.querySelector("body");
     if (getBodyElement) {
       getBodyElement.style.overflow = "scroll";
     }
@@ -22,7 +22,9 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
   };
 
   useEffect(() => {
+    const getBodyElement: any = document.querySelector("body");
     if (isShown) {
+      getBodyElement.style.overflow = "hidden";
       setPopup(isShown);
       closePopup(popup)
     }

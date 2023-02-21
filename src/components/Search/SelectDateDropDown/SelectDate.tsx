@@ -186,6 +186,26 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
               className={COLORS.persianGreen}
             />
           </div>
+          <div className="popup-calendar__result-container">
+            {dates[0] &&
+              <HorizontalContainer gap="15px" alignItems="center" margin="34px 10px 14px" justifyContent="center">
+                <HorizontalContainer gap="20px" className="result-dates">
+                  <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
+                  {dates[1] && <img src={IMAGES.iconArrowRight} />}
+                  <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+                </HorizontalContainer>
+              </HorizontalContainer>
+            }
+            <GradientButton
+              color={COLORS.gradient1}
+              text="Apply"
+              isSelected={true}
+              width="100%"
+              fontSize="12px"
+              height="36px"
+              textPadding="4px 33px"
+            />
+          </div>
         </div>
       </StyledPopupSelectDate>
     </>

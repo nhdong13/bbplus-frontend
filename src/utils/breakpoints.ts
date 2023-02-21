@@ -1,5 +1,5 @@
 export const BREAKPOINTS = {
-  mobileSm: "only screen and (max-width: 375px)",
+  mobileSm: "only screen and (max-width: 390px)",
   mobileLg: "only screen and (max-width: 475px)",
   tablet: "only screen and (max-width: 768px)",
   laptop: "only screen and (max-width: 1024px)",

@@ -17,6 +17,7 @@ import TravelerDropDown from "./TravellerDropDown/TravelerDropDown";
 import SelectDate from "./SelectDateDropDown/SelectDate";
 import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
+import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -78,7 +79,7 @@ export default function FullSearchWidget() {
             }
             <FromContainer className="arrive-days">
               <HorizontalContainer gap="55px">
-                <div>
+                <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">Arrival date</H5>
                   <H5 lineHeight="10px" color={COLORS.outerSpace}>{getArriveDate ? getArriveDate : "Day|Date|Month"}</H5>
                 </div>
@@ -114,7 +115,7 @@ export default function FullSearchWidget() {
               totalDates={(e: number) => setTotalDates(e)}
               closePopup={(e: boolean) => setSelectDateDropDown(e)}
             /> : <></>}
-          <TravelerDropDown isShown={travelerDropDown} />
+          {!isMobile ? <TravelerDropDown isShown={travelerDropDown} /> : <></>}
         </SelectBookingDateTime>
         {isMobile ?
           <>

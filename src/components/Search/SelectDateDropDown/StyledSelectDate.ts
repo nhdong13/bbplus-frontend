@@ -210,7 +210,7 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     .rmdp-day-picker  {
       flex-direction: column;
-      height: calc(100vh - 200px);
+      height: calc(100vh - 250px);
       padding: 0 10px;
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -264,6 +264,30 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     .rmdp-day span {
       color: ${COLORS.eerieBlack}
+    }
+  }
+
+  .popup-calendar__result-container {
+    height: 250px;
+    position: relative;
+
+    & > div {
+      position: absolute;
+      top: 60px;
+    }
+
+    div {
+      border-radius: 5px!important;
+    }
+
+    .result-dates {
+      color: ${COLORS.black};
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 
