@@ -17,6 +17,7 @@ import TravelerDropDown from "./TravellerDropDown/TravelerDropDown";
 import SelectDate from "./SelectDateDropDown/SelectDate";
 import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
+import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -114,8 +115,12 @@ export default function FullSearchWidget() {
                 </div>
               </HorizontalContainer>
             </FromContainer>
-            <FromContainer className="travellers" style={{ border: "none" }}>
-              <div onClick={showTravelerDropDown}>
+            <FromContainer
+              className="travellers"
+              style={{ border: "none" }}
+              onClick={showTravelerDropDown}
+            >
+              <div >
                 <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
               </div>
@@ -156,6 +161,10 @@ export default function FullSearchWidget() {
             />
             <MobileSelectLocationDropDown
               isShown={selectGoingPlaces}
+              closePopup={(e: boolean) => setGoingPlaces(e)}
+            />
+            <TravelerDropDown
+              isShown={travelerDropDown}
               closePopup={(e: boolean) => setGoingPlaces(e)}
             />
           </>

@@ -81,7 +81,7 @@ const useFullSearchWidget = () => {
   }
 
   useEffect(() => {
-    if (screenWidth < 768) {
+    if (screenWidth < 1024) {
       setIsMobile(true);
     } else setIsMobile(false);
   }, [screenWidth, isMobile])
