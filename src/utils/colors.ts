@@ -39,7 +39,10 @@ export const COLORS: StyledColors = {
   red: "#FF0000",
   rustyNail: "#7F5108",
   white: "#ffffff",
-  periwinkleapprox: "#c1cbff",
+  darkGreen: "#003630",
+  linkBlue: "#086FFF",
+  whiteFligt: "#F2F2F2",
+  parkinglotGray: "#CECFD1",
 }
 interface StyledColors {
   anakiwa: string,
@@ -82,5 +85,8 @@ interface StyledColors {
   red: string,
   rustyNail: string,
   white: string,
-  periwinkleapprox: string,
+  darkGreen: string,
+  linkBlue: string,
+  whiteFligt: string,
+  parkinglotGray: string,
 }

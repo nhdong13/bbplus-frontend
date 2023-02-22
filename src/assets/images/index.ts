@@ -20,6 +20,17 @@ import iconTick from "./icon-tick.svg";
 import iconArrowRight from "./icon-arrow-right.svg";
 import iconClose from "./icon-close.svg";
 import iconAnchorLinearGradient from "./icon-anchor-linear-gradient.svg";
+import backgroundSignUpSuccess from "./background.svg";
+import iconSelectDown from "./icon-select-down.svg";
+import iconUS from "./icon-us.png";
+import iconCondtionResetPassword from "./icon-condition-reset-password.svg";
+import iconUserFormInput from "./icon-user-form-input.svg";
+import iconPasswordFormInput from "./icon-password-form-input.svg";
+import iconSuccessSubmitForm from "./icon-success-submit-form.svg";
+import registrationFormIcon1 from "./registration-form-icon-1.svg";
+import registrationFormIcon2 from "./registration-form-icon-2.svg";
+import registrationFormIcon3 from "./registration-form-icon-3.svg";
+import iconRecaptcha from "./icon-recaptcha.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -44,6 +55,17 @@ const IMAGES = {
   iconArrowRight,
   iconClose,
   iconAnchorLinearGradient,
+  backgroundSignUpSuccess,
+  iconSelectDown,
+  iconUS,
+  iconCondtionResetPassword,
+  iconUserFormInput,
+  iconPasswordFormInput,
+  iconSuccessSubmitForm,
+  registrationFormIcon1,
+  registrationFormIcon2,
+  registrationFormIcon3,
+  iconRecaptcha
 }
 
 export default IMAGES;
