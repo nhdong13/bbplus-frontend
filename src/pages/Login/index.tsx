@@ -7,6 +7,7 @@ import { COLORS } from "@/utils/colors";
 import {
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
+  AuthenticationLogoMobile,
 } from "./styles";
 import Switch from "react-switch";
 import useLogin from "./hooks";
@@ -23,6 +24,7 @@ export default function Login() {
     <>
       <MainLayout>
         <AuthenticationFormContainer>
+          {wd <= 430 ? <AuthenticationLogoMobile /> : null}
           <AuthenticationFormWrapper>
             <H2 className="header" lineHeight="32px">
               Welcome
@@ -75,7 +77,6 @@ export default function Login() {
                 text="LOGIN"
                 isSelected={true}
                 maxWidth="100%"
-                fontSize="17px"
                 height="65px"
                 textPadding="4px 33px"
                 handleSubmit={() => navigate("/")}

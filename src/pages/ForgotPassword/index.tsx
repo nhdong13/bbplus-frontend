@@ -6,11 +6,13 @@ import { COLORS } from "@/utils/colors";
 import {
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
+  AuthenticationLogoMobile,
 } from "../Login/styles";
 import useForgotPassword from "./hooks";
 import React from "react";
 import IMAGES from "@/assets/images";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "@/utils/windowResize";
 
 export default function ForgotPassword() {
   const {
@@ -21,16 +23,18 @@ export default function ForgotPassword() {
   } = useForgotPassword();
 
   const navigate = useNavigate();
+  const wd = useWindowSize();
 
   return (
     <>
       <MainLayout>
         <AuthenticationFormContainer>
+          {wd <= 430 ? <AuthenticationLogoMobile /> : null}
           <AuthenticationFormWrapper centralizeItems={requestSent}>
             {requestSent ? (
               <React.Fragment>
                 <H2 className="header">Check your email</H2>
-                <div className="body">
+                <div className="body b-your-email">
                   <img
                     src={IMAGES.iconSuccessSubmitForm}
                     className="form-sent-success-icn"
@@ -57,7 +61,7 @@ export default function ForgotPassword() {
                     restoring the password?
                   </p>
                 </div>
-                <div className="body">
+                <div className="body b-reset">
                   <FormInput
                     label="Email address"
                     isImportant={true}
@@ -72,7 +76,6 @@ export default function ForgotPassword() {
                     text="RESET PASSWORD"
                     isSelected={true}
                     maxWidth="100%"
-                    fontSize="17px"
                     height="65px"
                     textPadding="4px 33px"
                     handleSubmit={() => handleResetPassword()}

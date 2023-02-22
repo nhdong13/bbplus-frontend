@@ -1,6 +1,7 @@
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
+import IMAGES from "@/assets/images";
 import styled from "styled-components";
 
 const AuthenticationFormContainer = styled.div.attrs(
@@ -19,6 +20,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
   @media ${BREAKPOINTS.mobileLg} {
     margin: 0 auto;
+    display: block;
   }
   a {
     color: ${COLORS.linkBlue};
@@ -41,7 +43,10 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .body {
-    margin-bottom: 30px;
+    margin-bottom: 23px;
+    @media ${BREAKPOINTS.mobileLg} {
+      margin-bottom: 10px !important;
+    }
     img.form-sent-success-icn {
       margin-top: 38.9px;
     }
@@ -62,6 +67,15 @@ const AuthenticationFormContainer = styled.div.attrs(
       }
     }
   }
+  .b-reset {
+    margin-bottom: 186px;
+  }
+  .b-updated {
+    margin-bottom: 81px;
+  }
+  .b-your-email {
+    margin-bottom: 141px;
+  }
 
   .footer {
     p {
@@ -75,12 +89,16 @@ const AuthenticationFormContainer = styled.div.attrs(
 
     .password-conditions {
       margin-top: 17.4px;
-
+      font-family: ${FONTS.manrope};
       p {
         margin-top: 8px;
         padding-left: 36px;
         font-size: 16px;
         display: flex;
+        align-items: center;
+        &:first-child {
+          padding-left: 0;
+        }
         img {
           width: 33px;
           height: 31.5px;
@@ -117,7 +135,7 @@ const AuthenticationFormWrapper = styled.div.attrs(
     width: auto;
     height: auto;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 15px 20px;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
     box-shadow: none;
@@ -223,4 +241,14 @@ const AuthenticationFormWrapper = styled.div.attrs(
   }
 `;
 
-export { AuthenticationFormContainer, AuthenticationFormWrapper };
+const AuthenticationLogoMobile = styled.div`
+  background-image: url(${IMAGES.logoMobile});
+  height: 40px;
+  margin-top: 30px;
+`;
+
+export {
+  AuthenticationFormContainer,
+  AuthenticationFormWrapper,
+  AuthenticationLogoMobile,
+};

@@ -9,8 +9,10 @@ import { useNavigate } from "react-router-dom";
 import {
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
+  AuthenticationLogoMobile,
 } from "../Login/styles";
 import useResetPassword from "./hooks";
+import useWindowSize from "@/utils/windowResize";
 
 export default function ResetPassword() {
   const {
@@ -20,15 +22,18 @@ export default function ResetPassword() {
     requestSent,
   } = useResetPassword();
   const navigate = useNavigate();
+  const wd = useWindowSize();
+
   return (
     <>
       <MainLayout>
         <AuthenticationFormContainer>
+          {wd <= 430 ? <AuthenticationLogoMobile /> : null}
           <AuthenticationFormWrapper centralizeItems={requestSent}>
             {requestSent ? (
               <React.Fragment>
                 <H2 className="header">Password Updated</H2>
-                <div className="body">
+                <div className="body b-updated">
                   <img
                     src={IMAGES.iconSuccessSubmitForm}
                     className="form-sent-success-icn"
@@ -43,7 +48,6 @@ export default function ResetPassword() {
                     text="LOGIN"
                     isSelected={true}
                     maxWidth="100%"
-                    fontSize="17px"
                     height="65px"
                     textPadding="4px 33px"
                     handleSubmit={() => navigate("/login")}
@@ -83,20 +87,19 @@ export default function ResetPassword() {
                     text="SUBMIT"
                     isSelected={true}
                     maxWidth="100%"
-                    fontSize="17px"
                     height="65px"
                     textPadding="4px 33px"
                     handleSubmit={() => handleSubmitPassword()}
                   />
-                  <p>Password must contain the following:</p>
                   <div className="password-conditions">
+                    <p>Password must contain the following:</p>
                     <p>
                       <img src={IMAGES.iconCondtionResetPassword} />A lowercase
-                      character
+                      letter
                     </p>
                     <p>
                       <img src={IMAGES.iconCondtionResetPassword} />A uppercase
-                      character
+                      letter
                     </p>
                     <p>
                       <img src={IMAGES.iconCondtionResetPassword} />A number
