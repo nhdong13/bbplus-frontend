@@ -6,5 +6,4 @@ function App() {
     <RouterApp />
   );
 }
-
 export default App;
