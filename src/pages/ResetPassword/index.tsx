@@ -23,8 +23,8 @@ export default function ResetPassword() {
   return (
     <>
       <MainLayout>
-        <AuthenticationFormContainer centralizeItems={requestSent}>
-          <AuthenticationFormWrapper>
+        <AuthenticationFormContainer>
+          <AuthenticationFormWrapper centralizeItems={requestSent}>
             {requestSent ? (
               <React.Fragment>
                 <H2 className="header">Password Updated</H2>

@@ -25,8 +25,8 @@ export default function ForgotPassword() {
   return (
     <>
       <MainLayout>
-        <AuthenticationFormContainer centralizeItems={requestSent}>
-          <AuthenticationFormWrapper>
+        <AuthenticationFormContainer>
+          <AuthenticationFormWrapper centralizeItems={requestSent}>
             {requestSent ? (
               <React.Fragment>
                 <H2 className="header">Check your email</H2>
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
                 <div className="footer">
                   <p className="retry-forgot-password">
                     Did not receive that email? Check your spam folder, or{" "}
-                    <a onClick={() => navigate("/forgot-password")}>
+                    <a onClick={() => handleResetPassword()}>
                       try another email address
                     </a>
                   </p>

@@ -6,13 +6,7 @@ const useForgotPassword = () => {
   const [requestSent, setRequestSent] = useState<boolean>(false);
 
   const handleResetPassword = () => {
-    setEmailAddress(emailAddress.toLowerCase());
-    if (validateEmail(emailAddress)) {
-      setEmailAddressValid(true);
-      setRequestSent(true);
-    } else {
-      setEmailAddressValid(false);
-    }
+    setRequestSent(!requestSent)
   };
 
   const validateEmail = (email: string) => {
