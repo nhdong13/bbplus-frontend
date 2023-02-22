@@ -6,29 +6,20 @@ import styled from "styled-components";
 const AuthenticationFormContainer = styled.div.attrs(
   (props: { centralizeItems?: boolean }) => props
 )`
-  background: ${COLORS.white};
-  width: 586.2px;
-  height: 528.2px;
-  margin: 183.3px 286.7px 419.3px 900.3px;
-  box-shadow: 0 0 11.5px rgba(0, 0, 0, 0.25);
-  padding: 73.4px;
+  margin-top: 183.3px;
+  margin-bottom: 419.3px;
   display: flex;
-  -webkit-box-orient: vertical !important;
-  -webkit-box-direction: normal !important;
-  -ms-flex-direction: column !important;
-  flex-direction: column !important;
-  text-align: ${(props) => (props.centralizeItems ? "center" : "")};
- 
-  @media ${BREAKPOINTS.desktopLg} {
-    margin-left:800.3px;
-  }
-  @media ${BREAKPOINTS.desktopSm} {
-    margin-left:687.3px;
-  }
+  justify-content: flex-end;
+  max-width: 1400px;
+  margin: 183.3px auto 419.3px auto;
+
   @media ${BREAKPOINTS.laptop} {
     margin: 40px auto;
+    justify-content: center;
   }
- 
+  @media ${BREAKPOINTS.mobileLg} {
+    margin: 0 auto;
+  }
   a {
     color: ${COLORS.linkBlue};
     cursor: pointer;
@@ -50,8 +41,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .body {
-    height: 100%;
-
+    margin-bottom: 30px;
     img.form-sent-success-icn {
       margin-top: 38.9px;
     }
@@ -61,7 +51,7 @@ const AuthenticationFormContainer = styled.div.attrs(
     }
 
     .remember-me-n-forgot-password-container {
-      margin-top: 30.9px;
+      margin-top: 30px;
       display: flex;
       .remember-me-container {
         margin-right: auto;
@@ -74,8 +64,6 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .footer {
-    margin-top: auto;
-
     p {
       margin-top: 24.6px;
     }
@@ -103,9 +91,27 @@ const AuthenticationFormContainer = styled.div.attrs(
     }
   }
 
-  .footer.lower-footer {
-    transform: translateY(25px);
+  .gradient-button {
+    @media ${BREAKPOINTS.mobileLg} {
+      padding: 10px 30px;
+      height: 20px;
+      margin-top: 10px;
+      span {
+        font-weight: 700;
+        font-size: 12px;
+      }
+    }
   }
+`;
+const AuthenticationFormWrapper = styled.div.attrs(
+  (props: { centralizeItems?: boolean }) => props
+)`
+  background: ${COLORS.white};
+  width: 586.2px;
+  height: 528.2px;
+  box-shadow: 0 0 11.5px rgba(0, 0, 0, 0.25);
+  padding: 73.4px;
+  text-align: ${(props) => (props.centralizeItems ? "center" : "")};
 
   @media ${BREAKPOINTS.mobileLg} {
     width: auto;
@@ -217,4 +223,4 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 `;
 
-export { AuthenticationFormContainer };
+export { AuthenticationFormContainer, AuthenticationFormWrapper };

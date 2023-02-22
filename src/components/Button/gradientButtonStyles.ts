@@ -16,7 +16,7 @@ const StyledButton = styled.div.attrs((props: {
   align-items: center;
   background: ${props => props.color};
   border: none;
-  border-radius: ${props => props.borderRadius || "10px"};
+  border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;
   height: ${props => props.height || "52px"};
@@ -43,18 +43,10 @@ const StyledButton = styled.div.attrs((props: {
     opacity: 0;
     transition: all 2s ease-in-out;
   }
-
   @media ${BREAKPOINTS.mobileLg} {
-    padding: 10px 30px;
-    height: 20px;
-    margin-top: 10px;
-    border-radius: 3px;
-
-    span {
-      font-weight: 700;
-      font-size: 12px;
-    }
+    border-radius: 5px;
   }
+
 `
 
 const Overlay = styled.div.attrs((props: {
@@ -63,7 +55,7 @@ const Overlay = styled.div.attrs((props: {
   showButtonAnimation?: boolean
 }) => props)`
   background: ${({ isSelected }) => isSelected ? 'transparent' : COLORS.cyprus};
-  border-radius: 10px;
+  border-radius: 17px;
   display: flex;
   justify-content: center;
   height: ${props => props.height || "52px"};
