@@ -19,7 +19,7 @@ import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
 import useWindowSize from "@/utils/windowResize";
 
-const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
+const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) => {
   const [showNumberOfAdults, setShowNumberOfAdults] = useState<number>(0);
   const [showNumberOfChildren, setShowNumberOfChildren] = useState<number>(0);
   const [numberOfRoom, setNumberOfRoom] = useState<number>(1);
@@ -84,6 +84,16 @@ const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
     console.log(roomOptions)
   }
 
+  const handleRemoveOption = () => {
+    if (numberOfRoom > 1) {
+      setNumberOfRoom(numberOfRoom - 1)
+      const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
+      localStorage.setItem('roomOptions', JSON.stringify(getLocalStoreRoomOptions.splice(-1)));
+      consolo
+    }
+
+  }
+
   useEffect(() => {
     if (screenWidth < 1024) {
       const getBodyElement: any = document.querySelector("body");
@@ -98,8 +108,8 @@ const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
     <StyledTravelerDropDown ref={innerRef} isShown={isShown} gap="20px">
       <div className="dropdown-header">
         <div className="dropdown-header__container">
-          <H4>Where are you flying from</H4>
-          <button>
+          <H4>Who is going?</H4>
+          <button onClick={() => closePopup(false)}>
             <img src={IMAGES.iconClose} />
           </button>
         </div>
@@ -113,14 +123,14 @@ const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
               adults={(e: number) => setShowNumberOfAdults(e)}
               children={(e: number) => setShowNumberOfChildren(e)}
               numberOfRoom={index}
-              handleRemoveRoom={() => numberOfRoom > 1 ? setNumberOfRoom(numberOfRoom - 1) : false}
+              handleRemoveRoom={handleRemoveOption}
               handleResetRoom={handleResetOption}
             />
           </div>
         )}
       </div>
       <StyledAddAnotherRoom onClick={(e: React.MouseEvent) => handleRoomOptions(e)}>
-        <H4>+ Add another room</H4>
+        {numberOfRoom < 5 ? <H4>+ Add another room</H4> : <></>}
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
@@ -160,7 +170,7 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
   }, [numberOfAdults, numberOfChildren]);
 
   const onChangeValue = (e: React.KeyboardEvent) => {
-    console.log(e?.target?.value)
+    // console.log(e?.target?.value)
   }
 
   return (
@@ -248,7 +258,7 @@ const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOf
     <>
       <StyledQuantityButton>
         <button className="button" onClick={onClickDecreaseNumber}>-</button>
-        <input type="number" />
+        <input type="number" value={numberOfPeople} />
         <button className="button" onClick={onClickIncreaseNumber}>+</button>
       </StyledQuantityButton>
     </>

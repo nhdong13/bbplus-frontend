@@ -42,7 +42,8 @@ export default function FullSearchWidget() {
     leavingDropDownRef,
     goingDropDownRef,
     selectDateDropDownRef,
-    travelerDropDownRef
+    travelerDropDownRef,
+    setTravelerDropDown,
   } = useFullSearchWidget();
 
   return (
@@ -165,7 +166,7 @@ export default function FullSearchWidget() {
             />
             <TravelerDropDown
               isShown={travelerDropDown}
-              closePopup={(e: boolean) => setGoingPlaces(e)}
+              closePopup={(e: boolean) => setTravelerDropDown(e)}
             />
           </>
           : <></>

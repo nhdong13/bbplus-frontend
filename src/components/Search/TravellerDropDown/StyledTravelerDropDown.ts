@@ -96,7 +96,8 @@ const StyledRoomOptions = styled(VerticalContainer)`
     }
 
     @media ${BREAKPOINTS.mobileLg} {
-      max-width: 375px;
+      max-width: 380px;
+      margin: 0;
     }
 
     @media ${BREAKPOINTS.mobileSm} {
