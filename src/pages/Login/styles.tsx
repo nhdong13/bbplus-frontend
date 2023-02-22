@@ -13,6 +13,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   justify-content: flex-end;
   max-width: 1400px;
   margin: 183.3px auto 419.3px auto;
+  font-family: ${FONTS.manrope};
 
   @media ${BREAKPOINTS.laptop} {
     margin: 40px auto;
@@ -33,7 +34,6 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .sub-header {
-    font-family: ${FONTS.manrope};
     p {
       margin-top: 20.2px;
     }
@@ -89,7 +89,6 @@ const AuthenticationFormContainer = styled.div.attrs(
 
     .password-conditions {
       margin-top: 17.4px;
-      font-family: ${FONTS.manrope};
       p {
         margin-top: 8px;
         padding-left: 36px;
@@ -162,8 +161,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
     }
 
     .body {
-      font-family: ${FONTS.manrope};
-
       img.form-sent-success-icn {
         margin-top: 12px;
         width: 70px;
@@ -172,7 +169,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
 
       p.sub-text-under-form-sent-icon {
         margin-top: 12px;
-        font-family: ${FONTS.manrope};
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
@@ -206,7 +202,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
         font-weight: 400;
         font-size: 12px;
         line-height: 16px;
-        font-family: ${FONTS.manrope};
       }
 
       p.retry-forgot-password {
@@ -243,6 +238,8 @@ const AuthenticationFormWrapper = styled.div.attrs(
 
 const AuthenticationLogoMobile = styled.div`
   background-image: url(${IMAGES.logoMobile});
+  background-repeat: no-repeat;
+  background-position: center;
   height: 40px;
   margin-top: 30px;
 `;

@@ -69,7 +69,6 @@ const SignUpFormContainer = styled.div`
         align-items: center;
         margin-top: 21.6px;
         padding-left: 28px;
-        font-family: ${FONTS.manrope};
         height: 86px;
         .w-50 {
           width: 50%;
@@ -254,7 +253,6 @@ const SignUpFormContainer = styled.div`
             width: 47px;
             line-height: 47px;
             font-size: 24px;
-            font-family: ${FONTS.manrope};
             font-weight: 700;
             z-index: 99;
           }
@@ -267,7 +265,6 @@ const SignUpFormContainer = styled.div`
 
           h2 {
             padding-left: 10px;
-            font-family: ${FONTS.manrope};
             font-weight: 700;
             font-size: 16px;
             line-height: 22px;
@@ -288,7 +285,6 @@ const SignUpFormContainer = styled.div`
           background: ${COLORS.white};
           border: 1px solid ${COLORS.parkinglotGray};
           border-radius: 3px;
-          font-family: ${FONTS.manrope};
           font-weight: 400;
           font-size: 12px;
           line-height: 16px;
@@ -313,7 +309,6 @@ const SignUpFormContainer = styled.div`
           font-family: ${FONTS.manropeBold};
           @media ${BREAKPOINTS.mobileLg} {
             font-size: 12px;
-            font-family: ${FONTS.manrope};
           }
           input {
             width: 16px;
@@ -321,7 +316,6 @@ const SignUpFormContainer = styled.div`
           }
           & > span {
             margin-left: 10px;
-            font-family: ${FONTS.manrope};
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
@@ -422,7 +416,6 @@ const Content = styled.div`
     }
     .text-normal {
       font-size: 12px;
-      font-family: ${FONTS.manrope};
     }
   }
   @media ${BREAKPOINTS.desktopSm} {
