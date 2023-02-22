@@ -1,11 +1,10 @@
 import { StyledSelectDate, ResultContainer, StyledPopupSelectDate } from "./StyledSelectDate";
 import { Calendar, DateObject } from "react-multi-date-picker"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Divider from "../../Layout/Divider";
 import { COLORS } from "@/utils/colors";
 import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
-import moment from "moment";
 import IMAGES from "@/assets/images";
 import useWindowSize from "@/utils/windowResize";
 import { H4 } from "../../Typography";
@@ -25,6 +24,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
   const [leavingDate, setLeavingDate] = useState<string>();
   const [showMonths, setShowMonths] = useState<number>(3);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [totalNights, setTotalNights] = useState<number>(0);
 
   useEffect(() => {
     if (resetDates) {
@@ -38,10 +38,9 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
       getArriveDate(dates[0].format("DD MMMM YYYY"))
     }
 
-    const diffInMs: number =
-      ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
-    const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
+    const diffInDays = CalculateNights(leavingDate, arriveDate);
     totalDates(diffInDays)
+    setTotalNights(diffInDays)
   }, [resetDates, dates, arriveDate, leavingDate])
 
   const screenWidth = useWindowSize();
@@ -80,6 +79,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
                 <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
                 {dates[1] && <img src={IMAGES.iconArrowRight} />}
                 <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+                {totalNights > 0 && <span>{totalNights} nights</span>}
               </HorizontalContainer>
               <div
                 className="result-cancel-button"
@@ -104,6 +104,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
         isShown={screenWidth < 768 ? isShown : false}
         closePopup={closePopup}
         weekDays={weekDays}
+        totalDates={(e: number) => totalDates(e)}
       />
     </>
   )
@@ -113,12 +114,13 @@ interface PopupSelectDate {
   isShown?: boolean
   closePopup: (n: boolean) => void,
   weekDays: string[],
+  totalDates: (n: number) => void
 }
 
-const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => {
+const PopupSelectDate = ({ isShown, closePopup, weekDays, totalDates }: PopupSelectDate) => {
   const [popup, setPopup] = useState<boolean>(false);
   const [dates, setDates] = useState<any>([]);
-  const didMountRef = useRef(false);
+  const [totalNights, setTotalNights] = useState<number>(0);
 
   useEffect(() => {
     if (isShown) {
@@ -132,7 +134,16 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
       getBodyElement.style.overflow = "scroll";
     }
 
-  }, [isShown]);
+    if (dates.length) {
+      const arriveDate = dates[0].format("DD MMMM YYYY")
+      const leavingDate = (dates[1]?.format("DD MMMM YYYY"))
+      const diffInDays = CalculateNights(leavingDate, arriveDate);
+      totalDates(diffInDays)
+      setTotalNights(diffInDays)
+    }
+
+
+  }, [isShown, dates]);
 
   const didMount = useDidMount()
 
@@ -191,9 +202,10 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
             {dates[0] &&
               <HorizontalContainer gap="15px" alignItems="center" justifyContent="center">
                 <HorizontalContainer gap="20px" className="result-dates">
-                  <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
+                  <span>{dates[0]?.format("ddd, DD MMMM YYYY")}</span>
                   {dates[1] && <img src={IMAGES.iconArrowRight} />}
-                  <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+                  <span>{dates[1]?.format("ddd, DD MMMM YYYY")}</span>
+                  {totalNights > 0 && <span>({totalNights} nights)</span>}
                 </HorizontalContainer>
               </HorizontalContainer>
             }
@@ -240,4 +252,11 @@ function useDidMount() {
   useEffect(() => { setDidMount(true) }, [])
 
   return didMount
+}
+
+const CalculateNights = (leavingDate?: string, arriveDate?: string) => {
+  const diffInMs: number =
+    ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
+  const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
+  return diffInDays;
 }
