@@ -12,10 +12,13 @@ const GradientButton = ({
   showButtonAnimation,
   width,
   className,
+  borderRadius,
+  handleSubmit
 }: GradientButton) => {
   return (
     <>
       <StyledButton
+        className="gradient-button"
         color={color}
         maxWidth={maxWidth}
         fontSize={fontSize}
@@ -24,6 +27,8 @@ const GradientButton = ({
         showButtonAnimation={showButtonAnimation}
         width={width}
         className={className}
+        borderRadius={borderRadius}
+        onClick={handleSubmit}
       >
         <Overlay
           isSelected={isSelected}

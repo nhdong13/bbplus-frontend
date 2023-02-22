@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
 import styled from "styled-components"
@@ -10,11 +11,12 @@ const StyledButton = styled.div.attrs((props: {
   textPadding?: string
   showButtonAnimation?: boolean
   width?: string
+  borderRadius?: string
 }) => props)`
   align-items: center;
   background: ${props => props.color};
   border: none;
-  border-radius: 10px;
+  border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;
   height: ${props => props.height || "52px"};
@@ -41,6 +43,10 @@ const StyledButton = styled.div.attrs((props: {
     opacity: 0;
     transition: all 2s ease-in-out;
   }
+  @media ${BREAKPOINTS.mobileLg} {
+    border-radius: 5px;
+  }
+
 `
 
 const Overlay = styled.div.attrs((props: {
@@ -49,7 +55,7 @@ const Overlay = styled.div.attrs((props: {
   showButtonAnimation?: boolean
 }) => props)`
   background: ${({ isSelected }) => isSelected ? 'transparent' : COLORS.cyprus};
-  border-radius: 10px;
+  border-radius: 17px;
   display: flex;
   justify-content: center;
   height: ${props => props.height || "52px"};
