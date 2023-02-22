@@ -1,19 +1,40 @@
-import { StyledPhoneInputContainer,PhoneSelect } from "./style"
-import { FormInput } from "@/utils/types/FormInput"
+import { StyledPhoneInputContainer, PhoneSelect } from "./style";
+import { FormInput } from "@/utils/types/FormInput";
 import IMAGES from "@/assets/images";
 
-const Select = ({ label, fontSize, textColor, iconUrl, isImportant, marginTop, valid, maxHeight, handleChange }: FormInput) => {
+const Select = ({
+  label,
+  fontSize,
+  textColor,
+  iconUrl,
+  isImportant,
+  marginTop,
+  valid,
+  maxHeight,
+  handleChange,
+}: FormInput) => {
   return (
     <>
-      <StyledPhoneInputContainer textColor={textColor} fontSize={fontSize} iconUrl={iconUrl} marginTop={marginTop} maxHeight={maxHeight} valid={valid}>
+      <StyledPhoneInputContainer
+        textColor={textColor}
+        fontSize={fontSize}
+        iconUrl={iconUrl}
+        marginTop={marginTop}
+        maxHeight={maxHeight}
+        valid={valid}
+      >
         <PhoneSelect>
-          <img src={IMAGES.iconUS} width="36px" height="19px"/>
-          <img src={IMAGES.iconSelectDown} width="10px" height="5px"/>
+          <img src={IMAGES.iconUS} width="36px" height="30px" />
+          <img src={IMAGES.iconSelectDown} width="10px" height="5px" />
         </PhoneSelect>
-        <input placeholder={label.concat(isImportant ? " *" : " ")} onChange={handleChange} type="number"/>
+        <input
+          placeholder={label.concat(isImportant ? " *" : " ")}
+          onChange={handleChange}
+          type="number"
+        />
       </StyledPhoneInputContainer>
     </>
-  )
-}
+  );
+};
 
 export default Select;

@@ -17,6 +17,7 @@ import {
   Content,
   CenterDiv,
 } from "./styles";
+import { AuthenticationLogoMobile } from "../Login/styles";
 
 export default function SignUp() {
   const {
@@ -43,6 +44,7 @@ export default function SignUp() {
   return (
     <>
       <MainLayout>
+        <>{wd <= 430 ? <AuthenticationLogoMobile /> : null}</>
         {!requestSent ? (
           <SignUpFormContainer>
             <div className="left-side-column">
@@ -202,19 +204,25 @@ export default function SignUp() {
                         }
                       />
                       <FormInput
-                        label="Address"
+                        label="Email Address"
                         isImportant={true}
                         marginTop="21.6px"
                         maxHeight="60px"
                         handleChange={(e) => setAdminEmail(e.target.value)}
                       />
                     </div>
-                    <FormInput
-                      label="How hid you hear about us?"
-                      marginTop="16px"
-                      maxHeight="60px"
-                      handleChange={(e) => setHearBy(e.target.value)}
-                    />
+                    <div className="flex-full">
+                      <p className="w-50">How hid you hear about us?</p>
+                      {/* <p className="w-50">Select Option</p> */}
+                      <div className="w-50">
+                        <Select
+                          label="Select Option"
+                          marginTop="21.6px"
+                          maxHeight="60px"
+                          handleChange={(e) => setCountry(e.target.value)}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -237,10 +245,8 @@ export default function SignUp() {
                         text="SUBMIT"
                         isSelected={true}
                         maxWidth="153.6px"
-                        fontSize="17px"
                         height="65px"
                         textPadding="4px 33px"
-                        borderRadius="2.66px"
                         handleSubmit={handleFormSubmit}
                       />
                     </div>
@@ -251,7 +257,7 @@ export default function SignUp() {
           </SignUpFormContainer>
         ) : (
           <SignUpSuccessFormContainer>
-            <Background className="haha">
+            <Background>
               <Title>
                 <div className="title-content">
                   <p>Pacific’s Leading Travel</p>
@@ -299,7 +305,6 @@ export default function SignUp() {
                   text="GO TO HOMEPAGE"
                   isSelected={true}
                   width="222.29px"
-                  fontSize="16px"
                   height="64.17px"
                   handleSubmit={() => navigate("/")}
                 />
