@@ -17,6 +17,7 @@ const GradientButton = ({
   return (
     <>
       <StyledButton
+        className="gradient-button"
         color={color}
         maxWidth={maxWidth}
         fontSize={fontSize}

@@ -41,7 +41,7 @@ export default function FullSearchWidget() {
   return (
     <>
       <SearchContainer>
-        <FilterGradientButtonContainer gap="13px">
+        <FilterGradientButtonContainer gap="14px">
           {buttonItems.map((item, index) => {
             return (
               <div className="filter-gradient-button" key={index} onClick={() => handleSelectBookingType(index)}>
