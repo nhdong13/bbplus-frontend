@@ -15,8 +15,9 @@ interface SelectDate {
   getArriveDate: (n: string) => void,
   totalDates: (n: number) => void,
   closePopup: (n: boolean) => void,
+  innerRef?: any
 }
-export default function SelectDate({ isShown, getArriveDate, totalDates, closePopup }: SelectDate) {
+export default function SelectDate({ isShown, getArriveDate, totalDates, closePopup, innerRef }: SelectDate) {
   const weekDays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
   const [dates, setDates] = useState<any>([]);
   const [resetDates, setResetDates] = useState<boolean>(false);
@@ -57,7 +58,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
 
   return (
     <>
-      <StyledSelectDate isShown={screenWidth < 768 ? false : isShown}>
+      <StyledSelectDate ref={innerRef} isShown={screenWidth < 768 ? false : isShown}>
         <Calendar
           numberOfMonths={showMonths}
           range

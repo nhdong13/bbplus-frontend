@@ -1,3 +1,4 @@
+import useComponentVisible from "@/utils/clickOutSide";
 import useWindowSize from "@/utils/windowResize";
 import { useEffect, useState } from "react";
 
@@ -16,6 +17,30 @@ const useFullSearchWidget = () => {
 
   const screenWidth = useWindowSize();
 
+  const {
+    ref: leavingDropDownRef,
+    isComponentVisible: leavingDropDownVisible,
+    setIsComponentVisible: setLeavingDropDownVisible,
+  } = useComponentVisible(false);
+
+  const {
+    ref: goingDropDownRef,
+    isComponentVisible: goingDropDownVisible,
+    setIsComponentVisible: setGoingDropDownVisible,
+  } = useComponentVisible(false);
+
+  const {
+    ref: selectDateDropDownRef,
+    isComponentVisible: selectDateDropDownVisible,
+    setIsComponentVisible: setSelectDateDropDownVisible,
+  } = useComponentVisible(false);
+
+  const {
+    ref: travelerDropDownRef,
+    isComponentVisible: travelerDropDowVisible,
+    setIsComponentVisible: setTravelerDropDownVisible,
+  } = useComponentVisible(false);
+
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
     if (id === 2) {
@@ -28,6 +53,7 @@ const useFullSearchWidget = () => {
     if (selectGoingPlaces) setGoingPlaces(false)
     if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setTravelerDropDown(!travelerDropDown);
+    setTravelerDropDownVisible(!travelerDropDown);
   }
 
   const showDatePicker = () => {
@@ -35,6 +61,7 @@ const useFullSearchWidget = () => {
     if (selectGoingPlaces) setGoingPlaces(false)
     if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setSelectDateDropDown(!selectDateDropDown);
+    setSelectDateDropDownVisible(!selectDateDropDown);
   }
 
   const showLeavingPlaces = () => {
@@ -42,6 +69,7 @@ const useFullSearchWidget = () => {
     if (travelerDropDown) setTravelerDropDown(false)
     if (selectGoingPlaces) setGoingPlaces(false)
     setSelectLeavingPlaces(!selectLeavingPlaces);
+    setLeavingDropDownVisible(!selectLeavingPlaces);
   }
 
   const showGoingToPlaces = () => {
@@ -49,6 +77,7 @@ const useFullSearchWidget = () => {
     if (travelerDropDown) setTravelerDropDown(false)
     if (selectLeavingPlaces) setSelectLeavingPlaces(false)
     setGoingPlaces(!selectGoingPlaces);
+    setGoingDropDownVisible(!selectGoingPlaces);
   }
 
   useEffect(() => {
@@ -56,6 +85,13 @@ const useFullSearchWidget = () => {
       setIsMobile(true);
     } else setIsMobile(false);
   }, [screenWidth, isMobile])
+
+  useEffect(() => {
+    if (!leavingDropDownVisible) setSelectLeavingPlaces(false);
+    if (!goingDropDownVisible) setGoingPlaces(false);
+    if (!selectDateDropDownVisible) setSelectDateDropDown(false);
+    if (!travelerDropDowVisible) setTravelerDropDown(false);
+  }, [leavingDropDownVisible, goingDropDownVisible, selectDateDropDownVisible, travelerDropDowVisible])
 
   return {
     selectedBooking,
@@ -84,6 +120,14 @@ const useFullSearchWidget = () => {
     setGoingPlaces,
     setSelectDateDropDown,
     isMobile,
+    leavingDropDownRef,
+    leavingDropDownVisible,
+    setLeavingDropDownVisible,
+    goingDropDownRef,
+    goingDropDownVisible,
+    setGoingDropDownVisible,
+    selectDateDropDownRef,
+    travelerDropDownRef,
   }
 }
 

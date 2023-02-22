@@ -18,7 +18,7 @@ import _ from "lodash";
 import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
 
-const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
+const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
   const [showNumberOfAdults, setShowNumberOfAdults] = useState<number>(0);
   const [showNumberOfChildren, setShowNumberOfChildren] = useState<number>(0);
   const [numberOfRoom, setNumberOfRoom] = useState<number>(1);
@@ -83,7 +83,7 @@ const TravelerDropDown = ({ isShown }: TravelerDropDown) => {
   }
 
   return (
-    <StyledTravelerDropDown isShown={isShown} gap="20px">
+    <StyledTravelerDropDown ref={innerRef} isShown={isShown} gap="20px">
       {_.range(0, numberOfRoom).map((index: number) =>
         <div key={index}>
           <RoomOptions

@@ -17,7 +17,6 @@ import TravelerDropDown from "./TravellerDropDown/TravelerDropDown";
 import SelectDate from "./SelectDateDropDown/SelectDate";
 import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
-import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -39,6 +38,10 @@ export default function FullSearchWidget() {
     setGoingPlaces,
     setSelectDateDropDown,
     isMobile,
+    leavingDropDownRef,
+    goingDropDownRef,
+    selectDateDropDownRef,
+    travelerDropDownRef
   } = useFullSearchWidget();
 
   return (
@@ -64,7 +67,15 @@ export default function FullSearchWidget() {
                 <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
                 <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
-              {!isMobile ? <SelectLocationDropDown leaving isShown={selectLeavingPlaces} /> : <></>}
+              {
+                !isMobile ?
+                  <SelectLocationDropDown
+                    innerRef={leavingDropDownRef}
+                    leaving
+                    isShown={selectLeavingPlaces} />
+                  :
+                  <></>
+              }
             </FromContainer>
             {selectCreateItinerary ?
               <>
@@ -73,7 +84,14 @@ export default function FullSearchWidget() {
                     <H5 lineHeight="10px" fontWeight="700">Going to</H5>
                     <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
                   </div>
-                  {!isMobile ? <SelectLocationDropDown isShown={selectGoingPlaces} /> : <></>}
+                  {
+                    !isMobile ?
+                      <SelectLocationDropDown
+                        innerRef={goingDropDownRef}
+                        isShown={selectGoingPlaces} />
+                      :
+                      <></>
+                  }
                 </FromContainer>
               </> : <></>
             }
@@ -110,12 +128,19 @@ export default function FullSearchWidget() {
           </div>
           {!isMobile ?
             <SelectDate
+              innerRef={selectDateDropDownRef}
               isShown={selectDateDropDown}
               getArriveDate={(e: string) => setGetArriveDate(e)}
               totalDates={(e: number) => setTotalDates(e)}
               closePopup={(e: boolean) => setSelectDateDropDown(e)}
             /> : <></>}
-          {!isMobile ? <TravelerDropDown isShown={travelerDropDown} /> : <></>}
+          {
+            !isMobile ? <TravelerDropDown
+              innerRef={travelerDropDownRef}
+              isShown={travelerDropDown} />
+              :
+              <></>
+          }
         </SelectBookingDateTime>
         {isMobile ?
           <>

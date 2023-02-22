@@ -6,12 +6,13 @@ import { StyledSelectLocationDropDown } from "./StyledSelectLocationDropDown";
 interface SelectLocationDropDown {
   isShown?: boolean
   leaving?: boolean
+  innerRef?: any
 }
 
-export default function SelectLocationDropDown({ isShown, leaving }: SelectLocationDropDown) {
+export default function SelectLocationDropDown({ isShown, leaving, innerRef }: SelectLocationDropDown) {
   return (
     <>
-      <StyledSelectLocationDropDown isShown={isShown} isLeaving={leaving}>
+      <StyledSelectLocationDropDown ref={innerRef} isShown={isShown} isLeaving={leaving}>
         <div className="popular-places__container">
           <div className="popular-places">
             <div className="popular-places__title">
