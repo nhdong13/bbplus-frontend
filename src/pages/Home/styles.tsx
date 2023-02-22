@@ -9,6 +9,10 @@ const StyledHome = styled.div`
   background: ${COLORS.cyprus};
 
   & > div {
+    @media only screen and (max-width: 1240px) {
+      max-width: 1024px;      
+    }
+
     @media ${BREAKPOINTS.laptop} {
       padding: 10px;
     }

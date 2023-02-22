@@ -189,7 +189,7 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
           </div>
           <div className="popup-calendar__result-container">
             {dates[0] &&
-              <HorizontalContainer gap="15px" alignItems="center" margin="34px 10px 14px" justifyContent="center">
+              <HorizontalContainer gap="15px" alignItems="center" justifyContent="center">
                 <HorizontalContainer gap="20px" className="result-dates">
                   <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
                   {dates[1] && <img src={IMAGES.iconArrowRight} />}
@@ -205,6 +205,7 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
               fontSize="12px"
               height="36px"
               textPadding="4px 33px"
+              className="gradient-button-container"
             />
           </div>
         </div>

@@ -11,6 +11,7 @@ const GradientButton = ({
   textPadding,
   showButtonAnimation,
   width,
+  className,
 }: GradientButton) => {
   return (
     <>
@@ -22,6 +23,7 @@ const GradientButton = ({
         textPadding={textPadding}
         showButtonAnimation={showButtonAnimation}
         width={width}
+        className={className}
       >
         <Overlay
           isSelected={isSelected}

@@ -271,9 +271,9 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
     height: 250px;
     position: relative;
 
-    & > div {
+    .gradient-button-container {
       position: absolute;
-      top: 60px;
+      top: 70px;
     }
 
     div {
@@ -282,6 +282,12 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     .result-dates {
       color: ${COLORS.black};
+      position: absolute;
+      top: 34px;
+
+      span {
+        text-align: center;
+      }
     }
 
     span {
@@ -362,6 +368,15 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
     box-shadow: none;
     border-radius: 0!important;
     color: ${COLORS.black}!important;
+  }
+
+  .rmdp-day ~ .rmdp-day.rmdp-range,
+  .rmdp-day.rmdp-range ~ .rmdp-day.rmdp-range.end span{
+    background-color: ${COLORS.persianGreen};
+  }
+
+  .rmdp-day.rmdp-range ~ .rmdp-day.rmdp-range {
+    background-color: ${COLORS.areoBlue};
   }
 `;
 

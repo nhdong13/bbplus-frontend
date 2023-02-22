@@ -153,6 +153,10 @@ const FromContainer = styled(VerticalContainer).attrs((props: {
   cursor: pointer;
   padding: 10px 42px;
 
+  @media only screen and (max-width: 1240px) {
+    padding: 10px 20px;
+  }
+
   @media ${BREAKPOINTS.laptop} {
     border: none;
   }
