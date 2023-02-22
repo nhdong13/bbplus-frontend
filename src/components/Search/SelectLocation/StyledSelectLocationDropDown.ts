@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledSelectLocationDropDown = styled.div.attrs((props: {
   isShown?: boolean
+  isLeaving?: boolean
 }) => props)`
   background-color: ${COLORS.white};
   border-radius: 5px;
@@ -10,6 +11,10 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   display: ${({ isShown }) => isShown ? "block" : "none"};
   padding: 33px 0;
   max-width: 555px;
+  position: absolute;
+  top: 100px;
+  left: ${({ isLeaving }) => isLeaving ? 0 : "21%"};
+  max-height: 200px;
   width: 100%;
 
   .popular-places__container {

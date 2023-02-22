@@ -1,22 +1,23 @@
 import { StyledSelectDate, ResultContainer, StyledPopupSelectDate } from "./StyledSelectDate";
 import { Calendar, DateObject } from "react-multi-date-picker"
 import { useEffect, useRef, useState } from "react";
-import Divider from "../Layout/Divider";
+import Divider from "../../Layout/Divider";
 import { COLORS } from "@/utils/colors";
-import { GradientButton } from "../Button";
-import HorizontalContainer from "../Layout/HorizontalContainer";
+import { GradientButton } from "../../Button";
+import HorizontalContainer from "../../Layout/HorizontalContainer";
 import moment from "moment";
 import IMAGES from "@/assets/images";
 import useWindowSize from "@/utils/windowResize";
-import { H4 } from "../Typography";
+import { H4 } from "../../Typography";
 
 interface SelectDate {
   isShown?: boolean
   getArriveDate: (n: string) => void,
   totalDates: (n: number) => void,
   closePopup: (n: boolean) => void,
+  innerRef?: any
 }
-export default function SelectDate({ isShown, getArriveDate, totalDates, closePopup }: SelectDate) {
+export default function SelectDate({ isShown, getArriveDate, totalDates, closePopup, innerRef }: SelectDate) {
   const weekDays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
   const [dates, setDates] = useState<any>([]);
   const [resetDates, setResetDates] = useState<boolean>(false);
@@ -57,7 +58,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
 
   return (
     <>
-      <StyledSelectDate isShown={screenWidth < 768 ? false : isShown}>
+      <StyledSelectDate ref={innerRef} isShown={screenWidth < 768 ? false : isShown}>
         <Calendar
           numberOfMonths={showMonths}
           range
@@ -184,6 +185,27 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays }: PopupSelectDate) => 
               currentDate={date}
               plugins={[<MobileCalendarHeader position="top" />]}
               className={COLORS.persianGreen}
+            />
+          </div>
+          <div className="popup-calendar__result-container">
+            {dates[0] &&
+              <HorizontalContainer gap="15px" alignItems="center" justifyContent="center">
+                <HorizontalContainer gap="20px" className="result-dates">
+                  <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
+                  {dates[1] && <img src={IMAGES.iconArrowRight} />}
+                  <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+                </HorizontalContainer>
+              </HorizontalContainer>
+            }
+            <GradientButton
+              color={COLORS.gradient1}
+              text="Apply"
+              isSelected={true}
+              width="100%"
+              fontSize="12px"
+              height="36px"
+              textPadding="4px 33px"
+              className="gradient-button-container"
             />
           </div>
         </div>

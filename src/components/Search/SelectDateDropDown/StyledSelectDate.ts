@@ -1,6 +1,6 @@
-import { BREAKPOINTS } from './../../utils/breakpoints';
+import { BREAKPOINTS } from '../../../utils/breakpoints';
 import { FONTS } from '@/utils/fonts';
-import { COLORS } from './../../utils/colors';
+import { COLORS } from '../../../utils/colors';
 import styled from "styled-components";
 
 const StyledSelectDate = styled.div.attrs((props: {
@@ -11,6 +11,9 @@ const StyledSelectDate = styled.div.attrs((props: {
   box-shadow: 4px 3px 18px -5px rgba(0,0,0,0.75);;
   max-width: 1232px;
   width: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 2;
 
   display: ${({ isShown }) => isShown ? "block" : "none"};
 
@@ -207,7 +210,7 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     .rmdp-day-picker  {
       flex-direction: column;
-      height: calc(100vh - 200px);
+      height: calc(100vh - 250px);
       padding: 0 10px;
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -261,6 +264,36 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     .rmdp-day span {
       color: ${COLORS.eerieBlack}
+    }
+  }
+
+  .popup-calendar__result-container {
+    height: 250px;
+    position: relative;
+
+    .gradient-button-container {
+      position: absolute;
+      top: 70px;
+    }
+
+    div {
+      border-radius: 5px!important;
+    }
+
+    .result-dates {
+      color: ${COLORS.black};
+      position: absolute;
+      top: 34px;
+
+      span {
+        text-align: center;
+      }
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 
@@ -335,6 +368,15 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
     box-shadow: none;
     border-radius: 0!important;
     color: ${COLORS.black}!important;
+  }
+
+  .rmdp-day ~ .rmdp-day.rmdp-range,
+  .rmdp-day.rmdp-range ~ .rmdp-day.rmdp-range.end span{
+    background-color: ${COLORS.persianGreen};
+  }
+
+  .rmdp-day.rmdp-range ~ .rmdp-day.rmdp-range {
+    background-color: ${COLORS.areoBlue};
   }
 `;
 

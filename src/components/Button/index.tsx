@@ -11,6 +11,7 @@ const GradientButton = ({
   textPadding,
   showButtonAnimation,
   width,
+  className,
   borderRadius,
   handleSubmit
 }: GradientButton) => {
@@ -25,6 +26,7 @@ const GradientButton = ({
         textPadding={textPadding}
         showButtonAnimation={showButtonAnimation}
         width={width}
+        className={className}
         borderRadius={borderRadius}
         onClick={handleSubmit}
       >
