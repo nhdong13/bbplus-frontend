@@ -76,9 +76,9 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
           {dates[0] &&
             <HorizontalContainer gap="20px" alignItems="center">
               <HorizontalContainer gap="20px" className="result-dates">
-                <span>{dates[0]?.format("dddd, DD MMM YYYY")}</span>
+                <span>{dates[0]?.format("ddd, DD MMM YYYY")}</span>
                 {dates[1] && <img src={IMAGES.iconArrowRight} />}
-                <span>{dates[1]?.format("dddd, DD MMM YYYY")}</span>
+                <span>{dates[1]?.format("ddd, DD MMM YYYY")}</span>
                 {totalNights > 0 && <span>{totalNights} nights</span>}
               </HorizontalContainer>
               <div
