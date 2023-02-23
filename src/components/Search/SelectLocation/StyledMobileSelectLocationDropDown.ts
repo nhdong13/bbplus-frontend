@@ -50,6 +50,7 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
     margin: 15px 10px 0;
 
     .dropdown-search__container  {
+      position: relative;
       input {
         border: 1px solid ${COLORS.blackPearl};
         border-radius: 5px;
@@ -63,6 +64,11 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
         &::placeholder {
           padding: 10px 0;
         }
+      }
+      img{
+        position: absolute;
+        right: 30px;
+        top: 20px;
       }
     }
 

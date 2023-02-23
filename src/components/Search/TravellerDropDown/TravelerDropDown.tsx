@@ -145,13 +145,13 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
       <StyledRoomOptions>
         <div className="room-option__container">
           <div className="room-option__left">
-            <H4>Room {numberOfRoom + 1}</H4>
+            <H5 fontWeight={"700"}>Room {numberOfRoom + 1}</H5>
           </div>
           <Divider color={COLORS.silver} height="auto" width="1px" margin="0" />
           <div className="room-option__right">
             <HorizontalContainer justifyContent="space-between" width="100%">
               <VerticalContainer>
-                <H4>Primary party name (Optional)</H4>
+                <H5 fontWeight={"700"}>Primary party name (Optional)</H5>
                 <div className="room-option__name-input-container">
                   <input placeholder="Name of primary contact" />
                 </div>
@@ -199,7 +199,7 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
                   <div className="room-option__children-container">
                     {_.range(0, numberOfChildren).map((index: number) =>
                       <div key={index}>
-                        <SelectAges />
+                        <SelectAges index={index}/>
                       </div>
                     )}
                   </div>
@@ -226,7 +226,11 @@ const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOf
   )
 }
 
-const SelectAges = () => {
+type SelectAgeProps = {
+  index: number
+}
+
+const SelectAges = ( { index }: SelectAgeProps) => {
   const [selectAges, setSelectAges] = useState<boolean>(false);
   const handleSelectAges = () => {
     setSelectAges(!selectAges);
@@ -235,7 +239,7 @@ const SelectAges = () => {
   return (
     <>
       <StyledSelectAges onClick={handleSelectAges} isOpen={selectAges}>
-        <span>Children 1</span>
+        <span>Children {index + 1}</span>
         <img className="select-ages__dropdown-icon" src={IMAGES.iconDropDownBlue} width="10px" height="7px" />
       </StyledSelectAges>
     </>

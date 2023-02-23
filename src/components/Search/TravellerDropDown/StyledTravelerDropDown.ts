@@ -63,7 +63,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
       border-radius: 5px;
       padding: 20px 0 15px 20px;
       width: 100%;
-
+      font-size: 16px;
       &:focus {
         outline: none; 
       }
