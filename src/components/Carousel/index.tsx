@@ -61,12 +61,12 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
           {carouselTitle}
         </span>
         <div className="controls">
-          <ButtonNext className="btn-arrow reverse-arrow"
+          <ButtonBack className="btn-arrow reverse-arrow"
             onMouseEnter={() => handleHoverArrowBtn(false)}
             onMouseLeave={() => handleHoverArrowBtn(false)}
           >
             <img src={arrowLeftBtnColor ? IMAGES.iconAnchorLinearGradient : IMAGES.iconAnchorGrey} alt="arrow" />
-          </ButtonNext>
+          </ButtonBack>
           <ButtonNext className="btn-arrow"
             onMouseEnter={() => handleHoverArrowBtn(true)}
             onMouseLeave={() => handleHoverArrowBtn(true)}
