@@ -89,7 +89,6 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       setNumberOfRoom(numberOfRoom - 1)
       const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
       localStorage.setItem('roomOptions', JSON.stringify(getLocalStoreRoomOptions.splice(-1)));
-      consolo
     }
 
   }

@@ -128,7 +128,6 @@ const useFullSearchWidget = () => {
     setGoingDropDownVisible,
     selectDateDropDownRef,
     travelerDropDownRef,
-    setTravelerDropDown,
   }
 }
 
