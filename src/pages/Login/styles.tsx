@@ -1,6 +1,7 @@
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
+import IMAGES from "@/assets/images";
 import styled from "styled-components";
 
 const AuthenticationFormContainer = styled.div.attrs(
@@ -12,6 +13,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   justify-content: flex-end;
   max-width: 1400px;
   margin: 183.3px auto 419.3px auto;
+  font-family: ${FONTS.manrope};
 
   @media ${BREAKPOINTS.laptop} {
     margin: 40px auto;
@@ -19,6 +21,7 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
   @media ${BREAKPOINTS.mobileLg} {
     margin: 0 auto;
+    display: block;
   }
   a {
     color: ${COLORS.linkBlue};
@@ -31,7 +34,6 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .sub-header {
-    font-family: ${FONTS.manrope};
     p {
       margin-top: 20.2px;
     }
@@ -41,7 +43,10 @@ const AuthenticationFormContainer = styled.div.attrs(
   }
 
   .body {
-    margin-bottom: 30px;
+    margin-bottom: 23px;
+    @media ${BREAKPOINTS.mobileLg} {
+      margin-bottom: 10px !important;
+    }
     img.form-sent-success-icn {
       margin-top: 38.9px;
     }
@@ -62,6 +67,15 @@ const AuthenticationFormContainer = styled.div.attrs(
       }
     }
   }
+  .b-reset {
+    margin-bottom: 186px;
+  }
+  .b-updated {
+    margin-bottom: 81px;
+  }
+  .b-your-email {
+    margin-bottom: 141px;
+  }
 
   .footer {
     p {
@@ -75,12 +89,15 @@ const AuthenticationFormContainer = styled.div.attrs(
 
     .password-conditions {
       margin-top: 17.4px;
-
       p {
         margin-top: 8px;
         padding-left: 36px;
         font-size: 16px;
         display: flex;
+        align-items: center;
+        &:first-child {
+          padding-left: 0;
+        }
         img {
           width: 33px;
           height: 31.5px;
@@ -117,7 +134,7 @@ const AuthenticationFormWrapper = styled.div.attrs(
     width: auto;
     height: auto;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 15px 20px;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
     box-shadow: none;
@@ -144,8 +161,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
     }
 
     .body {
-      font-family: ${FONTS.manrope};
-
       img.form-sent-success-icn {
         margin-top: 12px;
         width: 70px;
@@ -154,7 +169,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
 
       p.sub-text-under-form-sent-icon {
         margin-top: 12px;
-        font-family: ${FONTS.manrope};
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
@@ -188,7 +202,6 @@ const AuthenticationFormWrapper = styled.div.attrs(
         font-weight: 400;
         font-size: 12px;
         line-height: 16px;
-        font-family: ${FONTS.manrope};
       }
 
       p.retry-forgot-password {
@@ -223,4 +236,16 @@ const AuthenticationFormWrapper = styled.div.attrs(
   }
 `;
 
-export { AuthenticationFormContainer, AuthenticationFormWrapper };
+const AuthenticationLogoMobile = styled.div`
+  background-image: url(${IMAGES.logoMobile});
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 40px;
+  margin-top: 30px;
+`;
+
+export {
+  AuthenticationFormContainer,
+  AuthenticationFormWrapper,
+  AuthenticationLogoMobile,
+};

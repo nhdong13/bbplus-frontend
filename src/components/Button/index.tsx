@@ -11,13 +11,14 @@ const GradientButton = ({
   textPadding,
   showButtonAnimation,
   width,
+  className,
   borderRadius,
   handleSubmit
 }: GradientButton) => {
   return (
     <>
       <StyledButton
-        className="gradient-button"
+        className={`gradient-button ${className}`}
         color={color}
         maxWidth={maxWidth}
         fontSize={fontSize}

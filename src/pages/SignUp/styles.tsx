@@ -11,7 +11,7 @@ const SignUpFormContainer = styled.div`
   box-shadow: 0 0 11.5px rgba(0, 0, 0, 0.25);
   display: flex;
   max-width: 1440px;
-  height: 1262px;
+  height: auto;
   text-align: center;
 
   .left-side-column {
@@ -62,6 +62,32 @@ const SignUpFormContainer = styled.div`
         display: flex;
         gap: 12.5px;
       }
+      .flex-full {
+        display: flex;
+        border: 2px solid #000000;
+        border-radius: 4.5px;
+        align-items: center;
+        margin-top: 21.6px;
+        padding-left: 28px;
+        height: 86px;
+        .w-50 {
+          width: 50%;
+        }
+        div {
+          border: 0;
+          margin-top: 0;
+        }
+        @media ${BREAKPOINTS.mobileLg} {
+          height: 40px;
+          padding-left: 31px;
+          margin-top: 10px;
+          font-size: 12px;
+          border: 1px solid ${COLORS.parkinglotGray};
+          .label {
+            padding-left: 10px;
+          }
+        }
+      }
 
       .sub-header {
         display: flex;
@@ -95,7 +121,6 @@ const SignUpFormContainer = styled.div`
       }
 
       .step-1 .registrationid-input {
-        /* width: calc(100% - 49.4px); */
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -203,7 +228,7 @@ const SignUpFormContainer = styled.div`
   @media ${BREAKPOINTS.mobileLg} {
     width: auto;
     height: auto;
-    margin: 20px;
+    margin: 15px 20px;
     box-shadow: none;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
@@ -228,7 +253,6 @@ const SignUpFormContainer = styled.div`
             width: 47px;
             line-height: 47px;
             font-size: 24px;
-            font-family: ${FONTS.manrope};
             font-weight: 700;
             z-index: 99;
           }
@@ -241,7 +265,6 @@ const SignUpFormContainer = styled.div`
 
           h2 {
             padding-left: 10px;
-            font-family: ${FONTS.manrope};
             font-weight: 700;
             font-size: 16px;
             line-height: 22px;
@@ -262,7 +285,6 @@ const SignUpFormContainer = styled.div`
           background: ${COLORS.white};
           border: 1px solid ${COLORS.parkinglotGray};
           border-radius: 3px;
-          font-family: ${FONTS.manrope};
           font-weight: 400;
           font-size: 12px;
           line-height: 16px;
@@ -287,7 +309,6 @@ const SignUpFormContainer = styled.div`
           font-family: ${FONTS.manropeBold};
           @media ${BREAKPOINTS.mobileLg} {
             font-size: 12px;
-            font-family: ${FONTS.manrope};
           }
           input {
             width: 16px;
@@ -295,7 +316,6 @@ const SignUpFormContainer = styled.div`
           }
           & > span {
             margin-left: 10px;
-            font-family: ${FONTS.manrope};
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
@@ -325,14 +345,11 @@ const SignUpFormContainer = styled.div`
       text-align-last: left;
     }
   }
-  @media ${BREAKPOINTS.tablet} {
-    margin: 15px;
-  }
 `;
 
 const SignUpSuccessFormContainer = styled.div`
   @media ${BREAKPOINTS.mobileLg} {
-    margin: 20px;
+    margin: 15px 20px;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
   }
@@ -399,7 +416,6 @@ const Content = styled.div`
     }
     .text-normal {
       font-size: 12px;
-      font-family: ${FONTS.manrope};
     }
   }
   @media ${BREAKPOINTS.desktopSm} {

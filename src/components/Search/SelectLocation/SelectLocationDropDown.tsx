@@ -1,16 +1,18 @@
 import IMAGES from "@/assets/images";
-import HorizontalContainer from "../Layout/HorizontalContainer";
-import { H4 } from "../Typography";
+import HorizontalContainer from "../../Layout/HorizontalContainer";
+import { H4 } from "../../Typography";
 import { StyledSelectLocationDropDown } from "./StyledSelectLocationDropDown";
 
 interface SelectLocationDropDown {
   isShown?: boolean
+  leaving?: boolean
+  innerRef?: any
 }
 
-export default function SelectLocationDropDown({ isShown }: SelectLocationDropDown) {
+export default function SelectLocationDropDown({ isShown, leaving, innerRef }: SelectLocationDropDown) {
   return (
     <>
-      <StyledSelectLocationDropDown isShown={isShown}>
+      <StyledSelectLocationDropDown ref={innerRef} isShown={isShown} isLeaving={leaving}>
         <div className="popular-places__container">
           <div className="popular-places">
             <div className="popular-places__title">
