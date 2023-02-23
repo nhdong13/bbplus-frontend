@@ -5,7 +5,9 @@ export interface FormInput {
   iconUrl?: string
   marginTop?: string
   isImportant?: boolean
-  valid?: boolean
+  valid?: boolean,
+  width?: string,
+  padding?: string,
   maxHeight?: string
   handleChange?: (e: any) => void
 }

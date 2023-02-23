@@ -4,18 +4,15 @@ import { FONTS } from "@/utils/fonts";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const AccountSettingContainer = styled.div`
-  /* width: 1920; */
   margin: auto;
-
   #account-setting-section {
     max-width: 1400px;
     margin: auto;
-    @media ${BREAKPOINTS.laptop}  {
+    @media ${BREAKPOINTS.laptop} {
       max-width: 768px;
       padding: 15px;
     }
     .fill-information-title {
-      font-family: ${FONTS.manrope};
       font-weight: 400;
       font-size: 18px;
       line-height: 35px;
@@ -23,125 +20,95 @@ const AccountSettingContainer = styled.div`
 
     .body-section {
       margin-top: 50px;
-      .body-section-item{
+      .body-section-item {
         display: flex;
-        &:last-child{
+        &:last-child {
           margin-top: 28px;
           margin-bottom: 28px;
         }
-        @media ${BREAKPOINTS.laptop}  {
+        @media ${BREAKPOINTS.laptop} {
           display: grid;
         }
       }
     }
-    .legenbox-right{
+    .legenbox-right {
       margin-left: 28px;
       padding-right: 28px;
-      @media ${BREAKPOINTS.laptop}  {
+      @media ${BREAKPOINTS.laptop} {
         margin-left: 0;
         margin-top: 28px;
         padding-right: 35px;
         padding-bottom: 28px;
       }
     }
-    
   }
-`;
-
-const InputSection = styled.div`
-  display: flex;
-  flex-direction: row;
 `;
 
 const BreadcrumbContainer = styled.div`
   width: 100%;
   height: 49px;
-  background-color: ${COLORS.periwinkleapprox};
+  background-color: ${COLORS.purple};
 `;
 
 const BreadcrumbBody = styled.div`
   max-width: 1400px;
   height: 100%;
   margin: auto;
-  font-size: 17px;
-  font-family: ${FONTS.manrope};
+  font-family: ${FONTS.manropeBold};
   line-height: 40px;
-  font-weight: 500;
-
   display: flex;
   align-items: center;
 
-  .company-information {
-    color: ${COLORS.blueRibbon};
-  }
-
-  div + div:before {
-    padding: 8px;
-    color: ${COLORS.black};
-    content: "  >";
-  }
-  @media ${BREAKPOINTS.laptop}  {
+  @media ${BREAKPOINTS.laptop} {
     max-width: 768px;
     padding: 0 15px;
   }
 `;
-
-const Input = styled.input`
-  width: 339px;
-  height: 68px;
-  padding: 0px 16px;
-
-  background: ${COLORS.white};
-  border: 2px solid #000;
-  border-radius: 8px;
-
-  font-weight: normal;
-  font-size: 18px;
-  text-align: left;
-  color: #000;
-`;
-
-const TitleInput = styled.div`
-  font-family: ${FONTS.manrope};
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 88px;
-  text-align: left;
-  color: #000;
+const BreadcrumbItem = styled.div`
+  color: ${COLORS.blueRibbon};
+  cursor: pointer;
+  &:not(:first-child) {
+    color: ${COLORS.black};
+    &:before {
+      content: "  >";
+      padding: 8px;
+    }
+  }
 `;
 
 const LegendBox = styled.fieldset`
-  border: 1px solid #000;
+  border: 1px solid ${COLORS.black};
   padding: 0 35px;
+  padding-top: 28px;
   width: 50%;
-  @media ${BREAKPOINTS.laptop}  {
+  @media ${BREAKPOINTS.laptop} {
     width: auto;
   }
   .contact-title {
-    /* font-family: ${FONTS.manropeBold}; */
+    font-family: ${FONTS.manropeBold};
     font-weight: normal;
     font-size: 20px;
     line-height: 35px;
-    margin-top: 9px;
+    margin-top: 10px;
+    margin-bottom: 8px;
     text-align: left;
-    color: #000;
+    color: ${COLORS.black};
   }
   .red-start {
     color: red;
   }
 `;
 
-
 const LabelText = styled.label`
-  /* font-family: ${FONTS.manropeRegular}; */
+  font-family: ${FONTS.manropeRegular};
   font-weight: normal;
   font-size: 16px;
   text-align: left;
-  color: #000;
+  color: ${COLORS.black};
 `;
 
-const LegendText = styled.legend`
-  /* font-family: ${FONTS.montserratRegular}; */
+const LegendTitle = styled.legend`
+  font-family: ${FONTS.montserratRegular};
   font-weight: normal;
   font-size: 23px;
   line-height: 27px;
@@ -150,33 +117,49 @@ const LegendText = styled.legend`
   padding-right: 40px;
 `;
 
-const InputDetails = styled.legend`
+const LegendItem = styled.div.attrs((props: { isError?: boolean }) => props)`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 18px;
+  margin-bottom: ${(props) => (props.isError ? "0px" : "18px")};
+`;
+
+const LegendField = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+`;
+
+const TextErrorInput = styled.p`
+  font-family: ${FONTS.manropeRegular};
+  font-size: 14px;
+  color: ${COLORS.red};
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 12px;
+  margin-bottom: 14px;
+  margin-top: 5px;
 `;
 
 const AccountSettingHeader = styled.div`
-  margin-top: 50px;
+  margin-top: 48px;
 `;
 const NextStepBox = styled.div`
   padding: 0 35px;
   width: 50%;
   margin-left: 28px;
   position: relative;
-  @media ${BREAKPOINTS.laptop}  {
+  @media ${BREAKPOINTS.laptop} {
     margin-left: 0;
     margin-top: 28px;
-    padding:0;
+    padding: 0;
   }
 `;
 
 const ButtonNextStep = styled.div`
   position: absolute;
   right: 0;
-  bottom:0;
+  bottom: 0;
   background: ${COLORS.gradient1};
   width: 207px;
   height: 64px;
@@ -186,24 +169,23 @@ const ButtonNextStep = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${COLORS.white};
-  @media ${BREAKPOINTS.laptop}  {
+  @media ${BREAKPOINTS.laptop} {
     position: relative;
   }
-`
-
+`;
 
 export {
   AccountSettingContainer,
   BreadcrumbContainer,
   BreadcrumbBody,
-  Input,
-  TitleInput,
-  InputSection,
+  BreadcrumbItem,
   LegendBox,
   LabelText,
-  LegendText,
-  InputDetails,
+  LegendTitle,
+  LegendItem,
+  LegendField,
+  TextErrorInput,
   AccountSettingHeader,
   NextStepBox,
-  ButtonNextStep
+  ButtonNextStep,
 };

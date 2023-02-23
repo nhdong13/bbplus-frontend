@@ -5,9 +5,9 @@ import {
   ResetPassword,
   ForgotPassword,
   SignUp,
+  AccountSetting,
 } from "@/pages";
 import { RouterName } from "./config";
-import AccountSetting from "@/pages/AccountSetting";
 
 export const RouterApp = () => {
   return (
@@ -18,6 +18,7 @@ export const RouterApp = () => {
         <Route path={RouterName.resetPassword} element={<ResetPassword />} />
         <Route path={RouterName.forgotPassword} element={<ForgotPassword />} />
         <Route path={RouterName.signUp} element={<SignUp />} />
+        <Route path={RouterName.accountSetting} element={<AccountSetting />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>

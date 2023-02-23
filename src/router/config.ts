@@ -4,4 +4,5 @@ export const RouterName = {
   signUp: "sign-up",
   resetPassword: "reset-password",
   forgotPassword: "forgot-password",
+  accountSetting: "account-setting",
 }

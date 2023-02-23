@@ -2,29 +2,24 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { H2 } from "@/components/Typography";
 import useAccountSetting from "./hooks";
 import {
-  BreadcrumbContainer,
   AccountSettingContainer,
+  BreadcrumbContainer,
   BreadcrumbBody,
-  Input,
+  BreadcrumbItem,
   LegendBox,
   LabelText,
-  LegendText,
-  InputDetails,
+  LegendTitle,
+  LegendItem,
   AccountSettingHeader,
   NextStepBox,
   ButtonNextStep,
 } from "./styles";
-import {
-  TextField,
-  Select,
-  MenuItem,
-  Button,
-  Autocomplete,
-} from "@mui/material";
-import FileInput from "./FileInput";
 
-interface Props {}
-interface State {}
+import { FormInput } from "@/components/FormInput";
+import PhoneInput from "@/components/PhoneInput";
+import Select from "@/components/Select";
+import FileInput from "./FileInput";
+import Preferences from "./Preferences";
 
 function AccountSetting() {
   const {} = useAccountSetting();
@@ -33,9 +28,9 @@ function AccountSetting() {
       <AccountSettingContainer id="account-setting">
         <BreadcrumbContainer>
           <BreadcrumbBody>
-            <div className="company-information">Company Information</div>
-            <div>Preferences</div>
-            <div>User Management</div>
+            <BreadcrumbItem>Company Information</BreadcrumbItem>
+            <BreadcrumbItem>Preferences</BreadcrumbItem>
+            <BreadcrumbItem>User Management</BreadcrumbItem>
           </BreadcrumbBody>
         </BreadcrumbContainer>
         <div id="account-setting-section">
@@ -48,61 +43,97 @@ function AccountSetting() {
               setup
             </div>
           </AccountSettingHeader>
-          <div className="body-section">
+          <Preferences />
+          {/* <div className="body-section">
             <div className="body-section-item">
               <LegendBox>
-                <LegendText>Agency details</LegendText>
+                <LegendTitle>Agency details</LegendTitle>
                 <div className="contact-title">
                   Primary contact method <span className="red-start">*</span>
                 </div>
-                <InputDetails>
+                <LegendItem>
                   <LabelText>Agency Name</LabelText>
-                  <Input type="text" />
-                </InputDetails>
-                <InputDetails>
+                  <FormInput
+                    width="339px"
+                    maxHeight="68px"
+                    label="Agency Name"
+                    marginTop="0px"
+                  />
+                </LegendItem>
+                <LegendItem>
                   <LabelText>Email Address</LabelText>
-                  <Input type="email" />
-                </InputDetails>
-                <InputDetails>
+                  <FormInput
+                    width="339px"
+                    maxHeight="68px"
+                    label="Email Address"
+                    marginTop="0px"
+                  />
+                </LegendItem>
+                <LegendItem>
                   <LabelText>Phone number</LabelText>
-                  <Input type="text" />
-                </InputDetails>
-                <InputDetails>
+                  <PhoneInput
+                    label="Phone number"
+                    width="339px"
+                    maxHeight="68px"
+                    marginTop="0px"
+                  />
+                </LegendItem>
+                <LegendItem>
                   <LabelText>Country</LabelText>
-                  <Input type="text"></Input>
-                </InputDetails>
-                <InputDetails>
+                  <Select
+                    label="Country"
+                    width="339px"
+                    maxHeight="68px"
+                    marginTop="0px"
+                  />
+                </LegendItem>
+                <LegendItem>
                   <LabelText>Physical Address</LabelText>
-                  <Input type="text" />
-                </InputDetails>
+                  <FormInput
+                    width="339px"
+                    maxHeight="68px"
+                    label="Physical Address"
+                    marginTop="0px"
+                  />
+                </LegendItem>
               </LegendBox>
               <LegendBox className="legenbox-right">
-                <LegendText>Agency Logo</LegendText>
+                <LegendTitle>Agency Logo</LegendTitle>
                 <FileInput />
               </LegendBox>
             </div>
 
             <div className="body-section-item">
               <LegendBox>
-                <LegendText>Finance details</LegendText>
+                <LegendTitle>Finance details</LegendTitle>
                 <div className="contact-title">
                   Contact for handling accounting and finance{" "}
                   <span className="red-start">*</span>
                 </div>
-                <InputDetails>
+                <LegendItem>
                   <LabelText>Email Address</LabelText>
-                  <Input type="email" />
-                </InputDetails>
-                <InputDetails>
+                  <FormInput
+                    width="339px"
+                    maxHeight="68px"
+                    label="Email Address"
+                    marginTop="0px"
+                  />
+                </LegendItem>
+                <LegendItem>
                   <LabelText>Phone number</LabelText>
-                  <Input type="text" />
-                </InputDetails>
+                  <PhoneInput
+                    label="Phone number"
+                    width="339px"
+                    maxHeight="68px"
+                    marginTop="0px"
+                  />
+                </LegendItem>
               </LegendBox>
               <NextStepBox>
                 <ButtonNextStep>Next Step</ButtonNextStep>
               </NextStepBox>
             </div>
-          </div>
+          </div> */}
         </div>
       </AccountSettingContainer>
     </MainLayout>

@@ -11,6 +11,8 @@ const Select = ({
   marginTop,
   valid,
   maxHeight,
+  width,
+  padding,
   handleChange,
 }: FormInput) => {
   return (
@@ -22,6 +24,8 @@ const Select = ({
         marginTop={marginTop}
         maxHeight={maxHeight}
         valid={valid}
+        width={width}
+        padding={padding}
       >
         <div className="label">
           <div>{label.concat(isImportant ? " *" : " ")}</div>
