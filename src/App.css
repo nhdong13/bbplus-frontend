@@ -1,3 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+}
+
+body {
+  overflow-x: hidden;
+  /* background-color: green;
+  opacity: 0.5; */
+}
+
 @font-face {
   font-family: "MYRIADPRO-REGULAR";
   src: url("src/assets/fonts/MYRIADPRO-REGULAR.OTF") format("opentype");
@@ -8,3 +27,32 @@
   src: url("src/assets/fonts/MYRIADPRO-SEMIBOLD.OTF") format("opentype");
 }
 
+@font-face {
+  font-family: "Manrope-Bold";
+  src: url("src/assets/fonts/Manrope/Manrope-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope-ExtraBold";
+  src: url("src/assets/fonts/Manrope/Manrope-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope-ExtraLight";
+  src: url("src/assets/fonts/Manrope/Manrope-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope-Medium";
+  src: url("src/assets/fonts/Manrope/Manrope-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope-Regular";
+  src: url("src/assets/fonts/Manrope/Manrope-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope-SemiBold";
+  src: url("src/assets/fonts/Manrope/Manrope-SemiBold.ttf") format("truetype");
+}
