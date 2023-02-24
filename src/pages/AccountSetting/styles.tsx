@@ -41,6 +41,9 @@ const AccountSettingContainer = styled.div`
         padding-bottom: 28px;
       }
     }
+    .w-100{
+      width: 100% !important;
+    }
   }
 `;
 
@@ -93,6 +96,11 @@ const LegendBox = styled.fieldset`
     margin-bottom: 8px;
     text-align: left;
     color: ${COLORS.black};
+  }
+  .user-title { 
+    font-size: 18px;
+    font-family: ${FONTS.manropeBold};
+    margin-bottom: 20px;
   }
   .red-start {
     color: red;

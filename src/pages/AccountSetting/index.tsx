@@ -20,9 +20,10 @@ import PhoneInput from "@/components/PhoneInput";
 import Select from "@/components/Select";
 import FileInput from "./FileInput";
 import Preferences from "./Preferences";
+import UserManagerment from "./UserManagerment";
 
 function AccountSetting() {
-  const {} = useAccountSetting();
+  const { } = useAccountSetting();
   return (
     <MainLayout>
       <AccountSettingContainer id="account-setting">
@@ -43,7 +44,8 @@ function AccountSetting() {
               setup
             </div>
           </AccountSettingHeader>
-          <Preferences />
+          {/* <Preferences /> */}
+          <UserManagerment />
           {/* <div className="body-section">
             <div className="body-section-item">
               <LegendBox>
