@@ -59,6 +59,8 @@ const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
   }
 
   .room-option__mobile-container {
+    max-height : 490px;
+    overflow-y: auto;
     @media ${BREAKPOINTS.laptop} {
       overflow: scroll;
       height: calc(100vh - 230px);

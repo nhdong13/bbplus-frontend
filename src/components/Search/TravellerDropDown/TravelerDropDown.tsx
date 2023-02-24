@@ -85,7 +85,13 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
-        <span>{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</span>
+        {
+          dataFilter.length < 5
+            ?
+            <span>{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</span>
+            :
+            <span>For bookings of more than 5 rooms please contact our customer service team on (679) 6724244.</span>
+        }
         <GradientButton
           color={COLORS.gradient1}
           text="Apply"
@@ -107,14 +113,19 @@ interface RoomOptions {
 }
 
 const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
+  
   const {
     handleChangeDataRoom
   } = useGlobalContext()
 
+  const [optionalName, setOptionalName] = useState<string>(data.name);
+
 
   const onChangeValue = (e: React.KeyboardEvent) => {
   }
-
+  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOptionalName(e.target.value)
+  }
   return (
     <>
       <StyledRoomOptions>
@@ -128,7 +139,7 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
               <VerticalContainer>
                 <H5 fontWeight={"700"} className={"optional"}>Primary party name (Optional)</H5>
                 <div className="room-option__name-input-container">
-                  <input placeholder="Name of primary contact" value={data.name} />
+                  <input placeholder="Name of primary contact" value={optionalName} onChange={onChangeName}/>
                 </div>
               </VerticalContainer>
               <VerticalContainer>
@@ -155,7 +166,7 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
                 <p style={{ visibility: "hidden" }}>Adults</p>
                 <QuantityButton
                   onClickDecreaseNumber={() => data.adults > 1 ? handleChangeDataRoom('remove_adult', data._id) : false}
-                  onClickIncreaseNumber={() => handleChangeDataRoom('add_adult', data._id)}
+                  onClickIncreaseNumber={() => data.adults < 14 ? handleChangeDataRoom('add_adult', data._id) : false}
                   numberOfPeople={data.adults}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
@@ -171,7 +182,7 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
                 </div>
                 <QuantityButton
                   onClickDecreaseNumber={() => data.children > 0 ? handleChangeDataRoom('remove_children', data._id) : false}
-                  onClickIncreaseNumber={() => handleChangeDataRoom('add_children', data._id)}
+                  onClickIncreaseNumber={() => data.children < 14 ? handleChangeDataRoom('add_children', data._id) : false}
                   numberOfPeople={data.children}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
