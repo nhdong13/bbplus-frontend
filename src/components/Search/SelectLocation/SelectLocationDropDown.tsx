@@ -1,6 +1,6 @@
 import IMAGES from "@/assets/images";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
-import { H4 } from "../../Typography";
+import { H5 } from "../../Typography";
 import { StyledSelectLocationDropDown } from "./StyledSelectLocationDropDown";
 
 interface SelectLocationDropDown {
@@ -16,7 +16,7 @@ export default function SelectLocationDropDown({ isShown, leaving, innerRef }: S
         <div className="popular-places__container">
           <div className="popular-places">
             <div className="popular-places__title">
-              <H4>Popular places</H4>
+              <H5 fontWeight={"700"}>Popular places</H5>
             </div>
           </div>
           <div className="popular-places__list">

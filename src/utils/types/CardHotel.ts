@@ -12,6 +12,7 @@ export interface HotelData {
 export interface TravelerDropDown {
   isShown?: boolean
   innerRef?: any
+  closePopup: (n: boolean) => void,
 }
 
 export interface TableData {

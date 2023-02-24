@@ -76,9 +76,9 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
           {dates[0] &&
             <HorizontalContainer gap="20px" alignItems="center">
               <HorizontalContainer gap="20px" className="result-dates">
-                <span>{dates[0]?.format("dddd, DD MMMM YYYY")}</span>
+                <span>{dates[0]?.format("ddd, DD MMM YYYY")}</span>
                 {dates[1] && <img src={IMAGES.iconArrowRight} />}
-                <span>{dates[1]?.format("dddd, DD MMMM YYYY")}</span>
+                <span>{dates[1]?.format("ddd, DD MMM YYYY")}</span>
                 {totalNights > 0 && <span>{totalNights} nights</span>}
               </HorizontalContainer>
               <div
@@ -151,10 +151,9 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays, totalDates }: PopupSel
     if (didMount) {
       document.querySelectorAll(".rmdp-month-name").forEach(p => {
         p.innerHTML = `${p.innerHTML + "&ensp;" + date.year}`;
-        p.innerHTML = [...new Set(p.innerHTML)].join("")
       });
     }
-  }, [document.querySelectorAll(".rmdp-month-name")])
+  }, [didMount])
 
   const handleClosePopup = () => {
     const getBodyElement = document.querySelector("body");
@@ -202,9 +201,9 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays, totalDates }: PopupSel
             {dates[0] &&
               <HorizontalContainer gap="15px" alignItems="center" justifyContent="center">
                 <HorizontalContainer gap="20px" className="result-dates">
-                  <span>{dates[0]?.format("ddd, DD MMMM YYYY")}</span>
+                  <span>{dates[0]?.format("ddd, DD MMM YYYY")}</span>
                   {dates[1] && <img src={IMAGES.iconArrowRight} />}
-                  <span>{dates[1]?.format("ddd, DD MMMM YYYY")}</span>
+                  <span>{dates[1]?.format("ddd, DD MMM YYYY")}</span>
                   {totalNights > 0 && <span>({totalNights} nights)</span>}
                 </HorizontalContainer>
               </HorizontalContainer>

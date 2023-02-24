@@ -17,91 +17,81 @@ import { QuantityButton } from "@/utils/types/Button";
 import _ from "lodash";
 import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
+import useWindowSize from "@/utils/windowResize";
+import { useGlobalContext } from '../GlobalContext'
 
-const TravelerDropDown = ({ isShown, innerRef }: TravelerDropDown) => {
-  const [showNumberOfAdults, setShowNumberOfAdults] = useState<number>(0);
-  const [showNumberOfChildren, setShowNumberOfChildren] = useState<number>(0);
-  const [numberOfRoom, setNumberOfRoom] = useState<number>(1);
+
+const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) => {
+  const screenWidth = useWindowSize();
+  const { dataFilter, handleAddRoom } = useGlobalContext();
   const [totalAdults, setTotalAdults] = useState<number>(0);
   const [totalChildren, setTotalChildren] = useState<number>(0);
-  const [test, setTest] = useState<any>([]);
-  let roomOptions: any = [];
 
   const handleRoomOptions = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const localStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
-
-    if (localStoreRoomOptions.length) {
-      localStoreRoomOptions.push({
-        roomId: numberOfRoom,
-        adults: showNumberOfAdults,
-        children: showNumberOfChildren
-      })
-      localStorage.setItem('roomOptions', JSON.stringify(localStoreRoomOptions));
-    } else localStorage.setItem('roomOptions', JSON.stringify(roomOptions));
-    if (numberOfRoom < 5) setNumberOfRoom(numberOfRoom + 1);
-    roomOptions = localStoreRoomOptions
-    setTest(roomOptions)
+    handleAddRoom({ _id: new Date().getTime().toString(), name: 'Name', adults: 1, children: 0 });
   };
 
   useEffect(() => {
-    const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
 
-    if (getLocalStoreRoomOptions.length && !isShown) {
-      setShowNumberOfChildren(getLocalStoreRoomOptions.children);
-      setShowNumberOfAdults(getLocalStoreRoomOptions.adults);
-      setNumberOfRoom(getLocalStoreRoomOptions.length);
-    } else {
-      roomOptions.push({
-        roomId: numberOfRoom,
-        adults: showNumberOfAdults,
-        children: showNumberOfChildren
-      })
+    const sumAdults = dataFilter.reduce((sum, item) => {
+      return sum + item.adults;
+    }, 0);
+
+    const sumChildren = dataFilter.reduce((sum, item) => {
+      return sum + item.children;
+    }, 0);
+
+
+    setTotalAdults(sumAdults)
+    setTotalChildren(sumChildren)
+
+  }, [dataFilter])
+
+
+  useEffect(() => {
+    if (screenWidth < 1024) {
+      const getBodyElement: any = document.querySelector("body");
+      if (isShown) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        getBodyElement.style.overflow = "hidden";
+      }
     }
-
-    let adults = 0;
-    let children = 0;
-    if (getLocalStoreRoomOptions.length) {
-      getLocalStoreRoomOptions.forEach((element: any) => {
-        adults += element.adults;
-        children += element.children;
-      });
-    }
-    setTotalAdults(adults);
-    setTotalChildren(children);
-    handleStoreOptions
-  }, [showNumberOfAdults, showNumberOfChildren, test])
-
-  const handleStoreOptions = useMemo(() => {
-    const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
-    setTest(roomOptions)
-    console.log(test)
-  }, [])
-
-  const handleResetOption = () => {
-    console.log(roomOptions)
-  }
+  }, [isShown, screenWidth])
 
   return (
     <StyledTravelerDropDown ref={innerRef} isShown={isShown} gap="20px">
-      {_.range(0, numberOfRoom).map((index: number) =>
-        <div key={index}>
-          <RoomOptions
-            isShown={isShown}
-            adults={(e: number) => setShowNumberOfAdults(e)}
-            children={(e: number) => setShowNumberOfChildren(e)}
-            numberOfRoom={index}
-            handleRemoveRoom={() => numberOfRoom > 1 ? setNumberOfRoom(numberOfRoom - 1) : false}
-            handleResetRoom={handleResetOption}
-          />
+      <div className="dropdown-header">
+        <div className="dropdown-header__container">
+          <H4>Who is going?</H4>
+          <button onClick={() => closePopup(false)}>
+            <img src={IMAGES.iconClose} />
+          </button>
         </div>
-      )}
+      </div>
+
+      <div className="room-option__mobile-container">
+        {dataFilter.map((value: any, index: number) =>
+          <div key={index}>
+            <RoomOptions
+              data={value}
+              isShown={isShown}
+              numberOfRoom={index}
+            />
+          </div>
+        )}
+      </div>
       <StyledAddAnotherRoom onClick={(e: React.MouseEvent) => handleRoomOptions(e)}>
-        <H4>+ Add another room</H4>
+        {dataFilter.length < 5 ? <H4>+ Add another room</H4> : <></>}
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
-        <span>{totalAdults} adults, {totalChildren} children ({numberOfRoom} room)</span>
+        {
+          dataFilter.length < 5
+            ?
+            <span>{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</span>
+            :
+            <span>For bookings of more than 5 rooms please contact our customer service team on (679) 6724244.</span>
+        }
         <GradientButton
           color={COLORS.gradient1}
           text="Apply"
@@ -118,88 +108,93 @@ export default TravelerDropDown;
 
 interface RoomOptions {
   isShown?: boolean
-  adults: (n: number) => void,
-  children: (n: number) => void,
   numberOfRoom: number,
-  handleRemoveRoom: () => void,
-  handleResetRoom: () => void,
+  data: any,
 }
 
-const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom, handleResetRoom }: RoomOptions) => {
-  const [numberOfAdults, setNumberOfAdults] = useState<number>(0);
-  const [numberOfChildren, setNumberOfChildren] = useState<number>(0);
+const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
+  
+  const {
+    handleChangeDataRoom
+  } = useGlobalContext()
 
-  useEffect(() => {
-    adults(numberOfAdults);
-    children(numberOfChildren);
-    handleRemoveRoom;
-    handleResetRoom;
-  }, [numberOfAdults, numberOfChildren]);
+  const [optionalName, setOptionalName] = useState<string>(data.name);
+
 
   const onChangeValue = (e: React.KeyboardEvent) => {
-    console.log(e?.target?.value)
   }
-
+  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOptionalName(e.target.value)
+  }
   return (
     <>
       <StyledRoomOptions>
         <div className="room-option__container">
           <div className="room-option__left">
-            <H4>Room {numberOfRoom + 1}</H4>
+            <H5 fontWeight={"700"} className={"optional"}>Room {numberOfRoom + 1}</H5>
           </div>
           <Divider color={COLORS.silver} height="auto" width="1px" margin="0" />
           <div className="room-option__right">
             <HorizontalContainer justifyContent="space-between" width="100%">
               <VerticalContainer>
-                <H4>Primary party name (Optional)</H4>
+                <H5 fontWeight={"700"} className={"optional"}>Primary party name (Optional)</H5>
                 <div className="room-option__name-input-container">
-                  <input placeholder="Name of primary contact" />
+                  <input placeholder="Name of primary contact" value={optionalName} onChange={onChangeName}/>
                 </div>
               </VerticalContainer>
               <VerticalContainer>
                 <HorizontalContainer gap="30px">
-                  {(numberOfAdults || numberOfChildren) ?
-                    <div onClick={handleResetRoom} className="room-option__remove-room">
+                  {(data.adults > 1 || data.children > 0) ?
+                    <div onClick={() => handleChangeDataRoom('reset_room', data._id)} className="room-option__remove-room">
                       <span>Reset</span>
                     </div>
                     : <></>
                   }
-                  <div onClick={handleRemoveRoom} className="room-option__remove-room">
-                    <span>Remove</span>
-                  </div>
+                  {(numberOfRoom > 0) ?
+                    <div onClick={() => handleChangeDataRoom('remove_room', data._id)} className="room-option__remove-room">
+                      <span>Remove</span>
+                    </div>
+                    : <></>
+                  }
                 </HorizontalContainer>
               </VerticalContainer>
             </HorizontalContainer>
 
             <div className="room-option__adults-children-container">
-              <VerticalContainer>
+              <VerticalContainer className="room-option__adults-container">
                 <H5>Adults</H5>
                 <p style={{ visibility: "hidden" }}>Adults</p>
                 <QuantityButton
-                  onClickDecreaseNumber={() => numberOfAdults > 0 ? setNumberOfAdults(numberOfAdults - 1) : false}
-                  onClickIncreaseNumber={() => setNumberOfAdults(numberOfAdults + 1)}
-                  numberOfPeople={numberOfAdults}
+                  onClickDecreaseNumber={() => data.adults > 1 ? handleChangeDataRoom('remove_adult', data._id) : false}
+                  onClickIncreaseNumber={() => data.adults < 14 ? handleChangeDataRoom('add_adult', data._id) : false}
+                  numberOfPeople={data.adults}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
-              <VerticalContainer>
-                <H5>Children</H5>
-                <p>Ages 0 to 16</p>
+              <VerticalContainer className="room-option__children-container">
+                <div>
+                  <H5>Children</H5>
+                  <HorizontalContainer>
+                    <span className="bracket">{"("}</span>
+                    <p>Ages 0 to 16</p>
+                    <span className="bracket">{")"}</span>
+                  </HorizontalContainer>
+                </div>
                 <QuantityButton
-                  onClickDecreaseNumber={() => numberOfChildren > 0 ? setNumberOfChildren(numberOfChildren - 1) : false}
-                  onClickIncreaseNumber={() => setNumberOfChildren(numberOfChildren + 1)}
-                  numberOfPeople={numberOfChildren}
+                  onClickDecreaseNumber={() => data.children > 0 ? handleChangeDataRoom('remove_children', data._id) : false}
+                  onClickIncreaseNumber={() => data.children < 14 ? handleChangeDataRoom('add_children', data._id) : false}
+                  numberOfPeople={data.children}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
-              {numberOfChildren !== 0 &&
-                <VerticalContainer>
+              {data.children !== 0 &&
+                <VerticalContainer className="room-option__list-children">
                   <H5>Children’s ages</H5>
                   <p style={{ visibility: "hidden" }}>Adults</p>
-                  <div className="room-option__children-container">
-                    {_.range(0, numberOfChildren).map((index: number) =>
+                  <div className="room-option__list-children-container">
+                    {_.range(data.children).map((index: number) =>
                       <div key={index}>
-                        <SelectAges />
+                        <SelectAges index={index} />
                       </div>
                     )}
                   </div>
@@ -219,14 +214,18 @@ const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOf
     <>
       <StyledQuantityButton>
         <button className="button" onClick={onClickDecreaseNumber}>-</button>
-        <input type="number" />
+        <input type="number" value={numberOfPeople} />
         <button className="button" onClick={onClickIncreaseNumber}>+</button>
       </StyledQuantityButton>
     </>
   )
 }
 
-const SelectAges = () => {
+type SelectAgeProps = {
+  index: number
+}
+
+const SelectAges = ({ index }: SelectAgeProps) => {
   const [selectAges, setSelectAges] = useState<boolean>(false);
   const handleSelectAges = () => {
     setSelectAges(!selectAges);
@@ -235,7 +234,7 @@ const SelectAges = () => {
   return (
     <>
       <StyledSelectAges onClick={handleSelectAges} isOpen={selectAges}>
-        <span>Children 1</span>
+        <span>Children {index + 1}</span>
         <img className="select-ages__dropdown-icon" src={IMAGES.iconDropDownBlue} width="10px" height="7px" />
       </StyledSelectAges>
     </>

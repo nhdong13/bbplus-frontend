@@ -4,6 +4,7 @@ import defaultUser from "./default-user.svg";
 import iconLetter from "./icon-letter.svg";
 import iconAnchor from "./icon-anchor.svg";
 import iconSearch from "./icon-search.svg"
+import iconSearchOutline from "./icon-search-outline.svg"
 import hotelBg from "./hotel-bg.jpg";
 import leftQuotationMark from "./left-quotation-mark-icon.svg";
 import locationIcon from "./icon-location.svg";
@@ -42,6 +43,7 @@ const IMAGES = {
   iconLetter,
   iconAnchor,
   iconSearch,
+  iconSearchOutline,
   hotelBg,
   leftQuotationMark,
   locationIcon,

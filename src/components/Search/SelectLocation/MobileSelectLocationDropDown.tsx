@@ -42,6 +42,7 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
           <div className="dropdown-search">
             <div className="dropdown-search__container">
               <input placeholder="Search by city or airport" />
+              <img src={IMAGES.iconSearchOutline}/>
             </div>
             <div className="popular-places">
               <div className="popular-places__title">
