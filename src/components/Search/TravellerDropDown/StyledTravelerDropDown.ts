@@ -124,6 +124,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
     @media ${BREAKPOINTS.mobileLg} {
       h5{
         font-size: 12px !important;
+        margin-bottom: 10px;
       }
     }
   }
@@ -161,6 +162,13 @@ const StyledRoomOptions = styled(VerticalContainer)`
       &:focus {
         outline: none; 
       }
+      @media ${BREAKPOINTS.tablet} {
+        padding: 0;
+        padding-left: 20px;
+        height: 36px;
+        width: 100%;
+        line-height: 36px;
+      }
     }
   }
 
@@ -196,6 +204,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
   .mb-10 {
     @media ${BREAKPOINTS.tablet} {
       margin-top: 10px;
+      
     }
   }
 
