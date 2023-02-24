@@ -18,80 +18,35 @@ import _ from "lodash";
 import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
 import useWindowSize from "@/utils/windowResize";
+import { useGlobalContext } from '../GlobalContext'
+
 
 const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) => {
-  const [showNumberOfAdults, setShowNumberOfAdults] = useState<number>(0);
-  const [showNumberOfChildren, setShowNumberOfChildren] = useState<number>(0);
-  const [numberOfRoom, setNumberOfRoom] = useState<number>(1);
+  const screenWidth = useWindowSize();
+  const { dataFilter, handleAddRoom } = useGlobalContext();
   const [totalAdults, setTotalAdults] = useState<number>(0);
   const [totalChildren, setTotalChildren] = useState<number>(0);
-  const [test, setTest] = useState<any>([]);
-  let roomOptions: any = [];
-  const screenWidth = useWindowSize();
 
   const handleRoomOptions = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const localStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
-
-    if (localStoreRoomOptions.length) {
-      localStoreRoomOptions.push({
-        roomId: numberOfRoom,
-        adults: showNumberOfAdults,
-        children: showNumberOfChildren
-      })
-      localStorage.setItem('roomOptions', JSON.stringify(localStoreRoomOptions));
-    } else localStorage.setItem('roomOptions', JSON.stringify(roomOptions));
-    if (numberOfRoom < 5) setNumberOfRoom(numberOfRoom + 1);
-    roomOptions = localStoreRoomOptions
-    setTest(roomOptions)
+    handleAddRoom({ _id: new Date().getTime().toString(), name: 'Name', adults: 1, children: 0 });
   };
 
   useEffect(() => {
-    const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
 
-    if (getLocalStoreRoomOptions.length && !isShown) {
-      setShowNumberOfChildren(getLocalStoreRoomOptions.children);
-      setShowNumberOfAdults(getLocalStoreRoomOptions.adults);
-      setNumberOfRoom(getLocalStoreRoomOptions.length);
-    } else {
-      roomOptions.push({
-        roomId: numberOfRoom,
-        adults: showNumberOfAdults,
-        children: showNumberOfChildren
-      })
-    }
+    const sumAdults = dataFilter.reduce((sum, item) => {
+      return sum + item.adults;
+    }, 0);
 
-    let adults = 0;
-    let children = 0;
-    if (getLocalStoreRoomOptions.length) {
-      getLocalStoreRoomOptions.forEach((element: any) => {
-        adults += element.adults;
-        children += element.children;
-      });
-    }
-    setTotalAdults(adults);
-    setTotalChildren(children);
-    handleStoreOptions
-  }, [showNumberOfAdults, showNumberOfChildren, test])
+    const sumChildren = dataFilter.reduce((sum, item) => {
+      return sum + item.children;
+    }, 0);
 
-  const handleStoreOptions = useMemo(() => {
-    const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
-    setTest(roomOptions)
-    console.log(test)
-  }, [])
 
-  const handleResetOption = () => {
-    console.log(roomOptions)
-  }
+    setTotalAdults(sumAdults)
+    setTotalChildren(sumChildren)
 
-  const handleRemoveOption = () => {
-    if (numberOfRoom > 1) {
-      setNumberOfRoom(numberOfRoom - 1)
-      const getLocalStoreRoomOptions = JSON.parse(localStorage.getItem('roomOptions') || '{}');
-      localStorage.setItem('roomOptions', JSON.stringify(getLocalStoreRoomOptions.splice(-1)));
-    }
+  }, [dataFilter])
 
-  }
 
   useEffect(() => {
     if (screenWidth < 1024) {
@@ -115,25 +70,22 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       </div>
 
       <div className="room-option__mobile-container">
-        {_.range(0, numberOfRoom).map((index: number) =>
+        {dataFilter.map((value: any, index: number) =>
           <div key={index}>
             <RoomOptions
+              data={value}
               isShown={isShown}
-              adults={(e: number) => setShowNumberOfAdults(e)}
-              children={(e: number) => setShowNumberOfChildren(e)}
               numberOfRoom={index}
-              handleRemoveRoom={handleRemoveOption}
-              handleResetRoom={handleResetOption}
             />
           </div>
         )}
       </div>
       <StyledAddAnotherRoom onClick={(e: React.MouseEvent) => handleRoomOptions(e)}>
-        {numberOfRoom < 5 ? <H4>+ Add another room</H4> : <></>}
+        {dataFilter.length < 5 ? <H4>+ Add another room</H4> : <></>}
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
-        <span>{totalAdults} adults, {totalChildren} children ({numberOfRoom} room)</span>
+        <span>{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</span>
         <GradientButton
           color={COLORS.gradient1}
           text="Apply"
@@ -150,26 +102,17 @@ export default TravelerDropDown;
 
 interface RoomOptions {
   isShown?: boolean
-  adults: (n: number) => void,
-  children: (n: number) => void,
   numberOfRoom: number,
-  handleRemoveRoom: () => void,
-  handleResetRoom: () => void,
+  data: any,
 }
 
-const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom, handleResetRoom }: RoomOptions) => {
-  const [numberOfAdults, setNumberOfAdults] = useState<number>(0);
-  const [numberOfChildren, setNumberOfChildren] = useState<number>(0);
+const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
+  const {
+    handleChangeDataRoom
+  } = useGlobalContext()
 
-  useEffect(() => {
-    adults(numberOfAdults);
-    children(numberOfChildren);
-    handleRemoveRoom;
-    handleResetRoom;
-  }, [numberOfAdults, numberOfChildren]);
 
   const onChangeValue = (e: React.KeyboardEvent) => {
-    // console.log(e?.target?.value)
   }
 
   return (
@@ -177,28 +120,31 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
       <StyledRoomOptions>
         <div className="room-option__container">
           <div className="room-option__left">
-            <H5 fontWeight={"700"}>Room {numberOfRoom + 1}</H5>
+            <H5 fontWeight={"700"} className={"optional"}>Room {numberOfRoom + 1}</H5>
           </div>
           <Divider color={COLORS.silver} height="auto" width="1px" margin="0" />
           <div className="room-option__right">
             <HorizontalContainer justifyContent="space-between" width="100%">
               <VerticalContainer>
-                <H5 fontWeight={"700"}>Primary party name (Optional)</H5>
+                <H5 fontWeight={"700"} className={"optional"}>Primary party name (Optional)</H5>
                 <div className="room-option__name-input-container">
-                  <input placeholder="Name of primary contact" />
+                  <input placeholder="Name of primary contact" value={data.name} />
                 </div>
               </VerticalContainer>
               <VerticalContainer>
                 <HorizontalContainer gap="30px">
-                  {(numberOfAdults || numberOfChildren) ?
-                    <div onClick={handleResetRoom} className="room-option__remove-room">
+                  {(data.adults > 1 || data.children > 0) ?
+                    <div onClick={() => handleChangeDataRoom('reset_room', data._id)} className="room-option__remove-room">
                       <span>Reset</span>
                     </div>
                     : <></>
                   }
-                  <div onClick={handleRemoveRoom} className="room-option__remove-room">
-                    <span>Remove</span>
-                  </div>
+                  {(numberOfRoom > 0) ?
+                    <div onClick={() => handleChangeDataRoom('remove_room', data._id)} className="room-option__remove-room">
+                      <span>Remove</span>
+                    </div>
+                    : <></>
+                  }
                 </HorizontalContainer>
               </VerticalContainer>
             </HorizontalContainer>
@@ -208,9 +154,9 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
                 <H5>Adults</H5>
                 <p style={{ visibility: "hidden" }}>Adults</p>
                 <QuantityButton
-                  onClickDecreaseNumber={() => numberOfAdults > 0 ? setNumberOfAdults(numberOfAdults - 1) : false}
-                  onClickIncreaseNumber={() => setNumberOfAdults(numberOfAdults + 1)}
-                  numberOfPeople={numberOfAdults}
+                  onClickDecreaseNumber={() => data.adults > 1 ? handleChangeDataRoom('remove_adult', data._id) : false}
+                  onClickIncreaseNumber={() => handleChangeDataRoom('add_adult', data._id)}
+                  numberOfPeople={data.adults}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
@@ -224,20 +170,20 @@ const RoomOptions = ({ isShown, adults, children, numberOfRoom, handleRemoveRoom
                   </HorizontalContainer>
                 </div>
                 <QuantityButton
-                  onClickDecreaseNumber={() => numberOfChildren > 0 ? setNumberOfChildren(numberOfChildren - 1) : false}
-                  onClickIncreaseNumber={() => setNumberOfChildren(numberOfChildren + 1)}
-                  numberOfPeople={numberOfChildren}
+                  onClickDecreaseNumber={() => data.children > 0 ? handleChangeDataRoom('remove_children', data._id) : false}
+                  onClickIncreaseNumber={() => handleChangeDataRoom('add_children', data._id)}
+                  numberOfPeople={data.children}
                   watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
-              {numberOfChildren !== 0 &&
+              {data.children !== 0 &&
                 <VerticalContainer className="room-option__list-children">
                   <H5>Children’s ages</H5>
                   <p style={{ visibility: "hidden" }}>Adults</p>
                   <div className="room-option__list-children-container">
-                    {_.range(0, numberOfChildren).map((index: number) =>
+                    {_.range(data.children).map((index: number) =>
                       <div key={index}>
-                        <SelectAges index={index}/>
+                        <SelectAges index={index} />
                       </div>
                     )}
                   </div>
@@ -268,7 +214,7 @@ type SelectAgeProps = {
   index: number
 }
 
-const SelectAges = ( { index }: SelectAgeProps) => {
+const SelectAges = ({ index }: SelectAgeProps) => {
   const [selectAges, setSelectAges] = useState<boolean>(false);
   const handleSelectAges = () => {
     setSelectAges(!selectAges);

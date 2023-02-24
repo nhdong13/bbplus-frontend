@@ -98,6 +98,9 @@ const StyledRoomOptions = styled(VerticalContainer)`
     @media ${BREAKPOINTS.mobileLg} {
       max-width: 380px;
       margin: 0;
+      .optional{
+        font-size: 14px;
+      }
     }
 
     @media ${BREAKPOINTS.mobileSm} {
@@ -176,6 +179,11 @@ const StyledRoomOptions = styled(VerticalContainer)`
     flex-direction: row;
     gap: 33px;
     flex-wrap: wrap;
+    @media ${BREAKPOINTS.tablet} {
+      span{
+        font-size: 14px;
+      }
+    }
   }
 
   .room-option__remove-room {
@@ -198,11 +206,12 @@ const StyledRoomOptions = styled(VerticalContainer)`
   }
 
   .room-option__adults-container,
-  .room-option__children-container {
+  .room-option__children-container,
+  .room-option__list-children {
     @media ${BREAKPOINTS.tablet} {
       align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     h5, p {

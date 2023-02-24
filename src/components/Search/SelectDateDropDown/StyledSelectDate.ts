@@ -252,7 +252,7 @@ const StyledPopupSelectDate = styled.div.attrs((props: {
 
     & > div {
       height: 42p;
-      width: 45px;
+      width: 44px;
 
     }
 
