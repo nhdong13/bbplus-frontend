@@ -2,6 +2,7 @@ export const COLORS: StyledColors = {
   anakiwa: "#A8FFF6",
   anzac: "#d9bf50",
   areoBlue: "#C8FFF5",
+  antiFlashWhite: "#F1F1F1",
   black: "#000000",
   blackPearl: "#07132b",
   blushPink: "#FF8EFF",
@@ -22,6 +23,7 @@ export const COLORS: StyledColors = {
   indiaKhaki: "#C3B693",
   endeavour: "#005099",
   gradient1: "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
+  mistyRose: "#FFECE1",
   mercury: "#E8E8E8",
   outerSpace: "#494949",
   oxfordBlue: "#002145",
@@ -32,6 +34,7 @@ export const COLORS: StyledColors = {
   snowyMint: "#d0ffdc",
   summerGreen: "#92C498",
   spanishBlue: "#0062BA",
+  spanishOrange: "#EF6E00",
   verdunGreen: "#4F7D00",
   tartOrange: "#FF4848",
   tealBlue: "#267D95",
@@ -43,11 +46,14 @@ export const COLORS: StyledColors = {
   linkBlue: "#086FFF",
   whiteFligt: "#F2F2F2",
   parkinglotGray: "#CECFD1",
+  papayaWhip: "#FFF3D6",
+  platinum: "#E2E2E2",
 }
 interface StyledColors {
   anakiwa: string,
   anzac: string,
   areoBlue: string,
+  antiFlashWhite: string,
   black: string,
   blackPearl: string,
   blushPink: string,
@@ -69,6 +75,7 @@ interface StyledColors {
   endeavour: string,
   gradient1: string,
   mercury: string,
+  mistyRose: string,
   outerSpace: string
   oxfordBlue: string,
   onyx: string,
@@ -78,6 +85,7 @@ interface StyledColors {
   snowyMint: string,
   summerGreen: string,
   spanishBlue: string
+  spanishOrange: string,
   verdunGreen: string,
   tartOrange: string
   tealBlue: string,
@@ -89,4 +97,6 @@ interface StyledColors {
   linkBlue: string,
   whiteFligt: string,
   parkinglotGray: string,
+  papayaWhip: string,
+  platinum: string,
 }
