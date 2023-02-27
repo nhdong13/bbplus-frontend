@@ -103,7 +103,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     display: flex;
     align-items: center;
     flex-direction: initial;
-    padding-bottom: 0
+    padding: 0 20px;
   }
 
   .input-search{
