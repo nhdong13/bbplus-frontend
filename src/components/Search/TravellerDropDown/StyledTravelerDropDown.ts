@@ -59,6 +59,8 @@ const StyledTravelerDropDown = styled(VerticalContainer).attrs((props: {
   }
 
   .room-option__mobile-container {
+    max-height : 490px;
+    overflow-y: auto;
     @media ${BREAKPOINTS.laptop} {
       overflow: scroll;
       height: calc(100vh - 230px);
@@ -98,6 +100,9 @@ const StyledRoomOptions = styled(VerticalContainer)`
     @media ${BREAKPOINTS.mobileLg} {
       max-width: 380px;
       margin: 0;
+      .optional{
+        font-size: 14px;
+      }
     }
 
     @media ${BREAKPOINTS.mobileSm} {
@@ -115,6 +120,12 @@ const StyledRoomOptions = styled(VerticalContainer)`
     @media ${BREAKPOINTS.laptop} {
       justify-content: left;
       margin: 0;
+    }
+    @media ${BREAKPOINTS.mobileLg} {
+      h5{
+        font-size: 12px !important;
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -138,6 +149,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
 
   .room-option__name-input-container {
     margin-top: 19px;
+    margin-bottom: 19px;
     max-width: 618px;
     width: 100%;
 
@@ -149,6 +161,13 @@ const StyledRoomOptions = styled(VerticalContainer)`
       font-size: 16px;
       &:focus {
         outline: none; 
+      }
+      @media ${BREAKPOINTS.tablet} {
+        padding: 0;
+        padding-left: 20px;
+        height: 36px;
+        width: 100%;
+        line-height: 36px;
       }
     }
   }
@@ -176,16 +195,22 @@ const StyledRoomOptions = styled(VerticalContainer)`
     flex-direction: row;
     gap: 33px;
     flex-wrap: wrap;
+    @media ${BREAKPOINTS.tablet} {
+      span{
+        font-size: 14px;
+      }
+    }
+  }
+  .mb-10 {
+    @media ${BREAKPOINTS.tablet} {
+      margin-top: 10px;
+      
+    }
   }
 
   .room-option__remove-room {
     border-radius: 5px;
     cursor: pointer;
-    padding: 10px;
-
-    @media ${BREAKPOINTS.laptop} {
-      padding: 10px 0;
-    }
 
     &:hover {
       background-color: #c9c9c959;
@@ -198,11 +223,12 @@ const StyledRoomOptions = styled(VerticalContainer)`
   }
 
   .room-option__adults-container,
-  .room-option__children-container {
+  .room-option__children-container,
+  .room-option__list-children {
     @media ${BREAKPOINTS.tablet} {
       align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     h5, p {
@@ -263,20 +289,9 @@ const StyledQuantityButton = styled.div`
     outline: none;
   }
 
-  input {
+  span {
     width: 50px;
     text-align: center;
-    border: none;
-    outline: none;
-  }
-
-  input[type='number'] {
-    -moz-appearance:textfield;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
   }
 `
 

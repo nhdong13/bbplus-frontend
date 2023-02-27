@@ -18,6 +18,7 @@ import SelectDate from "./SelectDateDropDown/SelectDate";
 import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
 import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
+import { GlobalContext } from './GlobalContext'
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -44,10 +45,20 @@ export default function FullSearchWidget() {
     selectDateDropDownRef,
     travelerDropDownRef,
     setTravelerDropDown,
+    dataFilter,
+    totalGuest,
+    handleAddRoom,
+    handleChangeDataRoom
   } = useFullSearchWidget();
 
+
   return (
-    <>
+    <GlobalContext.Provider
+      value={{
+        dataFilter,
+        handleAddRoom,
+        handleChangeDataRoom
+      }}>
       <SearchContainer>
         <FilterGradientButtonContainer gap="14px">
           {buttonItems.map((item, index) => {
@@ -123,7 +134,7 @@ export default function FullSearchWidget() {
             >
               <div >
                 <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalGuest} guests ({dataFilter.length} rooms)</H5>
               </div>
             </FromContainer>
           </SelectBookingDateTimeContainer>
@@ -175,7 +186,7 @@ export default function FullSearchWidget() {
           <SearchButton />
         </div>
       </SearchContainer>
-    </>
+    </GlobalContext.Provider>
   )
 }
 

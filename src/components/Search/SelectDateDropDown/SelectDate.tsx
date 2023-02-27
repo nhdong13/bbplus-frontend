@@ -151,10 +151,9 @@ const PopupSelectDate = ({ isShown, closePopup, weekDays, totalDates }: PopupSel
     if (didMount) {
       document.querySelectorAll(".rmdp-month-name").forEach(p => {
         p.innerHTML = `${p.innerHTML + "&ensp;" + date.year}`;
-        p.innerHTML = [...new Set(p.innerHTML)].join("")
       });
     }
-  }, [document.querySelectorAll(".rmdp-month-name")])
+  }, [didMount])
 
   const handleClosePopup = () => {
     const getBodyElement = document.querySelector("body");
