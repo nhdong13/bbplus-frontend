@@ -4,6 +4,7 @@ import { FormInput } from "@/components/FormInput";
 import { H2 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 import {
+  BackgroundAuthentication,
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
   AuthenticationLogoMobile,
@@ -26,8 +27,8 @@ export default function ForgotPassword() {
   const wd = useWindowSize();
 
   return (
-    <>
-      <MainLayout>
+    <MainLayout>
+      <BackgroundAuthentication>
         <AuthenticationFormContainer>
           {wd <= 430 ? <AuthenticationLogoMobile /> : null}
           <AuthenticationFormWrapper centralizeItems={requestSent}>
@@ -85,7 +86,7 @@ export default function ForgotPassword() {
             )}
           </AuthenticationFormWrapper>
         </AuthenticationFormContainer>
-      </MainLayout>
-    </>
+      </BackgroundAuthentication >
+    </MainLayout>
   );
 }

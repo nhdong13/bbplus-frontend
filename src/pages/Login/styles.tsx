@@ -12,7 +12,10 @@ const AuthenticationFormContainer = styled.div.attrs(
   display: flex;
   justify-content: flex-end;
   max-width: 1400px;
-  margin: 183.3px auto 419.3px auto;
+  /* margin: 183.3px auto 419.3px auto; */
+  padding-top: 183px;
+  padding-bottom: 419px;
+  margin: auto;
   font-family: ${FONTS.manrope};
 
   @media ${BREAKPOINTS.laptop} {
@@ -20,8 +23,9 @@ const AuthenticationFormContainer = styled.div.attrs(
     justify-content: center;
   }
   @media ${BREAKPOINTS.mobileLg} {
-    margin: 0 auto;
     display: block;
+    margin: 0;
+    padding: 30px 20px 15px 20px;
   }
   a {
     color: ${COLORS.linkBlue};
@@ -134,7 +138,7 @@ const AuthenticationFormWrapper = styled.div.attrs(
     width: auto;
     height: auto;
     padding: 10px 20px;
-    margin: 15px 20px;
+    margin: 0;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
     box-shadow: none;
@@ -241,10 +245,20 @@ const AuthenticationLogoMobile = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   height: 40px;
-  margin-top: 30px;
+  margin-bottom: 15px;
 `;
 
+const BackgroundAuthentication = styled.div`
+  background-image: url(${IMAGES.backgroundAuthen});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  /* height: 1231px; */
+`
+
 export {
+  BackgroundAuthentication,
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
   AuthenticationLogoMobile,

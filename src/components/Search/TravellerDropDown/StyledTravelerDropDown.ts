@@ -366,7 +366,7 @@ const ResultContainer = styled(HorizontalContainer)`
     margin: 10px;
   }
 
-  span {
+  div {
     font-family: ${FONTS.manrope};
     font-size: 16px;
     line-height: 30px;
@@ -376,9 +376,11 @@ const ResultContainer = styled(HorizontalContainer)`
       font-weight: 700;
       font-size: 12px;  
       line-height: 16px;
+      .total {
+        text-align: center;
+      }
     }
   }
-
   .gradient-button {
     @media ${BREAKPOINTS.laptop} {
       height: 36px;
@@ -386,6 +388,11 @@ const ResultContainer = styled(HorizontalContainer)`
       max-width: 410px;
       margin: 10px;
     }
+  }
+  .text-blue {
+    color: ${COLORS.linkBlue};
+    cursor: pointer;
+    text-decoration: underline;
   }
 `
 

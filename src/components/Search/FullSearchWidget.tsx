@@ -75,10 +75,25 @@ export default function FullSearchWidget() {
         </FilterGradientButtonContainer>
         <SelectBookingDateTime>
           <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
-            <FromContainer className="leaving-from">
+            <FromContainer className={selectLeavingPlaces ? "show-input-search leaving-from" : "leaving-from"}>
               <div onClick={showLeavingPlaces}>
-                <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                {
+                  isMobile
+                    ?
+                    <>
+                      <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                      <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                    </>
+                    :
+                    selectLeavingPlaces
+                      ?
+                      <input className="input-search" placeholder="Search by city or airport" autoFocus={true} />
+                      :
+                      <>
+                        <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                        <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                      </>
+                }
               </div>
               {
                 !isMobile ?
@@ -92,10 +107,26 @@ export default function FullSearchWidget() {
             </FromContainer>
             {selectCreateItinerary ?
               <>
-                <FromContainer className="going-to">
+                <FromContainer className={selectGoingPlaces ? "show-input-search going-to" : "going-to"}>
                   <div onClick={showGoingToPlaces}>
-                    <H5 lineHeight="10px" fontWeight="700">Going to</H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                    {
+                      isMobile
+                        ?
+                        <>
+                          <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                          <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                        </>
+                        :
+                        selectGoingPlaces
+                          ?
+                          <input className="input-search" placeholder="Search by city or airport" autoFocus={true} />
+                          :
+                          <>
+                            <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                            <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                          </>
+                    }
+
                   </div>
                   {
                     !isMobile ?

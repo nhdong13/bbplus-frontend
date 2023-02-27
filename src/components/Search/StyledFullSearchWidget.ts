@@ -99,6 +99,26 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     grid-area: leavingFrom;
   }
 
+  .show-input-search{
+    display: flex;
+    align-items: center;
+    flex-direction: initial;
+    padding-bottom: 0
+  }
+
+  .input-search{
+    border: 1px solid ${COLORS.silver};
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 25px;
+    min-height: 50px;
+    padding-left: 10px;
+    width: 180px;
+    &:focus {
+      outline: none; 
+    }
+  }
+
   .going-to {
     grid-area: goingTo;
   }

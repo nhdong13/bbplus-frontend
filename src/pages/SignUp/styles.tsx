@@ -5,15 +5,14 @@ import IMAGES from "@/assets/images";
 import styled from "styled-components";
 
 const SignUpFormContainer = styled.div`
-  background: ${COLORS.white};
   color: ${COLORS.white};
-  margin: 105px auto;
-  box-shadow: 0 0 11.5px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  padding: 105px 0;
   display: flex;
   max-width: 1440px;
   height: auto;
   text-align: center;
-
+  
   .left-side-column {
     background: ${COLORS.cyprus};
     width: 369.84px;
@@ -52,7 +51,8 @@ const SignUpFormContainer = styled.div`
     height: 100%;
     width: 100%;
     color: ${COLORS.black};
-
+    background: ${COLORS.white};
+    /* box-shadow: 0 0 11.5px rgba(0, 0, 0, 0.25); */
     .form-container {
       width: 100%;
       text-align: left;
@@ -226,19 +226,24 @@ const SignUpFormContainer = styled.div`
     }
   }
   @media ${BREAKPOINTS.mobileLg} {
-    width: auto;
-    height: auto;
-    margin: 15px 20px;
-    box-shadow: none;
-    border: 2px solid ${COLORS.parkinglotGray};
-    border-radius: 10px;
-    padding: 20px;
-
+    margin: 0;
+    padding: 30px 20px 15px 20px;
+    display: block;
     .left-side-column {
       display: none;
     }
 
     .right-side-column {
+      background: ${COLORS.white};
+      padding: 20px;
+      width: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 0;
+      box-shadow: none;
+      border: 2px solid ${COLORS.parkinglotGray};
+      border-radius: 10px;
       .form-container {
         width: 100%;
         text-align: left;
@@ -334,6 +339,7 @@ const SignUpFormContainer = styled.div`
         }
       }
     }
+   
   }
 
   @media ${BREAKPOINTS.laptop} {
@@ -352,6 +358,9 @@ const SignUpSuccessFormContainer = styled.div`
     margin: 15px 20px;
     border: 2px solid ${COLORS.parkinglotGray};
     border-radius: 10px;
+    .success-page{
+      padding-top: 30px;
+    }
   }
 `;
 const Background = styled.div`

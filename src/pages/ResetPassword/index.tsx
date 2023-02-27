@@ -7,6 +7,7 @@ import { COLORS } from "@/utils/colors";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  BackgroundAuthentication,
   AuthenticationFormContainer,
   AuthenticationFormWrapper,
   AuthenticationLogoMobile,
@@ -25,8 +26,8 @@ export default function ResetPassword() {
   const wd = useWindowSize();
 
   return (
-    <>
-      <MainLayout>
+    <MainLayout>
+      <BackgroundAuthentication>
         <AuthenticationFormContainer>
           {wd <= 430 ? <AuthenticationLogoMobile /> : null}
           <AuthenticationFormWrapper centralizeItems={requestSent}>
@@ -114,7 +115,7 @@ export default function ResetPassword() {
             )}
           </AuthenticationFormWrapper>
         </AuthenticationFormContainer>
-      </MainLayout>
-    </>
+      </BackgroundAuthentication>
+    </MainLayout>
   );
 }

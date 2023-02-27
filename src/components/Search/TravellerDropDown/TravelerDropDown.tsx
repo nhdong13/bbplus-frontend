@@ -85,13 +85,16 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
-        {
-          dataFilter.length < 5
-            ?
-            <span>{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</span>
-            :
-            <span>For bookings of more than 5 rooms please contact our customer service team on (679) 6724244.</span>
-        }
+        <div className="info-count">
+          <div className="total">{totalAdults} adults, {totalChildren} children ({dataFilter.length} room)</div>
+          {
+            dataFilter.length === 5
+              ?
+              <div>For bookings of more than 5 rooms please contact our customer service team on <span className="text-blue">(679) 6724244.</span></div>
+              :
+              null
+          }
+        </div>
         <GradientButton
           color={COLORS.gradient1}
           text="Apply"
