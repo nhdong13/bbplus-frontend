@@ -26,20 +26,34 @@ export default function SearchResult() {
         <SearchResultContainer>
           <SearchContent>
             <SearchItem>
-              <p>Leaving from</p>
-              <p>Search by city or airport</p>
+              <div>
+                <p>Leaving from</p>
+                <p>Search by city or airport</p>
+              </div>
             </SearchItem>
             <SearchItem>
-              <p>Going to</p>
-              <p>Search by destination or hotel</p>
+              <div>
+                <p>Going to</p>
+                <p>Search by destination or hotel</p>
+              </div>
+            </SearchItem>
+            <SearchItem className="arrive-days">
+              <div>
+                <p>Arrival Date</p>
+                <p>Day|Date|Month</p>
+              </div>
             </SearchItem>
             <SearchItem>
-              <p>Arrival Date</p>
-              <p>Day|Date|Month</p>
+              <div>
+                <p>Arrival Date</p>
+                <p>Day|Date|Month</p>
+              </div>
             </SearchItem>
             <SearchItem>
-              <p>Travellers</p>
-              <p>X Guest</p>
+              <div>
+                <p>Travellers</p>
+                <p>X Guest</p>
+              </div>
             </SearchItem>
           </SearchContent>
 

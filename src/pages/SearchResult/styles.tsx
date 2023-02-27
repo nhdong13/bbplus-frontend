@@ -11,6 +11,9 @@ const SearchResultContainer = styled.div.attrs(
 )`
   height: 130px;
   background: #EFEFEF;
+  .arrive-days {
+    border-right: none;
+  }
   
 `;
 
@@ -29,8 +32,11 @@ const SearchContent = styled.div`
 const SearchItem = styled.div`
   border-right: 2px solid #C9C9C9;
   cursor: pointer;
-  padding: 0 42px;
   height: 100%;
+  cursor: pointer;
+  padding: 0px 42px;
+  display: flex;
+  align-items: center;
 `;
 
 
