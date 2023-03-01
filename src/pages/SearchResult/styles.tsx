@@ -14,7 +14,7 @@ const SearchResultBackground = styled.div.attrs(
   .btn-mobile {
     display: none;
     height: 43px;
-    background: #fff;
+    background: ${COLORS.white};
     margin-top: 20px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -23,7 +23,7 @@ const SearchResultBackground = styled.div.attrs(
     font-size: 10px;
   }
   @media ${BREAKPOINTS.laptop} {
-    background: #004442;
+    background: ${COLORS.cyprus};
     height: auto;
     padding: 10px;
     .btn-mobile {
@@ -35,7 +35,8 @@ const SearchResultBackground = styled.div.attrs(
   .arrive-days {
     border-right: none;
     &:last-child {
-      padding-left: 75px;
+      padding-left: 110px;
+      padding-right: 0;
     }
   }
   
@@ -51,7 +52,7 @@ const SearchBar = styled.div`
   align-items: center;
 
   @media ${BREAKPOINTS.laptop} {
-    background-color: #fff;
+    background: ${COLORS.white};
     border-radius: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -71,7 +72,7 @@ const SearchBar = styled.div`
 `;
 
 const SearchItem = styled.div`
-  border-right: 2px solid #C9C9C9;
+  border-right: 2px solid ${COLORS.silver};
   cursor: pointer;
   height: 100%;
   padding: 0px 35px;
@@ -103,7 +104,7 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 1px solid #C9C9C9;
+  border: 1px solid ${COLORS.silver};
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -163,7 +164,7 @@ const BreadcrumbItem = styled.div`
 const SearchOption = styled.div`
   display: flex;
   max-width: 1400px;
-  padding: 0 35px;
+  padding-left: 35px;
   margin: auto;
   margin-bottom: 27px;
   align-items: center;
@@ -171,13 +172,14 @@ const SearchOption = styled.div`
   .title{
     font-size: 31px;
     font-family: ${FONTS.manropeBold};
-    color: #004442;
+    color: ${COLORS.cyprus};
   }
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
     .choose {
       text-align: center;
+      font-size: 14px;
     }
     .filter-select {
       margin-bottom: 35px;
@@ -185,6 +187,7 @@ const SearchOption = styled.div`
     .mark-up {
       width: 100%;
       left: 79px;
+      font-size: 14px;
     }
     .title {
       font-size: 18px;
@@ -215,7 +218,7 @@ const SearchOptionSelect = styled.div`
     height: 48px;
     position: relative;
     border-radius: 4.5px;
-    border: 2px solid #000000;
+    border: 2px solid ${COLORS.black};
     text-align: center;
   }
   @media ${BREAKPOINTS.laptop} {
@@ -299,7 +302,6 @@ const HotelCardContainer = styled.div`
 
     span {
       color: ${COLORS.black};
-      font-family: ${FONTS.manrope};
       font-weight: 500;
       font-size: 16px;
       line-height: 19px;
@@ -429,7 +431,7 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 475px) {
-      max-width: 410px;
+      max-width: 420px;
     }
 
     .carousel__slider-tray--horizontal {
@@ -449,7 +451,7 @@ const CarouselWrapper = styled.div`
       
       @media only screen and (max-width: 475px) {
         gap: 10px;
-        width: 820%!important;
+        width: 798% !important;
         .carousel__slide {
           width: 200px !important;
         }

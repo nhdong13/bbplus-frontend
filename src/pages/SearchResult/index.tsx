@@ -6,14 +6,11 @@ import MainLayout from "@/components/Layout/MainLayout";
 import BookingSearchResult from "@/components/BookingSearchResult";
 import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { CarouselProvider } from "pure-react-carousel";
-
-import { customItineraries, hotels, popularHolidays } from "@/utils/tempData";
+import { hotels } from "@/utils/tempData";
 import CarouselSlider from "@/components/Carousel/index";
-
 import { H4, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+
 import {
   SearchResultBackground,
   SearchBar,
@@ -32,11 +29,7 @@ import {
 } from "./styles";
 import useHome from "@/pages/Home/hooks";
 
-import useWindowSize from "@/utils/windowResize";
-
 export default function SearchResult() {
-
-  const wd = useWindowSize();
 
   const {
     slideCount,

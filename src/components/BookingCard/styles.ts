@@ -51,7 +51,7 @@ const StyledBookingCard = styled.div`
   .booking-card__description-item {
     align-items: center;
     display: flex;
-    gap: 15px;
+    gap: 12px;
   }
 
   .booking-card__price-container {
