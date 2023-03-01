@@ -107,13 +107,12 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
   }
 
   .input-search{
-    border: 1px solid ${COLORS.silver};
-    border-radius: 5px;
+    border: 0;
     font-size: 16px;
     line-height: 25px;
     min-height: 50px;
     padding-left: 10px;
-    width: 180px;
+    width: 160px;
     &:focus {
       outline: none; 
     }

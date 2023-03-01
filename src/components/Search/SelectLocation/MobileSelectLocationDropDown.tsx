@@ -10,6 +10,18 @@ interface MobileSelectLocationDropDown {
   closePopup: (n: boolean) => void,
 }
 
+const data = [
+  { _id: 1, name: 'Sydney Airport (SYD)' },
+  { _id: 2, name: 'Melbourne Airport (MEL)' },
+  { _id: 3, name: 'Brisbane Airport (BNE)' },
+  { _id: 4, name: 'Adelaide Airport (ADL)' },
+  { _id: 5, name: 'Gold Coast Airport (OOL)' },
+  { _id: 6, name: 'Auckland Airport (AKL)' },
+  { _id: 7, name: 'Christchurch Airport (CHC)' },
+  { _id: 8, name: 'Wellington Airport (WLG)' },
+  { _id: 9, name: 'Los Angeles International Airport (LAX)' },
+]
+
 export default function MobileSelectLocationDropDown({ isShown, closePopup }: MobileSelectLocationDropDown) {
   const [popup, setPopup] = useState<boolean>(false);
   let getBodyElement: any = document.querySelector("body");
@@ -42,7 +54,7 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
           <div className="dropdown-search">
             <div className="dropdown-search__container">
               <input placeholder="Search by city or airport" />
-              <img src={IMAGES.iconSearchOutline}/>
+              <img src={IMAGES.iconSearchOutline} />
             </div>
             <div className="popular-places">
               <div className="popular-places__title">
@@ -50,14 +62,15 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
               </div>
             </div>
             <div className="popular-places__list">
-              <HorizontalContainer gap="13px" alignItems="center" margin="15px 0">
-                <img src={IMAGES.locationIcon} />
-                <span>Sydney Airport</span>
-              </HorizontalContainer>
-              <HorizontalContainer gap="13px" alignItems="center" margin="15px 0">
-                <img src={IMAGES.locationIcon} />
-                <span>Sydney Airport</span>
-              </HorizontalContainer>
+              {
+                data.map(d => {
+                  return <HorizontalContainer key={d._id} gap="13px" alignItems="center" margin="15px 0">
+                    <img src={IMAGES.locationIcon} />
+                    <span>{d.name}</span>
+                  </HorizontalContainer>
+                })
+              }
+
             </div>
           </div>
         </div>

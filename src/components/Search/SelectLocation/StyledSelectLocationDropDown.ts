@@ -15,6 +15,7 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   top: 100px;
   left: ${({ isLeaving }) => isLeaving ? 0 : "21%"};
   max-height: 200px;
+  overflow-y: auto;
   width: 100%;
 
   .popular-places__container {

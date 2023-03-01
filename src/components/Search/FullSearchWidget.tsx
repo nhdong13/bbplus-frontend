@@ -87,7 +87,7 @@ export default function FullSearchWidget() {
                     :
                     selectLeavingPlaces
                       ?
-                      <input className="input-search" placeholder="Search by city or airport" autoFocus={true} />
+                      <input className="input-search" autoFocus={true} />
                       :
                       <>
                         <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
@@ -119,7 +119,7 @@ export default function FullSearchWidget() {
                         :
                         selectGoingPlaces
                           ?
-                          <input className="input-search" placeholder="Search by city or airport" autoFocus={true} />
+                          <input className="input-search" autoFocus={true} />
                           :
                           <>
                             <H5 lineHeight="10px" fontWeight="700">Going to</H5>
