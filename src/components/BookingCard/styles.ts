@@ -1,6 +1,7 @@
 import { COLORS } from "@/utils/colors"
 import { FONTS } from "@/utils/fonts"
 import styled, { css } from "styled-components"
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 
 const StyledBookingCard = styled.div`
@@ -18,6 +19,22 @@ const StyledBookingCard = styled.div`
       background-color: ${COLORS.mistyRose};
       border: 1px solid ${COLORS.spanishOrange};
     }
+    @media ${BREAKPOINTS.laptop} {
+      padding: 20px;
+      span {
+        font-size: 12px;
+      }
+      img {
+        width: 24px;
+        height: 24px;
+      }
+      h4 {
+        font-size: 16px !important;
+      }
+      .booking-card__description-item {
+        gap: 5px;
+      }
+    }
   }
 
   .booking-card__description-items-container {
@@ -25,6 +42,9 @@ const StyledBookingCard = styled.div`
     flex-direction: column;
     min-height: 228px;
     margin: 18px 0;
+    @media ${BREAKPOINTS.laptop} {
+      margin-top: 5px;
+    }
   }
 
   .booking-card__description-item {

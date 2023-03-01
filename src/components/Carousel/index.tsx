@@ -15,9 +15,10 @@ import IMAGES from "@/assets/images";
 import { StyledCarouselTitle } from "@/pages/Home/styles";
 import { CarouselSlider } from "@/utils/types/Carousel";
 import { COLORS } from "@/utils/colors";
+import BookingCard from "../BookingCard";
 
 
-const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }: CarouselSlider) => {
+const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle, typeCard }: CarouselSlider) => {
   const screenWidth = useWindowSize();
   const carouselContext = useContext(CarouselContext);
   const [arrowRightBtnColor, setArrowRightBtnColor] = useState<boolean>(false);
@@ -56,7 +57,7 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
 
   return (
     <Wrapper>
-      <StyledCarouselTitle justifyContent="space-between">
+      <StyledCarouselTitle justifyContent="space-between" className="carousel-title">
         <span>
           {carouselTitle}
         </span>
@@ -79,7 +80,13 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle }:
         {data.map((item, index) => {
           return (
             <Slide index={index} className="slide" key={index}>
-              <Card index={index} data={item} />
+              {
+                typeCard === "booking-card"
+                  ?
+                  <BookingCard index={index} data={item} />
+                  :
+                  <Card index={index} data={item} />
+              }
             </Slide>
           )
         })}

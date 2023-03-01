@@ -23,19 +23,19 @@ export default function BookingCard({ data, index }: BookingCardData) {
             </div>
             <div className="booking-card__description-item">
               <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Meet and greet at airport</span>
+              <span>Return airport transfer</span>
             </div>
             <div className="booking-card__description-item">
               <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Meet and greet at airport</span>
+              <span>Garden view room</span>
             </div>
             <div className="booking-card__description-item">
               <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Meet and greet at airport</span>
+              <span>Half board meal</span>
             </div>
             <div className="booking-card__description-item">
               <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Meet and greet at airport</span>
+              <span>Free selected watersport</span>
             </div>
           </div>
           <div className="booking-card__price-container">

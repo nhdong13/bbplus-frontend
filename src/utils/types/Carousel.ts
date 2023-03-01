@@ -4,5 +4,6 @@ export interface CarouselSlider {
   data: HotelData[],
   setSlideCount: any,
   setCurrentSlide: any
-  carouselTitle: string
+  carouselTitle: string,
+  typeCard? : string
 }

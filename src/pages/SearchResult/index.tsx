@@ -1,64 +1,189 @@
-import IMAGES from "@/assets/images";
+
 import { GradientButton } from "@/components/Button";
-import { FormInput } from "@/components/FormInput";
+import Select from "@/components/Select";
+import IMAGES from "@/assets/images";
 import MainLayout from "@/components/Layout/MainLayout";
 import BookingSearchResult from "@/components/BookingSearchResult";
+import HorizontalContainer from "@/components/Layout/HorizontalContainer";
+import { CarouselProvider } from "pure-react-carousel";
 
-import { H2 } from "@/components/Typography";
+import { customItineraries, hotels, popularHolidays } from "@/utils/tempData";
+import CarouselSlider from "@/components/Carousel/index";
+
+import { H4, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  SearchResultBackground,
+  SearchBar,
+  SearchItem,
+  ButtonEditSearch,
   SearchResultContainer,
-  SearchContent,
-  SearchItem
+  Breadcrumb,
+  BreadcrumbItem,
+  SearchOption,
+  SearchOptionItem,
+  SearchOptionSelect,
+  ListResultContainer,
+  HotelCardContainer,
+  ShowMapButton,
+  CarouselWrapper
 } from "./styles";
-import useResetPassword from "./hooks";
+import useHome from "@/pages/Home/hooks";
+
 import useWindowSize from "@/utils/windowResize";
 
 export default function SearchResult() {
 
   const wd = useWindowSize();
 
+  const {
+    slideCount,
+    setSlideCount,
+    currentSlide,
+    setCurrentSlide
+  } = useHome();
+
   return (
     <>
       <MainLayout>
-        <SearchResultContainer>
-          <SearchContent>
+        <SearchResultBackground>
+          <SearchBar>
             <SearchItem>
-              <div>
-                <p>Leaving from</p>
-                <p>Search by city or airport</p>
+              <div className="group-h5">
+                <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
               </div>
             </SearchItem>
             <SearchItem>
               <div>
-                <p>Going to</p>
-                <p>Search by destination or hotel</p>
+                <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by destination or hotel</H5>
               </div>
             </SearchItem>
             <SearchItem className="arrive-days">
-              <div>
-                <p>Arrival Date</p>
-                <p>Day|Date|Month</p>
+              <div className="group-h5">
+                <H5 lineHeight="10px" fontWeight="700">Arrival Date</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
               </div>
             </SearchItem>
             <SearchItem>
-              <div>
-                <p>Arrival Date</p>
-                <p>Day|Date|Month</p>
+              <div className="group-h5">
+                <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>X nights</H5>
               </div>
             </SearchItem>
-            <SearchItem>
-              <div>
-                <p>Travellers</p>
-                <p>X Guest</p>
+            <SearchItem className="arrive-days border-0">
+              <div className="group-h5">
+                <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
               </div>
             </SearchItem>
-          </SearchContent>
-
+            <SearchItem className="arrive-days border-0 btn-edit">
+              <ButtonEditSearch>Edit Search</ButtonEditSearch>
+            </SearchItem>
+          </SearchBar>
+          <div className="btn-mobile">Edit Search</div>
+        </SearchResultBackground>
+        <SearchResultContainer>
+          <Breadcrumb>
+            <BreadcrumbItem>HOME</BreadcrumbItem>
+            <BreadcrumbItem>Fiji properties</BreadcrumbItem>
+            <BreadcrumbItem>Coral coast resorts</BreadcrumbItem>
+          </Breadcrumb>
+          <SearchOption>
+            <SearchOptionItem className="title">Fiji: 134 properties found</SearchOptionItem>
+            <SearchOptionItem className="choose">Choose your option</SearchOptionItem>
+            <SearchOptionSelect className="filter-select">
+              <SearchOptionItem>
+                <Select
+                  label="Filter by: Select"
+                  marginTop="0px"
+                  maxHeight="48px"
+                />
+              </SearchOptionItem>
+              <SearchOptionItem>
+                <Select
+                  label="Sort by: Select"
+                  marginTop="0px"
+                  maxHeight="48px"
+                />
+              </SearchOptionItem>
+            </SearchOptionSelect>
+            <SearchOptionSelect>
+              <SearchOptionItem>
+                <p className="mark-up">Mark up</p>
+                <input value={"20%"} />
+              </SearchOptionItem>
+              <SearchOptionItem>
+                <GradientButton
+                  color={COLORS.gradient1}
+                  text="Apply"
+                  isSelected={true}
+                  maxWidth="90px"
+                  height="48px"
+                />
+              </SearchOptionItem>
+            </SearchOptionSelect>
+          </SearchOption>
+          {
+            [1, 2, 3].map(el => {
+              return (
+                <ListResultContainer key={el}>
+                  <HotelCardContainer className="hotels">
+                    <div className="hotel-card__container">
+                      <div className="hotel-card__background-image">
+                        <div className={"rating"}>
+                          <div className="rating-container">
+                            <img src={IMAGES.iconStar} width="14px" height="26px" />
+                            <span>4.1</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="hotel-card__info-container">
+                        <div className="hotel-card__info">
+                          <H4>Warwick Fiji Beach Resort </H4>
+                          <div className="location">
+                            <img src={IMAGES.locationIcon} alt="location" width="17px" height="25px" />
+                            <p>Coral coast, Viti Levu, Fiji</p>
+                          </div>
+                        </div>
+                        <div className="hotel-card__button">
+                          <p>*Accessible by road transfer</p>
+                          <ShowMapButton>
+                            <H5>Show on map</H5>
+                          </ShowMapButton>
+                        </div>
+                      </div>
+                    </div>
+                  </HotelCardContainer>
+                  <HorizontalContainer justifyContent="center" className="booking-carousel">
+                    <CarouselWrapper className="carousel-container">
+                      <CarouselProvider
+                        visibleSlides={3}
+                        totalSlides={hotels.length}
+                        step={1}
+                        currentSlide={currentSlide}
+                        naturalSlideWidth={100}
+                        naturalSlideHeight={125}
+                        isIntrinsicHeight={true}
+                      >
+                        <CarouselSlider
+                          setSlideCount={setSlideCount}
+                          setCurrentSlide={setCurrentSlide}
+                          data={hotels}
+                          carouselTitle={""}
+                          typeCard="booking-card"
+                        />
+                      </CarouselProvider>
+                    </CarouselWrapper>
+                  </HorizontalContainer>
+                </ListResultContainer>
+              )
+            })
+          }
         </SearchResultContainer>
-        <BookingSearchResult />
       </MainLayout>
     </>
   );
