@@ -243,6 +243,9 @@ const ListResultContainer = styled.div`
   }
   .booking-carousel {
     display: block;
+    @media only screen and (max-width: 769px) {
+      display: flex;
+    }
   }
   .booking-card__container {
     width: auto;
@@ -393,7 +396,7 @@ const CarouselWrapper = styled.div`
       max-width: 1440px;
     }
 
-     @media only screen and (max-width: 1475px) {
+    @media only screen and (max-width: 1475px) {
       max-width: 1095px;
     }
 
@@ -414,7 +417,7 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 769px) {
-      max-width: 650px;
+      max-width: 589px;
     }
 
     @media only screen and (max-width: 650px) {
@@ -426,7 +429,7 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 475px) {
-      max-width: 420px;
+      max-width: 410px;
     }
 
     .carousel__slider-tray--horizontal {
@@ -441,16 +444,12 @@ const CarouselWrapper = styled.div`
       }
 
       @media only screen and (max-width: 769px) {
-        width: 850%!important;
+        width: 816%!important;      
       }
       
       @media only screen and (max-width: 475px) {
-        width: 800%!important;
-      }
-
-      @media only screen and (max-width: 475px) {
         gap: 10px;
-        width: 850%!important;
+        width: 820%!important;
         .carousel__slide {
           width: 200px !important;
         }

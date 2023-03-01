@@ -25,8 +25,8 @@ const StyledBookingCard = styled.div`
         font-size: 12px;
       }
       img {
-        width: 24px;
-        height: 24px;
+        width: 12px;
+        height: 12px;
       }
       h4 {
         font-size: 16px !important;
@@ -43,7 +43,8 @@ const StyledBookingCard = styled.div`
     min-height: 228px;
     margin: 18px 0;
     @media ${BREAKPOINTS.laptop} {
-      margin-top: 5px;
+      margin: 15px 0;
+      min-height: auto;
     }
   }
 
@@ -59,6 +60,10 @@ const StyledBookingCard = styled.div`
     text-align: center;
     gap: 18px;
     margin-bottom: 24px;
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      margin-bottom: 10px;
+    }
   }
 
   .booking-card_price-person {
@@ -72,12 +77,29 @@ const StyledBookingCard = styled.div`
       line-height: 20px;
       font-weight: 200;
     }
+    @media ${BREAKPOINTS.laptop} {
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
   }
 
   .booking-card__total-cost {
     p:nth-child(2) {
       color: ${COLORS.electricRed};
     }
+    @media ${BREAKPOINTS.laptop} {
+      p {
+        font-size: 16px;
+      }
+      p:nth-child(2) {
+        font-size: 12px;
+      }
+    }
+    
   }
 
   .booking-card__booking-button-container {
@@ -88,6 +110,14 @@ const StyledBookingCard = styled.div`
     button {
       margin: auto;
       width: 100%;
+      @media ${BREAKPOINTS.laptop} {
+        width: 140px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
     }
   }
 `;
