@@ -249,6 +249,9 @@ const ListResultContainer = styled.div`
     @media only screen and (max-width: 769px) {
       display: flex;
     }
+    @media only screen and (max-width: 992px) {
+      display: flex;
+    }
   }
   .booking-card__container {
     width: auto;
@@ -395,39 +398,39 @@ const CarouselWrapper = styled.div`
     }
 
     @media only screen and (max-width: 1520px) {
-      max-width: 1440px;
+      max-width: 903px;
     }
 
     @media only screen and (max-width: 1475px) {
-      max-width: 1095px;
+      max-width: 903px;
     }
 
     @media only screen and (max-width: 1439px) {
-      max-width: 1095px;
+      max-width: 903px;
     }
 
     @media only screen and (max-width: 1380px) {
-      max-width: 1095px;
+      max-width: 903px;
     }
 
     @media only screen and (max-width: 1160px) {
-      max-width: 720px;
+      max-width: 600px;
     }
 
     @media only screen and (max-width: 992px) {
-      max-width: 720px;
+      max-width: 602px;
     }
 
     @media only screen and (max-width: 769px) {
-      max-width: 589px;
+      max-width: 590px;
     }
 
     @media only screen and (max-width: 650px) {
-      max-width: 450px;
+      max-width: 600px;
     }
 
     @media only screen and (max-width: 550px) {
-      max-width: 340px;
+      max-width: 490px;
     }
 
     @media only screen and (max-width: 475px) {
@@ -445,13 +448,21 @@ const CarouselWrapper = styled.div`
         width: 550%!important;
       }
 
+      @media only screen and (max-width: 992px) {
+        width: 400%!important;
+      }
+
       @media only screen and (max-width: 769px) {
         width: 816%!important;      
+      }
+
+      @media only screen and (max-width: 650px) {
+        width: 400%!important;      
       }
       
       @media only screen and (max-width: 475px) {
         gap: 10px;
-        width: 798% !important;
+        width: 800% !important;
         .carousel__slide {
           width: 200px !important;
         }
