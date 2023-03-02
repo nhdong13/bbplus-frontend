@@ -5,6 +5,7 @@ import {
   ResetPassword,
   ForgotPassword,
   SignUp,
+  SearchResult
 } from "@/pages";
 import { RouterName } from "./config";
 
@@ -17,6 +18,7 @@ export const RouterApp = () => {
         <Route path={RouterName.resetPassword} element={<ResetPassword />} />
         <Route path={RouterName.forgotPassword} element={<ForgotPassword />} />
         <Route path={RouterName.signUp} element={<SignUp />} />
+        <Route path={RouterName.searchResult} element={<SearchResult />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
