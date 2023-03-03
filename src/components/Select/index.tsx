@@ -12,7 +12,8 @@ const Select = ({
   valid,
   maxHeight,
   handleChange,
-}: FormInput) => {
+  typeIconDown
+}: any) => {
   return (
     <>
       <StyledSelectContainer
@@ -25,7 +26,7 @@ const Select = ({
       >
         <div className="label">
           <div>{label.concat(isImportant ? " *" : " ")}</div>
-          <img src={IMAGES.iconSelectDown} width="10px" height="5px" />
+          <img src={typeIconDown ? IMAGES.iconArrowDown : IMAGES.iconSelectDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
     </>

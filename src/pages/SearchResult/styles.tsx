@@ -104,7 +104,7 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 1px solid ${COLORS.silver};
+  border: 2px solid ${COLORS.black};
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -173,6 +173,10 @@ const SearchOption = styled.div`
     font-size: 31px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
+    display: block;
+  }
+  .mobile {
+    display: none;
   }
 
   @media ${BREAKPOINTS.laptop} {
@@ -191,6 +195,12 @@ const SearchOption = styled.div`
     }
     .title {
       font-size: 18px;
+      display: none;
+    }
+    .mobile {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
     }
   }
 `;
@@ -215,7 +225,7 @@ const SearchOptionSelect = styled.div`
   align-items: center;
   input {
     width: 74px;
-    height: 48px;
+    height: 44px;
     position: relative;
     border-radius: 4.5px;
     border: 2px solid ${COLORS.black};

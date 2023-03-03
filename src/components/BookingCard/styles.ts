@@ -106,7 +106,8 @@ const StyledBookingCard = styled.div`
     display: flex;
     flex-direction: column;
     gap: 11px;
-    
+    font-size: 16px;
+    font-family: ${FONTS.manrope};
     button {
       margin: auto;
       width: 100%;

@@ -34,6 +34,7 @@ import registrationFormIcon3 from "./registration-form-icon-3.svg";
 import iconRecaptcha from "./icon-recaptcha.svg";
 import logoMobile from "./logo-mobile.svg";
 import backgroundAuthen from "./background-authen.jpg";
+import iconArrowDown from "./icon-arrow-down.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -71,7 +72,8 @@ const IMAGES = {
   registrationFormIcon3,
   iconRecaptcha,
   logoMobile,
-  backgroundAuthen
+  backgroundAuthen,
+  iconArrowDown
 }
 
 export default IMAGES;

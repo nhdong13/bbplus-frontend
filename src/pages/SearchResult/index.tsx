@@ -94,19 +94,21 @@ export default function SearchResult() {
                   label="Filter by: Select"
                   marginTop="0px"
                   maxHeight="48px"
+                  typeIconDown={true}
                 />
               </SearchOptionItem>
               <SearchOptionItem>
                 <Select
                   label="Sort by: Select"
                   marginTop="0px"
+                  typeIconDown={true}
                   maxHeight="48px"
                 />
               </SearchOptionItem>
             </SearchOptionSelect>
             <SearchOptionSelect>
               <SearchOptionItem>
-                <p className="mark-up">Mark up</p>
+                <p className="mark-up">Markup</p>
                 <input value={"20%"} />
               </SearchOptionItem>
               <SearchOptionItem>
@@ -119,6 +121,7 @@ export default function SearchResult() {
                 />
               </SearchOptionItem>
             </SearchOptionSelect>
+            <SearchOptionItem className="title mobile">Fiji: 134 properties found</SearchOptionItem>
           </SearchOption>
           {
             [1, 2, 3].map(el => {

@@ -149,6 +149,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     h5 {
       line-height: 20px;
       padding: 8px 0;
+      white-space: nowrap;
     }
   }
 
