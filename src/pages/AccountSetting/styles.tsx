@@ -3,6 +3,10 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 
+const StyledAccountSetting = styled.div`  
+  margin-bottom: 59px;
+`
+
 const AccountSettingContainer = styled.div`
   margin: auto;
   #account-setting-section {
@@ -43,6 +47,9 @@ const AccountSettingContainer = styled.div`
     }
     .w-100{
       width: 100% !important;
+      @media ${BREAKPOINTS.laptop} {
+        width: auto!important;;
+      }
     }
   }
 `;
@@ -67,11 +74,16 @@ const BreadcrumbBody = styled.div`
     padding: 0 15px;
   }
 `;
-const BreadcrumbItem = styled.div`
-  color: ${COLORS.blueRibbon};
+const BreadcrumbItem = styled.div.attrs((props: {
+  activeColor?: boolean
+}) => props)`
+  color: ${COLORS.black};
+
+  &:active {
+    color: ${COLORS.blueRibbon};
+  }
   cursor: pointer;
   &:not(:first-child) {
-    color: ${COLORS.black};
     &:before {
       content: "  >";
       padding: 8px;
@@ -182,6 +194,30 @@ const ButtonNextStep = styled.div`
   }
 `;
 
+const StyledPlatformSetting = styled.div`
+  .react-tel-input {
+    border: 2px solid ${COLORS.black};
+    border-radius: 5px;
+    width: 339px;
+
+    input {
+      height: 68px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 28px;
+      color: #000000;
+      font-family: Manrope;
+      font-size: 16px;
+      border: none;
+    }
+  }
+
+  .flag-dropdown  {
+    background-color: transparent;
+    border: none;
+  }
+`
+
 export {
   AccountSettingContainer,
   BreadcrumbContainer,
@@ -196,4 +232,6 @@ export {
   AccountSettingHeader,
   NextStepBox,
   ButtonNextStep,
+  StyledPlatformSetting,
+  StyledAccountSetting,
 };

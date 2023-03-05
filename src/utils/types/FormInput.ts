@@ -1,5 +1,5 @@
 export interface FormInput {
-  label: string
+  label?: string
   fontSize?: string
   textColor?: string
   iconUrl?: string

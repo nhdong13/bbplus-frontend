@@ -26,7 +26,7 @@ const FormInput = ({
       >
         <div className="icon"></div>
         <input
-          placeholder={label.concat(isImportant ? " *" : " ")}
+          placeholder={label?.concat(isImportant ? " *" : " ")}
           onChange={handleChange}
         />
       </StyledInputContainer>

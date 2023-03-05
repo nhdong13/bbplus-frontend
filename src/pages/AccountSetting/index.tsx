@@ -1,143 +1,82 @@
+import ComboButton from "@/components/AccountSettings/ComboButton";
 import MainLayout from "@/components/Layout/MainLayout";
 import { H2 } from "@/components/Typography";
+import { useEffect, useState } from "react";
 import useAccountSetting from "./hooks";
+import PlatformSetting from "./PlatformSetting";
+import PreferenceSetting from "./Preferences";
 import {
   AccountSettingContainer,
   BreadcrumbContainer,
   BreadcrumbBody,
   BreadcrumbItem,
-  LegendBox,
-  LabelText,
-  LegendTitle,
-  LegendItem,
   AccountSettingHeader,
-  NextStepBox,
-  ButtonNextStep,
+  StyledAccountSetting,
 } from "./styles";
-
-import { FormInput } from "@/components/FormInput";
-import PhoneInput from "@/components/PhoneInput";
-import Select from "@/components/Select";
-import FileInput from "./FileInput";
-import Preferences from "./Preferences";
-import UserManagerment from "./UserManagerment";
+import UserManagement from "./UserManagement";
 
 function AccountSetting() {
   const { } = useAccountSetting();
+  const [settingStep, setSettingStep] = useState<number[]>([0]);
+  const [currentItem, setCurrentItem] = useState<number>(0);
+
+  const breadCrumbList = [
+    {
+      id: 0,
+      title: 'Company Information',
+    },
+    {
+      id: 1,
+      title: 'Preferences',
+    },
+    {
+      id: 2,
+      title: 'User Management',
+    }
+  ];
+
+  useEffect(() => {
+    if (settingStep.includes(currentItem)) {
+    } else {
+      const tmp = settingStep
+      tmp.push(currentItem)
+      setSettingStep(tmp)
+    }
+  }, [settingStep])
+
   return (
     <MainLayout>
-      <AccountSettingContainer id="account-setting">
-        <BreadcrumbContainer>
-          <BreadcrumbBody>
-            <BreadcrumbItem>Company Information</BreadcrumbItem>
-            <BreadcrumbItem>Preferences</BreadcrumbItem>
-            <BreadcrumbItem>User Management</BreadcrumbItem>
-          </BreadcrumbBody>
-        </BreadcrumbContainer>
-        <div id="account-setting-section">
-          <AccountSettingHeader>
-            <H2 fontFamily="Montserrat" fontWeight="500" lineHeight="38px">
-              Platform settings
-            </H2>
-            <div className="fill-information-title">
-              Please fill in the information below to complete your account
-              setup
-            </div>
-          </AccountSettingHeader>
-          {/* <Preferences /> */}
-          <UserManagerment />
-          {/* <div className="body-section">
-            <div className="body-section-item">
-              <LegendBox>
-                <LegendTitle>Agency details</LegendTitle>
-                <div className="contact-title">
-                  Primary contact method <span className="red-start">*</span>
-                </div>
-                <LegendItem>
-                  <LabelText>Agency Name</LabelText>
-                  <FormInput
-                    width="339px"
-                    maxHeight="68px"
-                    label="Agency Name"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-                <LegendItem>
-                  <LabelText>Email Address</LabelText>
-                  <FormInput
-                    width="339px"
-                    maxHeight="68px"
-                    label="Email Address"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-                <LegendItem>
-                  <LabelText>Phone number</LabelText>
-                  <PhoneInput
-                    label="Phone number"
-                    width="339px"
-                    maxHeight="68px"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-                <LegendItem>
-                  <LabelText>Country</LabelText>
-                  <Select
-                    label="Country"
-                    width="339px"
-                    maxHeight="68px"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-                <LegendItem>
-                  <LabelText>Physical Address</LabelText>
-                  <FormInput
-                    width="339px"
-                    maxHeight="68px"
-                    label="Physical Address"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-              </LegendBox>
-              <LegendBox className="legenbox-right">
-                <LegendTitle>Agency Logo</LegendTitle>
-                <FileInput />
-              </LegendBox>
-            </div>
-
-            <div className="body-section-item">
-              <LegendBox>
-                <LegendTitle>Finance details</LegendTitle>
-                <div className="contact-title">
-                  Contact for handling accounting and finance{" "}
-                  <span className="red-start">*</span>
-                </div>
-                <LegendItem>
-                  <LabelText>Email Address</LabelText>
-                  <FormInput
-                    width="339px"
-                    maxHeight="68px"
-                    label="Email Address"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-                <LegendItem>
-                  <LabelText>Phone number</LabelText>
-                  <PhoneInput
-                    label="Phone number"
-                    width="339px"
-                    maxHeight="68px"
-                    marginTop="0px"
-                  />
-                </LegendItem>
-              </LegendBox>
-              <NextStepBox>
-                <ButtonNextStep>Next Step</ButtonNextStep>
-              </NextStepBox>
-            </div>
-          </div> */}
-        </div>
-      </AccountSettingContainer>
+      <StyledAccountSetting>
+        <AccountSettingContainer id="account-setting">
+          <BreadcrumbContainer>
+            <BreadcrumbBody>
+              {breadCrumbList?.map((item, key: number) => {
+                return (
+                  <BreadcrumbItem className={settingStep.includes(currentItem) ? 'active' : ''}
+                    onClick={() => setCurrentItem(key)}>{item.title}</BreadcrumbItem>
+                )
+              })}
+            </BreadcrumbBody>
+          </BreadcrumbContainer>
+          <div id="account-setting-section">
+            <AccountSettingHeader>
+              <H2 fontFamily="Montserrat" fontWeight="500" lineHeight="38px">
+                Platform settings
+              </H2>
+              <div className="fill-information-title">
+                Please fill in the information below to complete your account
+                setup
+              </div>
+            </AccountSettingHeader>
+            {{
+              0: <PlatformSetting />,
+              1: <PreferenceSetting />,
+              2: <UserManagement />,
+            }[currentItem]}
+            {currentItem == 2 && <ComboButton />}
+          </div>
+        </AccountSettingContainer>
+      </StyledAccountSetting>
     </MainLayout>
   );
 }

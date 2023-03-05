@@ -11,7 +11,7 @@ import { FormInput } from "@/components/FormInput";
 import Select from "@/components/Select";
 
 function PreferenceSetting() {
-  const {} = useAccountSetting();
+  const { } = useAccountSetting();
   return (
     <div className="body-section">
       <div className="body-section-item">
