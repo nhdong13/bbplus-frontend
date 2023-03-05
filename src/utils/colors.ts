@@ -1,4 +1,5 @@
 export const COLORS: StyledColors = {
+  aliceBlue: "#E8F4FF",
   anakiwa: "#A8FFF6",
   anzac: "#d9bf50",
   areoBlue: "#C8FFF5",
@@ -13,6 +14,7 @@ export const COLORS: StyledColors = {
   crayola: "#00F1BD",
   curiousBlue: "#2383DA",
   cyprus: "#004442",
+  commandBlue: "#007DB3",
   darkSilver:  "#B7B7B7",
   doveGray: "#707070",
   electricRed: "#E00000",
@@ -50,6 +52,7 @@ export const COLORS: StyledColors = {
   platinum: "#E2E2E2",
 }
 interface StyledColors {
+  aliceBlue: string,
   anakiwa: string,
   anzac: string,
   areoBlue: string,
@@ -64,6 +67,7 @@ interface StyledColors {
   crayola: string,
   curiousBlue: string,
   cyprus: string,
+  commandBlue: string,
   darkSilver: string
   doveGray: string,
   electricRed: string,

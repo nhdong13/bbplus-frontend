@@ -28,6 +28,7 @@ import {
   CarouselWrapper
 } from "./styles";
 import useHome from "@/pages/Home/hooks";
+import HotelResults from "@/components/BookingSearchResult/HotelResults";
 
 export default function SearchResult() {
 
@@ -79,6 +80,7 @@ export default function SearchResult() {
           </SearchBar>
           <div className="btn-mobile">Edit Search</div>
         </SearchResultBackground>
+        {/* <HotelResults /> */}
         <SearchResultContainer>
           <Breadcrumb>
             <BreadcrumbItem>HOME</BreadcrumbItem>
