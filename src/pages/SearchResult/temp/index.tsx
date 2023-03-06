@@ -85,7 +85,7 @@ export default function SearchResult() {
           </SearchBar>
           <div className="btn-mobile">Edit Search</div>
         </SearchResultBackground>
-        <SearchResultContainer>
+        <div>
           <Breadcrumb>
             <BreadcrumbItem>HOME</BreadcrumbItem>
             <BreadcrumbItem>Fiji properties</BreadcrumbItem>
@@ -135,37 +135,39 @@ export default function SearchResult() {
             </SearchOptionSelect>
           </SearchOption>
           <DateView />
-          {
-            _.range(3).map((el, idx) => {
-              return <GridView key={idx}>
-                <GridViewTitle className={idx === 0 ? 'first' : ''}>
-                  <div>Warwick Fiji Beach Resort</div>
-                  <div className="rating-container">
-                    <img src={IMAGES.iconStar} width="14px" height="26px" />
-                    <span>4.1</span>
-                  </div>
-                </GridViewTitle>
-                <GridRoom>
-                  {
-                    _.range(5).map((el2, index) => {
-                      return (
-                        <GridRoomItem key={index}>
-                          <div className="room">Room Category {index + 1}</div>
-                          {
-                            _.range(15).map((el2, index2) => {
-                              return (
-                                <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
-                              )
-                            })
-                          }
-                        </GridRoomItem>
-                      )
-                    })
-                  }
-                </GridRoom>
-              </GridView>
-            })
-          }
+          <SearchResultContainer>
+            {
+              _.range(3).map((el, idx) => {
+                return <GridView key={idx}>
+                  <GridViewTitle className={idx === 0 ? 'first' : ''}>
+                    <div>Warwick Fiji Beach Resort</div>
+                    <div className="rating-container">
+                      <img src={IMAGES.iconStar} width="14px" height="26px" />
+                      <span>4.1</span>
+                    </div>
+                  </GridViewTitle>
+                  <GridRoom>
+                    {
+                      _.range(5).map((el2, index) => {
+                        return (
+                          <GridRoomItem key={index}>
+                            <div className="room">Room Category {index + 1}</div>
+                            {
+                              _.range(15).map((el2, index2) => {
+                                return (
+                                  <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
+                                )
+                              })
+                            }
+                          </GridRoomItem>
+                        )
+                      })
+                    }
+                  </GridRoom>
+                </GridView>
+              })
+            }
+          </SearchResultContainer>
           {/* {
             [1, 2, 3].map(el => {
               return (-
@@ -222,7 +224,7 @@ export default function SearchResult() {
               )
             })
           } */}
-        </SearchResultContainer>
+        </div>
       </MainLayout>
     </>
   );

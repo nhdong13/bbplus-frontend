@@ -2,8 +2,6 @@ import { LegendField } from "@/pages/AccountSetting/styles";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
 import styled from "styled-components";
 import { FormInput } from "../FormInput";
 import Select from "../Select";
@@ -96,13 +94,13 @@ export default function LegendComboBox({
     <LegendItem>
       {!isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
       <div className={`legend-box-container ${isCheckboxMobile ? "item-center" : ""}`}>
-        {hasPhoneInput &&
+        {/* {hasPhoneInput &&
           <PhoneInput
             country={'us'}
             value='84'
             onChange={() => { }}
           />
-        }
+        } */}
         {hasSelectDropDown &&
           <LegendField>
             <Select
