@@ -28,7 +28,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
   const [totalChildren, setTotalChildren] = useState<number>(0);
 
   const handleRoomOptions = (e: React.MouseEvent) => {
-    handleAddRoom({ _id: new Date().getTime().toString(), name: 'Name', adults: 1, children: 0 });
+    handleAddRoom({ _id: new Date().getTime().toString(), name: '', adults: 1, children: 0 });
   };
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
         )}
       </div>
       <StyledAddAnotherRoom onClick={(e: React.MouseEvent) => handleRoomOptions(e)}>
-        {dataFilter.length < 5 ? <H4>+ Add another room</H4> : <></>}
+        {dataFilter.length < 5 && <H4>+ Add another room</H4>}
       </StyledAddAnotherRoom>
       <Divider color={COLORS.silver} height="1px" width="100%" margin="0" />
       <ResultContainer justifyContent="space-between">
@@ -113,19 +113,17 @@ interface RoomOptions {
 }
 
 const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
-  
+
   const {
     handleChangeDataRoom
   } = useGlobalContext()
 
   const [optionalName, setOptionalName] = useState<string>(data.name);
 
-
-  const onChangeValue = (e: React.KeyboardEvent) => {
-  }
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOptionalName(e.target.value)
   }
+
   return (
     <>
       <StyledRoomOptions>
@@ -137,9 +135,9 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
           <div className="room-option__right">
             <HorizontalContainer justifyContent="space-between" width="100%">
               <VerticalContainer>
-                <H5 fontWeight={"700"} className={"optional"}>Primary party name (Optional)</H5>
+                <H5 fontWeight={"700"} className={"optional"}>Primary party name <span>(Optional)</span></H5>
                 <div className="room-option__name-input-container">
-                  <input placeholder="Name of primary contact" value={optionalName} onChange={onChangeName}/>
+                  <input placeholder="Name of primary contact" value={optionalName} onChange={onChangeName} />
                 </div>
               </VerticalContainer>
               <VerticalContainer>
@@ -168,7 +166,6 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
                   onClickDecreaseNumber={() => data.adults > 1 ? handleChangeDataRoom('remove_adult', data._id) : false}
                   onClickIncreaseNumber={() => data.adults < 14 ? handleChangeDataRoom('add_adult', data._id) : false}
                   numberOfPeople={data.adults}
-                  watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
               <VerticalContainer className="room-option__children-container">
@@ -184,14 +181,13 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
                   onClickDecreaseNumber={() => data.children > 0 ? handleChangeDataRoom('remove_children', data._id) : false}
                   onClickIncreaseNumber={() => data.children < 14 ? handleChangeDataRoom('add_children', data._id) : false}
                   numberOfPeople={data.children}
-                  watchInputValue={(e: React.KeyboardEvent) => onChangeValue(e)}
                 />
               </VerticalContainer>
               {data.children !== 0 &&
                 <VerticalContainer className="room-option__list-children">
                   <H5>Children’s ages</H5>
                   <p style={{ visibility: "hidden" }}>Adults</p>
-                  <div className="room-option__list-children-container">
+                  <div className={data.children >= '3' ? 'room-option__list-children-container mb-10' : 'room-option__list-children-container'}>
                     {_.range(data.children).map((index: number) =>
                       <div key={index}>
                         <SelectAges index={index} />
@@ -214,7 +210,7 @@ const QuantityButton = ({ onClickDecreaseNumber, onClickIncreaseNumber, numberOf
     <>
       <StyledQuantityButton>
         <button className="button" onClick={onClickDecreaseNumber}>-</button>
-        <input type="number" value={numberOfPeople} />
+        <span>{numberOfPeople}</span>
         <button className="button" onClick={onClickIncreaseNumber}>+</button>
       </StyledQuantityButton>
     </>

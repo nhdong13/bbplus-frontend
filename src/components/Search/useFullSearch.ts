@@ -8,7 +8,7 @@ interface IFilter {
   children: number,
 }
 const demoData = [
-  { _id: '1', name: 'Name 1', adults: 1, children: 0 },
+  { _id: '1', name: '', adults: 1, children: 0 },
 ]
 const useFullSearchWidget = () => {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
