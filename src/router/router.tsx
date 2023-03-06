@@ -5,9 +5,10 @@ import {
   ResetPassword,
   ForgotPassword,
   SignUp,
-  SearchResult
+  SearchResult,
 } from "@/pages";
 import { RouterName } from "./config";
+import Booking from "@/pages/Booking";
 
 export const RouterApp = () => {
   return (
@@ -19,6 +20,7 @@ export const RouterApp = () => {
         <Route path={RouterName.forgotPassword} element={<ForgotPassword />} />
         <Route path={RouterName.signUp} element={<SignUp />} />
         <Route path={RouterName.searchResult} element={<SearchResult />} />
+        <Route path={RouterName.booking} element={<Booking />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>

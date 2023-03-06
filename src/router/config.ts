@@ -4,5 +4,6 @@ export const RouterName = {
   signUp: "sign-up",
   resetPassword: "reset-password",
   forgotPassword: "forgot-password",
-  searchResult: "search-result"
-}
+  searchResult: "search-result",
+  booking: "booking",
+};

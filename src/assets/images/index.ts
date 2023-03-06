@@ -3,8 +3,8 @@ import bbplusFavicon from "./favicon.png";
 import defaultUser from "./default-user.svg";
 import iconLetter from "./icon-letter.svg";
 import iconAnchor from "./icon-anchor.svg";
-import iconSearch from "./icon-search.svg"
-import iconSearchOutline from "./icon-search-outline.svg"
+import iconSearch from "./icon-search.svg";
+import iconSearchOutline from "./icon-search-outline.svg";
 import hotelBg from "./hotel-bg.jpg";
 import leftQuotationMark from "./left-quotation-mark-icon.svg";
 import locationIcon from "./icon-location.svg";
@@ -35,6 +35,11 @@ import iconRecaptcha from "./icon-recaptcha.svg";
 import logoMobile from "./logo-mobile.svg";
 import backgroundAuthen from "./background-authen.jpg";
 import iconInfo from "./icon-info.svg";
+import thumb1 from "./thumb1.png";
+import thumb2 from "./thumb2.png";
+import thumb3 from "./thumb3.png";
+import thumb4 from "./thumb4.png";
+import liIcon from "./li-icon.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -73,7 +78,12 @@ const IMAGES = {
   iconRecaptcha,
   logoMobile,
   backgroundAuthen,
-  iconInfo
-}
+  iconInfo,
+  thumb1,
+  thumb2,
+  thumb3,
+  thumb4,
+  liIcon,
+};
 
 export default IMAGES;

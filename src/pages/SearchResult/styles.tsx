@@ -4,13 +4,9 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
-const SearchResultBackground = styled.div.attrs(
-  (props: {
-
-  }) => props
-)`
+const SearchResultBackground = styled.div.attrs((props: {}) => props)`
   height: 130px;
-  background: #EFEFEF;
+  background: #efefef;
   .btn-mobile {
     display: none;
     height: 43px;
@@ -29,7 +25,7 @@ const SearchResultBackground = styled.div.attrs(
     .btn-mobile {
       display: flex;
       align-items: center;
-      justify-content: center 
+      justify-content: center;
     }
   }
   .arrive-days {
@@ -39,7 +35,6 @@ const SearchResultBackground = styled.div.attrs(
       padding-right: 0;
     }
   }
-  
 `;
 
 const SearchBar = styled.div`
@@ -67,7 +62,6 @@ const SearchBar = styled.div`
     .btn-edit {
       display: none;
     }
-    
   }
 `;
 
@@ -103,7 +97,7 @@ const SearchItem = styled.div`
 const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
-  height : 58px;
+  height: 58px;
   border: 1px solid ${COLORS.silver};
   border-radius: 8px;
   display: flex;
@@ -147,7 +141,7 @@ const BreadcrumbItem = styled.div`
   }
   &:last-child {
     &::after {
-      content: '';
+      content: "";
     }
   }
   @media ${BREAKPOINTS.laptop} {
@@ -169,7 +163,7 @@ const SearchOption = styled.div`
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
-  .title{
+  .title {
     font-size: 31px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
@@ -207,7 +201,6 @@ const SearchOptionItem = styled.div`
     position: absolute;
     top: -28px;
   }
-  
 `;
 
 const SearchOptionSelect = styled.div`
@@ -223,13 +216,14 @@ const SearchOptionSelect = styled.div`
   }
   @media ${BREAKPOINTS.laptop} {
     justify-content: center;
-    input, .gradient-button {
+    input,
+    .gradient-button {
       height: 40px;
       padding: 0px 10px;
       font-size: 12px;
     }
     input {
-      border: 1px solid ${COLORS.parkinglotGray}
+      border: 1px solid ${COLORS.parkinglotGray};
     }
   }
 `;
@@ -256,7 +250,7 @@ const ListResultContainer = styled.div`
   .booking-card__container {
     width: auto;
   }
-  .carousel-title{
+  .carousel-title {
     margin-right: 15px;
   }
   @media ${BREAKPOINTS.laptop} {
@@ -268,7 +262,7 @@ const ListResultContainer = styled.div`
 
 const HotelCardContainer = styled.div`
   .hotel-card__container {
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d8d8d8;
     border-radius: 17px;
     width: 421px;
     margin-right: 15px;
@@ -293,49 +287,49 @@ const HotelCardContainer = styled.div`
       width: auto;
     }
     .rating {
-    align-items: flex-end;
-    border-top-right-radius: 17px;
-    display: flex;
-    justify-content: right;
-    margin-right: 38px;
-    padding-top: 8px;
-    @media ${BREAKPOINTS.mobileLg} {
-      border-top-right-radius: 5px;
-    }
-
-    span {
-      color: ${COLORS.black};
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
-
-      @media ${BREAKPOINTS.mobileLg} {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 22px;
-      }
-    }
-
-    .rating-container {
-      align-items: center;
-      background: ${COLORS.white};
-      border-radius: 5px;
+      align-items: flex-end;
+      border-top-right-radius: 17px;
       display: flex;
-      gap: 11px;
-      justify-content: center;
-      padding: 0 10px;
-      
-      span {
-        justify-content: right!important;
-        width: 100%;
+      justify-content: right;
+      margin-right: 38px;
+      padding-top: 8px;
+      @media ${BREAKPOINTS.mobileLg} {
+        border-top-right-radius: 5px;
       }
 
-      @media ${BREAKPOINTS.mobileLg} {
-        padding: 0 15px;
-        gap: 10px;
+      span {
+        color: ${COLORS.black};
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+
+        @media ${BREAKPOINTS.mobileLg} {
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22px;
+        }
+      }
+
+      .rating-container {
+        align-items: center;
+        background: ${COLORS.white};
+        border-radius: 5px;
+        display: flex;
+        gap: 11px;
+        justify-content: center;
+        padding: 0 10px;
+
+        span {
+          justify-content: right !important;
+          width: 100%;
+        }
+
+        @media ${BREAKPOINTS.mobileLg} {
+          padding: 0 15px;
+          gap: 10px;
+        }
       }
     }
-  }
   }
   .hotel-card__info-container {
     padding: 0 31px 35px;
@@ -363,25 +357,25 @@ const HotelCardContainer = styled.div`
     margin-top: 24px;
 
     p {
-      color: #38AA00;
+      color: #38aa00;
     }
   }
-`
+`;
 const ShowMapButton = styled.button`
-  border: 2px solid #00B492;
+  border: 2px solid #00b492;
   border-radius: 6px;
   width: 153px;
   height: 48px;
   cursor: pointer;
-  
+
   h5 {
     color: ${COLORS.toryBlue};
   }
-`
+`;
 
 const CarouselWrapper = styled.div`
   .carousel {
-    width: 1440px!important;
+    width: 1440px !important;
   }
 
   &.carousel-container {
@@ -392,7 +386,8 @@ const CarouselWrapper = styled.div`
     }
   }
 
-  .carousel, &.carousel-container {
+  .carousel,
+  &.carousel-container {
     @media only screen and (min-width: 1521px) {
       max-width: 903px;
     }
@@ -441,25 +436,25 @@ const CarouselWrapper = styled.div`
       gap: 15px;
 
       @media only screen and (max-width: 1440px) {
-        width: 400%!important;
+        width: 400% !important;
       }
 
       @media only screen and (max-width: 1024px) {
-        width: 550%!important;
+        width: 550% !important;
       }
 
       @media only screen and (max-width: 992px) {
-        width: 400%!important;
+        width: 400% !important;
       }
 
       @media only screen and (max-width: 769px) {
-        width: 816%!important;      
+        width: 816% !important;
       }
 
       @media only screen and (max-width: 650px) {
-        width: 400%!important;      
+        width: 400% !important;
       }
-      
+
       @media only screen and (max-width: 475px) {
         gap: 10px;
         width: 800% !important;
@@ -473,7 +468,8 @@ const CarouselWrapper = styled.div`
       width: 286px !important;
     }
   }
-`
+`;
+const BookingContainer = styled.div``;
 
 export {
   SearchResultBackground,
@@ -489,5 +485,6 @@ export {
   ListResultContainer,
   HotelCardContainer,
   ShowMapButton,
-  CarouselWrapper
+  CarouselWrapper,
+  BookingContainer,
 };
