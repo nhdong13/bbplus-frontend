@@ -1,5 +1,4 @@
 import LegendComboBox from "@/components/AccountSettings/LegendComboBox";
-import 'react-phone-input-2/lib/style.css'
 import FileInput from "../FileInput";
 import {
   LegendBox,
@@ -44,8 +43,9 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
                 </LegendItem>
                 <LegendItem>
                   <LegendComboBox
+                    hasFormInput
                     legendBoxTitle={'Phone number'}
-                    hasPhoneInput
+                    formInputLabel={'Phone number'}
                   />
                 </LegendItem>
                 <LegendItem>
@@ -84,8 +84,9 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
               />
               <LegendItem>
                 <LegendComboBox
+                  hasFormInput
                   legendBoxTitle={'Phone number'}
-                  hasPhoneInput
+                  formInputLabel={'Phone number'}
                 />
               </LegendItem>
             </LegendBox>
