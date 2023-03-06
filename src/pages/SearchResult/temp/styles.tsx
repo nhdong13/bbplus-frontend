@@ -535,9 +535,7 @@ const GridRoom = styled.div`
   margin-left: 250px;
   margin-top: 17px;
 `
-const DateView = styled.div `
-  
-`
+
 
 
 const GridRoomItem = styled.div`
@@ -583,5 +581,4 @@ export {
   GridViewTitle,
   GridRoom,
   GridRoomItem,
-  DateView
 };
