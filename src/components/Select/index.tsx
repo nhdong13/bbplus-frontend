@@ -1,5 +1,4 @@
 import { StyledSelectContainer } from "./style";
-import { FormInput } from "@/utils/types/FormInput";
 import IMAGES from "@/assets/images";
 
 const Select = ({
@@ -31,7 +30,7 @@ const Select = ({
       >
         <div className="label">
           <div>{label?.concat(isImportant ? " *" : " ")}</div>
-          <img src={typeIconDown ? IMAGES.iconArrowDown : IMAGES.iconSelectDown} width="10px" height="5px" />
+          <img alt='' src={typeIconDown ? IMAGES.iconArrowDown : IMAGES.iconSelectDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
     </>
