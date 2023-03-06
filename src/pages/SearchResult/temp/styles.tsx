@@ -188,15 +188,24 @@ const SearchOption = styled.div`
     display: flex;
     align-items: center;
     border: 2px solid ${COLORS.black};
-    border-radius: 4.5px;
+    border-radius: 5px;
     height: 48px;
     margin-top: 15px;
+
+    @media ${BREAKPOINTS.laptop} {
+      height: 40px;
+      font-size: 12px;
+    }
   }
   .btn {
     cursor: pointer;
     height: 100%;
     line-height: 48px;
     padding: 0 20px;
+    width: 50%;
+    @media ${BREAKPOINTS.laptop} {
+      line-height: 40px;
+    }
   }
   .active {
     background: ${COLORS.darkGreen};
@@ -215,16 +224,14 @@ const SearchOption = styled.div`
     .mark-up {
       width: 100%;
       left: 79px;
-      font-size: 14px;
     }
     .title {
       font-size: 18px;
-      display: none;
     }
-    .mobile {
-      display: block;
+    .mt-10 {
+      margin-top: 10px;
       text-align: center;
-      margin-top: 15px;
+      font-size: 12px;
     }
   }
 `;

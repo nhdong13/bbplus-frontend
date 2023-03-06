@@ -19,14 +19,18 @@ import {
   SearchResultContainer,
   Breadcrumb,
   BreadcrumbItem,
-  SearchOption,
-  SearchOptionItem,
-  SearchOptionSelect,
   ListResultContainer,
   HotelCardContainer,
   ShowMapButton,
   CarouselWrapper
 } from "./styles";
+
+import {
+  SearchOption,
+  SearchOptionItem,
+  SearchOptionSelect,
+} from './temp/styles'
+
 import useHome from "@/pages/Home/hooks";
 
 export default function SearchResult() {
@@ -86,42 +90,47 @@ export default function SearchResult() {
             <BreadcrumbItem>Coral coast resorts</BreadcrumbItem>
           </Breadcrumb>
           <SearchOption>
-            <SearchOptionItem className="title">Fiji: 134 properties found</SearchOptionItem>
-            <SearchOptionItem className="choose">Choose your option</SearchOptionItem>
-            <SearchOptionSelect className="filter-select">
-              <SearchOptionItem>
+            <SearchOptionItem className="title">
+              <div>Fiji: 134 properties found</div>
+              <div className="flex">
                 <Select
                   label="Filter by: Select"
                   marginTop="0px"
                   maxHeight="48px"
                   typeIconDown={true}
                 />
-              </SearchOptionItem>
-              <SearchOptionItem>
                 <Select
                   label="Sort by: Select"
                   marginTop="0px"
                   typeIconDown={true}
                   maxHeight="48px"
                 />
-              </SearchOptionItem>
-            </SearchOptionSelect>
+              </div>
+            </SearchOptionItem>
+            <SearchOptionItem className="choose">
+              <div className="mt-10">Choose your option</div>
+              <div className="flex-option">
+                <div className="btn">Grid view</div>
+                <div className="btn active">Packages</div>
+              </div>
+            </SearchOptionItem>
             <SearchOptionSelect>
               <SearchOptionItem>
-                <p className="mark-up">Markup</p>
-                <input value={"20%"} />
-              </SearchOptionItem>
-              <SearchOptionItem>
-                <GradientButton
-                  color={COLORS.gradient1}
-                  text="Apply"
-                  isSelected={true}
-                  maxWidth="90px"
-                  height="48px"
-                />
+                <div className="mt-10">Markup</div>
+                <div className="flex">
+                  <input value={"20%"} />
+                  <div>
+                    <GradientButton
+                      color={COLORS.gradient1}
+                      text="Apply"
+                      isSelected={true}
+                      maxWidth="90px"
+                      height="48px"
+                    />
+                  </div>
+                </div>
               </SearchOptionItem>
             </SearchOptionSelect>
-            <SearchOptionItem className="title mobile">Fiji: 134 properties found</SearchOptionItem>
           </SearchOption>
           {
             [1, 2, 3].map(el => {

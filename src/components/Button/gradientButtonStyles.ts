@@ -32,6 +32,9 @@ const StyledButton = styled.div.attrs((props: {
     font-size: ${props => props.fontSize || "16px"};
     line-height: 20px;
     padding: ${props => props.textPadding || "0 50px 0 38px"};
+    @media ${BREAKPOINTS.laptop} {
+      font-size: 12px;
+    }
   }
 
   &.open {
