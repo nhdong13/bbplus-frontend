@@ -2,7 +2,7 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
     description: "Garden View Room",
-    type: "checkbox",
+    type: "room",
     roomOptions: [
       {
         id: 1,
@@ -39,7 +39,7 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Hotel Extras",
     description: "Half Board Meal Plan",
-    type:"",
+    type: "option",
     roomOptions: [
       {
         id: 1,
@@ -76,23 +76,26 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Transfer",
     description: "Tewaka Fiji, Airport Transfer",
-    type:"",
+    type: "option",
     roomOptions: [
       {
         id: 1,
         title: "Tewaka Fiji",
+        detail: "Return: Airport Transfer",
         price: "$XXX",
         value: "",
       },
       {
         id: 2,
         title: "Heli Tours Fiji",
+        detail: "Return: Airport Transfer",
         price: "$XXX",
         value: "",
       },
       {
         id: 3,
         title: "Tour Managers",
+        detail: "Return: Airport Transfer",
         price: "$XXX",
         value: "",
       },

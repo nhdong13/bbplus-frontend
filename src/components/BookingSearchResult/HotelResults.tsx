@@ -11,6 +11,7 @@ import { useState } from "react";
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { HOTEL_RESULT_DATA } from "./dataTest";
+import { ReactSVG } from "react-svg";
 
 const StyledHotelResult = styled.div`
   display: flex;
@@ -30,6 +31,10 @@ const StyledHotelResult = styled.div`
     margin-bottom: 20px;
   }
 
+  .MuiButtonBase-root {
+    padding: 0 32px;
+  }
+
   .hotel-result__left {
     background-color: #f0f1f2;
   }
@@ -39,7 +44,7 @@ const StyledHotelResult = styled.div`
     grid-template-columns: auto auto;
     gap: 20px;
   }
-  .hotel-result__option-list{
+  .hotel-result__option-list {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 20px;
@@ -59,6 +64,18 @@ const StyledHotelResult = styled.div`
     height: 28px;
     background-color: black;
     margin: 0 20px;
+  }
+
+  .select-ages__dropdown-icon {
+    svg {
+      width: 14px;
+      height: 27.25px;
+      transform: rotate(90deg);
+      path {
+        stroke-width: 2px;
+        stroke: ${COLORS.blueRibbon};
+      }
+    }
   }
 `;
 export default function HotelResults() {
@@ -101,9 +118,9 @@ export default function HotelResults() {
               >
                 <AccordionSummary
                   expandIcon={
-                    <img
+                    <ReactSVG
                       className="select-ages__dropdown-icon"
-                      src={IMAGES.iconDropDownBlue}
+                      src={IMAGES.iconAnchorGrey}
                       width="31px"
                       height="15px"
                     />
@@ -114,6 +131,7 @@ export default function HotelResults() {
                   <Typography
                     sx={{ width: "33%", flexShrink: 0 }}
                     fontWeight="bold"
+                    whiteSpace="nowrap"
                   >
                     {item.name} -{" "}
                     <Typography display="inline-block" fontWeight="500">
@@ -122,8 +140,14 @@ export default function HotelResults() {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <div className={item.type === "checkbox" ? "hotel-result__room-list" : "hotel-result__option-list"}>
-                    {item.type === "checkbox"
+                  <div
+                    className={
+                      item.type === "room"
+                        ? "hotel-result__room-list"
+                        : "hotel-result__option-list"
+                    }
+                  >
+                    {item.type === "room"
                       ? _.range(0, 4).map(() => {
                           return (
                             <RoomCard checkbox roomOptions={item.roomOptions} />

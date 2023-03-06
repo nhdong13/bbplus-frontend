@@ -64,7 +64,11 @@ const RoomOptions = styled.div`
     flex-direction: column;
     align-items: center;
     h4 {
-      margin-bottom: 20px;
+      margin-bottom: 8px;
+    }
+
+    .option-detail {
+      margin-bottom: 8px;
     }
   }
 
@@ -72,8 +76,16 @@ const RoomOptions = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
+    p {
+      color: ${COLORS.blueRibbon};
+    }
+    img {
+      position: absolute;
+      right: 0px;
+    }
   }
 `;
 
@@ -129,6 +141,11 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
                       ) : (
                         <H4>{item.title}</H4>
                       )}
+                      {item.detail ? (
+                        <p className="option-detail">{item.detail}</p>
+                      ) : (
+                        <></>
+                      )}
                       <p>{item.price}</p>
                     </div>
                   </RadioGroup>
@@ -152,7 +169,6 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
                 <>
                   <div className="room-card__option">
                     <div className="room-card__option-detail">
-                      <div></div>
                       <p>More details</p>
                       <img className="info-icon" src={IMAGES.iconInfo} />
                     </div>

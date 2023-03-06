@@ -41,4 +41,20 @@ const BreadcrumbItem = styled.div`
   }
 `;
 
-export { Breadcrumb, BreadcrumbItem };
+interface IContainer {
+  display?: string;
+  width?: string;
+  maxWidth?: string;
+  gridTemplateColumns?: string;
+  margin?: string;
+}
+
+const Container = styled.div<IContainer>`
+  width: ${(props) => props.width || "1400px"};
+  max-width: ${(props) => props.maxWidth || "1400px"};
+  margin: ${(props) => props.margin || "auto"};
+  display: ${(props) => props.display || "grid"};
+  grid-template-columns: ${(props) => props.gridTemplateColumns || "40% 60%"};
+`;
+
+export { Breadcrumb, BreadcrumbItem, Container };

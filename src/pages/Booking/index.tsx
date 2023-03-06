@@ -32,6 +32,7 @@ import {
   Link,
   Right,
 } from "./styles";
+import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
@@ -281,6 +282,7 @@ export default function Booking() {
             </Container>
             <ContainerRight></ContainerRight>
           </BookingContent>
+          <AboutHotel />
         </BookingContainer>
       </MainLayout>
     </>
