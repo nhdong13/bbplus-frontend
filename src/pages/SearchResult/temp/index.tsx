@@ -30,8 +30,8 @@ import {
   GridViewTitle,
   GridRoom,
   GridRoomItem,
-  DateView
 } from "./styles";
+import DateView from './DateView'
 import useHome from "@/pages/Home/hooks";
 import _ from "lodash";
 
@@ -134,9 +134,7 @@ export default function SearchResult() {
               </SearchOptionItem>
             </SearchOptionSelect>
           </SearchOption>
-          <DateView>
-            kkkk
-          </DateView>
+          <DateView />
           {
             _.range(3).map((el, idx) => {
               return <GridView key={idx}>
