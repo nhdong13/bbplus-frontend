@@ -8,7 +8,6 @@ import {
   AccountSetting,
 } from "@/pages";
 import { RouterName } from "./config";
-
 export const RouterApp = () => {
   return (
     <BrowserRouter>
