@@ -11,7 +11,7 @@ const StyledComboButton = styled.div`
 
 const StyledFinishedButton = styled.button`
   background: ${COLORS.gradient1};
-  border-radius: 5px;
+  border-radius: 17px;
   max-width: 191px;
   height: 62px;
   width: 100%;
@@ -22,20 +22,39 @@ const StyledFinishedButton = styled.button`
     font-size: 16px;
     line-height: 20px;
   }
+
+  @media ${BREAKPOINTS.laptop} {
+    width: 85px;
+    height: 36px;
+    border-radius: 5px;
+    span {
+      font-size: 12px;
+    }
+  }
+
+  
 `
 
 const StyledAddButton = styled.button`
   background: ${COLORS.endeavour};
-  border-radius: 5px;
+  border-radius: 17px;
   max-width: 135px;
   height: 62px;
   width: 100%;
-
   span {
     color: ${COLORS.white};
     font-family: ${FONTS.manropeBold};
     font-size: 16px;
     line-height: 20px;
+  }
+
+  @media ${BREAKPOINTS.laptop} {
+    width: 85px;
+    height: 36px;
+    border-radius: 5px;
+    span {
+      font-size: 12px;
+    }
   }
 
 `

@@ -26,9 +26,10 @@ const Select = ({
         valid={valid}
         width={width}
         padding={padding}
+        className="select-container"
       >
         <div className="label">
-          <div>{label.concat(isImportant ? " *" : " ")}</div>
+          <div>{label?.concat(isImportant ? " *" : " ")}</div>
           <img src={IMAGES.iconSelectDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>

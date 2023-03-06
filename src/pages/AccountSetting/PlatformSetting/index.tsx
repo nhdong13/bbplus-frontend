@@ -9,8 +9,14 @@ import {
   ButtonNextStep,
   StyledPlatformSetting,
 } from "../styles";
-export default function PlatformSetting() {
+import useWindowSize from "@/utils/windowResize";
 
+interface IPros {
+  onClickNextStep: (id: number) => void,
+}
+
+export default function PlatformSetting({ onClickNextStep }: IPros) {
+  const wd = useWindowSize();
   return (
     <>
       <StyledPlatformSetting>
@@ -58,7 +64,7 @@ export default function PlatformSetting() {
                 </LegendItem>
               </div>
             </LegendBox>
-            <LegendBox className="legenbox-right">
+            <LegendBox className="legenbox-right step-1">
               <LegendTitle>Agency Logo</LegendTitle>
               <FileInput />
             </LegendBox>
@@ -83,8 +89,9 @@ export default function PlatformSetting() {
                 />
               </LegendItem>
             </LegendBox>
+            {wd <= 430 ? <FileInput isMobile={true} /> : null}
             <NextStepBox>
-              <ButtonNextStep>Next Step</ButtonNextStep>
+              <ButtonNextStep onClick={() => onClickNextStep(1)}>Next Step</ButtonNextStep>
             </NextStepBox>
           </div>
         </div>

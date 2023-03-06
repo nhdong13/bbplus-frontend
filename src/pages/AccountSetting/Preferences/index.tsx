@@ -6,15 +6,21 @@ import {
   LegendItem,
   LegendField,
   TextErrorInput,
+  NextStepBoxPre,
+  ButtonNextStep
+
 } from "../styles";
 import { FormInput } from "@/components/FormInput";
 import Select from "@/components/Select";
+interface IPros {
+  onClickNextStep: (id: number) => void,
+}
 
-function PreferenceSetting() {
+function PreferenceSetting({ onClickNextStep }: IPros) {
   const { } = useAccountSetting();
   return (
     <div className="body-section">
-      <div className="body-section-item">
+      <div className="body-section-item step-show-label">
         <LegendBox>
           <LegendTitle>Markup</LegendTitle>
           <LegendItem isError={true}>
@@ -116,8 +122,8 @@ function PreferenceSetting() {
         <LegendBox className="legenbox-right">
           <LegendTitle>Other settings</LegendTitle>
           <LegendItem>
-            <LabelText>Email Address</LabelText>
-            <LegendField>
+            <LabelText>Choose currency</LabelText>
+            <LegendField className="currency">
               <Select
                 label="Percentage"
                 width="147px"
@@ -128,7 +134,7 @@ function PreferenceSetting() {
             </LegendField>
           </LegendItem>
           <LegendItem>
-            <LabelText>Email Address</LabelText>
+            <LabelText>Email address for notification</LabelText>
             <FormInput
               width="339px"
               maxHeight="68px"
@@ -138,6 +144,9 @@ function PreferenceSetting() {
           </LegendItem>
         </LegendBox>
       </div>
+      <NextStepBoxPre>
+        <ButtonNextStep onClick={() => onClickNextStep(2)}>Next Step</ButtonNextStep>
+      </NextStepBoxPre>
     </div>
   );
 }

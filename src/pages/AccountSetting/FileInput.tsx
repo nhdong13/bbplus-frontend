@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
-const FileInput = () => {
+interface IProps {
+  isMobile?: boolean
+}
+
+const FileInput = ({ isMobile }: IProps) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
@@ -16,52 +21,44 @@ const FileInput = () => {
   }, [selectedImage]);
 
   return (
-    <>
-      <Content>
-        <Preview>
-          <BackgroundImage>
-            <img
-              src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
-              alt="new"
-              width="120px"
-              height="80px"
-            />
-          </BackgroundImage>
-        </Preview>
-        <File>
-          <Button>Choose File</Button>
-          <FileName>filename.xxx</FileName>
-        </File>
-        <RemoveFile>
-          <img src={IMAGES.iconRemove} />
-        </RemoveFile>
-      </Content>
-      <TextPreview>Preview</TextPreview>
+    <React.Fragment>
+      {
+        isMobile
+          ?
+          <MobileView>
+            <div>Upload Agency logo</div>
+            <div className="btn">Browse</div>
+          </MobileView>
+          :
+          <React.Fragment>
+            <Content>
+              <Preview >
+                <BackgroundImage>
+                  <img
+                    src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+                    alt="new"
+                    width="120px"
+                    height="80px"
+                  />
+                </BackgroundImage>
+              </Preview>
+              <File>
+                <Button>Choose File</Button>
+                <FileName>filename.xxx</FileName>
+              </File>
+              <RemoveFile>
+                <img src={IMAGES.iconRemove} />
+              </RemoveFile>
+            </Content>
+            <TextPreview>Preview</TextPreview>
+          </React.Fragment>
+      }
       <TextError>
         <p>Logo Extension: JPG, JPEG, PNG, SVG - up to 500kb</p>
         <p>No less than 300×100 px, no larger than 2000×2000 px.</p>
         <p>The horizontal logo is preferable.</p>
       </TextError>
-      {/* <input
-        accept="image/*"
-        type="file"
-        id="select-image"
-        style={{ display: "none" }}
-        onChange={(e) => setSelectedImage(e.target.files[0])}
-      />
-      <label htmlFor="select-image">
-        <Button variant="contained" color="primary" component="span">
-          Upload Image
-        </Button>
-      </label>
-      <Box mt={2} textAlign="center">
-        <div>Image Preview:</div>
-        <img
-          src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
-          alt="new"
-        />
-      </Box> */}
-    </>
+    </React.Fragment>
   );
 };
 
@@ -84,11 +81,17 @@ const BackgroundImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${BREAKPOINTS.laptop} {
+    display: none;
+  }
 `;
-const TextPreview = styled.span`
+const TextPreview = styled.div`
   font-family: ${FONTS.manropeRegular};
   font-weight: normal;
   font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 20px;
 `;
 const File = styled.div`
   display: flex;
@@ -119,7 +122,9 @@ const TextError = styled.div`
   font-weight: normal;
   color: ${COLORS.red};
   font-size: 14px;
-  margin-top: 20px;
+  @media ${BREAKPOINTS.laptop} {
+    font-size: 12px;
+  }
 `;
 const RemoveFile = styled.div`
   display: flex;
@@ -131,5 +136,27 @@ const RemoveFile = styled.div`
   background: ${COLORS.purple};
   border-radius: 2px;
 `;
+
+const MobileView = styled.div`
+  border: 1px solid ${COLORS.silver};
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 31px;
+  padding-right: 51px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  .btn {
+    width: 99px;
+    height: 30px;
+    border: 1px solid ${COLORS.black};
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+  }
+`
 
 export default FileInput;

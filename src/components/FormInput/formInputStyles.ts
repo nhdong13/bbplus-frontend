@@ -46,7 +46,7 @@ const StyledInputContainer = styled.div.attrs(
     border: none;
   }
 
-  @media ${BREAKPOINTS.mobileLg} {
+  @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
     border: 1px solid ${COLORS.parkinglotGray};
     border-radius: 3px;
@@ -56,6 +56,7 @@ const StyledInputContainer = styled.div.attrs(
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
+      border-radius: 3px;
     }
 
     .icon {

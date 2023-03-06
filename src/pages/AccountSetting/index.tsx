@@ -14,10 +14,12 @@ import {
   StyledAccountSetting,
 } from "./styles";
 import UserManagement from "./UserManagement";
+import useWindowSize from "@/utils/windowResize";
+import { AuthenticationLogoMobile } from "@/pages/Login/styles";
+
 
 function AccountSetting() {
   const { } = useAccountSetting();
-  const [settingStep, setSettingStep] = useState<number[]>([0]);
   const [currentItem, setCurrentItem] = useState<number>(0);
 
   const breadCrumbList = [
@@ -35,25 +37,21 @@ function AccountSetting() {
     }
   ];
 
-  useEffect(() => {
-    if (settingStep.includes(currentItem)) {
-    } else {
-      const tmp = settingStep
-      tmp.push(currentItem)
-      setSettingStep(tmp)
-    }
-  }, [settingStep])
+  const wd = useWindowSize();
+
+
 
   return (
     <MainLayout>
       <StyledAccountSetting>
+        {wd <= 430 ? <AuthenticationLogoMobile /> : null}
         <AccountSettingContainer id="account-setting">
           <BreadcrumbContainer>
             <BreadcrumbBody>
               {breadCrumbList?.map((item, key: number) => {
                 return (
-                  <BreadcrumbItem className={settingStep.includes(currentItem) ? 'active' : ''}
-                    onClick={() => setCurrentItem(key)}>{item.title}</BreadcrumbItem>
+                  <BreadcrumbItem key={key} activeColor={currentItem === item.id}
+                    onClick={() => setCurrentItem(item.id)}>{item.title}</BreadcrumbItem>
                 )
               })}
             </BreadcrumbBody>
@@ -61,16 +59,21 @@ function AccountSetting() {
           <div id="account-setting-section">
             <AccountSettingHeader>
               <H2 fontFamily="Montserrat" fontWeight="500" lineHeight="38px">
-                Platform settings
+                {{
+                  0: "Platform settings",
+                  1: "Commission display when searching",
+                }[currentItem]}
               </H2>
               <div className="fill-information-title">
-                Please fill in the information below to complete your account
-                setup
+                {{
+                  0: "Please fill in the information below to complete your account setup",
+                  1: "Enter the commission amount that will be automatically added to the NET price during the calculation of the customer price",
+                }[currentItem]}
               </div>
             </AccountSettingHeader>
             {{
-              0: <PlatformSetting />,
-              1: <PreferenceSetting />,
+              0: <PlatformSetting onClickNextStep={(id: number) => setCurrentItem(id)} />,
+              1: <PreferenceSetting onClickNextStep={(id: number) => setCurrentItem(id)} />,
               2: <UserManagement />,
             }[currentItem]}
             {currentItem == 2 && <ComboButton />}

@@ -51,7 +51,7 @@ const StyledSelectContainer = styled.div.attrs(
     border: none;
   }
 
-  @media ${BREAKPOINTS.mobileLg} {
+  @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
     border: 1px solid ${COLORS.parkinglotGray};
     border-radius: 3px;

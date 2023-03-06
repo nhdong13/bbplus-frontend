@@ -23,6 +23,7 @@ const FormInput = ({
         maxHeight={maxHeight}
         valid={valid}
         width={width}
+        className="input-container"
       >
         <div className="icon"></div>
         <input

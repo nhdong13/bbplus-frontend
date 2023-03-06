@@ -19,12 +19,16 @@ import { FONTS } from "@/utils/fonts";
 import IMAGES from "@/assets/images";
 import LegendComboBox from "@/components/AccountSettings/LegendComboBox";
 import { BREAKPOINTS } from "@/utils/breakpoints";
-
+import useWindowSize from "@/utils/windowResize";
+import UserManagementTable from './UserManagementTable'
+import UserManagementTableMobile from './UserManagementTableMobile'
 function UserManagement() {
   const { } = useAccountSetting();
+  const wd = useWindowSize();
+
   return (
     <div className="body-section">
-      <div className="body-section-item">
+      <div className="body-section-item step-show-label step-user">
         <LegendBox className="w-100">
           <LegendTitle>User Detail</LegendTitle>
           <div className="user-title">
@@ -33,41 +37,39 @@ function UserManagement() {
           <div className="user-title">
             Existing Users
           </div>
-          <UserManagementTable />
+          {
+            wd <= 430
+              ?
+              <UserManagementTableMobile />
+              :
+              <UserManagementTable />
+          }
           <div className="user-title">
             To add a new user, enter required details and click Add.
           </div>
           <RequireDetailContainer>
             <div className="require-detail__left-container">
-              <LegendItem>
-                <LegendComboBox
-                  hasFormInput
-                  legendBoxTitle={'Agency Name'}
-                  formInputLabel={'Agency Name'}
-                />
-              </LegendItem>
-              <LegendItem>
-                <LegendComboBox
-                  hasFormInput
-                  legendBoxTitle={'Full Name'}
-                  formInputLabel={'Full Name'}
-                />
-              </LegendItem>
+              <LegendComboBox
+                hasFormInput
+                legendBoxTitle={'Agency Name'}
+                formInputLabel={'Agency Name'}
+              />
+              <LegendComboBox
+                hasFormInput
+                legendBoxTitle={'Full Name'}
+                formInputLabel={'Full Name'}
+              />
 
-              <LegendItem>
-                <LegendComboBox
-                  hasFormInput
-                  legendBoxTitle={'Email'}
-                  formInputLabel={'Email'}
-                />
-              </LegendItem>
-              <LegendItem>
-                <LegendComboBox
-                  hasFormInput
-                  legendBoxTitle={'User Role'}
-                  formInputLabel={'User Role'}
-                />
-              </LegendItem>
+              <LegendComboBox
+                hasFormInput
+                legendBoxTitle={'Email'}
+                formInputLabel={'Email'}
+              />
+              <LegendComboBox
+                hasFormInput
+                legendBoxTitle={'User Role'}
+                formInputLabel={'User Role'}
+              />
             </div>
             <div className="require-detail__right-container">
               <LegendComboBox
@@ -75,22 +77,22 @@ function UserManagement() {
                 hasSelectDropDown
                 hasFormInput
                 formInputWidth="115px"
+                formInputLabel="0%"
               />
 
               <LegendComboBox
                 legendBoxTitle={'Hide Sub User Markup'}
+                isCheckboxMobile={wd <= 430}
                 hasCheckBox
               />
               <LegendComboBox
                 legendBoxTitle={'Hide Invoice'}
+                isCheckboxMobile={wd <= 430}
                 hasCheckBox
               />
               <LegendComboBox
                 legendBoxTitle={'Allow User to view bookings'}
-                hasCheckBox
-              />
-              <LegendComboBox
-                legendBoxTitle={'made by other user as well'}
+                isCheckboxMobile={wd <= 430}
                 hasCheckBox
               />
             </div>
@@ -106,6 +108,10 @@ const RequireDetailContainer = styled.div`
   flex-direction: row;
   gap: 148px;
 
+  @media ${BREAKPOINTS.laptop} {
+    gap: 10px;
+  }
+
   .require-detail__left-container,
   .require-detail__right-container {
     width: 100%;
@@ -118,160 +124,17 @@ const RequireDetailContainer = styled.div`
 
   .require-detail__right-container  {
     gap: 100px;
+    .input-container {
+      height: 68px;
+    }
   }
 
   @media ${BREAKPOINTS.laptop} {
     flex-direction: column;
+    .input-container {
+      height: 40px !important;
+    }
   }
 `
 
-const StyledUserManagementTable = styled.div`
-  @media ${BREAKPOINTS.laptop} {
-    width: 90%;
-  }
-  table {
-    min-width: 768px;
-    overflow: scroll;
-    
-    @media ${BREAKPOINTS.desktopLg} {
-      width: 768px;
-    }
-
-    @media ${BREAKPOINTS.tablet} {
-      width: 375px;
-    }
-  }
-  .MuiTableContainer-root {
-    box-shadow: none!important;
-
-    .MuiTable-root {
-      border-collapse: separate;
-      border-spacing: 0 15px;
-    }
-
-    .MuiTableHead-root {
-      background-color: ${COLORS.purple};
-    }
-
-    .MuiTableBody-root {
-      background-color: ${COLORS.mercury};
-    }
-
-    #password-field {
-      border: none;
-      background: transparent;
-    }
-
-    .button-group {
-      align-items: center;
-      display: flex;
-      gap: 9px;
-    }
-
-    .button-edit, .button-delete {
-      box-shadow: none;
-      font-family: ${FONTS.manropeBold};
-      font-size: 14px;
-    }
-
-    .button-edit {
-      background-color: ${COLORS.curiousBlue};
-    }
-
-    .button-delete {
-      background-color: ${COLORS.red};
-    }
-
-    .divider {
-      background-color: ${COLORS.black};
-      height: 25px;
-      width: 2px;
-    }
-  }
-
-`
-
-const StyledUserRoleDropDown = styled.div.attrs((props: {
-  isDropDown?: boolean
-}) => props)`
-  button {
-    align-items: center;
-    border: 1px solid ${COLORS.black};
-    background-color: ${COLORS.white};
-    display: flex;
-    cursor: pointer;
-    justify-content: space-between;
-    max-width: 146px;
-    padding: 13px 18px 8px 14px;
-    width: 100%;
-  }
-
-  img {
-    transform: ${({ isDropDown }) => isDropDown ? "rotate(180deg)" : "rotate(0)"};
-    transition: all 0.5s ease-in-out;
-  }
-`
-
-const UserManagementTable = () => {
-  return (
-    <StyledUserManagementTable>
-      <TableContainer component={Paper}>
-        <Table
-          sx={{
-            [`& .${tableCellClasses.root}`]: {
-              borderBottom: "none",
-              borderCollapse: "separate",
-              borderSpacing: "0 14px",
-            }
-          }}
-        >
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Username</TableCell>
-              <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">Password</TableCell>
-              <TableCell align="left">User Role</TableCell>
-              <TableCell align="left">Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell align="left">James</TableCell>
-              <TableCell align="left">James Dean</TableCell>
-              <TableCell align="left">james@travel.com</TableCell>
-              <TableCell align="left"><input type="password" id="password-field" value="p@ssw0rd" /></TableCell>
-              <TableCell align="left">
-                <UserRoleDropDown />
-              </TableCell>
-              <TableCell align="left">
-                <div className="button-group">
-                  <Button variant="contained" className="button-edit">Edit</Button>
-                  <div className="divider" />
-                  <Button variant="contained" className="button-delete">Delete</Button>
-                </div>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </StyledUserManagementTable>
-  )
-}
-
-const UserRoleDropDown = () => {
-  const [dropDown, setDropDown] = React.useState<boolean>(false);
-  return (
-    <>
-      <StyledUserRoleDropDown isDropDown={dropDown}>
-        <button onClick={() => setDropDown(!dropDown)}>
-          <p>Master</p>
-          <img className="dropdown-icon" src={IMAGES.iconDropDownBlue} width="13px" height="9px" />
-        </button>
-      </StyledUserRoleDropDown>
-    </>
-  )
-}
 export default UserManagement;
