@@ -121,6 +121,12 @@ const StyledRoomOptions = styled(VerticalContainer)`
       justify-content: left;
       margin: 0;
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      h5{
+        font-size: 12px !important;
+        margin-bottom: 10px;
+      }
+    }
   }
 
   .room-option__right {
@@ -143,6 +149,7 @@ const StyledRoomOptions = styled(VerticalContainer)`
 
   .room-option__name-input-container {
     margin-top: 19px;
+    margin-bottom: 19px;
     max-width: 618px;
     width: 100%;
 
@@ -154,6 +161,13 @@ const StyledRoomOptions = styled(VerticalContainer)`
       font-size: 16px;
       &:focus {
         outline: none; 
+      }
+      @media ${BREAKPOINTS.tablet} {
+        padding: 0;
+        padding-left: 20px;
+        height: 36px;
+        width: 100%;
+        line-height: 36px;
       }
     }
   }
@@ -187,15 +201,16 @@ const StyledRoomOptions = styled(VerticalContainer)`
       }
     }
   }
+  .mb-10 {
+    @media ${BREAKPOINTS.tablet} {
+      margin-top: 10px;
+      
+    }
+  }
 
   .room-option__remove-room {
     border-radius: 5px;
     cursor: pointer;
-    padding: 10px;
-
-    @media ${BREAKPOINTS.laptop} {
-      padding: 10px 0;
-    }
 
     &:hover {
       background-color: #c9c9c959;
@@ -274,20 +289,9 @@ const StyledQuantityButton = styled.div`
     outline: none;
   }
 
-  input {
+  span {
     width: 50px;
     text-align: center;
-    border: none;
-    outline: none;
-  }
-
-  input[type='number'] {
-    -moz-appearance:textfield;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
   }
 `
 
