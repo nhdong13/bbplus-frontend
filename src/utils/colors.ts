@@ -17,6 +17,7 @@ export const COLORS: StyledColors = {
   commandBlue: "#007DB3",
   darkSilver:  "#B7B7B7",
   doveGray: "#707070",
+  grayAf: "#afafaf",
   electricRed: "#E00000",
   eerieBlack: "#1C1B1F",
   flushOrange: "#FF8003",
@@ -70,6 +71,7 @@ interface StyledColors {
   commandBlue: string,
   darkSilver: string
   doveGray: string,
+  grayAf: string,
   electricRed: string,
   eerieBlack: string,
   flushOrange: string,

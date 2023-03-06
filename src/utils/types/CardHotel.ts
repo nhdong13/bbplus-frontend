@@ -25,3 +25,10 @@ export interface TableData {
   totalPrice: string,
   status: string,
 }
+
+export interface RoomOptions{
+  id: number,
+  title: string,
+  price: string,
+  value: string,
+}

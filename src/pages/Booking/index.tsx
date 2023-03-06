@@ -1,4 +1,5 @@
 import IMAGES from "@/assets/images";
+import HotelResults from "@/components/BookingSearchResult/HotelResults";
 import ImageCarousel from "@/components/Carousel/ImageCarousel";
 import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H5, Typography } from "@/components/Typography";
@@ -21,6 +22,8 @@ import {
   ButtonNextStep,
   Col,
   Container,
+  ContainerLeft,
+  ContainerRight,
   HotelDetail,
   HotelImage,
   HotelInformation,
@@ -143,6 +146,7 @@ export default function Booking() {
             </div>
           </BookingHeader>
           <BookingContent>
+            <ContainerLeft></ContainerLeft>
             <Container>
               <Left width="">
                 <HotelInformation>
@@ -271,8 +275,11 @@ export default function Booking() {
                   </HotelDetail>
                 </HotelInformation>
               </Left>
-              <Right width=""></Right>
+              <Right width="">
+                <HotelResults />
+              </Right>
             </Container>
+            <ContainerRight></ContainerRight>
           </BookingContent>
         </BookingContainer>
       </MainLayout>

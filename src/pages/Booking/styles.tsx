@@ -3,6 +3,8 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
+const WIDTH = "1400px";
+
 const BookingOption = styled.div`
   display: flex;
   flex-direction: row;
@@ -62,7 +64,12 @@ const Col = styled.div`
 
 const BookingContent = styled.div`
   border-top: 2px solid ${COLORS.platinum};
-  padding-top: 20px;
+  display: grid;
+  grid-template-columns: calc((100% - ${WIDTH}) / 2) auto calc(
+      (100% - ${WIDTH}) / 2
+    );
+  padding-top: 4px;
+  margin-bottom: 40px;
 `;
 
 interface ContainerStyle {
@@ -71,10 +78,14 @@ interface ContainerStyle {
 
 const Left = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
-  padding-left: 35px;
+  background-color: #f0f1f2;
+  padding-top: 20px;
+  padding-right: 56px;
+  padding-bottom: 40px;
 `;
 const Right = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
+  padding-left: 40px;
 `;
 
 const HotelInformation = styled.div`
@@ -103,9 +114,22 @@ const HotelInformation = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: 1400px;
   max-width: 1400px;
   margin: auto;
+  display: grid;
+  grid-template-columns: 40% 60%;
+`;
+
+const ContainerLeft = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #f0f1f2;
+`;
+
+const ContainerRight = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 const HotelImage = styled.div`
@@ -191,6 +215,8 @@ export {
   Right,
   HotelInformation,
   Container,
+  ContainerLeft,
+  ContainerRight,
   HotelImage,
   HotelPrice,
   HotelDetail,

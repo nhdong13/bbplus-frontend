@@ -1,6 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="27.769" height="27.848" viewBox="0 0 27.769 27.848">
-  <g id="Group_267" data-name="Group 267" transform="translate(-7007.957 -953.592)">
-    <text id="i" transform="translate(7019.103 974.485)" fill="#005cff" font-size="16" font-family="Helvetica"><tspan x="0" y="0">i</tspan></text>
-    <ellipse id="Ellipse_12" data-name="Ellipse 12" cx="12.884" cy="12.924" rx="12.884" ry="12.924" transform="translate(7008.957 954.592)" fill="none" stroke="#005cff" stroke-miterlimit="10" stroke-width="2"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg66"
+   width="37.025391"
+   height="37.130737"
+   viewBox="0 0 37.025391 37.130737"
+   sodipodi:docname="Bedbank Plus - Revised UI.ai"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs70">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8916">
+      <path
+         d="M 0,4698.375 H 1920 V 0 H 0 Z"
+         id="path8914" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview68"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false" />
+  <g
+     id="g8366"
+     inkscape:groupmode="layer"
+     inkscape:label="Page 4"
+     transform="matrix(1.3333333,0,0,-1.3333333,-1563.5537,4993.044)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.99695,0,0,-1,1183.8168,3723.8882)"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Manrope Bold';-inkscape-font-specification:Manrope-Bold;writing-mode:lr-tb;fill:#005cff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="text8908"><tspan
+         x="0"
+         y="0"
+         id="tspan8906">i</tspan></text>
+    <g
+       id="g8910">
+      <g
+         id="g8912"
+         clip-path="url(#clipPath8916)">
+        <g
+           id="g8918"
+           transform="translate(1199.4342,3730.8591)">
+          <path
+             d="m 0,0 c 0,-7.138 -5.769,-12.924 -12.885,-12.924 -7.115,0 -12.884,5.786 -12.884,12.924 0,7.138 5.769,12.924 12.884,12.924 C -5.769,12.924 0,7.138 0,0 Z"
+             style="fill:none;stroke:#005cff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path8920" />
+        </g>
+      </g>
+    </g>
   </g>
 </svg>
