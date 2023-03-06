@@ -8,6 +8,7 @@ export const COLORS: StyledColors = {
   blushPink: "#FF8EFF",
   blueRibbon: "#005cff",
   blueRYB: "#125BFF",
+  blueFrench: "#0079CF",
   border: "#565656",
   bubbles: "#E6FEF9",
   crayola: "#00F1BD",
@@ -48,6 +49,7 @@ export const COLORS: StyledColors = {
   parkinglotGray: "#CECFD1",
   papayaWhip: "#FFF3D6",
   platinum: "#E2E2E2",
+  purple: "#C1CBFF",
 }
 interface StyledColors {
   anakiwa: string,
@@ -59,6 +61,7 @@ interface StyledColors {
   blushPink: string,
   blueRibbon: string,
   blueRYB: string,
+  blueFrench: string,
   border: string,
   bubbles: string,
   crayola: string,
@@ -99,4 +102,5 @@ interface StyledColors {
   parkinglotGray: string,
   papayaWhip: string,
   platinum: string,
+  purple: string
 }

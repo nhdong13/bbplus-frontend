@@ -10,6 +10,7 @@ const Select = ({
   isImportant,
   marginTop,
   valid,
+  width,
   maxHeight,
   handleChange,
 }: FormInput) => {
@@ -22,6 +23,7 @@ const Select = ({
         marginTop={marginTop}
         maxHeight={maxHeight}
         valid={valid}
+        width={width}
       >
         <PhoneSelect>
           <img src={IMAGES.iconUS} width="36px" height="30px" />

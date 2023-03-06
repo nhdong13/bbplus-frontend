@@ -12,12 +12,13 @@ const StyledInputContainer = styled.div.attrs(
     marginTop?: string;
     maxHeight?: string;
     valid?: boolean;
+    width?: string;
   }) => props
 )`
   position: relative;
   border-radius: 4.5px;
   border: 2px solid ${COLORS.black};
-  width: 100%;
+  width: ${(props) => props.width || "100%"};;
   margin-top: ${(props) => props.marginTop || "26.9px"};
 
   .icon {
@@ -45,7 +46,7 @@ const StyledInputContainer = styled.div.attrs(
     border: none;
   }
 
-  @media ${BREAKPOINTS.mobileLg} {
+  @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
     border: 1px solid ${COLORS.parkinglotGray};
     border-radius: 3px;
@@ -55,6 +56,7 @@ const StyledInputContainer = styled.div.attrs(
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
+      border-radius: 3px;
     }
 
     .icon {

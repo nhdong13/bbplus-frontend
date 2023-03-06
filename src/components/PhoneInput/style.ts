@@ -12,12 +12,13 @@ const StyledPhoneInputContainer = styled.div.attrs(
     marginTop?: string;
     maxHeight?: string;
     valid?: boolean;
+    width?: string
   }) => props
 )`
   position: relative;
   border-radius: 4.5px;
   border: 2px solid ${COLORS.black};
-  width: 100%;
+  width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   display: flex;
 
@@ -25,7 +26,6 @@ const StyledPhoneInputContainer = styled.div.attrs(
     border:0;
     outline:0;
     height: ${(props) => (props.maxHeight ? props.maxHeight : "71px")};
-    width: 100%;
     box-sizing: border-box;
     padding: 28px;
     color: ${(props) => props.textColor || COLORS.black};

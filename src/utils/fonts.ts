@@ -6,6 +6,7 @@ export const FONTS: FONTS = {
   myriadPro: "MYRIADPRO-REGULAR",
   myriadProSemiBold: "MYRIADPRO-SEMIBOLD",
   montserrat: "Montserrat",
+  montserratRegular: "Montserrat-Regular",
 }
 
 interface FONTS {
@@ -16,4 +17,5 @@ interface FONTS {
   myriadPro: string,
   myriadProSemiBold: string,
   montserrat: string,
+  montserratRegular: string,
 }

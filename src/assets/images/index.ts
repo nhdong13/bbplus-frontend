@@ -35,6 +35,8 @@ import iconRecaptcha from "./icon-recaptcha.svg";
 import logoMobile from "./logo-mobile.svg";
 import backgroundAuthen from "./background-authen.jpg";
 import iconArrowDown from "./icon-arrow-down.svg";
+import bgEmptyImage from "./bg-empty-image.svg";
+import iconRemove from "./icon-remove.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -73,7 +75,9 @@ const IMAGES = {
   iconRecaptcha,
   logoMobile,
   backgroundAuthen,
-  iconArrowDown
+  iconArrowDown,
+  bgEmptyImage,
+  iconRemove
 }
 
 export default IMAGES;

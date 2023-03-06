@@ -4,6 +4,7 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import SignUp from "./SignUp";
 import SearchResult from "./SearchResult";
+import AccountSetting from "./AccountSetting";
 
 export {
   HomePage,
@@ -11,5 +12,6 @@ export {
   ResetPassword,
   ForgotPassword,
   SignUp,
-  SearchResult
+  SearchResult,
+  AccountSetting,
 };

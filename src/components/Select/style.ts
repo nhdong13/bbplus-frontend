@@ -12,12 +12,14 @@ const StyledSelectContainer = styled.div.attrs(
     marginTop?: string;
     maxHeight?: string;
     valid?: boolean;
+    width?: string,
+    padding?: string,
   }) => props
 )`
   position: relative;
   border-radius: 4.5px;
   border: 2px solid ${COLORS.black};
-  width: 100%;
+  width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   
   .icon {
@@ -42,14 +44,14 @@ const StyledSelectContainer = styled.div.attrs(
     height: ${(props) => (props.maxHeight ? props.maxHeight : "71px")};
     width: 100%;
     box-sizing: border-box;
-    padding: 28px;
+    padding: ${(props) => (props.padding ? props.padding : "28px")};
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
     border: none;
   }
 
-  @media ${BREAKPOINTS.mobileLg} {
+  @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
     border: 1px solid ${COLORS.parkinglotGray};
     border-radius: 3px;
