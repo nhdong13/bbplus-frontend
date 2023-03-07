@@ -107,8 +107,8 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.silver};
-  border-radius: 8px;
+  border: 2px solid ${COLORS.doveGray};
+  background: ${COLORS.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,9 +435,11 @@ const HotelCardContainer = styled.div`
     .location {
       display: flex;
       align-items: center;
-      justify-content: center;
       img {
         margin-right: 9px;
+      }
+      @media ${BREAKPOINTS.laptop} {
+        justify-content: center;
       }
     }
   }
@@ -447,13 +449,13 @@ const HotelCardContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-    align-items: center;
     p {
       color: #38AA00;
     }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
       margin-top: 10px;
+      align-items: center;
     }
   }
 `

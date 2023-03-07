@@ -107,14 +107,13 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.silver};
+  border: 2px solid ${COLORS.doveGray};
+  background: ${COLORS.white};
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover {
-    border: 2px solid ${COLORS.black};
-  }
+  
 `;
 
 const SearchResultContainer = styled.div`
@@ -299,8 +298,8 @@ const HotelCardContainer = styled.div`
     margin-right: 15px;
     margin-top: 78px;
     @media ${BREAKPOINTS.laptop} {
-      margin: 0 35px;
-      width: auto;
+      margin: 0 auto;
+      width: 320px;
     }
   }
 
@@ -316,7 +315,8 @@ const HotelCardContainer = styled.div`
     width: 421px;
     @media ${BREAKPOINTS.laptop} {
       width: auto;
-      border-radius: 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
     }
     .rating {
     align-items: flex-end;
@@ -393,9 +393,11 @@ const HotelCardContainer = styled.div`
     .location {
       display: flex;
       align-items: center;
-      justify-content: center;
       img {
         margin-right: 9px;
+      }
+      @media ${BREAKPOINTS.laptop} {
+        justify-content: center;
       }
     }
   }
@@ -405,13 +407,13 @@ const HotelCardContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-    align-items: center;
     p {
       color: #38AA00;
     }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
       margin-top: 10px;
+      align-items: center;
     }
   }
 `
