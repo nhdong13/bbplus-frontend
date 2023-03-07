@@ -4,12 +4,127 @@ import { RoomOptions } from "@/utils/types/CardHotel";
 import {
   FormControl,
   FormControlLabel,
-  Radio,
   RadioGroup,
 } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
+import { useGlobalModalContext } from "../Modal";
 import { H3, H4 } from "../Typography";
+
+interface IRoomCard {
+  checkbox?: boolean;
+  roomOptions: RoomOptions[];
+}
+
+export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
+  const [selectedOption, setSelectedOption] = useState<number>();
+  const { showModal } = useGlobalModalContext();
+
+  const onChecked = (option: number) => {
+    setSelectedOption(option);
+  };
+  return (
+    <>
+      <StyledRoomCard>
+        <div
+          className={
+            checkbox ? "room-card__container" : "room-card__option-container"
+          }
+        >
+          {checkbox && <H4>1 x Suite, Ocean view</H4>}
+          <RoomOptions>
+            <StyledFormControl>
+              {roomOptions.map((item,index) => {
+                return (
+                  <RadioGroup
+                    key={index}
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                  >
+                    <div
+                      className={`${
+                        checkbox
+                          ? "room-card__room-option-item"
+                          : "room-card__option-title"
+                      }`}
+                    >
+                      {checkbox ? (
+                        <FormControlLabel
+                          value={item.value}
+                          control={
+                            <span
+                              className="checkbox"
+                              onClick={() => {
+                                onChecked(item.id);
+                              }}
+                            >
+                              {selectedOption === item.id && (
+                                <span className="checked"></span>
+                              )}
+                            </span>
+                          }
+                          label={item.title}
+                        />
+                      ) : (
+                        <H4>{item.title}</H4>
+                      )}
+                      {item.detail ? (
+                        <p className="option-detail">{item.detail}</p>
+                      ) : (
+                        <></>
+                      )}
+                      <p>{item.price}</p>
+                    </div>
+                  </RadioGroup>
+                );
+              })}
+              {checkbox ? (
+                <>
+                  <DashDivider />
+                  <div className="room-card__price-detail-container">
+                    <H3>FJ$XXX</H3>
+                    <div className="room-card__price-detail">
+                      <p>Price details</p>
+                      <div>
+                        <p>More details</p>
+                        <img
+                          className="info-icon"
+                          src={IMAGES.iconInfo}
+                          onClick={() => {
+                            showModal("room_details", {
+                              title: "Garden View Room",
+                              details: {}
+                            });
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="room-card__option">
+                    <div className="room-card__option-detail">
+                      <p>More details</p>
+                      <img
+                        className="info-icon"
+                        src={IMAGES.iconInfo}
+                        onClick={() => {
+                          showModal("room_details");
+                        }}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </StyledFormControl>
+          </RoomOptions>
+        </div>
+      </StyledRoomCard>
+    </>
+  );
+}
 
 const StyledRoomCard = styled.div`
   border: 2px solid ${COLORS.grayAf};
@@ -154,101 +269,3 @@ const DashDivider = styled.div`
 const StyledFormControl = styled(FormControl)`
   width: 100%;
 `;
-
-interface IRoomCard {
-  checkbox?: boolean;
-  roomOptions: RoomOptions[];
-}
-
-export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
-  const [selectedOption, setSelectedOption] = useState<number>();
-
-  const onChecked = (option: number) => {
-    setSelectedOption(option);
-  };
-  return (
-    <>
-      <StyledRoomCard>
-        <div
-          className={
-            checkbox ? "room-card__container" : "room-card__option-container"
-          }
-        >
-          {checkbox && <H4>1 x Suite, Ocean view</H4>}
-          <RoomOptions>
-            <StyledFormControl>
-              {roomOptions.map((item) => {
-                return (
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                  >
-                    <div
-                      className={`${
-                        checkbox
-                          ? "room-card__room-option-item"
-                          : "room-card__option-title"
-                      }`}
-                    >
-                      {checkbox ? (
-                        <FormControlLabel
-                          value={item.value}
-                          control={
-                            <span
-                              className="checkbox"
-                              onClick={() => {
-                                onChecked(item.id);
-                              }}
-                            >
-                              {selectedOption === item.id && (
-                                <span className="checked"></span>
-                              )}
-                            </span>
-                          }
-                          label={item.title}
-                        />
-                      ) : (
-                        <H4>{item.title}</H4>
-                      )}
-                      {item.detail ? (
-                        <p className="option-detail">{item.detail}</p>
-                      ) : (
-                        <></>
-                      )}
-                      <p>{item.price}</p>
-                    </div>
-                  </RadioGroup>
-                );
-              })}
-              {checkbox ? (
-                <>
-                  <DashDivider />
-                  <div className="room-card__price-detail-container">
-                    <H3>FJ$XXX</H3>
-                    <div className="room-card__price-detail">
-                      <p>Price details</p>
-                      <div>
-                        <p>More details</p>
-                        <img className="info-icon" src={IMAGES.iconInfo} />
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="room-card__option">
-                    <div className="room-card__option-detail">
-                      <p>More details</p>
-                      <img className="info-icon" src={IMAGES.iconInfo} />
-                    </div>
-                  </div>
-                </>
-              )}
-            </StyledFormControl>
-          </RoomOptions>
-        </div>
-      </StyledRoomCard>
-    </>
-  );
-}

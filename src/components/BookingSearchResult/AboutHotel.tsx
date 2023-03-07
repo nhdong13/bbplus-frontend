@@ -5,7 +5,7 @@ import { COLORS } from "@/utils/colors";
 import { useState } from "react";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
-import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "./dataTest";
+import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 
 const StyledAboutHotel = styled.div`
@@ -130,7 +130,7 @@ const StyledAboutHotel = styled.div`
   .faq-wrapper {
     .MuiAccordionDetails-root {
       padding: 0 !important;
-      border-top-style: none!important;
+      border-top-style: none !important;
       border-top: 0px;
     }
   }
@@ -181,9 +181,9 @@ export default function AboutHotel() {
               <>
                 <Span fontWeight="bold">Most popular facilities</Span>
                 <div className="facilities">
-                  {FACILITIES.map((item, index) => {
+                  {FACILITIES.map((item) => {
                     return (
-                      <div key={index} className="facility-item">
+                      <div key={item.name} className="facility-item">
                         <ReactSVG className="facility-icon" src={item.icon} />
                         <Span fontSize="15px" fontWeight="normal">
                           {item.name}
@@ -205,7 +205,7 @@ export default function AboutHotel() {
                         </Span>
                         <ul>
                           {amenity.list.map((item) => (
-                            <li>{item}</li>
+                            <li key={item}>{item}</li>
                           ))}
                         </ul>
                       </div>
@@ -225,7 +225,7 @@ export default function AboutHotel() {
               <>
                 {HOTEL_RULES.map((item) => {
                   return (
-                    <div className="rule-item">
+                    <div key={item.name} className="rule-item">
                       <Span fontWeight="bold">{item.name}</Span>
                       <Span>{item.value}</Span>
                     </div>
@@ -246,6 +246,7 @@ export default function AboutHotel() {
                 {FAQ.map((item) => {
                   return (
                     <Dropdown
+                      key={item.question}
                       className="faq"
                       title={item.question}
                       expand={expanded.includes(EXPAND[1])}
@@ -253,7 +254,12 @@ export default function AboutHotel() {
                         onExpand("");
                       }}
                       details={<Span>{item.answer}</Span>}
-                      expandIcon={<ReactSVG className="expand-icon" src={IMAGES.iconDropDownBlue} />}
+                      expandIcon={
+                        <ReactSVG
+                          className="expand-icon"
+                          src={IMAGES.iconDropDownBlue}
+                        />
+                      }
                     />
                   );
                 })}

@@ -29,3 +29,7 @@ code {
 .items-center{
    align-items: center;
 }
+
+.MuiBackdrop-root{
+  background-color: transparent!important;
+}

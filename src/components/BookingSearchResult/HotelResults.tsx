@@ -1,18 +1,109 @@
 import _ from "lodash";
 import styled from "styled-components";
 import RoomCard from "../RoomCard";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import { Typography as Span } from "../Typography";
 
-import { useEffect, useState } from "react";
-import IMAGES from "@/assets/images";
+import { useState } from "react";
 import { COLORS } from "@/utils/colors";
-import { HOTEL_RESULT_DATA } from "./dataTest";
-import { ReactSVG } from "react-svg";
+import { HOTEL_RESULT_DATA } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
+
+export default function HotelResults() {
+  const listExpanded = HOTEL_RESULT_DATA.map((item) => item.name);
+  const [expanded, setExpanded] = useState<string[]>(listExpanded);
+
+  const onExpand = (accordion: string) => {
+    setExpanded((expand) => {
+      if (expanded.includes(accordion)) {
+        return expand.filter((item) => item !== accordion);
+      }
+      return [...expand, accordion];
+    });
+  };
+
+  const expandAll = () => {
+    setExpanded(listExpanded);
+  };
+  const collapseAll = () => {
+    setExpanded([]);
+  };
+  return (
+    <>
+      <StyledHotelResult>
+        <div className="hotel-result__action">
+          <Span color={COLORS.blueRibbon} fontWeight="400" onClick={expandAll}>
+            Expand all
+          </Span>
+          <div className="hotel-result__separate" />
+          <Span
+            color={COLORS.blueRibbon}
+            fontWeight="400"
+            onClick={collapseAll}
+          >
+            Collapse all
+          </Span>
+        </div>
+        <div className="hotel-result__right">
+          {HOTEL_RESULT_DATA.map((item, index) => {
+            return (
+              <Dropdown
+                key={item.name}
+                expand={expanded.includes(item.name)}
+                onExpand={() => onExpand(item.name)}
+                title={
+                  <Typography
+                    sx={{ width: "33%", flexShrink: 0 }}
+                    fontWeight="bold"
+                    whiteSpace="nowrap"
+                    fontSize="24px"
+                    marginLeft="20px"
+                    component={"span"}
+                  >
+                    {item.name} -{" "}
+                    <Typography
+                      display="inline-block"
+                      fontWeight="500"
+                      component={"span"}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Typography>
+                }
+                details={
+                  <div
+                    className={
+                      item.type === "room"
+                        ? "hotel-result__room-list"
+                        : "hotel-result__option-list"
+                    }
+                  >
+                    {item.type === "room"
+                      ? _.range(0, 6).map((_, index) => {
+                          return (
+                            <RoomCard
+                              key={index}
+                              checkbox
+                              roomOptions={item.roomOptions}
+                            />
+                          );
+                        })
+                      : item.roomOptions.map((item) => (
+                          <RoomCard
+                            key={item.title}
+                            roomOptions={[item]}
+                          ></RoomCard>
+                        ))}
+                  </div>
+                }
+              />
+            );
+          })}
+        </div>
+      </StyledHotelResult>
+    </>
+  );
+}
 
 const StyledHotelResult = styled.div`
   display: flex;
@@ -76,89 +167,7 @@ const StyledHotelResult = styled.div`
     }
   }
 
-  .MuiAccordionDetails-root{
+  .MuiAccordionDetails-root {
     padding-bottom: 48px;
   }
 `;
-export default function HotelResults() {
-  const listExpanded = HOTEL_RESULT_DATA.map((item) => item.name);
-  const [expanded, setExpanded] = useState<string[]>(listExpanded);
-
-  const onExpand = (accordion: string) => {
-    setExpanded((expand) => {
-      if (expanded.includes(accordion)) {
-        return expand.filter((item) => item !== accordion);
-      }
-      return [...expand, accordion];
-    });
-  };
-
-  const expandAll = () => {
-    setExpanded(listExpanded);
-  };
-  const collapseAll = () => {
-    setExpanded([]);
-  };
-  return (
-    <>
-      <StyledHotelResult>
-        <div className="hotel-result__action">
-          <Span color={COLORS.blueRibbon} fontWeight="400" onClick={expandAll}>
-            Expand all
-          </Span>
-          <div className="hotel-result__separate" />
-          <Span
-            color={COLORS.blueRibbon}
-            fontWeight="400"
-            onClick={collapseAll}
-          >
-            Collapse all
-          </Span>
-        </div>
-        <div className="hotel-result__right">
-          {HOTEL_RESULT_DATA.map((item, index) => {
-            return (
-              <Dropdown
-                expand={expanded.includes(item.name)}
-                onExpand={() => onExpand(item.name)}
-                title={
-                  <Typography
-                    sx={{ width: "33%", flexShrink: 0 }}
-                    fontWeight="bold"
-                    whiteSpace="nowrap"
-                    fontSize="24px"
-                    marginLeft="20px"
-                  >
-                    {item.name} -{" "}
-                    <Typography display="inline-block" fontWeight="500">
-                      {item.description}
-                    </Typography>
-                  </Typography>
-                }
-                details={
-                  <div
-                    className={
-                      item.type === "room"
-                        ? "hotel-result__room-list"
-                        : "hotel-result__option-list"
-                    }
-                  >
-                    {item.type === "room"
-                      ? _.range(0, 6).map(() => {
-                          return (
-                            <RoomCard checkbox roomOptions={item.roomOptions} />
-                          );
-                        })
-                      : item.roomOptions.map((item) => (
-                          <RoomCard roomOptions={[item]}></RoomCard>
-                        ))}
-                  </div>
-                }
-              />
-            );
-          })}
-        </div>
-      </StyledHotelResult>
-    </>
-  );
-}

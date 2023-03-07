@@ -47,6 +47,8 @@ interface IContainer {
   maxWidth?: string;
   gridTemplateColumns?: string;
   margin?: string;
+  justifyContent?: string;
+  flexDirection?: string;
 }
 
 const Container = styled.div<IContainer>`
@@ -55,6 +57,8 @@ const Container = styled.div<IContainer>`
   margin: ${(props) => props.margin || "auto"};
   display: ${(props) => props.display || "grid"};
   grid-template-columns: ${(props) => props.gridTemplateColumns || "40% 60%"};
+  justify-content: ${(props) => props.justifyContent};
+  flex-direction: ${(props) => props.flexDirection};
 `;
 
 export { Breadcrumb, BreadcrumbItem, Container };

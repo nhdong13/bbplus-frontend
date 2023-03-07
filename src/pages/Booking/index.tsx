@@ -33,12 +33,16 @@ import {
   Right,
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
+import RoomModal from "@/components/Modal/RoomModal";
+import useModal from "@/hooks/useModal";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
+  const { modal, onCloseModal } = useModal();
+  console.log(modal)
   return (
     <>
       <Helmet>
@@ -288,6 +292,12 @@ export default function Booking() {
           <AboutHotel />
         </BookingContainer>
       </MainLayout>
+      <RoomModal
+        title=""
+        isOpen={!!modal}
+        details={{}}
+        onCloseModal={onCloseModal}
+      />
     </>
   );
 }

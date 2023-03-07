@@ -271,3 +271,32 @@ export const FAQ = [
     answer: "",
   },
 ];
+
+export const RoomModalDetail = {
+  benefits: [
+    "34 m2",
+    "Balcony",
+    "Garden view ",
+    "Air conditioning",
+    "Terrace",
+    "Free WiFi",
+  ],
+  area: "34m2",
+  bed: 1,
+  maxPersons: "XX",
+  bathroom: ["Free toiletries", "Shower", "Hairdryer"],
+  view: "Garden view",
+  facilities: [
+    "Alarm clock",
+    "Air Conditioning",
+    "Safe",
+    "Iron facilities",
+    "Iron",
+    "Refrigerator",
+    "Electronic kettle",
+    "Tea/Coffee",
+    "Balcony",
+    "Terrace",
+  ],
+  smocking: "No smocking",
+};
