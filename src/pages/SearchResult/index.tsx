@@ -42,6 +42,17 @@ export default function SearchResult() {
     setCurrentSlide
   } = useHome();
 
+  const optionFilter = [
+    { _id: 1, label: "Show All" },
+    { _id: 2, label: "Apartments" },
+    { _id: 3, label: "Resorts" },
+    { _id: 4, label: "Hotels" },
+    { _id: 5, label: "Villas" },
+    { _id: 6, label: "Island resorts" },
+    { _id: 7, label: "Guest homes" },
+    { _id: 8, label: "Backpackers" },
+  ]
+
   return (
     <>
       <MainLayout>
@@ -91,16 +102,17 @@ export default function SearchResult() {
           </Breadcrumb>
           <SearchOption>
             <SearchOptionItem className="title">
-              <div>Fiji: 134 properties found</div>
+              <div className="title-desk">Fiji: 134 properties found</div>
               <div className="flex">
                 <Select
-                  label="Filter by: Select"
+                  customLabel={<><span>Filter by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  options={optionFilter}
                   marginTop="0px"
                   maxHeight="48px"
                   typeIconDown={true}
                 />
                 <Select
-                  label="Sort by: Select"
+                  customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
                   marginTop="0px"
                   typeIconDown={true}
                   maxHeight="48px"
@@ -131,6 +143,7 @@ export default function SearchResult() {
                 </div>
               </SearchOptionItem>
             </SearchOptionSelect>
+            <div className="title-mobile">Fiji: 134 properties found</div>
           </SearchOption>
           {
             [1, 2, 3].map(el => {

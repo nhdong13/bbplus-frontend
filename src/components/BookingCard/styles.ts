@@ -21,6 +21,7 @@ const StyledBookingCard = styled.div`
     }
     @media ${BREAKPOINTS.laptop} {
       padding: 20px;
+      border-radius: 5px;
       span {
         font-size: 12px;
       }
@@ -108,6 +109,9 @@ const StyledBookingCard = styled.div`
     gap: 11px;
     font-size: 16px;
     font-family: ${FONTS.manrope};
+    @media ${BREAKPOINTS.laptop} {
+      gap: 5px;
+    }
     button {
       margin: auto;
       width: 100%;
@@ -126,11 +130,13 @@ const StyledBookingCard = styled.div`
 const StyledBookingButtonContainer = styled.button.attrs((props: {
   text: string
 }) => props)`
-  border-radius: 5px;
+  border-radius: 17px;
   text-align: center;
   padding: 11px 0;
   max-width: 208px;
-
+  @media ${BREAKPOINTS.laptop} {
+    border-radius: 5px;
+  }
   ${({ text }) => {
     switch (text) {
       case 'customize':
@@ -150,14 +156,21 @@ const StyledBookingButtonContainer = styled.button.attrs((props: {
           background-color: ${COLORS.flushOrange};
           border: 2px solid ${COLORS.flushOrange};
           color: ${COLORS.white};
+          &:hover {
+            border: 2px solid #D9BF50;
+          }
         `
     }
   }};
 
   p {
-    font-weight: ${FONTS.manropeBold};
+    font-weight: ${FONTS.manrope};
     line-height: 28px;
     text-transform: capitalize;
+    font-size: 16px;
+    @media ${BREAKPOINTS.laptop} {
+      font-size: 12px;
+    }
   }
 `
 

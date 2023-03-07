@@ -4,6 +4,44 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
+const WrapperSelect = styled.div`
+  position: relative;
+  .options {
+    list-style: none;
+    font-size: 16px;
+    border: 1px solid ${COLORS.doveGray};
+    border-radius: 11px;
+    margin-top: 10px;
+    position: absolute;
+    z-index: 10;
+    background: ${COLORS.white};
+    min-width: 210px;
+    li {
+      cursor: pointer;
+      padding: 10px 20px;
+      color: ${COLORS.black};
+      font-weight: normal;
+      &:not(.selected):hover{
+        background: ${COLORS.blueRibbon};
+        opacity: 0.5;
+        color: ${COLORS.white};
+      }
+      &:first-child {
+        border-top-left-radius: 11px;
+        border-top-right-radius: 11px;
+      }
+      &:last-child {
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+      }
+    }
+    .selected {
+      background: ${COLORS.blueRibbon};
+      color: ${COLORS.white};
+    }
+  }
+`
+
 const StyledSelectContainer = styled.div.attrs(
   (props: {
     textColor?: string;
@@ -14,6 +52,7 @@ const StyledSelectContainer = styled.div.attrs(
     valid?: boolean;
     width?: string,
     padding?: string,
+    showOption?: boolean
   }) => props
 )`
   position: relative;
@@ -49,6 +88,10 @@ const StyledSelectContainer = styled.div.attrs(
     font-size: ${(props) => props.fontSize || "16px"};
     border-radius: 7px;
     border: 2px solid ${COLORS.black};
+    img {
+      transform: ${({ showOption }) => showOption ? "rotate(180deg)" : "rotate(0)"};
+      transition: all 0.5s ease-in-out;
+    }
   }
 
   @media ${BREAKPOINTS.laptop} {
@@ -68,4 +111,4 @@ const StyledSelectContainer = styled.div.attrs(
   }
 `;
 
-export { StyledSelectContainer };
+export { WrapperSelect, StyledSelectContainer };

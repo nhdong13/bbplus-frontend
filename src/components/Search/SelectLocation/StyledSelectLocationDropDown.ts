@@ -29,6 +29,12 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   .popular-places__list {
     
   }
+  .list__item {
+    gap: 20px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+  } 
 `
 
 export {
