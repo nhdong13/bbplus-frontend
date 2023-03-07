@@ -139,7 +139,7 @@ const StyledAboutHotel = styled.div`
 const EXPAND = ["amenities", "rules", "faq"];
 
 export default function AboutHotel() {
-  const [expanded, setExpanded] = useState<string[]>([EXPAND[0]]);
+  const [expanded, setExpanded] = useState<string[]>(EXPAND);
   const expandAll = () => {
     setExpanded(EXPAND);
   };

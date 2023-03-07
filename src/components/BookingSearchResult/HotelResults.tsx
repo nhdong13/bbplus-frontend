@@ -7,11 +7,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import { Typography as Span } from "../Typography";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { HOTEL_RESULT_DATA } from "./dataTest";
 import { ReactSVG } from "react-svg";
+import Dropdown from "../Dropdown/Dropdown";
 
 const StyledHotelResult = styled.div`
   display: flex;
@@ -29,10 +30,7 @@ const StyledHotelResult = styled.div`
     border: 1px solid ${COLORS.platinum};
     border-radius: 0 !important;
     margin-bottom: 20px;
-  }
-
-  .MuiButtonBase-root {
-    padding: 0 32px;
+    margin-top: 12px !important;
   }
 
   .hotel-result__left {
@@ -79,19 +77,23 @@ const StyledHotelResult = styled.div`
   }
 `;
 export default function HotelResults() {
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [expandedAll, setExpandedAll] = useState<boolean>(false);
+  const listExpanded = HOTEL_RESULT_DATA.map((item) => item.name);
+  const [expanded, setExpanded] = useState<string[]>(listExpanded);
 
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+  const onExpand = (accordion: string) => {
+    setExpanded((expand) => {
+      if (expanded.includes(accordion)) {
+        return expand.filter((item) => item !== accordion);
+      }
+      return [...expand, accordion];
+    });
+  };
 
   const expandAll = () => {
-    setExpandedAll(true);
+    setExpanded(listExpanded);
   };
   const collapseAll = () => {
-    setExpandedAll(false);
+    setExpanded([]);
   };
   return (
     <>
@@ -112,22 +114,10 @@ export default function HotelResults() {
         <div className="hotel-result__right">
           {HOTEL_RESULT_DATA.map((item, index) => {
             return (
-              <Accordion
-                expanded={expanded === item.name || expandedAll}
-                onChange={handleChange(item.name)}
-              >
-                <AccordionSummary
-                  expandIcon={
-                    <ReactSVG
-                      className="select-ages__dropdown-icon"
-                      src={IMAGES.iconAnchorGrey}
-                      width="31px"
-                      height="15px"
-                    />
-                  }
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
-                >
+              <Dropdown
+                expand={expanded.includes(item.name)}
+                onExpand={() => onExpand(item.name)}
+                title={
                   <Typography
                     sx={{ width: "33%", flexShrink: 0 }}
                     fontWeight="bold"
@@ -138,8 +128,8 @@ export default function HotelResults() {
                       {item.description}
                     </Typography>
                   </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
+                }
+                details={
                   <div
                     className={
                       item.type === "room"
@@ -148,7 +138,7 @@ export default function HotelResults() {
                     }
                   >
                     {item.type === "room"
-                      ? _.range(0, 4).map(() => {
+                      ? _.range(0, 6).map(() => {
                           return (
                             <RoomCard checkbox roomOptions={item.roomOptions} />
                           );
@@ -157,8 +147,8 @@ export default function HotelResults() {
                           <RoomCard roomOptions={[item]}></RoomCard>
                         ))}
                   </div>
-                </AccordionDetails>
-              </Accordion>
+                }
+              />
             );
           })}
         </div>

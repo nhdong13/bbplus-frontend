@@ -7,6 +7,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 import { H3, H4 } from "../Typography";
 
@@ -25,9 +26,14 @@ const StyledRoomCard = styled.div`
   .room-card__option-container {
     padding: 30px 20px 10px 20px;
   }
+  .PrivateSwitchBase-input {
+    /* width: 42px;
+    height: 42px; */
+  }
 `;
 
 const RoomOptions = styled.div`
+  margin-top: 8px;
   .room-card__room-option-item {
     display: flex;
     justify-content: space-between;
@@ -87,6 +93,52 @@ const RoomOptions = styled.div`
       right: 0px;
     }
   }
+  .MuiSvgIcon-root {
+    width: 32px;
+    height: 32px;
+    &:first-child {
+      path {
+        /* fill: red; */
+      }
+    }
+  }
+  .checkbox {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 180, 146, 1) 0%,
+      rgba(0, 159, 199, 1) 100%
+    );
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    margin: 4px 8px 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &:after {
+      display: block;
+      content: "";
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+      background: white;
+    }
+  }
+  .checked {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 180, 146, 1) 0%,
+      rgba(0, 159, 199, 1) 100%
+    );
+  }
+  .MuiFormControlLabel-root {
+    margin-left: 0px;
+  }
 `;
 
 const DashDivider = styled.div`
@@ -95,6 +147,7 @@ const DashDivider = styled.div`
   border-bottom: solid 2px ${COLORS.grayAf};
   border-bottom-style: dotted;
   margin-bottom: 23px;
+  padding: 10px 0;
 `;
 
 const StyledFormControl = styled(FormControl)`
@@ -107,6 +160,11 @@ interface IRoomCard {
 }
 
 export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
+  const [selectedOption, setSelectedOption] = useState<number>();
+
+  const onChecked = (option: number) => {
+    setSelectedOption(option);
+  };
   return (
     <>
       <StyledRoomCard>
@@ -135,7 +193,18 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
                       {checkbox ? (
                         <FormControlLabel
                           value={item.value}
-                          control={<Radio />}
+                          control={
+                            <span
+                              className="checkbox"
+                              onClick={() => {
+                                onChecked(item.id);
+                              }}
+                            >
+                              {selectedOption === item.id && (
+                                <span className="checked"></span>
+                              )}
+                            </span>
+                          }
                           label={item.title}
                         />
                       ) : (

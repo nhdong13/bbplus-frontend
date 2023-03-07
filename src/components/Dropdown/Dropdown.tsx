@@ -9,7 +9,7 @@ const StyledDropdown = styled.div``;
 
 interface IDropdown {
   className?: string;
-  title: string;
+  title: string | React.ReactNode;
   details: React.ReactNode;
   expandIcon?: React.ReactNode;
   expand: boolean;
@@ -49,9 +49,18 @@ export default function Dropdown({
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Span className="title" fontSize="30px" fontWeight="bold" color={COLORS.cyprus}>
-            {title}
-          </Span>
+          {typeof title === "string" ? (
+            <Span
+              className="title"
+              fontSize="30px"
+              fontWeight="bold"
+              color={COLORS.cyprus}
+            >
+              {title}
+            </Span>
+          ) : (
+            title
+          )}
         </AccordionSummary>
         <AccordionDetails>{details}</AccordionDetails>
       </Accordion>
