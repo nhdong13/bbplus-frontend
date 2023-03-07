@@ -136,10 +136,31 @@ const HotelImage = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 12px;
+  position: relative;
 
-  & > img {
+  & > div > img {
     display: inline-block;
     margin-top: 30px;
+  }
+
+  .overlay {
+    opacity: 0;
+    background-image: url(${IMAGES.search});
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 421px;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    margin-top: 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+      background-color: #4c4c4c4d;
+    }
   }
 `;
 

@@ -183,7 +183,10 @@ export default function Booking() {
                       ]}
                       onSelectImage={onSelectImage}
                     />
-                    <img className="hotel__image" src={selectedImage} />
+                    <div>
+                      <img className="hotel__image" src={selectedImage} />
+                      <div className="overlay"></div>
+                    </div>
                   </HotelImage>
                   <HotelPrice>
                     <Typography fontWeight="bold">Total Price</Typography>

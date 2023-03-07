@@ -48,6 +48,7 @@ import restaurant from "./restaurant.svg";
 import wifi from "./wifi.svg";
 import parking from "./parking.svg";
 import tennis from "./tennis.svg";
+import search from "./search.svg";
 
 
 const IMAGES = {
@@ -100,7 +101,8 @@ const IMAGES = {
   restaurant,
   wifi,
   parking,
-  tennis
+  tennis,
+  search
 };
 
 export default IMAGES;
