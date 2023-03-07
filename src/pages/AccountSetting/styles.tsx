@@ -7,6 +7,7 @@ const StyledAccountSetting = styled.div`
   margin-bottom: 59px;
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
+    margin-top: 30px;
   }
 `
 
@@ -15,6 +16,20 @@ const AccountSettingContainer = styled.div`
   #account-setting-section {
     max-width: 1400px;
     margin: auto;
+    .table-desktop {
+      display: block;
+    }
+    .table-mobile {
+      display: none;
+    }
+    @media ${BREAKPOINTS.laptop} {
+      .table-desktop {
+        display: none;
+      }
+      .table-mobile {
+        display: block;
+      }
+    }
     @media ${BREAKPOINTS.laptop} {
       max-width: 768px;
       padding: 20px;
@@ -44,7 +59,7 @@ const AccountSettingContainer = styled.div`
       .step-user {
         .legend-box-container {
           margin-bottom: 10px;
-        }
+        }     
       }
      
     }
@@ -52,6 +67,7 @@ const AccountSettingContainer = styled.div`
       font-weight: 400;
       font-size: 18px;
       line-height: 35px;
+      margin-bottom: 49px;
       @media ${BREAKPOINTS.laptop} {
         font-size: 12px; 
         line-height: 16px;
@@ -59,14 +75,13 @@ const AccountSettingContainer = styled.div`
     }
 
     .body-section {
-      margin-top: 50px;
       @media ${BREAKPOINTS.laptop} {
         margin-top: 20px;
       }
       .body-section-item {
         display: flex;
         &:last-child {
-          margin-top: 28px;
+          margin-top: 78px;
           margin-bottom: 28px;
           @media ${BREAKPOINTS.laptop} {
             margin-bottom: 0;
@@ -81,7 +96,7 @@ const AccountSettingContainer = styled.div`
       margin-left: 28px;
       padding-right: 28px;
       .currency {
-        width: 339px;
+        width: 286px;
       }
       @media ${BREAKPOINTS.laptop} {
         margin-left: 0;
@@ -129,7 +144,7 @@ const BreadcrumbItem = styled.div.attrs((props: {
   activeColor?: boolean
 }) => props)`
   color: ${(props) => props.activeColor ? COLORS.blueRibbon : COLORS.black};
-
+  font-size: 17px;
   cursor: pointer;
   &:not(:first-child) {
     &:before {
@@ -197,6 +212,7 @@ const LegendTitle = styled.legend`
   text-align: left;
   color: #005cff;
   padding-right: 40px;
+  padding-left: 5px;
   @media ${BREAKPOINTS.laptop} {
     color: #0079CF;
     font-size: 12px;
@@ -223,7 +239,7 @@ const LegendField = styled.div`
   align-items: center;
   gap: 18px;
   margin-bottom: 10px;
-  width: 100%;
+  width: auto;
 `;
 
 const TextErrorInput = styled.p`
@@ -242,9 +258,12 @@ const TextErrorInput = styled.p`
 `;
 
 const AccountSettingHeader = styled.div`
-  margin-top: 48px;
+  margin-top: 61px;
   @media ${BREAKPOINTS.laptop} {
     margin-top: 0;
+  }
+  h2 {
+    margin-bottom: 24px;
   }
 `;
 const NextStepBox = styled.div`

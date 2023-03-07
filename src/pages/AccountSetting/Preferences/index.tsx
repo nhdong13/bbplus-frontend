@@ -136,7 +136,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
           <LegendItem>
             <LabelText>Email address for notification</LabelText>
             <FormInput
-              width="339px"
+              width="286px"
               maxHeight="68px"
               label="Email Address"
               marginTop="0px"

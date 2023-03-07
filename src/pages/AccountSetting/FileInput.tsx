@@ -102,7 +102,7 @@ const File = styled.div`
   border: 2px solid ${COLORS.black};
   border-radius: 8px;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   margin-right: 9px;
 `;
@@ -115,6 +115,7 @@ const Button = styled.button`
   width: 126px;
   height: 44px;
   font-size: 16px;
+  background: #DADADA;
 `;
 const FileName = styled.span``;
 const TextError = styled.div`

@@ -65,7 +65,7 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
               </div>
             </LegendBox>
             <LegendBox className="legenbox-right step-1">
-              <LegendTitle>Agency Logo</LegendTitle>
+              <LegendTitle>Agency logo</LegendTitle>
               <FileInput />
             </LegendBox>
           </div>

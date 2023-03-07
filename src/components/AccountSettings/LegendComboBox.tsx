@@ -5,6 +5,7 @@ import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import styled from "styled-components";
 import { FormInput } from "../FormInput";
 import Select from "../Select";
+import PhoneInput from "../PhoneInput"
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import React from "react";
 
@@ -58,12 +59,11 @@ const LegendItem = styled.div.attrs((props: { isError?: boolean }) => props)`
 `;
 
 const LabelText = styled.label`
-  font-family: ${FONTS.manropeRegular};
+  font-family: ${FONTS.manropeBold};
   font-weight: normal;
   font-size: 16px;
   text-align: left;
   color: ${COLORS.black};
-
   @media ${BREAKPOINTS.laptop} {
     display: none;
   }
@@ -93,14 +93,16 @@ export default function LegendComboBox({
   return (
     <LegendItem>
       {!isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
-      <div className={`legend-box-container ${isCheckboxMobile ? "item-center" : ""}`}>
-        {/* {hasPhoneInput &&
+      <div className={`legend-box-container ${isCheckboxMobile ? "item-center" : "item-checkbox-desk"}`}>
+        {hasPhoneInput &&
           <PhoneInput
-            country={'us'}
-            value='84'
-            onChange={() => { }}
+            label="Phone number"
+            width="147px"
+            maxHeight="68px"
+            marginTop="0px"
+            padding="16px"
           />
-        } */}
+        }
         {hasSelectDropDown &&
           <LegendField>
             <Select
@@ -123,7 +125,7 @@ export default function LegendComboBox({
         }
         {hasCheckBox &&
           <React.Fragment>
-            <FormGroup style={{ width: 20 }}>
+            <FormGroup style={{ width: isCheckboxMobile ? 20 : 275 }}>
               <FormControlLabel control={<Checkbox />} label="" />
             </FormGroup>
             {isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}

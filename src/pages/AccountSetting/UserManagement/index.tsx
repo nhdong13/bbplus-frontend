@@ -37,13 +37,12 @@ function UserManagement() {
           <div className="user-title">
             Existing Users
           </div>
-          {
-            wd <= 430
-              ?
-              <UserManagementTableMobile />
-              :
-              <UserManagementTable />
-          }
+          <div className="table-desktop">
+            <UserManagementTable />
+          </div>
+          <div className="table-mobile">
+            <UserManagementTableMobile />
+          </div>
           <div className="user-title">
             To add a new user, enter required details and click Add.
           </div>
@@ -51,8 +50,8 @@ function UserManagement() {
             <div className="require-detail__left-container">
               <LegendComboBox
                 hasFormInput
-                legendBoxTitle={'Agency Name'}
-                formInputLabel={'Agency Name'}
+                legendBoxTitle={'Username'}
+                formInputLabel={'Username'}
               />
               <LegendComboBox
                 hasFormInput
@@ -124,7 +123,7 @@ const RequireDetailContainer = styled.div`
 
   .require-detail__right-container  {
     gap: 100px;
-    .input-container {
+    .input-container,.select-container {
       height: 68px;
     }
   }
