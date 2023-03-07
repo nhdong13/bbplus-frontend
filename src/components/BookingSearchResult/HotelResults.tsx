@@ -44,7 +44,7 @@ const StyledHotelResult = styled.div`
   }
   .hotel-result__option-list {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: calc(33% - 10px) calc(33% - 10px) auto;
     gap: 20px;
   }
   .hotel-result__action {
@@ -74,6 +74,10 @@ const StyledHotelResult = styled.div`
         stroke: ${COLORS.blueRibbon};
       }
     }
+  }
+
+  .MuiAccordionDetails-root{
+    padding-bottom: 48px;
   }
 `;
 export default function HotelResults() {
@@ -122,6 +126,8 @@ export default function HotelResults() {
                     sx={{ width: "33%", flexShrink: 0 }}
                     fontWeight="bold"
                     whiteSpace="nowrap"
+                    fontSize="24px"
+                    marginLeft="20px"
                   >
                     {item.name} -{" "}
                     <Typography display="inline-block" fontWeight="500">

@@ -71,6 +71,7 @@ const RoomOptions = styled.div`
     align-items: center;
     h4 {
       margin-bottom: 8px;
+      text-align: center;
     }
 
     .option-detail {
