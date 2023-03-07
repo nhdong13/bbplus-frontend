@@ -39,7 +39,16 @@ import thumb1 from "./thumb1.png";
 import thumb2 from "./thumb2.png";
 import thumb3 from "./thumb3.png";
 import thumb4 from "./thumb4.png";
-import liIcon from "./li-icon.svg";
+import swimming from "./swimming.svg";
+import drink from "./drink.svg";
+import fitness from "./fitness.svg";
+import golf from "./golf.svg";
+import disabledGuest from "./disabled_guest.svg";
+import restaurant from "./restaurant.svg";
+import wifi from "./wifi.svg";
+import parking from "./parking.svg";
+import tennis from "./tennis.svg";
+
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -83,7 +92,15 @@ const IMAGES = {
   thumb2,
   thumb3,
   thumb4,
-  liIcon,
+  swimming,
+  drink,
+  fitness,
+  golf,
+  disabledGuest,
+  restaurant,
+  wifi,
+  parking,
+  tennis
 };
 
 export default IMAGES;

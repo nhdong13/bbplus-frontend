@@ -3,16 +3,13 @@ import { Typography as Span } from "../Typography";
 import styled from "styled-components";
 import { COLORS } from "@/utils/colors";
 import { useState } from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-} from "@mui/material";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
+import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "./dataTest";
+import Dropdown from "../Dropdown/Dropdown";
 
 const StyledAboutHotel = styled.div`
+  padding-bottom: 48px;
   .about-hotel__action {
     display: flex;
     flex-direction: row;
@@ -39,18 +36,123 @@ const StyledAboutHotel = styled.div`
     }
   }
   .MuiPaper-root {
-    box-shadow: none!important;
+    box-shadow: none !important;
+  }
+  .facilities {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .facility-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .facility-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .amenities {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 30% 25% 30% auto;
+    span {
+    }
+    ul {
+      margin-top: 16px;
+    }
+    li {
+      list-style: none;
+      background-image: url(${IMAGES.iconTick});
+      background-repeat: no-repeat;
+      background-size: 38px 100%;
+      background-position: -10px 0;
+      padding-left: 30px;
+      margin-bottom: 12px;
+    }
+  }
+  .MuiButtonBase-root {
+    min-height: fit-content !important;
+    height: fit-content !important;
+    padding: 0;
+  }
+  .MuiAccordionSummary-content {
+    margin: 0 !important;
+  }
+  .MuiAccordionDetails-root {
+    padding: 12px 0;
+    border-top: 2px solid ${COLORS.borderGray};
+    border-top-style: dotted;
+  }
+  .MuiPaper-root {
+    margin-top: 12px !important;
+  }
+  .MuiPaper-root:before {
+    height: 0px !important;
+  }
+  .rule-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6px;
+    &:nth-child(4) {
+      margin-bottom: 32px;
+    }
+    span {
+      &:first-child {
+        flex: 1;
+      }
+      &:last-child {
+        flex: 7;
+        width: 100%;
+        word-break: break-all;
+      }
+    }
+  }
+  .faq {
+    padding: 10px 0;
+    border-bottom: 2px solid ${COLORS.borderGray};
+    border-bottom-style: dotted;
+    .title {
+      font-size: 16px;
+      color: black;
+      font-weight: 600;
+    }
+    .MuiPaper-root {
+      margin-top: 0;
+    }
+  }
+  .faq-wrapper {
+    .MuiAccordionDetails-root {
+      padding: 0 !important;
+      border-top-style: none!important;
+      border-top: 0px;
+    }
   }
 `;
 
+const EXPAND = ["amenities", "rules", "faq"];
+
 export default function AboutHotel() {
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [expandedAll, setExpandedAll] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<string[]>([EXPAND[0]]);
   const expandAll = () => {
-    setExpandedAll(true);
+    setExpanded(EXPAND);
   };
   const collapseAll = () => {
-    setExpandedAll(false);
+    setExpanded([]);
+  };
+  const onExpand = (accordion: string) => {
+    setExpanded((expand) => {
+      if (expanded.includes(accordion)) {
+        return expand.filter((item) => item !== accordion);
+      }
+      return [...expand, accordion];
+    });
   };
   return (
     <StyledAboutHotel>
@@ -69,32 +171,95 @@ export default function AboutHotel() {
           </Span>
         </div>
         <div className="hotel-result__right">
-          <Accordion
-            expanded={expandedAll}
-            onChange={() => {
-              setExpandedAll((expand) => !expand);
+          <Dropdown
+            title="Amenities"
+            expand={expanded.includes(EXPAND[0])}
+            onExpand={() => {
+              onExpand(EXPAND[0]);
             }}
-          >
-            <AccordionSummary
-              expandIcon={
-                <ReactSVG
-                  className="select-ages__dropdown-icon"
-                  src={IMAGES.iconAnchorGrey}
-                  width="31px"
-                  height="15px"
-                />
-              }
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Span fontWeight="bold" color={COLORS.cyprus}>
-                Amenities
-              </Span>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Span fontWeight="bold">Most popular facilities</Span>
-            </AccordionDetails>
-          </Accordion>
+            details={
+              <>
+                <Span fontWeight="bold">Most popular facilities</Span>
+                <div className="facilities">
+                  {FACILITIES.map((item, index) => {
+                    return (
+                      <div key={index} className="facility-item">
+                        <ReactSVG className="facility-icon" src={item.icon} />
+                        <Span fontSize="15px" fontWeight="normal">
+                          {item.name}
+                        </Span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="amenities">
+                  {AMENITIES.map((amenity) => {
+                    return (
+                      <div key={amenity.name}>
+                        <Span
+                          className="amenity-title"
+                          fontWeight="bold"
+                          textAlign="center"
+                        >
+                          {amenity.name}
+                        </Span>
+                        <ul>
+                          {amenity.list.map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            }
+          />
+          <Dropdown
+            title="Hotel Rules"
+            expand={expanded.includes(EXPAND[1])}
+            onExpand={() => {
+              onExpand(EXPAND[1]);
+            }}
+            details={
+              <>
+                {HOTEL_RULES.map((item) => {
+                  return (
+                    <div className="rule-item">
+                      <Span fontWeight="bold">{item.name}</Span>
+                      <Span>{item.value}</Span>
+                    </div>
+                  );
+                })}
+              </>
+            }
+          />
+          <Dropdown
+            className="faq-wrapper"
+            title="FAQ about Warwick Fiji Beach Resort"
+            expand={expanded.includes(EXPAND[2])}
+            onExpand={() => {
+              onExpand(EXPAND[2]);
+            }}
+            details={
+              <>
+                {FAQ.map((item) => {
+                  return (
+                    <Dropdown
+                      className="faq"
+                      title={item.question}
+                      expand={expanded.includes(EXPAND[1])}
+                      onExpand={() => {
+                        onExpand("");
+                      }}
+                      details={<Span>{item.answer}</Span>}
+                      expandIcon={<ReactSVG className="expand-icon" src={IMAGES.iconDropDownBlue} />}
+                    />
+                  );
+                })}
+              </>
+            }
+          />
         </div>
       </Container>
     </StyledAboutHotel>

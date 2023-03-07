@@ -51,6 +51,7 @@ export const COLORS: StyledColors = {
   parkinglotGray: "#CECFD1",
   papayaWhip: "#FFF3D6",
   platinum: "#E2E2E2",
+  borderGray: "#636363",
 }
 interface StyledColors {
   aliceBlue: string,
@@ -105,4 +106,5 @@ interface StyledColors {
   parkinglotGray: string,
   papayaWhip: string,
   platinum: string,
+  borderGray: string,
 }
