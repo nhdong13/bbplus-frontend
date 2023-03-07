@@ -1,26 +1,45 @@
 import IMAGES from "@/assets/images";
+import { useEffect, useState } from "react";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
 import { H5 } from "../../Typography";
 import { StyledSelectLocationDropDown } from "./StyledSelectLocationDropDown";
 
-interface SelectLocationDropDown {
+interface IItem {
+  _id: number,
+  label: string
+}
+interface IProps {
   isShown?: boolean
   leaving?: boolean
-  innerRef?: any
+  innerRef?: any,
+  onClickItem: (item: Object) => void,
+  options?: Array<IItem>,
 }
 const data = [
-  { _id: 1, name: 'Sydney Airport (SYD)' },
-  { _id: 2, name: 'Melbourne Airport (MEL)' },
-  { _id: 3, name: 'Brisbane Airport (BNE)' },
-  { _id: 4, name: 'Adelaide Airport (ADL)' },
-  { _id: 5, name: 'Gold Coast Airport (OOL)' },
-  { _id: 6, name: 'Auckland Airport (AKL)' },
-  { _id: 7, name: 'Christchurch Airport (CHC)' },
-  { _id: 8, name: 'Wellington Airport (WLG)' },
-  { _id: 9, name: 'Los Angeles International Airport (LAX)' },
+  { _id: 1, label: 'Sydney Airport (SYD)' },
+  { _id: 2, label: 'Melbourne Airport (MEL)' },
+  { _id: 3, label: 'Brisbane Airport (BNE)' },
+  { _id: 4, label: 'Adelaide Airport (ADL)' },
+  { _id: 5, label: 'Gold Coast Airport (OOL)' },
+  { _id: 6, label: 'Auckland Airport (AKL)' },
+  { _id: 7, label: 'Christchurch Airport (CHC)' },
+  { _id: 8, label: 'Wellington Airport (WLG)' },
+  { _id: 9, label: 'Los Angeles International Airport (LAX)' },
 ]
 
-export default function SelectLocationDropDown({ isShown, leaving, innerRef }: SelectLocationDropDown) {
+export default function SelectLocationDropDown({
+  isShown, leaving, innerRef, onClickItem, options
+}: IProps) {
+  // const filteredData = data.filter((el: any) => {
+  //   console.log(valueFilter)
+  //   if (valueFilter === '' || valueFilter === undefined) {
+  //     return el;
+  //   }
+  //   else {
+  //     return el.label.toLowerCase().includes(valueFilter)
+  //   }
+  // })
+
   return (
     <>
       <StyledSelectLocationDropDown ref={innerRef} isShown={isShown} isLeaving={leaving}>
@@ -32,11 +51,11 @@ export default function SelectLocationDropDown({ isShown, leaving, innerRef }: S
           </div>
           <div className="popular-places__list">
             {
-              data.map(d => {
-                return <HorizontalContainer key={d._id} gap="20px" alignItems="center" margin="15px 0">
+              options?.map((d: any) => {
+                return <div className="list__item" key={d._id} onClick={() => onClickItem(d)}>
                   <img src={IMAGES.locationIcon} />
-                  <span>{d.name}</span>
-                </HorizontalContainer>
+                  <span>{d.label}</span>
+                </div>
               })
             }
           </div>

@@ -7,6 +7,10 @@ interface IFilter {
   adults: number,
   children: number,
 }
+interface ISelected {
+  _id: string | number,
+  label: string
+}
 const demoData = [
   { _id: '1', name: '', adults: 1, children: 0 },
 ]
@@ -24,6 +28,8 @@ const useFullSearchWidget = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [dataFilter, setDataFilter] = useState<IFilter[]>(demoData);
   const [totalGuest, setTotalGuest] = useState<number>(0);
+  const [selectedLeaving, setSelectedLeaving] = useState<ISelected>();
+  const [filterLeaving, setFilterLeaving] = useState<string>('');
 
   const screenWidth = useWindowSize();
 
@@ -203,7 +209,9 @@ const useFullSearchWidget = () => {
     dataFilter,
     totalGuest,
     handleAddRoom,
-    handleChangeDataRoom
+    handleChangeDataRoom,
+    selectedLeaving, setSelectedLeaving,
+    filterLeaving, setFilterLeaving
   }
 }
 

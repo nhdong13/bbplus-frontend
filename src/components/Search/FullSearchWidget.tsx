@@ -48,8 +48,39 @@ export default function FullSearchWidget() {
     dataFilter,
     totalGuest,
     handleAddRoom,
-    handleChangeDataRoom
+    handleChangeDataRoom,
+    selectedLeaving, setSelectedLeaving,
+    filterLeaving, setFilterLeaving
   } = useFullSearchWidget();
+
+  const data = [
+    { _id: 1, label: 'Sydney Airport (SYD)' },
+    { _id: 2, label: 'Melbourne Airport (MEL)' },
+    { _id: 3, label: 'Brisbane Airport (BNE)' },
+    { _id: 4, label: 'Adelaide Airport (ADL)' },
+    { _id: 5, label: 'Gold Coast Airport (OOL)' },
+    { _id: 6, label: 'Auckland Airport (AKL)' },
+    { _id: 7, label: 'Christchurch Airport (CHC)' },
+    { _id: 8, label: 'Wellington Airport (WLG)' },
+    { _id: 9, label: 'Los Angeles International Airport (LAX)' },
+  ]
+
+  const onChangeLeaving = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setFilterLeaving(e.target.value)
+  }
+  const onChangeGoing = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setFilterLeaving(e.target.value)
+  }
+
+  const filteredData = data.filter((el: any) => {
+    if (filterLeaving === '') {
+      return el;
+    } else if (el.label.toLowerCase().includes(filterLeaving.toLowerCase())) {
+      return el;
+    }
+  })
 
 
   return (
@@ -76,30 +107,42 @@ export default function FullSearchWidget() {
         <SelectBookingDateTime>
           <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
             <FromContainer className={selectLeavingPlaces ? "show-input-search leaving-from" : "leaving-from"}>
-              <div onClick={showLeavingPlaces}>
+              <div onClick={showLeavingPlaces} className={`${selectedLeaving ? 'selected-value' : ''}`}>
                 {
-                  isMobile
+                  selectedLeaving && !selectLeavingPlaces
                     ?
-                    <>
-                      <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
-                      <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-                    </>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>
                     :
-                    selectLeavingPlaces
-                      ?
-                      <input className="input-search" autoFocus={true} />
-                      :
-                      <>
-                        <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
-                        <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-                      </>
+                    <>
+                      {
+                        isMobile
+                          ?
+                          <>
+                            <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                            <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                          </>
+                          :
+                          selectLeavingPlaces
+                            ?
+                            <input className="input-search" autoFocus={true} value={filterLeaving} onChange={(e) => onChangeLeaving(e)} />
+                            :
+                            <>
+                              <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                              <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                            </>
+                      }
+                    </>
                 }
+                {/* {
+                   */}
               </div>
               {
                 !isMobile ?
                   <SelectLocationDropDown
                     innerRef={leavingDropDownRef}
                     leaving
+                    options={filteredData}
+                    onClickItem={(item: any) => [setSelectedLeaving(item), setSelectLeavingPlaces(false)]}
                     isShown={selectLeavingPlaces} />
                   :
                   <></>
@@ -131,6 +174,7 @@ export default function FullSearchWidget() {
                   {
                     !isMobile ?
                       <SelectLocationDropDown
+                        onClickItem={() => { }}
                         innerRef={goingDropDownRef}
                         isShown={selectGoingPlaces} />
                       :

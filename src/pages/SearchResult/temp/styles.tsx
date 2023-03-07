@@ -86,10 +86,13 @@ const SearchItem = styled.div`
     border-right: 0;
     border-bottom: 1px solid ${COLORS.parkinglotGray};
     padding: 0 20px;
+    display: flex;
+    justify-content: center;
     h5 {
       font-size: 10px;
       line-height: 14px;
       padding: 0;
+      text-align: center;
       &:first-child {
         margin-bottom: 10px;
       }
@@ -104,11 +107,14 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.black};
+  border: 2px solid ${COLORS.silver};
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    border: 2px solid ${COLORS.black};
+  }
 `;
 
 const SearchResultContainer = styled.div`
@@ -169,13 +175,16 @@ const SearchOption = styled.div`
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
-  .title{
-    font-size: 31px;
+  .title, .title-mobile{
+    font-size: 28px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
     display: block;
   }
-  .mobile {
+  .title-desk {
+    display: block;
+  }
+  .title-mobile {
     display: none;
   }
   .flex {
@@ -214,6 +223,7 @@ const SearchOption = styled.div`
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
+    margin-bottom: 0;
     .choose {
       text-align: center;
       font-size: 14px;
@@ -228,8 +238,20 @@ const SearchOption = styled.div`
     .title {
       font-size: 18px;
     }
-    .mt-10 {
+    .title-desk {
+      display: none;
+    }
+    .title-mobile {
+      display: block;
+      text-align: center;
       margin-top: 10px;
+      font-size: 18px;
+    }
+    .flex {
+      margin-top: 0;
+    }
+    .mt-10 {
+      margin: 10px 0;
       text-align: center;
       font-size: 12px;
     }
@@ -281,6 +303,10 @@ const ListResultContainer = styled.div`
   &:last-child {
     margin-bottom: 145px;
   }
+  &:hover, &:active {
+    background: ${COLORS.blueWater};
+    cursor: pointer;
+  }
   .booking-carousel {
     display: block;
     @media only screen and (max-width: 769px) {
@@ -297,9 +323,13 @@ const ListResultContainer = styled.div`
     margin-right: 15px;
   }
   @media ${BREAKPOINTS.laptop} {
+    margin-bottom: 0;
     padding: 0;
     border: 0;
     display: grid;
+    .hotels {
+      padding: 20px 0;
+    }
   }
 `;
 
@@ -328,6 +358,7 @@ const HotelCardContainer = styled.div`
     width: 421px;
     @media ${BREAKPOINTS.laptop} {
       width: auto;
+      border-radius: 5px;
     }
     .rating {
     align-items: flex-end;
@@ -376,17 +407,35 @@ const HotelCardContainer = styled.div`
   }
   .hotel-card__info-container {
     padding: 0 31px 35px;
+    @media ${BREAKPOINTS.laptop} {
+      text-align: center;
+      padding: 38px 0;
+    }
   }
 
   .hotel-card__info {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     margin-top: 10px;
+    @media ${BREAKPOINTS.laptop} {
+      h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: ${COLORS.toryBlue};
+      }
+      p {
+        font-size: 12px;
+      }
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
     .location {
       display: flex;
       align-items: center;
+      justify-content: center;
       img {
         margin-right: 9px;
       }
@@ -398,9 +447,13 @@ const HotelCardContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-
+    align-items: center;
     p {
       color: #38AA00;
+    }
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      margin-top: 10px;
     }
   }
 `
@@ -426,6 +479,9 @@ const CarouselWrapper = styled.div`
     width: 100%;
     @media only screen and (max-width: 475px) {
       padding-left: 10px;
+    }
+    @media ${BREAKPOINTS.laptop} {
+      padding-bottom: 20px;
     }
   }
 
@@ -476,7 +532,7 @@ const CarouselWrapper = styled.div`
 
     .carousel__slider-tray--horizontal {
       gap: 15px;
-
+      padding-bottom: 1px;
       @media only screen and (max-width: 1440px) {
         width: 400%!important;
       }
