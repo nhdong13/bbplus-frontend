@@ -59,7 +59,7 @@ const Select = ({
   console.log(showOption)
 
   return (
-    <WrapperSelect>
+    <WrapperSelect className="wrapper-select">
       <StyledSelectContainer
         textColor={textColor}
         fontSize={fontSize}
@@ -80,7 +80,7 @@ const Select = ({
               :
               <div>{label?.concat(isImportant ? " *" : " ")}</div>
           }
-          <img src={typeIconDown ? IMAGES.iconArrowDown : IMAGES.iconSelectDown} width="10px" height="5px" />
+          <img src={typeIconDown ? IMAGES.iconSelectDown : IMAGES.iconArrowDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
       {

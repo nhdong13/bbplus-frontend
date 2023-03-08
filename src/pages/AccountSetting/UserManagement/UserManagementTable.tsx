@@ -37,7 +37,7 @@ const UserManagementTable = () => {
         >
           <TableHead>
             <TableRow>
-              <TableCell align="left">Username</TableCell>
+              <TableCell align="left" >Username</TableCell>
               <TableCell align="left">Name</TableCell>
               <TableCell align="left">Email</TableCell>
               <TableCell align="left">Password</TableCell>
@@ -53,9 +53,9 @@ const UserManagementTable = () => {
                     key={el}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell align="left">James</TableCell>
-                    <TableCell align="left">James Dean</TableCell>
-                    <TableCell align="left">james@travel.com</TableCell>
+                    <TableCell align="left" style={{ fontSize: 16, fontFamily: FONTS.manropeRegular }}>James</TableCell>
+                    <TableCell align="left" style={{ fontSize: 16, fontFamily: FONTS.manropeRegular }}>James Dean</TableCell>
+                    <TableCell align="left" style={{ fontSize: 16, fontFamily: FONTS.manropeRegular }}>james@travel.com</TableCell>
                     <TableCell align="left"><input type="password" id="password-field" value="p@ssw0rd" /></TableCell>
                     <TableCell align="left">
                       <UserRoleDropDown />
@@ -141,6 +141,7 @@ const StyledUserManagementTable = styled.div`
       box-shadow: none;
       font-family: ${FONTS.manropeBold};
       font-size: 14px;
+      text-transform: capitalize;
     }
 
     .button-edit {
@@ -156,12 +157,16 @@ const StyledUserManagementTable = styled.div`
       height: 25px;
       width: 2px;
     }
+    .MuiTableCell-sizeMedium {
+      font-size: 18px;
+      font-family: ${FONTS.manropeBold};
+    }
   }
 
 `
 const StyledUserRoleDropDown = styled.div.attrs((props: {
-    isDropDown?: boolean
-  }) => props)`
+  isDropDown?: boolean
+}) => props)`
     button {
       align-items: center;
       border: 1px solid ${COLORS.black};
@@ -170,8 +175,10 @@ const StyledUserRoleDropDown = styled.div.attrs((props: {
       cursor: pointer;
       justify-content: space-between;
       max-width: 146px;
-      padding: 13px 18px 8px 14px;
+      padding: 0 14px;
+      height: 36px;
       width: 100%;
+      font-family: ${FONTS.manropeRegular}
     }
   
     img {

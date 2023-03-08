@@ -86,7 +86,7 @@ const GroupButton = styled.div`
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   .g-button {
     width: 83.33px;
     height: 36px;
