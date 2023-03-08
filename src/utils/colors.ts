@@ -51,6 +51,10 @@ export const COLORS: StyledColors = {
   papayaWhip: "#FFF3D6",
   platinum: "#E2E2E2",
   purple: "#C1CBFF",
+  asexualGrey: "#9D9D9D",
+  percyBlue: "#007DB3",
+  smogray: "#636363",
+  lightGray: "#F0F1F2"
 }
 interface StyledColors {
   anakiwa: string,
@@ -104,5 +108,9 @@ interface StyledColors {
   parkinglotGray: string,
   papayaWhip: string,
   platinum: string,
-  purple: string
+  purple: string,
+  asexualGrey: string,
+  percyBlue: string,
+  smogray: string,
+  lightGray: string,
 }

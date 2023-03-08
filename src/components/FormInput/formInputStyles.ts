@@ -13,12 +13,13 @@ const StyledInputContainer = styled.div.attrs(
     maxHeight?: string;
     valid?: boolean;
     width?: string;
+    cssOptions?: string;
   }) => props
 )`
   position: relative;
   border-radius: 4.5px;
   border: 2px solid ${COLORS.black};
-  width: ${(props) => props.width || "100%"};;
+  width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
 
   .icon {
@@ -63,6 +64,7 @@ const StyledInputContainer = styled.div.attrs(
       display: none;
     }
   }
+  ${props => props.cssOptions}
 `;
 
 export { StyledInputContainer };

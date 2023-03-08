@@ -37,6 +37,9 @@ import backgroundAuthen from "./background-authen.jpg";
 import iconArrowDown from "./icon-arrow-down.svg";
 import bgEmptyImage from "./bg-empty-image.svg";
 import iconRemove from "./icon-remove.svg";
+import iconBlueArrowDown from "./icon-blue-arrow-down.svg";
+import iconVisa from "./icon-visa.svg";
+import iconMastercard from "./icon-mastercard.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -77,7 +80,10 @@ const IMAGES = {
   backgroundAuthen,
   iconArrowDown,
   bgEmptyImage,
-  iconRemove
+  iconRemove,
+  iconBlueArrowDown,
+  iconVisa,
+  iconMastercard,
 }
 
 export default IMAGES;
