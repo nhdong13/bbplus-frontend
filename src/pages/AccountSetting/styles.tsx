@@ -59,7 +59,7 @@ const AccountSettingContainer = styled.div`
           display: grid;
         }
         legend {
-          margin-bottom: 0;
+          margin-bottom: 15px;
         }
       }
       .step-user {

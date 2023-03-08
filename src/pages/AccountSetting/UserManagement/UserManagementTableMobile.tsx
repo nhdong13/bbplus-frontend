@@ -61,7 +61,7 @@ const UserManagementTable = () => {
         </LegendField>
       </LegendItem>
       <LegendItem>
-        <LabelText>User Role</LabelText>
+        <LabelText>User role</LabelText>
         <LegendField>
           <FormInput
             maxHeight="68px"
