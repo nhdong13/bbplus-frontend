@@ -107,7 +107,7 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.doveGray};
+  border: 2px solid ${COLORS.greenBlue};
   background: ${COLORS.white};
   border-radius: 8px;
   display: flex;
@@ -183,6 +183,9 @@ const SearchOption = styled.div`
   .mobile {
     display: none;
   }
+  .group-right {
+    display: flex;
+  }
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
@@ -203,10 +206,23 @@ const SearchOption = styled.div`
       font-size: 18px;
       display: none;
     }
-    .mobile {
+    .title-desk {
+      display: none;
+    }
+    .title-mobile {
       display: block;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 10px;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+    .flex {
+      margin-top: 0;
+    }
+    .mt-10 {
+      margin: 10px 0;
+      text-align: center;
+      font-size: 12px;
     }
   }
 `;
@@ -278,6 +294,9 @@ const ListResultContainer = styled.div`
   }
   .carousel-title{
     margin-right: 15px;
+    @media ${BREAKPOINTS.laptop} {
+      margin: 10px;
+    }
   }
   @media ${BREAKPOINTS.laptop} {
     padding: 0;
@@ -285,7 +304,10 @@ const ListResultContainer = styled.div`
     display: grid;
     margin-bottom: 0;
     .hotels {
-      padding: 20px 0;
+      padding: 0px 10px;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 `;
@@ -299,7 +321,7 @@ const HotelCardContainer = styled.div`
     margin-top: 78px;
     @media ${BREAKPOINTS.laptop} {
       margin: 0 auto;
-      width: 320px;
+      width: auto;
     }
   }
 

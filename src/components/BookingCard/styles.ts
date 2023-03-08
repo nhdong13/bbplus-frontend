@@ -142,7 +142,7 @@ const StyledBookingButtonContainer = styled.button.attrs((props: {
       case 'customize':
         return css`
           background-color: ${COLORS.white};
-          border: 2px solid ${COLORS.doveGray};
+          border: 2px solid ${COLORS.greenBlue};
           color: ${COLORS.toryBlue};
         `
       case 'quote':

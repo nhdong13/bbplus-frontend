@@ -25,6 +25,7 @@ export const COLORS: StyledColors = {
   indiaKhaki: "#C3B693",
   endeavour: "#005099",
   gradient1: "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
+  greenBlue: "#00B492",
   mistyRose: "#FFECE1",
   mercury: "#E8E8E8",
   outerSpace: "#494949",
@@ -79,6 +80,7 @@ interface StyledColors {
   indiaKhaki: string,
   endeavour: string,
   gradient1: string,
+  greenBlue: string,
   mercury: string,
   mistyRose: string,
   outerSpace: string

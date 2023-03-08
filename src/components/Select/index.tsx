@@ -51,9 +51,12 @@ const Select = ({
 
   const onClickOption = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (showOption) setShowOption(!showOption);
-    setVisible(!showOption)
+    // if (!showOption) setShowOption(showOption);
+    // setVisible(!showOption)
+    setShowOption(!showOption)
   }
+
+  console.log(showOption)
 
   return (
     <WrapperSelect>
