@@ -57,7 +57,7 @@ const StyledSelectContainer = styled.div.attrs(
 )`
   position: relative;
   border-radius: 4.5px;
-  border: 2px solid ${COLORS.black};
+  border: 2px solid ${COLORS.greenBlue};
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   
@@ -96,7 +96,7 @@ const StyledSelectContainer = styled.div.attrs(
 
   @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
-    border: 1px solid ${COLORS.parkinglotGray};
+    border: 1px solid ${COLORS.greenBlue};
     border-radius: 3px;
 
     .label {

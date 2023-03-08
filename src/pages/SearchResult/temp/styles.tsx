@@ -107,8 +107,8 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.silver};
-  border-radius: 8px;
+  border: 2px solid ${COLORS.greenBlue};
+  background: ${COLORS.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,21 +189,39 @@ const SearchOption = styled.div`
   }
   .flex {
     display: flex;
-    gap: 10px;
+    gap: 34px;
     margin-top: 15px;
+    input {
+      border: 2px solid ${COLORS.greenBlue};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      input {
+        border: 1px solid ${COLORS.greenBlue};
+      }
+    }
+  }
+  
+  .group-right {
+    display: flex;
+    gap: 75px;
+    @media ${BREAKPOINTS.laptop} {
+      display: block;
+      gap: 0;
+    }
   }
 
   .flex-option {
     display: flex;
     align-items: center;
-    border: 2px solid ${COLORS.black};
+    border: 2px solid ${COLORS.greenBlue};
     border-radius: 5px;
     height: 48px;
     margin-top: 15px;
-
     @media ${BREAKPOINTS.laptop} {
       height: 40px;
       font-size: 12px;
+      border: 1px solid ${COLORS.greenBlue};
     }
   }
   .btn {
@@ -223,7 +241,9 @@ const SearchOption = styled.div`
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
+    justify-content: center;
     margin-bottom: 0;
+    padding-left: 0;
     .choose {
       text-align: center;
       font-size: 14px;
@@ -246,6 +266,7 @@ const SearchOption = styled.div`
       text-align: center;
       margin-top: 10px;
       font-size: 18px;
+      margin-bottom: 25px;
     }
     .flex {
       margin-top: 0;
@@ -259,7 +280,6 @@ const SearchOption = styled.div`
 `;
 
 const SearchOptionItem = styled.div`
-  margin-right: 20px;
   font-size: 16px;
   position: relative;
   .label {
@@ -321,6 +341,9 @@ const ListResultContainer = styled.div`
   }
   .carousel-title{
     margin-right: 15px;
+    @media ${BREAKPOINTS.laptop} {
+      margin: 10px;
+    }
   }
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
@@ -328,7 +351,10 @@ const ListResultContainer = styled.div`
     border: 0;
     display: grid;
     .hotels {
-      padding: 20px 0;
+      padding: 0px 10px;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 `;
@@ -341,7 +367,7 @@ const HotelCardContainer = styled.div`
     margin-right: 15px;
     margin-top: 78px;
     @media ${BREAKPOINTS.laptop} {
-      margin: 0 35px;
+      margin: 0 auto;
       width: auto;
     }
   }
@@ -435,9 +461,11 @@ const HotelCardContainer = styled.div`
     .location {
       display: flex;
       align-items: center;
-      justify-content: center;
       img {
         margin-right: 9px;
+      }
+      @media ${BREAKPOINTS.laptop} {
+        justify-content: center;
       }
     }
   }
@@ -447,13 +475,13 @@ const HotelCardContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-    align-items: center;
     p {
       color: #38AA00;
     }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
       margin-top: 10px;
+      align-items: center;
     }
   }
 `
