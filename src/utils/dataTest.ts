@@ -306,3 +306,15 @@ export const RoomModalDetail = {
   ],
   smocking: "No smocking",
 };
+
+export const ONE_WAY_SEAT = [
+  "One-way - 6 seater",
+  "One-way - 8 seater",
+  "One-way - Seat in coach",
+];
+
+export const RETURN_SEAT = [
+  "Return - 6 seater",
+  "Return - 8 seater",
+  "Return - Seat in coach",
+];

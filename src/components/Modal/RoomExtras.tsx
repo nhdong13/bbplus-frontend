@@ -15,6 +15,8 @@ import { Container } from "@/styles";
 import _ from "lodash";
 import { HOTEL_RESULT_DATA } from "@/utils/dataTest";
 import { COLORS } from "@/utils/colors";
+import { StyledModal } from "./styles";
+import { GradientButton } from "../Button";
 
 interface IRoomExtras extends IModal {}
 
@@ -26,7 +28,7 @@ export default function RoomExtras({
   const onChangeQty = () => {};
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledRoomExtras>
+      <StyledModal>
         <Span
           textAlign="right"
           padding="20px 28px 0 28px"
@@ -96,32 +98,17 @@ export default function RoomExtras({
               total
             </Span>
           </Span>
-          <Button>
-            <Span fontWeight="bold" color="white">
-              Update trip
-            </Span>
-          </Button>
+          <GradientButton
+            isSelected
+            text="Update trip"
+            color={COLORS.gradient2}
+            handleSubmit={onCloseModal}
+          />
         </Action>
-      </StyledRoomExtras>
+      </StyledModal>
     </Modal>
   );
 }
-
-const StyledRoomExtras = styled.div`
-  display: flex;
-  flex-direction: column;
-  outline: none;
-  background-color: white;
-  width: 880px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  border-radius: 12px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  .close-btn {
-  }
-`;
 
 const Details = styled.div`
   max-height: 360px;

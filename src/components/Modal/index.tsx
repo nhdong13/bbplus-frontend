@@ -1,6 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import RoomExtras from "./RoomExtras";
 import RoomModal from "./RoomModal";
+import RoomTransfer from "./RoomTransfer";
 
 export const MODAL_TYPES = {
   ROOM_MODAL: "room_details",
@@ -11,6 +12,7 @@ export const MODAL_TYPES = {
 const MODAL_COMPONENTS: { [T: string]: any } = {
   [MODAL_TYPES.ROOM_MODAL]: RoomModal,
   [MODAL_TYPES.ROOM_EXTRAS]: RoomExtras,
+  [MODAL_TYPES.ROOM_TRANSFER]: RoomTransfer,
 };
 
 type GlobalModalContext = {

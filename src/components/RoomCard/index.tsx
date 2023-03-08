@@ -25,6 +25,8 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
     let title = "";
     if (type === MODAL_TYPES.ROOM_MODAL) title = "Garden View Room";
     if (type === MODAL_TYPES.ROOM_EXTRAS) title = "Hotel Extras";
+    if (type === MODAL_TYPES.ROOM_TRANSFER)
+      title = "Tewaka Fiji: Warwick Fiji Resort & Spa";
     showModal(type, {
       title: title,
       details: {},
