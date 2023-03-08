@@ -45,12 +45,12 @@ export default function HotelResults() {
           </Span>
         </div>
         <div className="hotel-result__right">
-          {HOTEL_RESULT_DATA.map((item, index) => {
+          {HOTEL_RESULT_DATA.map((result, index) => {
             return (
               <Dropdown
-                key={item.name}
-                expand={expanded.includes(item.name)}
-                onExpand={() => onExpand(item.name)}
+                key={result.name}
+                expand={expanded.includes(result.name)}
+                onExpand={() => onExpand(result.name)}
                 title={
                   <Typography
                     sx={{ width: "33%", flexShrink: 0 }}
@@ -60,38 +60,40 @@ export default function HotelResults() {
                     marginLeft="20px"
                     component={"span"}
                   >
-                    {item.name} -{" "}
+                    {result.name} -{" "}
                     <Typography
                       display="inline-block"
                       fontWeight="500"
                       component={"span"}
                     >
-                      {item.description}
+                      {result.description}
                     </Typography>
                   </Typography>
                 }
                 details={
                   <div
                     className={
-                      item.type === "room"
+                      result.type === "room_details"
                         ? "hotel-result__room-list"
                         : "hotel-result__option-list"
                     }
                   >
-                    {item.type === "room"
+                    {result.type === "room_details"
                       ? _.range(0, 6).map((_, index) => {
                           return (
                             <RoomCard
                               key={index}
                               checkbox
-                              roomOptions={item.roomOptions}
+                              roomOptions={result.roomOptions}
+                              type={result.type}
                             />
                           );
                         })
-                      : item.roomOptions.map((item) => (
+                      : result.roomOptions.map((item) => (
                           <RoomCard
                             key={item.title}
                             roomOptions={[item]}
+                            type={result.type}
                           ></RoomCard>
                         ))}
                   </div>

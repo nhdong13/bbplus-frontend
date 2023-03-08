@@ -33,3 +33,7 @@ code {
 .MuiBackdrop-root{
   background-color: transparent!important;
 }
+
+.close-btn{
+  cursor: pointer;
+}

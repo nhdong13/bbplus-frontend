@@ -1,27 +1,34 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { RoomOptions } from "@/utils/types/CardHotel";
-import {
-  FormControl,
-  FormControlLabel,
-  RadioGroup,
-} from "@mui/material";
+import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
-import { useGlobalModalContext } from "../Modal";
+import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { H3, H4 } from "../Typography";
 
 interface IRoomCard {
+  type: string;
   checkbox?: boolean;
   roomOptions: RoomOptions[];
 }
 
-export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
+export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
   const [selectedOption, setSelectedOption] = useState<number>();
   const { showModal } = useGlobalModalContext();
 
   const onChecked = (option: number) => {
     setSelectedOption(option);
+  };
+
+  const onShowModal = () => {
+    let title = "";
+    if (type === MODAL_TYPES.ROOM_MODAL) title = "Garden View Room";
+    if (type === MODAL_TYPES.ROOM_EXTRAS) title = "Hotel Extras";
+    showModal(type, {
+      title: title,
+      details: {},
+    });
   };
   return (
     <>
@@ -34,7 +41,7 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
           {checkbox && <H4>1 x Suite, Ocean view</H4>}
           <RoomOptions>
             <StyledFormControl>
-              {roomOptions.map((item,index) => {
+              {roomOptions.map((item, index) => {
                 return (
                   <RadioGroup
                     key={index}
@@ -91,12 +98,7 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
                         <img
                           className="info-icon"
                           src={IMAGES.iconInfo}
-                          onClick={() => {
-                            showModal("room_details", {
-                              title: "Garden View Room",
-                              details: {}
-                            });
-                          }}
+                          onClick={onShowModal}
                         />
                       </div>
                     </div>
@@ -110,9 +112,7 @@ export default function RoomCard({ checkbox, roomOptions }: IRoomCard) {
                       <img
                         className="info-icon"
                         src={IMAGES.iconInfo}
-                        onClick={() => {
-                          showModal("room_details");
-                        }}
+                        onClick={onShowModal}
                       />
                     </div>
                   </div>

@@ -9,6 +9,12 @@ export interface CarouselSlider {
 }
 
 export interface ImageCarousel {
-  data: string[];
+  width?: string;
+  height?: string;
+  borderRadius?: string;
+  orientation?: "vertical" | "horizontal";
+  visibleSlides?: number;
+  images: string[];
+  showControl?: boolean;
   onSelectImage: (imageUrl: string) => void;
 }

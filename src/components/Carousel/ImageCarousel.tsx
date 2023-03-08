@@ -1,51 +1,51 @@
 import IMAGES from "@/assets/images";
 import { ImageCarousel } from "@/utils/types/Carousel";
-import useWindowSize from "@/utils/windowResize";
 import {
   ButtonBack,
   ButtonNext,
-  CarouselContext,
   CarouselProvider,
   Slide,
   Slider,
 } from "pure-react-carousel";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function ImageCarousel({ data, onSelectImage }: ImageCarousel) {
-  const screenWidth = useWindowSize();
-  const carouselContext = useContext(CarouselContext);
+export default function ImageCarousel({
+  width,
+  height,
+  orientation,
+  visibleSlides,
+  images,
+  showControl,
+  borderRadius,
+  onSelectImage,
+}: ImageCarousel) {
   const [arrowRightBtnColor, setArrowRightBtnColor] = useState<boolean>(false);
   const [arrowLeftBtnColor, setArrowLeftBtnColor] = useState<boolean>(false);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-
-  useEffect(() => {
-    const updateCarouselSlide = (slideToBeVisible: number) => {};
-
-    if (screenWidth < 500) {
-      updateCarouselSlide(1);
-    } else if (screenWidth > 1920) {
-      updateCarouselSlide(3.5);
-    } else updateCarouselSlide(4);
-  }, [screenWidth, carouselContext]);
 
   const handleHoverArrowBtn = (rightSide: boolean) => {
     if (rightSide) setArrowRightBtnColor(!arrowRightBtnColor);
     if (!rightSide) setArrowLeftBtnColor(!arrowLeftBtnColor);
   };
   return (
-    <Wrapper>
+    <Wrapper
+      width={width}
+      height={height}
+      orientation={orientation || "vertical"}
+    >
       <CarouselProvider
-        visibleSlides={4}
-        totalSlides={data.length}
+        visibleSlides={visibleSlides || 4}
+        totalSlides={images.length}
         step={1}
         dragEnabled={false}
         naturalSlideWidth={66}
         naturalSlideHeight={54}
         // isIntrinsicHeight={true}
-        orientation="vertical"
+        orientation={orientation || "vertical"}
       >
-        <ActionWrap>
+        <ActionWrap
+          showControl={showControl !== undefined ? showControl : true}
+        >
           <ButtonBack
             className="arrow-up reverse-arrow"
             onMouseEnter={() => handleHoverArrowBtn(false)}
@@ -62,21 +62,22 @@ export default function ImageCarousel({ data, onSelectImage }: ImageCarousel) {
           </ButtonBack>
         </ActionWrap>
         <Slider>
-          {data.map((thumbnail, index) => (
+          {images.map((thumbnail, index) => (
             <Slide
               key={thumbnail}
               index={index}
               className="slide"
               onClick={() => {
                 onSelectImage(thumbnail);
-                setCurrentSlide(index);
               }}
             >
-              <Thumbnail width="66px" height="64px" imageUrl={thumbnail} />
+              <Thumbnail width="66px" height="64px" imageUrl={thumbnail} borderRadius={borderRadius}/>
             </Slide>
           ))}
         </Slider>
-        <ActionWrap>
+        <ActionWrap
+          showControl={showControl !== undefined ? showControl : true}
+        >
           <ButtonNext
             className="arrow-down"
             onMouseEnter={() => handleHoverArrowBtn(true)}
@@ -101,6 +102,7 @@ interface IThumbnail {
   imageUrl: string;
   width: string;
   height: string;
+  borderRadius?: string;
 }
 
 const Thumbnail = styled.div<IThumbnail>`
@@ -109,14 +111,24 @@ const Thumbnail = styled.div<IThumbnail>`
   background-position: 50% 50%;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border-radius: 12px;
+  border-radius: ${(props) => props.borderRadius};
   margin: auto;
   cursor: pointer;
 `;
 
-const Wrapper = styled.div`
-  width: 66px;
+interface IWrapper {
+  width?: string;
+  height?: string;
+  orientation?: string;
+}
+
+const Wrapper = styled.div<IWrapper>`
+  width: ${(props) => props.width};
   display: inline-block;
+  .carousel {
+    display: ${(props) =>
+      props.orientation === "vertical" ? "block" : "flex"};
+  }
   .arrow-up,
   .arrow-down {
     margin: 0;
@@ -125,31 +137,46 @@ const Wrapper = styled.div`
     }
   }
   .arrow-down {
-    transform: rotate(90deg);
+    transform: ${(props) =>
+      props.orientation === "vertical" ? "rotate(90deg)" : ""};
   }
   .arrow-up {
-    transform: rotate(-90deg);
+    transform: ${(props) =>
+      props.orientation === "vertical" ? "rotate(-90deg)" : "rotate(-180deg)"};
   }
   .carousel__slider-tray {
     display: flex;
     gap: 8px;
   }
-  .carousel__slider-tray-wrapper {
-    height: 284px !important;
+  .carousel__slider-tray-wrap--vertical {
+    width: ${(props) => props.width};
+    height: ${(props) => props.height} !important;
     padding-bottom: 0 !important;
   }
+  .carousel__slider-tray-wrap--horizontal {
+    height: ${(props) => props.height} !important;
+    .carousel__slide {
+      padding-bottom: 0 !important;
+    }
+  }
   .carousel__slide {
-    width: 66px;
+    width: 66px !important;
     height: 64px;
     padding-bottom: 0px;
+  }
+  .carousel__inner-slide {
+    width: 66px;
+    height: 64px;
   }
   .carousel__slide-focus-ring {
     display: none;
   }
 `;
-
-const ActionWrap = styled.div`
-  display: flex;
+interface IActionWrap {
+  showControl?: boolean;
+}
+const ActionWrap = styled.div<IActionWrap>`
+  display: ${(props) => (props.showControl ? "flex" : "none")};
   flex-direction: row;
   justify-content: center;
 `;

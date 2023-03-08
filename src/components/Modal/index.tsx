@@ -1,12 +1,16 @@
 import React, { useState, createContext, useContext } from "react";
+import RoomExtras from "./RoomExtras";
 import RoomModal from "./RoomModal";
 
 export const MODAL_TYPES = {
   ROOM_MODAL: "room_details",
+  ROOM_EXTRAS: "room_extras",
+  ROOM_TRANSFER: "room_transfer",
 };
 
 const MODAL_COMPONENTS: { [T: string]: any } = {
   [MODAL_TYPES.ROOM_MODAL]: RoomModal,
+  [MODAL_TYPES.ROOM_EXTRAS]: RoomExtras,
 };
 
 type GlobalModalContext = {
@@ -64,7 +68,14 @@ export const GlobalModal = ({ children }: GlobalModal) => {
     if (!modalName || !ModalComponent) {
       return null;
     }
-    return <ModalComponent isOpen={!!modalName} id="global-modal" {...modalProps} onCloseModal={hideModal}/>;
+    return (
+      <ModalComponent
+        isOpen={!!modalName}
+        id="global-modal"
+        {...modalProps}
+        onCloseModal={hideModal}
+      />
+    );
   };
 
   return (

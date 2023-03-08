@@ -4,7 +4,7 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
     description: "Garden View Room",
-    type: "room",
+    type: "room_details",
     roomOptions: [
       {
         id: 1,
@@ -41,7 +41,7 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Hotel Extras",
     description: "Half Board Meal Plan",
-    type: "option",
+    type: "room_extras",
     roomOptions: [
       {
         id: 1,
@@ -69,7 +69,13 @@ export const HOTEL_RESULT_DATA = [
       },
       {
         id: 5,
-        title: "Bot le of wine on arrival",
+        title: "Bottle of wine on arrival",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 6,
+        title: "Bottle of wine on arrival",
         price: "$XXX",
         value: "",
       },
@@ -78,7 +84,7 @@ export const HOTEL_RESULT_DATA = [
   {
     name: "Transfer",
     description: "Tewaka Fiji, Airport Transfer",
-    type: "option",
+    type: "room_transfer",
     roomOptions: [
       {
         id: 1,
@@ -281,7 +287,7 @@ export const RoomModalDetail = {
     "Terrace",
     "Free WiFi",
   ],
-  area: "34m2",
+  area: "34 m2",
   bed: 1,
   maxPersons: "XX",
   bathroom: ["Free toiletries", "Shower", "Hairdryer"],

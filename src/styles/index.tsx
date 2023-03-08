@@ -53,6 +53,7 @@ interface IContainer {
 
 const Container = styled.div<IContainer>`
   width: ${(props) => props.width || "1400px"};
+  height: fit-content;
   max-width: ${(props) => props.maxWidth || "1400px"};
   margin: ${(props) => props.margin || "auto"};
   display: ${(props) => props.display || "grid"};

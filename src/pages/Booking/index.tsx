@@ -34,15 +34,12 @@ import {
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
 import RoomModal from "@/components/Modal/RoomModal";
-import useModal from "@/hooks/useModal";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
-  const { modal, onCloseModal } = useModal();
-  console.log(modal)
   return (
     <>
       <Helmet>
@@ -178,13 +175,16 @@ export default function Booking() {
                   </div>
                   <HotelImage>
                     <ImageCarousel
-                      data={[
+                      width="64px"
+                      height="284px"
+                      images={[
                         IMAGES.thumb1,
                         IMAGES.thumb2,
                         IMAGES.thumb3,
                         IMAGES.thumb4,
                         IMAGES.hotelBg,
                       ]}
+                      borderRadius="12px"
                       onSelectImage={onSelectImage}
                     />
                     <div>
@@ -292,12 +292,6 @@ export default function Booking() {
           <AboutHotel />
         </BookingContainer>
       </MainLayout>
-      <RoomModal
-        title=""
-        isOpen={!!modal}
-        details={{}}
-        onCloseModal={onCloseModal}
-      />
     </>
   );
 }
