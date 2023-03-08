@@ -4,8 +4,13 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
-const WrapperSelect = styled.div`
+const WrapperSelect = styled.div.attrs(
+  (props: {
+    width?: string,
+  }) => props
+)`
   position: relative;
+  /* width: ${(props) => props.width || "100%"}; */
   .options {
     list-style: none;
     font-size: 16px;

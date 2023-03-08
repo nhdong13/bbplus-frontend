@@ -20,7 +20,7 @@ import { AuthenticationLogoMobile } from "@/pages/Login/styles";
 
 function AccountSetting() {
   const { } = useAccountSetting();
-  const [currentItem, setCurrentItem] = useState<number>(2);
+  const [currentItem, setCurrentItem] = useState<number>(0);
 
   const breadCrumbList = [
     {
@@ -57,20 +57,26 @@ function AccountSetting() {
             </BreadcrumbBody>
           </BreadcrumbContainer>
           <div id="account-setting-section">
-            <AccountSettingHeader>
-              <H2 fontFamily="Montserrat" fontWeight="500" lineHeight="38px">
-                {{
-                  0: "Platform settings",
-                  1: "Commission display when searching",
-                }[currentItem]}
-              </H2>
-              <div className="fill-information-title">
-                {{
-                  0: "Please fill in the information below to complete your account setup",
-                  1: "Enter the commission amount that will be automatically added to the NET price during the calculation of the customer price",
-                }[currentItem]}
-              </div>
-            </AccountSettingHeader>
+            {
+              currentItem !== 2
+                ?
+                <AccountSettingHeader>
+                  <H2 fontFamily="Montserrat" fontWeight="500" lineHeight="38px">
+                    {{
+                      0: "Platform settings",
+                      1: "Commission display when searching",
+                    }[currentItem]}
+                  </H2>
+                  <div className="fill-information-title">
+                    {{
+                      0: "Please fill in the information below to complete your account setup",
+                      1: "Enter the commission amount that will be automatically added to the NET price during the calculation of the customer price",
+                    }[currentItem]}
+                  </div>
+                </AccountSettingHeader>
+                :
+                null
+            }
             {{
               0: <PlatformSetting onClickNextStep={(id: number) => setCurrentItem(id)} />,
               1: <PreferenceSetting onClickNextStep={(id: number) => setCurrentItem(id)} />,

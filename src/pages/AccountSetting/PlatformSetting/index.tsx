@@ -70,7 +70,7 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
             </LegendBox>
           </div>
 
-          <div className="body-section-item">
+          <div className="body-section-item item-finance">
             <LegendBox>
               <LegendTitle>Finance details</LegendTitle>
               <div className="contact-title">

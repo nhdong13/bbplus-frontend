@@ -126,7 +126,12 @@ export default function LegendComboBox({
         {hasCheckBox &&
           <React.Fragment>
             <FormGroup style={{ width: isCheckboxMobile ? 20 : 275 }}>
-              <FormControlLabel control={<Checkbox />} label="" />
+              <FormControlLabel control={<Checkbox sx={{
+                color: "#CECFD1",
+                '&.Mui-checked': {
+                  color: "#2383DA",
+                },
+              }} />} label="" />
             </FormGroup>
             {isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
           </React.Fragment>

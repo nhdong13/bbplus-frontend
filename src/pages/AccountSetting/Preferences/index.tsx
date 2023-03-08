@@ -23,9 +23,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
       <div className="body-section-item step-show-label">
         <LegendBox>
           <LegendTitle>Markup</LegendTitle>
-          <LegendItem isError={true}>
+          <LegendItem >
             <LabelText>For Hotels</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
@@ -42,9 +42,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Tranfers</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
@@ -61,9 +61,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Meal Plans</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
@@ -80,9 +80,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Packages</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
@@ -99,9 +99,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Excursions</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
