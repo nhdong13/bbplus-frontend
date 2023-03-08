@@ -1,4 +1,5 @@
 export const COLORS: StyledColors = {
+  aliceBlue: "#E8F4FF",
   anakiwa: "#A8FFF6",
   anzac: "#d9bf50",
   areoBlue: "#C8FFF5",
@@ -15,8 +16,10 @@ export const COLORS: StyledColors = {
   crayola: "#00F1BD",
   curiousBlue: "#2383DA",
   cyprus: "#004442",
-  darkSilver:  "#B7B7B7",
+  commandBlue: "#007DB3",
+  darkSilver: "#B7B7B7",
   doveGray: "#707070",
+  grayAf: "#afafaf",
   electricRed: "#E00000",
   eerieBlack: "#1C1B1F",
   flushOrange: "#FF8003",
@@ -24,7 +27,10 @@ export const COLORS: StyledColors = {
   lapisLazuli: "#3069b1",
   indiaKhaki: "#C3B693",
   endeavour: "#005099",
-  gradient1: "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
+  gradient1:
+    "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
+  gradient2:
+    "linear-gradient(90deg,rgba(0, 180, 146, 1) 0%,rgba(0, 159, 199, 1) 100%)",
   mistyRose: "#FFECE1",
   mercury: "#E8E8E8",
   outerSpace: "#494949",
@@ -54,9 +60,11 @@ export const COLORS: StyledColors = {
   asexualGrey: "#9D9D9D",
   percyBlue: "#007DB3",
   smogray: "#636363",
-  lightGray: "#F0F1F2"
+  lightGray: "#F0F1F2",
+  borderGray: "#636363",
 }
 interface StyledColors {
+  aliceBlue: string,
   anakiwa: string,
   anzac: string,
   areoBlue: string,
@@ -73,8 +81,10 @@ interface StyledColors {
   crayola: string,
   curiousBlue: string,
   cyprus: string,
+  commandBlue: string,
   darkSilver: string
   doveGray: string,
+  grayAf: string,
   electricRed: string,
   eerieBlack: string,
   flushOrange: string,
@@ -83,6 +93,7 @@ interface StyledColors {
   indiaKhaki: string,
   endeavour: string,
   gradient1: string,
+  gradient2: string,
   mercury: string,
   mistyRose: string,
   outerSpace: string
@@ -113,4 +124,5 @@ interface StyledColors {
   percyBlue: string,
   smogray: string,
   lightGray: string,
+  borderGray: string,
 }

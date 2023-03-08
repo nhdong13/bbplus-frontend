@@ -2,7 +2,12 @@ import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { hotels } from "@/utils/tempData";
 import useWindowSize from "@/utils/windowResize";
-import { ButtonBack, ButtonNext, CarouselContext, Slide } from "pure-react-carousel";
+import {
+  ButtonBack,
+  ButtonNext,
+  CarouselContext,
+  Slide,
+} from "pure-react-carousel";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import BookingCard from "../BookingCard";
@@ -11,7 +16,7 @@ import HorizontalContainer from "../Layout/HorizontalContainer";
 import { H4, H5 } from "../Typography";
 
 const StyledBookingSearchResult = styled.div`
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   > div {
     display: flex;
     flex-direction: row;
@@ -20,11 +25,11 @@ const StyledBookingSearchResult = styled.div`
     gap: 15px;
     margin: 100px auto 55px;
   }
-`
+`;
 
 const HotelCardContainer = styled.div`
   .hotel-card__container {
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d8d8d8;
     border-radius: 17px;
   }
 
@@ -58,13 +63,13 @@ const HotelCardContainer = styled.div`
     margin-top: 24px;
 
     p {
-      color: #38AA00;
+      color: #38aa00;
     }
   }
-`
+`;
 
 const ShowMapButton = styled.button`
-  border: 2px solid #00B492;
+  border: 2px solid #00b492;
   border-radius: 6px;
   padding: 20px 35px 13px 20px;
   width: 45%;
@@ -72,22 +77,30 @@ const ShowMapButton = styled.button`
   h5 {
     color: ${COLORS.toryBlue};
   }
-`
+`;
 
-export default function BookingSearchResult({ setSlideCount, setCurrentSlide, data }: CarouselSlider) {
+export default function BookingSearchResult({
+  setSlideCount,
+  setCurrentSlide,
+  data,
+}: CarouselSlider) {
   return (
     <>
       <StyledBookingSearchResult>
         <div>
           <HotelCardContainer>
             <div className="hotel-card__container">
-              <div className="hotel-card__background-image">
-              </div>
+              <div className="hotel-card__background-image"></div>
               <div className="hotel-card__info-container">
                 <div className="hotel-card__info">
                   <H4>Warwick Fiji Beach Resort </H4>
                   <div className="location">
-                    <img src={IMAGES.locationIcon} alt="location" width="17px" height="25px" />
+                    <img
+                      src={IMAGES.locationIcon}
+                      alt="location"
+                      width="17px"
+                      height="25px"
+                    />
                     <p>Coral coast, Viti Levu, Fiji</p>
                   </div>
                 </div>
@@ -108,5 +121,5 @@ export default function BookingSearchResult({ setSlideCount, setCurrentSlide, da
         </div>
       </StyledBookingSearchResult>
     </>
-  )
+  );
 }

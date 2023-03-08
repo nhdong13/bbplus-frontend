@@ -6,35 +6,42 @@ import styled from "styled-components"
 const StyledButton = styled.div.attrs((props: {
   color?: string
   maxWidth?: string
+  textColor?: string
   fontSize?: string
+  fontWeight?: string
   height?: string
+  padding?: string
   textPadding?: string
   showButtonAnimation?: boolean
   width?: string
   borderRadius?: string
+  borderGradient?: string
+  borderWidth?: string
 }) => props)`
   align-items: center;
-  background: ${props => props.color};
+  background: ${props => props.borderGradient || props.color};
   border: none;
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;
   height: ${props => props.height || "52px"};
   max-width: ${props => props.maxWidth};
-  padding: 1px;
-  width: ${props => props.width};
+  padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
+  width: ${props => props.borderGradient ? "fit-content" : props.width};
 
   span {
-    color: ${COLORS.white};
+    color: ${props => props.textColor || COLORS.white};
     display: flex;
     align-items: center;
     font-family: ${FONTS.manrope};
     font-size: ${props => props.fontSize || "16px"};
+    font-weight: ${props => props.fontWeight};
     line-height: 20px;
     padding: ${props => props.textPadding || "0 50px 0 38px"};
     @media ${BREAKPOINTS.laptop} {
       font-size: 12px;
     }
+    white-space: nowrap;
   }
 
   &.open {
@@ -56,14 +63,20 @@ const Overlay = styled.div.attrs((props: {
   isSelected?: boolean
   height?: string
   showButtonAnimation?: boolean
+  width?: string;
+  padding?: string;
+  borderGradient?: string
+  borderRadius?: string
+  fontWeight?: string
 }) => props)`
-  background: ${({ isSelected }) => isSelected ? 'transparent' : COLORS.cyprus};
-  border-radius: 17px;
+  background: ${({ isSelected, borderGradient }) => isSelected ? 'transparent' : borderGradient ? "white" : COLORS.cyprus};
+  border-radius: ${props => props.borderRadius || "17px"};
   display: flex;
   justify-content: center;
   height: ${props => props.height || "52px"};
+  padding: ${props => props.borderGradient ? props.padding : ""};
   transition: all 0.5s ease-in-out;
-  width: 100%;
+  width: ${props => props.borderGradient ? props.width : "100%"};
 
   &.open {
     opacity: 1;
@@ -73,6 +86,10 @@ const Overlay = styled.div.attrs((props: {
   &.close {
     opacity: 0;
     transition: all 2s ease-in-out;
+  }
+
+  span {
+    font-weight: ${props => props.fontWeight};
   }
 `
 export {

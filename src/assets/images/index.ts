@@ -3,8 +3,8 @@ import bbplusFavicon from "./favicon.png";
 import defaultUser from "./default-user.svg";
 import iconLetter from "./icon-letter.svg";
 import iconAnchor from "./icon-anchor.svg";
-import iconSearch from "./icon-search.svg"
-import iconSearchOutline from "./icon-search-outline.svg"
+import iconSearch from "./icon-search.svg";
+import iconSearchOutline from "./icon-search-outline.svg";
 import hotelBg from "./hotel-bg.jpg";
 import leftQuotationMark from "./left-quotation-mark-icon.svg";
 import locationIcon from "./icon-location.svg";
@@ -40,6 +40,22 @@ import iconRemove from "./icon-remove.svg";
 import iconBlueArrowDown from "./icon-blue-arrow-down.svg";
 import iconVisa from "./icon-visa.svg";
 import iconMastercard from "./icon-mastercard.svg";
+import iconInfo from "./icon-info.svg";
+import thumb1 from "./thumb1.png";
+import thumb2 from "./thumb2.png";
+import thumb3 from "./thumb3.png";
+import thumb4 from "./thumb4.png";
+import swimming from "./swimming.svg";
+import drink from "./drink.svg";
+import fitness from "./fitness.svg";
+import golf from "./golf.svg";
+import disabledGuest from "./disabled_guest.svg";
+import restaurant from "./restaurant.svg";
+import wifi from "./wifi.svg";
+import parking from "./parking.svg";
+import tennis from "./tennis.svg";
+import search from "./search.svg";
+
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -84,6 +100,21 @@ const IMAGES = {
   iconBlueArrowDown,
   iconVisa,
   iconMastercard,
+  iconInfo,
+  thumb1,
+  thumb2,
+  thumb3,
+  thumb4,
+  swimming,
+  drink,
+  fitness,
+  golf,
+  disabledGuest,
+  restaurant,
+  wifi,
+  parking,
+  tennis,
+  search
 }
 
 export default IMAGES;

@@ -7,4 +7,5 @@ export const RouterName = {
   searchResult: "search-result",
   accountSetting: "account-setting",
   travellerDetails: "traveller-details",
+  booking: "booking",
 }
