@@ -1,13 +1,7 @@
 import { GradientButton } from "@/components/Button";
-import Select from "@/components/Select";
 import IMAGES from "@/assets/images";
 import MainLayout from "@/components/Layout/MainLayout";
-import BookingSearchResult from "@/components/BookingSearchResult";
-import HorizontalContainer from "@/components/Layout/HorizontalContainer";
-import { CarouselProvider } from "pure-react-carousel";
-import { hotels } from "@/utils/tempData";
-import CarouselSlider from "@/components/Carousel/index";
-import { H3, H4, H5 } from "@/components/Typography";
+import { H3, Typography as Span } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 
 import {
@@ -17,6 +11,7 @@ import {
 } from "./styles";
 import { ContactForm } from "@/components/ContactForm";
 import { FormInput } from "@/components/FormInput";
+import { Checkbox } from "@mui/material";
 
 export default function TravellerDetails() {
   return (
@@ -91,10 +86,12 @@ export default function TravellerDetails() {
                 numberChild={1}
               ></ContactForm>
               <div className="other-details">
-                <p>Other Details</p>
+                <Span fontSize="20px" fontWeight="bold" margin="0 0 30px">
+                  Other Details
+                </Span>
                 <div className="code-container">
                   <div className="input-container">
-                    <p>Airline Reservation Code</p>
+                    <Span fontWeight="bold">Airline Reservation Code</Span>
                     <FormInput
                       label={""}
                       marginTop="0"
@@ -104,7 +101,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <p>Promotional Code</p>
+                    <Span fontWeight="bold">Promotional Code</Span>
                     <FormInput
                       label={""}
                       marginTop="0"
@@ -114,7 +111,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <p>Agent Reference No.</p>
+                    <Span fontWeight="bold">Agent Reference No.</Span>
                     <FormInput
                       label={""}
                       marginTop="0"
@@ -124,7 +121,9 @@ export default function TravellerDetails() {
                     />
                   </div>
                 </div>
-                <p>Additional Notes (Optional)</p>
+                <Span margin="0 0 13.4px 0" fontWeight="bold" fontSize="20px">
+                  Additional Notes (Optional)
+                </Span>
                 <FormInput
                   label={""}
                   marginTop="0"
@@ -135,8 +134,8 @@ export default function TravellerDetails() {
               </div>
               <div className="payment-information">
                 <p>
-                  Payment Information
-                  <span>
+                  <Span fontWeight="bold">Payment Information</Span>
+                  <span className="image">
                     <img src={IMAGES.iconVisa} width="45px" height="29px" />
                     <img
                       src={IMAGES.iconMastercard}
@@ -157,7 +156,7 @@ export default function TravellerDetails() {
                 </div>
                 <div className="first-line-container">
                   <div className="input-container">
-                    <p>Name on Card Holder*</p>
+                    <Span fontWeight="bold">Name on Card Holder*</Span>
                     <FormInput
                       label="Name on the card"
                       marginTop="0"
@@ -167,7 +166,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <p>Card Number*</p>
+                    <Span fontWeight="bold">Card Number*</Span>
                     <FormInput
                       label="xxxx-xxxx-xxxx-xxxx"
                       marginTop="0"
@@ -180,7 +179,7 @@ export default function TravellerDetails() {
 
                 <div className="second-line-container">
                   <div className="input-container">
-                    <p>Expiration Date*</p>
+                    <Span fontWeight="bold">Expiration Date*</Span>
                     <FormInput
                       label="(MM/YYYY)"
                       marginTop="0"
@@ -190,7 +189,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <p>CVV*</p>
+                    <Span fontWeight="bold">CVV*</Span>
                     <FormInput
                       label="xxx"
                       marginTop="0"
@@ -202,7 +201,9 @@ export default function TravellerDetails() {
                 </div>
               </div>
               <div className="important-information">
-                <p>Important Information</p>
+                <Span fontSize="20px" fontWeight="bold">
+                  Important Information
+                </Span>
                 <div className="line-info">
                   <span>
                     <img src={IMAGES.iconCondtionResetPassword} />
@@ -230,6 +231,7 @@ export default function TravellerDetails() {
                     maxWidth="300px"
                     height="62px"
                     borderRadius="7.5px"
+                    fontWeight="bold"
                   />
                 </div>
                 <div className="line-info">
@@ -254,35 +256,49 @@ export default function TravellerDetails() {
                 <p className="total-price-value">FJ$X,XXX</p>
                 <p>X night(s)</p>
                 <div className="price-details">
-                  <p>Sale Summary</p>
-                  <p>
-                    Accommodation cost<span>$XXX</span>
-                  </p>
+                  <Span className="section">Sale Summary</Span>
+                  <div className="line">
+                    <p>Accommodation cost</p>
+                    <span>$XXX</span>
+                  </div>
+
                   <div className="divider" />
-                  <p>
-                    Hotel extras<span>$XXX</span>
-                  </p>
+                  <div className="line">
+                    <p>Hotel extras</p>
+                    <span>$XXX</span>
+                  </div>
                   <div className="divider" />
-                  <p>
-                    Transfer<span>$XXX</span>
-                  </p>
+                  <div className="line">
+                    <p>Transfer</p>
+                    <span>$XXX</span>
+                  </div>
                   <div className="divider" />
-                  <p>
-                    Taxes and fees<span>$XXX</span>
-                  </p>
+                  <div className="line">
+                    <p>Taxes and fees</p>
+                    <span>$XXX</span>
+                  </div>
                   <div className="divider" />
-                  <p>
-                    Total Net Price<span>$XXX</span>
-                  </p>
-                  <p>
+                  <div className="line">
+                    <p>Total Net Price</p>
+                    <span>$XXX</span>
+                  </div>
+                  <p className="note">
                     *The total net cost is payable to BedBank Plus at the time
                     of confirmation.
                   </p>
                   <div className="divider" />
-                  <p>
-                    Agent markup<span>$XXX</span>
-                  </p>
+                  <div className="line">
+                    <p>Agent markup</p>
+                    <span>$XXX</span>
+                  </div>
                   <div className="divider" />
+                  <div className="line">
+                    <p>Add Extra Markup</p>
+                  </div>
+                  <div className="checkbox-group">
+                    <Checkbox />
+                    <Checkbox />
+                  </div>
                 </div>
                 <div className="payment-btn">
                   <GradientButton
@@ -295,41 +311,43 @@ export default function TravellerDetails() {
                 </div>
               </div>
               <div className="accommodation-container">
-                <p className="sub-header">Accommodation</p>
+                <Span fontSize="20px" fontWeight="bold" className="sub-header">
+                  Accommodation
+                </Span>
                 <p>
-                  <span>Hotel</span>
+                  <Span fontWeight="bold">Hotel</Span>
                   <span>Warwick Fiji Resort & Spa</span>
                 </p>
                 <p>
-                  <span>Check-in</span>
+                  <Span fontWeight="bold">Check-in</Span>
                   <span>Day | Date | Month</span>
                 </p>
                 <p>
-                  <span>Check-out</span>
+                  <Span fontWeight="bold">Check-out</Span>
                   <span>Day | Date | Month</span>
                 </p>
                 <p>
-                  <span>Type</span>
+                  <Span fontWeight="bold">Type</Span>
                   <span>
                     1 x Garden view room<a href="#">Change</a>
                   </span>
                 </p>
                 <div className="divider"></div>
-                <p className="sub-header">Hotel Extras</p>
+                <Span className="sub-header">Hotel Extras</Span>
                 <p>
-                  <span>Extra 1</span>
+                  <Span fontWeight="bold">Extra 1</Span>
                   <span>1 x Half board meal plan</span>
                 </p>
                 <p>
-                  <span>Extra 2</span>
+                  <Span fontWeight="bold">Extra 2</Span>
                   <span>
                     1 x 1 hour spa treatment<a href="#">Change</a>
                   </span>
                 </p>
                 <div className="divider"></div>
-                <p className="sub-header">Transfer</p>
+                <Span className="sub-header">Transfer</Span>
                 <p>
-                  <span>Tewaka Fiji</span>
+                  <Span fontWeight="bold">Tewaka Fiji</Span>
                   <span>
                     Return: Airport Transfer<a href="#">Change</a>
                   </span>

@@ -45,6 +45,7 @@ const StyledInputContainer = styled.div.attrs(
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
     border: none;
+    border-radius: 4.5px;
   }
 
   @media ${BREAKPOINTS.laptop} {

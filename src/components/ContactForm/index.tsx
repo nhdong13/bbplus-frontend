@@ -3,20 +3,20 @@ import { H3 } from "../Typography";
 import { ContactFormContainer } from "./contactFormStyles";
 import PersonDetailInput from "./PersonDetailInput";
 import PhoneContactInput from "./PhoneContactInput";
+import { Typography as Span } from "../Typography";
 
 const ContactForm = ({
   numberAdult,
   numberChild,
   orderNumber,
   isPrimaryContact,
-  handleSubmit,
 }: ContactForm) => {
   return (
     <>
       <ContactFormContainer isPrimaryContact={isPrimaryContact}>
         <H3>Primary Contact</H3>
         <p className="sub-header">
-          Room {orderNumber}: {numberAdult} Adults, {numberChild} Child, Room
+          <Span fontWeight="bold">Room  {orderNumber}</Span>: {numberAdult} Adults, {numberChild} Child, Room
           category name
         </p>
         <PersonDetailInput
@@ -30,7 +30,7 @@ const ContactForm = ({
         />
         {isPrimaryContact && <PhoneContactInput options={[{ id: 1, label: "+84" }]} />}
         <div className="divider"></div>
-        <p className="sub-header">Child 1</p>
+        <Span className="sub-header" fontWeight="bold">Child 1</Span>
         <PersonDetailInput
           options={[
             { id: 1, label: "Mr" },

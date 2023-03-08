@@ -1,10 +1,7 @@
 import IMAGES from "@/assets/images";
-import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import styled from "styled-components";
-import Select from "@/components/Select";
-import HorizontalContainer from "../Layout/HorizontalContainer";
-import { H5 } from "../Typography";
+import { Typography as Span } from "../Typography";
 import { useState } from "react";
 import useComponentVisible from "@/utils/clickOutSide";
 import { FONTS } from "@/utils/fonts";
@@ -14,6 +11,7 @@ const StyledSelectContainer = styled.div.attrs(
   (props: { showOption: boolean }) => props
 )`
   position: relative;
+  margin-top: 13.4px;
   border-radius: 4.5px;
   border: 1px solid ${COLORS.black};
   padding: 12.6px 10.5px 13.9px 9.4px;
@@ -148,25 +146,25 @@ const PersonDetailInput = ({
   return (
     <PersonDetailInputContainer>
       <div className="prefix">
-        <p>Prefix</p>
+        <Span fontWeight="bold">Prefix</Span>
         <PrefixSelect label={label} options={options} />
       </div>
       <div className="firstname">
-        <p>First Name</p>
+        <Span fontWeight="bold">First Name</Span>
         <FormInput
           label={input1Label}
           marginTop="0"
           maxHeight="43px"
-          cssOptions="border-width: 1px;input{padding:24px;};"
+          cssOptions="border-width: 1px;input{padding:24px;}; margin-top: 13.4px;"
         />
       </div>
       <div className="lastname">
-        <p>Last Name</p>
+        <Span fontWeight="bold">Last Name</Span>
         <FormInput
           label={input2Label}
           marginTop="0"
           maxHeight="43px"
-          cssOptions="border-width: 1px;input{padding:24px;};"
+          cssOptions="border-width: 1px;input{padding:24px;}; margin-top: 13.4px;"
         />
       </div>
     </PersonDetailInputContainer>

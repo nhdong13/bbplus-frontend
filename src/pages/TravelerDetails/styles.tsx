@@ -81,7 +81,9 @@ const TravellerDetailsFormContainer = styled.div`
   .detail-form {
     width: 915px;
 
-    .other-details, .payment-information, .important-information {
+    .other-details,
+    .payment-information,
+    .important-information {
       display: flex;
       flex-direction: column;
       margin-top: 33px;
@@ -95,13 +97,19 @@ const TravellerDetailsFormContainer = styled.div`
       p {
         font-size: 20px;
         margin-bottom: 23px;
-        span {
+        span.image {
           margin-left: 73px;
         }
+      }
+      .input-container {
+        display: grid;
       }
 
       .input-container p {
         font-size: 16px;
+      }
+      .input-container span {
+        margin-bottom: 13.4px;
       }
 
       .code-container {
@@ -116,14 +124,16 @@ const TravellerDetailsFormContainer = styled.div`
       }
     }
 
-    .payment-information, .important-information {
+    .payment-information,
+    .important-information {
       margin-bottom: 44px;
 
       p {
         margin-bottom: 15px;
       }
 
-      .additional-info, .line-info {
+      .additional-info,
+      .line-info {
         display: flex;
         margin-bottom: 26px;
         span {
@@ -149,7 +159,8 @@ const TravellerDetailsFormContainer = styled.div`
         }
       }
 
-      .first-line-container, .second-line-container {
+      .first-line-container,
+      .second-line-container {
         display: flex;
         margin-bottom: 28px;
         p {
@@ -171,10 +182,16 @@ const TravellerDetailsFormContainer = styled.div`
   .trip-summary {
     width: 451px;
     margin: 25px 30px 0 49px;
+    .section {
+      display: block;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: left;
+    }
 
     .divider {
       border: 0.5px dashed ${COLORS.smogray};
-      margin-top: 30px;
+      /* margin-top: 30px; */
     }
 
     .total-price-container {
@@ -185,7 +202,8 @@ const TravellerDetailsFormContainer = styled.div`
       color: ${COLORS.white};
       text-align: center;
 
-      p:first-child, p:nth-child(4) {
+      p:first-child,
+      p:nth-child(4) {
         font-size: 20px;
       }
       p.total-price-value {
@@ -201,7 +219,29 @@ const TravellerDetailsFormContainer = styled.div`
         width: 100%;
         p {
           width: 100%;
+          font-weight: bold;
+          font-size: 16px;
         }
+      }
+      .line {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        p {
+          text-align: left;
+        }
+      }
+      p.note{
+        font-size: 12px;
+        font-weight: 300;
+        text-align: left;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+      .checkbox-group{
+        text-align: left;
       }
     }
 
@@ -232,6 +272,10 @@ const TravellerDetailsFormContainer = styled.div`
         &:first-child {
           margin-top: 0;
         }
+      }
+      span.sub-header {
+        font-weight: bold;
+        font-size: 20px;
       }
     }
   }

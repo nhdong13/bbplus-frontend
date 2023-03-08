@@ -1,18 +1,16 @@
 import IMAGES from "@/assets/images";
-import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import styled from "styled-components";
-import Select from "@/components/Select";
-import HorizontalContainer from "../Layout/HorizontalContainer";
-import { H5 } from "../Typography";
 import { useState } from "react";
 import useComponentVisible from "@/utils/clickOutSide";
 import { FONTS } from "@/utils/fonts";
 import { FormInput } from "../FormInput";
+import { Typography as Span } from "../Typography";
 
 const StyledSelectContainer = styled.div.attrs(
   (props: { showOption: boolean }) => props
 )`
+  margin-top: 13.4px;
   position: relative;
   border-radius: 4.5px;
   border: 1px solid ${COLORS.black};
@@ -114,10 +112,6 @@ const PhoneContactInputContainer = styled.div`
   display: flex;
   margin-top: 33px;
 
-  div p {
-    margin-bottom: 13.4px;
-  }
-
   .country-code {
     width: 87px;
     white-space: nowrap;
@@ -141,7 +135,7 @@ const PhoneContactInput = ({ options }: PhoneContactInput) => {
   return (
     <PhoneContactInputContainer>
       <div className="country-code">
-        <p>Phone Contact</p>
+        <Span fontWeight="bold">Phone Contact</Span>
         <CountryCodeSelect label="Code" options={options} />
       </div>
       <div className="phonenumber">
@@ -150,16 +144,16 @@ const PhoneContactInput = ({ options }: PhoneContactInput) => {
           label="Enter a valid phone number"
           marginTop="0"
           maxHeight="43px"
-          cssOptions="border-width: 1px;input{padding:24px;};"
+          cssOptions="border-width: 1px;input{padding:24px;}; margin-top: 13.4px;"
         />
       </div>
       <div className="email-address">
-        <p>Email address</p>
+      <Span fontWeight="bold">Email address</Span>
         <FormInput
           label="Watch out for typos in the email"
           marginTop="0"
           maxHeight="43px"
-          cssOptions="border-width: 1px;input{padding:24px;};"
+          cssOptions="border-width: 1px;input{padding:24px;}; margin-top: 13.4px;"
         />
       </div>
     </PhoneContactInputContainer>

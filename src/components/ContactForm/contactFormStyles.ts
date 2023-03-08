@@ -26,6 +26,7 @@ const ContactFormContainer = styled.div.attrs((props: {
     width: 778px;
     height: 0px;
     margin-top: 46.7px;
+    margin-bottom: 30px;
     margin-left: 10px;
     border: 0.5px dashed ${COLORS.smogray};
   }
