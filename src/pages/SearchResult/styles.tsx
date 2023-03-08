@@ -109,11 +109,10 @@ const ButtonEditSearch = styled.div`
   height : 58px;
   border: 2px solid ${COLORS.greenBlue};
   background: ${COLORS.white};
-  border-radius: 8px;
+  border-radius: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 `;
 
 const SearchResultContainer = styled.div`
@@ -214,10 +213,32 @@ const SearchOption = styled.div`
       text-align: center;
       margin-top: 10px;
       font-size: 18px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
     .flex {
-      margin-top: 0;
+      display: flex;
+      gap: 34px;
+      margin-top: 15px;
+      input {
+        border: 2px solid ${COLORS.greenBlue};
+      }
+      @media ${BREAKPOINTS.laptop} {
+        gap: 10px;
+        input {
+          border: 1px solid ${COLORS.greenBlue};
+          width: 88px;
+          height: 34px;
+          padding: 0;
+        }
+        .gradient-button {
+          width: 88px;
+          height: 34px;
+          padding: 0;
+          span {
+            padding: 0;
+          }
+        }
+      }
     }
     .mt-10 {
       margin: 10px 0;
@@ -304,7 +325,8 @@ const ListResultContainer = styled.div`
     display: grid;
     margin-bottom: 0;
     .hotels {
-      padding: 0px 10px;
+      padding: 0 10px;
+      padding-top: 10px;
     }
     &:last-child {
       margin-bottom: 0;
@@ -440,14 +462,17 @@ const HotelCardContainer = styled.div`
   }
 `
 const ShowMapButton = styled.button`
-  border: 2px solid #00B492;
-  border-radius: 6px;
+  border: 2px solid ${COLORS.greenBlue};
+  border-radius: 17px;
   width: 153px;
   height: 48px;
   cursor: pointer;
   
   h5 {
     color: ${COLORS.toryBlue};
+  }
+  @media ${BREAKPOINTS.laptop} {
+    border-radius: 5px;
   }
 `
 
@@ -463,7 +488,7 @@ const CarouselWrapper = styled.div`
       padding-left: 10px;
     }
     @media ${BREAKPOINTS.laptop} {
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
   }
 

@@ -56,7 +56,6 @@ const Select = ({
     setShowOption(!showOption)
   }
 
-  console.log(showOption)
 
   return (
     <WrapperSelect className="wrapper-select">
@@ -80,7 +79,7 @@ const Select = ({
               :
               <div>{label?.concat(isImportant ? " *" : " ")}</div>
           }
-          <img src={typeIconDown ? IMAGES.iconSelectDown : IMAGES.iconArrowDown} width="10px" height="5px" />
+          <img src={IMAGES.iconArrowDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
       {
