@@ -198,6 +198,17 @@ const SearchOption = styled.div`
       gap: 10px;
       input {
         border: 1px solid ${COLORS.greenBlue};
+        width: 88px;
+        height: 34px;
+        padding: 0;
+      }
+      .gradient-button {
+        width: 88px;
+        height: 34px;
+        padding: 0;
+        span {
+          padding: 0;
+        }
       }
     }
   }

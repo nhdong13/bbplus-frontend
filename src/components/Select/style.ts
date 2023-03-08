@@ -61,8 +61,6 @@ const StyledSelectContainer = styled.div.attrs(
   }) => props
 )`
   position: relative;
-  border-radius: 4.5px;
-  border: 2px solid ${COLORS.greenBlue};
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   
@@ -93,7 +91,7 @@ const StyledSelectContainer = styled.div.attrs(
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
     border-radius: 7px;
-    border: 2px solid ${COLORS.black};
+    border: 2px solid ${COLORS.greenBlue};
     img {
       transform: ${({ showOption }) => showOption ? "rotate(180deg)" : "rotate(0)"};
       transition: all 0.5s ease-in-out;
@@ -102,15 +100,13 @@ const StyledSelectContainer = styled.div.attrs(
 
   @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
-    border: 1px solid ${COLORS.greenBlue};
     border-radius: 3px;
-
     .label {
       height: 40px;
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
-      border: 1px solid ${COLORS.parkinglotGray};
+      border: 1px solid ${COLORS.greenBlue};
       border-radius: 3px;
     }
 
