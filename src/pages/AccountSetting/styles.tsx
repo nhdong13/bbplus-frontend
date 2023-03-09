@@ -5,9 +5,19 @@ import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const StyledAccountSetting = styled.div`  
   margin-bottom: 155px;
+  .label {
+    border: 2px solid ${COLORS.black} !important
+  }
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
     margin-top: 30px;
+    .label {
+      border: 1px solid ${COLORS.silver} !important;
+      img {
+        width: 12px;
+        height: 30px;
+      }
+    }
   }
 `
 
@@ -73,6 +83,9 @@ const AccountSettingContainer = styled.div`
         .first {
           font-family: ${FONTS.manrope};
         }
+        .second {
+          font-size: 16px;
+        }
       }
       .table-desktop {
         display: none;
@@ -84,7 +97,7 @@ const AccountSettingContainer = styled.div`
         width: 100%;
       }
       .item-finance{
-        margin-top: 30px !important;
+        margin-top: 35px !important;
       }
       .body-section-user {
         margin-top: 10px !important;

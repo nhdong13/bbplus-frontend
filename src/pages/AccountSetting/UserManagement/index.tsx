@@ -25,7 +25,7 @@ function UserManagement() {
           <div className="user-title first">
             In this section, you can create new user (employee) for your agency and assign roles.
           </div>
-          <div className="user-title">
+          <div className="user-title second">
             Existing Users
           </div>
           <div className="table-desktop">
@@ -105,6 +105,7 @@ const RequireDetailContainer = styled.div`
     gap: 10px;
     .err {
       display: block;
+      text-align: right;
     }
   }
 
