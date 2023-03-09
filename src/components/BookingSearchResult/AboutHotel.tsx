@@ -21,7 +21,7 @@ const StyledAboutHotel = styled.div`
   .hotel-result__separate {
     width: 2px;
     height: 28px;
-    background-color: black;
+    background-color: ${COLORS.doveGray};
     margin: 0 20px;
   }
   .select-ages__dropdown-icon {
@@ -249,7 +249,7 @@ export default function AboutHotel() {
                       key={item.question}
                       className="faq"
                       title={item.question}
-                      expand={expanded.includes(EXPAND[1])}
+                      expand={expanded.includes(EXPAND[3])}
                       onExpand={() => {
                         onExpand("");
                       }}

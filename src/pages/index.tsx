@@ -7,6 +7,7 @@ import SearchResult from "./SearchResult";
 import AccountSetting from "./AccountSetting";
 import TravelerDetails from "./TravelerDetails";
 import Booking from "./Booking";
+import Confirm from "./Confirm";
 
 export {
   HomePage,
@@ -17,5 +18,6 @@ export {
   SearchResult,
   AccountSetting,
   TravelerDetails,
-  Booking
+  Booking,
+  Confirm
 };

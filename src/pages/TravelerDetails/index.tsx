@@ -13,8 +13,10 @@ import { ContactForm } from "@/components/ContactForm";
 import { FormInput } from "@/components/FormInput";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { ReactSVG } from "react-svg";
+import { useNavigate } from "react-router-dom";
 
 export default function TravellerDetails() {
+  const navigate = useNavigate();
   return (
     <>
       <MainLayout>
@@ -233,6 +235,9 @@ export default function TravellerDetails() {
                     height="62px"
                     borderRadius="7.5px"
                     fontWeight="bold"
+                    handleSubmit={() => {
+                      navigate("/confirm");
+                    }}
                   />
                 </div>
                 <div className="line-info">
@@ -333,6 +338,9 @@ export default function TravellerDetails() {
                     height="62px"
                     borderRadius="7.5px"
                     fontWeight="bold"
+                    handleSubmit={() => {
+                      navigate("/confirm");
+                    }}
                   />
                 </div>
               </div>

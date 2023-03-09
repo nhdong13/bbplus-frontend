@@ -32,7 +32,7 @@ export default function RoomTransfer({
   const [selectedOption, setSelectedOption] = useState<string>(OPTION[0]);
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledModal width="720px">
+      <StyledModal width="800px">
         <Span
           textAlign="right"
           padding="20px 28px 0 28px"
@@ -51,7 +51,7 @@ export default function RoomTransfer({
           Tewaka Fiji:&nbsp;
           <Span fontWeight="300">Warwick Fiji Resort & Spa</Span>
         </Span>
-        <Container display="block" maxWidth="720px">
+        <Container display="block" maxWidth="800px">
           <Image src={IMAGES.hotelBg} alt="" />
           <Details>
             <Tabs
@@ -61,102 +61,118 @@ export default function RoomTransfer({
               <Tab label="Select an option" value={TAB[0]} />
               <Tab label="About this supplier" value={TAB[1]} />
             </Tabs>
-            <GroupButton>
-              <GradientButton
-                isSelected={selectedOption === OPTION[0]}
-                text="One Way"
-                textColor={selectedOption === OPTION[0] ? "white" : "black"}
-                fontSize="14px"
-                fontWeight="600"
-                width="72px"
-                height="100%"
-                padding="6px 12px"
-                textPadding="0"
-                borderWidth="2px"
-                borderRadius="4px"
-                borderGradient={COLORS.gradient2}
-                color={COLORS.gradient2}
-                handleSubmit={() => setSelectedOption(OPTION[0])}
-              />
-              <GradientButton
-                isSelected={selectedOption === OPTION[1]}
-                text="Return"
-                fontSize="14px"
-                textColor={selectedOption === OPTION[1] ? "white" : "black"}
-                fontWeight="600"
-                width="72px"
-                height="fit-content"
-                padding="6px 12px"
-                textPadding="0"
-                borderRadius="4px"
-                borderWidth="2px"
-                borderGradient={COLORS.gradient2}
-                color={COLORS.gradient2}
-                handleSubmit={() => setSelectedOption(OPTION[1])}
-              />
-            </GroupButton>
-            <Options>
-              <div
-                className={`${
-                  selectedOption === OPTION[0] ? "active" : "disable"
-                }`}
-              >
-                <Span fontWeight="bold">Departure</Span>
-                {ONE_WAY_SEAT.map((item) => {
-                  return (
-                    <div className="option">
-                      <Span>{item}</Span>
-                      <Span fontWeight="bold">$XXX</Span>
-                      <FormControl fullWidth>
-                        <Select
-                          label="qty"
-                          displayEmpty
-                          defaultValue={0}
-                          input={<OutlinedInput />}
-                          disabled={selectedOption !== OPTION[0]}
-                        >
-                          <MenuItem value={0}>0</MenuItem>
-                          <MenuItem value={10}>10</MenuItem>
-                          <MenuItem value={20}>20</MenuItem>
-                          <MenuItem value={30}>30</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </div>
-                  );
-                })}
-              </div>
-              <div
-                className={`${
-                  selectedOption === OPTION[1] ? "active" : "disable"
-                }`}
-              >
-                <Span margin="0 12px 0" fontWeight="bold">
-                  Return
-                </Span>
-                {RETURN_SEAT.map((item) => {
-                  return (
-                    <div className="option">
-                      <Span>{item}</Span>
-                      <Span fontWeight="bold">$XXX</Span>
-                      <FormControl fullWidth>
-                        <Select
-                          label="qty"
-                          displayEmpty
-                          defaultValue={0}
-                          input={<OutlinedInput />}
-                          disabled={selectedOption !== OPTION[1]}
-                        >
-                          <MenuItem value={0}>0</MenuItem>
-                          <MenuItem value={10}>10</MenuItem>
-                          <MenuItem value={20}>20</MenuItem>
-                          <MenuItem value={30}>30</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </div>
-                  );
-                })}
-              </div>
-            </Options>
+            <div className="tab-panel" hidden={selectedTab !== TAB[0]}>
+              <GroupButton>
+                <GradientButton
+                  isSelected={selectedOption === OPTION[0]}
+                  text="One Way"
+                  textColor={selectedOption === OPTION[0] ? "white" : "black"}
+                  fontSize="14px"
+                  fontWeight="600"
+                  width="72px"
+                  height="100%"
+                  padding="6px 12px"
+                  textPadding="0"
+                  borderWidth="2px"
+                  borderRadius="4px"
+                  borderGradient={COLORS.gradient2}
+                  color={COLORS.gradient2}
+                  handleSubmit={() => setSelectedOption(OPTION[0])}
+                />
+                <GradientButton
+                  isSelected={selectedOption === OPTION[1]}
+                  text="Return"
+                  fontSize="14px"
+                  textColor={selectedOption === OPTION[1] ? "white" : "black"}
+                  fontWeight="600"
+                  width="72px"
+                  height="fit-content"
+                  padding="6px 12px"
+                  textPadding="0"
+                  borderRadius="4px"
+                  borderWidth="2px"
+                  borderGradient={COLORS.gradient2}
+                  color={COLORS.gradient2}
+                  handleSubmit={() => setSelectedOption(OPTION[1])}
+                />
+              </GroupButton>
+              <Options>
+                <div
+                  className={`${
+                    selectedOption === OPTION[0] ? "active" : "disable"
+                  }`}
+                >
+                  <Span fontWeight="bold">Departure</Span>
+                  {ONE_WAY_SEAT.map((item) => {
+                    return (
+                      <div className="option">
+                        <Span>{item}</Span>
+                        <Span fontWeight="bold">$XXX</Span>
+                        <FormControl fullWidth>
+                          <Select
+                            label="qty"
+                            displayEmpty
+                            defaultValue={0}
+                            input={<OutlinedInput />}
+                            disabled={selectedOption !== OPTION[0]}
+                          >
+                            <MenuItem value={0}>0</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={20}>20</MenuItem>
+                            <MenuItem value={30}>30</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div
+                  className={`${
+                    selectedOption === OPTION[1] ? "active" : "disable"
+                  }`}
+                >
+                  <Span margin="0 12px 0" fontWeight="bold">
+                    Return
+                  </Span>
+                  {RETURN_SEAT.map((item) => {
+                    return (
+                      <div className="option">
+                        <Span>{item}</Span>
+                        <Span fontWeight="bold">$XXX</Span>
+                        <FormControl fullWidth>
+                          <Select
+                            label="qty"
+                            displayEmpty
+                            defaultValue={0}
+                            input={<OutlinedInput />}
+                            disabled={selectedOption !== OPTION[1]}
+                          >
+                            <MenuItem value={0}>0</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={20}>20</MenuItem>
+                            <MenuItem value={30}>30</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Options>
+            </div>
+            <div className="tab-panel" hidden={selectedTab !== TAB[1]}>
+              <Span className="paragraph" fontSize="12px">
+                Tewaka Fiji provides genuinely unique experiences for travel in
+                Fiji. From the very moment you arrive at Nadi International
+                Airport, the team will be ready to personally meet you at the
+                arrivals concourse and guide you to your waiting vehicle. The
+                transition from your arrival experience to your journey to your
+                hotel will be seamless as you ensure a carefree and efficient
+                facilitation of your transfer. Your driver for the transfer will
+                provide a brief outline of the journey along with some
+                highlights that may interest you.<br/><br/>Head back to the airport in
+                style with an included return.<br/><br/>Fine Print
+              </Span>
+            </div>
           </Details>
         </Container>
         <Action>
@@ -189,7 +205,6 @@ const Details = styled.div`
   }
   .MuiTabs-root {
     width: 100%;
-    border-bottom: 1px solid #aaa;
   }
   .MuiTabs-flexContainer {
     justify-content: center;
@@ -197,6 +212,7 @@ const Details = styled.div`
       flex: 1;
       font-family: Manrope;
       font-weight: bold;
+      border-bottom: 1px solid #aaa;
     }
   }
   .Mui-selected {
@@ -224,6 +240,13 @@ const Details = styled.div`
   .disable {
     span {
       color: #aaa;
+    }
+  }
+  .tab-panel {
+    width: 100%;
+    .paragraph {
+      line-height: 16px;
+      display: block;
     }
   }
 `;
@@ -256,6 +279,7 @@ const Options = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   align-self: center;
+  margin-top: 20px;
   & > div {
     &:first-child .option > span {
       padding-right: 12px;

@@ -308,10 +308,11 @@ const TravellerDetailsFormContainer = styled.div`
 
     .accommodation-container {
       width: calc(100% - 66px);
-      height: 514px;
       margin-top: 23px;
       background: ${COLORS.lightGray};
       padding: 29px 33px;
+      padding-bottom: 38px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
       .divider {
         margin: 17px 0;

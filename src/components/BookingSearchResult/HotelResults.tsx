@@ -51,6 +51,9 @@ export default function HotelResults() {
                 key={result.name}
                 expand={expanded.includes(result.name)}
                 onExpand={() => onExpand(result.name)}
+                boxShadow={
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
+                }
                 title={
                   <Typography
                     sx={{ width: "33%", flexShrink: 0 }}
@@ -120,7 +123,6 @@ const StyledHotelResult = styled.div`
 
   .MuiPaper-root {
     box-shadow: none;
-    border: 1px solid ${COLORS.platinum};
     border-radius: 0 !important;
     margin-bottom: 20px;
     margin-top: 12px !important;
@@ -153,7 +155,7 @@ const StyledHotelResult = styled.div`
   .hotel-result__separate {
     width: 2px;
     height: 28px;
-    background-color: black;
+    background-color: ${COLORS.doveGray};
     margin: 0 20px;
   }
 

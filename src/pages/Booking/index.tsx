@@ -33,13 +33,14 @@ import {
   Right,
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
-import RoomModal from "@/components/Modal/RoomModal";
+import { useNavigate } from "react-router-dom";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
+  const navigate = useNavigate();
   return (
     <>
       <Helmet>
@@ -143,7 +144,13 @@ export default function Booking() {
                     </Typography>
                   </Typography>
                 </div>
-                <ButtonNextStep>Next Step</ButtonNextStep>
+                <ButtonNextStep
+                  onClick={() => {
+                    navigate("/step3");
+                  }}
+                >
+                  Next Step
+                </ButtonNextStep>
               </BookingOption>
             </div>
           </BookingHeader>

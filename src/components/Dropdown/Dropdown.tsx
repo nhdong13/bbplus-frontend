@@ -5,10 +5,15 @@ import { ReactSVG } from "react-svg";
 import styled from "styled-components";
 import { Typography as Span } from "../Typography";
 
-const StyledDropdown = styled.div``;
+const StyledDropdown = styled.div.attrs(
+  (props: { boxShadow?: string }) => props
+)`
+  box-shadow: ${(props) => props.boxShadow};
+`;
 
 interface IDropdown {
   className?: string;
+  boxShadow?: string;
   title: string | React.ReactNode;
   details: React.ReactNode;
   expandIcon?: React.ReactNode;
@@ -22,9 +27,10 @@ export default function Dropdown({
   details,
   expandIcon,
   onExpand,
+  boxShadow,
 }: IDropdown) {
   return (
-    <StyledDropdown className={className}>
+    <StyledDropdown className={className} boxShadow={boxShadow}>
       <Accordion
         expanded={expand}
         onChange={() => {
