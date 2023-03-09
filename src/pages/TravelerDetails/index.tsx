@@ -6,21 +6,23 @@ import { COLORS } from "@/utils/colors";
 
 import {
   BookingProgressBar,
-  TravellerDetailsFormContainer,
-  TravellerDetailsPageContainer,
+  TravelerDetailsFormContainer,
+  TravelerDetailsPageContainer,
 } from "./styles";
 import { ContactForm } from "@/components/ContactForm";
 import { FormInput } from "@/components/FormInput";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import { useNavigate } from "react-router-dom";
+import { useGlobalModalContext } from "@/components/Modal";
 
 export default function TravellerDetails() {
+  const { showModal } = useGlobalModalContext();
   const navigate = useNavigate();
   return (
     <>
       <MainLayout>
-        <TravellerDetailsPageContainer>
+        <TravelerDetailsPageContainer>
           <BookingProgressBar>
             <div className="progress-step step-1 passed-point">
               <div>
@@ -75,7 +77,7 @@ export default function TravellerDetails() {
             </div>
           </BookingProgressBar>
           <H3 padding="76.8px 0 0 42px">Traveller Details</H3>
-          <TravellerDetailsFormContainer>
+          <TravelerDetailsFormContainer>
             <div className="detail-form">
               <ContactForm
                 isPrimaryContact
@@ -282,7 +284,25 @@ export default function TravellerDetails() {
                   <div className="line">
                     <p>
                       Taxes and fees{" "}
-                      <ReactSVG className="icon" src={IMAGES.mark} />
+                      <ReactSVG
+                        className="icon"
+                        src={IMAGES.mark}
+                        onClick={() => {
+                          showModal("text", {
+                            title: "Taxes & fees",
+                            paragraph: `This charge includes estimated amounts the travel service provider
+                        (i.e. hotel, car rental company) pays for their taxes, and/or taxes
+                        that we pay, to taxing authorities on your booking (including but
+                        not limited to, sales, occupancy, and value added tax). This amount
+                        may also include any amounts charged to us for resort fees, cleaning
+                        fees, and other fees and/or a fee we, the hotel supplier and/ or the
+                        site you booked on, retain as part of the compensation for our
+                        and/or their services, which varies based on factors such as
+                        location, the amount, and how you booked.`,
+                            details: {},
+                          });
+                        }}
+                      />
                     </p>
                     <span>$XXX</span>
                   </div>
@@ -388,8 +408,8 @@ export default function TravellerDetails() {
                 </p>
               </div>
             </div>
-          </TravellerDetailsFormContainer>
-        </TravellerDetailsPageContainer>
+          </TravelerDetailsFormContainer>
+        </TravelerDetailsPageContainer>
       </MainLayout>
     </>
   );

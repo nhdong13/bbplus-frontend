@@ -1,5 +1,4 @@
-import IMAGES from "@/assets/images";
-import { BREAKPOINTS } from "@/utils/breakpoints";
+
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
@@ -74,7 +73,7 @@ const BookingProgressBar = styled.div`
   }
 `;
 
-const TravellerDetailsFormContainer = styled.div`
+const TravelerDetailsFormContainer = styled.div`
   width: 100%;
   display: flex;
 
@@ -241,6 +240,7 @@ const TravellerDetailsFormContainer = styled.div`
           height: fit-content;
           display: inline-block;
           vertical-align: middle;
+          cursor: pointer;
           svg {
             width: 26px;
             height: 26px;
@@ -352,13 +352,13 @@ const TravellerDetailsFormContainer = styled.div`
   }
 `;
 
-const TravellerDetailsPageContainer = styled.div`
+const TravelerDetailsPageContainer = styled.div`
   width: 1440px;
   padding: 50px 240px;
 `;
 
 export {
   BookingProgressBar,
-  TravellerDetailsFormContainer,
-  TravellerDetailsPageContainer,
+  TravelerDetailsFormContainer,
+  TravelerDetailsPageContainer,
 };

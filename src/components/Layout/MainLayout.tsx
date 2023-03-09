@@ -11,7 +11,7 @@ export default function MainLayout({ children, hasDivider }: MainLayout) {
   return (
     <>
       <Header hasDivider={hasDivider} />
-      <GlobalModal>{children}</GlobalModal>
+      <>{children}</>
       <Footer />
     </>
   );

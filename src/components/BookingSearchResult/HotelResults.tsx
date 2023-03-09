@@ -92,9 +92,9 @@ export default function HotelResults() {
                             />
                           );
                         })
-                      : result.roomOptions.map((item) => (
+                      : result.roomOptions.map((item, index) => (
                           <RoomCard
-                            key={item.title}
+                            key={item.title + index}
                             roomOptions={[item]}
                             type={result.type}
                           ></RoomCard>

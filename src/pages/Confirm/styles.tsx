@@ -29,6 +29,7 @@ export const StyledConfirmationPage = styled.div`
     display: inline-block;
     height: fit-content;
     vertical-align: middle;
+    cursor: pointer;
     svg {
       width: 24px;
       height: 24px;

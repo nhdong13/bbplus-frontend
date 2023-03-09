@@ -18,18 +18,18 @@ import { useState } from "react";
 import { GradientButton } from "../Button";
 import { COLORS } from "@/utils/colors";
 import { ONE_WAY_SEAT, RETURN_SEAT } from "@/utils/dataTest";
+import Dropdown from "../Dropdown/Dropdown";
 
 interface IRoomTransfer extends IModal {}
 
 const TAB = ["option", "about"];
 const OPTION = ["one_way", "return"];
-export default function RoomTransfer({
-  title,
-  isOpen,
-  onCloseModal,
-}: IRoomTransfer) {
+const EXPAND = ["cancellation", "luggage", "waiting"];
+export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
   const [selectedTab, setSelectedTab] = useState<string>(TAB[0]);
   const [selectedOption, setSelectedOption] = useState<string>(OPTION[0]);
+  const [expand, setExpand] = useState<string[]>([]);
+
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModal width="800px">
@@ -160,7 +160,7 @@ export default function RoomTransfer({
               </Options>
             </div>
             <div className="tab-panel" hidden={selectedTab !== TAB[1]}>
-              <Span className="paragraph" fontSize="12px">
+              <Span className="paragraph" fontSize="16px">
                 Tewaka Fiji provides genuinely unique experiences for travel in
                 Fiji. From the very moment you arrive at Nadi International
                 Airport, the team will be ready to personally meet you at the
@@ -169,9 +169,53 @@ export default function RoomTransfer({
                 hotel will be seamless as you ensure a carefree and efficient
                 facilitation of your transfer. Your driver for the transfer will
                 provide a brief outline of the journey along with some
-                highlights that may interest you.<br/><br/>Head back to the airport in
-                style with an included return.<br/><br/>Fine Print
+                highlights that may interest you.
+                <br />
+                <br />
+                Head back to the airport in style with an included return.
+                <br />
+                <br />
+                Fine Print
               </Span>
+              <Dropdown
+                className="dropdown"
+                title="Cancellation policy"
+                expand={expand.includes(EXPAND[0])}
+                onExpand={() => {}}
+                details={<></>}
+                expandIcon={
+                  <ReactSVG
+                    className="expand-icon"
+                    src={IMAGES.iconDropDownBlue}
+                  />
+                }
+              ></Dropdown>
+              <Dropdown
+                className="dropdown"
+                title="Luggage"
+                expand={expand.includes(EXPAND[1])}
+                onExpand={() => {}}
+                details={<></>}
+                expandIcon={
+                  <ReactSVG
+                    className="expand-icon"
+                    src={IMAGES.iconDropDownBlue}
+                  />
+                }
+              ></Dropdown>
+              <Dropdown
+                className="dropdown"
+                title="Waiting time changes"
+                expand={expand.includes(EXPAND[2])}
+                onExpand={() => {}}
+                details={<></>}
+                expandIcon={
+                  <ReactSVG
+                    className="expand-icon"
+                    src={IMAGES.iconDropDownBlue}
+                  />
+                }
+              ></Dropdown>
             </div>
           </Details>
         </Container>
@@ -245,8 +289,28 @@ const Details = styled.div`
   .tab-panel {
     width: 100%;
     .paragraph {
-      line-height: 16px;
+      line-height: 20px;
       display: block;
+      margin-bottom: 12px;
+    }
+    .dropdown .title {
+      font-size: 16px;
+    }
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+    .MuiButtonBase-root {
+      padding: 0;
+      min-height: 32px;
+      position: relative;
+    }
+    .MuiAccordionSummary-content {
+      margin: 4px 0;
+      padding-left: 24px;
+    }
+    .MuiAccordionSummary-expandIconWrapper {
+      position: absolute;
+      left: 0px;
     }
   }
 `;

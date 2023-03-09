@@ -9,9 +9,11 @@ import { HOTEL_RULES } from "@/utils/dataTest";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { useNavigate } from "react-router-dom";
+import { useGlobalModalContext } from "@/components/Modal";
 
 export default function Confirm() {
   const navigate = useNavigate();
+  const { showModal } = useGlobalModalContext();
   return (
     <>
       <Helmet>
@@ -111,7 +113,26 @@ export default function Confirm() {
                     <Span>$XXX</Span>
                     <Span>
                       Taxes and fees{" "}
-                      <ReactSVG className="mark" src={IMAGES.iconInfo} />: $XXX
+                      <ReactSVG
+                        className="mark"
+                        src={IMAGES.iconInfo}
+                        onClick={() => {
+                          showModal("text", {
+                            title: "Taxes & fees",
+                            paragraph: `This charge includes estimated amounts the travel service provider
+                      (i.e. hotel, car rental company) pays for their taxes, and/or taxes
+                      that we pay, to taxing authorities on your booking (including but
+                      not limited to, sales, occupancy, and value added tax). This amount
+                      may also include any amounts charged to us for resort fees, cleaning
+                      fees, and other fees and/or a fee we, the hotel supplier and/ or the
+                      site you booked on, retain as part of the compensation for our
+                      and/or their services, which varies based on factors such as
+                      location, the amount, and how you booked.`,
+                            details: {},
+                          });
+                        }}
+                      />
+                      : $XXX
                     </Span>
                     <Span fontSize="25px" fontWeight="bold">
                       Total Price: $XXX
@@ -230,7 +251,7 @@ export default function Confirm() {
                   Hotel Rules
                 </Span>
                 {HOTEL_RULES.map((rule) => (
-                  <div className="line">
+                  <div key={rule.name} className="line">
                     <Span fontWeight="600">{rule.name}</Span>
                     <Span>{rule.value}</Span>
                   </div>
@@ -243,6 +264,12 @@ export default function Confirm() {
                 text="Amend Booking"
                 isSelected
                 color={COLORS.verdunGreen}
+                handleSubmit={() => {
+                  console.log("loggg");
+                  showModal("text", {
+                    paragraph: "Hello",
+                  });
+                }}
               />
               <GradientButton
                 className="btn"

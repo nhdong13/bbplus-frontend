@@ -2,20 +2,23 @@ import React, { useState, createContext, useContext } from "react";
 import RoomExtras from "./RoomExtras";
 import RoomModal from "./RoomModal";
 import RoomTransfer from "./RoomTransfer";
+import TextModal from "./TextModal";
 
 export const MODAL_TYPES = {
   ROOM_MODAL: "room_details",
   ROOM_EXTRAS: "room_extras",
   ROOM_TRANSFER: "room_transfer",
+  TEXT: "text",
 };
 
 const MODAL_COMPONENTS: { [T: string]: any } = {
   [MODAL_TYPES.ROOM_MODAL]: RoomModal,
   [MODAL_TYPES.ROOM_EXTRAS]: RoomExtras,
   [MODAL_TYPES.ROOM_TRANSFER]: RoomTransfer,
+  [MODAL_TYPES.TEXT]: TextModal,
 };
 
-type GlobalModalContext = {
+type IGlobalModalContext = {
   showModal: (modalType: string, modalProps?: any) => void;
   hideModal: () => void;
   store:
@@ -25,7 +28,7 @@ type GlobalModalContext = {
     | undefined;
 };
 
-const initalState: GlobalModalContext = {
+const initialState: IGlobalModalContext = {
   showModal: () => {},
   hideModal: () => {},
   store: {
@@ -33,7 +36,7 @@ const initalState: GlobalModalContext = {
   },
 };
 
-const GlobalModalContext = createContext(initalState);
+const GlobalModalContext = createContext(initialState);
 export const useGlobalModalContext = () => useContext(GlobalModalContext);
 
 interface GlobalModal {

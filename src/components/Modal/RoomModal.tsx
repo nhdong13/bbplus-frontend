@@ -9,7 +9,7 @@ import IMAGES from "@/assets/images";
 import { useState } from "react";
 import { IModal } from "@/utils/types/Modal";
 
-interface IRoomModal extends IModal{
+interface IRoomModal extends IModal {
   title: string;
   details: {
     [T: string]: {
@@ -48,33 +48,25 @@ export default function RoomModal({
             <Benefits>
               {RoomModalDetail.benefits.map((item) => {
                 return (
-                  <div className="item">
+                  <div className="item" key={item}>
                     <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
                     <Span>{item}</Span>
                   </div>
                 );
               })}
             </Benefits>
-            <Span>
+            <Span margin="12px 0">
               <Span fontWeight="bold">Size: &nbsp;</Span>
               {RoomModalDetail.area}
             </Span>
-            <Span>{RoomModalDetail.bed} king bed</Span>
+            <Span>
+              <Span fontWeight="bold">Bed type: &nbsp;</Span>{" "}
+              {RoomModalDetail.bed} king bed
+            </Span>
             <Span>
               <Span fontWeight="bold">Max persons: &nbsp;</Span>
               {RoomModalDetail.maxPersons}
             </Span>
-            <Span margin="28px 0 0 0" fontWeight="bold">
-              In the bathroom:
-            </Span>
-            <Benefits>
-              {RoomModalDetail.bathroom.map((item) => (
-                <div className="item">
-                  <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
-                  <Span>{item}</Span>
-                </div>
-              ))}
-            </Benefits>
             <Span margin="28px 0 0 0">
               <Span fontWeight="bold">View: &nbsp;</Span>
               {RoomModalDetail.view}
@@ -84,7 +76,7 @@ export default function RoomModal({
             </Span>
             <Facilities>
               {RoomModalDetail.facilities.map((item) => (
-                <div className="item">
+                <div className="item" key={item}>
                   <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
                   <Span>{item}</Span>
                 </div>
@@ -95,7 +87,7 @@ export default function RoomModal({
             </Span>
           </Details>
           <RoomImage>
-            <img className="room-image" src={IMAGES.hotelBg} alt="" />
+            <img className="room-image" src={selectedImage} alt="" />
             <ImageCarousel
               width="400px"
               height="64px"
@@ -113,6 +105,25 @@ export default function RoomModal({
             />
           </RoomImage>
         </Container>
+        <Span margin="28px 0 0 0" fontWeight="bold">
+          Non-Refundable:
+        </Span>
+        <Span>
+          If you change or cancel your booking you will not get a refund or
+          credit to use for a future stay. This policy will apply regardless of
+          COVID-19, subject to any local consumer laws.
+        </Span>
+        <Span margin="28px 0 0 0" fontWeight="bold">
+          Fully Refundable before Mar 6
+        </Span>
+        <Span lineHeight="28px">
+          Cancel your reservation before Mar 6 at 11:59pm, and you'll get a full
+          refund.
+          <br />
+          After that, you won't get a refund.
+          <br />
+          Times are based on the property’s local time.
+        </Span>
       </StyledRoomModal>
     </Modal>
   );
@@ -131,6 +142,9 @@ const StyledRoomModal = styled.div`
   transform: translateX(-50%) translateY(-50%);
   border-radius: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  span {
+    display: block;
+  }
   .close-btn {
     cursor: pointer;
   }
@@ -175,8 +189,10 @@ const Details = styled.div`
 `;
 
 const Facilities = styled.div`
+  margin-top: 8px;
   display: grid;
   grid-template-columns: 50% 50%;
+  row-gap: 12px;
 `;
 
 const RoomImage = styled.div`
