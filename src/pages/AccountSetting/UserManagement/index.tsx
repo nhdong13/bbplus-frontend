@@ -2,6 +2,7 @@ import useAccountSetting from "../hooks";
 import {
   LegendBox,
   LegendTitle,
+  TextErrorInput
 } from "../styles";
 
 import styled from "styled-components";
@@ -67,8 +68,9 @@ function UserManagement() {
                 hasFormInput
                 formInputWidth="115px"
                 formInputLabel="0%"
+                isError={true}
               />
-
+              <TextErrorInput className="err">From 0.01 up to 99.99</TextErrorInput>
               <LegendComboBox
                 legendBoxTitle={'Hide Sub User Markup'}
                 isCheckboxMobile={wd <= 430}
@@ -96,9 +98,14 @@ const RequireDetailContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 148px;
-
+  .err {
+    display: none;
+  }
   @media ${BREAKPOINTS.laptop} {
     gap: 10px;
+    .err {
+      display: block;
+    }
   }
 
   .require-detail__left-container,

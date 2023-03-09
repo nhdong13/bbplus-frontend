@@ -48,7 +48,7 @@ function AccountSetting() {
         <AccountSettingContainer id="account-setting">
           <BreadcrumbContainer>
             <BreadcrumbBody>
-              {breadCrumbList?.map((item, key: number) => {
+              {breadCrumbList?.map((item: any, key: number) => {
                 return (
                   <BreadcrumbItem key={key} activeColor={currentItem === item.id}
                     onClick={() => setCurrentItem(item.id)}>{item.title}</BreadcrumbItem>

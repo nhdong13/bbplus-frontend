@@ -44,8 +44,8 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
                 <LegendItem>
                   <LegendComboBox
                     hasFormInput
-                    legendBoxTitle={'Phone number'}
-                    formInputLabel={'Phone number'}
+                    legendBoxTitle={'Phone Number'}
+                    formInputLabel={'Phone Number'}
                   />
                 </LegendItem>
                 <LegendItem>
@@ -85,8 +85,8 @@ export default function PlatformSetting({ onClickNextStep }: IPros) {
               <LegendItem>
                 <LegendComboBox
                   hasFormInput
-                  legendBoxTitle={'Phone number'}
-                  formInputLabel={'Phone number'}
+                  legendBoxTitle={'Phone Number'}
+                  formInputLabel={'Phone Number'}
                 />
               </LegendItem>
             </LegendBox>

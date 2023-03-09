@@ -59,13 +59,16 @@ const AccountSettingContainer = styled.div`
           display: grid;
         }
         legend {
-          margin-bottom: 0;
+          margin-bottom: 15px;
         }
       }
       .step-user {
         .legend-box-container {
           margin-bottom: 10px;
           gap: 10px;
+        }
+        .isError {
+          margin-bottom: 0;
         }
         .first {
           font-family: ${FONTS.manrope};
@@ -225,8 +228,7 @@ const LegendBox = styled.fieldset`
 `;
 
 const LabelText = styled.label`
-  font-family: ${FONTS.manropeRegular};
-  font-weight: normal;
+  font-family: ${FONTS.manropeBold};
   font-size: 16px;
   text-align: left;
   color: ${COLORS.black};

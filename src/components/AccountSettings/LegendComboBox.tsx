@@ -77,7 +77,8 @@ interface ILegendBox {
   hasFormInput?: boolean
   hasCheckBox?: boolean
   formInputWidth?: string,
-  isCheckboxMobile?: boolean
+  isCheckboxMobile?: boolean,
+  isError?: boolean
 }
 
 export default function LegendComboBox({
@@ -88,12 +89,13 @@ export default function LegendComboBox({
   hasFormInput,
   hasCheckBox,
   formInputWidth,
-  isCheckboxMobile
+  isCheckboxMobile,
+  isError
 }: ILegendBox) {
   return (
     <LegendItem>
       {!isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
-      <div className={`legend-box-container ${isCheckboxMobile ? "item-center" : "item-checkbox-desk"}`}>
+      <div className={`legend-box-container ${isError ? 'isError' : ''} ${isCheckboxMobile ? "item-center" : "item-checkbox-desk"}`}>
         {hasPhoneInput &&
           <PhoneInput
             label="Phone number"
@@ -104,15 +106,13 @@ export default function LegendComboBox({
           />
         }
         {hasSelectDropDown &&
-          <LegendField>
-            <Select
-              label="Percentage"
-              width="147px"
-              maxHeight="68px"
-              marginTop="0px"
-              padding="16px"
-            />
-          </LegendField>
+          <Select
+            label="Percentage"
+            width="147px"
+            maxHeight="68px"
+            marginTop="0px"
+            padding="16px"
+          />
         }
         {hasFormInput &&
           <FormInput
