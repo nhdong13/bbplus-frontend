@@ -1,13 +1,7 @@
 
 import { GradientButton } from "@/components/Button";
 import Select from "@/components/Select";
-import IMAGES from "@/assets/images";
 import MainLayout from "@/components/Layout/MainLayout";
-import BookingSearchResult from "@/components/BookingSearchResult";
-import HorizontalContainer from "@/components/Layout/HorizontalContainer";
-import { CarouselProvider } from "pure-react-carousel";
-import { hotels } from "@/utils/tempData";
-import CarouselSlider from "@/components/Carousel/index";
 import { H4, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 
@@ -19,10 +13,6 @@ import {
   SearchResultContainer,
   Breadcrumb,
   BreadcrumbItem,
-  ListResultContainer,
-  HotelCardContainer,
-  ShowMapButton,
-  CarouselWrapper
 } from "./styles";
 
 import {
@@ -30,17 +20,13 @@ import {
   SearchOptionItem,
   SearchOptionSelect,
 } from './temp/styles'
-
-import useHome from "@/pages/Home/hooks";
+import GridView from "./GridView";
+import Package from "./PackageView";
+import { useState } from "react";
 
 export default function SearchResult() {
+  const [type, setType] = useState<number>(0);
 
-  const {
-    slideCount,
-    setSlideCount,
-    currentSlide,
-    setCurrentSlide
-  } = useHome();
 
   const optionFilter = [
     { _id: 1, label: "Show All" },
@@ -109,12 +95,10 @@ export default function SearchResult() {
                   options={optionFilter}
                   marginTop="0px"
                   maxHeight="48px"
-                  typeIconDown={true}
                 />
                 <Select
                   customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
                   marginTop="0px"
-                  typeIconDown={true}
                   maxHeight="48px"
                 />
               </div>
@@ -123,8 +107,8 @@ export default function SearchResult() {
               <SearchOptionItem className="choose">
                 <div className="mt-10">Choose your option</div>
                 <div className="flex-option">
-                  <div className="btn">Grid view</div>
-                  <div className="btn active">Packages</div>
+                  <div className={`btn ${type === 0 ? ' active' : ''}`} onClick={() => setType(0)}>Grid view</div>
+                  <div className={`btn ${type === 1 ? ' active' : ''}`} onClick={() => setType(1)}>Packages</div>
                 </div>
               </SearchOptionItem>
               <SearchOptionSelect>
@@ -147,7 +131,9 @@ export default function SearchResult() {
             </div>
             <div className="title-mobile">Fiji: 134 properties found</div>
           </SearchOption>
-          {
+
+
+          {/* {
             [1, 2, 3].map(el => {
               return (
                 <ListResultContainer key={el}>
@@ -202,8 +188,16 @@ export default function SearchResult() {
                 </ListResultContainer>
               )
             })
-          }
+          } */}
         </SearchResultContainer>
+        {
+          type === 0
+            ?
+            <GridView />
+            :
+            <Package />
+
+        }
       </MainLayout>
     </>
   );

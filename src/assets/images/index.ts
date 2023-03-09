@@ -37,6 +37,7 @@ import backgroundAuthen from "./background-authen.jpg";
 import iconArrowDown from "./icon-arrow-down.svg";
 import bgEmptyImage from "./bg-empty-image.svg";
 import iconRemove from "./icon-remove.svg";
+import imgListView from "./img-list-view.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -77,7 +78,8 @@ const IMAGES = {
   backgroundAuthen,
   iconArrowDown,
   bgEmptyImage,
-  iconRemove
+  iconRemove,
+  imgListView
 }
 
 export default IMAGES;
