@@ -127,9 +127,9 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
         </LegendBox>
         <LegendBox className="legenbox-right item-finance">
           <LegendTitle>Other settings</LegendTitle>
-          <LegendItem>
+          <LegendItem className="item-right">
             <LabelText>Choose currency</LabelText>
-            <LegendField className="currency">
+            <LegendField className="currency" isError={true}>
               <Select
                 label="Percentage"
                 width="147px"

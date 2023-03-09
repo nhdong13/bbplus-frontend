@@ -131,7 +131,7 @@ export default function LegendComboBox({
                 '&.Mui-checked': {
                   color: "#2383DA",
                 },
-              }} />} label="" />
+              }} classes={{ root: 'custom-checkbox-root' }} />} label="" />
             </FormGroup>
             {isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
           </React.Fragment>
