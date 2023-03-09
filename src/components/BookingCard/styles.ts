@@ -115,6 +115,9 @@ const StyledBookingCard = styled.div`
     button {
       margin: auto;
       width: 100%;
+      p {
+        font-family: ${FONTS.manropeBold};
+      }
       @media ${BREAKPOINTS.laptop} {
         width: 140px;
         height: 39px;
@@ -122,6 +125,9 @@ const StyledBookingCard = styled.div`
         align-items: center;
         justify-content: center;
         padding: 0;
+        p {
+          font-size: 14px;
+        }
       }
     }
   }
