@@ -8,6 +8,9 @@ const StyledAccountSetting = styled.div`
   .label {
     border: 2px solid ${COLORS.black} !important
   }
+  .MuiSvgIcon-root {
+    font-size: 40px;
+  }
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
     margin-top: 30px;
@@ -17,6 +20,9 @@ const StyledAccountSetting = styled.div`
         width: 12px;
         height: 30px;
       }
+    }
+    .MuiSvgIcon-root {
+      font-size: 22px;
     }
   }
 `
@@ -28,6 +34,7 @@ const AccountSettingContainer = styled.div`
     margin: auto;
     .table-desktop {
       display: block;
+      margin-bottom: 48px;
     }
     .table-mobile {
       display: none;
@@ -85,6 +92,7 @@ const AccountSettingContainer = styled.div`
         }
         .second {
           font-size: 16px;
+          margin-bottom: 10px;
         }
       }
       .table-desktop {
@@ -141,6 +149,9 @@ const AccountSettingContainer = styled.div`
     .legenbox-right {
       margin-left: 28px;
       padding-right: 28px;
+      .item-right {
+        margin-bottom: 18px;
+      }
       .currency {
         width: 286px;
       }
@@ -151,6 +162,7 @@ const AccountSettingContainer = styled.div`
         padding-bottom: 20px;
         .currency {
           width: 100%;
+          margin-bottom: 10px;
         }
       }
     }
@@ -197,7 +209,8 @@ const BreadcrumbItem = styled.div.attrs((props: {
       content: "  >";
       padding: 8px;
       font-size: 20px;
-      color: ${COLORS.black}
+      color: ${COLORS.black};
+      font-family: ${FONTS.manrope}
     }
   }
 `;
@@ -239,6 +252,7 @@ const LegendBox = styled.fieldset`
   }
   .second {
     font-size: 20px;
+    margin-bottom: 4px;
   }
   .red-start {
     color: red;

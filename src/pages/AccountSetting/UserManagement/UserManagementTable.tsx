@@ -136,7 +136,9 @@ const StyledUserManagementTable = styled.div`
       display: flex;
       gap: 9px;
     }
-
+    p {
+      font-size: 16px;
+    }
     .button-edit, .button-delete {
       box-shadow: none;
       font-family: ${FONTS.manropeBold};
