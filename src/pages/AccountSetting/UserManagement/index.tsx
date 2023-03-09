@@ -113,9 +113,17 @@ const RequireDetailContainer = styled.div`
   .require-detail__right-container {
     width: 100%;
     max-width: 580px;
-
+    .legend-items {
+      margin-bottom: 44px;
+      &:last-child {
+        margin-bottom: 12px;
+      }
+    }
     @media ${BREAKPOINTS.laptop} {
       max-width: unset;
+      .legend-item {
+        margin-bottom: 0;
+      }
     }
   }
 

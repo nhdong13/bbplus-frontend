@@ -1,4 +1,4 @@
-import useAccountSetting from "../hooks";
+import useWindowSize from "@/utils/windowResize";
 import {
   LegendBox,
   LabelText,
@@ -17,7 +17,8 @@ interface IPros {
 }
 
 function PreferenceSetting({ onClickNextStep }: IPros) {
-  const { } = useAccountSetting();
+  const wd = useWindowSize();
+
   return (
     <div className="body-section">
       <div className="body-section-item step-show-label">
@@ -32,6 +33,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -51,6 +53,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -70,6 +73,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -89,6 +93,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -108,6 +113,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -119,7 +125,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
         </LegendBox>
-        <LegendBox className="legenbox-right">
+        <LegendBox className="legenbox-right item-finance">
           <LegendTitle>Other settings</LegendTitle>
           <LegendItem>
             <LabelText>Choose currency</LabelText>
@@ -130,6 +136,7 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
             </LegendField>
           </LegendItem>

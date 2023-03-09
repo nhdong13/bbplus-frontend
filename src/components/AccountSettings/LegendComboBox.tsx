@@ -93,7 +93,7 @@ export default function LegendComboBox({
   isError
 }: ILegendBox) {
   return (
-    <LegendItem>
+    <LegendItem className="legend-items">
       {!isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
       <div className={`legend-box-container ${isError ? 'isError' : ''} ${isCheckboxMobile ? "item-center" : "item-checkbox-desk"}`}>
         {hasPhoneInput &&

@@ -104,7 +104,7 @@ const AccountSettingContainer = styled.div`
       }
     }
     .fill-information-title {
-      font-weight: 400;
+      font-family: ${FONTS.manropeBold};
       font-size: 18px;
       line-height: 35px;
       margin-bottom: 49px;
@@ -196,6 +196,8 @@ const BreadcrumbItem = styled.div.attrs((props: {
     &:before {
       content: "  >";
       padding: 8px;
+      font-size: 20px;
+      color: ${COLORS.black}
     }
   }
 `;
@@ -235,6 +237,9 @@ const LegendBox = styled.fieldset`
       margin-bottom: 10px;
     }
   }
+  .second {
+    font-size: 20px;
+  }
   .red-start {
     color: red;
   }
@@ -258,7 +263,7 @@ const LegendTitle = styled.legend`
   text-align: left;
   color: #005cff;
   padding-right: 40px;
-  padding-left: 5px;
+  padding-left: 10px;
   @media ${BREAKPOINTS.laptop} {
     color: #0079CF;
     font-size: 12px;
@@ -352,13 +357,13 @@ const ButtonNextStep = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${COLORS.white};
+  font-weight: 700;
   @media ${BREAKPOINTS.laptop} {
     width: 124px;
     height: 36px;
     border-radius: 5px;
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: 700;
   }
 `;
 

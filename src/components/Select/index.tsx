@@ -20,7 +20,7 @@ interface IProps {
   width?: string,
   padding?: string,
   handleChange?: any,
-  typeIconDown?: boolean,
+  isIconBlue?: boolean,
   options?: Array<IOption>
 }
 
@@ -37,7 +37,7 @@ const Select = ({
   width,
   padding,
   handleChange,
-  typeIconDown,
+  isIconBlue,
   options
 }: IProps) => {
 
@@ -79,7 +79,7 @@ const Select = ({
               :
               <div>{label?.concat(isImportant ? " *" : " ")}</div>
           }
-          <img src={IMAGES.iconArrowDown} width="10px" height="5px" />
+          <img src={isIconBlue ? IMAGES.iconDropDownBlue : IMAGES.iconArrowDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
       {
