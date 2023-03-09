@@ -67,6 +67,9 @@ const AccountSettingContainer = styled.div`
           margin-bottom: 10px;
           gap: 10px;
         }
+        .isError {
+          margin-bottom: 0;
+        }
         .first {
           font-family: ${FONTS.manrope};
         }
@@ -225,8 +228,7 @@ const LegendBox = styled.fieldset`
 `;
 
 const LabelText = styled.label`
-  font-family: ${FONTS.manropeRegular};
-  font-weight: normal;
+  font-family: ${FONTS.manropeBold};
   font-size: 16px;
   text-align: left;
   color: ${COLORS.black};
