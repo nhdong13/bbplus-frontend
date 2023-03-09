@@ -55,6 +55,7 @@ import wifi from "./wifi.svg";
 import parking from "./parking.svg";
 import tennis from "./tennis.svg";
 import search from "./search.svg";
+import mark from "./icon-mark.svg";
 
 
 const IMAGES = {
@@ -114,7 +115,8 @@ const IMAGES = {
   wifi,
   parking,
   tennis,
-  search
+  search,
+  mark
 }
 
 export default IMAGES;

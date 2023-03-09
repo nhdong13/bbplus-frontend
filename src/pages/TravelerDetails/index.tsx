@@ -11,7 +11,8 @@ import {
 } from "./styles";
 import { ContactForm } from "@/components/ContactForm";
 import { FormInput } from "@/components/FormInput";
-import { Checkbox } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { ReactSVG } from "react-svg";
 
 export default function TravellerDetails() {
   return (
@@ -274,7 +275,10 @@ export default function TravellerDetails() {
                   </div>
                   <div className="divider" />
                   <div className="line">
-                    <p>Taxes and fees</p>
+                    <p>
+                      Taxes and fees{" "}
+                      <ReactSVG className="icon" src={IMAGES.mark} />
+                    </p>
                     <span>$XXX</span>
                   </div>
                   <div className="divider" />
@@ -292,12 +296,33 @@ export default function TravellerDetails() {
                     <span>$XXX</span>
                   </div>
                   <div className="divider" />
-                  <div className="line">
-                    <p>Add Extra Markup</p>
+                  <div className="line last">
+                    <p>
+                      Add Extra Markup{" "}
+                      <ReactSVG className="icon" src={IMAGES.mark} />
+                    </p>
                   </div>
-                  <div className="checkbox-group">
-                    <Checkbox />
-                    <Checkbox />
+                  <div className="action-bottom">
+                    <div className="checkbox-group">
+                      <FormControlLabel
+                        control={<Checkbox title="Fixed" />}
+                        label="Fixed"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox title="Percentage" />}
+                        label="Percentage"
+                      />
+                    </div>
+                    <GradientButton
+                      className="btn"
+                      text="XX"
+                      color="#fff"
+                      textColor="black"
+                      width="53px"
+                      height="27px"
+                      fontWeight="500"
+                      isSelected={true}
+                    />
                   </div>
                 </div>
                 <div className="payment-btn">
@@ -307,6 +332,7 @@ export default function TravellerDetails() {
                     isSelected={true}
                     height="62px"
                     borderRadius="7.5px"
+                    fontWeight="bold"
                   />
                 </div>
               </div>

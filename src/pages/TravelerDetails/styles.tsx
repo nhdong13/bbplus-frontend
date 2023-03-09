@@ -157,6 +157,10 @@ const TravellerDetailsFormContainer = styled.div`
             margin-bottom: 0;
           }
         }
+        a {
+          text-decoration: none;
+          color: ${COLORS.blueRibbon};
+        }
       }
 
       .first-line-container,
@@ -196,7 +200,6 @@ const TravellerDetailsFormContainer = styled.div`
 
     .total-price-container {
       width: calc(100% - 76px);
-      height: 656px;
       background: ${COLORS.cyprus};
       padding: 30px 40px 21px 36px;
       color: ${COLORS.white};
@@ -232,16 +235,74 @@ const TravellerDetailsFormContainer = styled.div`
         p {
           text-align: left;
         }
+        .icon {
+          margin-left: 4px;
+          width: fit-content;
+          height: fit-content;
+          display: inline-block;
+          vertical-align: middle;
+          svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
       }
-      p.note{
+      .last {
+        padding-bottom: 0;
+      }
+      p.note {
         font-size: 12px;
         font-weight: 300;
         text-align: left;
         font-style: italic;
         margin-bottom: 15px;
       }
-      .checkbox-group{
-        text-align: left;
+      .checkbox-group {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        .MuiButtonBase-root {
+          width: 24px;
+          height: 24px;
+          padding: 0;
+          background: linear-gradient(#fff, #fff) padding-box,
+            ${COLORS.gradient2};
+          border-radius: 6px;
+          border: 2px solid transparent;
+        }
+        .MuiCheckbox-root {
+          .MuiSvgIcon-root {
+            display: none;
+          }
+        }
+        .Mui-checked {
+          .MuiSvgIcon-root {
+            display: block;
+            color: rgba(0, 159, 199, 1);
+          }
+        }
+        .MuiTypography-root {
+          font-family: Manrope;
+          margin-left: 8px;
+        }
+        .MuiFormControlLabel-root {
+          margin: 0;
+        }
+      }
+      .action-bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+        .btn {
+          border-radius: 8px;
+        }
+        .btn span {
+          padding: 0;
+        }
       }
     }
 
@@ -251,6 +312,15 @@ const TravellerDetailsFormContainer = styled.div`
       margin-top: 23px;
       background: ${COLORS.lightGray};
       padding: 29px 33px;
+
+      .divider {
+        margin: 17px 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: ${COLORS.blueRibbon};
+      }
 
       p {
         font-size: 20px;
