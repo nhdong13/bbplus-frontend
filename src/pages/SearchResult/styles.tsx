@@ -341,6 +341,7 @@ const HotelCardContainer = styled.div`
     width: 421px;
     margin-right: 15px;
     margin-top: 78px;
+    background: ${COLORS.white};
     @media ${BREAKPOINTS.laptop} {
       margin: 0 auto;
       width: auto;
@@ -470,9 +471,13 @@ const ShowMapButton = styled.button`
   
   h5 {
     color: ${COLORS.toryBlue};
+    font-family: ${FONTS.manropeRegular};
   }
   @media ${BREAKPOINTS.laptop} {
     border-radius: 5px;
+    h5 {
+      font-size: 14px;
+    }
   }
 `
 
