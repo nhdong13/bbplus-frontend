@@ -87,9 +87,6 @@ const AccountSettingContainer = styled.div`
         .isError {
           margin-bottom: 0;
         }
-        .first {
-          font-family: ${FONTS.manrope};
-        }
         .second {
           font-size: 16px;
           margin-bottom: 10px;

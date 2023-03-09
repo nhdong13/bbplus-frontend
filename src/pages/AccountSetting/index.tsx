@@ -20,7 +20,7 @@ import { AuthenticationLogoMobile } from "@/pages/Login/styles";
 
 function AccountSetting() {
   const { } = useAccountSetting();
-  const [currentItem, setCurrentItem] = useState<number>(2);
+  const [currentItem, setCurrentItem] = useState<number>(0);
 
   const breadCrumbList = [
     {
