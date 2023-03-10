@@ -105,7 +105,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   <Span fontWeight="bold">Departure</Span>
                   {ONE_WAY_SEAT.map((item) => {
                     return (
-                      <div className="option">
+                      <div className="option" key={item}>
                         <Span>{item}</Span>
                         <Span fontWeight="bold">$XXX</Span>
                         <FormControl fullWidth>
@@ -136,7 +136,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   </Span>
                   {RETURN_SEAT.map((item) => {
                     return (
-                      <div className="option">
+                      <div className="option" key={item}>
                         <Span>{item}</Span>
                         <Span fontWeight="bold">$XXX</Span>
                         <FormControl fullWidth>
@@ -285,6 +285,9 @@ const Details = styled.div`
     span {
       color: #aaa;
     }
+  }
+  .MuiButtonBase-root {
+    max-width: 100%;
   }
   .tab-panel {
     width: 100%;

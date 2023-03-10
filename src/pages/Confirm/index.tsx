@@ -264,12 +264,6 @@ export default function Confirm() {
                 text="Amend Booking"
                 isSelected
                 color={COLORS.verdunGreen}
-                handleSubmit={() => {
-                  console.log("loggg");
-                  showModal("text", {
-                    paragraph: "Hello",
-                  });
-                }}
               />
               <GradientButton
                 className="btn"

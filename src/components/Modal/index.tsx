@@ -1,14 +1,16 @@
 import React, { useState, createContext, useContext } from "react";
-import RoomExtras from "./RoomExtras";
-import RoomModal from "./RoomModal";
-import RoomTransfer from "./RoomTransfer";
-import TextModal from "./TextModal";
+import RoomExtras from "./ModalRoomExtras";
+import RoomModal from "./ModalRoomDetails";
+import RoomTransfer from "./ModalRoomTransfer";
+import TextModal from "./ModalText";
+import ModalCalendar from "./ModalCalendar";
 
 export const MODAL_TYPES = {
   ROOM_MODAL: "room_details",
   ROOM_EXTRAS: "room_extras",
   ROOM_TRANSFER: "room_transfer",
   TEXT: "text",
+  CALENDAR: "calendar",
 };
 
 const MODAL_COMPONENTS: { [T: string]: any } = {
@@ -16,6 +18,7 @@ const MODAL_COMPONENTS: { [T: string]: any } = {
   [MODAL_TYPES.ROOM_EXTRAS]: RoomExtras,
   [MODAL_TYPES.ROOM_TRANSFER]: RoomTransfer,
   [MODAL_TYPES.TEXT]: TextModal,
+  [MODAL_TYPES.CALENDAR]: ModalCalendar,
 };
 
 type IGlobalModalContext = {

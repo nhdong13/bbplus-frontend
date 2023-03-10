@@ -32,7 +32,7 @@ const BookingHeader = styled.div`
 const Link = styled.div`
   width: 100%;
   margin: auto;
-  padding: 0px 35px;
+  padding: 0px;
 
   & > div {
     display: flex;

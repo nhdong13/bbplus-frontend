@@ -20,7 +20,6 @@ export default function TextModal({
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledTextModal>
         <Span
-          margin="0 0 20px"
           className="close-btn"
           textAlign="right"
           onClick={onCloseModal}

@@ -20,6 +20,7 @@ export const COLORS: StyledColors = {
   darkSilver: "#B7B7B7",
   doveGray: "#707070",
   grayAf: "#afafaf",
+  gray83: "#838383",
   electricRed: "#E00000",
   eerieBlack: "#1C1B1F",
   flushOrange: "#FF8003",
@@ -64,69 +65,74 @@ export const COLORS: StyledColors = {
   smogray: "#636363",
   lightGray: "#F0F1F2",
   borderGray: "#636363",
-}
+  redF4: "#F4E4E4",
+  redC4: "#C42223",
+};
 interface StyledColors {
-  aliceBlue: string,
-  anakiwa: string,
-  anzac: string,
-  areoBlue: string,
-  antiFlashWhite: string,
-  black: string,
-  blackPearl: string,
-  blushPink: string,
-  blueRibbon: string,
-  blueRYB: string,
-  blueFrench: string,
-  blueWater: string,
-  border: string,
-  bubbles: string,
-  crayola: string,
-  curiousBlue: string,
-  cyprus: string,
-  commandBlue: string,
-  darkSilver: string
-  doveGray: string,
-  grayAf: string,
-  electricRed: string,
-  eerieBlack: string,
-  flushOrange: string,
-  fuchasiaPink: string,
-  lapisLazuli: string,
-  indiaKhaki: string,
-  endeavour: string,
-  gradient1: string,
-  gradient2: string,
-  mercury: string,
-  mistyRose: string,
-  outerSpace: string
-  oxfordBlue: string,
-  onyx: string,
-  persianGreen: string,
-  salem: string,
-  silver: string,
-  snowyMint: string,
-  summerGreen: string,
-  spanishBlue: string
-  spanishOrange: string,
-  verdunGreen: string,
-  textGreen: string,
-  tartOrange: string
-  tealBlue: string,
-  toryBlue: string,
-  red: string,
-  red2: string,
-  rustyNail: string,
-  white: string,
-  darkGreen: string,
-  linkBlue: string,
-  whiteFligt: string,
-  parkinglotGray: string,
-  papayaWhip: string,
-  platinum: string,
-  purple: string,
-  asexualGrey: string,
-  percyBlue: string,
-  smogray: string,
-  lightGray: string,
-  borderGray: string,
+  aliceBlue: string;
+  anakiwa: string;
+  anzac: string;
+  areoBlue: string;
+  antiFlashWhite: string;
+  black: string;
+  blackPearl: string;
+  blushPink: string;
+  blueRibbon: string;
+  blueRYB: string;
+  blueFrench: string;
+  blueWater: string;
+  border: string;
+  bubbles: string;
+  crayola: string;
+  curiousBlue: string;
+  cyprus: string;
+  commandBlue: string;
+  darkSilver: string;
+  doveGray: string;
+  grayAf: string;
+  gray83: string;
+  electricRed: string;
+  eerieBlack: string;
+  flushOrange: string;
+  fuchasiaPink: string;
+  lapisLazuli: string;
+  indiaKhaki: string;
+  endeavour: string;
+  gradient1: string;
+  gradient2: string;
+  mercury: string;
+  mistyRose: string;
+  outerSpace: string;
+  oxfordBlue: string;
+  onyx: string;
+  persianGreen: string;
+  salem: string;
+  silver: string;
+  snowyMint: string;
+  summerGreen: string;
+  spanishBlue: string;
+  spanishOrange: string;
+  verdunGreen: string;
+  textGreen: string;
+  tartOrange: string;
+  tealBlue: string;
+  toryBlue: string;
+  red: string;
+  red2: string;
+  rustyNail: string;
+  white: string;
+  darkGreen: string;
+  linkBlue: string;
+  whiteFligt: string;
+  parkinglotGray: string;
+  papayaWhip: string;
+  platinum: string;
+  purple: string;
+  asexualGrey: string;
+  percyBlue: string;
+  smogray: string;
+  lightGray: string;
+  borderGray: string;
+  redF4: string;
+  redC4: string;
 }

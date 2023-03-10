@@ -59,7 +59,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
     <>
       <StyledSelectDate ref={innerRef} isShown={screenWidth < 768 ? false : isShown}>
         <Calendar
-          numberOfMonths={showMonths}
+          numberOfMonths={20}
           range
           rangeHover
           weekDays={weekDays}

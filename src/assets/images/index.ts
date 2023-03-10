@@ -56,7 +56,7 @@ import parking from "./parking.svg";
 import tennis from "./tennis.svg";
 import search from "./search.svg";
 import mark from "./icon-mark.svg";
-
+import home from "./icon-home.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -116,7 +116,8 @@ const IMAGES = {
   parking,
   tennis,
   search,
-  mark
-}
+  mark,
+  home,
+};
 
 export default IMAGES;

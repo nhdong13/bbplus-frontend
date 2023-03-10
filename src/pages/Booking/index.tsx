@@ -34,6 +34,8 @@ import {
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
 import { useNavigate } from "react-router-dom";
+import { ReactSVG } from "react-svg";
+import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
@@ -41,6 +43,7 @@ export default function Booking() {
     setSelectedImage(imageUrl);
   };
   const navigate = useNavigate();
+  const { showModal } = useGlobalModalContext();
   return (
     <>
       <Helmet>
@@ -100,7 +103,13 @@ export default function Booking() {
               </div>
             </SearchItem>
             <SearchItem className="arrive-days border-0 btn-edit">
-              <ButtonEditSearch>Edit Search</ButtonEditSearch>
+              <ButtonEditSearch
+                onClick={() => {
+                  showModal(MODAL_TYPES.CALENDAR);
+                }}
+              >
+                Edit Search
+              </ButtonEditSearch>
             </SearchItem>
           </SearchBar>
           <div className="btn-mobile">Edit Search</div>
@@ -109,7 +118,10 @@ export default function Booking() {
           <BookingHeader>
             <Col>
               <Breadcrumb>
-                <BreadcrumbItem>HOME</BreadcrumbItem>
+                <BreadcrumbItem>
+                  <ReactSVG className="icon" src={IMAGES.home} />
+                  HOME
+                </BreadcrumbItem>
                 <BreadcrumbItem>Fiji properties</BreadcrumbItem>
                 <BreadcrumbItem>Coral coast resorts</BreadcrumbItem>
                 <BreadcrumbItem>Warwick Fiji Beach Resort</BreadcrumbItem>
