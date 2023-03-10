@@ -13,21 +13,20 @@ import {
   SearchResultContainer,
   Breadcrumb,
   BreadcrumbItem,
-} from "./styles";
-
-import {
   SearchOption,
   SearchOptionItem,
   SearchOptionSelect,
-} from './temp/styles'
+} from "./styles";
+
 import GridView from "./GridView";
 import Package from "./PackageView";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function SearchResult() {
   const [type, setType] = useState<number>(0);
-
-
+  const [searchParam] = useSearchParams();
+  const [valueFilter, setValueFilter] = useState<any>()
   const optionFilter = [
     { _id: 1, label: "Show All" },
     { _id: 2, label: "Apartments" },
@@ -38,6 +37,8 @@ export default function SearchResult() {
     { _id: 7, label: "Guest homes" },
     { _id: 8, label: "Backpackers" },
   ]
+  const arrival_date: string = searchParam.get('arrival_date') || 'Day|Date|Month';
+  const total_date: string = searchParam.get('total_date') || 'X';
 
   return (
     <>
@@ -59,13 +60,13 @@ export default function SearchResult() {
             <SearchItem className="arrive-days">
               <div className="group-h5">
                 <H5 lineHeight="10px" fontWeight="700">Arrival Date</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>{arrival_date}</H5>
               </div>
             </SearchItem>
             <SearchItem>
               <div className="group-h5">
                 <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>X nights</H5>
+                <H5 lineHeight="10px" color={COLORS.outerSpace}>{total_date} nights</H5>
               </div>
             </SearchItem>
             <SearchItem className="arrive-days border-0">
@@ -91,10 +92,11 @@ export default function SearchResult() {
               <div className="title-desk">Fiji: 134 properties found</div>
               <div className="flex">
                 <Select
-                  customLabel={<><span>Filter by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  customLabel={<><span>Filter by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;{valueFilter ? valueFilter.label : 'Select'}</span></>}
                   options={optionFilter}
                   marginTop="0px"
                   maxHeight="48px"
+                  handleChange={(item: { _id: number | string, }) => setValueFilter(item)}
                 />
                 <Select
                   customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}

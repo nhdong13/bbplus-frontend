@@ -22,6 +22,7 @@ const StyledBookingCard = styled.div`
     @media ${BREAKPOINTS.laptop} {
       padding: 20px;
       border-radius: 5px;
+      min-height: 398px;
       span {
         font-size: 12px;
       }

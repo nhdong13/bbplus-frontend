@@ -4,65 +4,19 @@ import IMAGES from "@/assets/images";
 import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { CarouselProvider } from "pure-react-carousel";
 import CarouselSlider from "@/components/Carousel/index";
-import { hotels } from "@/utils/tempData";
+import { hotels, searchResultDate } from "@/utils/tempData";
 import { H4, H5 } from "@/components/Typography";
 import { BREAKPOINTS } from "@/utils/breakpoints"
 import { useEffect, useState } from "react";
+import { FONTS } from "@/utils/fonts";
 import _ from "lodash";
 import {
   ListResultContainer,
   HotelCardContainer,
-  CarouselWrapper
+  CarouselWrapper,
+  ShowMapButton
 } from "./styles";
 import useHome from "@/pages/Home/hooks";
-
-const Container = styled.div`
-  max-width: 1400px;
-  padding: 0 20px;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  @media ${BREAKPOINTS.laptop} {
-    padding: 0;
-  }
-  .list-item {
-    display: flex;
-    justify-content: flex-end;
-    .item {
-      border-right: 1px solid ${COLORS.parkinglotGray};
-      padding: 20px;
-      text-align: center;
-    }
-  }
-`;
-
-const ShowMapButton = styled.div`
-  height: 43px;
-  background: ${COLORS.antiFlashWhite};
-  font-size: 14px;
-  .flex {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: ${COLORS.blueRibbon};
-    div {
-      cursor: pointer;
-    }
-  }
-`
-const ListDate = styled.div`
-  /* border-bottom: 1px solid ${COLORS.parkinglotGray}; */
-  margin-bottom: 20px;
-
-`
-const ListContainer = styled.div`
-  max-width: 1400px;
-  padding: 0 20px;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-`
 
 export default function PackageView() {
 
@@ -114,7 +68,7 @@ export default function PackageView() {
                 <CarouselWrapper className="carousel-container">
                   <CarouselProvider
                     visibleSlides={3}
-                    totalSlides={hotels.length}
+                    totalSlides={searchResultDate.length}
                     step={1}
                     currentSlide={currentSlide}
                     naturalSlideWidth={100}
@@ -124,7 +78,7 @@ export default function PackageView() {
                     <CarouselSlider
                       setSlideCount={setSlideCount}
                       setCurrentSlide={setCurrentSlide}
-                      data={hotels}
+                      data={searchResultDate}
                       carouselTitle={""}
                       typeCard="booking-card"
                     />

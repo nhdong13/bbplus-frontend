@@ -72,7 +72,7 @@ const ListContainer = styled.div`
   margin: auto;
   width: 100%;
   height: 100%;
-  .haha {
+  .flex {
     display: flex;
     justify-content: space-between;
   }
@@ -109,7 +109,12 @@ const SDate = styled.div`
     margin-left: 540px;
     color: ${COLORS.blueRibbon};
     div {
-        cursor: pointer;
+      cursor: pointer;
+      user-select: none;
+    }
+    .disabled {
+      color: ${COLORS.doveGray};
+      cursor: not-allowed;
     }
   }
 `

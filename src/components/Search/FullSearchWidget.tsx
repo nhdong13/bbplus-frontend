@@ -19,6 +19,7 @@ import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
 import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 import { GlobalContext } from './GlobalContext'
+import { createSearchParams, useNavigate } from "react-router-dom";
 export default function FullSearchWidget() {
   const {
     selectedBooking,
@@ -81,6 +82,20 @@ export default function FullSearchWidget() {
       return el;
     }
   })
+
+  const navigate = useNavigate();
+
+  const onClickSearch = () => {
+    navigate({
+      pathname: "/search-result",
+      search: createSearchParams({
+        // arrival_date: new Date(getArriveDate).getTime().toString(),
+        arrival_date: getArriveDate,
+        total_date: totalDates.toString()
+      }).toString()
+    });
+  }
+
 
 
   return (
@@ -215,7 +230,9 @@ export default function FullSearchWidget() {
           </SelectBookingDateTimeContainer>
           <div style={{ display: "flex" }} className="search-button-container">
             <HorizontalContainer margin={"0 25px 0 0"}>
-              <SearchButton />
+              <SearchButtonContainer onClick={onClickSearch}>
+                <img src={IMAGES.iconSearch} width="25px" height="25px" />
+              </SearchButtonContainer>
             </HorizontalContainer>
           </div>
           {!isMobile ?
@@ -258,19 +275,12 @@ export default function FullSearchWidget() {
           : <></>
         }
         <div className="mobile-search-button">
-          <SearchButton />
+          <SearchButtonContainer>
+            <img src={IMAGES.iconSearch} width="25px" height="25px" />
+          </SearchButtonContainer>
         </div>
       </SearchContainer>
     </GlobalContext.Provider>
   )
 }
 
-const SearchButton = () => {
-  return (
-    <>
-      <SearchButtonContainer>
-        <img src={IMAGES.iconSearch} width="25px" height="25px" />
-      </SearchButtonContainer>
-    </>
-  )
-}

@@ -173,22 +173,92 @@ const SearchOption = styled.div`
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
-  .title{
+  .title, .title-mobile{
     font-size: 28px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
     display: block;
   }
-  .mobile {
+  .title-desk {
+    display: block;
+  }
+  .title-mobile {
     display: none;
   }
+  .flex {
+    display: flex;
+    gap: 34px;
+    margin-top: 15px;
+    input {
+      border: 2px solid ${COLORS.greenBlue};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      input {
+        border: 1px solid ${COLORS.greenBlue};
+        width: 88px;
+        height: 34px;
+        padding: 0;
+      }
+      .gradient-button {
+        width: 88px;
+        height: 34px;
+        padding: 0;
+        span {
+          padding: 0;
+        }
+      }
+    }
+  }
+  
   .group-right {
     display: flex;
+    gap: 75px;
+    .mt-10 {
+      font-family: ${FONTS.manropeBold};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      display: block;
+      gap: 0;
+    }
+  }
+
+  .flex-option {
+    display: flex;
+    align-items: center;
+    border: 2px solid ${COLORS.greenBlue};
+    border-radius: 5px;
+    height: 48px;
+    margin-top: 15px;
+    @media ${BREAKPOINTS.laptop} {
+      height: 40px;
+      font-size: 12px;
+      border: 1px solid ${COLORS.greenBlue};
+    }
+  }
+  .btn {
+    cursor: pointer;
+    height: 100%;
+    line-height: 48px;
+    padding: 0 20px;
+    width: 50%;
+    @media ${BREAKPOINTS.laptop} {
+      line-height: 40px;
+    }
+  }
+  .active {
+    background: ${COLORS.darkGreen};
+    color: ${COLORS.white}
   }
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
+    justify-content: center;
     margin-bottom: 0;
+    padding-left: 0;
+    span,div,input {
+      font-size: 14px !important;
+    }
     .choose {
       text-align: center;
       font-size: 14px;
@@ -199,11 +269,9 @@ const SearchOption = styled.div`
     .mark-up {
       width: 100%;
       left: 79px;
-      font-size: 14px;
     }
     .title {
       font-size: 18px;
-      display: none;
     }
     .title-desk {
       display: none;
@@ -211,34 +279,12 @@ const SearchOption = styled.div`
     .title-mobile {
       display: block;
       text-align: center;
-      margin-top: 10px;
-      font-size: 18px;
+      margin-top: 15px;
+      font-size: 18px !important;
       margin-bottom: 15px;
     }
     .flex {
-      display: flex;
-      gap: 34px;
-      margin-top: 15px;
-      input {
-        border: 2px solid ${COLORS.greenBlue};
-      }
-      @media ${BREAKPOINTS.laptop} {
-        gap: 10px;
-        input {
-          border: 1px solid ${COLORS.greenBlue};
-          width: 88px;
-          height: 34px;
-          padding: 0;
-        }
-        .gradient-button {
-          width: 88px;
-          height: 34px;
-          padding: 0;
-          span {
-            padding: 0;
-          }
-        }
-      }
+      margin-top: 0;
     }
     .mt-10 {
       margin: 10px 0;
@@ -249,16 +295,11 @@ const SearchOption = styled.div`
 `;
 
 const SearchOptionItem = styled.div`
-  margin-right: 20px;
   font-size: 16px;
   position: relative;
   .label {
     width: 175px;
     padding: 0 20px;
-  }
-  p {
-    position: absolute;
-    top: -28px;
   }
   
 `;
@@ -567,7 +608,7 @@ const CarouselWrapper = styled.div`
       
       @media only screen and (max-width: 475px) {
         gap: 10px;
-        width: 800% !important;
+        width: 600% !important;
         .carousel__slide {
           width: 200px !important;
         }

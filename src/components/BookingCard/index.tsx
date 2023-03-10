@@ -15,28 +15,18 @@ export default function BookingCard({ data, index }: BookingCardData) {
     <StyledBookingCard key={index}>
       <div className="booking-card__container">
         <div>
-          <H4>Most Popular</H4>
+          <H4>{data?.title}</H4>
           <div className="booking-card__description-items-container">
-            <div className="booking-card__description-item">
-              <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Meet and greet at airport</span>
-            </div>
-            <div className="booking-card__description-item">
-              <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Return airport transfer</span>
-            </div>
-            <div className="booking-card__description-item">
-              <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Garden view room</span>
-            </div>
-            <div className="booking-card__description-item">
-              <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Half board meal</span>
-            </div>
-            <div className="booking-card__description-item">
-              <img src={IMAGES.iconTick} width="30px" height="30px" />
-              <span>Free selected watersport</span>
-            </div>
+            {
+              data?.extraInfo?.map((d: string, key: number) => {
+                return (
+                  <div className="booking-card__description-item" key={key}>
+                    <img src={IMAGES.iconTick} width="30px" height="30px" />
+                    <span>{d}</span>
+                  </div>
+                )
+              })
+            }
           </div>
           <div className="booking-card__price-container">
             <div className="booking-card_price-person">
