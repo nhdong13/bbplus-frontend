@@ -20,6 +20,7 @@ import {
   CarouselWrapper,
 } from "./styles";
 import { H1, H2 } from "@/components/Typography";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const {
@@ -28,6 +29,18 @@ export default function Home() {
     currentSlide,
     setCurrentSlide
   } = useHome();
+
+  const navigate = useNavigate();
+
+  const handleSearch = (arrival_date: string, total_date: string) => {
+    navigate({
+      pathname: "/search-result",
+      search: createSearchParams({
+        arrival_date,
+        total_date
+      }).toString()
+    });
+  }
 
   return (
     <>
@@ -50,7 +63,7 @@ export default function Home() {
                   color={COLORS.white}
                 >At Bedbank Plus, we believe in ease and simplicity</H1>
               </HomepageWelcomeTitle>
-              <FullSearchWidget />
+              <FullSearchWidget handleSearch={handleSearch}/>
             </VerticalContainer>
           </StyledHome>
         </div>

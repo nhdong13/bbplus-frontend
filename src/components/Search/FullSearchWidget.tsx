@@ -19,8 +19,12 @@ import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
 import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 import { GlobalContext } from './GlobalContext'
-import { createSearchParams, useNavigate } from "react-router-dom";
-export default function FullSearchWidget() {
+
+interface IProps {
+  className?: string,
+  handleSearch?: (a: string, b: string) => void
+}
+export default function FullSearchWidget({ className, handleSearch }: IProps) {
   const {
     selectedBooking,
     selectCreateItinerary,
@@ -83,17 +87,11 @@ export default function FullSearchWidget() {
     }
   })
 
-  const navigate = useNavigate();
 
   const onClickSearch = () => {
-    navigate({
-      pathname: "/search-result",
-      search: createSearchParams({
-        // arrival_date: new Date(getArriveDate).getTime().toString(),
-        arrival_date: getArriveDate,
-        total_date: totalDates.toString()
-      }).toString()
-    });
+    const arrival_date = getArriveDate;
+    const total_date = totalDates.toString();
+    handleSearch(arrival_date, total_date);
   }
 
 
@@ -105,7 +103,7 @@ export default function FullSearchWidget() {
         handleAddRoom,
         handleChangeDataRoom
       }}>
-      <SearchContainer>
+      <SearchContainer className={className}>
         <FilterGradientButtonContainer gap="14px">
           {buttonItems.map((item, index) => {
             return (
@@ -119,7 +117,7 @@ export default function FullSearchWidget() {
             )
           })}
         </FilterGradientButtonContainer>
-        <SelectBookingDateTime>
+        <SelectBookingDateTime className={'selected-booking'}>
           <SelectBookingDateTimeContainer selectCreateItinerary={selectCreateItinerary}>
             <FromContainer className={selectLeavingPlaces ? "show-input-search leaving-from" : "leaving-from"}>
               <div onClick={showLeavingPlaces} className={`${selectedLeaving ? 'selected-value' : ''}`}>

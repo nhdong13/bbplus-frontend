@@ -6,27 +6,28 @@ import { H4, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 
 import {
-  SearchResultBackground,
-  SearchBar,
-  SearchItem,
-  ButtonEditSearch,
   SearchResultContainer,
   Breadcrumb,
   BreadcrumbItem,
   SearchOption,
   SearchOptionItem,
   SearchOptionSelect,
+  SearchWidgetBackground,
+  SearchWidgetContainer
 } from "./styles";
-
+import SearchView from './SearchView'
 import GridView from "./GridView";
 import Package from "./PackageView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import FullSearchWidget from "@/components/Search/FullSearchWidget";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function SearchResult() {
   const [type, setType] = useState<number>(0);
   const [searchParam] = useSearchParams();
   const [valueFilter, setValueFilter] = useState<any>()
+  const [searchMode, setSearchMode] = useState<number>(0);
   const optionFilter = [
     { _id: 1, label: "Show All" },
     { _id: 2, label: "Apartments" },
@@ -37,9 +38,9 @@ export default function SearchResult() {
     { _id: 7, label: "Guest homes" },
     { _id: 8, label: "Backpackers" },
   ]
-  
-  
-  
+
+
+
   const optionSort = [
     { _id: 1, label: "Recommmended" },
     { _id: 2, label: "Price: low to high" },
@@ -48,48 +49,38 @@ export default function SearchResult() {
   ]
   const arrival_date: string = searchParam.get('arrival_date') || 'Day|Date|Month';
   const total_date: string = searchParam.get('total_date') || 'X';
+  const navigate = useNavigate();
+
+  const handleSearch = (arrival_date: string, total_date: string) => {
+    navigate({
+      pathname: "/search-result",
+      search: createSearchParams({
+        arrival_date,
+        total_date
+      }).toString()
+    });
+    setSearchMode(0)
+  }
 
   return (
     <>
       <MainLayout>
-        <SearchResultBackground>
-          <SearchBar>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div>
-                <H5 lineHeight="10px" fontWeight="700">Going to</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by destination or hotel</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Arrival Date</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>{arrival_date}</H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>{total_date} nights</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0 btn-edit">
-              <ButtonEditSearch>Edit Search</ButtonEditSearch>
-            </SearchItem>
-          </SearchBar>
-          <div className="btn-mobile">Edit Search</div>
-        </SearchResultBackground>
+        {
+          searchMode === 0
+            ?
+            <SearchView
+              arrival_date={arrival_date}
+              total_date={total_date}
+              onClickEditSearch={() => setSearchMode(1)}
+            />
+            :
+            <SearchWidgetBackground>
+              <SearchWidgetContainer>
+                <div className="line"></div>
+                <FullSearchWidget className="full-result" handleSearch={handleSearch} />
+              </SearchWidgetContainer>
+            </SearchWidgetBackground>
+        }
         <SearchResultContainer>
           <Breadcrumb>
             <BreadcrumbItem>HOME</BreadcrumbItem>
@@ -141,71 +132,13 @@ export default function SearchResult() {
                 </SearchOptionItem>
               </SearchOptionSelect>
             </div>
-            <div className="title-mobile">Fiji: 134 properties found</div>
+            {type === 1 && <div className="title-mobile">Fiji: 134 properties found</div>}
           </SearchOption>
-
-
-          {/* {
-            [1, 2, 3].map(el => {
-              return (
-                <ListResultContainer key={el}>
-                  <HotelCardContainer className="hotels">
-                    <div className="hotel-card__container">
-                      <div className="hotel-card__background-image">
-                        <div className={"rating"}>
-                          <div className="rating-container">
-                            <img src={IMAGES.iconStar} width="14px" height="26px" />
-                            <span>4.1</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="hotel-card__info-container">
-                        <div className="hotel-card__info">
-                          <H4>Warwick Fiji Beach Resort </H4>
-                          <div className="location">
-                            <img src={IMAGES.locationIcon} alt="location" width="17px" height="25px" />
-                            <p>Coral coast, Viti Levu, Fiji</p>
-                          </div>
-                        </div>
-                        <div className="hotel-card__button">
-                          <p>*Accessible by road transfer</p>
-                          <ShowMapButton>
-                            <H5>Show on map</H5>
-                          </ShowMapButton>
-                        </div>
-                      </div>
-                    </div>
-                  </HotelCardContainer>
-                  <HorizontalContainer justifyContent="center" className="booking-carousel">
-                    <CarouselWrapper className="carousel-container">
-                      <CarouselProvider
-                        visibleSlides={3}
-                        totalSlides={hotels.length}
-                        step={1}
-                        currentSlide={currentSlide}
-                        naturalSlideWidth={100}
-                        naturalSlideHeight={125}
-                        isIntrinsicHeight={true}
-                      >
-                        <CarouselSlider
-                          setSlideCount={setSlideCount}
-                          setCurrentSlide={setCurrentSlide}
-                          data={hotels}
-                          carouselTitle={""}
-                          typeCard="booking-card"
-                        />
-                      </CarouselProvider>
-                    </CarouselWrapper>
-                  </HorizontalContainer>
-                </ListResultContainer>
-              )
-            })
-          } */}
         </SearchResultContainer>
         {
           type === 0
             ?
-            <GridView total_date={total_date}/>
+            <GridView arrival_date={arrival_date} total_date={total_date} />
             :
             <Package />
 

@@ -24,10 +24,12 @@ interface IDate {
   month: number
 }
 interface IProps {
+  arrival_date: string,
   total_date: string
 }
-export default function GridView({ total_date }: IProps) {
+export default function GridView({ arrival_date, total_date }: IProps) {
   const [searchParam] = useSearchParams();
+  const [data, setData] = useState<IDate[]>();
   const date: string = searchParam.get('arrival_date') || '';
   const day = new Date(date).getDate();
   const [currentDate, setCurrentDate] = useState<Date>(new Date(date));
@@ -60,8 +62,8 @@ export default function GridView({ total_date }: IProps) {
   }
 
   useEffect(() => {
-
-  }, []);
+    getDates();
+  }, [arrival_date]);
 
   return (
     <>
@@ -79,21 +81,23 @@ export default function GridView({ total_date }: IProps) {
           <div className="flex">
 
             <>
-              <div style={{ width: 230, height: "100%" }}>
+              <div className="empty">
+                <p>Fiji: 134 properties found</p>
               </div>
               <GridDateItem>
-                <div className="room"></div>
-                {
-                  getDates().map((date: IDate, index2) => {
-                    return (
-                      <div className={`room-item ${index2 <= parseInt(total_date) ? 'room-active' : ''}`} key={index2}>
-                        <p>{date.dayOfWeek || ''}</p>
-                        <p>{date.day || ''}</p>
-                        <p>{months[date.month]}</p>
-                      </div>
-                    )
-                  })
-                }
+                <div className="horizontal-date">
+                  {
+                    getDates().map((date: IDate, index2) => {
+                      return (
+                        <div className={`date-item ${index2 <= parseInt(total_date) ? 'room-active' : ''}`} key={index2}>
+                          <p>{date.dayOfWeek || ''}</p>
+                          <p className="day">{date.day || ''}</p>
+                          <p>{months[date.month]}</p>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
               </GridDateItem>
             </>
           </div>
@@ -109,22 +113,27 @@ export default function GridView({ total_date }: IProps) {
                   <img src={IMAGES.iconStar} width="14px" height="26px" />
                   <span>4.1</span>
                 </div>
+                {idx === 0 && <div className="p2">You searched for this property</div>}
               </GridViewTitle>
               <GridRoom>
                 <img src={IMAGES.imgListView} width={230} height={160} className="bg" />
-                <div>
+                <div className="flex">
                   {
-                    _.range(5).map((el2, index) => {
+                    _.range(4).map((el2, index) => {
                       return (
                         <GridRoomItem key={index}>
                           <div className="room">Room Category {index + 1}</div>
-                          {
-                            _.range(15).map((el2, index2) => {
-                              return (
-                                <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
-                              )
-                            })
-                          }
+                          <div className="haha">
+                            <div className="horizontal-room">
+                              {
+                                _.range(15).map((el2, index2) => {
+                                  return (
+                                    <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
+                                  )
+                                })
+                              }
+                            </div>
+                          </div>
                         </GridRoomItem>
                       )
                     })
@@ -135,7 +144,6 @@ export default function GridView({ total_date }: IProps) {
           })
         }
       </GridViewContainer>
-
     </>
   );
 }

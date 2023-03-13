@@ -41,6 +41,28 @@ const SearchResultBackground = styled.div.attrs(
   }
   
 `;
+const SearchWidgetBackground = styled.div `
+  background: ${COLORS.cyprus};
+  .line{
+    height: 2px;
+    background: ${COLORS.gradient1};
+    margin-bottom: 30px;
+  }
+`
+const SearchWidgetContainer = styled.div `
+  max-width: 1400px;
+  padding: 30px 20px;
+  margin: auto;
+  @media ${BREAKPOINTS.laptop} {
+    padding: 10px;
+  }
+  .full-result {
+    margin-top: 0;
+  }
+  .selected-booking {
+    max-width: 100%;
+  }
+`
 
 const SearchBar = styled.div`
   max-width: 1400px;
@@ -635,5 +657,7 @@ export {
   ListResultContainer,
   HotelCardContainer,
   ShowMapButton,
-  CarouselWrapper
+  CarouselWrapper,
+  SearchWidgetBackground,
+  SearchWidgetContainer,
 };
