@@ -15,8 +15,7 @@ const HeaderContainer = styled.div.attrs((props: {
   .header-horizontal-container {
     height: auto;
     max-width: 1400px;
-    margin-top: 84px;
-    margin-bottom: 37px;
+    height: 165px;
     padding: 0 20px;
     width: 100%;
 

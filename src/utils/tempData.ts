@@ -370,3 +370,93 @@ export const tableData = [
     status: "refunded",
   },
 ]
+
+export const searchResultDate: HotelData[] = [
+  {
+    title: "Most Popular",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Meet and greet at airport",
+      "Return airport transfer",
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Half board meal",
+      "Free selected watersport"
+    ]
+  },
+  {
+    title: "Room Only",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Free buffet breakfast",
+      "Free selected watersport",
+    ]
+  },
+  {
+    title: "Ultimate Holiday",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Meet and greet at airport",
+      "Return airport transfer",
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Full board meal",
+      "Bottled water in room daily",
+      "Free selected watersport",
+      "River safari jet board tour",
+
+    ]
+  },
+  {
+    title: "Most Popular",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Meet and greet at airport",
+      "Return airport transfer",
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Half board meal",
+      "Free selected watersport"
+    ]
+  },
+  {
+    title: "Room Only",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Free buffet breakfast",
+      "Free selected watersport",
+    ]
+  },
+  {
+    title: "Ultimate Holiday",
+    location: "Mamanuca Island, Coral Coast",
+    url: "/",
+    price: "FJ$XXX",
+    extraInfo: [
+      "Meet and greet at airport",
+      "Return airport transfer",
+      "Garden view room",
+      "Welcome refreshing drink",
+      "Full board meal",
+      "Bottled water in room daily",
+      "Free selected watersport",
+      "River safari jet board tour",
+
+    ]
+  },
+
+]

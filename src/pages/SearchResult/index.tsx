@@ -121,30 +121,32 @@ export default function SearchResult() {
                 />
               </div>
             </SearchOptionItem>
-            <SearchOptionItem className="choose">
-              <div className="mt-10">Choose your option</div>
-              <div className="flex-option">
-                <div className="btn">Grid view</div>
-                <div className="btn active">Packages</div>
-              </div>
-            </SearchOptionItem>
-            <SearchOptionSelect>
-              <SearchOptionItem>
-                <div className="mt-10">Markup</div>
-                <div className="flex">
-                  <input value={"20%"} />
-                  <div>
-                    <GradientButton
-                      color={COLORS.gradient1}
-                      text="Apply"
-                      isSelected={true}
-                      maxWidth="90px"
-                      height="48px"
-                    />
-                  </div>
+            <div className="group-right">
+              <SearchOptionItem className="choose">
+                <div className="mt-10">Choose your option</div>
+                <div className="flex-option">
+                  <div className="btn">Grid view</div>
+                  <div className="btn active">Packages</div>
                 </div>
               </SearchOptionItem>
-            </SearchOptionSelect>
+              <SearchOptionSelect>
+                <SearchOptionItem>
+                  <div className="mt-10">Markup</div>
+                  <div className="flex">
+                    <input value={"20%"} />
+                    <div>
+                      <GradientButton
+                        color={COLORS.gradient1}
+                        text="Apply"
+                        isSelected={true}
+                        maxWidth="90px"
+                        height="48px"
+                      />
+                    </div>
+                  </div>
+                </SearchOptionItem>
+              </SearchOptionSelect>
+            </div>
             <div className="title-mobile">Fiji: 134 properties found</div>
           </SearchOption>
           {

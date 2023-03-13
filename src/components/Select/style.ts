@@ -4,8 +4,13 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
-const WrapperSelect = styled.div`
+const WrapperSelect = styled.div.attrs(
+  (props: {
+    width?: string,
+  }) => props
+)`
   position: relative;
+  /* width: ${(props) => props.width || "100%"}; */
   .options {
     list-style: none;
     font-size: 16px;
@@ -56,8 +61,6 @@ const StyledSelectContainer = styled.div.attrs(
   }) => props
 )`
   position: relative;
-  border-radius: 4.5px;
-  border: 2px solid ${COLORS.black};
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   
@@ -87,7 +90,8 @@ const StyledSelectContainer = styled.div.attrs(
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
-    border: none;
+    border-radius: 7px;
+    border: 2px solid ${COLORS.greenBlue};
     img {
       transform: ${({ showOption }) => showOption ? "rotate(180deg)" : "rotate(0)"};
       transition: all 0.5s ease-in-out;
@@ -96,14 +100,14 @@ const StyledSelectContainer = styled.div.attrs(
 
   @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
-    border: 1px solid ${COLORS.parkinglotGray};
     border-radius: 3px;
-
     .label {
       height: 40px;
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
+      border: 1px solid ${COLORS.greenBlue};
+      border-radius: 3px;
     }
 
     .icon {

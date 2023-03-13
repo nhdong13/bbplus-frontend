@@ -1,4 +1,4 @@
-import useAccountSetting from "../hooks";
+import useWindowSize from "@/utils/windowResize";
 import {
   LegendBox,
   LabelText,
@@ -17,21 +17,23 @@ interface IPros {
 }
 
 function PreferenceSetting({ onClickNextStep }: IPros) {
-  const { } = useAccountSetting();
+  const wd = useWindowSize();
+
   return (
     <div className="body-section">
       <div className="body-section-item step-show-label">
         <LegendBox>
           <LegendTitle>Markup</LegendTitle>
-          <LegendItem isError={true}>
+          <LegendItem >
             <LabelText>For Hotels</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -42,15 +44,16 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Tranfers</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -61,15 +64,16 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Meal Plans</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -80,15 +84,16 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Packages</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -99,15 +104,16 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
             </LegendField>
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
-          <LegendItem isError={true}>
+          <LegendItem>
             <LabelText>For Excursions</LabelText>
-            <LegendField>
+            <LegendField isError={true} step={1}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
               <FormInput
                 width="147px"
@@ -119,24 +125,25 @@ function PreferenceSetting({ onClickNextStep }: IPros) {
           </LegendItem>
           <TextErrorInput>From 0.01 up to 99.99</TextErrorInput>
         </LegendBox>
-        <LegendBox className="legenbox-right">
+        <LegendBox className="legenbox-right item-finance">
           <LegendTitle>Other settings</LegendTitle>
-          <LegendItem>
+          <LegendItem className="item-right">
             <LabelText>Choose currency</LabelText>
-            <LegendField className="currency">
+            <LegendField className="currency" isError={true}>
               <Select
                 label="Percentage"
                 width="147px"
                 maxHeight="68px"
                 marginTop="0px"
                 padding="16px"
+                isIconBlue={wd <= 430 ? false : true}
               />
             </LegendField>
           </LegendItem>
           <LegendItem>
             <LabelText>Email address for notification</LabelText>
             <FormInput
-              width="339px"
+              width="286px"
               maxHeight="68px"
               label="Email Address"
               marginTop="0px"

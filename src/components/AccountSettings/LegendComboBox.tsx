@@ -5,6 +5,7 @@ import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import styled from "styled-components";
 import { FormInput } from "../FormInput";
 import Select from "../Select";
+import PhoneInput from "../PhoneInput"
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import React from "react";
 
@@ -58,12 +59,11 @@ const LegendItem = styled.div.attrs((props: { isError?: boolean }) => props)`
 `;
 
 const LabelText = styled.label`
-  font-family: ${FONTS.manropeRegular};
+  font-family: ${FONTS.manropeBold};
   font-weight: normal;
   font-size: 16px;
   text-align: left;
   color: ${COLORS.black};
-
   @media ${BREAKPOINTS.laptop} {
     display: none;
   }
@@ -77,7 +77,8 @@ interface ILegendBox {
   hasFormInput?: boolean
   hasCheckBox?: boolean
   formInputWidth?: string,
-  isCheckboxMobile?: boolean
+  isCheckboxMobile?: boolean,
+  isError?: boolean
 }
 
 export default function LegendComboBox({
@@ -88,29 +89,30 @@ export default function LegendComboBox({
   hasFormInput,
   hasCheckBox,
   formInputWidth,
-  isCheckboxMobile
+  isCheckboxMobile,
+  isError
 }: ILegendBox) {
   return (
-    <LegendItem>
+    <LegendItem className="legend-items">
       {!isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
-      <div className={`legend-box-container ${isCheckboxMobile ? "item-center" : ""}`}>
-        {/* {hasPhoneInput &&
+      <div className={`legend-box-container ${isError ? 'isError' : ''} ${isCheckboxMobile ? "item-center" : "item-checkbox-desk"}`}>
+        {hasPhoneInput &&
           <PhoneInput
-            country={'us'}
-            value='84'
-            onChange={() => { }}
+            label="Phone number"
+            width="147px"
+            maxHeight="68px"
+            marginTop="0px"
+            padding="16px"
           />
-        } */}
+        }
         {hasSelectDropDown &&
-          <LegendField>
-            <Select
-              label="Percentage"
-              width="147px"
-              maxHeight="68px"
-              marginTop="0px"
-              padding="16px"
-            />
-          </LegendField>
+          <Select
+            label="Percentage"
+            width="147px"
+            maxHeight="68px"
+            marginTop="0px"
+            padding="16px"
+          />
         }
         {hasFormInput &&
           <FormInput
@@ -123,8 +125,13 @@ export default function LegendComboBox({
         }
         {hasCheckBox &&
           <React.Fragment>
-            <FormGroup style={{ width: 20 }}>
-              <FormControlLabel control={<Checkbox />} label="" />
+            <FormGroup style={{ width: isCheckboxMobile ? 20 : 275 }}>
+              <FormControlLabel control={<Checkbox sx={{
+                color: "#CECFD1",
+                '&.Mui-checked': {
+                  color: "#2383DA",
+                },
+              }} classes={{ root: 'custom-checkbox-root' }} />} label="" />
             </FormGroup>
             {isCheckboxMobile && <LabelText>{legendBoxTitle}</LabelText>}
           </React.Fragment>
