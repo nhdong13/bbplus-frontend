@@ -79,9 +79,10 @@ const StyledCalendar = styled.div`
     border: 1px solid ${COLORS.gray83};
   }
   .fc-view-harness {
-    height: 500px!important;
+    height: 500px !important;
   }
   .fc-multimonth-daygrid-table {
+    border-style: unset!important;
   }
   .fc-multimonth-daygrid-table {
     max-height: 340px !important;
