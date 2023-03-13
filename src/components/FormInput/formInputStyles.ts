@@ -50,14 +50,13 @@ const StyledInputContainer = styled.div.attrs(
 
   @media ${BREAKPOINTS.laptop} {
     margin-top: 10px;
-    border: 1px solid ${COLORS.parkinglotGray};
-    border-radius: 3px;
-
     input {
       height: 40px;
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
+      border-radius: 3px;
+      border: 1px solid ${COLORS.parkinglotGray};
       border-radius: 3px;
     }
 

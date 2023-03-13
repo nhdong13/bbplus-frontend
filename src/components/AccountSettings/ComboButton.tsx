@@ -24,11 +24,12 @@ const StyledFinishedButton = styled.button`
   }
 
   @media ${BREAKPOINTS.laptop} {
-    width: 85px;
+    width: 96px;
     height: 36px;
     border-radius: 5px;
     span {
       font-size: 12px;
+      text-transform: uppercase;
     }
   }
 
@@ -54,6 +55,7 @@ const StyledAddButton = styled.button`
     border-radius: 5px;
     span {
       font-size: 12px;
+      text-transform: uppercase;
     }
   }
 

@@ -4,9 +4,26 @@ import { FONTS } from "@/utils/fonts";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const StyledAccountSetting = styled.div`  
-  margin-bottom: 59px;
+  margin-bottom: 155px;
+  .label {
+    border: 2px solid ${COLORS.black} !important
+  }
+  .MuiSvgIcon-root {
+    font-size: 40px;
+  }
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
+    margin-top: 30px;
+    .label {
+      border: 1px solid ${COLORS.silver} !important;
+      img {
+        width: 12px;
+        height: 30px;
+      }
+    }
+    .MuiSvgIcon-root {
+      font-size: 22px;
+    }
   }
 `
 
@@ -15,15 +32,32 @@ const AccountSettingContainer = styled.div`
   #account-setting-section {
     max-width: 1400px;
     margin: auto;
+    .table-desktop {
+      display: block;
+      margin-bottom: 48px;
+    }
+    .table-mobile {
+      display: none;
+    }
+
+    .step-show-label {
+      legend {
+        margin-bottom: 42px;
+      }
+    }
+    
     @media ${BREAKPOINTS.laptop} {
       max-width: 768px;
       padding: 20px;
       border-radius: 5px;
       border: 2px solid ${COLORS.parkinglotGray};
-      margin: 15px;
+      margin: 18px;
       h2 {
         font-size: 16px;
-        line-height: 30px;
+        line-height: 22px;
+        margin-bottom: 10px;
+        font-family: ${FONTS.manrope};
+        font-weight: 700;
       }
       .step-1 {
         display: none;
@@ -31,6 +65,7 @@ const AccountSettingContainer = styled.div`
       .step-show-label {
         .input-container,.select-container  {
           width: 100%;
+          height: auto;
         }
         label {
           display: block;
@@ -40,36 +75,63 @@ const AccountSettingContainer = styled.div`
         .legend-item {
           display: grid;
         }
+        legend {
+          margin-bottom: 15px;
+        }
       }
       .step-user {
         .legend-box-container {
           margin-bottom: 10px;
+          gap: 10px;
+        }
+        .isError {
+          margin-bottom: 0;
+        }
+        .second {
+          font-size: 16px;
+          margin-bottom: 10px;
         }
       }
-     
+      .table-desktop {
+        display: none;
+      }
+      .table-mobile {
+        display: block;
+      }
+      .wrapper-select {
+        width: 100%;
+      }
+      .item-finance{
+        margin-top: 35px !important;
+      }
+      .body-section-user {
+        margin-top: 10px !important;
+      }
     }
     .fill-information-title {
-      font-weight: 400;
+      font-family: ${FONTS.manropeBold};
       font-size: 18px;
       line-height: 35px;
+      margin-bottom: 49px;
       @media ${BREAKPOINTS.laptop} {
         font-size: 12px; 
         line-height: 16px;
+        margin-bottom: 30px;
       }
     }
 
     .body-section {
-      margin-top: 50px;
       @media ${BREAKPOINTS.laptop} {
         margin-top: 20px;
       }
       .body-section-item {
         display: flex;
         &:last-child {
-          margin-top: 28px;
+          margin-top: 78px;
           margin-bottom: 28px;
           @media ${BREAKPOINTS.laptop} {
             margin-bottom: 0;
+            margin-top: 0;
           }
         }
         @media ${BREAKPOINTS.laptop} {
@@ -77,11 +139,18 @@ const AccountSettingContainer = styled.div`
         }
       }
     }
+    
+    .body-section-plat {
+
+    }
     .legenbox-right {
       margin-left: 28px;
       padding-right: 28px;
+      .item-right {
+        margin-bottom: 18px;
+      }
       .currency {
-        width: 339px;
+        width: 286px;
       }
       @media ${BREAKPOINTS.laptop} {
         margin-left: 0;
@@ -90,6 +159,7 @@ const AccountSettingContainer = styled.div`
         padding-bottom: 20px;
         .currency {
           width: 100%;
+          margin-bottom: 10px;
         }
       }
     }
@@ -129,12 +199,15 @@ const BreadcrumbItem = styled.div.attrs((props: {
   activeColor?: boolean
 }) => props)`
   color: ${(props) => props.activeColor ? COLORS.blueRibbon : COLORS.black};
-
+  font-size: 17px;
   cursor: pointer;
   &:not(:first-child) {
     &:before {
       content: "  >";
       padding: 8px;
+      font-size: 20px;
+      color: ${COLORS.black};
+      font-family: ${FONTS.manrope}
     }
   }
 `;
@@ -142,6 +215,7 @@ const BreadcrumbItem = styled.div.attrs((props: {
 const LegendBox = styled.fieldset`
   border: 1px solid ${COLORS.black};
   padding: 28px 35px;
+  padding-top: 0;
   width: 50%;
   height: fit-content;
   @media ${BREAKPOINTS.laptop} {
@@ -173,14 +247,17 @@ const LegendBox = styled.fieldset`
       margin-bottom: 10px;
     }
   }
+  .second {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
   .red-start {
     color: red;
   }
 `;
 
 const LabelText = styled.label`
-  font-family: ${FONTS.manropeRegular};
-  font-weight: normal;
+  font-family: ${FONTS.manropeBold};
   font-size: 16px;
   text-align: left;
   color: ${COLORS.black};
@@ -197,33 +274,39 @@ const LegendTitle = styled.legend`
   text-align: left;
   color: #005cff;
   padding-right: 40px;
+  padding-left: 10px;
   @media ${BREAKPOINTS.laptop} {
     color: #0079CF;
     font-size: 12px;
     line-height: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-family: ${FONTS.manrope};
+    padding-left: 0px;
   }
   
 `;
 
-const LegendItem = styled.div.attrs((props: { isError?: boolean }) => props)`
+const LegendItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${(props) => (props.isError ? "0px" : "18px")};
   @media ${BREAKPOINTS.laptop} {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     display: unset;
   }
 `;
 
-const LegendField = styled.div`
+const LegendField = styled.div.attrs((props: { isError?: boolean, step?: number }) => props)`
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-bottom: 10px;
-  width: 100%;
+  margin-bottom: ${(props) => (props.isError ? "0px" : "18px")};
+  width: ${(props) => (props.step === 1 ? "auto" : "100%")};
+  
+  @media ${BREAKPOINTS.laptop} {
+    gap: 10px;
+    width: 100%
+  }
 `;
 
 const TextErrorInput = styled.p`
@@ -232,19 +315,23 @@ const TextErrorInput = styled.p`
   color: ${COLORS.red};
   display: flex;
   justify-content: flex-end;
-  padding-right: 12px;
+  padding-right: 10px;
   margin-bottom: 14px;
   margin-top: 5px;
   @media ${BREAKPOINTS.laptop} {
     font-size: 10px;
     padding-right: 70px;
+    margin-bottom: 2px;
   }
 `;
 
 const AccountSettingHeader = styled.div`
-  margin-top: 48px;
+  margin-top: 61px;
   @media ${BREAKPOINTS.laptop} {
     margin-top: 0;
+  }
+  h2 {
+    margin-bottom: 24px;
   }
 `;
 const NextStepBox = styled.div`
@@ -281,11 +368,13 @@ const ButtonNextStep = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${COLORS.white};
+  font-weight: 700;
   @media ${BREAKPOINTS.laptop} {
     width: 124px;
     height: 36px;
     border-radius: 5px;
     font-size: 12px;
+    text-transform: uppercase;
   }
 `;
 

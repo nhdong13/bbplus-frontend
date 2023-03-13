@@ -20,7 +20,7 @@ interface IProps {
   width?: string,
   padding?: string,
   handleChange?: any,
-  typeIconDown?: boolean,
+  isIconBlue?: boolean,
   options?: Array<IOption>
 }
 
@@ -37,7 +37,7 @@ const Select = ({
   width,
   padding,
   handleChange,
-  typeIconDown,
+  isIconBlue,
   options
 }: IProps) => {
 
@@ -51,12 +51,14 @@ const Select = ({
 
   const onClickOption = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (showOption) setShowOption(!showOption);
-    setVisible(!showOption)
+    // if (!showOption) setShowOption(showOption);
+    // setVisible(!showOption)
+    setShowOption(!showOption)
   }
 
+
   return (
-    <WrapperSelect>
+    <WrapperSelect className="wrapper-select">
       <StyledSelectContainer
         textColor={textColor}
         fontSize={fontSize}
@@ -77,7 +79,7 @@ const Select = ({
               :
               <div>{label?.concat(isImportant ? " *" : " ")}</div>
           }
-          <img src={typeIconDown ? IMAGES.iconArrowDown : IMAGES.iconSelectDown} width="10px" height="5px" />
+          <img src={isIconBlue ? IMAGES.iconDropDownBlue : IMAGES.iconArrowDown} width="10px" height="5px" />
         </div>
       </StyledSelectContainer>
       {

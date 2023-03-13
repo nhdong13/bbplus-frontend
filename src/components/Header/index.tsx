@@ -93,7 +93,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
                 <div
                   style={{ height: "50px", display: "flex", alignItems: "center" }}
                   onClick={(e) => handleDropdown(e)}>
-                  <img src={IMAGES.iconAnchor} alt="user" width="22px" height="13px" className="icon-dropdown" />
+                  <img src={IMAGES.iconAnchor} alt="user" width="19px" height="13px" className="icon-dropdown" />
                 </div>
                 <NotificationDropDown innerRef={notificationRef} notificationDropDown={notificationVisible} />
                 <UserMenuDropDown innerRef={userMenuRef} dropdown={userMenuVisible} />

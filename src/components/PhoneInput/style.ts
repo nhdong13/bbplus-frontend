@@ -16,8 +16,7 @@ const StyledPhoneInputContainer = styled.div.attrs(
   }) => props
 )`
   position: relative;
-  border-radius: 4.5px;
-  border: 2px solid ${COLORS.black};
+  
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
   display: flex;
@@ -31,18 +30,19 @@ const StyledPhoneInputContainer = styled.div.attrs(
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
+    border-radius: 7px;
+    border: 2px solid ${COLORS.black};
   }
 
   @media ${BREAKPOINTS.mobileLg} {
     margin-top: 10px;
-    border: 1px solid ${COLORS.parkinglotGray};
-    border-radius: 3px;
-
     input {
       height: 40px;
       padding: 0px 31px;
       gap: 10px;
       font-size: 12px;
+      border: 1px solid ${COLORS.parkinglotGray};
+      border-radius: 3px;
     }
 
     .icon {

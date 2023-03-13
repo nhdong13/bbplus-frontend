@@ -2,21 +2,12 @@ import useAccountSetting from "../hooks";
 import {
   LegendBox,
   LegendTitle,
-  LegendItem,
+  TextErrorInput
 } from "../styles";
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+
 import styled from "styled-components";
 import { COLORS } from "@/utils/colors";
 import { Button } from "@mui/material";
-import { FONTS } from "@/utils/fonts";
-import IMAGES from "@/assets/images";
 import LegendComboBox from "@/components/AccountSettings/LegendComboBox";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import useWindowSize from "@/utils/windowResize";
@@ -27,23 +18,22 @@ function UserManagement() {
   const wd = useWindowSize();
 
   return (
-    <div className="body-section">
+    <div className="body-section body-section-user">
       <div className="body-section-item step-show-label step-user">
         <LegendBox className="w-100">
-          <LegendTitle>User Detail</LegendTitle>
-          <div className="user-title">
+          <LegendTitle>User details</LegendTitle>
+          <div className="user-title first">
             In this section, you can create new user (employee) for your agency and assign roles.
           </div>
-          <div className="user-title">
+          <div className="user-title second">
             Existing Users
           </div>
-          {
-            wd <= 430
-              ?
-              <UserManagementTableMobile />
-              :
-              <UserManagementTable />
-          }
+          <div className="table-desktop">
+            <UserManagementTable />
+          </div>
+          <div className="table-mobile">
+            <UserManagementTableMobile />
+          </div>
           <div className="user-title">
             To add a new user, enter required details and click Add.
           </div>
@@ -51,8 +41,8 @@ function UserManagement() {
             <div className="require-detail__left-container">
               <LegendComboBox
                 hasFormInput
-                legendBoxTitle={'Agency Name'}
-                formInputLabel={'Agency Name'}
+                legendBoxTitle={'Username'}
+                formInputLabel={'Username'}
               />
               <LegendComboBox
                 hasFormInput
@@ -67,8 +57,8 @@ function UserManagement() {
               />
               <LegendComboBox
                 hasFormInput
-                legendBoxTitle={'User Role'}
-                formInputLabel={'User Role'}
+                legendBoxTitle={'User role'}
+                formInputLabel={'User role'}
               />
             </div>
             <div className="require-detail__right-container">
@@ -78,8 +68,9 @@ function UserManagement() {
                 hasFormInput
                 formInputWidth="115px"
                 formInputLabel="0%"
+                isError={true}
               />
-
+              <TextErrorInput className="err">From 0.01 up to 99.99</TextErrorInput>
               <LegendComboBox
                 legendBoxTitle={'Hide Sub User Markup'}
                 isCheckboxMobile={wd <= 430}
@@ -91,7 +82,7 @@ function UserManagement() {
                 hasCheckBox
               />
               <LegendComboBox
-                legendBoxTitle={'Allow User to view bookings'}
+                legendBoxTitle={'Allow User to view bookings made by other user as well'}
                 isCheckboxMobile={wd <= 430}
                 hasCheckBox
               />
@@ -107,24 +98,38 @@ const RequireDetailContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 148px;
-
+  .err {
+    display: none;
+  }
   @media ${BREAKPOINTS.laptop} {
     gap: 10px;
+    .err {
+      display: block;
+      text-align: right;
+    }
   }
 
   .require-detail__left-container,
   .require-detail__right-container {
     width: 100%;
     max-width: 580px;
-
+    .legend-items {
+      margin-bottom: 44px;
+      &:last-child {
+        margin-bottom: 12px;
+      }
+    }
     @media ${BREAKPOINTS.laptop} {
       max-width: unset;
+      .legend-item {
+        margin-bottom: 0;
+      }
     }
   }
 
   .require-detail__right-container  {
     gap: 100px;
-    .input-container {
+    .input-container,.select-container {
       height: 68px;
     }
   }

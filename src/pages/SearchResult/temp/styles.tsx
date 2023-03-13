@@ -107,14 +107,12 @@ const ButtonEditSearch = styled.div`
   cursor: pointer;
   width: 174px;
   height : 58px;
-  border: 2px solid ${COLORS.silver};
-  border-radius: 8px;
+  border: 2px solid ${COLORS.greenBlue};
+  background: ${COLORS.white};
+  border-radius: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover {
-    border: 2px solid ${COLORS.black};
-  }
 `;
 
 const SearchResultContainer = styled.div`
@@ -189,21 +187,50 @@ const SearchOption = styled.div`
   }
   .flex {
     display: flex;
-    gap: 10px;
+    gap: 34px;
     margin-top: 15px;
+    input {
+      border: 2px solid ${COLORS.greenBlue};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      input {
+        border: 1px solid ${COLORS.greenBlue};
+        width: 88px;
+        height: 34px;
+        padding: 0;
+      }
+      .gradient-button {
+        width: 88px;
+        height: 34px;
+        padding: 0;
+        span {
+          padding: 0;
+        }
+      }
+    }
+  }
+  
+  .group-right {
+    display: flex;
+    gap: 75px;
+    @media ${BREAKPOINTS.laptop} {
+      display: block;
+      gap: 0;
+    }
   }
 
   .flex-option {
     display: flex;
     align-items: center;
-    border: 2px solid ${COLORS.black};
+    border: 2px solid ${COLORS.greenBlue};
     border-radius: 5px;
     height: 48px;
     margin-top: 15px;
-
     @media ${BREAKPOINTS.laptop} {
       height: 40px;
       font-size: 12px;
+      border: 1px solid ${COLORS.greenBlue};
     }
   }
   .btn {
@@ -223,7 +250,12 @@ const SearchOption = styled.div`
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
+    justify-content: center;
     margin-bottom: 0;
+    padding-left: 0;
+    span,div,input {
+      font-size: 14px !important;
+    }
     .choose {
       text-align: center;
       font-size: 14px;
@@ -244,8 +276,9 @@ const SearchOption = styled.div`
     .title-mobile {
       display: block;
       text-align: center;
-      margin-top: 10px;
-      font-size: 18px;
+      margin-top: 15px;
+      font-size: 18px !important;
+      margin-bottom: 15px;
     }
     .flex {
       margin-top: 0;
@@ -259,7 +292,6 @@ const SearchOption = styled.div`
 `;
 
 const SearchOptionItem = styled.div`
-  margin-right: 20px;
   font-size: 16px;
   position: relative;
   .label {
@@ -321,6 +353,9 @@ const ListResultContainer = styled.div`
   }
   .carousel-title{
     margin-right: 15px;
+    @media ${BREAKPOINTS.laptop} {
+      margin: 10px;
+    }
   }
   @media ${BREAKPOINTS.laptop} {
     margin-bottom: 0;
@@ -328,7 +363,11 @@ const ListResultContainer = styled.div`
     border: 0;
     display: grid;
     .hotels {
-      padding: 20px 0;
+      padding: 0 10px;
+      padding-top: 10px;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 `;
@@ -340,8 +379,9 @@ const HotelCardContainer = styled.div`
     width: 421px;
     margin-right: 15px;
     margin-top: 78px;
+    background: ${COLORS.white};
     @media ${BREAKPOINTS.laptop} {
-      margin: 0 35px;
+      margin: 0 auto;
       width: auto;
     }
   }
@@ -435,9 +475,11 @@ const HotelCardContainer = styled.div`
     .location {
       display: flex;
       align-items: center;
-      justify-content: center;
       img {
         margin-right: 9px;
+      }
+      @media ${BREAKPOINTS.laptop} {
+        justify-content: center;
       }
     }
   }
@@ -447,25 +489,32 @@ const HotelCardContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-    align-items: center;
     p {
       color: #38AA00;
     }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
       margin-top: 10px;
+      align-items: center;
     }
   }
 `
 const ShowMapButton = styled.button`
-  border: 2px solid #00B492;
-  border-radius: 6px;
+  border: 2px solid ${COLORS.greenBlue};
+  border-radius: 17px;
   width: 153px;
   height: 48px;
   cursor: pointer;
   
   h5 {
     color: ${COLORS.toryBlue};
+    font-family: ${FONTS.manropeRegular};
+  }
+  @media ${BREAKPOINTS.laptop} {
+    border-radius: 5px;
+    h5 {
+      font-size: 14px;
+    }
   }
 `
 
