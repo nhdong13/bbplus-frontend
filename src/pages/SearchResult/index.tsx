@@ -37,6 +37,15 @@ export default function SearchResult() {
     { _id: 7, label: "Guest homes" },
     { _id: 8, label: "Backpackers" },
   ]
+  
+  
+  
+  const optionSort = [
+    { _id: 1, label: "Recommmended" },
+    { _id: 2, label: "Price: low to high" },
+    { _id: 3, label: "Price: high to low" },
+    { _id: 4, label: "Star rating" },
+  ]
   const arrival_date: string = searchParam.get('arrival_date') || 'Day|Date|Month';
   const total_date: string = searchParam.get('total_date') || 'X';
 
@@ -100,6 +109,7 @@ export default function SearchResult() {
                 />
                 <Select
                   customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  options={optionSort}
                   marginTop="0px"
                   maxHeight="48px"
                 />
@@ -195,7 +205,7 @@ export default function SearchResult() {
         {
           type === 0
             ?
-            <GridView />
+            <GridView total_date={total_date}/>
             :
             <Package />
 

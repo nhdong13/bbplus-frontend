@@ -11,30 +11,22 @@ import {
   GridRoomItem,
   ListDate,
   ListContainer,
+  GridViewContainer,
   GridDateItem,
-  SDate
+  SDate,
 } from './stylesGidVIew'
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
-function getDaysInMonth(startDate: number, month: number, year: number) {
-  var date = new Date(year, month, 1);
-  var days = [];
-  while (date.getMonth() === month) {
-    if (date.getDate() >= startDate) {
-      days.push(new Date(date));
-    }
-    date.setDate(date.getDate() + 1);
-  }
-  return days;
-}
 
 interface IDate {
   dayOfWeek: string,
   day: number,
   month: number
 }
-
-export default function GridView() {
+interface IProps {
+  total_date: string
+}
+export default function GridView({ total_date }: IProps) {
   const [searchParam] = useSearchParams();
   const date: string = searchParam.get('arrival_date') || '';
   const day = new Date(date).getDate();
@@ -94,9 +86,9 @@ export default function GridView() {
                 {
                   getDates().map((date: IDate, index2) => {
                     return (
-                      <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>
-                        <p>{date.dayOfWeek}</p>
-                        <p>{date.day}</p>
+                      <div className={`room-item ${index2 <= parseInt(total_date) ? 'room-active' : ''}`} key={index2}>
+                        <p>{date.dayOfWeek || ''}</p>
+                        <p>{date.day || ''}</p>
                         <p>{months[date.month]}</p>
                       </div>
                     )
@@ -107,9 +99,9 @@ export default function GridView() {
           </div>
         </ListContainer>
       </ListDate>
-      <SearchResultContainer>
+      <GridViewContainer>
         {
-          _.range(3).map((el, idx) => {
+          _.range(4).map((el, idx) => {
             return <GridViewItem key={idx}>
               <GridViewTitle className={idx === 0 ? 'first' : ''}>
                 <div>Warwick Fiji Beach Resort</div>
@@ -142,7 +134,7 @@ export default function GridView() {
             </GridViewItem>
           })
         }
-      </SearchResultContainer>
+      </GridViewContainer>
 
     </>
   );

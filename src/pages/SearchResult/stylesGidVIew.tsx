@@ -118,6 +118,18 @@ const SDate = styled.div`
     }
   }
 `
+const GridViewContainer = styled.div `
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 export {
     GridViewItem,
     GridViewTitle,
@@ -125,6 +137,7 @@ export {
     GridRoomItem,
     ListDate,
     ListContainer,
+    GridViewContainer,
     GridDateItem,
     SDate
 }
