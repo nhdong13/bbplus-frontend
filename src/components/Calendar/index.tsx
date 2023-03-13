@@ -1,6 +1,5 @@
 import FullCalendar from "@fullcalendar/react";
 import multiMonth from "@fullcalendar/multimonth";
-import _ from "lodash";
 import moment from "moment";
 import styled from "styled-components";
 import { Typography as Span } from "../Typography";

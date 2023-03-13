@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { range } from "lodash";
 import styled from "styled-components";
 import RoomCard from "../RoomCard";
 import Typography from "@mui/material/Typography";
@@ -82,7 +82,7 @@ export default function HotelResults() {
                     }
                   >
                     {result.type === "room_details"
-                      ? _.range(0, 6).map((_, index) => {
+                      ? range(0, 6).map((_, index) => {
                           return (
                             <RoomCard
                               key={index}

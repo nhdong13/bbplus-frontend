@@ -12,7 +12,6 @@ import { IModal } from "@/utils/types/Modal";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { Container } from "@/styles";
-import _ from "lodash";
 import { HOTEL_RESULT_DATA } from "@/utils/dataTest";
 import { COLORS } from "@/utils/colors";
 import { StyledModal } from "./styles";

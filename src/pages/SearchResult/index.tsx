@@ -3,7 +3,6 @@ import { GradientButton } from "@/components/Button";
 import Select from "@/components/Select";
 import IMAGES from "@/assets/images";
 import MainLayout from "@/components/Layout/MainLayout";
-import BookingSearchResult from "@/components/BookingSearchResult";
 import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { CarouselProvider } from "pure-react-carousel";
 import { hotels } from "@/utils/tempData";
@@ -32,7 +31,6 @@ import {
 } from './temp/styles'
 
 import useHome from "@/pages/Home/hooks";
-import HotelResults from "@/components/BookingSearchResult/HotelResults";
 
 export default function SearchResult() {
 
@@ -95,7 +93,6 @@ export default function SearchResult() {
           </SearchBar>
           <div className="btn-mobile">Edit Search</div>
         </SearchResultBackground>
-        {/* <HotelResults /> */}
         <SearchResultContainer>
           <Breadcrumb>
             <BreadcrumbItem>HOME</BreadcrumbItem>
