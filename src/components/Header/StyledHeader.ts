@@ -33,6 +33,7 @@ const HeaderContainer = styled.div.attrs((props: {
     .logo {
       position: relative;
       z-index: 2;
+      cursor: pointer;
 
       @media ${BREAKPOINTS.tablet} {
         width: 200px;

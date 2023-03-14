@@ -33,3 +33,5 @@ export interface RoomOptions{
   price: string,
   value: string,
 }
+
+export type SelectedRoomType = "multiple" | "single"

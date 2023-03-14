@@ -1,19 +1,30 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
-import { RoomOptions } from "@/utils/types/CardHotel";
+import { RoomOptions, SelectedRoomType } from "@/utils/types/CardHotel";
 import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
-import { H3, H4 } from "../Typography";
+import { H3, H4, Typography as Span } from "../Typography";
+import { TAXES_AND_FEES } from "@/utils/dataTest";
 
 interface IRoomCard {
+  index?: number;
   type: string;
   checkbox?: boolean;
   roomOptions: RoomOptions[];
+  selected?: boolean;
+  onSelect?: (type: SelectedRoomType, option: number) => void;
 }
 
-export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
+export default function RoomCard({
+  index,
+  type,
+  checkbox,
+  roomOptions,
+  selected,
+  onSelect = () => {},
+}: IRoomCard) {
   const [selectedOption, setSelectedOption] = useState<number>();
   const { showModal } = useGlobalModalContext();
 
@@ -21,20 +32,30 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
     setSelectedOption(option);
   };
 
-  const onShowModal = () => {
+  const onShowModal = (typeModal?: string) => {
     let title = "";
-    if (type === MODAL_TYPES.ROOM_MODAL) title = "Garden View Room";
-    if (type === MODAL_TYPES.ROOM_EXTRAS) title = "Hotel Extras";
-    if (type === MODAL_TYPES.ROOM_TRANSFER)
+    let paragraph = "";
+    const typeM = typeModal || type;
+    if (typeM === MODAL_TYPES.ROOM_MODAL) title = "Garden View Room";
+    if (typeM === MODAL_TYPES.ROOM_EXTRAS) title = "Hotel Extras";
+    if (typeM === MODAL_TYPES.ROOM_TRANSFER)
       title = "Tewaka Fiji: Warwick Fiji Resort & Spa";
-    showModal(type, {
+    if (typeM === MODAL_TYPES.TEXT) {
+      title = "Taxes & fees";
+      paragraph = TAXES_AND_FEES;
+    }
+    showModal(typeM, {
       title: title,
+      paragraph: paragraph,
       details: {},
     });
   };
   return (
     <>
-      <StyledRoomCard>
+      <StyledRoomCard
+        className={selected ? "selected" : ""}
+        onClick={() => onSelect(checkbox ? "single" : "multiple", index || 0)}
+      >
         <div
           className={
             checkbox ? "room-card__container" : "room-card__option-container"
@@ -59,22 +80,40 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
                       }`}
                     >
                       {checkbox ? (
-                        <FormControlLabel
-                          value={item.value}
-                          control={
-                            <span
-                              className="checkbox"
-                              onClick={() => {
-                                onChecked(item.id);
-                              }}
-                            >
-                              {selectedOption === item.id && (
-                                <span className="checked"></span>
-                              )}
-                            </span>
-                          }
-                          label={item.title}
-                        />
+                        <div className="checkbox-item">
+                          <div className="checkbox-label">
+                            <FormControlLabel
+                              value={item.value}
+                              control={
+                                <span
+                                  className="checkbox"
+                                  onClick={() => {
+                                    onChecked(item.id);
+                                  }}
+                                >
+                                  {selectedOption === item.id && (
+                                    <span className="checked"></span>
+                                  )}
+                                </span>
+                              }
+                              label={
+                                <div className="title">
+                                  <Span>{item.title}</Span>
+                                  <Span>$XXX</Span>
+                                </div>
+                              }
+                            />
+                            {[2, 3].includes(index) ? (
+                              <Span className="detail">Breakfast buffet</Span>
+                            ) : index === 4 ? (
+                              <Span className="detail">
+                                All-inclusive + Special deal
+                              </Span>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
                       ) : (
                         <H4>{item.title}</H4>
                       )}
@@ -83,7 +122,6 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
                       ) : (
                         <></>
                       )}
-                      <p>{item.price}</p>
                     </div>
                   </RadioGroup>
                 );
@@ -92,15 +130,30 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
                 <>
                   <DashDivider />
                   <div className="room-card__price-detail-container">
-                    <H3>FJ$XXX</H3>
+                    {[1, 3].includes(index || 0) ? (
+                      <div className="spacing"></div>
+                    ) : (
+                      <>
+                        <H3 lineHeight="28px" fontSize="24px">
+                          FJ$XXX
+                        </H3>
+                      </>
+                    )}
+
                     <div className="room-card__price-detail">
-                      <p>Price details</p>
+                      {[1, 3].includes(index || 0) ? (
+                        <Span color={COLORS.red}>No availability</Span>
+                      ) : (
+                        <p onClick={() => onShowModal(MODAL_TYPES.TEXT)}>
+                          Price details
+                        </p>
+                      )}
                       <div>
-                        <p>More details</p>
+                        <p onClick={() => onShowModal()}>More details</p>
                         <img
                           className="info-icon"
                           src={IMAGES.iconInfo}
-                          onClick={onShowModal}
+                          onClick={() => onShowModal()}
                         />
                       </div>
                     </div>
@@ -109,12 +162,13 @@ export default function RoomCard({ type, checkbox, roomOptions }: IRoomCard) {
               ) : (
                 <>
                   <div className="room-card__option">
+                    <p>$XXX</p>
                     <div className="room-card__option-detail">
-                      <p>More details</p>
+                      <p onClick={() => onShowModal()}>More details</p>
                       <img
                         className="info-icon"
                         src={IMAGES.iconInfo}
-                        onClick={onShowModal}
+                        onClick={() => onShowModal()}
                       />
                     </div>
                   </div>
@@ -133,6 +187,10 @@ const StyledRoomCard = styled.div`
   border-style: dotted;
   border-radius: 12px;
   cursor: pointer;
+  &.selected {
+    border: 2px solid ${COLORS.commandBlue};
+    background-color: ${COLORS.aliceBlue};
+  }
   &:hover {
     border: 2px solid ${COLORS.commandBlue};
     background-color: ${COLORS.aliceBlue};
@@ -142,15 +200,13 @@ const StyledRoomCard = styled.div`
   }
   .room-card__option-container {
     padding: 30px 20px 10px 20px;
-  }
-  .PrivateSwitchBase-input {
-    /* width: 42px;
-    height: 42px; */
+    height: 100%;
+    box-sizing: border-box;
   }
 `;
 
 const RoomOptions = styled.div`
-  margin-top: 8px;
+  height: 100%;
   .room-card__room-option-item {
     display: flex;
     justify-content: space-between;
@@ -211,13 +267,45 @@ const RoomOptions = styled.div`
       right: 0px;
     }
   }
+
+  .spacing {
+    margin-top: 28px;
+  }
   .MuiSvgIcon-root {
     width: 32px;
     height: 32px;
-    &:first-child {
-      path {
-        /* fill: red; */
+  }
+
+  .MuiTypography-body1 {
+    width: calc(100% - 40px);
+  }
+  .MuiFormControl-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .checkbox-label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .detail {
+        margin-left: 40px;
+        margin-top: -8px;
       }
+    }
+    .checkbox-item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .title {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
   .checkbox {
@@ -256,6 +344,7 @@ const RoomOptions = styled.div`
   }
   .MuiFormControlLabel-root {
     margin-left: 0px;
+    margin-right: 0px;
   }
 `;
 

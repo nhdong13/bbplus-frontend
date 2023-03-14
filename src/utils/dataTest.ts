@@ -73,10 +73,42 @@ export const HOTEL_RESULT_DATA = [
         price: "$XXX",
         value: "",
       },
+    ],
+    modalOptions: [
+      {
+        id: 1,
+        title: "Half board meal plan",
+        price: "$125",
+        value: "",
+      },
+      {
+        id: 2,
+        title: "30% Spa Treatment",
+        price: "$99",
+        value: "",
+      },
+      {
+        id: 3,
+        title: "Full board meal plan",
+        price: "$115",
+        value: "",
+      },
+      {
+        id: 4,
+        title: "Bottle of wine on arrival",
+        price: "$25",
+        value: "",
+      },
+      {
+        id: 5,
+        title: "Meals: Buffet Breakfast",
+        price: "$100",
+        value: "",
+      },
       {
         id: 6,
-        title: "Bottle of wine on arrival",
-        price: "$XXX",
+        title: "Kid nanny services",
+        price: "$155",
         value: "",
       },
     ],
@@ -294,15 +326,17 @@ export const RoomModalDetail = {
   view: "Garden view",
   facilities: [
     "Alarm clock",
-    "Air Conditioning",
-    "Safe",
-    "Iron facilities",
-    "Iron",
     "Refrigerator",
+    "Air Conditioning",
     "Electronic kettle",
+    "Safe",
     "Tea/Coffee",
+    "Iron facilities",
     "Balcony",
+    "Iron",
     "Terrace",
+    "Toiletries",
+    "Hairdryer",
   ],
   smocking: "No smocking",
 };
@@ -318,3 +352,13 @@ export const RETURN_SEAT = [
   "Return - 8 seater",
   "Return - Seat in coach",
 ];
+
+export const TAXES_AND_FEES = `This charge includes estimated amounts the travel service provider
+(i.e. hotel, car rental company) pays for their taxes, and/or taxes
+that we pay, to taxing authorities on your booking (including but
+not limited to, sales, occupancy, and value added tax). This amount
+may also include any amounts charged to us for resort fees, cleaning
+fees, and other fees and/or a fee we, the hotel supplier and/ or the
+site you booked on, retain as part of the compensation for our
+and/or their services, which varies based on factors such as
+location, the amount, and how you booked.`;

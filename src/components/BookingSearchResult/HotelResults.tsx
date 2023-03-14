@@ -8,10 +8,12 @@ import { useState } from "react";
 import { COLORS } from "@/utils/colors";
 import { HOTEL_RESULT_DATA } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
+import { SelectedRoomType } from "@/utils/types/CardHotel";
 
 export default function HotelResults() {
   const listExpanded = HOTEL_RESULT_DATA.map((item) => item.name);
   const [expanded, setExpanded] = useState<string[]>(listExpanded);
+  const [selectedOption, setSelectedOption] = useState<number[]>([]);
 
   const onExpand = (accordion: string) => {
     setExpanded((expand) => {
@@ -25,8 +27,17 @@ export default function HotelResults() {
   const expandAll = () => {
     setExpanded(listExpanded);
   };
+
   const collapseAll = () => {
     setExpanded([]);
+  };
+
+  const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
+    if (type === "single") {
+      setSelectedOption((option) =>
+        option.includes(selectedOpt) ? [] : [selectedOpt]
+      );
+    }
   };
   return (
     <>
@@ -86,9 +97,12 @@ export default function HotelResults() {
                           return (
                             <RoomCard
                               key={index}
+                              index={index}
                               checkbox
                               roomOptions={result.roomOptions}
                               type={result.type}
+                              selected={selectedOption.includes(index)}
+                              onSelect={onSelectOption}
                             />
                           );
                         })
@@ -97,6 +111,7 @@ export default function HotelResults() {
                             key={item.title + index}
                             roomOptions={[item]}
                             type={result.type}
+                            onSelect={onSelectOption}
                           ></RoomCard>
                         ))}
                   </div>
