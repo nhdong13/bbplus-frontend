@@ -24,13 +24,13 @@ interface IDate {
   month: number
 }
 interface IProps {
-  arrival_date: string,
+  checkIn: string,
   total_date: string
 }
-export default function GridView({ arrival_date, total_date }: IProps) {
+export default function GridView({ checkIn, total_date }: IProps) {
   const [searchParam] = useSearchParams();
   const [data, setData] = useState<IDate[]>();
-  const date: string = searchParam.get('arrival_date') || '';
+  const date: string = searchParam.get('checkIn') || '';
   const day = new Date(date).getDate();
   const [currentDate, setCurrentDate] = useState<Date>(new Date(date));
   const dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
@@ -63,7 +63,7 @@ export default function GridView({ arrival_date, total_date }: IProps) {
 
   useEffect(() => {
     getDates();
-  }, [arrival_date]);
+  }, [checkIn]);
 
   return (
     <>

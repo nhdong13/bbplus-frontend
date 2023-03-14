@@ -8,11 +8,11 @@ import {
 } from "./styles";
 
 interface IPops {
-  arrival_date: string,
-  total_date: string,
+  checkIn: string,
+  total_date: number,
   onClickEditSearch: () => void,
 }
-export default function SearchView({ arrival_date, total_date, onClickEditSearch }: IPops) {
+export default function SearchView({ checkIn, total_date, onClickEditSearch }: IPops) {
   return (
     <SearchResultBackground>
       <SearchBar>
@@ -31,7 +31,7 @@ export default function SearchView({ arrival_date, total_date, onClickEditSearch
         <SearchItem className="arrive-days">
           <div className="group-h5">
             <H5 lineHeight="10px" fontWeight="700">Arrival Date</H5>
-            <H5 lineHeight="10px" color={COLORS.outerSpace}>{arrival_date}</H5>
+            <H5 lineHeight="10px" color={COLORS.outerSpace}>{checkIn}</H5>
           </div>
         </SearchItem>
         <SearchItem>

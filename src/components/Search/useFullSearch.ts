@@ -1,6 +1,8 @@
 import useComponentVisible from "@/utils/clickOutSide";
 import useWindowSize from "@/utils/windowResize";
 import { useEffect, useState } from "react";
+import { DateObject } from "react-multi-date-picker"
+import { useSearchParams } from "react-router-dom";
 interface IFilter {
   _id: string,
   name: string,
@@ -14,6 +16,19 @@ interface ISelected {
 const demoData = [
   { _id: '1', name: '', adults: 1, children: 0 },
 ]
+
+function getDatesInRange(start: DateObject, end: DateObject): DateObject[] {
+  const dates = [];
+  let currentDate = start.toDate();
+
+  while (currentDate <= end.toDate()) {
+    dates.push(new DateObject(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  return dates;
+}
+
 const useFullSearchWidget = () => {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
   const [travelerDropDown, setTravelerDropDown] = useState<boolean>(false);
@@ -30,6 +45,16 @@ const useFullSearchWidget = () => {
   const [totalGuest, setTotalGuest] = useState<number>(0);
   const [selectedLeaving, setSelectedLeaving] = useState<ISelected>();
   const [filterLeaving, setFilterLeaving] = useState<string>('');
+
+  //new state
+
+  const [searchParams] = useSearchParams();
+  const [dates, setDates] = useState<DateObject[]>([]);
+  const [totalDay, setTotalDay] = useState<number>(0);
+  const checkInParam = searchParams.get('checkIn') || '';
+  const checkOutParam = searchParams.get('checkOut') || '';
+  const roomParam = searchParams.getAll('room') || [];
+
 
   const screenWidth = useWindowSize();
 
@@ -123,6 +148,45 @@ const useFullSearchWidget = () => {
 
   }, [JSON.stringify(dataFilter)])
 
+  const getTotalDaysInRange = (datesInRange: DateObject[]): number => {
+    if (!datesInRange || datesInRange.length === 0) {
+      return 0;
+    }
+    const firstDate = datesInRange[0].toDate();
+    const lastDate = datesInRange[datesInRange.length - 1].toDate();
+    const diffTime = lastDate.getTime() - firstDate.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays + 1;
+  }
+
+
+
+  useEffect(() => {
+    setTotalDay((getTotalDaysInRange(dates)))
+  }, [dates])
+
+  useEffect(() => {
+    const startDate = new DateObject(new Date(checkInParam));
+    const endDate = new DateObject(new Date(checkOutParam));
+    const datesInRange = getDatesInRange(startDate, endDate);
+    setDates(datesInRange)
+  }, [checkInParam, checkOutParam])
+
+  // Parse room values from search parameters and set data filter state
+  useEffect(() => {
+    const roomValues: IFilter[] = roomParam
+      .map((value, index) => {
+        const matches = value.match(/a(\d+),c(\d+)/);
+        if (matches) {
+          return { _id: String(index), name: '', adults: parseInt(matches[1]), children: parseInt(matches[2]) };
+        } else {
+          return null;
+        }
+      })
+      .filter((value): value is IFilter => value !== null);
+    setDataFilter(roomValues);
+  }, [searchParams]);
+
 
   const handleAddRoom = (newRoom: IFilter) => {
     dataFilter.push(newRoom);
@@ -211,7 +275,10 @@ const useFullSearchWidget = () => {
     handleAddRoom,
     handleChangeDataRoom,
     selectedLeaving, setSelectedLeaving,
-    filterLeaving, setFilterLeaving
+    filterLeaving, setFilterLeaving,
+    //new
+    dates, setDates,
+    totalDay, setTotalDay
   }
 }
 

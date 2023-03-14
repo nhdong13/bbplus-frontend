@@ -9,39 +9,30 @@ import IMAGES from "@/assets/images";
 import useWindowSize from "@/utils/windowResize";
 import { H4 } from "../../Typography";
 
+
+
+
 interface SelectDate {
   isShown?: boolean
-  getArriveDate: (n: string) => void,
-  totalDates: (n: number) => void,
+  setTotalDates: (n: number) => void,
   closePopup: (n: boolean) => void,
-  innerRef?: any
+  innerRef?: any,
+  initialDates: DateObject[],
+  setData: any,
+  totalDay?: number
 }
-export default function SelectDate({ isShown, getArriveDate, totalDates, closePopup, innerRef }: SelectDate) {
+
+export default function SelectDate({
+  isShown,
+  setTotalDates,
+  closePopup, innerRef, initialDates, setData,
+  totalDay
+}: SelectDate) {
   const weekDays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
-  const [dates, setDates] = useState<any>([]);
-  const [resetDates, setResetDates] = useState<boolean>(false);
-  const [arriveDate, setArriveDate] = useState<string>();
-  const [leavingDate, setLeavingDate] = useState<string>();
+  const [dates, setDates] = useState<DateObject[]>(initialDates);
   const [showMonths, setShowMonths] = useState<number>(3);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [totalNights, setTotalNights] = useState<number>(0);
 
-  useEffect(() => {
-    if (resetDates) {
-      setDates([])
-      setResetDates(false)
-    }
-
-    if (dates.length) {
-      setArriveDate(dates[0].format("DD MMMM YYYY"))
-      setLeavingDate(dates[1]?.format("DD MMMM YYYY"))
-      getArriveDate(dates[0].format("DD MMMM YYYY"))
-    }
-
-    const diffInDays = CalculateNights(leavingDate, arriveDate);
-    totalDates(diffInDays)
-    setTotalNights(diffInDays)
-  }, [resetDates, dates, arriveDate, leavingDate])
 
   const screenWidth = useWindowSize();
 
@@ -55,6 +46,11 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
     }
   }, [screenWidth, showMonths, isMobile])
 
+  const onClickResetData = () => {
+    setData([])
+    setDates([])
+  }
+
   return (
     <>
       <StyledSelectDate ref={innerRef} isShown={screenWidth < 768 ? false : isShown}>
@@ -67,23 +63,26 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
           maxDate="30"
           format="YYYY/MM/DD"
           onChange={(dateObjects: any) => {
+            setData(dateObjects)
             setDates(dateObjects)
           }}
           value={dates}
         />
         <Divider color={COLORS.silver} width="100%" max-maxWidth="1232px" height="1px" />
         <ResultContainer>
-          {dates[0] &&
+          {dates &&
             <HorizontalContainer gap="20px" alignItems="center">
               <HorizontalContainer gap="20px" className="result-dates">
-                <span>{dates[0]?.format("ddd, DD MMM YYYY")}</span>
-                {dates[1] && <img src={IMAGES.iconArrowRight} />}
-                <span>{dates[1]?.format("ddd, DD MMM YYYY")}</span>
-                {totalNights > 0 && <span>{totalNights} nights</span>}
+                <>
+                  <span>{dates[0]?.format("ddd, DD MMM YYYY")}</span>
+                  {dates[1] && <img src={IMAGES.iconArrowRight} />}
+                  <span>{dates[dates.length - 1]?.format("ddd, DD MMM YYYY")}</span>
+                  <span>{totalDay} nights</span>
+                </>
               </HorizontalContainer>
               <div
                 className="result-cancel-button"
-                onClick={() => setResetDates(true)}
+                onClick={onClickResetData}
               >
                 <span>Cancel</span>
               </div>
@@ -92,6 +91,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
           <GradientButton
             color={COLORS.gradient1}
             text="Apply"
+            handleSubmit={() => closePopup(false)}
             isSelected={true}
             maxWidth="162px"
             fontSize="16px"
@@ -104,7 +104,7 @@ export default function SelectDate({ isShown, getArriveDate, totalDates, closePo
         isShown={screenWidth < 768 ? isShown : false}
         closePopup={closePopup}
         weekDays={weekDays}
-        totalDates={(e: number) => totalDates(e)}
+        totalDates={(e: number) => setTotalDates(e)}
       />
     </>
   )
@@ -258,4 +258,15 @@ const CalculateNights = (leavingDate?: string, arriveDate?: string) => {
     ((new Date(leavingDate as string) as any) - (new Date(arriveDate as string) as any));
   const diffInDays: number = diffInMs / (1000 * 60 * 60 * 24);
   return diffInDays;
+}
+
+const getTotalDaysInRange = (datesInRange: DateObject[]): number => {
+  if (!datesInRange || datesInRange.length === 0) {
+    return 0;
+  }
+  const firstDate = datesInRange[0].toDate();
+  const lastDate = datesInRange[datesInRange.length - 1].toDate();
+  const diffTime = lastDate.getTime() - firstDate.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays + 1;
 }

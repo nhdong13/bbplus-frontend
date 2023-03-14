@@ -20,7 +20,8 @@ import GridView from "./GridView";
 import Package from "./PackageView";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import FullSearchWidget from "@/components/Search/FullSearchWidget";
+import FullSearchWidget2 from "@/components/Search/FullSearchWidget2";
+import useFullSearchWidget from "@/components/Search/useFullSearch";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function SearchResult() {
@@ -47,37 +48,58 @@ export default function SearchResult() {
     { _id: 3, label: "Price: high to low" },
     { _id: 4, label: "Star rating" },
   ]
-  const arrival_date: string = searchParam.get('arrival_date') || 'Day|Date|Month';
+  const checkIn: string = searchParam.get('checkIn') || 'Day|Date|Month';
   const total_date: string = searchParam.get('total_date') || 'X';
   const navigate = useNavigate();
 
-  const handleSearch = (arrival_date: string, total_date: string) => {
+  const handleSearch = (checkIn: string, checkOut: string) => {
     navigate({
       pathname: "/search-result",
       search: createSearchParams({
-        arrival_date,
-        total_date
+        checkIn,
+        checkOut
       }).toString()
     });
     setSearchMode(0)
   }
 
+  const {
+    totalDates, setTotalDates,
+    getArriveDate, setGetArriveDate,
+
+  } = useFullSearchWidget();
+
+  useEffect(() => {
+    setTotalDates(parseInt(total_date))
+    setGetArriveDate(checkIn)
+  }, [checkIn, total_date])
+  const Abc = (e: number) => {
+    setTotalDates(e)
+    console.log(e)
+  }
   return (
     <>
       <MainLayout>
         {
-          searchMode === 0
+          searchMode === 1
             ?
             <SearchView
-              arrival_date={arrival_date}
-              total_date={total_date}
+              checkIn={checkIn}
+              total_date={totalDates}
               onClickEditSearch={() => setSearchMode(1)}
             />
             :
             <SearchWidgetBackground>
               <SearchWidgetContainer>
                 <div className="line"></div>
-                <FullSearchWidget className="full-result" handleSearch={handleSearch} />
+                <FullSearchWidget2
+                  className="full-result"
+                  handleSearch={handleSearch}
+                // totalDates={totalDates}
+                // getArriveDate={getArriveDate}
+                // setTotalDates={(e: number) => Abc(e)}
+                // setGetArriveDate={(e: string) => setGetArriveDate(e)}
+                />
               </SearchWidgetContainer>
             </SearchWidgetBackground>
         }
@@ -138,7 +160,7 @@ export default function SearchResult() {
         {
           type === 0
             ?
-            <GridView arrival_date={arrival_date} total_date={total_date} />
+            <GridView checkIn={checkIn} total_date={total_date} />
             :
             <Package />
 
