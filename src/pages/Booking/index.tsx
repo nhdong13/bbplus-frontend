@@ -20,7 +20,6 @@ import {
   BookingOption,
   Button,
   ButtonNextStep,
-  Col,
   Container,
   ContainerLeft,
   ContainerRight,
@@ -116,17 +115,17 @@ export default function Booking() {
         </SearchResultBackground>
         <BookingContainer>
           <BookingHeader>
-            <Col>
+            <div>
               <Breadcrumb>
                 <BreadcrumbItem>
                   <ReactSVG className="icon" src={IMAGES.home} />
-                  HOME
+                  Home
                 </BreadcrumbItem>
                 <BreadcrumbItem>Fiji properties</BreadcrumbItem>
                 <BreadcrumbItem>Coral coast resorts</BreadcrumbItem>
                 <BreadcrumbItem>Warwick Fiji Beach Resort</BreadcrumbItem>
               </Breadcrumb>
-              <Link>
+              <Link className="desktop">
                 <div>
                   <Typography>Customization</Typography>
                   <Typography>Amenities</Typography>
@@ -134,27 +133,43 @@ export default function Booking() {
                   <Typography>FAQ</Typography>
                 </div>
               </Link>
-            </Col>
+            </div>
             <div>
               <BookingOption>
                 <div>
-                  <Typography fontWeight="bold">Total Price</Typography>
-                  <Typography color="#104c94" fontSize="28px" fontWeight="800">
-                    FJ $XXX &nbsp;
+                  <Typography className="total-price" fontWeight="bold">
+                    Total Price
+                  </Typography>
+                  <div className="price-line">
+                    <Typography
+                      className="price-p-person"
+                      color="#104c94"
+                      fontSize="28px"
+                      fontWeight="800"
+                    >
+                      FJ$XXX
+                    </Typography>
                     <Typography
                       color="#e00000"
                       fontSize="16px"
                       fontWeight="normal"
                     >
-                      per person
+                      Per person
                     </Typography>
-                  </Typography>
-                  <Typography fontWeight="800" lineHeight="16px">
-                    FJ $X,XXX &nbsp;
+                  </div>
+
+                  <div className="price-line">
+                    <Typography
+                      className="price-f-pax"
+                      fontWeight="800"
+                      lineHeight="16px"
+                    >
+                      FJ$X,XXX
+                    </Typography>
                     <Typography color="#e00000" fontWeight="normal">
                       Total cost pay for X pax
                     </Typography>
-                  </Typography>
+                  </div>
                 </div>
                 <ButtonNextStep
                   onClick={() => {
@@ -163,6 +178,14 @@ export default function Booking() {
                 >
                   Next Step
                 </ButtonNextStep>
+                <Link className="mobile">
+                  <div>
+                    <Typography>Customization</Typography>
+                    <Typography>Amenities</Typography>
+                    <Typography>House rules</Typography>
+                    <Typography>FAQ</Typography>
+                  </div>
+                </Link>
               </BookingOption>
             </div>
           </BookingHeader>
@@ -177,16 +200,16 @@ export default function Booking() {
                         Warwick Fiji Beach Resort
                       </H1>
                       <div className="location">
-                        <img
+                        <ReactSVG
+                          className="icon"
                           src={IMAGES.locationIcon}
-                          alt="location"
                           width="17px"
                           height="25px"
                         />
                         <Typography fontWeight="500">
                           Coral coast, Viti Levu, Fiji
                         </Typography>
-                        <Typography color="#005cff" fontWeight="500">
+                        <Typography color={COLORS.blueFrench} fontWeight="500">
                           Show on map
                         </Typography>
                       </div>
@@ -212,13 +235,18 @@ export default function Booking() {
                     </div>
                   </HotelImage>
                   <HotelPrice>
-                    <Typography fontWeight="bold">Total Price</Typography>
-                    <Typography
-                      color="#104c94"
-                      fontSize="28px"
-                      fontWeight="800"
-                    >
-                      FJ $XXX &nbsp;
+                    <Typography className="total-price" fontWeight="bold">
+                      Total Price
+                    </Typography>
+                    <div className="price-line">
+                      <Typography
+                        className="price-p-person"
+                        color="#104c94"
+                        fontSize="28px"
+                        fontWeight="800"
+                      >
+                        FJ$XXX
+                      </Typography>
                       <Typography
                         color="#e00000"
                         fontSize="16px"
@@ -226,13 +254,20 @@ export default function Booking() {
                       >
                         Per person
                       </Typography>
-                    </Typography>
-                    <Typography fontWeight="800" lineHeight="16px">
-                      FJ $X,XXX &nbsp;
+                    </div>
+
+                    <div className="price-line">
+                      <Typography
+                        className="price-f-pax"
+                        fontWeight="800"
+                        lineHeight="16px"
+                      >
+                        FJ$X,XXX
+                      </Typography>
                       <Typography color="#e00000" fontWeight="normal">
                         Total cost pay for X pax
                       </Typography>
-                    </Typography>
+                    </div>
                   </HotelPrice>
                   <HotelDetail>
                     <div className="flex justify-between items-center">
@@ -249,7 +284,7 @@ export default function Booking() {
                         <Button>Ultimate Holiday</Button>
                       </div>
                     </div>
-                    <Typography fontSize="18px">Holiday includes</Typography>
+                    <Typography className="holiday-includes" fontSize="18px">Holiday includes</Typography>
                     <ul>
                       <li>
                         <Typography>Meet and greet at airport</Typography>
@@ -282,7 +317,7 @@ export default function Booking() {
                           fontWeight="bold"
                           color="black"
                         >
-                          Enter traveller details
+                          Enter traveler
                         </Typography>
                       </Button>
                       <Button

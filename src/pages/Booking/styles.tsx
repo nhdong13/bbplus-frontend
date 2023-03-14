@@ -1,4 +1,5 @@
 import IMAGES from "@/assets/images";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
@@ -17,6 +18,43 @@ const BookingOption = styled.div`
       display: inline-block;
     }
   }
+  @media ${BREAKPOINTS.tablet} {
+    padding: 0 10px;
+    display: block;
+    .total-price {
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 16px;
+      font-family: Manrope;
+      margin-bottom: 10px;
+    }
+    .price-p-person {
+      font-size: 18px;
+      line-height: 25px;
+      color: ${COLORS.cyprus};
+    }
+    .price-f-pax {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 19px;
+    }
+    .price-line {
+      display: flex;
+      align-items: center;
+      span {
+        display: inline-block;
+        font-family: Manrope;
+      }
+      span:last-child {
+        margin-left: 10px;
+        font-size: 12px;
+        font-family: Manrope;
+      }
+      :last-child {
+        margin-top: 10px;
+      }
+    }
+  }
 `;
 
 const BookingHeader = styled.div`
@@ -27,6 +65,13 @@ const BookingHeader = styled.div`
   align-items: baseline;
   justify-content: space-between;
   flex-direction: row;
+  @media ${BREAKPOINTS.tablet} {
+    flex-direction: column;
+    padding-bottom: 0px;
+    & > div {
+      width: 100%;
+    }
+  }
 `;
 
 const Link = styled.div`
@@ -43,6 +88,25 @@ const Link = styled.div`
   span {
     font-weight: bold;
   }
+  &.mobile {
+    display: none;
+  }
+
+  @media ${BREAKPOINTS.tablet} {
+    margin-top: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    &.desktop {
+      display: none;
+    }
+    &.mobile {
+      display: block;
+    }
+    span {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
 `;
 
 const ButtonNextStep = styled.button`
@@ -53,6 +117,14 @@ const ButtonNextStep = styled.button`
   padding: 16px 42px;
   border-radius: 8px;
   font-weight: bold;
+  @media ${BREAKPOINTS.laptop} {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 0px;
+    line-height: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
 `;
 
 const Col = styled.div`
@@ -70,6 +142,11 @@ const BookingContent = styled.div`
     );
   padding-top: 4px;
   margin-bottom: 40px;
+  @media ${BREAKPOINTS.tablet} {
+    display: block;
+    border-top: 0px;
+    padding-top: 0px;
+  }
 `;
 
 interface ContainerStyle {
@@ -79,27 +156,31 @@ interface ContainerStyle {
 const Left = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
   background-color: #f0f1f2;
-  padding-top: 20px;
-  padding-right: 56px;
-  padding-bottom: 40px;
+  padding: 20px 56px 40px 0;
+  @media ${BREAKPOINTS.tablet} {
+    background-color: white;
+    padding: 40px 0 0 0;
+  }
 `;
 const Right = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
   padding-left: 40px;
+  @media ${BREAKPOINTS} {
+    padding-left: 0;
+  }
 `;
 
 const HotelInformation = styled.div`
   .hotel__image {
     width: 421px;
     height: 280px;
-    min-height: 280px;
     margin-left: 12px;
     border-radius: 12px;
     object-fit: cover;
     background-position: 50% 50%;
   }
   .location {
-    img,
+    .icon,
     p,
     span {
       display: inline-block;
@@ -107,9 +188,43 @@ const HotelInformation = styled.div`
       line-height: 16px;
       padding: 0 12px 0 0;
     }
+    .icon {
+      display: inline-block;
+    }
   }
   .hotel-info-container {
     padding-left: 12px;
+  }
+  @media ${BREAKPOINTS.tablet} {
+    box-sizing: border-box;
+    .hotel-info-container {
+      padding-left: 2px;
+      h1 {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+    .location {
+      margin-top: 10px;
+      .icon,
+      p,
+      span {
+        vertical-align: unset;
+        padding: 0 10px 0 0;
+      }
+      .icon,
+      svg {
+        width: 9px;
+        height: 13px;
+        /* display: block; */
+      }
+      path {
+        fill: black;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
   }
 `;
 
@@ -119,12 +234,21 @@ const Container = styled.div`
   margin: auto;
   display: grid;
   grid-template-columns: 40% 60%;
+  box-sizing: border-box;
+  @media ${BREAKPOINTS.tablet} {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+  }
 `;
 
 const ContainerLeft = styled.div`
   width: 100%;
   height: 100%;
   background-color: #f0f1f2;
+  @media ${BREAKPOINTS.tablet} {
+    display: none;
+  }
 `;
 
 const ContainerRight = styled.div`
@@ -162,6 +286,24 @@ const HotelImage = styled.div`
       background-color: #4c4c4c4d;
     }
   }
+
+  @media ${BREAKPOINTS.tablet} {
+    justify-content: space-between;
+    padding: 0;
+    margin: 10px 0;
+    .hotel__image,
+    .overlay {
+      width: 330px;
+      height: 230px;
+      margin: 0px;
+    }
+    .hotel__image {
+      margin: 29px 0 0;
+    }
+    .overlay {
+      display: none;
+    }
+  }
 `;
 
 const HotelPrice = styled.div`
@@ -173,6 +315,42 @@ const HotelPrice = styled.div`
   & > span {
     padding: 4px 0;
     line-height: 100%;
+  }
+  @media ${BREAKPOINTS.tablet} {
+    padding-bottom: 10px;
+    .total-price {
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 16px;
+      font-family: Manrope;
+      margin-bottom: 10px;
+    }
+    .price-p-person {
+      font-size: 18px;
+      line-height: 25px;
+      color: ${COLORS.cyprus};
+    }
+    .price-f-pax {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 19px;
+    }
+    .price-line {
+      display: flex;
+      align-items: center;
+      span {
+        display: inline-block;
+        font-family: Manrope;
+      }
+      span:last-child {
+        margin-left: 10px;
+        font-size: 12px;
+        font-family: Manrope;
+      }
+      :last-child {
+        margin-top: 10px;
+      }
+    }
   }
 `;
 
@@ -222,6 +400,64 @@ const HotelDetail = styled.div`
   .group-btn {
     margin-top: 28px;
     gap: 12px;
+  }
+  @media ${BREAKPOINTS} {
+    & > div:first-child {
+      justify-content: flex-start;
+      gap: 10px;
+      span {
+        font-size: 12px;
+        line-height: 16px;
+        color: #000000;
+      }
+    }
+    .action {
+      margin-bottom: 10px;
+      button {
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 5px;
+        color: ${COLORS.blueFrench};
+      }
+    }
+    .holiday-includes {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+    }
+    ul {
+      margin-top: 10px;
+      li {
+        padding: 0px 0px 0px 22px;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 10px;
+      }
+    }
+    & > div:last-child {
+      margin-top: 10px;
+      justify-content: center;
+      flex-direction: row;
+      button {
+        padding: 10px;
+        box-sizing: border-box;
+        height: 39px;
+        width: 143.5px;
+        span {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+      button:first-child {
+        span {
+          color: white;
+        }
+      }
+
+      button:last-child {
+      }
+    }
   }
 `;
 

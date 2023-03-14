@@ -9,6 +9,7 @@ import { COLORS } from "@/utils/colors";
 import { HOTEL_RESULT_DATA } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { SelectedRoomType } from "@/utils/types/CardHotel";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 export default function HotelResults() {
   const listExpanded = HOTEL_RESULT_DATA.map((item) => item.name);
@@ -43,12 +44,12 @@ export default function HotelResults() {
     <>
       <StyledHotelResult>
         <div className="hotel-result__action">
-          <Span color={COLORS.blueRibbon} fontWeight="400" onClick={expandAll}>
+          <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>
             Expand all
           </Span>
           <div className="hotel-result__separate" />
           <Span
-            color={COLORS.blueRibbon}
+            color={COLORS.blueFrench}
             fontWeight="400"
             onClick={collapseAll}
           >
@@ -176,17 +177,43 @@ const StyledHotelResult = styled.div`
 
   .select-ages__dropdown-icon {
     svg {
-      width: 14px;
-      height: 27.25px;
-      transform: rotate(90deg);
+      width: 26px;
+      height: 16px;
       path {
         stroke-width: 2px;
-        stroke: ${COLORS.blueRibbon};
+        fill: ${COLORS.blueFrench};
       }
     }
   }
 
   .MuiAccordionDetails-root {
     padding-bottom: 48px;
+  }
+
+  @media ${BREAKPOINTS.tablet} {
+    .hotel-result__action {
+      padding-top: 30px;
+      span {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+    .hotel-result__separate {
+      height: 19px;
+    }
+    .hotel-result__room-list {
+      grid-template-columns: auto;
+      gap: 10px;
+    }
+    .hotel-result__option-list {
+      grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+      gap: 10px;
+    }
+    .MuiAccordionDetails-root {
+      padding-bottom: 0;
+    }
+    .MuiPaper-root {
+      margin-top: 20px !important;
+    }
   }
 `;

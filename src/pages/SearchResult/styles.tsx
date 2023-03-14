@@ -574,7 +574,10 @@ const CarouselWrapper = styled.div`
     }
   }
 `;
-const BookingContainer = styled.div``;
+const BookingContainer = styled.div`
+  @media ${BREAKPOINTS.laptop} {
+  }
+`;
 
 export {
   SearchResultBackground,

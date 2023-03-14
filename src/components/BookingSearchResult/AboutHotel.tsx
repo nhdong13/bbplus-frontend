@@ -7,6 +7,7 @@ import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const StyledAboutHotel = styled.div`
   padding-bottom: 48px;
@@ -28,7 +29,6 @@ const StyledAboutHotel = styled.div`
     svg {
       width: 14px;
       height: 27.25px;
-      transform: rotate(90deg);
       path {
         stroke-width: 2px;
         stroke: ${COLORS.blueRibbon};
@@ -134,6 +134,43 @@ const StyledAboutHotel = styled.div`
       border-top: 0px;
     }
   }
+  @media ${BREAKPOINTS.tablet} {
+    .about-hotel__action {
+      padding-top: 0px;
+      span {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+    .hotel-result__separate {
+      height: 19px;
+    }
+    .MuiAccordionDetails-root {
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .select-ages__dropdown-icon {
+      svg {
+        width: 26px;
+        height: 16px;
+        path {
+          stroke-width: 0px;
+          fill: ${COLORS.blueFrench};
+        }
+      }
+    }
+    .title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      color: ${COLORS.cyprus}
+    }
+    .facilities {
+      display: block;
+      float: left;
+    }
+  }
 `;
 
 const EXPAND = ["amenities", "rules", "faq"];
@@ -158,12 +195,12 @@ export default function AboutHotel() {
     <StyledAboutHotel>
       <Container display="block">
         <div className="about-hotel__action">
-          <Span color={COLORS.blueRibbon} fontWeight="400" onClick={expandAll}>
+          <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>
             Expand all
           </Span>
           <div className="hotel-result__separate" />
           <Span
-            color={COLORS.blueRibbon}
+            color={COLORS.blueFrench}
             fontWeight="400"
             onClick={collapseAll}
           >
@@ -179,7 +216,9 @@ export default function AboutHotel() {
             }}
             details={
               <>
-                <Span fontWeight="bold">Most popular facilities</Span>
+                <Span className="title" fontWeight="bold">
+                  Most popular facilities
+                </Span>
                 <div className="facilities">
                   {FACILITIES.map((item) => {
                     return (

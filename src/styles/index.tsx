@@ -8,10 +8,9 @@ const Breadcrumb = styled.div`
   padding: 34px 0px 20px 0px;
   margin: 0 auto;
   @media ${BREAKPOINTS.laptop} {
-    padding-top: 15px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: center;
+    padding: 15px 10px 10px 10px;
+    display: block;
+    float: left;
   }
 `;
 
@@ -20,8 +19,12 @@ const BreadcrumbItem = styled.div`
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  color: ${COLORS.blueRYB};
+  color: ${COLORS.blueFrench};
   display: inline-block;
+  &:last-child{
+    white-space: pre-wrap;
+    display: inline;
+  }
   .icon {
     display: inline-block;
     margin-right: 12px;
@@ -38,10 +41,13 @@ const BreadcrumbItem = styled.div`
   @media ${BREAKPOINTS.laptop} {
     font-size: 14px;
     font-weight: normal;
-    margin-right: 5px;
+    margin-right: 2px;
     &::after {
       content: ">";
-      margin-left: 5px;
+      margin-left: 2px;
+    }
+    .icon {
+      display: none;
     }
   }
 `;
@@ -65,6 +71,12 @@ const Container = styled.div<IContainer>`
   grid-template-columns: ${(props) => props.gridTemplateColumns || "40% 60%"};
   justify-content: ${(props) => props.justifyContent};
   flex-direction: ${(props) => props.flexDirection};
+  @media ${BREAKPOINTS.tablet} {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
 `;
 
 export { Breadcrumb, BreadcrumbItem, Container };

@@ -57,6 +57,8 @@ import tennis from "./tennis.svg";
 import search from "./search.svg";
 import mark from "./icon-mark.svg";
 import home from "./icon-home.svg";
+import iconArrowUp from "./icon-arrow-up.svg";
+import iconArrowDownGradient from "./icon-arrow-down-gradient.svg";
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -118,6 +120,8 @@ const IMAGES = {
   search,
   mark,
   home,
+  iconArrowUp,
+  iconArrowDownGradient
 };
 
 export default IMAGES;

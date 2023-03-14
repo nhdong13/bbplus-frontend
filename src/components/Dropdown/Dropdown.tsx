@@ -4,11 +4,33 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import styled from "styled-components";
 import { Typography as Span } from "../Typography";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 const StyledDropdown = styled.div.attrs(
   (props: { boxShadow?: string }) => props
 )`
   box-shadow: ${(props) => props.boxShadow};
+  @media ${BREAKPOINTS.tablet} {
+    box-shadow: none;
+    .MuiAccordionSummary-root {
+      padding: 0;
+      min-height: unset!important;
+      margin-bottom: 20px;
+    }
+    .MuiAccordionSummary-content {
+      span {
+        font-size: 18px;
+        line-height: 25px;
+        margin-left: 0;
+      }
+    }
+    .MuiAccordionSummary-content {
+      margin: 0!important;
+    }
+    .MuiAccordionDetails-root {
+      padding: 0px;
+    }
+  }
 `;
 
 interface IDropdown {
@@ -45,7 +67,7 @@ export default function Dropdown({
               ) : (
                 <ReactSVG
                   className="select-ages__dropdown-icon"
-                  src={IMAGES.iconAnchorGrey}
+                  src={IMAGES.iconArrowUp}
                   width="31px"
                   height="15px"
                 />

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { H3, H4, Typography as Span } from "../Typography";
 import { TAXES_AND_FEES } from "@/utils/dataTest";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IRoomCard {
   index?: number;
@@ -142,7 +143,9 @@ export default function RoomCard({
 
                     <div className="room-card__price-detail">
                       {[1, 3].includes(index || 0) ? (
-                        <Span color={COLORS.red}>No availability</Span>
+                        <Span className="warning" color={COLORS.red}>
+                          No availability
+                        </Span>
                       ) : (
                         <p onClick={() => onShowModal(MODAL_TYPES.TEXT)}>
                           Price details
@@ -202,6 +205,21 @@ const StyledRoomCard = styled.div`
     padding: 30px 20px 10px 20px;
     height: 100%;
     box-sizing: border-box;
+  }
+  @media ${BREAKPOINTS.tablet} {
+    border-radius: 5px;
+    h4 {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      margin-bottom: 10px;
+    }
+    .room-card__container {
+      padding: 20px 10px 30px 10px;
+    }
+    .room-card__option-container {
+      padding: 10px 24px;
+    }
   }
 `;
 
@@ -345,6 +363,88 @@ const RoomOptions = styled.div`
   .MuiFormControlLabel-root {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  @media ${BREAKPOINTS.laptop} {
+    .MuiFormControl-root {
+      .title,
+      .detail {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+      }
+      .checkbox-label .detail {
+        display: none;
+        margin-left: 28px;
+      }
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        &:after {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .checked {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    .room-card__price-detail-container {
+      h3 {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+        margin-bottom: 10px;
+      }
+    }
+    .room-card__price-detail {
+      p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: ${COLORS.blueFrench};
+      }
+      img {
+        width: 16px;
+        height: 16px;
+      }
+      & > div {
+        gap: 10px;
+      }
+      .warning {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+    .room-card__option {
+      & > p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 10px;
+      }
+    }
+    .room-card__option-detail {
+      p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: ${COLORS.blueFrench};
+      }
+      img {
+        width: 16px;
+        height: 16px;
+        right: calc(50% - 58px);
+      }
+    }
+    .option-detail {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+    }
   }
 `;
 
