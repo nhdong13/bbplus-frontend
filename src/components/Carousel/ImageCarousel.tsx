@@ -71,7 +71,7 @@ export default function ImageCarousel({
                 onSelectImage(thumbnail);
               }}
             >
-              <Thumbnail width="66px" height="64px" imageUrl={thumbnail} borderRadius={borderRadius}/>
+              <Thumbnail width="100%" height="100%" imageUrl={thumbnail} borderRadius={borderRadius}/>
             </Slide>
           ))}
         </Slider>
@@ -160,7 +160,7 @@ const Wrapper = styled.div<IWrapper>`
     }
   }
   .carousel__slide {
-    width: 66px !important;
+    width: 66px;
     height: 64px;
     padding-bottom: 0px;
   }

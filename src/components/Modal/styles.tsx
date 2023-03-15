@@ -9,7 +9,7 @@ export const StyledModal = styled.div<IModal>`
   flex-direction: column;
   outline: none;
   background-color: white;
-  width: ${(props) => props.width || "880px"};
+  width: ${(props) => props.width || "820px"};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,5 +17,12 @@ export const StyledModal = styled.div<IModal>`
   border-radius: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   .close-btn {
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px;
   }
 `;

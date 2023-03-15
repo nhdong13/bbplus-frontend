@@ -28,42 +28,49 @@ export default function RoomExtras({
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModal>
-        <Span
-          textAlign="right"
-          padding="20px 28px 0 28px"
-          style={{
-            alignSelf: "end",
-          }}
-          onClick={onCloseModal}
-        >
-          <ReactSVG
-            className="close-btn"
+        <div className="header">
+          <Span padding="0 0 0 16px" fontSize="24px" fontWeight="bold">
+            {title}
+          </Span>
+          <Span
+            textAlign="right"
+            style={{
+              alignSelf: "end",
+            }}
             onClick={onCloseModal}
-            src={IMAGES.iconClose}
-          />
-        </Span>
-        <Span padding="0 28px" fontSize="20px" fontWeight="bold">
-          {title}
-        </Span>
-        <Container display="block" maxWidth="880px">
+          >
+            <ReactSVG
+              className="close-btn"
+              onClick={onCloseModal}
+              src={IMAGES.iconClose}
+            />
+          </Span>
+        </div>
+
+        <Container display="block" maxWidth="820px" width="820px">
           <Details>
-            {HOTEL_RESULT_DATA[1].roomOptions.map((option, index) => {
+            {HOTEL_RESULT_DATA[1].modalOptions?.map((option, index) => {
               return (
                 <Option key={option.title + index}>
                   <div>
-                    <Span>{option.title}</Span>
-                    <Span fontSize="12px">
-                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                    <Span fontWeight="bold" fontSize="18px">
+                      {option.title}
+                    </Span>
+                    <Span className="detail" fontSize="14px">
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                     </Span>
                   </div>
                   <div className="price">
-                    <Span textAlign="center" fontWeight="bold">
+                    <Span fontWeight="bold" fontSize="16px">
+                      _
+                    </Span>
+                    <Span textAlign="center" fontWeight="bold" fontSize="20px">
                       {option.price}
                     </Span>
                   </div>
                   <div className="qty">
                     <Span
-                      fontSize="12px"
+                      fontSize="14px"
                       textAlign="center"
                       color={COLORS.electricRed}
                     >
@@ -77,6 +84,12 @@ export default function RoomExtras({
                         input={<OutlinedInput />}
                         // inputProps={{ "aria-label": "Without label" }}
                         onChange={onChangeQty}
+                        IconComponent={(props) => (
+                          <ReactSVG
+                            className="dropdown"
+                            src={IMAGES.iconDropDownBlue}
+                          ></ReactSVG>
+                        )}
                       >
                         <MenuItem value={0}>0</MenuItem>
                         <MenuItem value={10}>10</MenuItem>
@@ -98,10 +111,12 @@ export default function RoomExtras({
             </Span>
           </Span>
           <GradientButton
+            className="btn"
             isSelected
             text="Update trip"
             color={COLORS.gradient2}
             handleSubmit={onCloseModal}
+            fontWeight="bold"
           />
         </Action>
       </StyledModal>
@@ -110,23 +125,56 @@ export default function RoomExtras({
 }
 
 const Details = styled.div`
-  max-height: 360px;
-  padding: 20px 28px 68px 28px;
-  margin-top: 32px;
+  box-sizing: border-box;
+  max-height: 533px;
+  margin: 0 4px 12px 4px;
+  padding: 0 12px 80px 16px;
   display: grid;
   grid-template-columns: calc(50% - 10px) calc(50% - 10px);
   height: fit-content;
   gap: 20px;
   row-gap: 12px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  position: relative;
+  &::-webkit-scrollbar-button:single-button {
+    display: flex;
+    padding: 10px;
+    border-style: solid;
+    height: 8px;
+  }
+  /* Up */
+  &::-webkit-scrollbar-button:single-button:vertical:decrement {
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent ${COLORS.gray80} transparent;
+  }
+
+  ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+    border-color: transparent transparent ${COLORS.gray80} transparent;
+  }
+  /* Down */
+  ::-webkit-scrollbar-button:single-button:vertical:increment {
+    border-width: 8px 8px 0 8px;
+    border-color: ${COLORS.gray80} transparent transparent transparent;
+  }
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    padding: 12px 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${COLORS.gray80};
+  }
 `;
 
 const Option = styled.div`
   display: grid;
   grid-template-columns: 60% 20% 20%;
-  padding: 30px 20px;
+  padding: 30px 12px;
   border-radius: 12px;
   border: 1px solid ${COLORS.grayAf};
+  &:nth-last-of-type(-n + 2) {
+    margin-bottom: 20px;
+  }
   &:hover {
     background-color: #d0d8f3;
   }
@@ -136,11 +184,31 @@ const Option = styled.div`
     span {
       word-wrap: break-word;
     }
+    &:first-child {
+      .detail {
+        max-width: 157px;
+      }
+    }
   }
   .MuiInputBase-root {
     width: fit-content;
-    min-width: 54px;
+    min-width: 48px;
     height: 40px;
+    position: relative;
+    .MuiOutlinedInput-notchedOutline {
+      border-color: black;
+    }
+    .dropdown {
+      position: absolute;
+      pointer-events: none;
+      right: 4px;
+      width: fit-content;
+      height: fit-content;
+      svg {
+        width: 12px;
+        height: 6px;
+      }
+    }
   }
   .MuiSelect-select {
     padding: 0 0 0 12px !important;
@@ -157,6 +225,10 @@ const Option = styled.div`
   }
   .price {
     justify-content: center;
+    & > span:first-child {
+      opacity: 0;
+      line-height: 16px;
+    }
   }
 `;
 
@@ -166,16 +238,12 @@ const Action = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 28px;
-  border-top: 1px solid black;
-`;
-const Button = styled.button`
-  width: fit-content;
-  height: fit-content;
-  padding: 16px 16px;
-  border-radius: 12px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 180, 146, 1) 0%,
-    rgba(0, 159, 199, 1) 100%
-  );
+  border-top: 1px solid ${COLORS.gray81};
+  .btn {
+    height: 62px;
+    box-sizing: border-box;
+    span {
+      padding: 0 38px;
+    }
+  }
 `;
