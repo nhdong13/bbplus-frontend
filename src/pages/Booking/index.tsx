@@ -1,5 +1,5 @@
 import IMAGES from "@/assets/images";
-import HotelResults from "@/components/BookingSearchResult/HotelResults";
+import CustomHotelOption from "@/components/BookingSearchResult/CustomHotelOption";
 import ImageCarousel from "@/components/Carousel/ImageCarousel";
 import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H5, Typography } from "@/components/Typography";
@@ -338,7 +338,7 @@ export default function Booking() {
                 </HotelInformation>
               </Left>
               <Right width="">
-                <HotelResults />
+                <CustomHotelOption />
               </Right>
             </Container>
             <ContainerRight></ContainerRight>

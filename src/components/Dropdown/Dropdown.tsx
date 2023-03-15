@@ -14,7 +14,7 @@ const StyledDropdown = styled.div.attrs(
     box-shadow: none;
     .MuiAccordionSummary-root {
       padding: 0;
-      min-height: unset!important;
+      min-height: unset !important;
       margin-bottom: 20px;
     }
     .MuiAccordionSummary-content {
@@ -25,7 +25,7 @@ const StyledDropdown = styled.div.attrs(
       }
     }
     .MuiAccordionSummary-content {
-      margin: 0!important;
+      margin: 0 !important;
     }
     .MuiAccordionDetails-root {
       padding: 0px;
@@ -36,6 +36,7 @@ const StyledDropdown = styled.div.attrs(
 interface IDropdown {
   className?: string;
   boxShadow?: string;
+  order?: number;
   title: string | React.ReactNode;
   details: React.ReactNode;
   expandIcon?: React.ReactNode;
@@ -44,6 +45,7 @@ interface IDropdown {
 }
 export default function Dropdown({
   className,
+  order,
   title,
   expand,
   details,
@@ -52,7 +54,11 @@ export default function Dropdown({
   boxShadow,
 }: IDropdown) {
   return (
-    <StyledDropdown className={className} boxShadow={boxShadow}>
+    <StyledDropdown
+      className={className}
+      boxShadow={boxShadow}
+      style={{ order: order }}
+    >
       <Accordion
         expanded={expand}
         onChange={() => {

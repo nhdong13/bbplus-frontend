@@ -141,6 +141,79 @@ export const HOTEL_RESULT_DATA = [
       },
     ],
   },
+  {
+    name: "Tours",
+    type: "room_tours",
+    description: "River Safari Jet Boat Tour",
+    roomOptions: [
+      {
+        id: 1,
+        title: "Kula wild park",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 2,
+        title: "Sand dunes hike",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 3,
+        title: "EtroTrax Fiji",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 4,
+        title: "Discovery the waterfalls at Blauseva",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 5,
+        title: "River safari jet boat tour",
+        price: "$XXX",
+        value: "",
+      },
+    ],
+  },
+  {
+    name: "Another Hotel",
+    type: "room_another",
+    roomOptions: [
+      {
+        id: 1,
+        title: "Non-Refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 2,
+        title: "Fully refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 3,
+        title: "Non-Refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 4,
+        title: "Breakfast buffet",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 5,
+        title: "Fully refundable ",
+        price: "$XXX",
+        value: "",
+      },
+    ],
+  },
 ];
 
 export const FACILITIES = [
