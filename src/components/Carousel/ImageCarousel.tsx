@@ -1,5 +1,6 @@
 import IMAGES from "@/assets/images";
 import { BREAKPOINTS } from "@/utils/breakpoints";
+import { COLORS } from "@/utils/colors";
 import { ImageCarousel } from "@/utils/types/Carousel";
 import {
   ButtonBack,
@@ -41,7 +42,7 @@ export default function ImageCarousel({
         step={1}
         dragEnabled={false}
         naturalSlideWidth={66}
-        naturalSlideHeight={54}
+        naturalSlideHeight={64}
         // isIntrinsicHeight={true}
         orientation={orientation || "vertical"}
       >
@@ -53,13 +54,7 @@ export default function ImageCarousel({
             onMouseEnter={() => handleHoverArrowBtn(false)}
             onMouseLeave={() => handleHoverArrowBtn(false)}
           >
-            <ReactSVG
-              src={
-                arrowLeftBtnColor
-                  ? IMAGES.iconArrowDownGradient
-                  : IMAGES.iconArrowUp
-              }
-            />
+            <ReactSVG src={IMAGES.iconArrowDownGradient} />
           </ButtonBack>
         </ActionWrap>
         <Slider>
@@ -89,13 +84,7 @@ export default function ImageCarousel({
             onMouseEnter={() => handleHoverArrowBtn(true)}
             onMouseLeave={() => handleHoverArrowBtn(true)}
           >
-            <ReactSVG
-              src={
-                arrowRightBtnColor
-                  ? IMAGES.iconArrowDownGradient
-                  : IMAGES.iconArrowUp
-              }
-            />
+            <ReactSVG src={IMAGES.iconArrowDownGradient} />
           </ButtonNext>
         </ActionWrap>
       </CarouselProvider>
@@ -207,4 +196,11 @@ const ActionWrap = styled.div<IActionWrap>`
   display: ${(props) => (props.showControl ? "flex" : "none")};
   flex-direction: row;
   justify-content: center;
+  padding: 10px 0;
+  .arrow-down,
+  .arrow-up {
+    &:not(:hover) path {
+      fill: ${COLORS.grayAf};
+    }
+  }
 `;

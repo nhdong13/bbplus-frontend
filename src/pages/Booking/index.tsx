@@ -35,14 +35,26 @@ import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
 import { useNavigate } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
+import { GradientButton } from "@/components/Button";
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
+  const [hotels, setHotels] = useState<string[]>([]);
+
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
   const navigate = useNavigate();
   const { showModal } = useGlobalModalContext();
+
+  const onChangeHotels = (hotelName: string) => {
+    setHotels((hotel) => {
+      if (!hotel.includes(hotelName)) {
+        return [...hotel, hotelName];
+      }
+      return hotel;
+    });
+  };
   return (
     <>
       <Helmet>
@@ -217,8 +229,8 @@ export default function Booking() {
                   </div>
                   <HotelImage>
                     <ImageCarousel
-                      width="64px"
-                      height="284px"
+                      width="66px"
+                      height="280px"
                       images={[
                         IMAGES.thumb1,
                         IMAGES.thumb2,
@@ -284,7 +296,9 @@ export default function Booking() {
                         <Button>Ultimate Holiday</Button>
                       </div>
                     </div>
-                    <Typography className="holiday-includes" fontSize="18px">Holiday includes</Typography>
+                    <Typography className="holiday-includes" fontSize="18px">
+                      Holiday includes
+                    </Typography>
                     <ul>
                       <li>
                         <Typography>Meet and greet at airport</Typography>
@@ -338,11 +352,28 @@ export default function Booking() {
                 </HotelInformation>
               </Left>
               <Right width="">
-                <CustomHotelOption />
+                <CustomHotelOption onChangeHotels={onChangeHotels} />
               </Right>
             </Container>
             <ContainerRight></ContainerRight>
           </BookingContent>
+          {hotels.length > 1 && (
+            <div className="selected-hotels">
+              {hotels.map((hotelName, index) => (
+                <GradientButton
+                  isSelected
+                  text={hotelName}
+                  color={index === 1 ? "white" : COLORS.gradient2}
+                  borderRadius="8px"
+                  fontWeight="bold"
+                  borderGradient={index === 1 ? COLORS.borderGradient : ""}
+                  borderWidth="2px"
+                  textColor={index === 1 ? COLORS.blueRibbon : ""}
+                  fontSize="18px"
+                />
+              ))}
+            </div>
+          )}
           <AboutHotel />
         </BookingContainer>
       </MainLayout>

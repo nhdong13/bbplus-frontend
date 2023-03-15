@@ -4,15 +4,21 @@ import RoomCard from "../RoomCard";
 import Typography from "@mui/material/Typography";
 import { Typography as Span } from "../Typography";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { COLORS } from "@/utils/colors";
-import { HOTEL_RESULT_DATA } from "../../utils/dataTest";
+import { HOTELS_NAME, HOTEL_RESULT_DATA } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { SelectedRoomType } from "@/utils/types/CardHotel";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
 
-export default function CustomHotelOption() {
+interface ICustomHotelOption {
+  onChangeHotels?: (hotelName: string) => void;
+}
+
+export default function CustomHotelOption({
+  onChangeHotels = () => {},
+}: ICustomHotelOption) {
   const listExpanded = (index: number) =>
     HOTEL_RESULT_DATA.map((item) => item.name + index);
   const [expanded, setExpanded] = useState<string[]>(listExpanded(0));
@@ -31,11 +37,13 @@ export default function CustomHotelOption() {
   };
 
   const expandAll = (index: number) => {
-    setExpanded(listExpanded(index));
+    setExpanded((expanded) => [...expanded, ...listExpanded(index)]);
   };
 
-  const collapseAll = () => {
-    setExpanded([]);
+  const collapseAll = (index: number) => {
+    setExpanded((expandedItem) =>
+      expandedItem.filter((item) => item.charAt(item.length - 1) !== `${index}`)
+    );
   };
 
   const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
@@ -48,12 +56,17 @@ export default function CustomHotelOption() {
 
   const onAddComponent = (type: string, index: number) => {
     if (type === "room_another") {
-      setExpanded((expanded) => [...expanded, ...listExpanded(index)]);
-      setAddedComponent((added) => [...added, "room_details" + index]);
+      setExpanded((expanded) => [...expanded, ...listExpanded(index + 1)]);
+      setAddedComponent((added) => [...added, "room_details" + (index + 1)]);
+      onChangeHotels(HOTELS_NAME[1]);
       return setHotelOptions((hotelData) => [...hotelData, HOTEL_RESULT_DATA]);
     }
     setAddedComponent((added) => [...added, type + index]);
   };
+
+  useEffect(() => {
+    onChangeHotels(HOTELS_NAME[0]);
+  }, []);
   return (
     <>
       <StyledHotelResult>
@@ -88,7 +101,7 @@ export default function CustomHotelOption() {
                     <Span
                       color={COLORS.blueFrench}
                       fontWeight="400"
-                      onClick={collapseAll}
+                      onClick={() => collapseAll(index)}
                     >
                       Collapse all
                     </Span>
@@ -175,7 +188,7 @@ export default function CustomHotelOption() {
                         order: addedComponent.length + index * 10,
                         display:
                           result.type === "room_another" &&
-                          hotelOptions.length - 1 !== index
+                          hotelOptions.length >= 2
                             ? "none"
                             : "",
                       }}
@@ -195,9 +208,7 @@ export default function CustomHotelOption() {
                         borderRadius="8px"
                         fontWeight="bold"
                         color={COLORS.gradient2}
-                        handleSubmit={() =>
-                          onAddComponent(result.type, index + 1)
-                        }
+                        handleSubmit={() => onAddComponent(result.type, index)}
                       />
                     </div>
                   );

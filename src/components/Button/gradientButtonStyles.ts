@@ -20,7 +20,7 @@ const StyledButton = styled.div.attrs((props: {
 }) => props)`
   align-items: center;
   background: ${props => props.borderGradient || props.color};
-  border: none;
+  border: ${props => props.borderWidth || 0} solid transparent;
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;

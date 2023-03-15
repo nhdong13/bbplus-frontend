@@ -187,10 +187,8 @@ const HotelInformation = styled.div`
   .hotel__image {
     width: 421px;
     height: 280px;
-    margin-left: 12px;
     border-radius: 12px;
     object-fit: cover;
-    background-position: 50% 50%;
   }
   .location {
     .icon,
@@ -271,28 +269,29 @@ const ContainerRight = styled.div`
 
 const HotelImage = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-top: 12px;
-  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  & > div {
+    position: relative;
+    margin-top: 20px;
+    height: fit-content;
+  }
 
   & > div > img {
-    display: inline-block;
-    margin-top: 30px;
+    display: block;
   }
 
   .overlay {
     opacity: 0;
     background-image: url(${IMAGES.search});
-    background-position: 50% 50%;
     background-repeat: no-repeat;
     width: 421px;
     height: 280px;
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 5px;
-    margin-top: 30px;
     border-radius: 12px;
+    background-position: 50% 50%;
     cursor: pointer;
     &:hover {
       opacity: 1;

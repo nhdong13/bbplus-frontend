@@ -38,7 +38,7 @@ const SearchResultBackground = styled.div.attrs((props: {}) => props)`
 `;
 
 const SearchBar = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -110,7 +110,7 @@ const ButtonEditSearch = styled.div`
 `;
 
 const SearchResultContainer = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -122,7 +122,7 @@ const SearchResultContainer = styled.div`
 
 const Breadcrumb = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 34px 35px 20px 35px;
   margin: 0 auto;
   @media ${BREAKPOINTS.laptop} {
@@ -161,7 +161,7 @@ const BreadcrumbItem = styled.div`
 
 const SearchOption = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding-left: 35px;
   margin: auto;
   margin-bottom: 27px;
@@ -283,7 +283,7 @@ const SearchOptionSelect = styled.div`
 
 const ListResultContainer = styled.div`
   border: 1px solid ${COLORS.parkinglotGray};
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 23px 48px 55px 48px;
   margin: auto;
   margin-bottom: 34px;
@@ -481,7 +481,7 @@ const CarouselWrapper = styled.div`
   }
 
   &.carousel-container {
-    max-width: 1400px;
+    max-width: 1440px;
     width: 100%;
     @media only screen and (max-width: 475px) {
       padding-left: 10px;
@@ -575,6 +575,19 @@ const CarouselWrapper = styled.div`
   }
 `;
 const BookingContainer = styled.div`
+  .selected-hotels {
+    margin: auto;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .gradient-button {
+      box-sizing: border-box;
+      span {
+        padding: 0 10px;
+      }
+    }
+  }
   @media ${BREAKPOINTS.laptop} {
   }
 `;
