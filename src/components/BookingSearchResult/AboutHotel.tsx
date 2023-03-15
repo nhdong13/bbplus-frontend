@@ -27,11 +27,9 @@ const StyledAboutHotel = styled.div`
   }
   .select-ages__dropdown-icon {
     svg {
-      width: 14px;
-      height: 27.25px;
       path {
         stroke-width: 2px;
-        stroke: ${COLORS.blueRibbon};
+        fill: ${COLORS.blueFrench};
       }
     }
   }
@@ -135,6 +133,7 @@ const StyledAboutHotel = styled.div`
     }
   }
   @media ${BREAKPOINTS.tablet} {
+    padding-bottom: 15px;
     .about-hotel__action {
       padding-top: 0px;
       span {
@@ -164,11 +163,101 @@ const StyledAboutHotel = styled.div`
       font-weight: 700;
       font-size: 14px;
       line-height: 19px;
-      color: ${COLORS.cyprus}
+      color: ${COLORS.cyprus};
     }
     .facilities {
+      display: flex;
+      justify-content: start;
+      flex-wrap: wrap;
+      gap: 10px;
+      row-gap: 30px;
+      span {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .facility-icon path {
+        fill: black !important;
+      }
+    }
+    .amenities {
+      margin-top: 30px;
       display: block;
       float: left;
+      column-count: 2;
+      column-fill: revert;
+      & > div {
+        display: inline-block;
+      }
+      .amenity-title {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      li {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 20px;
+        background-size: 32px 16px;
+      }
+    }
+    .rule-item {
+      display: grid;
+      grid-template-columns: 126px auto;
+      margin-bottom: 0;
+      span {
+        font-size: 12px;
+        line-height: 16px;
+        &:first-child {
+          font-weight: 700;
+        }
+      }
+      &:nth-child(4) {
+        margin-bottom: 0;
+      }
+    }
+    .hotel-rules {
+      .MuiAccordionDetails-root {
+        row-gap: 10px;
+        padding: 10px 0 0 0;
+      }
+    }
+    .faq-wrapper {
+      & > .MuiPaper-root {
+        margin-top: 30px !important;
+      }
+      & > .MuiPaper-root > .MuiButtonBase-root {
+        margin-bottom: 0px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid ${COLORS.borderGray};
+        border-style: dotted;
+      }
+    }
+    .faq {
+      padding-top: 20px !important;
+      padding-top: 20px !important;
+      margin-right: 4px;
+      border-bottom: 2px solid ${COLORS.parkinglotGray};
+      border-bottom-style: dotted;
+      .title {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .MuiPaper-root {
+        margin-top: 0 !important;
+      }
+      .MuiButtonBase-root {
+        margin-bottom: 0;
+      }
+      .expand-icon {
+        svg {
+          width: 19.4px;
+          height: 12px;
+          display: block;
+        }
+      }
     }
   }
 `;
@@ -256,6 +345,7 @@ export default function AboutHotel() {
           />
           <Dropdown
             title="Hotel Rules"
+            className="hotel-rules"
             expand={expanded.includes(EXPAND[1])}
             onExpand={() => {
               onExpand(EXPAND[1]);

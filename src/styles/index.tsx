@@ -8,6 +8,7 @@ const Breadcrumb = styled.div`
   padding: 34px 0px 20px 0px;
   margin: 0 auto;
   @media ${BREAKPOINTS.laptop} {
+    margin: 0 0;
     padding: 15px 10px 10px 10px;
     display: block;
     float: left;

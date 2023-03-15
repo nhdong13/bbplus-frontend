@@ -10,12 +10,16 @@ const BookingOption = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  justify-content: end;
   gap: 40px;
   span {
-    display: block;
-    font-family: ${FONTS.manropeBold};
-    span {
-      display: inline-block;
+    display: inline-block;
+    font-family: ${FONTS.manrope};
+  }
+  .price-line {
+    span:last-child {
+      padding-left: 28px;
+      font-weight: 400;
     }
   }
   @media ${BREAKPOINTS.tablet} {
@@ -47,6 +51,7 @@ const BookingOption = styled.div`
       }
       span:last-child {
         margin-left: 10px;
+        padding-left: 0;
         font-size: 12px;
         font-family: Manrope;
       }
@@ -60,13 +65,21 @@ const BookingOption = styled.div`
 const BookingHeader = styled.div`
   max-width: 1400px;
   margin: auto;
-  padding-bottom: 40px;
-  display: flex;
+  padding-bottom: 28px;
+  display: grid;
+  grid-template-columns: 50% 50%;
   align-items: baseline;
   justify-content: space-between;
   flex-direction: row;
-  @media ${BREAKPOINTS.tablet} {
+  & > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+  }
+  @media ${BREAKPOINTS.tablet} {
+    grid-template-columns: 100%;
     padding-bottom: 0px;
     & > div {
       width: 100%;
@@ -76,7 +89,6 @@ const BookingHeader = styled.div`
 
 const Link = styled.div`
   width: 100%;
-  margin: auto;
   padding: 0px;
 
   & > div {
@@ -117,6 +129,7 @@ const ButtonNextStep = styled.button`
   padding: 16px 42px;
   border-radius: 8px;
   font-weight: bold;
+  width: 194px;
   @media ${BREAKPOINTS.laptop} {
     width: 100%;
     font-size: 12px;
@@ -165,7 +178,7 @@ const Left = styled.div<ContainerStyle>`
 const Right = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
   padding-left: 40px;
-  @media ${BREAKPOINTS} {
+  @media ${BREAKPOINTS.tablet} {
     padding-left: 0;
   }
 `;
@@ -401,7 +414,7 @@ const HotelDetail = styled.div`
     margin-top: 28px;
     gap: 12px;
   }
-  @media ${BREAKPOINTS} {
+  @media ${BREAKPOINTS.tablet} {
     & > div:first-child {
       justify-content: flex-start;
       gap: 10px;
