@@ -12,6 +12,7 @@ const StyledBookingCard = styled.div`
     cursor: pointer;
     height: auto;
     max-width: 287px;
+    min-height: 684px;
     padding: 31px 13px 42px;
     width: 100%;
 
@@ -102,6 +103,19 @@ const StyledBookingCard = styled.div`
       }
     }
     
+  }
+
+  .empty {
+    font-family: ${FONTS.manropeBold};
+    color: ${COLORS.flushOrange};
+    min-height: 384px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media ${BREAKPOINTS.laptop} {
+      min-height: 199px;
+      font-size: 14px;
+    }
   }
 
   .booking-card__booking-button-container {

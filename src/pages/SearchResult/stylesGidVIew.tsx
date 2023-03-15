@@ -97,7 +97,7 @@ const GridRoomItem = styled.div`
     @media ${BREAKPOINTS.laptop} {
       display: flex;
       gap: 3px;
-      max-width: 244px;
+      max-width: 222px;
       overflow-x: auto;
       /* &::-webkit-scrollbar {
         display: none;

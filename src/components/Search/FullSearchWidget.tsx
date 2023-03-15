@@ -19,12 +19,19 @@ import SelectLocationDropDown from "./SelectLocation/SelectLocationDropDown";
 import MobileSelectLocationDropDown from "./SelectLocation/MobileSelectLocationDropDown";
 import MobileTravelerDropDown from "./TravellerDropDown/MobileTravelerDropDown";
 import { GlobalContext } from './GlobalContext'
-
+import { useSearchParams, useNavigate, createSearchParams, } from "react-router-dom";
+import { dataLeaving, dataGoing } from "@/utils/tempData";
+import { ISelect } from "@/utils/types/Select"
 interface IProps {
   className?: string,
-  handleSearch?: (a: string, b: string) => void
+  handleSearch?: () => void,
+  checkInUrlParam?: string,
+  checkOutUrlParam?: string,
+
 }
-export default function FullSearchWidget({ className, handleSearch }: IProps) {
+export default function FullSearchWidget({
+  className, handleSearch,
+}: IProps) {
   const {
     selectedBooking,
     selectCreateItinerary,
@@ -33,10 +40,6 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
     travelerDropDown,
     selectDateDropDown,
     showDatePicker,
-    setGetArriveDate,
-    getArriveDate,
-    totalDates,
-    setTotalDates,
     showLeavingPlaces,
     showGoingToPlaces,
     selectLeavingPlaces,
@@ -55,20 +58,15 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
     handleAddRoom,
     handleChangeDataRoom,
     selectedLeaving, setSelectedLeaving,
-    filterLeaving, setFilterLeaving
-  } = useFullSearchWidget();
+    selectedGoing, setSelectedGoing,
+    filterLeaving, setFilterLeaving,
+    filterGoing, setFilterGoing,
+    //new----
+    dates, setDates,
+    totalDay
 
-  const data = [
-    { _id: 1, label: 'Sydney Airport (SYD)' },
-    { _id: 2, label: 'Melbourne Airport (MEL)' },
-    { _id: 3, label: 'Brisbane Airport (BNE)' },
-    { _id: 4, label: 'Adelaide Airport (ADL)' },
-    { _id: 5, label: 'Gold Coast Airport (OOL)' },
-    { _id: 6, label: 'Auckland Airport (AKL)' },
-    { _id: 7, label: 'Christchurch Airport (CHC)' },
-    { _id: 8, label: 'Wellington Airport (WLG)' },
-    { _id: 9, label: 'Los Angeles International Airport (LAX)' },
-  ]
+
+  } = useFullSearchWidget();
 
   const onChangeLeaving = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -76,10 +74,10 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
   }
   const onChangeGoing = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setFilterLeaving(e.target.value)
+    setFilterGoing(e.target.value)
   }
 
-  const filteredData = data.filter((el: any) => {
+  const filteredDataLeaving = dataLeaving.filter((el: any) => {
     if (filterLeaving === '') {
       return el;
     } else if (el.label.toLowerCase().includes(filterLeaving.toLowerCase())) {
@@ -87,14 +85,63 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
     }
   })
 
+  const filteredDataGoing = dataGoing.filter((el: any) => {
+    if (filterGoing === '') {
+      return el;
+    } else if (el.label.toLowerCase().includes(filterGoing.toLowerCase())) {
+      return el;
+    }
+  })
+  const navigate = useNavigate();
+
 
   const onClickSearch = () => {
-    const arrival_date = getArriveDate;
-    const total_date = totalDates.toString();
-    handleSearch(arrival_date, total_date);
+    const optionSearch = {}
+    if (selectedLeaving) {
+      Object.assign(optionSearch, {
+        leaving: selectedLeaving._id
+      })
+    }
+    if (selectedGoing) {
+      Object.assign(optionSearch, {
+        going: selectedGoing._id
+      })
+    }
+    if (dates) {
+      Object.assign(optionSearch, {
+        checkIn: dates[0]?.format("DD MMM YYYY"),
+        checkOut: dates[dates.length - 1]?.format("DD MMM YYYY"),
+      })
+    }
+    if (dataFilter.length > 0) {
+      Object.assign(optionSearch, {
+        room: dataFilter.map((room) => `a${room.adults},c${room.children}`)
+      })
+    }
+    navigate({
+      pathname: "/search-result",
+      search: createSearchParams(optionSearch).toString()
+    });
+    if (handleSearch) handleSearch()
   }
 
+  const onClickItemLeaving = (item: ISelect) => {
+    setSelectedLeaving(item)
+    setSelectLeavingPlaces(false)
+    //If clicked item selected, return default value leaving
+    if (selectedLeaving && selectedLeaving._id === item._id) {
+      setSelectedLeaving(undefined)
+    }
+  }
 
+  const onClickItemGoing = (item: ISelect) => {
+    setSelectedGoing(item)
+    setGoingPlaces(false)
+    //If clicked item selected, return default value leaving
+    if (selectedGoing && selectedGoing._id === item._id) {
+      setSelectedGoing(undefined)
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -154,8 +201,8 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
                   <SelectLocationDropDown
                     innerRef={leavingDropDownRef}
                     leaving
-                    options={filteredData}
-                    onClickItem={(item: any) => [setSelectedLeaving(item), setSelectLeavingPlaces(false)]}
+                    options={filteredDataLeaving}
+                    onClickItem={(item: ISelect) => onClickItemLeaving(item)}
                     isShown={selectLeavingPlaces} />
                   :
                   <></>
@@ -164,30 +211,38 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
             {selectCreateItinerary ?
               <>
                 <FromContainer className={selectGoingPlaces ? "show-input-search going-to" : "going-to"}>
-                  <div onClick={showGoingToPlaces}>
+                  <div onClick={showGoingToPlaces} className={`${selectedGoing ? 'selected-value' : ''}`}>
                     {
-                      isMobile
+                      selectedGoing && !selectGoingPlaces
                         ?
-                        <>
-                          <H5 lineHeight="10px" fontWeight="700">Going to</H5>
-                          <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-                        </>
+                        <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedGoing?.label}</H5>
                         :
-                        selectGoingPlaces
-                          ?
-                          <input className="input-search" autoFocus={true} />
-                          :
-                          <>
-                            <H5 lineHeight="10px" fontWeight="700">Going to</H5>
-                            <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-                          </>
+                        <>
+                          {
+                            isMobile
+                              ?
+                              <>
+                                <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                              </>
+                              :
+                              selectGoingPlaces
+                                ?
+                                <input className="input-search" autoFocus={true} value={filterGoing} onChange={(e) => onChangeGoing(e)} />
+                                :
+                                <>
+                                  <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                                  <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
+                                </>
+                          }
+                        </>
                     }
-
                   </div>
                   {
                     !isMobile ?
                       <SelectLocationDropDown
-                        onClickItem={() => { }}
+                        options={filteredDataGoing}
+                        onClickItem={(item: ISelect) => onClickItemGoing(item)}
                         innerRef={goingDropDownRef}
                         isShown={selectGoingPlaces} />
                       :
@@ -200,7 +255,7 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
               <HorizontalContainer gap="55px">
                 <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">Arrival date</H5>
-                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{getArriveDate ? getArriveDate : "Day|Date|Month"}</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{dates.length > 0 ? dates[0]?.format("DD MMM YYYY") : "Day|Date|Month"}</H5>
                 </div>
               </HorizontalContainer>
             </FromContainer>
@@ -209,7 +264,7 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
                 <div onClick={showDatePicker}>
                   <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
                   <HorizontalContainer className="select-dates__container" alignItems="center" gap="32px">
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalDates ? totalDates : "x"} days</H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>{totalDay} days</H5>
                     <img className="select-dates__dropdown-icon" src={IMAGES.iconDropDownBlue} width="13px" height="9px" />
                   </HorizontalContainer>
                 </div>
@@ -233,36 +288,36 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
               </SearchButtonContainer>
             </HorizontalContainer>
           </div>
-          {!isMobile ?
-            <SelectDate
-              innerRef={selectDateDropDownRef}
-              isShown={selectDateDropDown}
-              getArriveDate={(e: string) => setGetArriveDate(e)}
-              totalDates={(e: number) => setTotalDates(e)}
-              closePopup={(e: boolean) => setSelectDateDropDown(e)}
-            /> : <></>}
+          <SelectDate
+            innerRef={selectDateDropDownRef}
+            isShown={selectDateDropDown}
+            initialDates={dates}
+            totalDay={totalDay}
+            setData={(d: any) => setDates(d)}
+            closePopup={(e: boolean) => setSelectDateDropDown(e)}
+          />
           {
             !isMobile ? <TravelerDropDown
               innerRef={travelerDropDownRef}
-              isShown={travelerDropDown} />
+              isShown={travelerDropDown}
+              closePopup={(e: boolean) => setTravelerDropDown(e)}
+            />
               :
               <></>
           }
         </SelectBookingDateTime>
         {isMobile ?
           <>
-            <SelectDate
-              isShown={selectDateDropDown}
-              getArriveDate={(e: string) => setGetArriveDate(e)}
-              totalDates={(e: number) => setTotalDates(e)}
-              closePopup={(e: boolean) => setSelectDateDropDown(e)}
-            />
             <MobileSelectLocationDropDown
               isShown={selectLeavingPlaces}
+              options={filteredDataLeaving}
+              onClickItem={(item: ISelect) => onClickItemLeaving(item)}
               closePopup={(e: boolean) => setSelectLeavingPlaces(e)}
             />
             <MobileSelectLocationDropDown
+              options={filteredDataGoing}
               isShown={selectGoingPlaces}
+              onClickItem={(item: ISelect) => onClickItemGoing(item)}
               closePopup={(e: boolean) => setGoingPlaces(e)}
             />
             <TravelerDropDown
@@ -273,7 +328,7 @@ export default function FullSearchWidget({ className, handleSearch }: IProps) {
           : <></>
         }
         <div className="mobile-search-button">
-          <SearchButtonContainer>
+          <SearchButtonContainer onClick={onClickSearch}>
             <img src={IMAGES.iconSearch} width="25px" height="25px" />
           </SearchButtonContainer>
         </div>

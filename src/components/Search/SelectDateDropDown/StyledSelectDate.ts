@@ -14,7 +14,6 @@ const StyledSelectDate = styled.div.attrs((props: {
   position: absolute;
   top: 100px;
   z-index: 2;
-
   display: ${({ isShown }) => isShown ? "block" : "none"};
 
   .rmdp-wrapper,
@@ -158,13 +157,13 @@ const ResultContainer = styled.div`
 `
 
 const StyledPopupSelectDate = styled.div.attrs((props: {
-  isShown?: boolean
+  
 }) => props)`
   background-color: ${COLORS.white};
-  display: ${({ isShown }) => isShown ? "block" : "none"};
+  display: block;
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 2;

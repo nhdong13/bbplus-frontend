@@ -2,9 +2,6 @@
 import _ from "lodash";
 import IMAGES from "@/assets/images";
 import {
-  SearchResultContainer,
-} from './styles'
-import {
   GridViewItem,
   GridViewTitle,
   GridRoom,
@@ -16,35 +13,29 @@ import {
   SDate,
 } from './stylesGidVIew'
 import { useEffect, useState } from "react"
-import { useSearchParams } from "react-router-dom";
+import useFullSearchWidget from "@/components/Search/useFullSearch";
+import { DateObject } from "react-multi-date-picker"
 
-interface IDate {
-  dayOfWeek: string,
-  day: number,
-  month: number
-}
 interface IProps {
   checkIn: string,
-  total_date: string
 }
-export default function GridView({ checkIn, total_date }: IProps) {
-  const [searchParam] = useSearchParams();
-  const [data, setData] = useState<IDate[]>();
-  const date: string = searchParam.get('checkIn') || '';
-  const day = new Date(date).getDate();
-  const [currentDate, setCurrentDate] = useState<Date>(new Date(date));
-  const dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-  const months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export default function GridView({ checkIn }: IProps) {
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-  const getDates = (): IDate[] => {
-    const dates: IDate[] = [];
+  const {
+    dates
+  } = useFullSearchWidget();
+
+  useEffect(() => {
+    setCurrentDate(new Date(checkIn))
+    getDates();
+  }, [checkIn]);
+
+  const getDates = (): DateObject[] => {
+    const dates = [];
     for (let i = 0; i < 15; i++) {
       const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + i)
-      dates.push({
-        dayOfWeek: dayOfWeek[date.getDay()],
-        day: date.getDate(),
-        month: date.getMonth()
-      })
+      dates.push(new DateObject(date));
     }
     return dates;
   }
@@ -55,23 +46,17 @@ export default function GridView({ checkIn, total_date }: IProps) {
   }
 
   const handlePrev = (): void => {
-    if (getDates()[0].day !== day && getDates()[0].month >= new Date(date).getMonth()) {
+    if (getDates()[0]?.format("DD MMM YYYY") != checkIn) {
       const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
       setCurrentDate(nextDate)
     }
   }
-
-  useEffect(() => {
-    getDates();
-  }, [checkIn]);
-
   return (
     <>
-
       <SDate>
         <ListContainer>
           <div className="content">
-            <div onClick={handlePrev} className={getDates()[0].day !== day && getDates()[0].month >= new Date(date).getMonth() ? '' : 'disabled'}>Previous 15 days</div>
+            <div onClick={handlePrev} className={getDates()[0]?.format("DD MMM YYYY") != checkIn ? '' : 'disabled'}>Previous 15 days</div>
             <div onClick={handleNext}>Next 15 days</div>
           </div>
         </ListContainer>
@@ -87,12 +72,13 @@ export default function GridView({ checkIn, total_date }: IProps) {
               <GridDateItem>
                 <div className="horizontal-date">
                   {
-                    getDates().map((date: IDate, index2) => {
+                    getDates().map((date: DateObject, index2) => {
+                      const idx = dates.findIndex((d) => d.format("DD MMM YYYY") === date.format("DD MMM YYYY"))
                       return (
-                        <div className={`date-item ${index2 <= parseInt(total_date) ? 'room-active' : ''}`} key={index2}>
-                          <p>{date.dayOfWeek || ''}</p>
-                          <p className="day">{date.day || ''}</p>
-                          <p>{months[date.month]}</p>
+                        <div className={`date-item ${idx > -1 ? 'room-active' : ''}`} key={index2}>
+                          <p>{date?.format("ddd")}</p>
+                          <p className="day">{date?.format("DD")}</p>
+                          <p>{date?.format("MMM")}</p>
                         </div>
                       )
                     })

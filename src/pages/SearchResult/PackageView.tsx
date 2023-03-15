@@ -17,6 +17,7 @@ import {
   ShowMapButton
 } from "./styles";
 import useHome from "@/pages/Home/hooks";
+import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 
 export default function PackageView() {
 
@@ -27,9 +28,13 @@ export default function PackageView() {
     setCurrentSlide
   } = useHome();
 
+  const { showModal } = useGlobalModalContext();
 
-  useEffect(() => {
-  }, []);
+  const onClickCard = (index: number) => {
+    if (index && index % 2 === 0) {
+      showModal(MODAL_TYPES.CALENDAR);
+    }
+  }
 
   return (
     <>
@@ -81,6 +86,7 @@ export default function PackageView() {
                       data={searchResultDate}
                       carouselTitle={""}
                       typeCard="booking-card"
+                      onClickCard={onClickCard}
                     />
                   </CarouselProvider>
                 </CarouselWrapper>

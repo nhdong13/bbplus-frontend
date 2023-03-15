@@ -1,4 +1,5 @@
 import { HotelData } from "./types/CardHotel";
+import { SelectData } from './types/Select'
 
 export const buttonItems = [
   {
@@ -459,4 +460,44 @@ export const searchResultDate: HotelData[] = [
     ]
   },
 
+]
+
+export const dataLeaving: ISelect[] = [
+  { _id: 1, label: 'Sydney Airport (SYD)' },
+  { _id: 2, label: 'Melbourne Airport (MEL)' },
+  { _id: 3, label: 'Brisbane Airport (BNE)' },
+  { _id: 4, label: 'Adelaide Airport (ADL)' },
+  { _id: 5, label: 'Gold Coast Airport (OOL)' },
+  { _id: 6, label: 'Auckland Airport (AKL)' },
+  { _id: 7, label: 'Christchurch Airport (CHC)' },
+  { _id: 8, label: 'Wellington Airport (WLG)' },
+  { _id: 9, label: 'Los Angeles International Airport (LAX)' },
+]
+
+export const dataGoing: ISelect[] = [
+  { _id: 1, label: 'Fiji' },
+  { _id: 2, label: 'Coral coast - Fiji' },
+  { _id: 3, label: 'Denarau - Fiji' },
+  { _id: 4, label: 'Mamanuca islands - Fiji' },
+  { _id: 5, label: 'Yasawa islands - Fiji' },
+  { _id: 6, label: 'Pacific harbour - Fiji' },
+  { _id: 7, label: 'Suva - Fiji' },
+  { _id: 8, label: 'Nadi - Fiji' },
+  { _id: 9, label: 'Savusavu - Fiji' },
+]
+export const optionFilter: ISelect[] = [
+  { _id: 1, label: "Show All" },
+  { _id: 2, label: "Apartments" },
+  { _id: 3, label: "Resorts" },
+  { _id: 4, label: "Hotels" },
+  { _id: 5, label: "Villas" },
+  { _id: 6, label: "Island resorts" },
+  { _id: 7, label: "Guest homes" },
+  { _id: 8, label: "Backpackers" },
+]
+export const optionSort: ISelect[] = [
+  { _id: 1, label: "Recommmended" },
+  { _id: 2, label: "Price: low to high" },
+  { _id: 3, label: "Price: high to low" },
+  { _id: 4, label: "Star rating" },
 ]

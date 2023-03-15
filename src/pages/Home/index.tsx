@@ -32,16 +32,6 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const handleSearch = (arrival_date: string, total_date: string) => {
-    navigate({
-      pathname: "/search-result",
-      search: createSearchParams({
-        arrival_date,
-        total_date
-      }).toString()
-    });
-  }
-
   return (
     <>
       <Helmet>
@@ -63,7 +53,7 @@ export default function Home() {
                   color={COLORS.white}
                 >At Bedbank Plus, we believe in ease and simplicity</H1>
               </HomepageWelcomeTitle>
-              <FullSearchWidget handleSearch={handleSearch}/>
+              <FullSearchWidget handleSearch={() => { }} />
             </VerticalContainer>
           </StyledHome>
         </div>
@@ -85,6 +75,7 @@ export default function Home() {
                     setCurrentSlide={setCurrentSlide}
                     data={hotels}
                     carouselTitle={"Hot deals"}
+                    onClickCard={() => { }}
                   />
                 </CarouselProvider>
               </CarouselWrapper>
@@ -106,6 +97,7 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={popularHolidays}
+                    onClickCard={() => { }}
                     carouselTitle={"Most popular holidays"}
                   />
                 </CarouselProvider>
@@ -128,6 +120,7 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={customItineraries}
+                    onClickCard={() => { }}
                     carouselTitle={"My custom itineraries"}
                   />
                 </CarouselProvider>

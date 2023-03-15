@@ -21,7 +21,7 @@ export default function MobileTravelerDropDown({ isShown, closePopup }: MobileTr
   useEffect(() => {
     const getBodyElement: any = document.querySelector("body");
     if (isShown) {
-      getBodyElement.style.overflow = "hidden";
+      // getBodyElement.style.overflow = "hidden";
       setPopup(isShown);
       closePopup(popup)
     }

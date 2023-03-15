@@ -3,6 +3,8 @@ import useWindowSize from "@/utils/windowResize";
 import { useEffect, useState } from "react";
 import { DateObject } from "react-multi-date-picker"
 import { useSearchParams } from "react-router-dom";
+import { dataLeaving, dataGoing } from "@/utils/tempData";
+
 interface IFilter {
   _id: string,
   name: string,
@@ -44,17 +46,20 @@ const useFullSearchWidget = () => {
   const [dataFilter, setDataFilter] = useState<IFilter[]>(demoData);
   const [totalGuest, setTotalGuest] = useState<number>(0);
   const [selectedLeaving, setSelectedLeaving] = useState<ISelected>();
+  const [selectedGoing, setSelectedGoing] = useState<ISelected>();
   const [filterLeaving, setFilterLeaving] = useState<string>('');
+  const [filterGoing, setFilterGoing] = useState<string>('');
 
   //new state
 
   const [searchParams] = useSearchParams();
   const [dates, setDates] = useState<DateObject[]>([]);
   const [totalDay, setTotalDay] = useState<number>(0);
+  const leavingId = searchParams.get('leaving') || '';
+  const goingId = searchParams.get('going') || '';
   const checkInParam = searchParams.get('checkIn') || '';
   const checkOutParam = searchParams.get('checkOut') || '';
   const roomParam = searchParams.getAll('room') || [];
-
 
   const screenWidth = useWindowSize();
 
@@ -184,8 +189,25 @@ const useFullSearchWidget = () => {
         }
       })
       .filter((value): value is IFilter => value !== null);
-    setDataFilter(roomValues);
+    if (roomValues.length > 0) {
+      setDataFilter(roomValues);
+    }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (leavingId && parseInt(leavingId)) {
+      const obj = dataLeaving.find((d: any) => d._id === parseInt(leavingId))
+      if (obj) {
+        setSelectedLeaving(obj)
+      }
+    }
+    if (goingId && parseInt(goingId)) {
+      const obj = dataGoing.find((d: any) => d._id === parseInt(goingId))
+      if (obj) {
+        setSelectedGoing(obj)
+      }
+    }
+  }, [leavingId, goingId])
 
 
   const handleAddRoom = (newRoom: IFilter) => {
@@ -275,7 +297,9 @@ const useFullSearchWidget = () => {
     handleAddRoom,
     handleChangeDataRoom,
     selectedLeaving, setSelectedLeaving,
+    selectedGoing, setSelectedGoing,
     filterLeaving, setFilterLeaving,
+    filterGoing, setFilterGoing,
     //new
     dates, setDates,
     totalDay, setTotalDay

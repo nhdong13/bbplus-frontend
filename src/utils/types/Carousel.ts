@@ -6,6 +6,7 @@ export interface CarouselSlider {
   setCurrentSlide: any;
   carouselTitle: string;
   typeCard?: string;
+  onClickCard: (id: number) => void
 }
 
 export interface ImageCarousel {
