@@ -7,6 +7,7 @@ import {
   Select,
   Tab,
   Tabs,
+  TextField,
 } from "@mui/material";
 import { Typography as Span } from "../Typography";
 import styled from "styled-components";
@@ -19,6 +20,7 @@ import { GradientButton } from "../Button";
 import { COLORS } from "@/utils/colors";
 import { ONE_WAY_SEAT, RETURN_SEAT } from "@/utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
+import DatePicker from "react-multi-date-picker";
 
 interface IRoomTransfer extends IModal {}
 
@@ -33,34 +35,40 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModal width="800px">
-        <Span
-          textAlign="right"
-          padding="20px 28px 0 28px"
-          style={{
-            alignSelf: "end",
-          }}
-          onClick={onCloseModal}
-        >
-          <ReactSVG
-            className="close-btn"
+        <div className="header">
+          <Span fontSize="24px" fontWeight="bold">
+            Tewaka Fiji:&nbsp;
+            <Span fontWeight="300">Warwick Fiji Resort & Spa</Span>
+          </Span>
+          <Span
+            textAlign="right"
+            style={{
+              alignSelf: "end",
+            }}
             onClick={onCloseModal}
-            src={IMAGES.iconClose}
-          />
-        </Span>
-        <Span padding="0 28px 28px 28px" fontSize="20px" fontWeight="bold">
-          Tewaka Fiji:&nbsp;
-          <Span fontWeight="300">Warwick Fiji Resort & Spa</Span>
-        </Span>
+          >
+            <ReactSVG
+              className="close-btn"
+              onClick={onCloseModal}
+              src={IMAGES.iconClose}
+            />
+          </Span>
+        </div>
+
         <Container display="block" maxWidth="800px">
           <Image src={IMAGES.hotelBg} alt="" />
-          <Details>
+          <TabContainer>
             <Tabs
+              className="tab-container"
               value={selectedTab}
               onChange={(_, value) => setSelectedTab(value)}
             >
               <Tab label="Select an option" value={TAB[0]} />
               <Tab label="About this supplier" value={TAB[1]} />
             </Tabs>
+          </TabContainer>
+
+          <Details>
             <div className="tab-panel" hidden={selectedTab !== TAB[0]}>
               <GroupButton>
                 <GradientButton
@@ -71,7 +79,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   fontWeight="600"
                   width="72px"
                   height="100%"
-                  padding="6px 12px"
+                  padding="12px 32px"
                   textPadding="0"
                   borderWidth="2px"
                   borderRadius="4px"
@@ -87,7 +95,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   fontWeight="600"
                   width="72px"
                   height="fit-content"
-                  padding="6px 12px"
+                  padding="12px 32px"
                   textPadding="0"
                   borderRadius="4px"
                   borderWidth="2px"
@@ -103,6 +111,16 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   }`}
                 >
                   <Span fontWeight="bold">Departure</Span>
+                  <div className="date-input">
+                    <DatePicker
+                      format="DD/MM/YYYY"
+                      disabled={selectedOption !== OPTION[0]}
+                    />
+                    <ReactSVG
+                      className="dropdown"
+                      src={IMAGES.iconDropDownBlue}
+                    ></ReactSVG>
+                  </div>
                   {ONE_WAY_SEAT.map((item) => {
                     return (
                       <div className="option" key={item}>
@@ -134,6 +152,17 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
                   <Span margin="0 12px 0" fontWeight="bold">
                     Return
                   </Span>
+                  <div className="date-input">
+                    <DatePicker
+                      format="DD/MM/YYYY"
+                      disabled={selectedOption !== OPTION[1]}
+                    />
+                    <ReactSVG
+                      className="dropdown"
+                      src={IMAGES.iconDropDownBlue}
+                    ></ReactSVG>
+                  </div>
+
                   {RETURN_SEAT.map((item) => {
                     return (
                       <div className="option" key={item}>
@@ -160,7 +189,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
               </Options>
             </div>
             <div className="tab-panel" hidden={selectedTab !== TAB[1]}>
-              <Span className="paragraph" fontSize="16px">
+              <Span className="paragraph" fontSize="14px">
                 Tewaka Fiji provides genuinely unique experiences for travel in
                 Fiji. From the very moment you arrive at Nadi International
                 Airport, the team will be ready to personally meet you at the
@@ -231,6 +260,7 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
             text="Update trip"
             color={COLORS.gradient2}
             handleSubmit={onCloseModal}
+            fontWeight="bold"
           />
         </Action>
       </StyledModal>
@@ -238,15 +268,9 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
   );
 }
 
-const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px 28px 28px 28px;
-  gap: 20px;
-  span {
-    width: 100%;
-  }
+const TabContainer = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
   .MuiTabs-root {
     width: 100%;
   }
@@ -259,6 +283,32 @@ const Details = styled.div`
       border-bottom: 1px solid #aaa;
     }
   }
+  .MuiTabs-flexContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    box-sizing: border-box;
+  }
+  .MuiButtonBase-root {
+    max-width: 100%;
+    width: 100%;
+  }
+  .MuiTabs-indicator {
+    height: 4px;
+    box-sizing: border-box;
+    width: 50%!important;
+  }
+`;
+
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 28px 28px 28px;
+  gap: 20px;
+  span {
+    width: 100%;
+  }
+
   .Mui-selected {
     color: #5277cd;
   }
@@ -275,6 +325,9 @@ const Details = styled.div`
   }
   .MuiFormControl-root {
     width: fit-content;
+  }
+  .MuiTab-root {
+    font-size: 16px;
   }
   .active {
     span {
@@ -347,25 +400,61 @@ const Options = styled.div`
   grid-template-columns: 50% 50%;
   align-self: center;
   margin-top: 20px;
-  & > div {
-    &:first-child .option > span {
-      padding-right: 12px;
+  .date-input {
+    margin-top: 8px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    .dropdown {
+      position: absolute;
+      top: calc(50% - 11px);
+      right: 32px;
+      pointer-events: none;
     }
-    &:last-child .option > span {
-      padding-left: 12px;
+
+    .rmdp-container {
+      width: 100%;
+      padding-right: 20px;
+      box-sizing: border-box;
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        height: 64px;
+        padding: 0 20px;
+        font-size: 14px;
+        border-width: 2px;
+      }
+      .rmdp-arrow-container {
+        width: 20px;
+      }
+      .rmdp-day span {
+        height: 100%;
+      }
     }
   }
   .option {
     width: 100%;
     display: grid;
     grid-template-columns: 60% 20% 20%;
+    box-sizing: border-box;
+    padding: 12px 0;
+    border-bottom: 1px solid #aaa;
+    fieldset {
+      border-width: 2px;
+      border-color: black;
+    }
     span {
       align-self: center;
     }
-    padding: 12px 0;
-    border-bottom: 1px solid #aaa;
+
     &:last-child {
       border-bottom: 0px solid #aaa;
+    }
+  }
+  .active {
+    .rmdp-container input {
+      border-color: black;
     }
   }
 `;

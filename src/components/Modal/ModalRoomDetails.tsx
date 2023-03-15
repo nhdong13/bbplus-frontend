@@ -33,16 +33,16 @@ export default function RoomModal({
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledRoomModal>
         <Span
-          margin="0 0 20px"
+          margin="0px"
           className="close-btn"
           textAlign="right"
           onClick={onCloseModal}
         >
           <ReactSVG src={IMAGES.iconClose} />
         </Span>
-        <Container maxWidth="880px">
+        <Container gridTemplateColumns="45% 55%" maxWidth="100%" width="100%" margin="none">
           <Details>
-            <Span fontSize="20px" fontWeight="bold">
+            <Span fontSize="24px" fontWeight="600" margin="0 0 8px">
               {title}
             </Span>
             <Benefits>
@@ -50,40 +50,36 @@ export default function RoomModal({
                 return (
                   <div className="item" key={item}>
                     <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
-                    <Span>{item}</Span>
+                    <Span fontSize="14px" fontWeight="500">{item}</Span>
                   </div>
                 );
               })}
             </Benefits>
-            <Span margin="12px 0">
-              <Span fontWeight="bold">Size: &nbsp;</Span>
+            <Span margin="16px 0 28px 0" fontSize="14px" fontWeight="500">
+              <Span fontWeight="600" fontSize="22px">Size: &nbsp;</Span>
               {RoomModalDetail.area}
             </Span>
-            <Span>
-              <Span fontWeight="bold">Bed type: &nbsp;</Span>{" "}
+            <Span fontSize="14px" fontWeight="500">
+              <Span fontWeight="600" fontSize="22px">Bed type: &nbsp;</Span>{" "}
               {RoomModalDetail.bed} king bed
             </Span>
-            <Span>
-              <Span fontWeight="bold">Max persons: &nbsp;</Span>
+            <Span fontSize="14px" fontWeight="500">
+              <Span fontWeight="600" fontSize="22px">Max persons: &nbsp;</Span>
               {RoomModalDetail.maxPersons}
             </Span>
-            <Span margin="28px 0 0 0">
-              <Span fontWeight="bold">View: &nbsp;</Span>
-              {RoomModalDetail.view}
-            </Span>
-            <Span margin="28px 0 0 0" fontWeight="bold">
+            <Span margin="28px 0 0 0" fontWeight="600" fontSize="22px">
               Facilities:
             </Span>
             <Facilities>
               {RoomModalDetail.facilities.map((item) => (
                 <div className="item" key={item}>
                   <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
-                  <Span>{item}</Span>
+                  <Span fontSize="14px" fontWeight="500">{item}</Span>
                 </div>
               ))}
             </Facilities>
-            <Span margin="28px 0 0 0">
-              <Span fontWeight="bold">Smocking: &nbsp;</Span>No smocking
+            <Span margin="28px 0 0 0" fontSize="14px" fontWeight="500">
+              <Span fontWeight="600" fontSize="22px">Smocking: &nbsp;</Span>No smocking
             </Span>
           </Details>
           <RoomImage>
@@ -105,24 +101,22 @@ export default function RoomModal({
             />
           </RoomImage>
         </Container>
-        <Span margin="28px 0 0 0" fontWeight="bold">
+        <Span margin="28px 0 4px 0" fontWeight="600" fontSize="22px">
           Non-Refundable:
         </Span>
-        <Span>
+        <Span fontSize="14px" fontWeight="500">
           If you change or cancel your booking you will not get a refund or
           credit to use for a future stay. This policy will apply regardless of
           COVID-19, subject to any local consumer laws.
         </Span>
-        <Span margin="28px 0 0 0" fontWeight="bold">
+        <Span margin="8px 0 4px 0" fontWeight="600" fontSize="22px">
           Fully Refundable before Mar 6
         </Span>
-        <Span lineHeight="28px">
+        <Span lineHeight="28px" fontSize="14px" fontWeight="500">
           Cancel your reservation before Mar 6 at 11:59pm, and you'll get a full
           refund.
           <br />
-          After that, you won't get a refund.
-          <br />
-          Times are based on the property’s local time.
+          After that, you won't get a refund. Times are based on the property’s local time.
         </Span>
       </StyledRoomModal>
     </Modal>
@@ -130,12 +124,14 @@ export default function RoomModal({
 }
 
 const StyledRoomModal = styled.div`
-  padding: 20px 28px 68px 28px;
+  box-sizing: border-box;
+  padding: 20px 28px 32px 28px;
   display: flex;
   flex-direction: column;
   outline: none;
   background-color: white;
-  width: 880px;
+  width: 820px;
+  height: 828px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -162,8 +158,8 @@ const StyledRoomModal = styled.div`
     height: 24px;
   }
   .room-image {
-    width: 100%;
-    height: 350px;
+    width: 388px;
+    height: 250px;
     object-fit: cover;
     margin-bottom: 12px;
   }
@@ -196,5 +192,19 @@ const Facilities = styled.div`
 `;
 
 const RoomImage = styled.div`
-  padding: 8px 10px 0 40px;
+  padding: 8px 0px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  & > div {
+    width: 388px;
+  }
+  .carousel__inner-slide {
+    width: 56px;
+    height: 55px;
+  }
+  .carousel__slide {
+    width: 56px!important;
+    height: 55px!important;
+  }
 `;

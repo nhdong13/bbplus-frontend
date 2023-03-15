@@ -1,13 +1,14 @@
 import IMAGES from "@/assets/images";
 import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { COLORS } from "@/utils/colors";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserMenuDropDown from "./UserMenuDropDown";
 import NotificationDropDown from "./NotificationDropDown";
 import useComponentVisible from "@/utils/clickOutSide";
 import { DividerContainer, HeaderContainer } from "./StyledHeader";
-import { H4, Typography } from "../Typography";
+import { H4 } from "../Typography";
 import Divider from "../Layout/Divider";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderInterface {
   hasDivider?: boolean
@@ -16,6 +17,7 @@ interface HeaderInterface {
 export default function Header({ hasDivider }: HeaderInterface) {
   const [dropdown, setDropDown] = useState<boolean>(false);
   const [notificationDropDown, setNotificationDropDown] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const {
     ref: userMenuRef,
@@ -58,7 +60,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
           width={"100%"}
           className="header-horizontal-container"
         >
-          <img src={IMAGES.bbplusLogoWhite} alt="bb-plus-logo" width="260px" height="auto" className="logo" />
+          <img src={IMAGES.bbplusLogoWhite} alt="bb-plus-logo" width="260px" height="auto" className="logo" onClick={()=>navigate("/")}/>
           <div className="header-group">
             <div className="header-group-left">
               <button onClick={(e) => handleNotificationDropDown(e)} data-count="2">
