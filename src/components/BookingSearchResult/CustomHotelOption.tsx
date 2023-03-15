@@ -348,5 +348,21 @@ const StyledHotelResult = styled.div`
     .MuiPaper-root {
       margin-top: 20px !important;
     }
+    .inactive-component {
+      span {
+        font-size: 18px;
+        padding: 0;
+      }
+      .gradient-button {
+        height: fit-content;
+        & > div {
+          height: 34px;
+        }
+        span {
+          font-size: 12px;
+          padding: 0 12px;
+        }
+      }
+    }
   }
 `;
