@@ -8,6 +8,7 @@ export interface FormInput {
   valid?: boolean,
   width?: string,
   padding?: string,
-  maxHeight?: string
+  maxHeight?: string,
+  cssOptions?: string,
   handleChange?: (e: any) => void
 }

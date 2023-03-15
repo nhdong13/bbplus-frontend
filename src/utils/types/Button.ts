@@ -1,8 +1,13 @@
 export interface GradientButton {
   color: string
   text: string
-  isSelected: boolean
+  fontWeight?: string
+  textColor?: string
+  borderGradient?: string
+  borderWidth?: string
+  isSelected?: boolean
   height?: string
+  padding?: string
   maxWidth?: string
   width?: string
   fontSize?: string

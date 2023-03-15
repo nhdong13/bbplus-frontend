@@ -78,7 +78,7 @@ export default function GridView({ checkIn, total_date }: IProps) {
       </SDate>
       <ListDate>
         <ListContainer>
-          <div className="flex">
+          <div className="flex-date">
 
             <>
               <div className="empty">
@@ -117,7 +117,7 @@ export default function GridView({ checkIn, total_date }: IProps) {
               </GridViewTitle>
               <GridRoom>
                 <img src={IMAGES.imgListView} width={230} height={160} className="bg" />
-                <div className="flex">
+                <div className="flex-room">
                   {
                     _.range(4).map((el2, index) => {
                       return (

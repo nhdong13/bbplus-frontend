@@ -5,6 +5,9 @@ import ResetPassword from "./ResetPassword";
 import SignUp from "./SignUp";
 import SearchResult from "./SearchResult";
 import AccountSetting from "./AccountSetting";
+import TravelerDetails from "./TravelerDetails";
+import Booking from "./Booking";
+import Confirm from "./Confirm";
 
 export {
   HomePage,
@@ -14,4 +17,7 @@ export {
   SignUp,
   SearchResult,
   AccountSetting,
+  TravelerDetails,
+  Booking,
+  Confirm
 };

@@ -30,7 +30,7 @@ export const Typography = styled.span<TypographyStyle>`
 export const H1 = styled.h1<TypographyStyle>`
   color: ${props => props.color};
   font-family: ${props => props.fontFamily || FONTS.manrope};
-  font-size: 40px;
+  font-size: ${props => props.fontSize || "40px"};
   font-weight: ${props => props.fontWeight || 700};
   line-height: ${props => props.lineHeight || "48px"};
   margin: ${props => props.margin};
@@ -54,7 +54,7 @@ export const H2 = styled.h2<TypographyStyle>`
 export const H3 = styled.h3<TypographyStyle>`
   color: ${props => props.color};
   font-family: ${props => props.fontFamily || FONTS.manrope};
-  font-size: 28px;
+  font-size: ${props => props.fontSize || "28px"};
   font-weight: ${props => props.fontWeight || 500};
   line-height: ${props => props.lineHeight || "33.6px"};
   margin: ${props => props.margin};

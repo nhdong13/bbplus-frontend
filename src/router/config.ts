@@ -6,4 +6,7 @@ export const RouterName = {
   forgotPassword: "forgot-password",
   searchResult: "search-result",
   accountSetting: "account-setting",
+  confirm: "confirm",
+  step2: "step2",
+  step3: "step3"
 }

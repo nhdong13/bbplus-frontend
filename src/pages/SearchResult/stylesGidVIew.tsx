@@ -69,7 +69,7 @@ const GridRoom = styled.div`
       border-radius: 0;
     }
   }
-  .flex {
+  .flex-room {
     @media ${BREAKPOINTS.laptop} {
       font-size: 10px;
       display: grid;
@@ -105,10 +105,12 @@ const GridRoomItem = styled.div`
     }
   }
   .haha {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow-x: auto;
+    @media ${BREAKPOINTS.laptop} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow-x: auto;
+    }
   }
   .room-item {
     display: inline-block;
@@ -153,7 +155,7 @@ const ListContainer = styled.div`
     width: auto;
     padding: 0 10px;
   }
-  .flex {
+  .flex-date {
     display: flex;
     justify-content: space-between;
   }
