@@ -27,6 +27,7 @@ export default function SearchResult() {
   const [type, setType] = useState<number>(0);
   const [searchParam] = useSearchParams();
   const [valueFilter, setValueFilter] = useState<any>()
+  const [valueSort, setValueSort] = useState<any>()
   const [searchMode, setSearchMode] = useState<number>(0);
   
   const checkIn: string = searchParam.get('checkIn') || 'Day|Date|Month';
@@ -69,10 +70,11 @@ export default function SearchResult() {
                   handleChange={(item: { _id: number | string, }) => setValueFilter(item)}
                 />
                 <Select
-                  customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;{valueSort ? valueSort.label : 'Select'}</span></>}
                   options={optionSort}
                   marginTop="0px"
                   maxHeight="48px"
+                  handleChange={(item: { _id: number | string, }) => setValueSort(item)}
                 />
               </div>
             </SearchOptionItem>
@@ -106,7 +108,7 @@ export default function SearchResult() {
           </SearchOption>
         </SearchResultContainer>
         {
-          type === 0
+          type === 1
             ?
             <GridView checkIn={checkIn} />
             :

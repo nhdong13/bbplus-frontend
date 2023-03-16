@@ -15,7 +15,9 @@ const StyledBookingCard = styled.div`
     min-height: 684px;
     padding: 31px 13px 42px;
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &:hover {
       background-color: ${COLORS.mistyRose};
       border: 1px solid ${COLORS.spanishOrange};
@@ -108,12 +110,13 @@ const StyledBookingCard = styled.div`
   .empty {
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.flushOrange};
-    min-height: 384px;
-    display: flex;
+    min-height: 184px;
+    text-align: center;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     @media ${BREAKPOINTS.laptop} {
-      min-height: 199px;
+      min-height: 127px;
       font-size: 14px;
     }
   }

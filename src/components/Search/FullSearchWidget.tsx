@@ -300,7 +300,7 @@ export default function FullSearchWidget({
                   </>
                   :
                   <>
-                    <FromContainer className={selectGoingPlaces ? "show-input-search going-to" : "going-to"}>
+                    <FromContainer className={`booking-id ${selectBookingID ? "show-input-search" : "going-to"}`}>
                       <div onClick={() => setSelectBookingID(true)} className={`${selectBookingID ? 'selected-value' : ''}`}>
                         {
                           selectBookingID
@@ -314,8 +314,8 @@ export default function FullSearchWidget({
                         }
                       </div>
                     </FromContainer>
-                    <FromContainer className={selectGoingPlaces ? "show-input-search going-to" : "going-to"}>
-                      <div onClick={() => setSelectGuestEmail(true)} className={`${selectedGoing ? 'selected-value' : ''}`}>
+                    <FromContainer className={`guest-id ${selectGuestEmail ? "show-input-search" : "going-to"}`}>
+                      <div onClick={() => setSelectGuestEmail(true)} className={`${selectGuestEmail ? 'selected-value' : ''}`}>
                         {
                           selectGuestEmail
                             ?

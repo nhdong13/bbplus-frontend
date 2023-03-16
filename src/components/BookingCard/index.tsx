@@ -29,6 +29,9 @@ export default function BookingCard({ data, index, onClickCard }: BookingCardDat
               })
             }
           </div>
+
+        </div>
+        <div>
           {
             index && index % 2 === 0
               ?
