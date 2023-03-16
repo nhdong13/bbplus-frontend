@@ -17,7 +17,7 @@ export const StyledConfirmationPage = styled.div`
     margin-top: 52px;
     margin-left: 48px;
     .btn {
-      padding: 0 64px;
+      padding: 0 107.5px;
       border-radius: 8px;
       span {
         padding: 0;
@@ -142,8 +142,8 @@ export const Board = styled.div`
       }
     }
     .btn {
-      padding: 0px 20px;
-      border-radius: 8px;
+      padding: 0px 24px;
+      border-radius: 5px;
       span {
         padding: 0;
       }
