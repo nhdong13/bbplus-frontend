@@ -6,11 +6,12 @@ import { Typography as Span } from "../Typography";
 
 import React, { useEffect, useState } from "react";
 import { COLORS } from "@/utils/colors";
-import { HOTELS_NAME, HOTEL_RESULT_DATA } from "../../utils/dataTest";
+import { HOTELS_NAME, HOTEL_RESULT_DATA, IRoomOptions } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { SelectedRoomType } from "@/utils/types/CardHotel";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
+import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 
 interface ICustomHotelOption {
   onChangeHotels?: (hotelName: string) => void;
@@ -27,6 +28,8 @@ export default function CustomHotelOption({
     "room_details0",
   ]);
   const [hotelOptions, setHotelOptions] = useState([HOTEL_RESULT_DATA]);
+  const { showModal } = useGlobalModalContext();
+
   const onExpand = (accordion: string) => {
     setExpanded((expand) => {
       if (expanded.includes(accordion)) {
@@ -56,10 +59,19 @@ export default function CustomHotelOption({
 
   const onAddComponent = (type: string, index: number) => {
     if (type === "room_another") {
-      setExpanded((expanded) => [...expanded, ...listExpanded(index + 1)]);
-      setAddedComponent((added) => [...added, "room_details" + (index + 1)]);
-      onChangeHotels(HOTELS_NAME[1]);
-      return setHotelOptions((hotelData) => [...hotelData, HOTEL_RESULT_DATA]);
+      return showModal(MODAL_TYPES.ADD_HOTEL, {
+        title: "Add Another Hotel",
+        hotels: ["Fiji Hotel Gateway"],
+        callback: () => {
+          setExpanded((expanded) => [...expanded, ...listExpanded(index + 1)]);
+          setAddedComponent((added) => [
+            ...added,
+            "room_details" + (index + 1),
+          ]);
+          onChangeHotels(HOTELS_NAME[1]);
+          setHotelOptions((hotelData) => [...hotelData, HOTEL_RESULT_DATA]);
+        },
+      });
     }
     setAddedComponent((added) => [...added, type + index]);
   };
@@ -171,12 +183,13 @@ export default function CustomHotelOption({
                                     />
                                   );
                                 })
-                              : result.roomOptions.map((item, index) => (
+                              : result.roomOptions.map((item:IRoomOptions, index) => (
                                   <RoomCard
                                     key={index}
                                     roomOptions={[item]}
                                     type={result.type}
                                     onSelect={onSelectOption}
+                                    transferType={item?.transferType}
                                   ></RoomCard>
                                 ))}
                           </div>

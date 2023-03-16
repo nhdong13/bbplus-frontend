@@ -579,11 +579,13 @@ const CarouselWrapper = styled.div`
 `;
 const BookingContainer = styled.div`
   .selected-hotels {
+    box-sizing: border-box;
     margin: auto;
-    max-width: 1440px;
+    max-width: 1400px;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    padding: 0 20px;
     .gradient-button {
       box-sizing: border-box;
       span {

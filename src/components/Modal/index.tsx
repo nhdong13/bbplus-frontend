@@ -4,6 +4,7 @@ import RoomModal from "./ModalRoomDetails";
 import RoomTransfer from "./ModalRoomTransfer";
 import TextModal from "./ModalText";
 import ModalCalendar from "./ModalCalendar";
+import ModalAddHotel from "./ModalAddHotel";
 
 export const MODAL_TYPES = {
   ROOM_MODAL: "room_details",
@@ -11,6 +12,7 @@ export const MODAL_TYPES = {
   ROOM_TRANSFER: "room_transfer",
   TEXT: "text",
   CALENDAR: "calendar",
+  ADD_HOTEL: "add_hotel"
 };
 
 const MODAL_COMPONENTS: { [T: string]: any } = {
@@ -19,6 +21,7 @@ const MODAL_COMPONENTS: { [T: string]: any } = {
   [MODAL_TYPES.ROOM_TRANSFER]: RoomTransfer,
   [MODAL_TYPES.TEXT]: TextModal,
   [MODAL_TYPES.CALENDAR]: ModalCalendar,
+  [MODAL_TYPES.ADD_HOTEL]: ModalAddHotel
 };
 
 type IGlobalModalContext = {

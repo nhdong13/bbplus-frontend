@@ -22,19 +22,21 @@ import { ONE_WAY_SEAT, RETURN_SEAT } from "@/utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import DatePicker from "react-multi-date-picker";
 
-interface IRoomTransfer extends IModal {}
+interface IRoomTransfer extends IModal {
+  transferType?: string;
+}
 
 const TAB = ["option", "about"];
 const OPTION = ["one_way", "return"];
 const EXPAND = ["cancellation", "luggage", "waiting"];
-export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
+export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRoomTransfer) {
   const [selectedTab, setSelectedTab] = useState<string>(TAB[0]);
   const [selectedOption, setSelectedOption] = useState<string>(OPTION[0]);
   const [expand, setExpand] = useState<string[]>([]);
 
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledModal width="800px">
+      <StyledModal width="820px">
         <div className="header">
           <Span fontSize="24px" fontWeight="bold">
             Tewaka Fiji:&nbsp;
@@ -55,8 +57,8 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
           </Span>
         </div>
 
-        <Container display="block" maxWidth="800px">
-          <Image src={IMAGES.hotelBg} alt="" />
+        <Container display="block" maxWidth="820px">
+          <Image src={transferType === "air" ? IMAGES.airportTransfer : IMAGES.landTransfer} alt="" />
           <TabContainer>
             <Tabs
               className="tab-container"

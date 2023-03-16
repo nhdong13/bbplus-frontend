@@ -8,10 +8,12 @@ import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { H3, H4, Typography as Span } from "../Typography";
 import { TAXES_AND_FEES } from "@/utils/dataTest";
 import { BREAKPOINTS } from "@/utils/breakpoints";
+import { options } from "@fullcalendar/core/preact";
 
 interface IRoomCard {
   index?: number;
   type: string;
+  transferType?: string;
   checkbox?: boolean;
   roomOptions: RoomOptions[];
   selected?: boolean;
@@ -21,6 +23,7 @@ interface IRoomCard {
 export default function RoomCard({
   index,
   type,
+  transferType,
   checkbox,
   roomOptions,
   selected,
@@ -33,7 +36,7 @@ export default function RoomCard({
     setSelectedOption(option);
   };
 
-  const onShowModal = (typeModal?: string) => {
+  const onShowModal = ({ typeModal }: { typeModal?: string }) => {
     let title = "";
     let paragraph = "";
     const typeM = typeModal || type;
@@ -49,6 +52,7 @@ export default function RoomCard({
       title: title,
       paragraph: paragraph,
       details: {},
+      transferType: transferType,
     });
   };
   return (
@@ -151,16 +155,20 @@ export default function RoomCard({
                           No availability
                         </Span>
                       ) : (
-                        <p onClick={() => onShowModal(MODAL_TYPES.TEXT)}>
+                        <p
+                          onClick={() =>
+                            onShowModal({ typeModal: MODAL_TYPES.TEXT })
+                          }
+                        >
                           Price details
                         </p>
                       )}
                       <div>
-                        <p onClick={() => onShowModal()}>More details</p>
+                        <p onClick={() => onShowModal({})}>More details</p>
                         <img
                           className="info-icon"
                           src={IMAGES.iconInfo}
-                          onClick={() => onShowModal()}
+                          onClick={() => onShowModal({})}
                         />
                       </div>
                     </div>
@@ -171,11 +179,11 @@ export default function RoomCard({
                   <div className="room-card__option">
                     <p>$XXX</p>
                     <div className="room-card__option-detail">
-                      <p onClick={() => onShowModal()}>More details</p>
+                      <p onClick={() => onShowModal({})}>More details</p>
                       <img
                         className="info-icon"
                         src={IMAGES.iconInfo}
-                        onClick={() => onShowModal()}
+                        onClick={() => onShowModal({})}
                       />
                     </div>
                   </div>

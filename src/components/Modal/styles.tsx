@@ -23,6 +23,6 @@ export const StyledModal = styled.div<IModal>`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 28px;
+    padding: 20px 20px 10px 20px;
   }
 `;

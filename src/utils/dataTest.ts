@@ -1,5 +1,13 @@
 import IMAGES from "@/assets/images";
 
+export interface IRoomOptions {
+  id: number;
+  title: string;
+  price: string;
+  value: string;
+  transferType?: string;
+}
+
 export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
@@ -11,6 +19,7 @@ export const HOTEL_RESULT_DATA = [
         title: "Non-Refundable",
         price: "$XXX",
         value: "",
+        transferType: "",
       },
       {
         id: 2,
@@ -122,13 +131,15 @@ export const HOTEL_RESULT_DATA = [
         id: 1,
         title: "Tewaka Fiji",
         detail: "Return: Airport Transfer",
+        transferType: "air",
         price: "$XXX",
         value: "",
       },
       {
         id: 2,
         title: "Heli Tours Fiji",
-        detail: "Return: Airport Transfer",
+        detail: "Return: Land Transfer",
+        transferType: "land",
         price: "$XXX",
         value: "",
       },
@@ -136,6 +147,7 @@ export const HOTEL_RESULT_DATA = [
         id: 3,
         title: "Tour Managers",
         detail: "Return: Airport Transfer",
+        transferType: "air",
         price: "$XXX",
         value: "",
       },
