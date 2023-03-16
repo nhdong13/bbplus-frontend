@@ -108,7 +108,7 @@ export default function SearchResult() {
           </SearchOption>
         </SearchResultContainer>
         {
-          type === 1
+          type === 0
             ?
             <GridView checkIn={checkIn} />
             :
