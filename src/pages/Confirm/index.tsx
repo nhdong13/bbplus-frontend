@@ -5,7 +5,7 @@ import { Typography as Span, H3 } from "@/components/Typography";
 import { StyledConfirmationPage, Board } from "./styles";
 import { COLORS } from "@/utils/colors";
 import { GradientButton } from "@/components/Button";
-import { HOTEL_RULES } from "@/utils/dataTest";
+import { HOTEL_RULES, TAXES_AND_FEES } from "@/utils/dataTest";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { useNavigate } from "react-router-dom";
@@ -87,11 +87,15 @@ export default function Confirm() {
                 </Span>
                 <div className="summary">
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">Guest Name(s)</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Guest Name(s)
+                    </Span>
                     <Span>Mr.Jack Smith</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">Description</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Description
+                    </Span>
                     <Span>Warwick Fiji Resort</Span>
                     <Span>
                       <Span fontWeight="bold">2 Rooms</Span>: Garden view room,
@@ -108,10 +112,12 @@ export default function Confirm() {
                     <Span>6-night stay</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">Total Price</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Total Price
+                    </Span>
                     <Span className="hidden">xxx</Span>
                     <Span>$XXX</Span>
-                    <Span>
+                        <Span>
                       Taxes and fees{" "}
                       <ReactSVG
                         className="mark"
@@ -133,7 +139,7 @@ export default function Confirm() {
                         }}
                       />
                       : $XXX
-                    </Span>
+                        </Span>
                     <Span fontSize="25px" fontWeight="bold">
                       Total Price: $XXX
                     </Span>

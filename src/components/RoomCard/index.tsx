@@ -1,14 +1,18 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { RoomOptions, SelectedRoomType } from "@/utils/types/CardHotel";
-import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+} from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { H3, H4, Typography as Span } from "../Typography";
 import { TAXES_AND_FEES } from "@/utils/dataTest";
 import { BREAKPOINTS } from "@/utils/breakpoints";
-import { options } from "@fullcalendar/core/preact";
+import Tooltips from "../Tooltips";
 
 interface IRoomCard {
   index?: number;
@@ -155,13 +159,16 @@ export default function RoomCard({
                           No availability
                         </Span>
                       ) : (
-                        <p
-                          onClick={() =>
-                            onShowModal({ typeModal: MODAL_TYPES.TEXT })
+                        <Tooltips
+                          title={
+                            <>
+                              <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
+                              <Span fontSize="16px">{TAXES_AND_FEES}</Span>
+                            </>
                           }
                         >
-                          Price details
-                        </p>
+                          <p>Price details</p>
+                        </Tooltips>
                       )}
                       <div>
                         <p onClick={() => onShowModal({})}>More details</p>
