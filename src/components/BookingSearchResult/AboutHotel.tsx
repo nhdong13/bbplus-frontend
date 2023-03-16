@@ -128,8 +128,6 @@ const StyledAboutHotel = styled.div`
   .faq-wrapper {
     .MuiAccordionDetails-root {
       padding: 0 !important;
-      border-top-style: none !important;
-      border-top: 0px;
     }
   }
   @media ${BREAKPOINTS.tablet} {
@@ -233,6 +231,9 @@ const StyledAboutHotel = styled.div`
         border-bottom: 2px solid ${COLORS.borderGray};
         border-style: dotted;
       }
+      .MuiAccordionDetails-root {
+        border-top-style: none !important;
+      }
     }
     .faq {
       padding-top: 20px !important;
@@ -282,7 +283,7 @@ export default function AboutHotel() {
   };
   return (
     <StyledAboutHotel>
-      <Container display="block">
+      <Container display="block" padding="0 20px 0px 20px">
         <div className="about-hotel__action">
           <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>
             Expand all
@@ -313,7 +314,7 @@ export default function AboutHotel() {
                     return (
                       <div key={item.name} className="facility-item">
                         <ReactSVG className="facility-icon" src={item.icon} />
-                        <Span fontSize="15px" fontWeight="normal">
+                        <Span fontSize="16px" fontWeight="normal">
                           {item.name}
                         </Span>
                       </div>

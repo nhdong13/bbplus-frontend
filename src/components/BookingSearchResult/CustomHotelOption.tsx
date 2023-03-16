@@ -131,12 +131,15 @@ export default function CustomHotelOption({
                             fontSize="25px"
                             marginLeft="20px"
                             component={"span"}
+                            fontFamily="Manrope"
                           >
                             {result.name}{" "}
                             <Typography
                               display="inline-block"
                               fontWeight="500"
                               component={"span"}
+                              fontSize="25px"
+                              fontFamily="Manrope"
                             >
                               - {result.description}
                             </Typography>
@@ -230,7 +233,7 @@ const StyledHotelResult = styled.div`
     display: flex;
     flex: row;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 10px 0 0;
     align-items: flex-end;
   }
   .MuiPaper-root {
@@ -271,8 +274,9 @@ const StyledHotelResult = styled.div`
 
   .hotel-result__room-list {
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
+    grid-template-columns: 350px 350px;
+    gap: 30px;
+    row-gap: 20px;
   }
   .hotel-result__option-list {
     display: grid;

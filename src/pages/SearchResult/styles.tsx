@@ -38,6 +38,7 @@ const SearchResultBackground = styled.div.attrs((props: {}) => props)`
 `;
 
 const SearchBar = styled.div`
+  box-sizing: border-box;
   max-width: 1440px;
   padding: 0 20px;
   margin: auto;
@@ -99,11 +100,12 @@ const SearchItem = styled.div`
 
 const ButtonEditSearch = styled.div`
   cursor: pointer;
+  box-sizing: border-box;
   width: 174px;
-  height : 58px;
+  height: 58px;
   border: 2px solid ${COLORS.greenBlue};
   background: ${COLORS.white};
-  border-radius: 17px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,7 +169,7 @@ const SearchOption = styled.div`
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
-  .title{
+  .title {
     font-size: 28px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
@@ -291,7 +293,8 @@ const ListResultContainer = styled.div`
   &:last-child {
     margin-bottom: 145px;
   }
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background: ${COLORS.blueWater};
     cursor: pointer;
   }
@@ -589,6 +592,14 @@ const BookingContainer = styled.div`
     }
   }
   @media ${BREAKPOINTS.laptop} {
+    .selected-hotels {
+      padding: 0 10px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      .gradient-button {
+        height: 34px;
+      }
+    }
   }
 `;
 

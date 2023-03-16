@@ -63,11 +63,13 @@ const BookingOption = styled.div`
 `;
 
 const BookingHeader = styled.div`
+  box-sizing: border-box;
   max-width: 1400px;
   margin: auto;
+  padding: 0 20px 0 30px;
   padding-bottom: 28px;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 55% 45%;
   align-items: baseline;
   justify-content: space-between;
   flex-direction: row;
@@ -80,7 +82,7 @@ const BookingHeader = styled.div`
   }
   @media ${BREAKPOINTS.tablet} {
     grid-template-columns: 100%;
-    padding-bottom: 0px;
+    padding: 0;
     & > div {
       width: 100%;
     }
@@ -127,9 +129,11 @@ const ButtonNextStep = styled.button`
   width: fit-content;
   height: fit-content;
   padding: 16px 42px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: bold;
+  font-size: 16px;
   width: 194px;
+  height: 48.6px;
   @media ${BREAKPOINTS.laptop} {
     width: 100%;
     font-size: 12px;
@@ -169,7 +173,7 @@ interface ContainerStyle {
 const Left = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
   background-color: #f0f1f2;
-  padding: 20px 56px 40px 0;
+  padding: 20px 36px 40px 20px;
   @media ${BREAKPOINTS.tablet} {
     background-color: white;
     padding: 40px 0 0 0;
@@ -177,9 +181,11 @@ const Left = styled.div<ContainerStyle>`
 `;
 const Right = styled.div<ContainerStyle>`
   width: ${(props) => props.width};
-  padding-left: 40px;
+  padding-left: 60px;
+  padding-right: 20px;
   @media ${BREAKPOINTS.tablet} {
     padding-left: 0;
+    padding-right: 0px;
   }
 `;
 
@@ -310,7 +316,7 @@ const HotelImage = styled.div`
       margin: 0px;
     }
     .hotel__image {
-      margin: 29px 0 0;
+      margin-right: 10px;
     }
     .overlay {
       display: none;
@@ -327,6 +333,11 @@ const HotelPrice = styled.div`
   & > span {
     padding: 4px 0;
     line-height: 100%;
+  }
+  .price-line {
+    span:last-child {
+      padding-left: 20px;
+    }
   }
   @media ${BREAKPOINTS.tablet} {
     padding-bottom: 10px;
@@ -374,6 +385,7 @@ interface IButton {
   backgroundColor?: string;
   border?: string;
   borderRadius?: string;
+  fontSize?: string;
 }
 
 const Button = styled.button<IButton>`
@@ -384,6 +396,8 @@ const Button = styled.button<IButton>`
   border-radius: ${(props) => props.borderRadius || "8px"};
   color: ${COLORS.blueRYB};
   background-color: ${(props) => props.backgroundColor || "white"};
+  font-weight: bold;
+  font-size: ${(props) => props.fontSize};
 `;
 
 const HotelDetail = styled.div`
@@ -427,14 +441,13 @@ const HotelDetail = styled.div`
       margin-bottom: 10px;
       button {
         padding: 5px 10px;
-        font-size: 12px;
+        font-size: 16px;
         border-radius: 5px;
         color: ${COLORS.blueFrench};
       }
     }
     .holiday-includes {
-      font-weight: 400;
-      font-size: 12px;
+      font-weight: bold;
       line-height: 16px;
     }
     ul {

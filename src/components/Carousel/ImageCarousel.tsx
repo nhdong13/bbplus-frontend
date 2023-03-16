@@ -203,4 +203,7 @@ const ActionWrap = styled.div<IActionWrap>`
       fill: ${COLORS.grayAf};
     }
   }
+  @media ${BREAKPOINTS.tablet} {
+    padding: 0;
+  }
 `;

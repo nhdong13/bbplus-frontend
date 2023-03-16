@@ -199,12 +199,15 @@ const StyledRoomCard = styled.div`
     background-color: ${COLORS.aliceBlue};
   }
   .room-card__container {
-    padding: 30px 20px;
+    padding: 20px 16px 20px 20px;
   }
   .room-card__option-container {
     padding: 30px 20px 10px 20px;
     height: 100%;
     box-sizing: border-box;
+  }
+  h4 {
+    margin-bottom: 2px;
   }
   @media ${BREAKPOINTS.tablet} {
     border-radius: 5px;
@@ -307,7 +310,7 @@ const RoomOptions = styled.div`
       display: flex;
       flex-direction: column;
       .detail {
-        margin-left: 40px;
+        margin-left: 36px;
         margin-top: -8px;
       }
     }
@@ -332,8 +335,8 @@ const RoomOptions = styled.div`
       rgba(0, 180, 146, 1) 0%,
       rgba(0, 159, 199, 1) 100%
     );
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 100%;
     margin: 4px 8px 4px 0;
     display: flex;
@@ -343,15 +346,15 @@ const RoomOptions = styled.div`
     &:after {
       display: block;
       content: "";
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
       border-radius: 100%;
       background: white;
     }
   }
   .checked {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 100%;
     position: absolute;
     background: linear-gradient(
@@ -453,8 +456,8 @@ const DashDivider = styled.div`
   height: 2px;
   border-bottom: solid 2px ${COLORS.grayAf};
   border-bottom-style: dotted;
-  margin-bottom: 23px;
-  padding: 10px 0;
+  margin-bottom: 15px;
+  padding: 8px 0;
 `;
 
 const StyledFormControl = styled(FormControl)`

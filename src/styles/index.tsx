@@ -6,7 +6,7 @@ const Breadcrumb = styled.div`
   display: flex;
   max-width: 1400px;
   padding: 34px 0px 20px 0px;
-  margin: 0 auto;
+  margin: 0 0;
   @media ${BREAKPOINTS.laptop} {
     margin: 0 0;
     padding: 15px 10px 10px 10px;
@@ -22,7 +22,7 @@ const BreadcrumbItem = styled.div`
   cursor: pointer;
   color: ${COLORS.blueFrench};
   display: inline-block;
-  &:last-child{
+  &:last-child {
     white-space: pre-wrap;
     display: inline;
   }
@@ -59,15 +59,18 @@ interface IContainer {
   maxWidth?: string;
   gridTemplateColumns?: string;
   margin?: string;
+  padding?: string;
   justifyContent?: string;
   flexDirection?: string;
 }
 
 const Container = styled.div<IContainer>`
+  box-sizing: border-box;
   width: ${(props) => props.width || "1400px"};
   height: fit-content;
   max-width: ${(props) => props.maxWidth || "1400px"};
   margin: ${(props) => props.margin || "auto"};
+  padding: ${(props) => props.padding};
   display: ${(props) => props.display || "grid"};
   grid-template-columns: ${(props) => props.gridTemplateColumns || "40% 60%"};
   justify-content: ${(props) => props.justifyContent};

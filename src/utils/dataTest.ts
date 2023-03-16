@@ -3,7 +3,7 @@ import IMAGES from "@/assets/images";
 export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
-    description: "Garden View Room",
+    description: "1 x Suite, Ocean view",
     type: "room_details",
     roomOptions: [
       {

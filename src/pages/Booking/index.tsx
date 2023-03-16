@@ -149,7 +149,7 @@ export default function Booking() {
             <div>
               <BookingOption>
                 <div>
-                  <Typography className="total-price" fontWeight="bold">
+                  <Typography className="total-price" fontWeight="bold" padding="0 0 10px">
                     Total Price
                   </Typography>
                   <div className="price-line">
@@ -282,21 +282,11 @@ export default function Booking() {
                     </div>
                   </HotelPrice>
                   <HotelDetail>
-                    <div className="flex justify-between items-center">
-                      <Typography
-                        fontSize="18px"
-                        color="#104c94"
-                        fontWeight="bold"
-                        lineHeight="18px"
-                      >
-                        Most Popular
-                      </Typography>
-                      <div className="action">
-                        <Button>Room Only</Button>
-                        <Button>Ultimate Holiday</Button>
-                      </div>
-                    </div>
-                    <Typography className="holiday-includes" fontSize="18px">
+                    <Typography
+                      className="holiday-includes"
+                      fontSize="24px"
+                      fontWeight="bold"
+                    >
                       Holiday includes
                     </Typography>
                     <ul>
@@ -307,13 +297,21 @@ export default function Booking() {
                         <Typography>Return airport transfer</Typography>
                       </li>
                       <li>
-                        <Typography>Garden view room</Typography>
+                        <Typography>
+                          Accommodation at Warwick Fiji Beach Resort
+                        </Typography>
                       </li>
                       <li>
-                        <Typography>Welcome refreshing drink</Typography>
+                        <Typography>Ocean view room</Typography>
                       </li>
                       <li>
                         <Typography>Half board meal</Typography>
+                      </li>
+                      <li>
+                        <Typography>1 hour spa treatment</Typography>
+                      </li>
+                      <li>
+                        <Typography>Welcome refreshing drink</Typography>
                       </li>
                       <li>
                         <Typography>Free selected watersport</Typography>
@@ -325,6 +323,7 @@ export default function Booking() {
                         border="none"
                         backgroundColor="#ff8003"
                         padding="16px 20px"
+                        borderRadius="9px"
                       >
                         <Typography
                           fontSize="18px"
@@ -338,6 +337,7 @@ export default function Booking() {
                         width="100%"
                         border="2px solid #d9bf50"
                         backgroundColor="#fff3d6"
+                        borderRadius="9px"
                       >
                         <Typography
                           fontSize="18px"
