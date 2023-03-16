@@ -53,6 +53,7 @@ export default function GridView({ checkIn }: IProps) {
   }
   return (
     <>
+      <ListDate>
       <SDate>
         <ListContainer>
           <div className="content">
@@ -61,7 +62,6 @@ export default function GridView({ checkIn }: IProps) {
           </div>
         </ListContainer>
       </SDate>
-      <ListDate>
         <ListContainer>
           <div className="flex-date">
 

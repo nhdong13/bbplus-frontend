@@ -83,20 +83,20 @@ const SelectBookingDateTime = styled(HorizontalContainer)`
 `
 
 const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props: {
-  selectCreateItinerary?: boolean
+  selectedBooking?: number
 }) => props)`
   @media ${BREAKPOINTS.laptop} {
     display: grid;
-    grid-template-areas:
-    "leavingFrom ${props => props.selectCreateItinerary ? "goingTo" : "leavingFrom"}" 
-    "arriveDays noDays"
-    "travellers travellers"
-    ;
     width: 100%;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px;
   }
 
   .leaving-from {
-    grid-area: leavingFrom;
+    /* grid-area: leavingFrom; */
+    grid-column: ${props => props.selectedBooking === 2 ? "1 / -1" : ""} ;
   }
 
   .selected-value {
@@ -128,24 +128,24 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     &:focus {
       outline: none; 
     }
+    @media ${BREAKPOINTS.laptop} {
+      font-size: 12px;
+    }
   }
 
   .going-to {
-    grid-area: goingTo;
   }
 
   .arrive-days {
     border-right: none;
-    grid-area: arriveDays;
   }
 
   .no-days {
     border-left: none;
-    grid-area: noDays;
   }
 
   .travellers {
-    grid-area: travellers;
+    grid-column: 1 / -1;
   }
 
   .leaving-from,

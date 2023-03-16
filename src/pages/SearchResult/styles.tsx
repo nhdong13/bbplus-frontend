@@ -70,7 +70,7 @@ const SearchBar = styled.div`
 
   @media ${BREAKPOINTS.laptop} {
     background: ${COLORS.white};
-    border-radius: 16px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0;

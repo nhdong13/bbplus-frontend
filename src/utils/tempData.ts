@@ -1,5 +1,5 @@
 import { HotelData } from "./types/CardHotel";
-import { SelectData } from './types/Select'
+import { ISelect } from './types/Select'
 
 export const buttonItems = [
   {

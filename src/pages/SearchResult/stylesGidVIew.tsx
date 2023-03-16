@@ -140,6 +140,9 @@ const GridRoomItem = styled.div`
 const ListDate = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${COLORS.silver};
+  position: sticky;
+  top: 0;
+  background: #fff;
   @media ${BREAKPOINTS.laptop} {
     border-top: 1px solid ${COLORS.silver};
     margin-top: 15px;
@@ -243,9 +246,9 @@ const GridViewContainer = styled.div `
   padding: 0 20px;
   margin: auto;
   height: 100%;
-  max-height: 500px;
+  /* max-height: 500px;
   overflow-y: auto;
-  /* &::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   } */
   @media ${BREAKPOINTS.laptop} {

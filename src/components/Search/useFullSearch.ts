@@ -15,6 +15,7 @@ interface ISelected {
   _id: string | number,
   label: string
 }
+
 const demoData = [
   { _id: '1', name: '', adults: 1, children: 0 },
 ]
@@ -34,7 +35,6 @@ function getDatesInRange(start: DateObject, end: DateObject): DateObject[] {
 const useFullSearchWidget = () => {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
   const [travelerDropDown, setTravelerDropDown] = useState<boolean>(false);
-  const [selectCreateItinerary, setSelectCreateItinerary] = useState<boolean>(true);
   const [slideCount, setSlideCount] = useState<number>(2);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [selectDateDropDown, setSelectDateDropDown] = useState<boolean>(false);
@@ -42,6 +42,8 @@ const useFullSearchWidget = () => {
   const [totalDates, setTotalDates] = useState<number>(0);
   const [selectLeavingPlaces, setSelectLeavingPlaces] = useState<boolean>(false);
   const [selectGoingPlaces, setGoingPlaces] = useState<boolean>(false);
+  const [selectBookingID, setSelectBookingID] = useState<boolean>(false);
+  const [selectGuestEmail, setSelectGuestEmail] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [dataFilter, setDataFilter] = useState<IFilter[]>(demoData);
   const [totalGuest, setTotalGuest] = useState<number>(0);
@@ -49,6 +51,7 @@ const useFullSearchWidget = () => {
   const [selectedGoing, setSelectedGoing] = useState<ISelected>();
   const [filterLeaving, setFilterLeaving] = useState<string>('');
   const [filterGoing, setFilterGoing] = useState<string>('');
+  const [filterFinMyBooking, setFilterFinMyBooking] = useState<any>();
 
   //new state
 
@@ -89,9 +92,6 @@ const useFullSearchWidget = () => {
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
-    if (id === 2) {
-      setSelectCreateItinerary(false);
-    } else setSelectCreateItinerary(true);
   };
 
   const showTravelerDropDown = () => {
@@ -262,8 +262,6 @@ const useFullSearchWidget = () => {
     setSelectedBooking,
     travelerDropDown,
     setTravelerDropDown,
-    selectCreateItinerary,
-    setSelectCreateItinerary,
     handleSelectBookingType,
     showTravelerDropDown,
     slideCount,
@@ -283,6 +281,9 @@ const useFullSearchWidget = () => {
     selectGoingPlaces,
     setGoingPlaces,
     setSelectDateDropDown,
+    selectBookingID, setSelectBookingID,
+    selectGuestEmail, setSelectGuestEmail,
+    filterFinMyBooking, setFilterFinMyBooking,
     isMobile,
     leavingDropDownRef,
     leavingDropDownVisible,
@@ -302,7 +303,7 @@ const useFullSearchWidget = () => {
     filterGoing, setFilterGoing,
     //new
     dates, setDates,
-    totalDay, setTotalDay
+    totalDay, setTotalDay,
   }
 }
 
