@@ -72,35 +72,33 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
             <div className="tab-panel" hidden={selectedTab !== TAB[0]}>
               <GroupButton>
                 <GradientButton
-                  isSelected={selectedOption === OPTION[0]}
+                  isSelected
                   text="One Way"
                   textColor={selectedOption === OPTION[0] ? "white" : "black"}
-                  fontSize="14px"
-                  fontWeight="600"
-                  width="72px"
-                  height="100%"
-                  padding="12px 32px"
-                  textPadding="0"
-                  borderWidth="2px"
                   borderRadius="4px"
-                  borderGradient={COLORS.gradient2}
-                  color={COLORS.gradient2}
+                  borderGradient={
+                    selectedOption !== OPTION[0] ? COLORS.borderGradient : ""
+                  }
+                  borderWidth={selectedOption !== OPTION[0] ? "2px" : "0px"}
+                  color={
+                    selectedOption !== OPTION[0] ? "white" : COLORS.gradient2
+                  }
                   handleSubmit={() => setSelectedOption(OPTION[0])}
                 />
                 <GradientButton
-                  isSelected={selectedOption === OPTION[1]}
+                  isSelected
                   text="Return"
                   fontSize="14px"
                   textColor={selectedOption === OPTION[1] ? "white" : "black"}
-                  fontWeight="600"
-                  width="72px"
-                  height="fit-content"
-                  padding="12px 32px"
                   textPadding="0"
                   borderRadius="4px"
-                  borderWidth="2px"
-                  borderGradient={COLORS.gradient2}
-                  color={COLORS.gradient2}
+                  borderGradient={
+                    selectedOption !== OPTION[1] ? COLORS.borderGradient : ""
+                  }
+                  borderWidth={selectedOption !== OPTION[1] ? "2px" : "0px"}
+                  color={
+                    selectedOption !== OPTION[1] ? "white" : COLORS.gradient2
+                  }
                   handleSubmit={() => setSelectedOption(OPTION[1])}
                 />
               </GroupButton>
@@ -261,6 +259,9 @@ export default function RoomTransfer({ isOpen, onCloseModal }: IRoomTransfer) {
             color={COLORS.gradient2}
             handleSubmit={onCloseModal}
             fontWeight="bold"
+            borderRadius="5px"
+            textPadding="0 38.5px 0 38.5px"
+            height="62px"
           />
         </Action>
       </StyledModal>
@@ -295,7 +296,7 @@ const TabContainer = styled.div`
   .MuiTabs-indicator {
     height: 4px;
     box-sizing: border-box;
-    width: 50%!important;
+    width: 50% !important;
   }
 `;
 
@@ -382,7 +383,23 @@ const GroupButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
+  box-sizing: border-box;
   gap: 16px;
+  & > div {
+    width: 148px;
+    height: 50px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    & > div {
+      height: 50px;
+    }
+    span {
+      width: fit-content;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+  }
 `;
 
 const Action = styled.div`

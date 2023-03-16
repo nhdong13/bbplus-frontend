@@ -4,7 +4,7 @@ import RoomCard from "../RoomCard";
 import Typography from "@mui/material/Typography";
 import { Typography as Span } from "../Typography";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS } from "@/utils/colors";
 import { HOTELS_NAME, HOTEL_RESULT_DATA } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
@@ -73,7 +73,7 @@ export default function CustomHotelOption({
         <div className="hotel-result__right">
           {hotelOptions.map((hotel, index) => {
             return (
-              <>
+              <React.Fragment key={index}>
                 <div
                   className="action-wrapper"
                   key={index}
@@ -161,7 +161,7 @@ export default function CustomHotelOption({
                               ? range(0, 6).map((_, index) => {
                                   return (
                                     <RoomCard
-                                      key={index}
+                                      key={_ + index}
                                       index={index}
                                       checkbox
                                       roomOptions={result.roomOptions}
@@ -173,7 +173,7 @@ export default function CustomHotelOption({
                                 })
                               : result.roomOptions.map((item, index) => (
                                   <RoomCard
-                                    key={item.title + index}
+                                    key={index}
                                     roomOptions={[item]}
                                     type={result.type}
                                     onSelect={onSelectOption}
@@ -187,6 +187,7 @@ export default function CustomHotelOption({
                   return (
                     <div
                       className="inactive-component"
+                      key={result.name}
                       style={{
                         order: addedComponent.length + index * 10,
                         display:
@@ -216,7 +217,7 @@ export default function CustomHotelOption({
                     </div>
                   );
                 })}
-              </>
+              </React.Fragment>
             );
           })}
         </div>

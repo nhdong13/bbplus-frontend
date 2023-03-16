@@ -24,6 +24,8 @@ const StyledButton = styled.div.attrs((props: {
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: ${props => props.height || "52px"};
   max-width: ${props => props.maxWidth};
   padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
@@ -42,6 +44,7 @@ const StyledButton = styled.div.attrs((props: {
       font-size: 12px;
     }
     white-space: nowrap;
+    width: fit-content;
   }
 
   &.open {
@@ -73,6 +76,7 @@ const Overlay = styled.div.attrs((props: {
   border-radius: ${props => props.borderRadius || "17px"};
   display: flex;
   justify-content: center;
+  align-items: center;
   height: ${props => props.height || "52px"};
   padding: ${props => props.borderGradient ? props.padding : ""};
   transition: all 0.5s ease-in-out;

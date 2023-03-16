@@ -143,7 +143,11 @@ export default function RoomCard({
 
                     <div className="room-card__price-detail">
                       {[1, 3].includes(index || 0) ? (
-                        <Span className="warning" color={COLORS.red}>
+                        <Span
+                          className="warning"
+                          color={COLORS.red}
+                          onClick={() => showModal(MODAL_TYPES.CALENDAR)}
+                        >
                           No availability
                         </Span>
                       ) : (

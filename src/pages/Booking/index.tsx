@@ -114,13 +114,7 @@ export default function Booking() {
               </div>
             </SearchItem>
             <SearchItem className="arrive-days border-0 btn-edit">
-              <ButtonEditSearch
-                onClick={() => {
-                  showModal(MODAL_TYPES.CALENDAR);
-                }}
-              >
-                Edit Search
-              </ButtonEditSearch>
+              <ButtonEditSearch>Edit Search</ButtonEditSearch>
             </SearchItem>
           </SearchBar>
           <div className="btn-mobile">Edit Search</div>
@@ -149,7 +143,11 @@ export default function Booking() {
             <div>
               <BookingOption>
                 <div>
-                  <Typography className="total-price" fontWeight="bold" padding="0 0 10px">
+                  <Typography
+                    className="total-price"
+                    fontWeight="bold"
+                    padding="0 0 10px"
+                  >
                     Total Price
                   </Typography>
                   <div className="price-line">
@@ -367,7 +365,7 @@ export default function Booking() {
                   borderRadius="8px"
                   fontWeight="bold"
                   borderGradient={index === 1 ? COLORS.borderGradient : ""}
-                  borderWidth="2px"
+                  borderWidth={index === 1 ? "2px" : ""}
                   textColor={index === 1 ? COLORS.blueRibbon : ""}
                   fontSize="18px"
                 />
