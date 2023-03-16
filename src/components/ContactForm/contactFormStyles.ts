@@ -22,6 +22,13 @@ const ContactFormContainer = styled.div.attrs((props: {
     font-size: 20px;
   }
 
+  .no-margin {
+    margin-top: 10px;
+  }
+  .header_c {
+    font-size: 21px;
+  }
+
   .divider {
     width: 778px;
     height: 0px;

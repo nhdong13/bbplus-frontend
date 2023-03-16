@@ -134,14 +134,13 @@ const TravelerDetailsFormContainer = styled.div`
       .additional-info,
       .line-info {
         display: flex;
-        margin-bottom: 26px;
         span {
-          margin-top: 8px;
           margin-left: 29px;
           font-size: 16px;
           display: flex;
           align-items: center;
           padding-left: 36px;
+          line-height: 32px;
           &:first-child {
             margin-left: 0;
           }
@@ -177,7 +176,10 @@ const TravelerDetailsFormContainer = styled.div`
 
     .important-information {
       .payment-btn {
-        margin-bottom: 15px;
+        margin: 20px 0 15px 8px;
+        .gradient-button {
+          box-sizing: border-box;
+        }
       }
     }
   }
@@ -307,15 +309,15 @@ const TravelerDetailsFormContainer = styled.div`
     }
 
     .accommodation-container {
-      width: calc(100% - 66px);
+      width: calc(100% - 65px);
       margin-top: 23px;
       background: ${COLORS.lightGray};
-      padding: 29px 33px;
+      padding: 29px 35px;
       padding-bottom: 38px;
       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
       .divider {
-        margin: 17px 0;
+        margin: 28px 0;
       }
 
       a {
@@ -347,6 +349,7 @@ const TravelerDetailsFormContainer = styled.div`
       span.sub-header {
         font-weight: bold;
         font-size: 20px;
+        line-height: 20px;
       }
     }
   }
