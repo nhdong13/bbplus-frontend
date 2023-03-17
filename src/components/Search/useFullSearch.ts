@@ -1,6 +1,10 @@
 import useComponentVisible from "@/utils/clickOutSide";
 import useWindowSize from "@/utils/windowResize";
 import { useEffect, useState } from "react";
+import { DateObject } from "react-multi-date-picker"
+import { useSearchParams } from "react-router-dom";
+import { dataLeaving, dataGoing } from "@/utils/tempData";
+
 interface IFilter {
   _id: string,
   name: string,
@@ -11,13 +15,26 @@ interface ISelected {
   _id: string | number,
   label: string
 }
+
 const demoData = [
   { _id: '1', name: '', adults: 1, children: 0 },
 ]
+
+function getDatesInRange(start: DateObject, end: DateObject): DateObject[] {
+  const dates = [];
+  let currentDate = start.toDate();
+
+  while (currentDate <= end.toDate()) {
+    dates.push(new DateObject(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  return dates;
+}
+
 const useFullSearchWidget = () => {
   const [selectedBooking, setSelectedBooking] = useState<number>(0);
   const [travelerDropDown, setTravelerDropDown] = useState<boolean>(false);
-  const [selectCreateItinerary, setSelectCreateItinerary] = useState<boolean>(true);
   const [slideCount, setSlideCount] = useState<number>(2);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [selectDateDropDown, setSelectDateDropDown] = useState<boolean>(false);
@@ -25,11 +42,27 @@ const useFullSearchWidget = () => {
   const [totalDates, setTotalDates] = useState<number>(0);
   const [selectLeavingPlaces, setSelectLeavingPlaces] = useState<boolean>(false);
   const [selectGoingPlaces, setGoingPlaces] = useState<boolean>(false);
+  const [selectBookingID, setSelectBookingID] = useState<boolean>(false);
+  const [selectGuestEmail, setSelectGuestEmail] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [dataFilter, setDataFilter] = useState<IFilter[]>(demoData);
   const [totalGuest, setTotalGuest] = useState<number>(0);
   const [selectedLeaving, setSelectedLeaving] = useState<ISelected>();
+  const [selectedGoing, setSelectedGoing] = useState<ISelected>();
   const [filterLeaving, setFilterLeaving] = useState<string>('');
+  const [filterGoing, setFilterGoing] = useState<string>('');
+  const [filterFinMyBooking, setFilterFinMyBooking] = useState<any>();
+
+  //new state
+
+  const [searchParams] = useSearchParams();
+  const [dates, setDates] = useState<DateObject[]>([]);
+  const [totalDay, setTotalDay] = useState<number>(0);
+  const leavingId = searchParams.get('leaving') || '';
+  const goingId = searchParams.get('going') || '';
+  const checkInParam = searchParams.get('checkIn') || '';
+  const checkOutParam = searchParams.get('checkOut') || '';
+  const roomParam = searchParams.getAll('room') || [];
 
   const screenWidth = useWindowSize();
 
@@ -59,9 +92,6 @@ const useFullSearchWidget = () => {
 
   const handleSelectBookingType = (id: number) => {
     setSelectedBooking(id);
-    if (id === 2) {
-      setSelectCreateItinerary(false);
-    } else setSelectCreateItinerary(true);
   };
 
   const showTravelerDropDown = () => {
@@ -123,6 +153,62 @@ const useFullSearchWidget = () => {
 
   }, [JSON.stringify(dataFilter)])
 
+  const getTotalDaysInRange = (datesInRange: DateObject[]): number => {
+    if (!datesInRange || datesInRange.length === 0) {
+      return 0;
+    }
+    const firstDate = datesInRange[0].toDate();
+    const lastDate = datesInRange[datesInRange.length - 1].toDate();
+    const diffTime = lastDate.getTime() - firstDate.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays + 1;
+  }
+
+
+
+  useEffect(() => {
+    setTotalDay((getTotalDaysInRange(dates)))
+  }, [dates])
+
+  useEffect(() => {
+    const startDate = new DateObject(new Date(checkInParam));
+    const endDate = new DateObject(new Date(checkOutParam));
+    const datesInRange = getDatesInRange(startDate, endDate);
+    setDates(datesInRange)
+  }, [checkInParam, checkOutParam])
+
+  // Parse room values from search parameters and set data filter state
+  useEffect(() => {
+    const roomValues: IFilter[] = roomParam
+      .map((value, index) => {
+        const matches = value.match(/a(\d+),c(\d+)/);
+        if (matches) {
+          return { _id: String(index), name: '', adults: parseInt(matches[1]), children: parseInt(matches[2]) };
+        } else {
+          return null;
+        }
+      })
+      .filter((value): value is IFilter => value !== null);
+    if (roomValues.length > 0) {
+      setDataFilter(roomValues);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (leavingId && parseInt(leavingId)) {
+      const obj = dataLeaving.find((d: any) => d._id === parseInt(leavingId))
+      if (obj) {
+        setSelectedLeaving(obj)
+      }
+    }
+    if (goingId && parseInt(goingId)) {
+      const obj = dataGoing.find((d: any) => d._id === parseInt(goingId))
+      if (obj) {
+        setSelectedGoing(obj)
+      }
+    }
+  }, [leavingId, goingId])
+
 
   const handleAddRoom = (newRoom: IFilter) => {
     dataFilter.push(newRoom);
@@ -176,8 +262,6 @@ const useFullSearchWidget = () => {
     setSelectedBooking,
     travelerDropDown,
     setTravelerDropDown,
-    selectCreateItinerary,
-    setSelectCreateItinerary,
     handleSelectBookingType,
     showTravelerDropDown,
     slideCount,
@@ -197,6 +281,9 @@ const useFullSearchWidget = () => {
     selectGoingPlaces,
     setGoingPlaces,
     setSelectDateDropDown,
+    selectBookingID, setSelectBookingID,
+    selectGuestEmail, setSelectGuestEmail,
+    filterFinMyBooking, setFilterFinMyBooking,
     isMobile,
     leavingDropDownRef,
     leavingDropDownVisible,
@@ -211,7 +298,12 @@ const useFullSearchWidget = () => {
     handleAddRoom,
     handleChangeDataRoom,
     selectedLeaving, setSelectedLeaving,
-    filterLeaving, setFilterLeaving
+    selectedGoing, setSelectedGoing,
+    filterLeaving, setFilterLeaving,
+    filterGoing, setFilterGoing,
+    //new
+    dates, setDates,
+    totalDay, setTotalDay,
   }
 }
 

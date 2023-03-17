@@ -18,7 +18,6 @@ const StyledInputContainer = styled.div.attrs(
 )`
   position: relative;
   border-radius: 4.5px;
-  border: 2px solid ${COLORS.black};
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
 
@@ -44,7 +43,7 @@ const StyledInputContainer = styled.div.attrs(
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
-    border: none;
+    border: 2px solid ${COLORS.black};
     border-radius: 4.5px;
   }
 

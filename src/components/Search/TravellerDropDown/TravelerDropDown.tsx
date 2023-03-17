@@ -53,7 +53,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       const getBodyElement: any = document.querySelector("body");
       if (isShown) {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        getBodyElement.style.overflow = "hidden";
+        // getBodyElement.style.overflow = "hidden";
       }
     }
   }, [isShown, screenWidth])
@@ -97,6 +97,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
         </div>
         <GradientButton
           color={COLORS.gradient1}
+          handleSubmit={() => closePopup(false)}
           text="Apply"
           isSelected={true}
           maxWidth="162px"

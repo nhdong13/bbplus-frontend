@@ -17,7 +17,6 @@ interface HeaderInterface {
 export default function Header({ hasDivider }: HeaderInterface) {
   const [dropdown, setDropDown] = useState<boolean>(false);
   const [notificationDropDown, setNotificationDropDown] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   const {
     ref: userMenuRef,
@@ -50,6 +49,7 @@ export default function Header({ hasDivider }: HeaderInterface) {
     if (!notificationVisible) setNotificationDropDown(false);
   }, [userMenuVisible, notificationVisible])
 
+  const navigate = useNavigate();
 
   return (
     <>
