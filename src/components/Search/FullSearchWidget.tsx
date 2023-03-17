@@ -29,6 +29,13 @@ interface IProps {
   checkOutUrlParam?: string,
 
 }
+
+interface IOptionSearch {
+  leaving: string,
+  going: string,
+  checkIn: string,
+  checkOut: string
+}
 export default function FullSearchWidget({
   className, handleSearch,
 }: IProps) {
@@ -107,23 +114,19 @@ export default function FullSearchWidget({
     if (selectedBooking === 3) {
       return;
     }
-    const optionSearch = {}
-    if (selectedLeaving) {
-      Object.assign(optionSearch, {
-        leaving: selectedLeaving._id
-      })
+    if (!selectedLeaving
+      || !selectedGoing
+      || !dates
+    ) {
+      return;
     }
-    if (selectedGoing) {
-      Object.assign(optionSearch, {
-        going: selectedGoing._id
-      })
+    const optionSearch: IOptionSearch = {
+      leaving: selectedLeaving?._id.toString(),
+      going: selectedGoing?._id.toString(),
+      checkIn: dates[0]?.format("DD MMM YYYY").toString(),
+      checkOut: dates[dates.length - 1]?.format("DD MMM YYYY").toString(),
     }
-    if (dates) {
-      Object.assign(optionSearch, {
-        checkIn: dates[0]?.format("DD MMM YYYY"),
-        checkOut: dates[dates.length - 1]?.format("DD MMM YYYY"),
-      })
-    }
+    
     if (dataFilter.length > 0) {
       Object.assign(optionSearch, {
         room: dataFilter.map((room) => `a${room.adults},c${room.children}`)
@@ -131,7 +134,7 @@ export default function FullSearchWidget({
     }
     navigate({
       pathname: "/search-result",
-      search: createSearchParams(optionSearch).toString()
+      search: createSearchParams({ ...optionSearch }).toString()
     });
     if (handleSearch) handleSearch()
   }

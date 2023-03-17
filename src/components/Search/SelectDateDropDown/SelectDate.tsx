@@ -27,7 +27,7 @@ export default function SelectDate({
   totalDay
 }: SelectDate) {
   const weekDays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
-  const [dates, setDates] = useState<DateObject[]>(initialDates);
+  const [dates, setDates] = useState<DateObject[]>();
   const [showMonths, setShowMonths] = useState<number>(3);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -42,6 +42,10 @@ export default function SelectDate({
       setIsMobile(true);
     }
   }, [screenWidth, showMonths, isMobile])
+  
+  useEffect(() => {
+    setDates(initialDates)
+  }, [JSON.stringify(initialDates)])
 
   const onClickResetData = () => {
     setData([])
