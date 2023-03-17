@@ -34,6 +34,8 @@ export const COLORS: StyledColors = {
     "linear-gradient(112deg, rgba(0,180,146,1) 0%, rgba(0,159,199,1) 100%)",
   gradient2:
     "linear-gradient(90deg,rgba(0, 180, 146, 1) 0%,rgba(0, 159, 199, 1) 100%)",
+  borderGradient:
+    "linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,rgba(0,180,146,1) 0%,rgba(0,159,199,1) 100%)",
   greenBlue: "#00B492",
   mistyRose: "#FFECE1",
   mercury: "#E8E8E8",
@@ -105,6 +107,7 @@ interface StyledColors {
   endeavour: string;
   gradient1: string;
   gradient2: string;
+  borderGradient: string;
   greenBlue: string;
   mercury: string;
   mistyRose: string;

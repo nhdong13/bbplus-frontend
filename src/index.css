@@ -37,3 +37,7 @@ code {
 .close-btn{
   cursor: pointer;
 }
+
+.MuiTooltip-tooltip {
+  background-color: transparent!important;
+}

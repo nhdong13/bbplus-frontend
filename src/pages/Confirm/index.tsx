@@ -5,7 +5,7 @@ import { Typography as Span, H3 } from "@/components/Typography";
 import { StyledConfirmationPage, Board } from "./styles";
 import { COLORS } from "@/utils/colors";
 import { GradientButton } from "@/components/Button";
-import { HOTEL_RULES } from "@/utils/dataTest";
+import { HOTEL_RULES, TAXES_AND_FEES } from "@/utils/dataTest";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ export default function Confirm() {
                 <div>
                   <Span
                     className="sub-header"
-                    fontSize="23px"
+                    fontSize="25px"
                     fontWeight="bold"
                     color={COLORS.blueRibbon}
                   >
@@ -58,7 +58,7 @@ export default function Confirm() {
                 <div>
                   <Span
                     className="sub-header"
-                    fontSize="23px"
+                    fontSize="25px"
                     fontWeight="bold"
                     color={COLORS.textGreen}
                   >
@@ -79,7 +79,7 @@ export default function Confirm() {
               <div className="booking-summary">
                 <Span
                   className="sub-header"
-                  fontSize="23px"
+                  fontSize="25px"
                   fontWeight="bold"
                   color={COLORS.blueRibbon}
                 >
@@ -87,11 +87,15 @@ export default function Confirm() {
                 </Span>
                 <div className="summary">
                   <div>
-                    <Span fontWeight="bold">Guest Name(s)</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Guest Name(s)
+                    </Span>
                     <Span>Mr.Jack Smith</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold">Description</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Description
+                    </Span>
                     <Span>Warwick Fiji Resort</Span>
                     <Span>
                       <Span fontWeight="bold">2 Rooms</Span>: Garden view room,
@@ -102,16 +106,18 @@ export default function Confirm() {
                         <Span fontWeight="bold">Check-in</Span>: Fri, Mar 3,
                       </Span>
                       <Span>
-                        <Span fontWeight="bold">Check-out</Span>: Fri, Mar 12,
+                        <Span fontWeight="bold"> Check-out</Span>: Fri, Mar 12,
                       </Span>
                     </div>
                     <Span>6-night stay</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold">Total Price</Span>
+                    <Span fontWeight="bold" fontSize="18px">
+                      Total Price
+                    </Span>
                     <Span className="hidden">xxx</Span>
                     <Span>$XXX</Span>
-                    <Span>
+                        <Span>
                       Taxes and fees{" "}
                       <ReactSVG
                         className="mark"
@@ -133,7 +139,7 @@ export default function Confirm() {
                         }}
                       />
                       : $XXX
-                    </Span>
+                        </Span>
                     <Span fontSize="25px" fontWeight="bold">
                       Total Price: $XXX
                     </Span>
@@ -146,7 +152,7 @@ export default function Confirm() {
               <div className="booking-itinerary-details">
                 <Span
                   className="sub-header"
-                  fontSize="23px"
+                  fontSize="25px"
                   fontWeight="bold"
                   color={COLORS.blueRibbon}
                 >
@@ -162,8 +168,9 @@ export default function Confirm() {
                       isSelected
                       text="Show"
                       color={COLORS.gradient2}
-                      height="40px"
+                      height="50px"
                       fontWeight="bold"
+                      fontSize="18px"
                     />
                   </div>
                   <div className="form-information">
@@ -231,7 +238,7 @@ export default function Confirm() {
               <div className="booking-note">
                 <Span
                   className="sub-header"
-                  fontSize="23px"
+                  fontSize="25px"
                   fontWeight="bold"
                   color={COLORS.blueRibbon}
                 >
@@ -244,7 +251,7 @@ export default function Confirm() {
               <div className="hotel-rules">
                 <Span
                   className="sub-header"
-                  fontSize="23px"
+                  fontSize="25px"
                   fontWeight="bold"
                   color={COLORS.blueRibbon}
                 >
@@ -261,13 +268,17 @@ export default function Confirm() {
             <div className="group-btn">
               <GradientButton
                 className="btn"
-                text="Amend Booking"
+                text="Amend booking"
+                fontSize="18px"
+                height="58px"
                 isSelected
                 color={COLORS.verdunGreen}
               />
               <GradientButton
                 className="btn"
-                text="Cancel Booking"
+                text="Cancel booking"
+                fontSize="18px"
+                height="58px"
                 isSelected
                 color={COLORS.red2}
                 handleSubmit={() => {

@@ -1,16 +1,23 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
 import { RoomOptions, SelectedRoomType } from "@/utils/types/CardHotel";
-import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+} from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { H3, H4, Typography as Span } from "../Typography";
 import { TAXES_AND_FEES } from "@/utils/dataTest";
+import { BREAKPOINTS } from "@/utils/breakpoints";
+import Tooltips from "../Tooltips";
 
 interface IRoomCard {
   index?: number;
   type: string;
+  transferType?: string;
   checkbox?: boolean;
   roomOptions: RoomOptions[];
   selected?: boolean;
@@ -20,6 +27,7 @@ interface IRoomCard {
 export default function RoomCard({
   index,
   type,
+  transferType,
   checkbox,
   roomOptions,
   selected,
@@ -32,7 +40,7 @@ export default function RoomCard({
     setSelectedOption(option);
   };
 
-  const onShowModal = (typeModal?: string) => {
+  const onShowModal = ({ typeModal }: { typeModal?: string }) => {
     let title = "";
     let paragraph = "";
     const typeM = typeModal || type;
@@ -48,6 +56,7 @@ export default function RoomCard({
       title: title,
       paragraph: paragraph,
       details: {},
+      transferType: transferType,
     });
   };
   return (
@@ -142,18 +151,31 @@ export default function RoomCard({
 
                     <div className="room-card__price-detail">
                       {[1, 3].includes(index || 0) ? (
-                        <Span color={COLORS.red}>No availability</Span>
+                        <Span
+                          className="warning"
+                          color={COLORS.red}
+                          onClick={() => showModal(MODAL_TYPES.CALENDAR)}
+                        >
+                          No availability
+                        </Span>
                       ) : (
-                        <p onClick={() => onShowModal(MODAL_TYPES.TEXT)}>
-                          Price details
-                        </p>
+                        <Tooltips
+                          title={
+                            <>
+                              <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
+                              <Span fontSize="16px">{TAXES_AND_FEES}</Span>
+                            </>
+                          }
+                        >
+                          <p>Price details</p>
+                        </Tooltips>
                       )}
                       <div>
-                        <p onClick={() => onShowModal()}>More details</p>
+                        <p onClick={() => onShowModal({})}>More details</p>
                         <img
                           className="info-icon"
                           src={IMAGES.iconInfo}
-                          onClick={() => onShowModal()}
+                          onClick={() => onShowModal({})}
                         />
                       </div>
                     </div>
@@ -164,11 +186,11 @@ export default function RoomCard({
                   <div className="room-card__option">
                     <p>$XXX</p>
                     <div className="room-card__option-detail">
-                      <p onClick={() => onShowModal()}>More details</p>
+                      <p onClick={() => onShowModal({})}>More details</p>
                       <img
                         className="info-icon"
                         src={IMAGES.iconInfo}
-                        onClick={() => onShowModal()}
+                        onClick={() => onShowModal({})}
                       />
                     </div>
                   </div>
@@ -196,12 +218,30 @@ const StyledRoomCard = styled.div`
     background-color: ${COLORS.aliceBlue};
   }
   .room-card__container {
-    padding: 30px 20px;
+    padding: 20px 16px 20px 20px;
   }
   .room-card__option-container {
     padding: 30px 20px 10px 20px;
     height: 100%;
     box-sizing: border-box;
+  }
+  h4 {
+    margin-bottom: 2px;
+  }
+  @media ${BREAKPOINTS.tablet} {
+    border-radius: 5px;
+    h4 {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      margin-bottom: 10px;
+    }
+    .room-card__container {
+      padding: 20px 10px 30px 10px;
+    }
+    .room-card__option-container {
+      padding: 10px 24px;
+    }
   }
 `;
 
@@ -289,7 +329,7 @@ const RoomOptions = styled.div`
       display: flex;
       flex-direction: column;
       .detail {
-        margin-left: 40px;
+        margin-left: 36px;
         margin-top: -8px;
       }
     }
@@ -314,8 +354,8 @@ const RoomOptions = styled.div`
       rgba(0, 180, 146, 1) 0%,
       rgba(0, 159, 199, 1) 100%
     );
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 100%;
     margin: 4px 8px 4px 0;
     display: flex;
@@ -325,15 +365,15 @@ const RoomOptions = styled.div`
     &:after {
       display: block;
       content: "";
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
       border-radius: 100%;
       background: white;
     }
   }
   .checked {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 100%;
     position: absolute;
     background: linear-gradient(
@@ -346,6 +386,88 @@ const RoomOptions = styled.div`
     margin-left: 0px;
     margin-right: 0px;
   }
+
+  @media ${BREAKPOINTS.laptop} {
+    .MuiFormControl-root {
+      .title,
+      .detail {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+      }
+      .checkbox-label .detail {
+        display: none;
+        margin-left: 28px;
+      }
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        &:after {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .checked {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    .room-card__price-detail-container {
+      h3 {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+        margin-bottom: 10px;
+      }
+    }
+    .room-card__price-detail {
+      p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: ${COLORS.blueFrench};
+      }
+      img {
+        width: 16px;
+        height: 16px;
+      }
+      & > div {
+        gap: 10px;
+      }
+      .warning {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+    .room-card__option {
+      & > p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 10px;
+      }
+    }
+    .room-card__option-detail {
+      p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: ${COLORS.blueFrench};
+      }
+      img {
+        width: 16px;
+        height: 16px;
+        right: calc(50% - 58px);
+      }
+    }
+    .option-detail {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+    }
+  }
 `;
 
 const DashDivider = styled.div`
@@ -353,8 +475,8 @@ const DashDivider = styled.div`
   height: 2px;
   border-bottom: solid 2px ${COLORS.grayAf};
   border-bottom-style: dotted;
-  margin-bottom: 23px;
-  padding: 10px 0;
+  margin-bottom: 15px;
+  padding: 8px 0;
 `;
 
 const StyledFormControl = styled(FormControl)`

@@ -6,6 +6,7 @@ import useComponentVisible from "@/utils/clickOutSide";
 import { FONTS } from "@/utils/fonts";
 import { FormInput } from "../FormInput";
 import { Typography as Span } from "../Typography";
+import { ReactSVG } from "react-svg";
 
 const StyledSelectContainer = styled.div.attrs(
   (props: { showOption: boolean }) => props
@@ -26,7 +27,12 @@ const StyledSelectContainer = styled.div.attrs(
     box-sizing: border-box;
     font-family: ${FONTS.manrope};
     border: none;
-    img {
+    .dropdown {
+      svg,
+      path {
+        width: 10px;
+        display: block;
+      }
       transform: ${({ showOption }) =>
         showOption ? "rotate(180deg)" : "rotate(0)"};
       transition: all 0.5s ease-in-out;
@@ -90,7 +96,7 @@ const CountryCodeSelect = ({ label, options }: IProps) => {
       >
         <div className="label">
           <div>{label}</div>
-          <img src={IMAGES.iconBlueArrowDown} width="9px" height="5.5px" />
+          <ReactSVG className="dropdown" src={IMAGES.iconDropDownBlue} />
         </div>
         {options && visible && (
           <ul className="options" ref={ref}>
@@ -148,7 +154,7 @@ const PhoneContactInput = ({ options }: PhoneContactInput) => {
         />
       </div>
       <div className="email-address">
-      <Span fontWeight="bold">Email address</Span>
+        <Span fontWeight="bold">Email address</Span>
         <FormInput
           label="Watch out for typos in the email"
           marginTop="0"

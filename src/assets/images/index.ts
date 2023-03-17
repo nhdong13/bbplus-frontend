@@ -57,6 +57,10 @@ import tennis from "./tennis.svg";
 import search from "./search.svg";
 import mark from "./icon-mark.svg";
 import home from "./icon-home.svg";
+import iconArrowUp from "./icon-arrow-up.svg";
+import iconArrowDownGradient from "./icon-arrow-down-gradient.svg";
+import landTransfer from "./land_transfer.png";
+import airportTransfer from "./airport_transfer.png";
 import imgListView from "./img-list-view.svg";
 
 const IMAGES = {
@@ -119,6 +123,10 @@ const IMAGES = {
   search,
   mark,
   home,
+  iconArrowUp,
+  iconArrowDownGradient,
+  landTransfer,
+  airportTransfer,
   imgListView
 };
 
