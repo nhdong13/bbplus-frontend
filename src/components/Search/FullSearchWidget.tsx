@@ -111,6 +111,7 @@ export default function FullSearchWidget({
 
 
   const onClickSearch = () => {
+    //Return new page, not page SearchResult
     if (selectedBooking === 3) {
       return;
     }
