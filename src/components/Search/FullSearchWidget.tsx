@@ -129,8 +129,12 @@ export default function FullSearchWidget({
         room: dataFilter.map((room) => `a${room.adults},c${room.children}`)
       })
     }
+    let pathName = "/search-result";
+    if (selectedBooking === 1 || selectedBooking === 2) {
+      pathName = "/step2"
+    }
     navigate({
-      pathname: "/search-result",
+      pathname: pathName,
       search: createSearchParams(optionSearch).toString()
     });
     if (handleSearch) handleSearch()
