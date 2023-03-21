@@ -5,6 +5,7 @@ import ResetPassword from "./ResetPassword";
 import SignUp from "./SignUp";
 import SearchResult from "./SearchResult";
 import AccountSetting from "./AccountSetting";
+import FindMyBooking from "./FindMyBooking";
 
 export {
   HomePage,
@@ -14,4 +15,5 @@ export {
   SignUp,
   SearchResult,
   AccountSetting,
+  FindMyBooking,
 };

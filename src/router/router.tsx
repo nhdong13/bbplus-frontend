@@ -7,6 +7,7 @@ import {
   SignUp,
   SearchResult,
   AccountSetting,
+  FindMyBooking,
 } from "@/pages";
 import { RouterName } from "./config";
 export const RouterApp = () => {
@@ -20,6 +21,7 @@ export const RouterApp = () => {
         <Route path={RouterName.signUp} element={<SignUp />} />
         <Route path={RouterName.searchResult} element={<SearchResult />} />
         <Route path={RouterName.accountSetting} element={<AccountSetting />} />
+        <Route path={RouterName.findMyBooking} element={<FindMyBooking />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>

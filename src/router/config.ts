@@ -6,4 +6,5 @@ export const RouterName = {
   forgotPassword: "forgot-password",
   searchResult: "search-result",
   accountSetting: "account-setting",
+  findMyBooking: "find-my-booking",
 }
