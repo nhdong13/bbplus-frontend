@@ -88,6 +88,8 @@ const GridRoomItem = styled.div`
   }
   .room {
     min-width: 250px;
+    font-weight: bold;
+
     @media ${BREAKPOINTS.laptop} {
       min-width: 80px;
       margin-right: 8px;
@@ -195,6 +197,7 @@ const GridDateItem = styled.div`
     width: 57px;
     text-align: center;
     border-right: 1px solid ${COLORS.silver};
+    font-weight: bold;
     &:last-child {
       border-right: 0;
     }
@@ -207,7 +210,7 @@ const GridDateItem = styled.div`
       }
     }
   }
-  
+
   .room-active {
     background: #E8F4FF;
   }

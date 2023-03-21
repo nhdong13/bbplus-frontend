@@ -1,4 +1,5 @@
 import { COLORS } from "@/utils/colors";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import styled from "styled-components";
 
 export const StyledConfirmationPage = styled.div`
@@ -143,9 +144,12 @@ export const Board = styled.div`
     }
     .btn {
       padding: 0px 24px;
-      border-radius: 5px;
       span {
         padding: 0;
+      }
+
+      @media ${BREAKPOINTS.tablet} {
+        border-radius: 5px;
       }
     }
   }
