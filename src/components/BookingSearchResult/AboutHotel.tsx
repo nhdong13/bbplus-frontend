@@ -265,7 +265,14 @@ const StyledAboutHotel = styled.div`
 
 const EXPAND = ["amenities", "rules", "faq"];
 
-export default function AboutHotel() {
+interface ClickToScrollHrefOptions {
+  hotelRules: string;
+  customization: string;
+  amenities: string;
+  faq: string;
+}
+
+export default function AboutHotel({clickToScrollHrefOptions} : {clickToScrollHrefOptions: ClickToScrollHrefOptions}) {  
   const [expanded, setExpanded] = useState<string[]>(EXPAND);
   const expandAll = () => {
     setExpanded(EXPAND);
@@ -299,6 +306,7 @@ export default function AboutHotel() {
         </div>
         <div className="hotel-result__right">
           <Dropdown
+            id={clickToScrollHrefOptions.amenities}
             title="Amenities"
             expand={expanded.includes(EXPAND[0])}
             onExpand={() => {
@@ -345,6 +353,7 @@ export default function AboutHotel() {
             }
           />
           <Dropdown
+            id={clickToScrollHrefOptions.hotelRules}
             title="Hotel Rules"
             className="hotel-rules"
             expand={expanded.includes(EXPAND[1])}
@@ -365,6 +374,7 @@ export default function AboutHotel() {
             }
           />
           <Dropdown
+            id={clickToScrollHrefOptions.faq}
             className="faq-wrapper"
             title="FAQ about Warwick Fiji Beach Resort"
             expand={expanded.includes(EXPAND[2])}
