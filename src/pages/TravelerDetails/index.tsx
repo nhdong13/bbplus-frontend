@@ -76,7 +76,7 @@ export default function TravellerDetails() {
               </div>
             </div>
           </BookingProgressBar>
-          <H3 padding="76.8px 0 0 42px">Traveler Details</H3>
+          <H3 padding="76.8px 0 0 42px">Traveller Details</H3>
           <TravelerDetailsFormContainer>
             <div className="detail-form">
               <ContactForm
@@ -235,7 +235,7 @@ export default function TravellerDetails() {
                     isSelected={true}
                     maxWidth="291px"
                     height="58px"
-                    borderRadius="7.5px"
+                    borderRadius="17px"
                     fontWeight="bold"
                     handleSubmit={() => {
                       navigate("/confirm");
@@ -343,7 +343,7 @@ export default function TravellerDetails() {
                       text="XX"
                       color="#fff"
                       textColor="black"
-                      width="53px"
+                      width="61px"
                       height="27px"
                       fontWeight="500"
                       isSelected={true}
@@ -356,7 +356,7 @@ export default function TravellerDetails() {
                     text="Continue to secure payment"
                     isSelected={true}
                     height="62px"
-                    borderRadius="7.5px"
+                    borderRadius="17px"
                     fontWeight="bold"
                     handleSubmit={() => {
                       navigate("/confirm");

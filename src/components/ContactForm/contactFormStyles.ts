@@ -14,7 +14,6 @@ const ContactFormContainer = styled.div.attrs((props: {
   background: ${props => props.isPrimaryContact ? COLORS.blueWater : COLORS.white};
   border: 0.5px solid ${props => props.isPrimaryContact ? COLORS.percyBlue : COLORS.black};
   border-radius: 4px;
-  margin-top: 25px;
   padding: 26px 40px;
 
   .sub-header {
