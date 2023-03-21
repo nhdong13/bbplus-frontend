@@ -51,7 +51,7 @@ const useFullSearchWidget = () => {
   const [selectedGoing, setSelectedGoing] = useState<ISelected>();
   const [filterLeaving, setFilterLeaving] = useState<string>('');
   const [filterGoing, setFilterGoing] = useState<string>('');
-  const [filterFinMyBooking, setFilterFinMyBooking] = useState<any>();
+  const [filterFindMyBooking, setFilterFindMyBooking] = useState<any>();
 
   //new state
 
@@ -283,7 +283,7 @@ const useFullSearchWidget = () => {
     setSelectDateDropDown,
     selectBookingID, setSelectBookingID,
     selectGuestEmail, setSelectGuestEmail,
-    filterFinMyBooking, setFilterFinMyBooking,
+    filterFindMyBooking, setFilterFindMyBooking,
     isMobile,
     leavingDropDownRef,
     leavingDropDownVisible,

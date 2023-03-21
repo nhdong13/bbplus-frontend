@@ -48,7 +48,7 @@ export default function FullSearchWidget({
     setSelectDateDropDown,
     selectBookingID, setSelectBookingID,
     selectGuestEmail, setSelectGuestEmail,
-    filterFinMyBooking, setFilterFinMyBooking,
+    filterFindMyBooking, setFilterFindMyBooking,
     isMobile,
     leavingDropDownRef,
     goingDropDownRef,
@@ -80,7 +80,7 @@ export default function FullSearchWidget({
   }
   const onChangeFindMyBooking = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setFilterFinMyBooking((prevState: any) => {
+    setFilterFindMyBooking((prevState: any) => {
       return { ...prevState, ...{ [e.target.name]: e.target.value } };
     })
   }
@@ -102,11 +102,7 @@ export default function FullSearchWidget({
   })
   const navigate = useNavigate();
 
-
   const onClickSearch = () => {
-    if (selectedBooking === 3) {
-      return;
-    }
     const optionSearch = {}
     if (selectedLeaving) {
       Object.assign(optionSearch, {
@@ -129,6 +125,27 @@ export default function FullSearchWidget({
         room: dataFilter.map((room) => `a${room.adults},c${room.children}`)
       })
     }
+
+    if (filterFindMyBooking?.booking_id) {
+      Object.assign(optionSearch, {
+        booking_id: filterFindMyBooking?.booking_id
+      })
+    }
+
+    if (filterFindMyBooking?.guest_email) {
+      Object.assign(optionSearch, {
+        guest_email: filterFindMyBooking?.guest_email
+      })
+    }
+
+    if (selectedBooking === 3) {
+      navigate({
+        pathname: "/find-my-booking",
+        search: createSearchParams(optionSearch).toString()
+      });
+      return;
+    }
+
     navigate({
       pathname: "/search-result",
       search: createSearchParams(optionSearch).toString()
@@ -305,7 +322,7 @@ export default function FullSearchWidget({
                         {
                           selectBookingID
                             ?
-                            <input className="input-search" name="booking_id" autoFocus={true} value={filterFinMyBooking?.booking_id} onChange={(e) => onChangeFindMyBooking(e)} />
+                            <input className="input-search" name="booking_id" autoFocus={true} value={filterFindMyBooking?.booking_id} onChange={(e) => onChangeFindMyBooking(e)} />
                             :
                             <>
                               <H5 lineHeight="10px" fontWeight="700">Bedbank Plus Booking ID</H5>
@@ -319,7 +336,7 @@ export default function FullSearchWidget({
                         {
                           selectGuestEmail
                             ?
-                            <input className="input-search" name="guest_email" autoFocus={true} value={filterFinMyBooking?.guest_email} onChange={(e) => onChangeFindMyBooking(e)} />
+                            <input className="input-search" name="guest_email" autoFocus={true} value={filterFindMyBooking?.guest_email} onChange={(e) => onChangeFindMyBooking(e)} />
                             :
                             <>
                               <H5 lineHeight="10px" fontWeight="700">Guest Email</H5>
