@@ -19,7 +19,7 @@ interface IProps {
   maxHeight?: string,
   width?: string,
   padding?: string,
-  handleChange?: any,
+  handleChange?: (c: IOption) => void,
   isIconBlue?: boolean,
   options?: Array<IOption>
 }
@@ -42,6 +42,7 @@ const Select = ({
 }: IProps) => {
 
   const [showOption, setShowOption] = useState<boolean>(false)
+  const [selected, setSelected] = useState<IOption>()
 
   const {
     ref: ref,
@@ -51,11 +52,15 @@ const Select = ({
 
   const onClickOption = (e: React.MouseEvent) => {
     e.preventDefault();
-    // if (!showOption) setShowOption(showOption);
-    // setVisible(!showOption)
-    setShowOption(!showOption)
+    if (!showOption) setShowOption(showOption);
+    setVisible(!showOption)
   }
 
+  const onClickItem = (item: IOption) => {
+    setSelected(item)
+    setVisible(false)
+    handleChange(item)
+  }
 
   return (
     <WrapperSelect className="wrapper-select">
@@ -87,8 +92,8 @@ const Select = ({
           ?
           <ul className="options" ref={ref} >
             {
-              options.map(op => {
-                return <li key={op._id} className={op._id === 1 ? 'selected' : ''}>{op.label}</li>
+              options.map((op: IOption) => {
+                return <li key={op._id} className={op._id === selected?._id ? 'selected' : ''} onClick={() => onClickItem(op)}>{op.label}</li>
               })
             }
           </ul>

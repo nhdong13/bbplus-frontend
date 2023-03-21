@@ -18,7 +18,7 @@ import { COLORS } from "@/utils/colors";
 import BookingCard from "../BookingCard";
 
 
-const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle, typeCard }: CarouselSlider) => {
+const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle, typeCard, onClickCard }: CarouselSlider) => {
   const screenWidth = useWindowSize();
   const carouselContext = useContext(CarouselContext);
   const [arrowRightBtnColor, setArrowRightBtnColor] = useState<boolean>(false);
@@ -77,13 +77,13 @@ const CarouselSlider = ({ setSlideCount, setCurrentSlide, data, carouselTitle, t
         </div>
       </StyledCarouselTitle>
       <Slider>
-        {data.map((item, index) => {
+        {data.map((item, index: number) => {
           return (
             <Slide index={index} className="slide" key={index}>
               {
                 typeCard === "booking-card"
                   ?
-                  <BookingCard index={index} data={item} />
+                  <BookingCard index={index} data={item} onClickCard={() => onClickCard(index)} />
                   :
                   <Card index={index} data={item} />
               }

@@ -14,7 +14,7 @@ import { VerticalContainer } from "../../Layout/VerticalContainer";
 import IMAGES from "@/assets/images";
 import { useEffect, useMemo, useState } from "react";
 import { QuantityButton } from "@/utils/types/Button";
-import _ from "lodash";
+import { range } from "lodash";
 import { GradientButton } from "../../Button";
 import HorizontalContainer from "../../Layout/HorizontalContainer";
 import useWindowSize from "@/utils/windowResize";
@@ -53,7 +53,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
       const getBodyElement: any = document.querySelector("body");
       if (isShown) {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        getBodyElement.style.overflow = "hidden";
+        // getBodyElement.style.overflow = "hidden";
       }
     }
   }, [isShown, screenWidth])
@@ -97,6 +97,7 @@ const TravelerDropDown = ({ isShown, innerRef, closePopup }: TravelerDropDown) =
         </div>
         <GradientButton
           color={COLORS.gradient1}
+          handleSubmit={() => closePopup(false)}
           text="Apply"
           isSelected={true}
           maxWidth="162px"
@@ -191,7 +192,7 @@ const RoomOptions = ({ isShown, numberOfRoom, data }: RoomOptions) => {
                   <H5>Children’s ages</H5>
                   <p style={{ visibility: "hidden" }}>Adults</p>
                   <div className={data.children >= '3' ? 'room-option__list-children-container mb-10' : 'room-option__list-children-container'}>
-                    {_.range(data.children).map((index: number) =>
+                    {range(data.children).map((index: number) =>
                       <div key={index}>
                         <SelectAges index={index} />
                       </div>

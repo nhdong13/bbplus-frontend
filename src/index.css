@@ -9,3 +9,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.flex{
+  display: flex;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.row{
+  flex-direction: row;
+}
+
+.col{
+  flex-direction: column;
+}
+
+.items-center{
+   align-items: center;
+}
+
+.MuiBackdrop-root{
+  background-color: transparent!important;
+}
+
+.close-btn{
+  cursor: pointer;
+}
+
+.MuiTooltip-tooltip {
+  background-color: transparent!important;
+}

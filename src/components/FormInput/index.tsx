@@ -11,6 +11,7 @@ const FormInput = ({
   valid,
   width,
   maxHeight,
+  cssOptions,
   handleChange,
 }: FormInput) => {
   return (
@@ -23,6 +24,7 @@ const FormInput = ({
         maxHeight={maxHeight}
         valid={valid}
         width={width}
+        cssOptions={cssOptions}
         className="input-container"
       >
         <div className="icon"></div>

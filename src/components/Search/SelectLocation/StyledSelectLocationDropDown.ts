@@ -17,6 +17,7 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   max-height: 200px;
   overflow-y: auto;
   width: 100%;
+  z-index: 10;
 
   .popular-places__container {
     padding: 0 45px;

@@ -20,6 +20,7 @@ import {
   CarouselWrapper,
 } from "./styles";
 import { H1, H2 } from "@/components/Typography";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const {
@@ -28,6 +29,8 @@ export default function Home() {
     currentSlide,
     setCurrentSlide
   } = useHome();
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -50,7 +53,7 @@ export default function Home() {
                   color={COLORS.white}
                 >At Bedbank Plus, we believe in ease and simplicity</H1>
               </HomepageWelcomeTitle>
-              <FullSearchWidget />
+              <FullSearchWidget handleSearch={() => { }} />
             </VerticalContainer>
           </StyledHome>
         </div>
@@ -72,6 +75,7 @@ export default function Home() {
                     setCurrentSlide={setCurrentSlide}
                     data={hotels}
                     carouselTitle={"Hot deals"}
+                    onClickCard={() => { }}
                   />
                 </CarouselProvider>
               </CarouselWrapper>
@@ -93,6 +97,7 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={popularHolidays}
+                    onClickCard={() => { }}
                     carouselTitle={"Most popular holidays"}
                   />
                 </CarouselProvider>
@@ -115,6 +120,7 @@ export default function Home() {
                     setSlideCount={setSlideCount}
                     setCurrentSlide={setCurrentSlide}
                     data={customItineraries}
+                    onClickCard={() => { }}
                     carouselTitle={"My custom itineraries"}
                   />
                 </CarouselProvider>

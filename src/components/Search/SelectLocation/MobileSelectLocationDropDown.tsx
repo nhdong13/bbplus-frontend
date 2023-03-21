@@ -3,32 +3,22 @@ import HorizontalContainer from "@/components/Layout/HorizontalContainer";
 import { H4 } from "@/components/Typography";
 import { useEffect, useState } from "react";
 import { StyledMobileSelectLocationDropDown } from "./StyledMobileSelectLocationDropDown";
-
+import { ISelect } from "@/utils/types/Select"
 
 interface MobileSelectLocationDropDown {
   isShown: boolean,
   closePopup: (n: boolean) => void,
+  onClickItem: (item: ISelect) => void,
+  options?: Array<ISelect>,
 }
 
-const data = [
-  { _id: 1, name: 'Sydney Airport (SYD)' },
-  { _id: 2, name: 'Melbourne Airport (MEL)' },
-  { _id: 3, name: 'Brisbane Airport (BNE)' },
-  { _id: 4, name: 'Adelaide Airport (ADL)' },
-  { _id: 5, name: 'Gold Coast Airport (OOL)' },
-  { _id: 6, name: 'Auckland Airport (AKL)' },
-  { _id: 7, name: 'Christchurch Airport (CHC)' },
-  { _id: 8, name: 'Wellington Airport (WLG)' },
-  { _id: 9, name: 'Los Angeles International Airport (LAX)' },
-]
-
-export default function MobileSelectLocationDropDown({ isShown, closePopup }: MobileSelectLocationDropDown) {
+export default function MobileSelectLocationDropDown({ isShown, closePopup, options, onClickItem }: MobileSelectLocationDropDown) {
   const [popup, setPopup] = useState<boolean>(false);
   let getBodyElement: any = document.querySelector("body");
 
   const handleClosePopup = () => {
     if (getBodyElement) {
-      getBodyElement.style.overflow = "scroll";
+      // getBodyElement.style.overflow = "scroll";
     }
     setPopup(false);
   };
@@ -36,7 +26,7 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
   useEffect(() => {
     const getBodyElement: any = document.querySelector("body");
     if (isShown) {
-      getBodyElement.style.overflow = "hidden";
+      // getBodyElement.style.overflow = "hidden";
       setPopup(isShown);
       closePopup(popup)
     }
@@ -63,11 +53,11 @@ export default function MobileSelectLocationDropDown({ isShown, closePopup }: Mo
             </div>
             <div className="popular-places__list">
               {
-                data.map(d => {
-                  return <HorizontalContainer key={d._id} gap="13px" alignItems="center" margin="15px 0">
+                options?.map((d: ISelect) => {
+                  return <div key={d._id} className="item" onClick={() => [onClickItem(d),setPopup(false)]}>
                     <img src={IMAGES.locationIcon} />
-                    <span>{d.name}</span>
-                  </HorizontalContainer>
+                    <span>{d.label}</span>
+                  </div>
                 })
               }
 

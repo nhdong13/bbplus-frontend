@@ -13,10 +13,12 @@ const StyledInputContainer = styled.div.attrs(
     maxHeight?: string;
     valid?: boolean;
     width?: string;
+    cssOptions?: string;
   }) => props
 )`
   position: relative;
-  width: ${(props) => props.width || "100%"};;
+  border-radius: 4.5px;
+  width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
 
   .icon {
@@ -41,8 +43,8 @@ const StyledInputContainer = styled.div.attrs(
     color: ${(props) => props.textColor || COLORS.black};
     font-family: ${FONTS.manrope};
     font-size: ${(props) => props.fontSize || "16px"};
-    border-radius: 7px;
     border: 2px solid ${COLORS.black};
+    border-radius: 4.5px;
   }
 
   @media ${BREAKPOINTS.laptop} {
@@ -61,6 +63,7 @@ const StyledInputContainer = styled.div.attrs(
       display: none;
     }
   }
+  ${props => props.cssOptions}
 `;
 
 export { StyledInputContainer };

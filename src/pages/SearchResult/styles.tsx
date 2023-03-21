@@ -4,13 +4,9 @@ import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
 import styled from "styled-components";
 
-const SearchResultBackground = styled.div.attrs(
-  (props: {
-
-  }) => props
-)`
+const SearchResultBackground = styled.div.attrs((props: {}) => props)`
   height: 130px;
-  background: #EFEFEF;
+  background: #efefef;
   .btn-mobile {
     display: none;
     height: 43px;
@@ -29,7 +25,7 @@ const SearchResultBackground = styled.div.attrs(
     .btn-mobile {
       display: flex;
       align-items: center;
-      justify-content: center 
+      justify-content: center;
     }
   }
   .arrive-days {
@@ -39,11 +35,33 @@ const SearchResultBackground = styled.div.attrs(
       padding-right: 0;
     }
   }
-  
 `;
+const SearchWidgetBackground = styled.div `
+  background: ${COLORS.cyprus};
+  .line{
+    height: 2px;
+    background: ${COLORS.gradient1};
+    margin-bottom: 30px;
+  }
+`
+const SearchWidgetContainer = styled.div `
+  max-width: 1400px;
+  padding: 30px 20px;
+  margin: auto;
+  @media ${BREAKPOINTS.laptop} {
+    padding: 10px;
+  }
+  .full-result {
+    margin-top: 0;
+  }
+  .selected-booking {
+    max-width: 100%;
+  }
+`
 
 const SearchBar = styled.div`
-  max-width: 1400px;
+  box-sizing: border-box;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -53,7 +71,7 @@ const SearchBar = styled.div`
 
   @media ${BREAKPOINTS.laptop} {
     background: ${COLORS.white};
-    border-radius: 16px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0;
@@ -67,7 +85,6 @@ const SearchBar = styled.div`
     .btn-edit {
       display: none;
     }
-    
   }
 `;
 
@@ -105,18 +122,19 @@ const SearchItem = styled.div`
 
 const ButtonEditSearch = styled.div`
   cursor: pointer;
+  box-sizing: border-box;
   width: 174px;
-  height : 58px;
+  height: 58px;
   border: 2px solid ${COLORS.greenBlue};
   background: ${COLORS.white};
-  border-radius: 17px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const SearchResultContainer = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -128,7 +146,7 @@ const SearchResultContainer = styled.div`
 
 const Breadcrumb = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 34px 35px 20px 35px;
   margin: 0 auto;
   @media ${BREAKPOINTS.laptop} {
@@ -151,7 +169,7 @@ const BreadcrumbItem = styled.div`
   }
   &:last-child {
     &::after {
-      content: '';
+      content: "";
     }
   }
   @media ${BREAKPOINTS.laptop} {
@@ -167,28 +185,98 @@ const BreadcrumbItem = styled.div`
 
 const SearchOption = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding-left: 35px;
   margin: auto;
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
-  .title{
+  .title, .title-mobile{
     font-size: 28px;
     font-family: ${FONTS.manropeBold};
     color: ${COLORS.cyprus};
     display: block;
   }
-  .mobile {
+  .title-desk {
+    display: block;
+  }
+  .title-mobile {
     display: none;
   }
+  .flex {
+    display: flex;
+    gap: 34px;
+    margin-top: 15px;
+    input {
+      border: 2px solid ${COLORS.greenBlue};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      gap: 10px;
+      input {
+        border: 1px solid ${COLORS.greenBlue};
+        width: 88px;
+        height: 34px;
+        padding: 0;
+      }
+      .gradient-button {
+        width: 88px;
+        height: 34px;
+        padding: 0;
+        span {
+          padding: 0;
+        }
+      }
+    }
+  }
+  
   .group-right {
     display: flex;
+    gap: 75px;
+    .mt-10 {
+      font-family: ${FONTS.manropeBold};
+    }
+    @media ${BREAKPOINTS.laptop} {
+      display: block;
+      gap: 0;
+    }
+  }
+
+  .flex-option {
+    display: flex;
+    align-items: center;
+    border: 2px solid ${COLORS.greenBlue};
+    border-radius: 5px;
+    height: 48px;
+    margin-top: 15px;
+    @media ${BREAKPOINTS.laptop} {
+      height: 40px;
+      font-size: 12px;
+      border: 1px solid ${COLORS.greenBlue};
+    }
+  }
+  .btn {
+    cursor: pointer;
+    height: 100%;
+    line-height: 48px;
+    padding: 0 20px;
+    width: 50%;
+    @media ${BREAKPOINTS.laptop} {
+      line-height: 40px;
+    }
+  }
+  .active {
+    background: ${COLORS.darkGreen};
+    color: ${COLORS.white}
   }
 
   @media ${BREAKPOINTS.laptop} {
     display: grid;
+    justify-content: center;
     margin-bottom: 0;
+    padding-left: 0;
+    span,div,input {
+      font-size: 14px !important;
+    }
     .choose {
       text-align: center;
       font-size: 14px;
@@ -199,11 +287,9 @@ const SearchOption = styled.div`
     .mark-up {
       width: 100%;
       left: 79px;
-      font-size: 14px;
     }
     .title {
       font-size: 18px;
-      display: none;
     }
     .title-desk {
       display: none;
@@ -211,34 +297,12 @@ const SearchOption = styled.div`
     .title-mobile {
       display: block;
       text-align: center;
-      margin-top: 10px;
-      font-size: 18px;
+      margin-top: 15px;
+      font-size: 18px !important;
       margin-bottom: 15px;
     }
     .flex {
-      display: flex;
-      gap: 34px;
-      margin-top: 15px;
-      input {
-        border: 2px solid ${COLORS.greenBlue};
-      }
-      @media ${BREAKPOINTS.laptop} {
-        gap: 10px;
-        input {
-          border: 1px solid ${COLORS.greenBlue};
-          width: 88px;
-          height: 34px;
-          padding: 0;
-        }
-        .gradient-button {
-          width: 88px;
-          height: 34px;
-          padding: 0;
-          span {
-            padding: 0;
-          }
-        }
-      }
+      margin-top: 0;
     }
     .mt-10 {
       margin: 10px 0;
@@ -249,16 +313,11 @@ const SearchOption = styled.div`
 `;
 
 const SearchOptionItem = styled.div`
-  margin-right: 20px;
   font-size: 16px;
   position: relative;
   .label {
     width: 175px;
     padding: 0 20px;
-  }
-  p {
-    position: absolute;
-    top: -28px;
   }
   
 `;
@@ -276,20 +335,21 @@ const SearchOptionSelect = styled.div`
   }
   @media ${BREAKPOINTS.laptop} {
     justify-content: center;
-    input, .gradient-button {
+    input,
+    .gradient-button {
       height: 40px;
       padding: 0px 10px;
       font-size: 12px;
     }
     input {
-      border: 1px solid ${COLORS.parkinglotGray}
+      border: 1px solid ${COLORS.parkinglotGray};
     }
   }
 `;
 
 const ListResultContainer = styled.div`
   border: 1px solid ${COLORS.parkinglotGray};
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 23px 48px 55px 48px;
   margin: auto;
   margin-bottom: 34px;
@@ -297,7 +357,8 @@ const ListResultContainer = styled.div`
   &:last-child {
     margin-bottom: 145px;
   }
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background: ${COLORS.blueWater};
     cursor: pointer;
   }
@@ -313,7 +374,7 @@ const ListResultContainer = styled.div`
   .booking-card__container {
     width: auto;
   }
-  .carousel-title{
+  .carousel-title {
     margin-right: 15px;
     @media ${BREAKPOINTS.laptop} {
       margin: 10px;
@@ -336,7 +397,7 @@ const ListResultContainer = styled.div`
 
 const HotelCardContainer = styled.div`
   .hotel-card__container {
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d8d8d8;
     border-radius: 17px;
     width: 421px;
     margin-right: 15px;
@@ -364,49 +425,49 @@ const HotelCardContainer = styled.div`
       border-top-right-radius: 5px;
     }
     .rating {
-    align-items: flex-end;
-    border-top-right-radius: 17px;
-    display: flex;
-    justify-content: right;
-    margin-right: 38px;
-    padding-top: 8px;
-    @media ${BREAKPOINTS.mobileLg} {
-      border-top-right-radius: 5px;
-    }
-
-    span {
-      color: ${COLORS.black};
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
-
-      @media ${BREAKPOINTS.mobileLg} {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 22px;
-      }
-    }
-
-    .rating-container {
-      align-items: center;
-      background: ${COLORS.white};
-      border-radius: 5px;
+      align-items: flex-end;
+      border-top-right-radius: 17px;
       display: flex;
-      gap: 11px;
-      justify-content: center;
-      padding: 0 10px;
-      
-      span {
-        justify-content: right!important;
-        width: 100%;
+      justify-content: right;
+      margin-right: 38px;
+      padding-top: 8px;
+      @media ${BREAKPOINTS.mobileLg} {
+        border-top-right-radius: 5px;
       }
 
-      @media ${BREAKPOINTS.mobileLg} {
-        padding: 0 15px;
-        gap: 10px;
+      span {
+        color: ${COLORS.black};
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+
+        @media ${BREAKPOINTS.mobileLg} {
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22px;
+        }
+      }
+
+      .rating-container {
+        align-items: center;
+        background: ${COLORS.white};
+        border-radius: 5px;
+        display: flex;
+        gap: 11px;
+        justify-content: center;
+        padding: 0 10px;
+
+        span {
+          justify-content: right !important;
+          width: 100%;
+        }
+
+        @media ${BREAKPOINTS.mobileLg} {
+          padding: 0 15px;
+          gap: 10px;
+        }
       }
     }
-  }
   }
   .hotel-card__info-container {
     padding: 0 31px 35px;
@@ -453,7 +514,7 @@ const HotelCardContainer = styled.div`
     gap: 16px;
     margin-top: 24px;
     p {
-      color: #38AA00;
+      color: #38aa00;
     }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
@@ -461,14 +522,14 @@ const HotelCardContainer = styled.div`
       align-items: center;
     }
   }
-`
+`;
 const ShowMapButton = styled.button`
-  border: 2px solid ${COLORS.greenBlue};
-  border-radius: 17px;
+  border: 2px solid #00b492;
+  border-radius: 6px;
   width: 153px;
   height: 48px;
   cursor: pointer;
-  
+
   h5 {
     color: ${COLORS.toryBlue};
     font-family: ${FONTS.manropeRegular};
@@ -479,15 +540,15 @@ const ShowMapButton = styled.button`
       font-size: 14px;
     }
   }
-`
+`;
 
 const CarouselWrapper = styled.div`
   .carousel {
-    width: 1440px!important;
+    width: 1440px !important;
   }
 
   &.carousel-container {
-    max-width: 1400px;
+    max-width: 1440px;
     width: 100%;
     @media only screen and (max-width: 475px) {
       padding-left: 10px;
@@ -497,7 +558,8 @@ const CarouselWrapper = styled.div`
     }
   }
 
-  .carousel, &.carousel-container {
+  .carousel,
+  &.carousel-container {
     @media only screen and (min-width: 1521px) {
       max-width: 903px;
     }
@@ -546,28 +608,28 @@ const CarouselWrapper = styled.div`
       gap: 15px;
       padding-bottom: 1px;
       @media only screen and (max-width: 1440px) {
-        width: 400%!important;
+        width: 400% !important;
       }
 
       @media only screen and (max-width: 1024px) {
-        width: 550%!important;
+        width: 550% !important;
       }
 
       @media only screen and (max-width: 992px) {
-        width: 400%!important;
+        width: 400% !important;
       }
 
       @media only screen and (max-width: 769px) {
-        width: 816%!important;      
+        width: 816% !important;
       }
 
       @media only screen and (max-width: 650px) {
-        width: 400%!important;      
+        width: 400% !important;
       }
-      
+
       @media only screen and (max-width: 475px) {
         gap: 10px;
-        width: 800% !important;
+        width: 600% !important;
         .carousel__slide {
           width: 200px !important;
         }
@@ -578,7 +640,34 @@ const CarouselWrapper = styled.div`
       width: 286px !important;
     }
   }
-`
+`;
+const BookingContainer = styled.div`
+  .selected-hotels {
+    box-sizing: border-box;
+    margin: auto;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 20px;
+    .gradient-button {
+      box-sizing: border-box;
+      span {
+        padding: 0 10px;
+      }
+    }
+  }
+  @media ${BREAKPOINTS.laptop} {
+    .selected-hotels {
+      padding: 0 10px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      .gradient-button {
+        height: 34px;
+      }
+    }
+  }
+`;
 
 export {
   SearchResultBackground,
@@ -594,5 +683,8 @@ export {
   ListResultContainer,
   HotelCardContainer,
   ShowMapButton,
-  CarouselWrapper
+  CarouselWrapper,
+  BookingContainer,
+  SearchWidgetBackground,
+  SearchWidgetContainer,
 };

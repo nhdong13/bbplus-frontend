@@ -80,7 +80,12 @@ const StyledMobileSelectLocationDropDown = styled.div.attrs((props: {
       cursor: pointer;
       height: 100%;
       max-height: 300px;
-
+      .item {
+        gap: 13px;
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+      }
       img {
         width: 13px;
       }

@@ -1,99 +1,57 @@
 
 import { GradientButton } from "@/components/Button";
 import Select from "@/components/Select";
-import IMAGES from "@/assets/images";
 import MainLayout from "@/components/Layout/MainLayout";
-import BookingSearchResult from "@/components/BookingSearchResult";
-import HorizontalContainer from "@/components/Layout/HorizontalContainer";
-import { CarouselProvider } from "pure-react-carousel";
-import { hotels } from "@/utils/tempData";
-import CarouselSlider from "@/components/Carousel/index";
 import { H4, H5 } from "@/components/Typography";
 import { COLORS } from "@/utils/colors";
 
 import {
-  SearchResultBackground,
-  SearchBar,
-  SearchItem,
-  ButtonEditSearch,
   SearchResultContainer,
   Breadcrumb,
   BreadcrumbItem,
-  ListResultContainer,
-  HotelCardContainer,
-  ShowMapButton,
-  CarouselWrapper
-} from "./styles";
-
-import {
   SearchOption,
   SearchOptionItem,
   SearchOptionSelect,
-} from './temp/styles'
-
-import useHome from "@/pages/Home/hooks";
+  SearchWidgetBackground,
+  SearchWidgetContainer
+} from "./styles";
+import SearchView from './SearchView'
+import GridView from "./GridView";
+import Package from "./PackageView";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import FullSearchWidget from "@/components/Search/FullSearchWidget";
+import { optionFilter, optionSort } from "@/utils/tempData";
 
 export default function SearchResult() {
-
-  const {
-    slideCount,
-    setSlideCount,
-    currentSlide,
-    setCurrentSlide
-  } = useHome();
-
-  const optionFilter = [
-    { _id: 1, label: "Show All" },
-    { _id: 2, label: "Apartments" },
-    { _id: 3, label: "Resorts" },
-    { _id: 4, label: "Hotels" },
-    { _id: 5, label: "Villas" },
-    { _id: 6, label: "Island resorts" },
-    { _id: 7, label: "Guest homes" },
-    { _id: 8, label: "Backpackers" },
-  ]
+  const [type, setType] = useState<number>(0);
+  const [searchParam] = useSearchParams();
+  const [valueFilter, setValueFilter] = useState<any>()
+  const [valueSort, setValueSort] = useState<any>()
+  const [searchMode, setSearchMode] = useState<number>(0);
+  
+  const checkIn: string = searchParam.get('checkIn') || 'Day|Date|Month';
 
   return (
     <>
       <MainLayout>
-        <SearchResultBackground>
-          <SearchBar>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by city or airport</H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div>
-                <H5 lineHeight="10px" fontWeight="700">Going to</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Search by destination or hotel</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Arrival Date</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>Day|Date|Month</H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">No. of days</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>X nights</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">Travellers</H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>X guests (X rooms)</H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0 btn-edit">
-              <ButtonEditSearch>Edit Search</ButtonEditSearch>
-            </SearchItem>
-          </SearchBar>
-          <div className="btn-mobile">Edit Search</div>
-        </SearchResultBackground>
+        {
+          searchMode === 0
+            ?
+            <SearchView
+              onClickEditSearch={() => setSearchMode(1)}
+            />
+            :
+            <SearchWidgetBackground>
+              <SearchWidgetContainer>
+                <div className="line"></div>
+                <FullSearchWidget
+                  className="full-result"
+                  handleSearch={() => setSearchMode(0)}
+                />
+              </SearchWidgetContainer>
+            </SearchWidgetBackground>
+        }
         <SearchResultContainer>
           <Breadcrumb>
             <BreadcrumbItem>HOME</BreadcrumbItem>
@@ -105,17 +63,18 @@ export default function SearchResult() {
               <div className="title-desk">Fiji: 134 properties found</div>
               <div className="flex">
                 <Select
-                  customLabel={<><span>Filter by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  customLabel={<><span>Filter by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;{valueFilter ? valueFilter.label : 'Select'}</span></>}
                   options={optionFilter}
                   marginTop="0px"
                   maxHeight="48px"
-                  typeIconDown={true}
+                  handleChange={(item: { _id: number | string, }) => setValueFilter(item)}
                 />
                 <Select
-                  customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;Select</span></>}
+                  customLabel={<><span>Sort by:</span><span style={{ color: COLORS.blueRibbon }}>&nbsp;{valueSort ? valueSort.label : 'Select'}</span></>}
+                  options={optionSort}
                   marginTop="0px"
-                  typeIconDown={true}
                   maxHeight="48px"
+                  handleChange={(item: { _id: number | string, }) => setValueSort(item)}
                 />
               </div>
             </SearchOptionItem>
@@ -123,8 +82,8 @@ export default function SearchResult() {
               <SearchOptionItem className="choose">
                 <div className="mt-10">Choose your option</div>
                 <div className="flex-option">
-                  <div className="btn">Grid view</div>
-                  <div className="btn active">Packages</div>
+                  <div className={`btn ${type === 0 ? ' active' : ''}`} onClick={() => setType(0)}>Grid view</div>
+                  <div className={`btn ${type === 1 ? ' active' : ''}`} onClick={() => setType(1)}>Packages</div>
                 </div>
               </SearchOptionItem>
               <SearchOptionSelect>
@@ -145,65 +104,17 @@ export default function SearchResult() {
                 </SearchOptionItem>
               </SearchOptionSelect>
             </div>
-            <div className="title-mobile">Fiji: 134 properties found</div>
+            {type === 1 && <div className="title-mobile">Fiji: 134 properties found</div>}
           </SearchOption>
-          {
-            [1, 2, 3].map(el => {
-              return (
-                <ListResultContainer key={el}>
-                  <HotelCardContainer className="hotels">
-                    <div className="hotel-card__container">
-                      <div className="hotel-card__background-image">
-                        <div className={"rating"}>
-                          <div className="rating-container">
-                            <img src={IMAGES.iconStar} width="14px" height="26px" />
-                            <span>4.1</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="hotel-card__info-container">
-                        <div className="hotel-card__info">
-                          <H4>Warwick Fiji Beach Resort </H4>
-                          <div className="location">
-                            <img src={IMAGES.locationIcon} alt="location" width="17px" height="25px" />
-                            <p>Coral coast, Viti Levu, Fiji</p>
-                          </div>
-                        </div>
-                        <div className="hotel-card__button">
-                          <p>*Accessible by road transfer</p>
-                          <ShowMapButton>
-                            <H5>Show on map</H5>
-                          </ShowMapButton>
-                        </div>
-                      </div>
-                    </div>
-                  </HotelCardContainer>
-                  <HorizontalContainer justifyContent="center" className="booking-carousel">
-                    <CarouselWrapper className="carousel-container">
-                      <CarouselProvider
-                        visibleSlides={3}
-                        totalSlides={hotels.length}
-                        step={1}
-                        currentSlide={currentSlide}
-                        naturalSlideWidth={100}
-                        naturalSlideHeight={125}
-                        isIntrinsicHeight={true}
-                      >
-                        <CarouselSlider
-                          setSlideCount={setSlideCount}
-                          setCurrentSlide={setCurrentSlide}
-                          data={hotels}
-                          carouselTitle={""}
-                          typeCard="booking-card"
-                        />
-                      </CarouselProvider>
-                    </CarouselWrapper>
-                  </HorizontalContainer>
-                </ListResultContainer>
-              )
-            })
-          }
         </SearchResultContainer>
+        {
+          type === 0
+            ?
+            <GridView checkIn={checkIn} />
+            :
+            <Package />
+
+        }
       </MainLayout>
     </>
   );
