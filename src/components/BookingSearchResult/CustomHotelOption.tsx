@@ -51,8 +51,8 @@ export default function CustomHotelOption({
 
   const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
     if (type === "single") {
-      setSelectedOption((option) =>
-        option.includes(selectedOpt) ? [] : [selectedOpt]
+      setSelectedOption((option) => 
+        option.includes(selectedOpt) ? option : [selectedOpt]
       );
     }
   };
