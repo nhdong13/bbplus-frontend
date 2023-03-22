@@ -356,6 +356,7 @@ export default function Booking() {
                   </HotelDetail>
                 </HotelInformation>
                 {/* hotel 2 */}
+                {bookingType === "multi-hotel" && (
                 <HotelInformation>
                   <div className="divider" />
                   <div className="hotel-info-container">
@@ -489,7 +490,7 @@ export default function Booking() {
                       </Button>
                     </div>
                   </HotelDetail>
-                </HotelInformation>
+                </HotelInformation>)}
               </Left>
               <Right width="">
                 <CustomHotelOption onChangeHotels={onChangeHotels} />

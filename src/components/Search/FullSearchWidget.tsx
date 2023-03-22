@@ -130,8 +130,10 @@ export default function FullSearchWidget({
       })
     }
     let pathName = "/search-result";
-    if (selectedBooking === 1 || selectedBooking === 2) {
-      pathName = "/step2"
+    if (selectedBooking === 1) {
+      pathName = "/multi-hotel/step2"
+    } else if (selectedBooking === 2) {
+      pathName = "/itinerary/step2"
     }
     navigate({
       pathname: pathName,
