@@ -76,6 +76,10 @@ const BookingProgressBar = styled.div`
 const TravelerDetailsFormContainer = styled.div`
   width: 100%;
   display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+  margin-top: 25px;
+  gap: 49px;
 
   .detail-form {
     width: 915px;
@@ -90,7 +94,6 @@ const TravelerDetailsFormContainer = styled.div`
       background: ${COLORS.white};
       border: 0.5px solid ${COLORS.black};
       border-radius: 4px;
-      margin-top: 25px;
       padding: 26px 40px;
 
       p {
@@ -186,7 +189,6 @@ const TravelerDetailsFormContainer = styled.div`
 
   .trip-summary {
     width: 451px;
-    margin: 25px 30px 0 49px;
     .section {
       display: block;
       font-weight: bold;
@@ -209,6 +211,7 @@ const TravelerDetailsFormContainer = styled.div`
       p:first-child,
       p:nth-child(4) {
         font-size: 20px;
+        font-weight: bold;
       }
       p.total-price-value {
         font-size: 25px;
@@ -217,6 +220,7 @@ const TravelerDetailsFormContainer = styled.div`
       }
       p:nth-child(3) {
         color: ${COLORS.parkinglotGray};
+        font-size: 17px;
       }
 
       .price-details {
@@ -253,7 +257,7 @@ const TravelerDetailsFormContainer = styled.div`
         padding-bottom: 0;
       }
       p.note {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         text-align: left;
         font-style: italic;
@@ -266,8 +270,8 @@ const TravelerDetailsFormContainer = styled.div`
         gap: 12px;
         align-items: center;
         .MuiButtonBase-root {
-          width: 24px;
-          height: 24px;
+          width: 18px;
+          height: 18px;
           padding: 0;
           background: linear-gradient(#fff, #fff) padding-box,
             ${COLORS.gradient2};
@@ -309,10 +313,10 @@ const TravelerDetailsFormContainer = styled.div`
     }
 
     .accommodation-container {
-      width: calc(100% - 65px);
+      width: calc(100% - 64px);
       margin-top: 23px;
       background: ${COLORS.lightGray};
-      padding: 29px 35px;
+      padding: 29px 32px;
       padding-bottom: 38px;
       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
@@ -357,7 +361,8 @@ const TravelerDetailsFormContainer = styled.div`
 
 const TravelerDetailsPageContainer = styled.div`
   width: 1440px;
-  padding: 50px 240px;
+  padding: 50px 0;
+  margin: auto;
 `;
 
 export {

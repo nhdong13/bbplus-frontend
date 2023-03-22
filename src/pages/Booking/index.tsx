@@ -244,7 +244,7 @@ export default function Booking() {
                         IMAGES.thumb4,
                         IMAGES.hotelBg,
                       ]}
-                      borderRadius="12px"
+                      borderRadius="17px"
                       onSelectImage={onSelectImage}
                     />
                     <div>
@@ -288,6 +288,46 @@ export default function Booking() {
                     </div>
                   </HotelPrice>
                   <HotelDetail>
+                    <div className="most-popular">
+                      <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
+                        Most Popular
+                      </Typography>
+                      <div className="most-popular-button">
+                        <Button
+                          width="120px"
+                          height="40px"
+                          border="2px"
+                          backgroundColor="transparent"
+                          borderRadius="17px"
+                          padding="0"
+                          className="room-only"
+                        >
+                          <Typography
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Room Only
+                          </Typography>
+                        </Button>
+
+                        <Button
+                          width="170px"
+                          height="40px"
+                          border="2px"
+                          backgroundColor="transparent"
+                          borderRadius="17px"
+                          padding="0"
+                        >
+                          <Typography
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Ultimate Holiday
+                          </Typography>
+                        </Button>
+                      </div>
+
+                    </div>
                     <Typography
                       className="holiday-includes"
                       fontSize="24px"
@@ -329,7 +369,7 @@ export default function Booking() {
                         border="none"
                         backgroundColor="#ff8003"
                         padding="16px 20px"
-                        borderRadius="9px"
+                        borderRadius="17px"
                       >
                         <Typography
                           fontSize="18px"
@@ -343,7 +383,7 @@ export default function Booking() {
                         width="100%"
                         border="2px solid #d9bf50"
                         backgroundColor="#fff3d6"
-                        borderRadius="9px"
+                        borderRadius="17px"
                       >
                         <Typography
                           fontSize="18px"
@@ -370,7 +410,7 @@ export default function Booking() {
                   isSelected
                   text={hotelName}
                   color={index === 1 ? "white" : COLORS.gradient2}
-                  borderRadius="8px"
+                  borderRadius="17px"
                   fontWeight="bold"
                   borderGradient={index === 1 ? COLORS.borderGradient : ""}
                   borderWidth={index === 1 ? "2px" : ""}

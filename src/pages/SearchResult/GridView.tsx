@@ -54,14 +54,14 @@ export default function GridView({ checkIn }: IProps) {
   return (
     <>
       <ListDate>
-      <SDate>
-        <ListContainer>
-          <div className="content">
-            <div onClick={handlePrev} className={getDates()[0]?.format("DD MMM YYYY") != checkIn ? '' : 'disabled'}>Previous 15 days</div>
-            <div onClick={handleNext}>Next 15 days</div>
-          </div>
-        </ListContainer>
-      </SDate>
+        <SDate>
+          <ListContainer>
+            <div className="content">
+              <div onClick={handlePrev} className={getDates()[0]?.format("DD MMM YYYY") != checkIn ? '' : 'disabled'}>Previous 15 days</div>
+              <div onClick={handleNext}>Next 15 days</div>
+            </div>
+          </ListContainer>
+        </SDate>
         <ListContainer>
           <div className="flex-date">
 
@@ -73,9 +73,10 @@ export default function GridView({ checkIn }: IProps) {
                 <div className="horizontal-date">
                   {
                     getDates().map((date: DateObject, index2) => {
-                      const idx = dates.findIndex((d) => d.format("DD MMM YYYY") === date.format("DD MMM YYYY"))
+                      const isWeekend = date.toDate().getDay() % 6 === 0
+
                       return (
-                        <div className={`date-item ${idx > -1 ? 'room-active' : ''}`} key={index2}>
+                        <div className={`date-item ${isWeekend ? 'room-active' : ''}`} key={index2}>
                           <p>{date?.format("ddd")}</p>
                           <p className="day">{date?.format("DD")}</p>
                           <p>{date?.format("MMM")}</p>
@@ -112,9 +113,10 @@ export default function GridView({ checkIn }: IProps) {
                           <div className="haha">
                             <div className="horizontal-room">
                               {
-                                _.range(15).map((el2, index2) => {
+                                getDates().map((date: DateObject, index2) => {
+                                  const isWeekend = date.toDate().getDay() % 6 === 0
                                   return (
-                                    <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
+                                    <div className={`room-item ${isWeekend ? 'room-active' : ''}`} key={index2}>$XXX</div>
                                   )
                                 })
                               }

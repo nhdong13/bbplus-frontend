@@ -98,7 +98,7 @@ export default function CustomHotelOption({
                     text="Hotel 1 - Warwick Fiji Beach Resort"
                     fontSize="25px"
                     height="62px"
-                    borderRadius="8px"
+                    borderRadius="17px"
                     color={COLORS.gradient2}
                   />
                   <div className="hotel-result__action">
@@ -222,7 +222,7 @@ export default function CustomHotelOption({
                         text="ADD Component"
                         fontSize="25px"
                         height="62px"
-                        borderRadius="8px"
+                        borderRadius="17px"
                         fontWeight="bold"
                         color={COLORS.gradient2}
                         handleSubmit={() => onAddComponent(result.type, index)}
