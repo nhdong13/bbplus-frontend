@@ -18,6 +18,10 @@ interface IProps {
   valid?: boolean,
   maxHeight?: string,
   width?: string,
+  fontWeight?: string,
+  borderWidth?: string,
+  borderRadius?: string,
+  borderGradient?: string,
   padding?: string,
   handleChange?: (c: IOption) => void,
   isIconBlue?: boolean,
@@ -36,6 +40,10 @@ const Select = ({
   maxHeight,
   width,
   padding,
+  fontWeight,
+  borderWidth,
+  borderRadius,
+  borderGradient,
   handleChange,
   isIconBlue,
   options
@@ -59,7 +67,10 @@ const Select = ({
   const onClickItem = (item: IOption) => {
     setSelected(item)
     setVisible(false)
-    handleChange(item)
+
+    if (handleChange) {
+      handleChange(item)
+    }
   }
 
   return (
@@ -70,10 +81,14 @@ const Select = ({
         iconUrl={iconUrl}
         marginTop={marginTop}
         maxHeight={maxHeight}
+        fontWeight={fontWeight}
         valid={valid}
         width={width}
         padding={padding}
         showOption={visible}
+        borderWidth={borderWidth}
+        borderRadius={borderRadius}
+        borderGradient={borderGradient}
         className="select-container"
       >
         <div className="label" onClick={(e) => onClickOption(e)}>

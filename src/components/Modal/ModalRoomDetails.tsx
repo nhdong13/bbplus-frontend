@@ -32,92 +32,94 @@ export default function RoomModal({
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledRoomModal>
-        <Span
-          margin="0px"
-          className="close-btn"
-          textAlign="right"
-          onClick={onCloseModal}
-        >
-          <ReactSVG src={IMAGES.iconClose} />
-        </Span>
-        <Container gridTemplateColumns="45% 55%" maxWidth="100%" width="100%" margin="none">
-          <Details>
-            <Span fontSize="24px" fontWeight="600" margin="0 0 8px">
-              {title}
-            </Span>
-            <Benefits>
-              {RoomModalDetail.benefits.map((item) => {
-                return (
+        <StyledRoomModalContent>
+          <Span
+            margin="0px"
+            className="close-btn"
+            textAlign="right"
+            onClick={onCloseModal}
+          >
+            <ReactSVG src={IMAGES.iconClose} />
+          </Span>
+          <Container gridTemplateColumns="45% 55%" maxWidth="100%" width="100%" margin="none">
+            <Details>
+              <Span fontSize="24px" fontWeight="bold" margin="0 0 8px">
+                {title}
+              </Span>
+              <Benefits>
+                {RoomModalDetail.benefits.map((item) => {
+                  return (
+                    <div className="item" key={item}>
+                      <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
+                      <Span fontSize="14px" fontWeight="500">{item}</Span>
+                    </div>
+                  );
+                })}
+              </Benefits>
+              <Span margin="16px 0 28px 0" fontSize="14px" fontWeight="500">
+                <Span fontWeight="bold" fontSize="22px">Size: &nbsp;</Span>
+                {RoomModalDetail.area}
+              </Span>
+              <Span fontSize="14px" fontWeight="500">
+                <Span fontWeight="bold" fontSize="22px">Bed type: &nbsp;</Span>{" "}
+                {RoomModalDetail.bed} king bed
+              </Span>
+              <Span fontSize="14px" fontWeight="500">
+                <Span fontWeight="bold" fontSize="22px">Max persons: &nbsp;</Span>
+                {RoomModalDetail.maxPersons}
+              </Span>
+              <Span margin="28px 0 0 0" fontWeight="bold" fontSize="22px">
+                Facilities:
+              </Span>
+              <Facilities>
+                {RoomModalDetail.facilities.map((item) => (
                   <div className="item" key={item}>
                     <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
                     <Span fontSize="14px" fontWeight="500">{item}</Span>
                   </div>
-                );
-              })}
-            </Benefits>
-            <Span margin="16px 0 28px 0" fontSize="14px" fontWeight="500">
-              <Span fontWeight="600" fontSize="22px">Size: &nbsp;</Span>
-              {RoomModalDetail.area}
-            </Span>
-            <Span fontSize="14px" fontWeight="500">
-              <Span fontWeight="600" fontSize="22px">Bed type: &nbsp;</Span>{" "}
-              {RoomModalDetail.bed} king bed
-            </Span>
-            <Span fontSize="14px" fontWeight="500">
-              <Span fontWeight="600" fontSize="22px">Max persons: &nbsp;</Span>
-              {RoomModalDetail.maxPersons}
-            </Span>
-            <Span margin="28px 0 0 0" fontWeight="600" fontSize="22px">
-              Facilities:
-            </Span>
-            <Facilities>
-              {RoomModalDetail.facilities.map((item) => (
-                <div className="item" key={item}>
-                  <ReactSVG className="tick-icon" src={IMAGES.iconTick} />
-                  <Span fontSize="14px" fontWeight="500">{item}</Span>
-                </div>
-              ))}
-            </Facilities>
-            <Span margin="28px 0 0 0" fontSize="14px" fontWeight="500">
-              <Span fontWeight="600" fontSize="22px">Smocking: &nbsp;</Span>No smocking
-            </Span>
-          </Details>
-          <RoomImage>
-            <img className="room-image" src={selectedImage} alt="" />
-            <ImageCarousel
-              width="400px"
-              height="64px"
-              visibleSlides={5}
-              images={[
-                IMAGES.thumb1,
-                IMAGES.thumb2,
-                IMAGES.thumb3,
-                IMAGES.thumb4,
-                IMAGES.hotelBg,
-              ]}
-              onSelectImage={setSelectedImage}
-              orientation="horizontal"
-              showControl={false}
-            />
-          </RoomImage>
-        </Container>
-        <Span margin="28px 0 4px 0" fontWeight="600" fontSize="22px">
-          Non-Refundable:
-        </Span>
-        <Span fontSize="14px" fontWeight="500">
-          If you change or cancel your booking you will not get a refund or
-          credit to use for a future stay. This policy will apply regardless of
-          COVID-19, subject to any local consumer laws.
-        </Span>
-        <Span margin="8px 0 4px 0" fontWeight="600" fontSize="22px">
-          Fully Refundable before Mar 6
-        </Span>
-        <Span lineHeight="28px" fontSize="14px" fontWeight="500">
-          Cancel your reservation before Mar 6 at 11:59pm, and you'll get a full
-          refund.
-          <br />
-          After that, you won't get a refund. Times are based on the property’s local time.
-        </Span>
+                ))}
+              </Facilities>
+              <Span margin="28px 0 0 0" fontSize="14px" fontWeight="500">
+                <Span fontWeight="bold" fontSize="22px">Smocking: &nbsp;</Span>No smocking
+              </Span>
+            </Details>
+            <RoomImage>
+              <img className="room-image" src={selectedImage} alt="" />
+              <ImageCarousel
+                width="400px"
+                height="64px"
+                visibleSlides={5}
+                images={[
+                  IMAGES.thumb1,
+                  IMAGES.thumb2,
+                  IMAGES.thumb3,
+                  IMAGES.thumb4,
+                  IMAGES.hotelBg,
+                ]}
+                onSelectImage={setSelectedImage}
+                orientation="horizontal"
+                showControl={false}
+              />
+            </RoomImage>
+          </Container>
+          <Span margin="28px 0 4px 0" fontWeight="bold" fontSize="22px">
+            Non-Refundable:
+          </Span>
+          <Span fontSize="14px" fontWeight="500">
+            If you change or cancel your booking you will not get a refund or
+            credit to use for a future stay. This policy will apply regardless of
+            COVID-19, subject to any local consumer laws.
+          </Span>
+          <Span margin="8px 0 4px 0" fontWeight="bold" fontSize="22px">
+            Fully Refundable before Mar 6
+          </Span>
+          <Span lineHeight="28px" fontSize="14px" fontWeight="500">
+            Cancel your reservation before Mar 6 at 11:59pm, and you'll get a full
+            refund.
+            <br />
+            After that, you won't get a refund. Times are based on the property’s local time.
+          </Span>
+        </StyledRoomModalContent>
       </StyledRoomModal>
     </Modal>
   );
@@ -125,19 +127,29 @@ export default function RoomModal({
 
 const StyledRoomModal = styled.div`
   box-sizing: border-box;
+  width: 820px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 100vh;
+  overflow: auto;
+  border: none;
+  outline: none;
+`
+
+const StyledRoomModalContent = styled.div`
+  box-sizing: border-box;
   padding: 20px 28px 32px 28px;
   display: flex;
   flex-direction: column;
   outline: none;
   background-color: white;
-  width: 820px;
-  height: 828px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  height: auto;
   border-radius: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: auto;
+
   span {
     display: block;
   }

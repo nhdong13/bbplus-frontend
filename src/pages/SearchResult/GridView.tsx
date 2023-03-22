@@ -15,6 +15,9 @@ import {
 import { useEffect, useState } from "react"
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import { DateObject } from "react-multi-date-picker"
+import { Icon } from '@mui/material';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 interface IProps {
   checkIn: string,
@@ -46,10 +49,8 @@ export default function GridView({ checkIn }: IProps) {
   }
 
   const handlePrev = (): void => {
-    if (getDates()[0]?.format("DD MMM YYYY") != checkIn) {
-      const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
-      setCurrentDate(nextDate)
-    }
+    const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
+    setCurrentDate(nextDate)
   }
   return (
     <>
@@ -57,8 +58,14 @@ export default function GridView({ checkIn }: IProps) {
         <SDate>
           <ListContainer>
             <div className="content">
-              <div onClick={handlePrev} className={getDates()[0]?.format("DD MMM YYYY") != checkIn ? '' : 'disabled'}>Previous 15 days</div>
-              <div onClick={handleNext}>Next 15 days</div>
+              <div onClick={handlePrev} className="prev-next-link">
+                <Icon component={KeyboardDoubleArrowLeftIcon} />
+                Previous 15 days
+              </div>
+              <div onClick={handleNext} className="prev-next-link">
+                Next 15 days
+                <Icon component={KeyboardDoubleArrowRightIcon} />
+              </div>
             </div>
           </ListContainer>
         </SDate>

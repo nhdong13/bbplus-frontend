@@ -228,7 +228,7 @@ const SearchOption = styled.div`
       }
     }
   }
-  
+
   .group-right {
     display: flex;
     gap: 75px;
@@ -265,7 +265,7 @@ const SearchOption = styled.div`
     }
   }
   .active {
-    background: ${COLORS.darkGreen};
+    background: ${COLORS.cyprus};
     color: ${COLORS.white}
   }
 
@@ -316,10 +316,11 @@ const SearchOptionItem = styled.div`
   font-size: 16px;
   position: relative;
   .label {
-    width: 175px;
-    padding: 0 20px;
+    min-width: 175px;
+    width: auto;
+    padding: 0 12px;
   }
-  
+
 `;
 
 const SearchOptionSelect = styled.div`

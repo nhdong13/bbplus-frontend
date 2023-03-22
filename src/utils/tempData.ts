@@ -562,7 +562,7 @@ export const optionFilter: ISelect[] = [
   { _id: 8, label: "Backpackers" },
 ]
 export const optionSort: ISelect[] = [
-  { _id: 1, label: "Recommmended" },
+  { _id: 1, label: "Recommended" },
   { _id: 2, label: "Price: low to high" },
   { _id: 3, label: "Price: high to low" },
   { _id: 4, label: "Star rating" },
