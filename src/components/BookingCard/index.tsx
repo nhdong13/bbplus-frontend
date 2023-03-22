@@ -4,6 +4,7 @@ import IMAGES from "@/assets/images";
 import { useEffect, useState } from "react";
 import { HotelData } from "@/utils/types/CardHotel";
 import { StyledBookingButtonContainer, StyledBookingCard } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 interface BookingCardData {
   data?: HotelData
@@ -49,9 +50,9 @@ export default function BookingCard({ data, index, onClickCard }: BookingCardDat
                   </div>
                 </div>
                 <div className="booking-card__booking-button-container">
-                  <BookingButton text="customize" />
-                  <BookingButton text="quote" />
-                  <BookingButton text="quick book" />
+                  <BookingButton text="customize" directUrl='/step2' />
+                  <BookingButton text="quote" directUrl='#' />
+                  <BookingButton text="quick book" directUrl='#' />
                 </div>
               </>
           }
@@ -62,18 +63,21 @@ export default function BookingCard({ data, index, onClickCard }: BookingCardDat
 }
 
 interface BookingButton {
-  text: string
+  text: string,
+  directUrl: string
 }
 
-const BookingButton = ({ text }: BookingButton) => {
+const BookingButton = ({ text, directUrl }: BookingButton) => {
   const [buttonText, setButtonText] = useState<string>(text);
   useEffect(() => {
     setButtonText(text);
   }, [text]);
 
+  const navigate = useNavigate();
+
   return (
     <>
-      <StyledBookingButtonContainer text={text}>
+      <StyledBookingButtonContainer onClick={() => navigate(directUrl)} text={text}>
         <p>{buttonText}</p>
       </StyledBookingButtonContainer>
     </>
