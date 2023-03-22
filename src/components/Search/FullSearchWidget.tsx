@@ -142,9 +142,9 @@ export default function FullSearchWidget({
     if (selectedBooking === 1 || selectedBooking === 2) {
       pathName = "/step2"
     }
-    
+
     if (selectedBooking === 3) {
-      pathname = "/find-my-booking"
+      pathName = "/find-my-booking"
     }
 
     navigate({
