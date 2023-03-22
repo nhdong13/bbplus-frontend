@@ -30,12 +30,20 @@ import {
   Left,
   Link,
   Right,
+  ButtonToScroll
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
 import { useNavigate } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 import { GradientButton } from "@/components/Button";
+
+const clickToScrollHrefOptions = {
+  hotelRules: "hotel_rules_href",
+  customization: "customization_href",
+  amenities: "amenities_href",
+  faq: "faq_href"
+}
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
@@ -133,10 +141,10 @@ export default function Booking() {
               </Breadcrumb>
               <Link className="desktop">
                 <div>
-                  <Typography>Customization</Typography>
-                  <Typography>Amenities</Typography>
-                  <Typography>House rules</Typography>
-                  <Typography>FAQ</Typography>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.customization}`}><Typography>Customization</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.amenities}`}><Typography>Amenities</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.hotelRules}`}><Typography>House rules</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.faq}`}><Typography>FAQ</Typography></ButtonToScroll>
                 </div>
               </Link>
             </div>
@@ -372,7 +380,9 @@ export default function Booking() {
               ))}
             </div>
           )}
-          <AboutHotel />
+          <AboutHotel 
+            clickToScrollHrefOptions = {clickToScrollHrefOptions}
+          />
         </BookingContainer>
       </MainLayout>
     </>

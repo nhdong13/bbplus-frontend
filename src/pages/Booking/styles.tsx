@@ -485,6 +485,10 @@ const HotelDetail = styled.div`
     }
   }
 `;
+const ButtonToScroll = styled.a`
+  text-decoration: none;
+  color: ${COLORS.black} ;
+`;
 
 export {
   BookingOption,
@@ -503,4 +507,5 @@ export {
   HotelPrice,
   HotelDetail,
   Button,
+  ButtonToScroll
 };
