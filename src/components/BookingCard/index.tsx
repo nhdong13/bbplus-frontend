@@ -50,7 +50,7 @@ export default function BookingCard({ data, index, onClickCard }: BookingCardDat
                   </div>
                 </div>
                 <div className="booking-card__booking-button-container">
-                  <BookingButton text="customize" directUrl='/step2' />
+                  <BookingButton text="customize" directUrl='/quick-book/step2' />
                   <BookingButton text="quote" directUrl='#' />
                   <BookingButton text="quick book" directUrl='#' />
                 </div>
