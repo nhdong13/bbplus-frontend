@@ -17,7 +17,8 @@ const GridViewTitle = styled.div`
   background: ${COLORS.greenBlue};
   display: flex;
   align-items: center;
-  font-family: ${FONTS.manropeBold};
+  font-family: ${FONTS.manrope};
+  font-weight: bold;
   @media ${BREAKPOINTS.laptop} {
     font-size: 10px;
     padding-left: 11px;
@@ -35,6 +36,11 @@ const GridViewTitle = styled.div`
     justify-content: center;
     padding: 0 10px;
     height: 32px;
+
+    span {
+      font-weight: normal;
+    }
+
     @media ${BREAKPOINTS.laptop} {
       margin-left: 10px;
       height: 16px;
@@ -181,6 +187,11 @@ const ListContainer = styled.div`
         display: block;
       }
     }
+  }
+
+  .prev-next-link {
+    display: flex;
+    justify-content: center;
   }
 `
 const GridDateItem = styled.div`

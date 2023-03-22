@@ -71,6 +71,10 @@ const StyledCalendar = styled.div`
   width: 100%;
   height: fit-content;
   /* overflow-y: auto; */
+
+  .fc-daygrid-day-top {
+    flex-direction: row;
+  }
   .fc-daygrid-day {
     padding: 4px 12px;
     height: 70px;
@@ -92,6 +96,7 @@ const StyledCalendar = styled.div`
   .fc-multimonth-title {
     text-align: left;
     font-family: Manrope;
+    font-size: 20px;
   }
   .fc-col-header-cell {
     text-align: left;
@@ -127,7 +132,7 @@ const StyledCalendar = styled.div`
       }
     }
     span {
-      font-size: 12px;
+      font-size: 14px;
       display: block;
       line-height: 20px;
       span {
