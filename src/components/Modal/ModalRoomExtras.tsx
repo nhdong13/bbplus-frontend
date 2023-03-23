@@ -117,7 +117,7 @@ export default function RoomExtras({
               color={COLORS.gradient2}
               handleSubmit={onCloseModal}
               fontWeight="bold"
-              borderRadius="5px"
+              borderRadius="17px"
             />
           </Action>
         </StyledModalContent>
