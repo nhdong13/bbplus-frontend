@@ -262,7 +262,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
               color={COLORS.gradient2}
               handleSubmit={onCloseModal}
               fontWeight="bold"
-              borderRadius="5px"
+              borderRadius="17px"
               textPadding="0 38.5px 0 38.5px"
               height="62px"
             />
