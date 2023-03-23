@@ -15,6 +15,8 @@ export const StyledModal = styled.div<IModal>`
   overflow: auto;
   border: none;
   outline: none;
+  display: flex;
+  align-items: center;
 `
 
 export const StyledModalContent = styled.div<IModal>`
