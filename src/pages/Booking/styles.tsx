@@ -212,6 +212,12 @@ const HotelInformation = styled.div`
   .hotel-info-container {
     padding-left: 12px;
   }
+  .divider {
+    border-bottom: 2px dashed #b1b1b1;
+    border-bottom-style: dotted;
+    margin-top: 36.6px;
+    margin-bottom: 40px;
+  }
   @media ${BREAKPOINTS.tablet} {
     box-sizing: border-box;
     .hotel-info-container {
@@ -506,6 +512,10 @@ const HotelDetail = styled.div`
     }
   }
 `;
+const ButtonToScroll = styled.a`
+  text-decoration: none;
+  color: ${COLORS.black} ;
+`;
 
 export {
   BookingOption,
@@ -524,4 +534,5 @@ export {
   HotelPrice,
   HotelDetail,
   Button,
+  ButtonToScroll
 };

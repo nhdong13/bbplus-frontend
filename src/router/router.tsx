@@ -29,6 +29,7 @@ export const RouterApp = () => {
           element={<TravelerDetails />}
         />
         <Route path={RouterName.step2} element={<Booking />} />
+        <Route path={`/:bookingType/${RouterName.step2}`} element={<Booking />} />
         <Route path={RouterName.confirm} element={<Confirm />} />
         <Route path={RouterName.findMyBooking} element={<FindMyBooking />} />
         <Route path="/" element={<HomePage />} />

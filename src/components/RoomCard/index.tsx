@@ -100,7 +100,7 @@ export default function RoomCard({
                                     onChecked(item.id);
                                   }}
                                 >
-                                  {selectedOption === item.id && (
+                                  {(selected && selectedOption === item.id) && (
                                     <span className="checked"></span>
                                   )}
                                 </span>

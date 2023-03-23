@@ -42,6 +42,7 @@ interface IDropdown {
   expandIcon?: React.ReactNode;
   expand: boolean;
   onExpand: () => void;
+  id?: string;
 }
 export default function Dropdown({
   className,
@@ -52,12 +53,14 @@ export default function Dropdown({
   expandIcon,
   onExpand,
   boxShadow,
+  id
 }: IDropdown) {
   return (
     <StyledDropdown
       className={className}
       boxShadow={boxShadow}
       style={{ order: order }}
+      id={id}
     >
       <Accordion
         expanded={expand}
