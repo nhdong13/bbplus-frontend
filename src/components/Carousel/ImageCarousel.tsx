@@ -1,4 +1,6 @@
 import IMAGES from "@/assets/images";
+import { BREAKPOINTS } from "@/utils/breakpoints";
+import { COLORS } from "@/utils/colors";
 import { ImageCarousel } from "@/utils/types/Carousel";
 import {
   ButtonBack,
@@ -8,6 +10,7 @@ import {
   Slider,
 } from "pure-react-carousel";
 import { useState } from "react";
+import { ReactSVG } from "react-svg";
 import styled from "styled-components";
 
 export default function ImageCarousel({
@@ -39,7 +42,7 @@ export default function ImageCarousel({
         step={1}
         dragEnabled={false}
         naturalSlideWidth={66}
-        naturalSlideHeight={54}
+        naturalSlideHeight={64}
         // isIntrinsicHeight={true}
         orientation={orientation || "vertical"}
       >
@@ -51,14 +54,7 @@ export default function ImageCarousel({
             onMouseEnter={() => handleHoverArrowBtn(false)}
             onMouseLeave={() => handleHoverArrowBtn(false)}
           >
-            <img
-              src={
-                arrowLeftBtnColor
-                  ? IMAGES.iconAnchorLinearGradient
-                  : IMAGES.iconAnchorGrey
-              }
-              alt="arrow"
-            />
+            <ReactSVG src={IMAGES.iconArrowDownGradient} />
           </ButtonBack>
         </ActionWrap>
         <Slider>
@@ -71,7 +67,12 @@ export default function ImageCarousel({
                 onSelectImage(thumbnail);
               }}
             >
-              <Thumbnail width="100%" height="100%" imageUrl={thumbnail} borderRadius={borderRadius}/>
+              <Thumbnail
+                width="100%"
+                height="100%"
+                imageUrl={thumbnail}
+                borderRadius={borderRadius}
+              />
             </Slide>
           ))}
         </Slider>
@@ -83,14 +84,7 @@ export default function ImageCarousel({
             onMouseEnter={() => handleHoverArrowBtn(true)}
             onMouseLeave={() => handleHoverArrowBtn(true)}
           >
-            <img
-              src={
-                arrowRightBtnColor
-                  ? IMAGES.iconAnchorLinearGradient
-                  : IMAGES.iconAnchorGrey
-              }
-              alt="arrow"
-            />
+            <ReactSVG src={IMAGES.iconArrowDownGradient} />
           </ButtonNext>
         </ActionWrap>
       </CarouselProvider>
@@ -138,11 +132,9 @@ const Wrapper = styled.div<IWrapper>`
   }
   .arrow-down {
     transform: ${(props) =>
-      props.orientation === "vertical" ? "rotate(90deg)" : ""};
+      props.orientation === "vertical" ? "rotate(-180deg)" : ""};
   }
   .arrow-up {
-    transform: ${(props) =>
-      props.orientation === "vertical" ? "rotate(-90deg)" : "rotate(-180deg)"};
   }
   .carousel__slider-tray {
     display: flex;
@@ -171,6 +163,31 @@ const Wrapper = styled.div<IWrapper>`
   .carousel__slide-focus-ring {
     display: none;
   }
+  @media ${BREAKPOINTS.tablet} {
+    width: 50px;
+    .carousel__slider {
+      margin: 10px 0;
+    }
+
+    .carousel__slide,
+    .carousel__inner-slide {
+      width: 50px !important;
+      height: 50px;
+      padding-bottom: 0px;
+    }
+
+    .carousel__slider-tray,
+    .carousel__slider-tray-wrapper,
+    .carousel__slider {
+      width: fit-content !important;
+    }
+    .carousel__slider-tray-wrapper {
+      height: 230px !important;
+    }
+    .carousel__slider-tray {
+      gap: 10px;
+    }
+  }
 `;
 interface IActionWrap {
   showControl?: boolean;
@@ -179,4 +196,14 @@ const ActionWrap = styled.div<IActionWrap>`
   display: ${(props) => (props.showControl ? "flex" : "none")};
   flex-direction: row;
   justify-content: center;
+  padding: 10px 0;
+  .arrow-down,
+  .arrow-up {
+    &:not(:hover) path {
+      fill: ${COLORS.grayAf};
+    }
+  }
+  @media ${BREAKPOINTS.tablet} {
+    padding: 0;
+  }
 `;

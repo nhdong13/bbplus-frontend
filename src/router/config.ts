@@ -8,5 +8,6 @@ export const RouterName = {
   accountSetting: "account-setting",
   confirm: "confirm",
   step2: "step2",
-  step3: "step3"
+  step3: "step3",
+  findMyBooking: "find-my-booking",
 }

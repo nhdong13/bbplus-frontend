@@ -60,7 +60,8 @@ const SearchWidgetContainer = styled.div `
 `
 
 const SearchBar = styled.div`
-  max-width: 1400px;
+  box-sizing: border-box;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -121,18 +122,19 @@ const SearchItem = styled.div`
 
 const ButtonEditSearch = styled.div`
   cursor: pointer;
+  box-sizing: border-box;
   width: 174px;
-  height : 58px;
+  height: 58px;
   border: 2px solid ${COLORS.greenBlue};
   background: ${COLORS.white};
-  border-radius: 17px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const SearchResultContainer = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: auto;
   width: 100%;
@@ -144,7 +146,7 @@ const SearchResultContainer = styled.div`
 
 const Breadcrumb = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 34px 35px 20px 35px;
   margin: 0 auto;
   @media ${BREAKPOINTS.laptop} {
@@ -183,7 +185,7 @@ const BreadcrumbItem = styled.div`
 
 const SearchOption = styled.div`
   display: flex;
-  max-width: 1400px;
+  max-width: 1440px;
   padding-left: 35px;
   margin: auto;
   margin-bottom: 27px;
@@ -347,7 +349,7 @@ const SearchOptionSelect = styled.div`
 
 const ListResultContainer = styled.div`
   border: 1px solid ${COLORS.parkinglotGray};
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 23px 48px 55px 48px;
   margin: auto;
   margin-bottom: 34px;
@@ -355,7 +357,8 @@ const ListResultContainer = styled.div`
   &:last-child {
     margin-bottom: 145px;
   }
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background: ${COLORS.blueWater};
     cursor: pointer;
   }
@@ -545,7 +548,7 @@ const CarouselWrapper = styled.div`
   }
 
   &.carousel-container {
-    max-width: 1400px;
+    max-width: 1440px;
     width: 100%;
     @media only screen and (max-width: 475px) {
       padding-left: 10px;
@@ -638,7 +641,33 @@ const CarouselWrapper = styled.div`
     }
   }
 `;
-const BookingContainer = styled.div``;
+const BookingContainer = styled.div`
+  .selected-hotels {
+    box-sizing: border-box;
+    margin: auto;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 20px;
+    .gradient-button {
+      box-sizing: border-box;
+      span {
+        padding: 0 10px;
+      }
+    }
+  }
+  @media ${BREAKPOINTS.laptop} {
+    .selected-hotels {
+      padding: 0 10px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      .gradient-button {
+        height: 34px;
+      }
+    }
+  }
+`;
 
 export {
   SearchResultBackground,

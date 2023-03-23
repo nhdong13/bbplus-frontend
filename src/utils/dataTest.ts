@@ -1,9 +1,17 @@
 import IMAGES from "@/assets/images";
 
+export interface IRoomOptions {
+  id: number;
+  title: string;
+  price: string;
+  value: string;
+  transferType?: string;
+}
+
 export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
-    description: "Garden View Room",
+    description: "1 x Suite, Ocean view",
     type: "room_details",
     roomOptions: [
       {
@@ -11,6 +19,7 @@ export const HOTEL_RESULT_DATA = [
         title: "Non-Refundable",
         price: "$XXX",
         value: "",
+        transferType: "",
       },
       {
         id: 2,
@@ -122,13 +131,15 @@ export const HOTEL_RESULT_DATA = [
         id: 1,
         title: "Tewaka Fiji",
         detail: "Return: Airport Transfer",
+        transferType: "air",
         price: "$XXX",
         value: "",
       },
       {
         id: 2,
         title: "Heli Tours Fiji",
-        detail: "Return: Airport Transfer",
+        detail: "Return: Land Transfer",
+        transferType: "land",
         price: "$XXX",
         value: "",
       },
@@ -136,6 +147,80 @@ export const HOTEL_RESULT_DATA = [
         id: 3,
         title: "Tour Managers",
         detail: "Return: Airport Transfer",
+        transferType: "air",
+        price: "$XXX",
+        value: "",
+      },
+    ],
+  },
+  {
+    name: "Tours",
+    type: "room_tours",
+    description: "River Safari Jet Boat Tour",
+    roomOptions: [
+      {
+        id: 1,
+        title: "Kula wild park",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 2,
+        title: "Sand dunes hike",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 3,
+        title: "EtroTrax Fiji",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 4,
+        title: "Discovery the waterfalls at Blauseva",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 5,
+        title: "River safari jet boat tour",
+        price: "$XXX",
+        value: "",
+      },
+    ],
+  },
+  {
+    name: "Another Hotel",
+    type: "room_another",
+    roomOptions: [
+      {
+        id: 1,
+        title: "Non-Refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 2,
+        title: "Fully refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 3,
+        title: "Non-Refundable",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 4,
+        title: "Breakfast buffet",
+        price: "$XXX",
+        value: "",
+      },
+      {
+        id: 5,
+        title: "Fully refundable ",
         price: "$XXX",
         value: "",
       },
@@ -362,3 +447,5 @@ fees, and other fees and/or a fee we, the hotel supplier and/ or the
 site you booked on, retain as part of the compensation for our
 and/or their services, which varies based on factors such as
 location, the amount, and how you booked.`;
+
+export const HOTELS_NAME = ["Warwick Fiji Beach Resort", "Fiji Hotel Gateway"];

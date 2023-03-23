@@ -28,8 +28,8 @@ export default function TextModal({
           </Span>
         </div>
 
-        <Container display="flex" flexDirection="column" maxWidth="696px">
-          <Span fontSize="14px">{paragraph}</Span>
+        <Container display="flex" flexDirection="column" maxWidth="100%">
+          <Span fontSize="16px">{paragraph}</Span>
         </Container>
       </StyledTextModal>
     </Modal>
@@ -38,6 +38,7 @@ export default function TextModal({
 
 const StyledTextModal = styled.div`
   padding: 20px 28px 20px 28px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   outline: none;

@@ -76,7 +76,7 @@ export default function TravellerDetails() {
               </div>
             </div>
           </BookingProgressBar>
-          <H3 padding="76.8px 0 0 42px">Traveller Details</H3>
+          <H3 padding="76.8px 0 0 42px">Traveler Details</H3>
           <TravelerDetailsFormContainer>
             <div className="detail-form">
               <ContactForm
@@ -152,11 +152,11 @@ export default function TravellerDetails() {
                 <div className="additional-info">
                   <span>
                     <img src={IMAGES.iconCondtionResetPassword} /> We use secure
-                    tranmission
+                    transmission
                   </span>
                   <span>
                     <img src={IMAGES.iconCondtionResetPassword} />
-                    We use secure tranmission
+                    We use secure transmission
                   </span>
                 </div>
                 <div className="first-line-container">
@@ -206,7 +206,7 @@ export default function TravellerDetails() {
                 </div>
               </div>
               <div className="important-information">
-                <Span fontSize="20px" fontWeight="bold">
+                <Span padding="0 0 10px 0" fontSize="20px" fontWeight="bold">
                   Important Information
                 </Span>
                 <div className="line-info">
@@ -218,8 +218,8 @@ export default function TravellerDetails() {
                 </div>
                 <div className="line-info">
                   <span>
-                    <img src={IMAGES.iconCondtionResetPassword} />
                     <p>
+                      <img src={IMAGES.iconCondtionResetPassword} />
                       By clicking on the button below, I acknowledge that I have
                       reviewed the <a href="#">Privacy Statement</a> and have
                       <br />
@@ -233,8 +233,8 @@ export default function TravellerDetails() {
                     color={COLORS.flushOrange}
                     text="Continue to secure payment"
                     isSelected={true}
-                    maxWidth="300px"
-                    height="62px"
+                    maxWidth="291px"
+                    height="58px"
                     borderRadius="7.5px"
                     fontWeight="bold"
                     handleSubmit={() => {
