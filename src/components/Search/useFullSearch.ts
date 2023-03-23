@@ -63,6 +63,9 @@ const useFullSearchWidget = () => {
   const checkInParam = searchParams.get('checkIn') || '';
   const checkOutParam = searchParams.get('checkOut') || '';
   const roomParam = searchParams.getAll('room') || [];
+  const bookingId = searchParams.get('booking_id') || '';
+  const guestEmail = searchParams.get('guest_email') || '';
+  const searchType = searchParams.get('search_type') || '';
 
   const screenWidth = useWindowSize();
 
@@ -209,6 +212,17 @@ const useFullSearchWidget = () => {
     }
   }, [leavingId, goingId])
 
+  useEffect(() => {
+    if (searchType && parseInt(searchType) >= 0) {
+      handleSelectBookingType(parseInt(searchType))
+    }
+  }, [searchType])
+
+  useEffect(() => {
+    if (bookingId || guestEmail) {
+      setFilterFindMyBooking({...filterFindMyBooking, booking_id: bookingId, guest_email: guestEmail})
+    }
+  }, [bookingId, guestEmail])
 
   const handleAddRoom = (newRoom: IFilter) => {
     dataFilter.push(newRoom);
