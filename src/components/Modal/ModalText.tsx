@@ -29,7 +29,7 @@ export default function TextModal({
         </div>
 
         <Container display="flex" flexDirection="column" maxWidth="100%">
-          <Span fontSize="16px">{paragraph}</Span>
+          <Span fontSize="14px">{paragraph}</Span>
         </Container>
       </StyledTextModal>
     </Modal>

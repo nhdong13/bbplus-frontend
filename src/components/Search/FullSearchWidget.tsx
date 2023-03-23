@@ -103,7 +103,10 @@ export default function FullSearchWidget({
   const navigate = useNavigate();
 
   const onClickSearch = () => {
-    const optionSearch = {}
+    const optionSearch = {
+      search_type: String(selectedBooking)
+    }
+
     if (selectedLeaving) {
       Object.assign(optionSearch, {
         leaving: selectedLeaving._id
