@@ -136,6 +136,8 @@ const StyledRoomModal = styled.div`
   overflow: auto;
   border: none;
   outline: none;
+  display: flex;
+  align-items: center;
 `
 
 const StyledRoomModalContent = styled.div`
