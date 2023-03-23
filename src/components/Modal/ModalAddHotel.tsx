@@ -43,7 +43,6 @@ export default function ModalAddHotel({
               displayEmpty
               defaultValue={""}
               input={<OutlinedInput />}
-              // inputProps={{ "aria-label": "Without label" }}
               IconComponent={(props) => (
                 <ReactSVG
                   className="dropdown"

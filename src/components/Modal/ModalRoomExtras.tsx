@@ -83,7 +83,6 @@ export default function RoomExtras({
                           displayEmpty
                           defaultValue={0}
                           input={<OutlinedInput />}
-                          // inputProps={{ "aria-label": "Without label" }}
                           onChange={onChangeQty}
                           IconComponent={(props) => (
                             <ReactSVG
