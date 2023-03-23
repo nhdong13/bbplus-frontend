@@ -589,8 +589,9 @@ export default function Booking() {
               ))}
             </div>
           )}
-          <AboutHotel 
+          <AboutHotel
             clickToScrollHrefOptions = {clickToScrollHrefOptions}
+            bookingType = {bookingType || ""}
           />
         </BookingContainer>
       </MainLayout>

@@ -18,7 +18,9 @@ const GradientButton = ({
   width,
   className,
   borderRadius,
-  handleSubmit
+  handleSubmit,
+  borderColor,
+  margin
 }: GradientButton) => {
   return (
     <>
@@ -37,6 +39,8 @@ const GradientButton = ({
         borderWidth={borderWidth}
         onClick={handleSubmit}
         borderGradient={borderGradient}
+        borderColor = {borderColor}
+        margin={'0px 15px 0px 0px'}
       >
         <Overlay
           isSelected={isSelected}

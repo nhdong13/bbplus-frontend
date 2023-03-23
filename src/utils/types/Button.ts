@@ -16,6 +16,8 @@ export interface GradientButton {
   showButtonAnimation?: boolean,
   borderRadius?: string,
   handleSubmit?: () => void,
+  borderColor?: string,
+  margin?: string,
 }
 
 
