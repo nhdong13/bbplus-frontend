@@ -8,6 +8,7 @@ import IMAGES from "@/assets/images";
 import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { BREAKPOINTS } from "@/utils/breakpoints";
+import { GradientButton } from "../Button";
 
 const StyledAboutHotel = styled.div`
   padding-bottom: 48px;
@@ -263,9 +264,20 @@ const StyledAboutHotel = styled.div`
   }
 `;
 
+const WrapperHotelAmenities = styled.div`
+  display: flex;
+`;
+
 const EXPAND = ["amenities", "rules", "faq"];
 
-export default function AboutHotel() {
+interface ClickToScrollHrefOptions {
+  hotelRules: string;
+  customization: string;
+  amenities: string;
+  faq: string;
+}
+
+export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string}) {  
   const [expanded, setExpanded] = useState<string[]>(EXPAND);
   const expandAll = () => {
     setExpanded(EXPAND);
@@ -284,6 +296,32 @@ export default function AboutHotel() {
   return (
     <StyledAboutHotel>
       <Container display="block" padding="0 20px 0px 20px">
+        {bookingType == "multi-hotel" && (
+          <WrapperHotelAmenities>
+            <GradientButton
+              isSelected
+              text="Warwick Fiji Beach Resort"
+              fontSize="18px"
+              height="62px"
+              borderRadius="17px"
+              color={COLORS.gradient2}
+              borderGradient={COLORS.gradient2}
+              margin={"0px 15px 0px 0px"}
+            />
+            <GradientButton
+              isSelected
+              text="Fiji Gateway Hotel"
+              fontSize="18px"
+              height="58px"
+              borderRadius="17px"
+              borderWidth="2px"
+              textColor={COLORS.blueRibbon}
+              color={COLORS.white}
+              borderGradient={COLORS.white}
+              borderColor={COLORS.greenBlue}
+            />
+          </WrapperHotelAmenities>
+          )}
         <div className="about-hotel__action">
           <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>
             Expand all
@@ -299,6 +337,7 @@ export default function AboutHotel() {
         </div>
         <div className="hotel-result__right">
           <Dropdown
+            id={clickToScrollHrefOptions.amenities}
             title="Amenities"
             expand={expanded.includes(EXPAND[0])}
             onExpand={() => {
@@ -345,6 +384,7 @@ export default function AboutHotel() {
             }
           />
           <Dropdown
+            id={clickToScrollHrefOptions.hotelRules}
             title="Hotel Rules"
             className="hotel-rules"
             expand={expanded.includes(EXPAND[1])}
@@ -365,6 +405,7 @@ export default function AboutHotel() {
             }
           />
           <Dropdown
+            id={clickToScrollHrefOptions.faq}
             className="faq-wrapper"
             title="FAQ about Warwick Fiji Beach Resort"
             expand={expanded.includes(EXPAND[2])}

@@ -86,7 +86,7 @@ export const HOTEL_RESULT_DATA = [
     modalOptions: [
       {
         id: 1,
-        title: "Half board meal plan",
+        title: "Half Board Meal Plan",
         price: "$125",
         value: "",
       },
@@ -98,13 +98,13 @@ export const HOTEL_RESULT_DATA = [
       },
       {
         id: 3,
-        title: "Full board meal plan",
+        title: "Full Board Meal Plan",
         price: "$115",
         value: "",
       },
       {
         id: 4,
-        title: "Bottle of wine on arrival",
+        title: "Bottle Of Wine On Arrival",
         price: "$25",
         value: "",
       },
@@ -116,7 +116,7 @@ export const HOTEL_RESULT_DATA = [
       },
       {
         id: 6,
-        title: "Kid nanny services",
+        title: "Kid Nanny Services",
         price: "$155",
         value: "",
       },

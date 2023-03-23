@@ -100,7 +100,7 @@ export default function RoomCard({
                                     onChecked(item.id);
                                   }}
                                 >
-                                  {selectedOption === item.id && (
+                                  {(selected && selectedOption === item.id) && (
                                     <span className="checked"></span>
                                   )}
                                 </span>
@@ -163,7 +163,7 @@ export default function RoomCard({
                           title={
                             <>
                               <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
-                              <Span fontSize="16px">{TAXES_AND_FEES}</Span>
+                              <Span fontSize="14px">{TAXES_AND_FEES}</Span>
                             </>
                           }
                         >

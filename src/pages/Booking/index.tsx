@@ -13,7 +13,10 @@ import {
   SearchBar,
   SearchItem,
   SearchResultBackground,
+  SearchWidgetBackground,
+  SearchWidgetContainer,
 } from "../SearchResult/styles";
+
 import {
   BookingContent,
   BookingHeader,
@@ -30,21 +33,35 @@ import {
   Left,
   Link,
   Right,
+  ButtonToScroll
 } from "./styles";
 import AboutHotel from "@/components/BookingSearchResult/AboutHotel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 import { GradientButton } from "@/components/Button";
+ 
+import useFullSearchWidget from "@/components/Search/useFullSearch";
+import FullSearchWidget from "@/components/Search/FullSearchWidget";
+
+const clickToScrollHrefOptions = {
+  hotelRules: "hotel_rules_href",
+  customization: "customization_href",
+  amenities: "amenities_href",
+  faq: "faq_href"
+}
 
 export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const [hotels, setHotels] = useState<string[]>([]);
+  const [searchMode, setSearchMode] = useState<number>(0);
 
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
   const navigate = useNavigate();
+  const { bookingType } = useParams();
+
   const { showModal } = useGlobalModalContext();
 
   const onChangeHotels = (hotelName: string) => {
@@ -61,64 +78,80 @@ export default function Booking() {
         <title>Booking</title>
       </Helmet>
       <MainLayout>
-        <SearchResultBackground>
-          <SearchBar>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">
-                  Leaving from
-                </H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                  Search by city or airport
-                </H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div>
-                <H5 lineHeight="10px" fontWeight="700">
-                  Going to
-                </H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                  Search by destination or hotel
-                </H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">
-                  Arrival Date
-                </H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                  Day|Date|Month
-                </H5>
-              </div>
-            </SearchItem>
-            <SearchItem>
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">
-                  No. of days
-                </H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                  X nights
-                </H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0">
-              <div className="group-h5">
-                <H5 lineHeight="10px" fontWeight="700">
-                  Travellers
-                </H5>
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                  X guests (X rooms)
-                </H5>
-              </div>
-            </SearchItem>
-            <SearchItem className="arrive-days border-0 btn-edit">
-              <ButtonEditSearch>Edit Search</ButtonEditSearch>
-            </SearchItem>
-          </SearchBar>
-          <div className="btn-mobile">Edit Search</div>
-        </SearchResultBackground>
+
+        {
+          searchMode === 0
+          ?
+            <SearchResultBackground>
+              <SearchBar>
+                <SearchItem>
+                  <div className="group-h5">
+                    <H5 lineHeight="10px" fontWeight="700">
+                      Leaving from
+                    </H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
+                      Search by city or airport
+                    </H5>
+                  </div>
+                </SearchItem>
+                <SearchItem>
+                  <div>
+                    <H5 lineHeight="10px" fontWeight="700">
+                      Going to
+                    </H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
+                      Search by destination or hotel
+                    </H5>
+                  </div>
+                </SearchItem>
+                <SearchItem className="arrive-days">
+                  <div className="group-h5">
+                    <H5 lineHeight="10px" fontWeight="700">
+                      Arrival Date
+                    </H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
+                      Day|Date|Month
+                    </H5>
+                  </div>
+                </SearchItem>
+                <SearchItem>
+                  <div className="group-h5">
+                    <H5 lineHeight="10px" fontWeight="700">
+                      No. of days
+                    </H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
+                      X nights
+                    </H5>
+                  </div>
+                </SearchItem>
+                <SearchItem className="arrive-days border-0">
+                  <div className="group-h5">
+                    <H5 lineHeight="10px" fontWeight="700">
+                      Travellers
+                    </H5>
+                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
+                      X guests (X rooms)
+                    </H5>
+                  </div>
+                </SearchItem>
+                <SearchItem className="arrive-days border-0 btn-edit">
+                  <ButtonEditSearch onClick={() => setSearchMode(1)}>Edit Search</ButtonEditSearch>
+                </SearchItem>
+              </SearchBar>
+              <div className="btn-mobile" onClick={() => setSearchMode(1)}>Edit Search</div>
+            </SearchResultBackground>
+            :
+            <SearchWidgetBackground>
+              <SearchWidgetContainer>
+                <div className="line"></div>
+                <FullSearchWidget
+                  className="full-result"
+                  handleSearch={() => setSearchMode(0)}
+                />
+              </SearchWidgetContainer>
+            </SearchWidgetBackground>
+        }
+
         <BookingContainer>
           <BookingHeader>
             <div>
@@ -133,10 +166,10 @@ export default function Booking() {
               </Breadcrumb>
               <Link className="desktop">
                 <div>
-                  <Typography>Customization</Typography>
-                  <Typography>Amenities</Typography>
-                  <Typography>House rules</Typography>
-                  <Typography>FAQ</Typography>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.customization}`}><Typography>Customization</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.amenities}`}><Typography>Amenities</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.hotelRules}`}><Typography>House rules</Typography></ButtonToScroll>
+                  <ButtonToScroll href={`#${clickToScrollHrefOptions.faq}`}><Typography>FAQ</Typography></ButtonToScroll>
                 </div>
               </Link>
             </div>
@@ -203,6 +236,7 @@ export default function Booking() {
             <ContainerLeft></ContainerLeft>
             <Container>
               <Left width="">
+                {/* hotel 1 */}
                 <HotelInformation>
                   <div className="hotel-info-container">
                     <div className="">
@@ -236,7 +270,7 @@ export default function Booking() {
                         IMAGES.thumb4,
                         IMAGES.hotelBg,
                       ]}
-                      borderRadius="12px"
+                      borderRadius="17px"
                       onSelectImage={onSelectImage}
                     />
                     <div>
@@ -244,42 +278,84 @@ export default function Booking() {
                       <div className="overlay"></div>
                     </div>
                   </HotelImage>
-                  <HotelPrice>
-                    <Typography className="total-price" fontWeight="bold">
-                      Total Price
-                    </Typography>
-                    <div className="price-line">
-                      <Typography
-                        className="price-p-person"
-                        color="#104c94"
-                        fontSize="28px"
-                        fontWeight="800"
-                      >
-                        FJ$XXX
+                  {bookingType !== "multi-hotel" && (
+                    <HotelPrice>
+                      <Typography className="total-price" fontWeight="bold">
+                        Total Price
                       </Typography>
-                      <Typography
-                        color="#e00000"
-                        fontSize="16px"
-                        fontWeight="normal"
-                      >
-                        Per person
-                      </Typography>
-                    </div>
+                      <div className="price-line">
+                        <Typography
+                          className="price-p-person"
+                          color="#104c94"
+                          fontSize="28px"
+                          fontWeight="800"
+                        >
+                          FJ$XXX
+                        </Typography>
+                        <Typography
+                          color="#e00000"
+                          fontSize="16px"
+                          fontWeight="normal"
+                        >
+                          Per person
+                        </Typography>
+                      </div>
 
-                    <div className="price-line">
-                      <Typography
-                        className="price-f-pax"
-                        fontWeight="800"
-                        lineHeight="16px"
-                      >
-                        FJ$X,XXX
-                      </Typography>
-                      <Typography color="#e00000" fontWeight="normal">
-                        Total cost pay for X pax
-                      </Typography>
-                    </div>
-                  </HotelPrice>
+                      <div className="price-line">
+                        <Typography
+                          className="price-f-pax"
+                          fontWeight="800"
+                          lineHeight="16px"
+                        >
+                          FJ$X,XXX
+                        </Typography>
+                        <Typography color="#e00000" fontWeight="normal">
+                          Total cost pay for X pax
+                        </Typography>
+                      </div>
+                    </HotelPrice>
+                  )}
                   <HotelDetail>
+                    <div className="most-popular">
+                      <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
+                        Most Popular
+                      </Typography>
+                      <div className="most-popular-button">
+                        <Button
+                          width="120px"
+                          height="40px"
+                          border="2px"
+                          backgroundColor="transparent"
+                          borderRadius="17px"
+                          padding="0"
+                          className="room-only"
+                        >
+                          <Typography
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Room Only
+                          </Typography>
+                        </Button>
+
+                        <Button
+                          width="170px"
+                          height="40px"
+                          border="2px"
+                          backgroundColor="transparent"
+                          borderRadius="17px"
+                          padding="0"
+                        >
+                          <Typography
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Ultimate Holiday
+                          </Typography>
+                        </Button>
+                      </div>
+
+                    </div>
                     <Typography
                       className="holiday-includes"
                       fontSize="24px"
@@ -315,13 +391,151 @@ export default function Booking() {
                         <Typography>Free selected watersport</Typography>
                       </li>
                     </ul>
+                    {bookingType !== "multi-hotel" && (
+                      <div className="flex col group-btn">
+                        <Button
+                          width="100%"
+                          border="none"
+                          backgroundColor="#ff8003"
+                          padding="16px 20px"
+                          borderRadius="17px"
+                        >
+                          <Typography
+                            fontSize="18px"
+                            fontWeight="bold"
+                            color="black"
+                          >
+                            Enter traveler
+                          </Typography>
+                        </Button>
+                        <Button
+                          width="100%"
+                          border="2px solid #d9bf50"
+                          backgroundColor="#fff3d6"
+                          borderRadius="17px"
+                        >
+                          <Typography
+                            fontSize="18px"
+                            fontWeight="bold"
+                            color="black"
+                          >
+                            Quick Quote
+                          </Typography>
+                        </Button>
+                      </div>
+                    )}
+                  </HotelDetail>
+                </HotelInformation>
+                {/* hotel 2 */}
+                {bookingType === "multi-hotel" && (
+                <HotelInformation>
+                  <div className="divider" />
+                  <div className="hotel-info-container">
+                    <div className="">
+                      <H1 fontSize="30px" color="#004442">
+                        Fiji Gateway Hotel
+                      </H1>
+                      <div className="location">
+                        <ReactSVG
+                          className="icon"
+                          src={IMAGES.locationIcon}
+                          width="17px"
+                          height="25px"
+                        />
+                        <Typography fontWeight="500">
+                          Nadi, Viti Levu, Fiji
+                        </Typography>
+                        <Typography color={COLORS.blueFrench} fontWeight="500">
+                          Show on map
+                        </Typography>
+                      </div>
+                    </div>
+                  </div>
+                  <HotelImage>
+                    <ImageCarousel
+                      width="66px"
+                      height="280px"
+                      images={[
+                        IMAGES.thumb1,
+                        IMAGES.thumb2,
+                        IMAGES.thumb3,
+                        IMAGES.thumb4,
+                        IMAGES.hotelBg,
+                      ]}
+                      borderRadius="12px"
+                      onSelectImage={onSelectImage}
+                    />
+                    <div>
+                      <img className="hotel__image" src={selectedImage} />
+                      <div className="overlay"></div>
+                    </div>
+                  </HotelImage>
+                  <HotelDetail>
+                    <Typography
+                      className="holiday-includes"
+                      fontSize="24px"
+                      fontWeight="bold"
+                    >
+                      Holiday includes
+                    </Typography>
+                    <ul>
+                      <li>
+                        <Typography>Welcome refreshing drink</Typography>
+                      </li>
+                      <li>
+                        <Typography>
+                          Accommodation at Fiji Gateway Hotel
+                        </Typography>
+                      </li>
+                      <li>
+                        <Typography>Garden view room</Typography>
+                      </li>
+                    </ul>
+
                     <div className="flex col group-btn">
+                      {bookingType === "multi-hotel" && (
+                        <HotelPrice>
+                          <Typography className="total-price" fontWeight="bold">
+                            Total Price
+                          </Typography>
+                          <div className="price-line">
+                            <Typography
+                              className="price-p-person"
+                              color="#104c94"
+                              fontSize="28px"
+                              fontWeight="800"
+                            >
+                              FJ$XXX
+                            </Typography>
+                            <Typography
+                              color="#e00000"
+                              fontSize="16px"
+                              fontWeight="normal"
+                            >
+                              Per person
+                            </Typography>
+                          </div>
+
+                          <div className="price-line">
+                            <Typography
+                              className="price-f-pax"
+                              fontWeight="800"
+                              lineHeight="16px"
+                            >
+                              FJ$X,XXX
+                            </Typography>
+                            <Typography color="#e00000" fontWeight="normal">
+                              Total cost pay for X pax
+                            </Typography>
+                          </div>
+                        </HotelPrice>
+                      )}
                       <Button
                         width="100%"
                         border="none"
                         backgroundColor="#ff8003"
                         padding="16px 20px"
-                        borderRadius="9px"
+                        borderRadius="17px"
                       >
                         <Typography
                           fontSize="18px"
@@ -335,7 +549,7 @@ export default function Booking() {
                         width="100%"
                         border="2px solid #d9bf50"
                         backgroundColor="#fff3d6"
-                        borderRadius="9px"
+                        borderRadius="17px"
                       >
                         <Typography
                           fontSize="18px"
@@ -347,10 +561,13 @@ export default function Booking() {
                       </Button>
                     </div>
                   </HotelDetail>
-                </HotelInformation>
+                </HotelInformation>)}
               </Left>
               <Right width="">
                 <CustomHotelOption onChangeHotels={onChangeHotels} />
+                {bookingType === "multi-hotel" && (
+                  <CustomHotelOption onChangeHotels={onChangeHotels} />
+                )}
               </Right>
             </Container>
             <ContainerRight></ContainerRight>
@@ -362,7 +579,7 @@ export default function Booking() {
                   isSelected
                   text={hotelName}
                   color={index === 1 ? "white" : COLORS.gradient2}
-                  borderRadius="8px"
+                  borderRadius="17px"
                   fontWeight="bold"
                   borderGradient={index === 1 ? COLORS.borderGradient : ""}
                   borderWidth={index === 1 ? "2px" : ""}
@@ -372,7 +589,10 @@ export default function Booking() {
               ))}
             </div>
           )}
-          <AboutHotel />
+          <AboutHotel
+            clickToScrollHrefOptions = {clickToScrollHrefOptions}
+            bookingType = {bookingType || ""}
+          />
         </BookingContainer>
       </MainLayout>
     </>

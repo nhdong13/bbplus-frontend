@@ -5,8 +5,8 @@ import IMAGES from "@/assets/images";
 import { ReactSVG } from "react-svg";
 import { Typography as Span } from "../Typography";
 import Calendar from "../Calendar";
-import { GradientButton } from "../Button";
 import { COLORS } from "@/utils/colors";
+import Select from "../Select";
 
 interface IModalCalendar extends IModal {}
 
@@ -18,21 +18,20 @@ export default function ModalCalendar({
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModalCalender>
         <div className="modal-header">
-          <GradientButton
-            isSelected={false}
-            text="Filter By Room"
+          <Select
+            label="Filter By Room"
             textColor="black"
             fontSize="14px"
             fontWeight="600"
-            width="72px"
-            height="100%"
+            width="140px"
+            maxHeight="36px"
             padding="6px 12px"
-            textPadding="0"
             borderWidth="2px"
             borderRadius="4px"
             borderGradient={COLORS.gradient2}
-            color={COLORS.gradient2}
+            isIconBlue={true}
           />
+
           <Span className="close-btn" textAlign="right" onClick={onCloseModal}>
             <ReactSVG src={IMAGES.iconClose} />
           </Span>

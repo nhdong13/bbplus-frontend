@@ -15,6 +15,9 @@ import {
 import { useEffect, useState } from "react"
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import { DateObject } from "react-multi-date-picker"
+import { Icon } from '@mui/material';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 interface IProps {
   checkIn: string,
@@ -46,22 +49,26 @@ export default function GridView({ checkIn }: IProps) {
   }
 
   const handlePrev = (): void => {
-    if (getDates()[0]?.format("DD MMM YYYY") != checkIn) {
-      const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
-      setCurrentDate(nextDate)
-    }
+    const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
+    setCurrentDate(nextDate)
   }
   return (
     <>
       <ListDate>
-      <SDate>
-        <ListContainer>
-          <div className="content">
-            <div onClick={handlePrev} className={getDates()[0]?.format("DD MMM YYYY") != checkIn ? '' : 'disabled'}>Previous 15 days</div>
-            <div onClick={handleNext}>Next 15 days</div>
-          </div>
-        </ListContainer>
-      </SDate>
+        <SDate>
+          <ListContainer>
+            <div className="content">
+              <div onClick={handlePrev} className="prev-next-link">
+                <Icon component={KeyboardDoubleArrowLeftIcon} />
+                Previous 15 days
+              </div>
+              <div onClick={handleNext} className="prev-next-link">
+                Next 15 days
+                <Icon component={KeyboardDoubleArrowRightIcon} />
+              </div>
+            </div>
+          </ListContainer>
+        </SDate>
         <ListContainer>
           <div className="flex-date">
 
@@ -73,9 +80,10 @@ export default function GridView({ checkIn }: IProps) {
                 <div className="horizontal-date">
                   {
                     getDates().map((date: DateObject, index2) => {
-                      const idx = dates.findIndex((d) => d.format("DD MMM YYYY") === date.format("DD MMM YYYY"))
+                      const isWeekend = date.toDate().getDay() % 6 === 0
+
                       return (
-                        <div className={`date-item ${idx > -1 ? 'room-active' : ''}`} key={index2}>
+                        <div className={`date-item ${isWeekend ? 'room-active' : ''}`} key={index2}>
                           <p>{date?.format("ddd")}</p>
                           <p className="day">{date?.format("DD")}</p>
                           <p>{date?.format("MMM")}</p>
@@ -112,9 +120,10 @@ export default function GridView({ checkIn }: IProps) {
                           <div className="haha">
                             <div className="horizontal-room">
                               {
-                                _.range(15).map((el2, index2) => {
+                                getDates().map((date: DateObject, index2) => {
+                                  const isWeekend = date.toDate().getDay() % 6 === 0
                                   return (
-                                    <div className={`room-item ${index2 === 3 || index2 === 5 ? 'room-active' : ''}`} key={index2}>$XXX</div>
+                                    <div className={`room-item ${isWeekend ? 'room-active' : ''}`} key={index2}>$XXX</div>
                                   )
                                 })
                               }

@@ -7,6 +7,9 @@ import styled from "styled-components";
 const WrapperSelect = styled.div.attrs(
   (props: {
     width?: string,
+    borderWidth?: string,
+    borderRadius?: string,
+    borderGradient?: string,
   }) => props
 )`
   position: relative;
@@ -15,12 +18,16 @@ const WrapperSelect = styled.div.attrs(
     list-style: none;
     font-size: 16px;
     border: 1px solid ${COLORS.doveGray};
-    border-radius: 11px;
+    border-radius: ${(props) => props.borderRadius || "11px"};
     margin-top: 10px;
     position: absolute;
     z-index: 10;
-    background: ${COLORS.white};
+    background: ${props => props.borderGradient || COLORS.white};
     min-width: 210px;
+    border-width: ${(props) => props.borderWidth || "1px"};
+
+    width: ${props => props.borderGradient ? "fit-content" : props.width};
+
     li {
       cursor: pointer;
       padding: 10px 20px;
@@ -56,14 +63,18 @@ const StyledSelectContainer = styled.div.attrs(
     maxHeight?: string;
     valid?: boolean;
     width?: string,
+    borderWidth?: string,
+    borderRadius?: string,
+    borderGradient?: string,
     padding?: string,
-    showOption?: boolean
+    showOption?: boolean,
+    fontWeight?: string,
   }) => props
 )`
   position: relative;
   width: ${(props) => props.width || "100%"};
   margin-top: ${(props) => props.marginTop || "26.9px"};
-  
+
   .icon {
     background-image: url(${(props) => props.iconUrl || ""});
     height: 27.12px;
@@ -92,6 +103,7 @@ const StyledSelectContainer = styled.div.attrs(
     font-size: ${(props) => props.fontSize || "16px"};
     border-radius: 7px;
     border: 2px solid ${COLORS.greenBlue};
+    font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "normal")};
     img {
       transform: ${({ showOption }) => showOption ? "rotate(180deg)" : "rotate(0)"};
       transition: all 0.5s ease-in-out;

@@ -12,6 +12,7 @@ import { SelectedRoomType } from "@/utils/types/CardHotel";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
+import { useParams } from "react-router-dom";
 
 interface ICustomHotelOption {
   onChangeHotels?: (hotelName: string) => void;
@@ -29,6 +30,7 @@ export default function CustomHotelOption({
   ]);
   const [hotelOptions, setHotelOptions] = useState([HOTEL_RESULT_DATA]);
   const { showModal } = useGlobalModalContext();
+  const { bookingType } = useParams();
 
   const onExpand = (accordion: string) => {
     setExpanded((expand) => {
@@ -51,8 +53,8 @@ export default function CustomHotelOption({
 
   const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
     if (type === "single") {
-      setSelectedOption((option) =>
-        option.includes(selectedOpt) ? [] : [selectedOpt]
+      setSelectedOption((option) => 
+        option.includes(selectedOpt) ? option : [selectedOpt]
       );
     }
   };
@@ -98,7 +100,7 @@ export default function CustomHotelOption({
                     text="Hotel 1 - Warwick Fiji Beach Resort"
                     fontSize="25px"
                     height="62px"
-                    borderRadius="8px"
+                    borderRadius="17px"
                     color={COLORS.gradient2}
                   />
                   <div className="hotel-result__action">
@@ -197,6 +199,7 @@ export default function CustomHotelOption({
                       />
                     );
                   }
+                  if ((bookingType === 'multi-hotel' && ["room_extras", "room_transfer", "room_tours"].includes(result.type)) || bookingType === 'itinerary' || (bookingType === 'quick-book' && ["room_extras", "room_transfer"].includes(result.type)))
                   return (
                     <div
                       className="inactive-component"
@@ -222,7 +225,7 @@ export default function CustomHotelOption({
                         text="ADD Component"
                         fontSize="25px"
                         height="62px"
-                        borderRadius="8px"
+                        borderRadius="17px"
                         fontWeight="bold"
                         color={COLORS.gradient2}
                         handleSubmit={() => onAddComponent(result.type, index)}

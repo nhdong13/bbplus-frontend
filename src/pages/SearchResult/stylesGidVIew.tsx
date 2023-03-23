@@ -17,7 +17,8 @@ const GridViewTitle = styled.div`
   background: ${COLORS.greenBlue};
   display: flex;
   align-items: center;
-  font-family: ${FONTS.manropeBold};
+  font-family: ${FONTS.manrope};
+  font-weight: bold;
   @media ${BREAKPOINTS.laptop} {
     font-size: 10px;
     padding-left: 11px;
@@ -35,6 +36,11 @@ const GridViewTitle = styled.div`
     justify-content: center;
     padding: 0 10px;
     height: 32px;
+
+    span {
+      font-weight: normal;
+    }
+
     @media ${BREAKPOINTS.laptop} {
       margin-left: 10px;
       height: 16px;
@@ -88,6 +94,8 @@ const GridRoomItem = styled.div`
   }
   .room {
     min-width: 250px;
+    font-weight: bold;
+
     @media ${BREAKPOINTS.laptop} {
       min-width: 80px;
       margin-right: 8px;
@@ -180,6 +188,11 @@ const ListContainer = styled.div`
       }
     }
   }
+
+  .prev-next-link {
+    display: flex;
+    justify-content: center;
+  }
 `
 const GridDateItem = styled.div`
   display: flex;
@@ -195,6 +208,7 @@ const GridDateItem = styled.div`
     width: 57px;
     text-align: center;
     border-right: 1px solid ${COLORS.silver};
+    font-weight: bold;
     &:last-child {
       border-right: 0;
     }
@@ -207,7 +221,7 @@ const GridDateItem = styled.div`
       }
     }
   }
-  
+
   .room-active {
     background: #E8F4FF;
   }

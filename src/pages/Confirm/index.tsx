@@ -171,6 +171,7 @@ export default function Confirm() {
                       height="50px"
                       fontWeight="bold"
                       fontSize="18px"
+                      borderRadius="17px"
                     />
                   </div>
                   <div className="form-information">

@@ -129,7 +129,7 @@ const ButtonNextStep = styled.button`
   width: fit-content;
   height: fit-content;
   padding: 16px 42px;
-  border-radius: 6px;
+  border-radius: 17px;
   font-weight: bold;
   font-size: 16px;
   width: 194px;
@@ -211,6 +211,12 @@ const HotelInformation = styled.div`
   }
   .hotel-info-container {
     padding-left: 12px;
+  }
+  .divider {
+    border-bottom: 2px dashed #b1b1b1;
+    border-bottom-style: dotted;
+    margin-top: 36.6px;
+    margin-bottom: 40px;
   }
   @media ${BREAKPOINTS.tablet} {
     box-sizing: border-box;
@@ -401,7 +407,7 @@ const Button = styled.button<IButton>`
 `;
 
 const HotelDetail = styled.div`
-  margin-top: 12px;
+  margin-top: 20px;
   .action {
     display: flex;
     flex-direction: row;
@@ -427,6 +433,27 @@ const HotelDetail = styled.div`
     margin-top: 28px;
     gap: 12px;
   }
+
+  .most-popular {
+    height: 40px;
+
+    .most-popular-text {
+      vertical-align: -webkit-baseline-middle;
+    }
+
+    .most-popular-button {
+      float: right;
+
+      button {
+        border: 2px solid #00B492;
+      }
+
+      .room-only {
+        margin-right: 13px;
+      }
+    }
+  }
+
   @media ${BREAKPOINTS.tablet} {
     & > div:first-child {
       justify-content: flex-start;
@@ -485,6 +512,10 @@ const HotelDetail = styled.div`
     }
   }
 `;
+const ButtonToScroll = styled.a`
+  text-decoration: none;
+  color: ${COLORS.black} ;
+`;
 
 export {
   BookingOption,
@@ -503,4 +534,5 @@ export {
   HotelPrice,
   HotelDetail,
   Button,
+  ButtonToScroll
 };

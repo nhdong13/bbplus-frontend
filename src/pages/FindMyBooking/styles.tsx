@@ -78,7 +78,6 @@ const SearchBar = styled.div`
 
 const SearchItem = styled.div`
   border-right: 2px solid ${COLORS.silver};
-  cursor: pointer;
   height: 100%;
   padding: 0px 35px;
   display: flex;

@@ -14,7 +14,7 @@ import IMAGES from "@/assets/images";
 import { Container } from "@/styles";
 import { HOTEL_RESULT_DATA } from "@/utils/dataTest";
 import { COLORS } from "@/utils/colors";
-import { StyledModal } from "./styles";
+import { StyledModal, StyledModalContent } from "./styles";
 import { GradientButton } from "../Button";
 
 interface IRoomExtras extends IModal {}
@@ -28,98 +28,99 @@ export default function RoomExtras({
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModal>
-        <div className="header">
-          <Span padding="0 0 0 16px" fontSize="24px" fontWeight="bold">
-            {title}
-          </Span>
-          <Span
-            textAlign="right"
-            style={{
-              alignSelf: "end",
-            }}
-            onClick={onCloseModal}
-          >
-            <ReactSVG
-              className="close-btn"
-              onClick={onCloseModal}
-              src={IMAGES.iconClose}
-            />
-          </Span>
-        </div>
-
-        <Container display="block" maxWidth="820px" width="820px">
-          <Details>
-            {HOTEL_RESULT_DATA[1].modalOptions?.map((option, index) => {
-              return (
-                <Option key={option.title + index}>
-                  <div>
-                    <Span fontWeight="bold" fontSize="18px">
-                      {option.title}
-                    </Span>
-                    <Span className="detail" fontSize="14px">
-                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                    </Span>
-                  </div>
-                  <div className="price">
-                    <Span fontWeight="bold" fontSize="16px">
-                      _
-                    </Span>
-                    <Span textAlign="center" fontWeight="bold" fontSize="20px">
-                      {option.price}
-                    </Span>
-                  </div>
-                  <div className="qty">
-                    <Span
-                      fontSize="14px"
-                      textAlign="center"
-                      color={COLORS.electricRed}
-                    >
-                      Qty
-                    </Span>
-                    <FormControl fullWidth>
-                      <Select
-                        label="qty"
-                        displayEmpty
-                        defaultValue={0}
-                        input={<OutlinedInput />}
-                        // inputProps={{ "aria-label": "Without label" }}
-                        onChange={onChangeQty}
-                        IconComponent={(props) => (
-                          <ReactSVG
-                            className="dropdown"
-                            src={IMAGES.iconDropDownBlue}
-                          ></ReactSVG>
-                        )}
-                      >
-                        <MenuItem value={0}>0</MenuItem>
-                        <MenuItem value={10}>10</MenuItem>
-                        <MenuItem value={20}>20</MenuItem>
-                        <MenuItem value={30}>30</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </Option>
-              );
-            })}
-          </Details>
-        </Container>
-        <Action>
-          <Span fontSize="24px" fontWeight="bold">
-            $XXX{" "}
-            <Span fontSize="16px" fontWeight="normal">
-              total
+        <StyledModalContent>
+          <div className="header">
+            <Span padding="0 0 0 16px" fontSize="24px" fontWeight="bold">
+              {title}
             </Span>
-          </Span>
-          <GradientButton
-            className="btn"
-            isSelected
-            text="Update trip"
-            color={COLORS.gradient2}
-            handleSubmit={onCloseModal}
-            fontWeight="bold"
-            borderRadius="5px"
-          />
-        </Action>
+            <Span
+              textAlign="right"
+              style={{
+                alignSelf: "end",
+              }}
+              onClick={onCloseModal}
+            >
+              <ReactSVG
+                className="close-btn"
+                onClick={onCloseModal}
+                src={IMAGES.iconClose}
+              />
+            </Span>
+          </div>
+
+          <Container display="block" maxWidth="820px" width="820px">
+            <Details>
+              {HOTEL_RESULT_DATA[1].modalOptions?.map((option, index) => {
+                return (
+                  <Option key={option.title + index}>
+                    <div>
+                      <Span fontWeight="bold" fontSize="18px">
+                        {option.title}
+                      </Span>
+                      <Span className="detail" fontSize="14px">
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      </Span>
+                    </div>
+                    <div className="price">
+                      <Span fontWeight="bold" fontSize="16px">
+                        _
+                      </Span>
+                      <Span textAlign="center" fontWeight="bold" fontSize="20px">
+                        {option.price}
+                      </Span>
+                    </div>
+                    <div className="qty">
+                      <Span
+                        fontSize="14px"
+                        textAlign="center"
+                        color={COLORS.electricRed}
+                      >
+                        Qty
+                      </Span>
+                      <FormControl fullWidth>
+                        <Select
+                          label="qty"
+                          displayEmpty
+                          defaultValue={0}
+                          input={<OutlinedInput />}
+                          onChange={onChangeQty}
+                          IconComponent={(props) => (
+                            <ReactSVG
+                              className="dropdown"
+                              src={IMAGES.iconDropDownBlue}
+                            ></ReactSVG>
+                          )}
+                        >
+                          <MenuItem value={0}>0</MenuItem>
+                          <MenuItem value={10}>10</MenuItem>
+                          <MenuItem value={20}>20</MenuItem>
+                          <MenuItem value={30}>30</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </div>
+                  </Option>
+                );
+              })}
+            </Details>
+          </Container>
+          <Action>
+            <Span fontSize="24px" fontWeight="bold">
+              $XXX&nbsp;
+              <Span fontSize="16px" fontWeight="normal">
+                total
+              </Span>
+            </Span>
+            <GradientButton
+              className="btn"
+              isSelected
+              text="Update trip"
+              color={COLORS.gradient2}
+              handleSubmit={onCloseModal}
+              fontWeight="bold"
+              borderRadius="17px"
+            />
+          </Action>
+        </StyledModalContent>
       </StyledModal>
     </Modal>
   );
