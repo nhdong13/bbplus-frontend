@@ -17,10 +17,12 @@ const StyledButton = styled.div.attrs((props: {
   borderRadius?: string
   borderGradient?: string
   borderWidth?: string
+  borderColor?: string
+  margin?: string
 }) => props)`
   align-items: center;
   background: ${props => props.borderGradient || props.color};
-  border: ${props => props.borderWidth || 0} solid transparent;
+  border: ${props => props.borderWidth || 0} solid ${props => props.borderColor || "transparent"};
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
   display: flex;
@@ -30,7 +32,7 @@ const StyledButton = styled.div.attrs((props: {
   max-width: ${props => props.maxWidth};
   padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
   width: ${props => props.borderGradient ? "fit-content" : props.width};
-
+  margin: ${props => props.margin || "initial"};
   span {
     color: ${props => props.textColor || COLORS.white};
     display: flex;
