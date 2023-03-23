@@ -375,7 +375,7 @@ export default function Booking() {
                           border="none"
                           backgroundColor="#ff8003"
                           padding="16px 20px"
-                          borderRadius="9px"
+                          borderRadius="17px"
                         >
                           <Typography
                             fontSize="18px"
@@ -389,7 +389,7 @@ export default function Booking() {
                           width="100%"
                           border="2px solid #d9bf50"
                           backgroundColor="#fff3d6"
-                          borderRadius="9px"
+                          borderRadius="17px"
                         >
                           <Typography
                             fontSize="18px"
