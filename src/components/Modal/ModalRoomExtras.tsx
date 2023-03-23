@@ -105,7 +105,7 @@ export default function RoomExtras({
           </Container>
           <Action>
             <Span fontSize="24px" fontWeight="bold">
-              $XXX{" "}
+              $XXX&nbsp;
               <Span fontSize="16px" fontWeight="normal">
                 total
               </Span>

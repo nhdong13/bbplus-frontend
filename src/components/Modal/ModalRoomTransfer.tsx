@@ -251,7 +251,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
           </Container>
           <Action>
             <Span fontSize="24px" fontWeight="bold">
-              $XXX{" "}
+              $XXX&nbsp;
               <Span fontSize="16px" fontWeight="normal">
                 total
               </Span>
