@@ -5,7 +5,7 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H5, Typography } from "@/components/Typography";
 import { Breadcrumb, BreadcrumbItem } from "@/styles";
 import { COLORS } from "@/utils/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   BookingContainer,
@@ -43,6 +43,7 @@ import { GradientButton } from "@/components/Button";
  
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import FullSearchWidget from "@/components/Search/FullSearchWidget";
+import { isMobileResponsive } from "@/utils/constant";
 
 const clickToScrollHrefOptions = {
   hotelRules: "hotel_rules_href",
@@ -55,7 +56,7 @@ export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const [hotels, setHotels] = useState<string[]>([]);
   const [searchMode, setSearchMode] = useState<number>(0);
-
+  const isMobile = isMobileResponsive()
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
@@ -320,45 +321,70 @@ export default function Booking() {
                       <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
                         Most Popular
                       </Typography>
-                      <div className="most-popular-button">
-                        <Button
-                          width="120px"
-                          height="40px"
-                          border="2px"
-                          backgroundColor="transparent"
-                          borderRadius="17px"
-                          padding="0"
-                          className="room-only"
-                        >
-                          <Typography
-                            fontSize="16px"
-                            fontWeight="normal"
+                      {isMobile ? <div className="most-popular-button">
+                          <Button
+                            border="1px"
+                            backgroundColor="transparent"
+                            borderRadius="5px"
+                            padding="5px"
+                            className="room-only"
                           >
-                            Room Only
-                          </Typography>
-                        </Button>
+                              <Typography fontSize="16px" fontWeight="normal">
+                                Room Only
+                              </Typography>
+                            </Button>
 
-                        <Button
-                          width="170px"
-                          height="40px"
-                          border="2px"
-                          backgroundColor="transparent"
-                          borderRadius="17px"
-                          padding="0"
-                        >
-                          <Typography
-                            fontSize="16px"
-                            fontWeight="normal"
+                          <Button
+                            border="1px"
+                            backgroundColor="transparent"
+                            borderRadius="5px"
+                            padding="5px"
                           >
-                            Ultimate Holiday
-                          </Typography>
-                        </Button>
-                      </div>
+                            <Typography
+                              fontSize="16px"
+                              fontWeight="normal"
+                            >
+                              Ultimate Holidayyy
+                            </Typography>
+                          </Button>
+                        </div>
+                        :
+                        <div className="most-popular-button">
+                          <Button
+                            width="120px"
+                            height="40px"
+                            border="2px"
+                            backgroundColor="transparent"
+                            borderRadius="17px"
+                            padding="0"
+                            className="room-only"
+                          >
+                              <Typography fontSize="16px" fontWeight="normal">
+                                Room Only
+                              </Typography>
+                            </Button>
 
+                          <Button
+                            width="170px"
+                            height="40px"
+                            border="2px"
+                            backgroundColor="transparent"
+                            borderRadius="17px"
+                            padding="0"
+                          >
+                            <Typography
+                              fontSize="16px"
+                              fontWeight="normal"
+                            >
+                              Ultimate Holiday
+                            </Typography>
+                          </Button>
+                        </div>
+                      }
                     </div>
                     <Typography
                       className="holiday-includes"
-                      fontSize="24px"
+                      fontSize={isMobile ? "12px" : "24px"}
                       fontWeight="bold"
                     >
                       Holiday includes
@@ -471,6 +497,71 @@ export default function Booking() {
                     </div>
                   </HotelImage>
                   <HotelDetail>
+                    <div className="most-popular">
+                      <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
+                        Most Popular
+                      </Typography>
+                      {isMobile ? <div className="most-popular-button">
+                          <Button
+                            border="1px"
+                            backgroundColor="transparent"
+                            borderRadius="5px"
+                            padding="5px"
+                            className="room-only"
+                          >
+                              <Typography fontSize="16px" fontWeight="normal">
+                                Room Only
+                              </Typography>
+                            </Button>
+
+                          <Button
+                            border="1px"
+                            backgroundColor="transparent"
+                            borderRadius="5px"
+                            padding="5px"
+                          >
+                            <Typography
+                              fontSize="16px"
+                              fontWeight="normal"
+                            >
+                              Ultimate Holidayyy
+                            </Typography>
+                          </Button>
+                        </div>
+                        :
+                        <div className="most-popular-button">
+                          <Button
+                            width="120px"
+                            height="40px"
+                            border="2px"
+                            backgroundColor="transparent"
+                            borderRadius="17px"
+                            padding="0"
+                            className="room-only"
+                          >
+                              <Typography fontSize="16px" fontWeight="normal">
+                                Room Only
+                              </Typography>
+                            </Button>
+
+                          <Button
+                            width="170px"
+                            height="40px"
+                            border="2px"
+                            backgroundColor="transparent"
+                            borderRadius="17px"
+                            padding="0"
+                          >
+                            <Typography
+                              fontSize="16px"
+                              fontWeight="normal"
+                            >
+                              Ultimate Holiday
+                            </Typography>
+                          </Button>
+                        </div>
+                      }
+                    </div>
                     <Typography
                       className="holiday-includes"
                       fontSize="24px"
@@ -491,8 +582,6 @@ export default function Booking() {
                         <Typography>Garden view room</Typography>
                       </li>
                     </ul>
-
-                    <div className="flex col group-btn">
                       {bookingType === "multi-hotel" && (
                         <HotelPrice>
                           <Typography className="total-price" fontWeight="bold">
@@ -530,6 +619,7 @@ export default function Booking() {
                           </div>
                         </HotelPrice>
                       )}
+                    <div className="flex col group-btn">
                       <Button
                         width="100%"
                         border="none"
@@ -553,7 +643,7 @@ export default function Booking() {
                       >
                         <Typography
                           fontSize="18px"
-                          fontWeight="bold"
+                          fontWeight="600"
                           color="black"
                         >
                           Quick Quote

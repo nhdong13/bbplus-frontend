@@ -13,6 +13,7 @@ import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { useParams } from "react-router-dom";
+import { isMobileResponsive } from "@/utils/constant";
 
 interface ICustomHotelOption {
   onChangeHotels?: (hotelName: string) => void;
@@ -31,6 +32,7 @@ export default function CustomHotelOption({
   const [hotelOptions, setHotelOptions] = useState([HOTEL_RESULT_DATA]);
   const { showModal } = useGlobalModalContext();
   const { bookingType } = useParams();
+  const isMobile = isMobileResponsive()
 
   const onExpand = (accordion: string) => {
     setExpanded((expand) => {
@@ -222,7 +224,7 @@ export default function CustomHotelOption({
                       </Span>
                       <GradientButton
                         isSelected
-                        text="ADD Component"
+                        text={isMobile ? "+ ADD Component" : "ADD Component"}
                         fontSize="25px"
                         height="62px"
                         borderRadius="17px"
@@ -344,9 +346,10 @@ const StyledHotelResult = styled.div`
           padding: 0 10px;
         }
       }
+      padding-top: 30px;
+      padding-right: 0px;
     }
     .hotel-result__action {
-      padding-top: 30px;
       span {
         font-size: 14px;
         line-height: 19px;
@@ -376,14 +379,19 @@ const StyledHotelResult = styled.div`
       }
       .gradient-button {
         height: fit-content;
+        width: 200px;
         & > div {
           height: 34px;
         }
         span {
-          font-size: 12px;
-          padding: 0 12px;
+          font-size: 10px;
         }
       }
     }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .hotel-result__separate{
+      margin: 0 12.5px;
+    } 
   }
 `;

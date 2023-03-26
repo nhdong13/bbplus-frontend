@@ -9,6 +9,7 @@ import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
+import useFullSearchWidget from "../Search/useFullSearch";
 
 const StyledAboutHotel = styled.div`
   padding-bottom: 48px;
@@ -134,6 +135,7 @@ const StyledAboutHotel = styled.div`
   @media ${BREAKPOINTS.tablet} {
     padding-bottom: 15px;
     .about-hotel__action {
+      display: none;
       padding-top: 0px;
       span {
         font-size: 14px;
@@ -264,8 +266,17 @@ const StyledAboutHotel = styled.div`
   }
 `;
 
-const WrapperHotelAmenities = styled.div`
+const WrapperMultiHotelButton = styled.div`
   display: flex;
+  @media ${BREAKPOINTS.mobileLg} {
+    justify-content: space-around;
+    span {
+      font-size: 10px;
+    }
+    .gradient-button {
+      width: 195px;
+    }
+  }
 `;
 
 const EXPAND = ["amenities", "rules", "faq"];
@@ -279,6 +290,7 @@ interface ClickToScrollHrefOptions {
 
 export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string}) {  
   const [expanded, setExpanded] = useState<string[]>(EXPAND);
+  const {isMobile} = useFullSearchWidget()
   const expandAll = () => {
     setExpanded(EXPAND);
   };
@@ -297,30 +309,32 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
     <StyledAboutHotel>
       <Container display="block" padding="0 20px 0px 20px">
         {bookingType == "multi-hotel" && (
-          <WrapperHotelAmenities>
+          <WrapperMultiHotelButton>
             <GradientButton
               isSelected
               text="Warwick Fiji Beach Resort"
               fontSize="18px"
-              height="62px"
-              borderRadius="17px"
+              height={isMobile ? "34px" : "62px"}
+              borderRadius={isMobile ? "5px" : "17px"}
               color={COLORS.gradient2}
               borderGradient={COLORS.gradient2}
-              margin={"0px 15px 0px 0px"}
+              margin={isMobile ? "initial" : "0px 15px 0px 0px"}
+              fontWeight={"700"}
             />
             <GradientButton
               isSelected
               text="Fiji Gateway Hotel"
               fontSize="18px"
-              height="58px"
-              borderRadius="17px"
-              borderWidth="2px"
-              textColor={COLORS.blueRibbon}
+              height={isMobile ? "32px" : "58px"}
+              borderRadius={isMobile ? "5px" : "17px"}
+              borderWidth={isMobile ? "1px" : "2px"}
+              textColor={isMobile ? COLORS.blueFrench : COLORS.blueRibbon}
               color={COLORS.white}
               borderGradient={COLORS.white}
               borderColor={COLORS.greenBlue}
+              fontWeight={"700"}
             />
-          </WrapperHotelAmenities>
+          </WrapperMultiHotelButton>
           )}
         <div className="about-hotel__action">
           <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>

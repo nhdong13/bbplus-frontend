@@ -40,8 +40,8 @@ const GradientButton = ({
         onClick={handleSubmit}
         borderGradient={borderGradient}
         borderColor = {borderColor}
-        margin={'0px 15px 0px 0px'}
-      >
+        margin={margin}
+        >
         <Overlay
           isSelected={isSelected}
           height={height}
