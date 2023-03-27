@@ -42,6 +42,34 @@ export const StyledConfirmationPage = styled.div`
       }
     }
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 15px 0px;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .sub-header {
+      font-size: 16px;
+    }
+
+    .group-btn {
+      margin: 2px 0 20px 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: calc(50% - 10px) calc(50% + 10px);
+      gap: 10px;
+
+      .btn {
+        padding: 10px 48px;
+        border-radius: 5px;
+        height: 39px;
+        width: calc(50% - 10px);
+        margin: 0;
+      }
+    }
+  }
 `;
 
 export const Board = styled.div`
@@ -169,6 +197,148 @@ export const Board = styled.div`
       span {
         word-break: break-all;
         line-height: 32px;
+      }
+    }
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 5px 0px;
+    margin-top: 0;
+    border: none;
+
+    .booking-details {
+      flex-direction: column;
+      font-size: 16px;
+
+      & > div {
+        span {
+          padding-bottom: 3px;
+        }
+
+        span:not(:last-child):not(.sub-header) {
+          padding-bottom: 33px;
+        }
+
+        .sub-header {
+          font-size: 18px;
+          padding-bottom: 20px;
+          padding-top: 20px;
+        }
+      }
+    }
+
+    .label {
+      font-size: 14px;
+    }
+
+    .big-label {
+      font-size: 16px;
+    }
+
+    .booking-summary {
+      font-size: 16px;
+
+      .sub-header {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+      }
+
+      .summary {
+        display: flex;
+        flex-direction: column;
+
+        > div {
+          margin-bottom: 20px;
+
+          span {
+            margin-bottom: 10px;
+          }
+
+          span:not(:first-child) {
+            padding-bottom: 0;
+          }
+
+          .taxes {
+            font-size: 14px;
+          }
+
+          .agency-markup {
+            font-size: 14px;
+
+            span {
+              padding: 0;
+            }
+          }
+        }
+
+        >:last-child {
+          align-items: start;
+        }
+      }
+    }
+
+    .booking-itinerary-details, .booking-note, .hotel-rules {
+      .sub-header {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+
+    .itinerary {
+      .form-header {
+        padding: 10px;
+        margin-bottom: 20px;
+        margin-top: 0;
+
+        .btn {
+          padding: 10px;
+          height: auto;
+
+          > div {
+            height: auto;
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .form-information {
+        padding: 0 10px 20px 10px;
+        font-size: 16px;
+
+        .line {
+          font-size: 14px;
+          margin-bottom: 10px;
+          padding-bottom: 0;
+        }
+
+        div:last-child {
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    .booking-note {
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #E2E2E2;
+      border-bottom-style: dotted;
+    }
+
+    .hotel-rules {
+      .line {
+        font-size: 16px;
+        grid-template-columns: 50% 50%;
+        padding: 0;
+        margin-bottom: 33px;
+
+        span {
+          line-height: 18px;
+        }
       }
     }
   }

@@ -44,6 +44,7 @@ const StyledTextModal = styled.div`
   outline: none;
   background-color: white;
   width: 696px;
+  max-width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;

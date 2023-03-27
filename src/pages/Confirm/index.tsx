@@ -29,7 +29,7 @@ export default function Confirm() {
             <H3 fontSize="40px" fontWeight="bold" textAlign="center">
               Booking Confirmed
             </H3>
-            <Span fontSize="28px" textAlign="center">
+            <Span fontSize="28px" textAlign="center" className="sub-header">
               Your booking is confirmed. Thank you!
             </Span>
             <Board>
@@ -44,15 +44,16 @@ export default function Confirm() {
                     Booked Details
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Guest name:</Span> Mr.John Wick
+                    <Span fontWeight="bold" className="label">Guest name:</Span>{" "}
+                    <Span>Mr.John Wick</Span>
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Guest email address:</Span>{" "}
-                    join@gmail.com
+                    <Span fontWeight="bold" className="label">Guest email address:</Span>{" "}
+                    <Span>join@gmail.com</Span>
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Guest Phone No:</Span> (+679)
-                    1234567
+                    <Span fontWeight="bold" className="label">Guest Phone No:</Span>{" "}
+                    <Span>(+679) 1234567</Span>
                   </Span>
                 </div>
                 <div>
@@ -65,14 +66,14 @@ export default function Confirm() {
                     CONFIRMED
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Bedbank Plus Booking Code:</Span>{" "}
+                    <Span fontWeight="bold" className="label">Bedbank Plus Booking Code:</Span>{" "}
                     XXXXXXXXXXX
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Booking Date:</Span> dd/mm/yyyy
+                    <Span fontWeight="bold" className="label">Booking Date:</Span> dd/mm/yyyy
                   </Span>
                   <Span>
-                    <Span fontWeight="bold">Booking Agent:</Span> xxxxxxxx Agent
+                    <Span fontWeight="bold" className="label">Booking Agent:</Span> xxxxxxxx Agent
                   </Span>
                 </div>
               </div>
@@ -87,38 +88,37 @@ export default function Confirm() {
                 </Span>
                 <div className="summary">
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">
+                    <Span fontWeight="bold" fontSize="18px" className="label">
                       Guest Name(s)
                     </Span>
                     <Span>Mr.Jack Smith</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">
+                    <Span fontWeight="bold" fontSize="18px" className="label">
                       Description
                     </Span>
                     <Span>Warwick Fiji Resort</Span>
                     <Span>
-                      <Span fontWeight="bold">2 Rooms</Span>: Garden view room,
+                      <Span fontWeight="bold" className="label">2 Rooms</Span>: Garden view room,
                       2 Adults, 2 Children
                     </Span>
                     <div>
                       <Span>
-                        <Span fontWeight="bold">Check-in</Span>: Fri, Mar 3,
+                        <Span fontWeight="bold" className="label">Check-in</Span>: Fri, Mar 3,
                       </Span>
                       <Span>
-                        <Span fontWeight="bold"> Check-out</Span>: Fri, Mar 12,
+                        <Span fontWeight="bold" className="label"> Check-out</Span>: Fri, Mar 12,
                       </Span>
                     </div>
                     <Span>6-night stay</Span>
                   </div>
                   <div>
-                    <Span fontWeight="bold" fontSize="18px">
+                    <Span fontWeight="bold" fontSize="18px" className="label">
                       Total Price
                     </Span>
-                    <Span className="hidden">xxx</Span>
                     <Span>$XXX</Span>
-                        <Span>
-                      Taxes and fees{" "}
+                    <Span className="taxes">
+                      <Span>Taxes and fees{" "}</Span>
                       <ReactSVG
                         className="mark"
                         src={IMAGES.iconInfo}
@@ -139,11 +139,11 @@ export default function Confirm() {
                         }}
                       />
                       : $XXX
-                        </Span>
-                    <Span fontSize="25px" fontWeight="bold">
+                    </Span>
+                    <Span fontSize="25px" fontWeight="bold" className="big-booking-label">
                       Total Price: $XXX
                     </Span>
-                    <Span>
+                    <Span className="agency-markup">
                       Agency Markup: <Span padding="0 0 0 32px">$XXX</Span>
                     </Span>
                   </div>
@@ -172,6 +172,7 @@ export default function Confirm() {
                       fontWeight="bold"
                       fontSize="18px"
                       borderRadius="17px"
+                      margin="0"
                     />
                   </div>
                   <div className="form-information">
@@ -260,7 +261,7 @@ export default function Confirm() {
                 </Span>
                 {HOTEL_RULES.map((rule) => (
                   <div key={rule.name} className="line">
-                    <Span fontWeight="600">{rule.name}</Span>
+                    <Span fontWeight="600" className="label">{rule.name}</Span>
                     <Span>{rule.value}</Span>
                   </div>
                 ))}
