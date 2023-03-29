@@ -395,7 +395,8 @@ export default function TravellerDetails() {
                 <p>
                   <Span fontWeight="bold">Type</Span>
                   <span>
-                    1 x Garden view room<a href="#">Change</a>
+                    1 x Garden view room
+                    <a href="#" onClick={() => navigate(-1)}>Change</a>
                   </span>
                 </p>
                 <div className="divider"></div>
@@ -407,7 +408,8 @@ export default function TravellerDetails() {
                 <p>
                   <Span fontWeight="bold">Extra 2</Span>
                   <span>
-                    1 x 1 hour spa treatment<a href="#">Change</a>
+                    1 x 1 hour spa treatment
+                    <a href="#" onClick={() => navigate(-1)}>Change</a>
                   </span>
                 </p>
                 <div className="divider"></div>
@@ -415,7 +417,8 @@ export default function TravellerDetails() {
                 <p>
                   <Span fontWeight="bold">Tewaka Fiji</Span>
                   <span>
-                    Return: Airport Transfer<a href="#">Change</a>
+                    Return: Airport Transfer
+                    <a href="#" onClick={() => navigate(-1)}>Change</a>
                   </span>
                 </p>
               </div>
