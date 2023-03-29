@@ -14,8 +14,10 @@ import IMAGES from "@/assets/images";
 import { Container } from "@/styles";
 import { HOTEL_RESULT_DATA } from "@/utils/dataTest";
 import { COLORS } from "@/utils/colors";
-import { StyledModal, StyledModalContent } from "./styles";
+import { Divider, StyledModal, StyledModalContent } from "./styles";
 import { GradientButton } from "../Button";
+import { isMobileResponsive } from "@/utils/constant";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IRoomExtras extends IModal {}
 
@@ -25,12 +27,13 @@ export default function RoomExtras({
   onCloseModal,
 }: IRoomExtras) {
   const onChangeQty = () => {};
+  const isMobile = isMobileResponsive()
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledModal>
+      <StyledModal width={isMobile ? "410px" : "820px"}>
         <StyledModalContent>
           <div className="header">
-            <Span padding="0 0 0 16px" fontSize="24px" fontWeight="bold">
+            <Span padding={isMobile ? "0 0 0 5px" : "0 0 0 16px"} fontSize={isMobile ? "16px" :"24px"} fontWeight="bold">
               {title}
             </Span>
             <Span
@@ -41,31 +44,31 @@ export default function RoomExtras({
               onClick={onCloseModal}
             >
               <ReactSVG
-                className="close-btn"
+                className="close-btn room-extras_close-button"
                 onClick={onCloseModal}
                 src={IMAGES.iconClose}
               />
             </Span>
           </div>
-
+          {isMobile && <Divider />}
           <Container display="block" maxWidth="820px" width="820px">
             <Details>
               {HOTEL_RESULT_DATA[1].modalOptions?.map((option, index) => {
                 return (
                   <Option key={option.title + index}>
-                    <div>
+                    <TitleDetails>
                       <Span fontWeight="bold" fontSize="18px">
                         {option.title}
                       </Span>
                       <Span className="detail" fontSize="14px">
                         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                       </Span>
-                    </div>
+                    </TitleDetails>
                     <div className="price">
                       <Span fontWeight="bold" fontSize="16px">
                         _
                       </Span>
-                      <Span textAlign="center" fontWeight="bold" fontSize="20px">
+                      <Span textAlign="center" fontWeight="bold" fontSize={ isMobile ? "16px" : "20px"}>
                         {option.price}
                       </Span>
                     </div>
@@ -77,7 +80,7 @@ export default function RoomExtras({
                       >
                         Qty
                       </Span>
-                      <FormControl fullWidth>
+                      <FormControl fullWidth={true}>
                         <Select
                           label="qty"
                           displayEmpty
@@ -104,9 +107,9 @@ export default function RoomExtras({
             </Details>
           </Container>
           <Action>
-            <Span fontSize="24px" fontWeight="bold">
+            <Span fontSize={isMobile ? "16px" : "24px"} fontWeight="bold" padding={isMobile ? "0 0 0 10px" : "0"}>
               $XXX&nbsp;
-              <Span fontSize="16px" fontWeight="normal">
+              <Span fontSize={isMobile ? "12px" : "16px"} fontWeight="normal">
                 total
               </Span>
             </Span>
@@ -117,7 +120,7 @@ export default function RoomExtras({
               color={COLORS.gradient2}
               handleSubmit={onCloseModal}
               fontWeight="bold"
-              borderRadius="17px"
+              borderRadius={isMobile ? "5px" : "17px"}
             />
           </Action>
         </StyledModalContent>
@@ -166,6 +169,15 @@ const Details = styled.div`
   &::-webkit-scrollbar-thumb {
     background: ${COLORS.gray80};
   }
+  @media ${BREAKPOINTS.mobileLg} {
+    grid-template-columns: initial; 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    margin: 0px;
+    padding: 0px;
+    max-height: 80vh;
+  }
 `;
 
 const Option = styled.div`
@@ -176,6 +188,20 @@ const Option = styled.div`
   border: 1px solid ${COLORS.grayAf};
   &:nth-last-of-type(-n + 2) {
     margin-bottom: 20px;
+    @media ${BREAKPOINTS.mobileLg} {
+      margin-bottom: 0;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    &:nth-last-of-type(-n + 2) {
+      margin-bottom: 0;
+    }
+    &:last-child {
+      margin-bottom: 10px;
+    }
+    &:first-child {
+      margin-top: 10px;
+    }
   }
   &:hover {
     background-color: #d0d8f3;
@@ -189,6 +215,11 @@ const Option = styled.div`
     &:first-child {
       .detail {
         max-width: 157px;
+      }
+      @media ${BREAKPOINTS.mobileLg} {
+        .detail {
+          max-width: 238px;
+        }
       }
     }
   }
@@ -211,6 +242,9 @@ const Option = styled.div`
         height: 6px;
       }
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      width: 100%;
+    }
   }
   .MuiSelect-select {
     padding: 0 0 0 12px !important;
@@ -220,6 +254,9 @@ const Option = styled.div`
   }
   .MuiFormControl-root {
     width: fit-content;
+    @media ${BREAKPOINTS.mobileLg} {
+      width: 100%;
+    }
   }
   .qty {
     align-items: center;
@@ -230,6 +267,13 @@ const Option = styled.div`
     & > span:first-child {
       opacity: 0;
       line-height: 16px;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+    .price {
+      flex-direction: row;
+      align-items: center;
     }
   }
 `;
@@ -246,6 +290,26 @@ const Action = styled.div`
     box-sizing: border-box;
     span {
       padding: 0 38px;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+    .btn {
+      height: 42px;
+      width: 96px;
+      span {
+        padding: 0 38px;
+      }
+    }
+    flex-grow: 1;
+  }
+`;
+
+const TitleDetails = styled.div`
+  @media ${BREAKPOINTS.mobileLg} {
+    span {
+      font-size: 16px;
+      font-weight: 700;
     }
   }
 `;

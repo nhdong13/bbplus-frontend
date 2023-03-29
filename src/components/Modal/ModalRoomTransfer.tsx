@@ -13,7 +13,7 @@ import { Typography as Span } from "../Typography";
 import styled from "styled-components";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
-import { StyledModal, StyledModalContent } from "./styles";
+import { Divider, StyledModal, StyledModalContent } from "./styles";
 import { Container } from "@/styles";
 import { useState } from "react";
 import { GradientButton } from "../Button";
@@ -21,6 +21,8 @@ import { COLORS } from "@/utils/colors";
 import { ONE_WAY_SEAT, RETURN_SEAT } from "@/utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import DatePicker from "react-multi-date-picker";
+import { isMobileResponsive } from "@/utils/constant";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IRoomTransfer extends IModal {
   transferType?: string;
@@ -33,10 +35,11 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
   const [selectedTab, setSelectedTab] = useState<string>(TAB[0]);
   const [selectedOption, setSelectedOption] = useState<string>(OPTION[0]);
   const [expand, setExpand] = useState<string[]>([]);
+  const isMobile = isMobileResponsive()
 
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledModal width="820px">
+      <StyledModal width={isMobile ? "410px" : "820px"}>
         <StyledModalContent>
           <div className="header">
             <Span fontSize="24px" fontWeight="bold">
@@ -57,7 +60,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
               />
             </Span>
           </div>
-
+          {isMobile && <Divider />}
           <Container display="block" maxWidth="820px">
             <Image src={transferType === "air" ? IMAGES.airportTransfer : IMAGES.landTransfer} alt="" />
             <TabContainer>
@@ -250,21 +253,20 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
             </Details>
           </Container>
           <Action>
-            <Span fontSize="24px" fontWeight="bold">
+            <Span fontSize={isMobile ? "16px" : "24px"} fontWeight="bold" padding={isMobile ? "0 0 0 10px" : "0"}>
               $XXX&nbsp;
-              <Span fontSize="16px" fontWeight="normal">
+              <Span fontSize={isMobile ? "12px" : "16px"} fontWeight="normal">
                 total
               </Span>
             </Span>
             <GradientButton
+              className="btn"
               isSelected
               text="Update trip"
               color={COLORS.gradient2}
               handleSubmit={onCloseModal}
               fontWeight="bold"
-              borderRadius="17px"
-              textPadding="0 38.5px 0 38.5px"
-              height="62px"
+              borderRadius={isMobile ? "5px" : "17px"}
             />
           </Action>
         </StyledModalContent>
@@ -301,6 +303,13 @@ const TabContainer = styled.div`
     height: 4px;
     box-sizing: border-box;
     width: 50% !important;
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .MuiButtonBase-root {
+      font-size: 14px;
+      text-transform: none;
+    }
+    margin-bottom: 10px;
   }
 `;
 
@@ -374,12 +383,22 @@ const Details = styled.div`
       left: 0px;
     }
   }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 0;
+    .MuiInputBase-root {
+      min-width: 67px;
+    }
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 240px;
   object-fit: cover;
+  @media ${BREAKPOINTS.mobileLg} {
+    height: 120px;
+    margin-top: 10px;
+  }
 `;
 
 const GroupButton = styled.div`
@@ -403,6 +422,10 @@ const GroupButton = styled.div`
       font-weight: 600;
       padding: 0;
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      height: 39px;
+      width: 190px;
+    }
   }
 `;
 
@@ -412,7 +435,25 @@ const Action = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 28px;
-  border-top: 1px solid black;
+  border-top: 1px solid ${COLORS.gray81};
+  .btn {
+    height: 62px;
+    box-sizing: border-box;
+    span {
+      padding: 0 38px;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+    .btn {
+      height: 42px;
+      width: 96px;
+      span {
+        padding: 0 38px;
+      }
+    }
+    flex-grow: 1;
+  }
 `;
 
 const Options = styled.div`
@@ -453,6 +494,15 @@ const Options = styled.div`
         height: 100%;
       }
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      .rmdp-container {
+        padding-right: 0;
+        input {
+          height: 39px;
+          font-size: 12px;
+        }
+      }
+    }
   }
   .option {
     width: 100%;
@@ -472,10 +522,31 @@ const Options = styled.div`
     &:last-child {
       border-bottom: 0px solid #aaa;
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 10px 0 10px 10px;
+      margin: 10px 0;
+      &:last-child {
+        border-bottom: 1px solid #aaa;
+      }
+      fieldset {
+        border-width: 1px;
+        border-color: #aaa;
+      }
+    }
   }
   .active {
     .rmdp-container input {
       border-color: black;
+      border-width: 1px;
     }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: 48vh;
+    overflow-y: scroll;
   }
 `;
