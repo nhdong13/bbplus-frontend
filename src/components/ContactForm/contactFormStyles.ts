@@ -36,6 +36,35 @@ const ContactFormContainer = styled.div.attrs((props: {
     margin-left: 10px;
     border: 0.5px dashed ${COLORS.smogray};
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: auto;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 0;
+    border: none;
+
+    h3 {
+      padding: 0 0 10px 0;
+    }
+
+    .sub-header {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .divider {
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      margin-left: 0;
+      border: 0.5px dashed ${COLORS.parkinglotGray};
+    }
+
+    &.not-primary-contact {
+      padding: 15px 10px;
+    }
+  }
 `
 export {
   ContactFormContainer

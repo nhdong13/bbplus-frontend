@@ -1,5 +1,6 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import styled from "styled-components";
 import { Typography as Span } from "../Typography";
 import { useState } from "react";
@@ -63,6 +64,18 @@ const StyledSelectContainer = styled.div.attrs(
     .selected {
       background: ${COLORS.blueRibbon};
       color: ${COLORS.white};
+    }
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border: 1px solid ${COLORS.black};
+    border-radius: 5px;
+
+    &.not-primary-contact {
+      margin-bottom: 0;
     }
   }
 `;
@@ -134,9 +147,56 @@ const PersonDetailInputContainer = styled.div`
     margin-left: 46px;
     width: 309px;
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    flex-direction: column;
+    margin-top: 20px;
+
+    .prefix, .firstname, .lastname {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .input-container {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      border: 1px solid ${COLORS.black};
+      border-radius: 5px;
+
+      input {
+        font-size: 14px;
+        padding: 10px;
+        height: auto;
+      }
+    }
+
+    .lastname {
+      .input-container {
+        margin-bottom: 10px;
+      }
+    }
+
+    &.not-primary-contact {
+      flex-direction: row;
+      gap: 10px;
+
+      .prefix {
+        width: 84px;
+
+        .select-container {
+          margin-bottom: 0;
+        }
+      }
+
+      .input-container {
+        margin-bottom: 0;
+      }
+    }
+  }
 `;
 
 interface PersonDetailInput {
+  isPrimaryContact?: boolean;
   options: any;
   label: string;
   input1Label: string;
@@ -144,13 +204,14 @@ interface PersonDetailInput {
 }
 
 const PersonDetailInput = ({
+  isPrimaryContact,
   options,
   label,
   input1Label,
   input2Label,
 }: PersonDetailInput) => {
   return (
-    <PersonDetailInputContainer>
+    <PersonDetailInputContainer className={isPrimaryContact ? "" : "not-primary-contact"}>
       <div className="prefix">
         <Span fontWeight="bold">Prefix</Span>
         <PrefixSelect label={label} options={options} />

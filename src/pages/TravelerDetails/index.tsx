@@ -19,6 +19,60 @@ import { useGlobalModalContext } from "@/components/Modal";
 export default function TravellerDetails() {
   const { showModal } = useGlobalModalContext();
   const navigate = useNavigate();
+
+  const importantInfoContainer = (isDesktop: boolean) => {
+    return (
+      <div className={`important-information ${isDesktop ? "desktop-only" : ""}`}>
+        <Span padding="0 0 10px 0" fontSize="20px" fontWeight="bold">
+          Important Information
+        </Span>
+        <div className="line-info">
+          <span>
+            <img src={IMAGES.iconCondtionResetPassword} />
+            No refunds will be issued for late check-in or early
+            check-out.
+          </span>
+        </div>
+        <div className="line-info">
+          <span>
+            <img src={IMAGES.iconCondtionResetPassword} />
+            By clicking on the button below, I acknowledge that I have
+            reviewed the <a href="#">Privacy Statement</a> and have
+            reviewed and accept the{" "}
+            <a href="#">Terms and Conditions</a>
+          </span>
+        </div>
+        <div className="payment-btn">
+          <GradientButton
+            color={COLORS.flushOrange}
+            text="Continue to secure payment"
+            isSelected={true}
+            maxWidth="291px"
+            height="58px"
+            borderRadius="17px"
+            fontWeight="bold"
+            handleSubmit={() => {
+              navigate("/confirm");
+            }}
+          />
+        </div>
+        <div className="line-info">
+          <span>
+            <img src={IMAGES.iconCondtionResetPassword} />
+            We use secure transmission and encrypted storage to protect
+            your personal information.
+          </span>
+        </div>
+        <div className="line-info">
+          <span>
+            <img src={IMAGES.iconCondtionResetPassword} />
+            This payment will be processed in Fiji.
+          </span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <MainLayout>
@@ -126,16 +180,19 @@ export default function TravellerDetails() {
                     />
                   </div>
                 </div>
-                <Span margin="0 0 13.4px 0" fontWeight="bold" fontSize="20px">
-                  Additional Notes (Optional)
-                </Span>
-                <FormInput
-                  label={""}
-                  marginTop="0"
-                  maxHeight="156px"
-                  width="783px"
-                  cssOptions="border-width: 1px;margin-bottom: 50px;input{padding:24px;};"
-                />
+                <div className="additional-notes">
+                  <Span margin="0 0 13.4px 0" fontWeight="bold" fontSize="20px">
+                    Additional Notes (Optional)
+                  </Span>
+                  <FormInput
+                    type="area"
+                    label={""}
+                    marginTop="0"
+                    maxHeight="156px"
+                    width="783px"
+                    cssOptions="border-width: 1px;margin-bottom: 50px;input{padding:24px;};"
+                  />
+                </div>
               </div>
               <div className="payment-information">
                 <p>
@@ -156,7 +213,7 @@ export default function TravellerDetails() {
                   </span>
                   <span>
                     <img src={IMAGES.iconCondtionResetPassword} />
-                    We use secure transmission
+                    We protect personal information
                   </span>
                 </div>
                 <div className="first-line-container">
@@ -205,57 +262,7 @@ export default function TravellerDetails() {
                   </div>
                 </div>
               </div>
-              <div className="important-information">
-                <Span padding="0 0 10px 0" fontSize="20px" fontWeight="bold">
-                  Important Information
-                </Span>
-                <div className="line-info">
-                  <span>
-                    <img src={IMAGES.iconCondtionResetPassword} />
-                    No refunds will be issued for late check-in or early
-                    check-out.
-                  </span>
-                </div>
-                <div className="line-info">
-                  <span>
-                    <p>
-                      <img src={IMAGES.iconCondtionResetPassword} />
-                      By clicking on the button below, I acknowledge that I have
-                      reviewed the <a href="#">Privacy Statement</a> and have
-                      <br />
-                      reviewed and accept the{" "}
-                      <a href="#">Terms and Conditions</a>
-                    </p>
-                  </span>
-                </div>
-                <div className="payment-btn">
-                  <GradientButton
-                    color={COLORS.flushOrange}
-                    text="Continue to secure payment"
-                    isSelected={true}
-                    maxWidth="291px"
-                    height="58px"
-                    borderRadius="17px"
-                    fontWeight="bold"
-                    handleSubmit={() => {
-                      navigate("/confirm");
-                    }}
-                  />
-                </div>
-                <div className="line-info">
-                  <span>
-                    <img src={IMAGES.iconCondtionResetPassword} />
-                    We use secure transmission and encrypted storage to protect
-                    your personal information.
-                  </span>
-                </div>
-                <div className="line-info">
-                  <span>
-                    <img src={IMAGES.iconCondtionResetPassword} />
-                    This payment will be processed in Fiji.
-                  </span>
-                </div>
-              </div>
+              { importantInfoContainer(true) }
             </div>
             {/* *********************************************** */}
             <div className="trip-summary">
@@ -350,7 +357,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                 </div>
-                <div className="payment-btn">
+                <div className="payment-btn desktop-only">
                   <GradientButton
                     color={COLORS.flushOrange}
                     text="Continue to secure payment"
@@ -364,6 +371,11 @@ export default function TravellerDetails() {
                   />
                 </div>
               </div>
+
+              <div className="detail-form mobile-only">
+                { importantInfoContainer(false) }
+              </div>
+
               <div className="accommodation-container">
                 <Span fontSize="20px" fontWeight="bold" className="sub-header">
                   Accommodation
@@ -408,6 +420,8 @@ export default function TravellerDetails() {
                 </p>
               </div>
             </div>
+
+
           </TravelerDetailsFormContainer>
         </TravelerDetailsPageContainer>
       </MainLayout>

@@ -2,6 +2,7 @@ import { StyledInputContainer } from "./formInputStyles";
 import { FormInput } from "@/utils/types/FormInput";
 
 const FormInput = ({
+  type,
   label,
   fontSize,
   textColor,
@@ -28,10 +29,18 @@ const FormInput = ({
         className="input-container"
       >
         <div className="icon"></div>
-        <input
-          placeholder={label?.concat(isImportant ? " *" : " ")}
-          onChange={handleChange}
-        />
+        {type === 'area' ? (
+          <textarea
+            placeholder={label?.concat(isImportant ? " *" : " ")}
+            onChange={handleChange}
+          />
+        ) : (
+          <input
+            placeholder={label?.concat(isImportant ? " *" : " ")}
+            onChange={handleChange}
+          />
+        )}
+
       </StyledInputContainer>
     </>
   );

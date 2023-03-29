@@ -13,13 +13,14 @@ const ContactForm = ({
 }: ContactForm) => {
   return (
     <>
-      <ContactFormContainer isPrimaryContact={isPrimaryContact}>
+      <ContactFormContainer isPrimaryContact={isPrimaryContact} className={isPrimaryContact ? "" : "not-primary-contact"}>
         <H3>Primary Contact</H3>
         <p className={`sub-header ${orderNumber > 1 ? "no-margin" : ""}`}>
           <Span fontWeight="bold">Room  {orderNumber}</Span>: {numberAdult} Adults, {numberChild} Child, Room
           category name
         </p>
         <PersonDetailInput
+          isPrimaryContact={isPrimaryContact}
           options={[
             { id: 1, label: "Mr" },
             { id: 2, label: "Mrs" },
@@ -32,6 +33,7 @@ const ContactForm = ({
         <div className="divider"></div>
         <Span className="sub-header header_c" fontWeight="bold">Child 1</Span>
         <PersonDetailInput
+          isPrimaryContact={isPrimaryContact}
           options={[
             { id: 1, label: "Mr" },
             { id: 2, label: "Mrs" },
