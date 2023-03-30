@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { GlobalModal } from "./components/Modal";
+import store from './store'
+import { Provider } from 'react-redux'
+
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <GlobalModal>
-        <App />
-      </GlobalModal>
+      <Provider store={store}>
+        <GlobalModal>
+          <App />
+        </GlobalModal>
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );
