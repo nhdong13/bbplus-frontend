@@ -74,9 +74,10 @@ export default function RoomExtras({
                     </div>
                     <div className="qty">
                       <Span
-                        fontSize="14px"
+                        fontSize={isMobile ? "12px": "14px"}
+                        fontWeight = {isMobile ? "400" : ""}
                         textAlign="center"
-                        color={COLORS.electricRed}
+                        color={isMobile ? COLORS.red : COLORS.electricRed}
                       >
                         Qty
                       </Span>
@@ -90,7 +91,7 @@ export default function RoomExtras({
                           IconComponent={(props) => (
                             <ReactSVG
                               className="dropdown"
-                              src={IMAGES.iconDropDownBlue}
+                              src={isMobile ? IMAGES.mobileIconDropDown : IMAGES.iconDropDownBlue}
                             ></ReactSVG>
                           )}
                         >
@@ -244,6 +245,11 @@ const Option = styled.div`
     }
     @media ${BREAKPOINTS.mobileLg} {
       width: 100%;
+      .dropdown {
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
     }
   }
   .MuiSelect-select {
@@ -274,6 +280,10 @@ const Option = styled.div`
     .price {
       flex-direction: row;
       align-items: center;
+    }
+    .MuiSelect-select {
+      font-size: 12px;
+      font-family: Manrope;
     }
   }
 `;
