@@ -19,12 +19,14 @@ const StyledButton = styled.div.attrs((props: {
   borderWidth?: string
   borderColor?: string
   margin?: string
+  visibility?: string
 }) => props)`
   align-items: center;
   background: ${props => props.borderGradient || props.color};
   border: ${props => props.borderWidth || 0} solid ${props => props.borderColor || "transparent"};
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
+  visibility: ${props => props.visibility || "initial"};
   display: flex;
   justify-content: center;
   align-items: center;

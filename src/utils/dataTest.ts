@@ -11,7 +11,7 @@ export interface IRoomOptions {
 export const HOTEL_RESULT_DATA = [
   {
     name: "Room",
-    description: "1 x Suite, Ocean view",
+    description: "Garden View Room",
     type: "room_details",
     roomOptions: [
       {
@@ -66,7 +66,7 @@ export const HOTEL_RESULT_DATA = [
       },
       {
         id: 3,
-        title: "1hour spa treatment",
+        title: "1 hour spa treatment",
         price: "$XXX",
         value: "",
       },
@@ -123,7 +123,7 @@ export const HOTEL_RESULT_DATA = [
     ],
   },
   {
-    name: "Transfer",
+    name: "Land Transfer",
     description: "Tewaka Fiji, Airport Transfer",
     type: "room_transfer",
     roomOptions: [

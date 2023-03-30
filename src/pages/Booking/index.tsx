@@ -194,7 +194,7 @@ export default function Booking() {
                       FJ$XXX
                     </Typography>
                     <Typography
-                      color="#e00000"
+                      color={isMobile ? "#FF0000" : "#e00000"}
                       fontSize="16px"
                       fontWeight="normal"
                     >
@@ -210,7 +210,7 @@ export default function Booking() {
                     >
                       FJ$X,XXX
                     </Typography>
-                    <Typography color="#e00000" fontWeight="normal">
+                    <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
                       Total cost pay for X pax
                     </Typography>
                   </div>
@@ -247,7 +247,7 @@ export default function Booking() {
                       <div className="location">
                         <ReactSVG
                           className="icon"
-                          src={IMAGES.locationIcon}
+                          src={isMobile? IMAGES.mobileLocation : IMAGES.locationIcon}
                           width="17px"
                           height="25px"
                         />
@@ -271,7 +271,7 @@ export default function Booking() {
                         IMAGES.thumb4,
                         IMAGES.hotelBg,
                       ]}
-                      borderRadius="17px"
+                      borderRadius={isMobile ? "5px" : "17px"}
                       onSelectImage={onSelectImage}
                     />
                     <div>
@@ -279,43 +279,6 @@ export default function Booking() {
                       <div className="overlay"></div>
                     </div>
                   </HotelImage>
-                  {bookingType !== "multi-hotel" && (
-                    <HotelPrice>
-                      <Typography className="total-price" fontWeight="bold">
-                        Total Price
-                      </Typography>
-                      <div className="price-line">
-                        <Typography
-                          className="price-p-person"
-                          color="#104c94"
-                          fontSize="28px"
-                          fontWeight="800"
-                        >
-                          FJ$XXX
-                        </Typography>
-                        <Typography
-                          color="#e00000"
-                          fontSize="16px"
-                          fontWeight="normal"
-                        >
-                          Per person
-                        </Typography>
-                      </div>
-
-                      <div className="price-line">
-                        <Typography
-                          className="price-f-pax"
-                          fontWeight="800"
-                          lineHeight="16px"
-                        >
-                          FJ$X,XXX
-                        </Typography>
-                        <Typography color="#e00000" fontWeight="normal">
-                          Total cost pay for X pax
-                        </Typography>
-                      </div>
-                    </HotelPrice>
-                  )}
                   <HotelDetail>
                     <div className="most-popular">
                       <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
@@ -344,7 +307,7 @@ export default function Booking() {
                               fontSize="16px"
                               fontWeight="normal"
                             >
-                              Ultimate Holidayyy
+                              Ultimate Holiday
                             </Typography>
                           </Button>
                         </div>
@@ -418,6 +381,43 @@ export default function Booking() {
                       </li>
                     </ul>
                     {bookingType !== "multi-hotel" && (
+                      <HotelPrice>
+                        <Typography className="total-price" fontWeight="bold">
+                          Total Price
+                        </Typography>
+                        <div className="price-line">
+                          <Typography
+                            className="price-p-person"
+                            color="#104c94"
+                            fontSize="28px"
+                            fontWeight="800"
+                          >
+                            FJ$XXX
+                          </Typography>
+                          <Typography
+                            color={isMobile ? "#FF0000" : "#e00000"}
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Per person
+                          </Typography>
+                        </div>
+
+                        <div className="price-line">
+                          <Typography
+                            className="price-f-pax"
+                            fontWeight="800"
+                            lineHeight="16px"
+                          >
+                            FJ$X,XXX
+                          </Typography>
+                          <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
+                            Total cost pay for X pax
+                          </Typography>
+                        </div>
+                      </HotelPrice>
+                    )}
+                    {bookingType !== "multi-hotel" && (
                       <div className="flex col group-btn">
                         <Button
                           width="100%"
@@ -442,7 +442,7 @@ export default function Booking() {
                         >
                           <Typography
                             fontSize="18px"
-                            fontWeight="bold"
+                            fontWeight={isMobile ? "600" : "bold"}
                             color="black"
                           >
                             Quick Quote
@@ -524,7 +524,7 @@ export default function Booking() {
                               fontSize="16px"
                               fontWeight="normal"
                             >
-                              Ultimate Holidayyy
+                              Ultimate Holiday
                             </Typography>
                           </Button>
                         </div>
@@ -564,7 +564,7 @@ export default function Booking() {
                     </div>
                     <Typography
                       className="holiday-includes"
-                      fontSize="24px"
+                      fontSize={isMobile ? "12px" : "24px"}
                       fontWeight="bold"
                     >
                       Holiday includes
@@ -597,7 +597,7 @@ export default function Booking() {
                               FJ$XXX
                             </Typography>
                             <Typography
-                              color="#e00000"
+                              color={isMobile ? "#FF0000" : "#e00000"}
                               fontSize="16px"
                               fontWeight="normal"
                             >
@@ -613,7 +613,7 @@ export default function Booking() {
                             >
                               FJ$X,XXX
                             </Typography>
-                            <Typography color="#e00000" fontWeight="normal">
+                            <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
                               Total cost pay for X pax
                             </Typography>
                           </div>
@@ -643,7 +643,7 @@ export default function Booking() {
                       >
                         <Typography
                           fontSize="18px"
-                          fontWeight="600"
+                          fontWeight={isMobile ? "600" : "bold"}
                           color="black"
                         >
                           Quick Quote

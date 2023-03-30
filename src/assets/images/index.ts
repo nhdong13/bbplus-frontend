@@ -62,6 +62,8 @@ import iconArrowDownGradient from "./icon-arrow-down-gradient.svg";
 import landTransfer from "./land_transfer.png";
 import airportTransfer from "./airport_transfer.png";
 import imgListView from "./img-list-view.svg";
+import mobileLocation from "./location-mobile.svg"
+import mobileIconInfo from "./mobile_icon_info.svg"
 
 const IMAGES = {
   bbplusLogoWhite,
@@ -127,7 +129,9 @@ const IMAGES = {
   iconArrowDownGradient,
   landTransfer,
   airportTransfer,
-  imgListView
+  imgListView,
+  mobileLocation,
+  mobileIconInfo
 };
 
 export default IMAGES;

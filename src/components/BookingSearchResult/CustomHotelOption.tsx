@@ -104,6 +104,7 @@ export default function CustomHotelOption({
                     height="62px"
                     borderRadius="17px"
                     color={COLORS.gradient2}
+                    visibility={(isMobile && (bookingType === 'itinerary' || bookingType === 'quick-book')) ? "hidden" : "initial"}
                   />
                   <div className="hotel-result__action">
                     <Span
@@ -346,7 +347,7 @@ const StyledHotelResult = styled.div`
           padding: 0 10px;
         }
       }
-      padding-top: 30px;
+      padding-top: 10px;
       padding-right: 0px;
     }
     .hotel-result__action {
@@ -393,5 +394,12 @@ const StyledHotelResult = styled.div`
     .hotel-result__separate{
       margin: 0 12.5px;
     } 
+    .MuiPaper-root {
+      margin-bottom: 0px !important;
+      margin-top: 0px !important;
+    }
+    .inactive-component {
+      padding-top: 0;
+    }
   }
 `;

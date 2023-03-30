@@ -18,6 +18,7 @@ export interface GradientButton {
   handleSubmit?: () => void,
   borderColor?: string,
   margin?: string,
+  visibility?: string,
 }
 
 

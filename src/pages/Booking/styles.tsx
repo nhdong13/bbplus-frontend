@@ -141,6 +141,8 @@ const ButtonNextStep = styled.button`
     line-height: 16px;
     border-radius: 5px;
     margin-top: 10px;
+    height: 36px;
+    font-family: Manrope;
   }
 `;
 
@@ -329,6 +331,7 @@ const HotelImage = styled.div`
     }
     .hotel__image {
       margin-right: 10px;
+      border-radius: 5px;
     }
     .overlay {
       display: none;
@@ -352,7 +355,6 @@ const HotelPrice = styled.div`
     }
   }
   @media ${BREAKPOINTS.tablet} {
-    padding-bottom: 10px;
     .total-price {
       font-size: 12px;
       font-weight: normal;
@@ -386,6 +388,10 @@ const HotelPrice = styled.div`
         margin-top: 10px;
       }
     }
+    padding-bottom: 0;
+    padding-top: 10px;
+    border-bottom: none;
+    border-top: 2px dotted #b1b1b1;;
   }
 `;
 
@@ -472,6 +478,7 @@ const HotelDetail = styled.div`
 
   @media ${BREAKPOINTS.tablet} {
     margin-top: 10px;
+    margin-bottom: 20px;
     & > div:first-child {
       justify-content: flex-start;
       gap: 10px;

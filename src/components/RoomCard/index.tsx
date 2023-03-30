@@ -13,6 +13,7 @@ import { H3, H4, Typography as Span } from "../Typography";
 import { TAXES_AND_FEES } from "@/utils/dataTest";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import Tooltips from "../Tooltips";
+import { isMobileResponsive } from "@/utils/constant";
 
 interface IRoomCard {
   index?: number;
@@ -35,6 +36,7 @@ export default function RoomCard({
 }: IRoomCard) {
   const [selectedOption, setSelectedOption] = useState<number>();
   const { showModal } = useGlobalModalContext();
+  const isMobile = isMobileResponsive()
 
   const onChecked = (option: number) => {
     setSelectedOption(option);
@@ -174,7 +176,7 @@ export default function RoomCard({
                         <p onClick={() => onShowModal({})}>More details</p>
                         <img
                           className="info-icon"
-                          src={IMAGES.iconInfo}
+                          src={isMobile ? IMAGES.mobileIconInfo : IMAGES.iconInfo}
                           onClick={() => onShowModal({})}
                         />
                       </div>
@@ -189,7 +191,7 @@ export default function RoomCard({
                       <p onClick={() => onShowModal({})}>More details</p>
                       <img
                         className="info-icon"
-                        src={IMAGES.iconInfo}
+                        src={isMobile ? IMAGES.mobileIconInfo : IMAGES.iconInfo}
                         onClick={() => onShowModal({})}
                       />
                     </div>
@@ -241,6 +243,13 @@ const StyledRoomCard = styled.div`
     }
     .room-card__option-container {
       padding: 10px 24px;
+    }
+    &.selected {
+      .checkbox {
+        &:after {
+          background: ${COLORS.aliceBlue};
+        }
+      }
     }
   }
 `;

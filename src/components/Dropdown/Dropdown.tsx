@@ -16,6 +16,7 @@ const StyledDropdown = styled.div.attrs(
       padding: 0;
       min-height: unset !important;
       margin-bottom: 20px;
+      color: ${COLORS.black}
     }
     .MuiAccordionSummary-content {
       span {
