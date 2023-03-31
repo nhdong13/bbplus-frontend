@@ -43,6 +43,7 @@ interface IDropdown {
   expand: boolean;
   onExpand: () => void;
   id?: string;
+  titleColor?: string;
 }
 export default function Dropdown({
   className,
@@ -53,7 +54,8 @@ export default function Dropdown({
   expandIcon,
   onExpand,
   boxShadow,
-  id
+  id,
+  titleColor
 }: IDropdown) {
   return (
     <StyledDropdown
@@ -91,7 +93,7 @@ export default function Dropdown({
               className="title"
               fontSize="30px"
               fontWeight="bold"
-              color={COLORS.cyprus}
+              color={titleColor || COLORS.cyprus}
             >
               {title}
             </Span>

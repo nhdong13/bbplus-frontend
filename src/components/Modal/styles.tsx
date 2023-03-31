@@ -48,7 +48,7 @@ export const StyledModalContent = styled.div<IModal>`
     padding: 20px 20px 10px 20px;
   }
   @media ${BREAKPOINTS.mobileLg} {
-    height: 95vh;
+    height: calc(100vh - 30px);;
     width: 100%;
     border: 1px solid #CECFD1;
     box-shadow: 0px 0.5px 5px rgba(0,0,0,.35);

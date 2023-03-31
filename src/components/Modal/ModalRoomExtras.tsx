@@ -177,7 +177,7 @@ const Details = styled.div`
     }
     margin: 0px;
     padding: 0px;
-    max-height: 80vh;
+    max-height: calc(100vh - 150px);
   }
 `;
 
@@ -240,7 +240,7 @@ const Option = styled.div`
       height: fit-content;
       svg {
         width: 12px;
-        height: 6px;
+        height: 8px;
       }
     }
     @media ${BREAKPOINTS.mobileLg} {
@@ -312,6 +312,12 @@ const Action = styled.div`
       }
     }
     flex-grow: 1;
+    position: fixed;
+    bottom: 20px;
+    width: 385px;
+    background-color: ${COLORS.white};
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
   }
 `;
 
