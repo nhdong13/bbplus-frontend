@@ -15,6 +15,8 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import { useNavigate } from "react-router-dom";
 import { useGlobalModalContext } from "@/components/Modal";
+import { TAXES_AND_FEES } from "@/utils/dataTest";
+import Tooltips from "@/components/Tooltips";
 
 export default function TravellerDetails() {
   const { showModal } = useGlobalModalContext();
@@ -289,28 +291,22 @@ export default function TravellerDetails() {
                   </div>
                   <div className="divider" />
                   <div className="line">
-                    <p>
-                      Taxes and fees{" "}
-                      <ReactSVG
-                        className="icon"
-                        src={IMAGES.mark}
-                        onClick={() => {
-                          showModal("text", {
-                            title: "Taxes & fees",
-                            paragraph: `This charge includes estimated amounts the travel service provider
-                        (i.e. hotel, car rental company) pays for their taxes, and/or taxes
-                        that we pay, to taxing authorities on your booking (including but
-                        not limited to, sales, occupancy, and value added tax). This amount
-                        may also include any amounts charged to us for resort fees, cleaning
-                        fees, and other fees and/or a fee we, the hotel supplier and/ or the
-                        site you booked on, retain as part of the compensation for our
-                        and/or their services, which varies based on factors such as
-                        location, the amount, and how you booked.`,
-                            details: {},
-                          });
-                        }}
-                      />
-                    </p>
+                    <Tooltips
+                      title={
+                        <>
+                          <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
+                          <Span fontSize="14px">{TAXES_AND_FEES}</Span>
+                        </>
+                      }
+                    >
+                      <p>
+                        Taxes and fees{" "}
+                        <ReactSVG
+                          className="icon"
+                          src={IMAGES.mark}
+                        />
+                      </p>
+                    </Tooltips>
                     <span>$XXX</span>
                   </div>
                   <div className="divider" />
@@ -329,10 +325,22 @@ export default function TravellerDetails() {
                   </div>
                   <div className="divider" />
                   <div className="line last">
-                    <p>
-                      Add Extra Markup{" "}
-                      <ReactSVG className="icon" src={IMAGES.mark} />
-                    </p>
+                    <Tooltips
+                      title={
+                        <>
+                          <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
+                          <Span fontSize="14px">{TAXES_AND_FEES}</Span>
+                        </>
+                      }
+                    >
+                      <p>
+                        Add Extra Markup{" "}
+                        <ReactSVG
+                          className="icon"
+                          src={IMAGES.mark}
+                        />
+                      </p>
+                    </Tooltips>
                   </div>
                   <div className="action-bottom">
                     <div className="checkbox-group">

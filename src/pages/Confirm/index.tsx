@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MainLayout from "@/components/Layout/MainLayout";
 import { Container } from "@/styles";
 import { Helmet } from "react-helmet";
@@ -14,6 +15,8 @@ import { useGlobalModalContext } from "@/components/Modal";
 export default function Confirm() {
   const navigate = useNavigate();
   const { showModal } = useGlobalModalContext();
+  const [showItinerary, setShowItinerary] = useState(false)
+
   return (
     <>
       <Helmet>
@@ -166,73 +169,78 @@ export default function Confirm() {
                     <GradientButton
                       className="btn"
                       isSelected
-                      text="Show"
+                      text={showItinerary ? "Hide" : "Show"}
                       color={COLORS.gradient2}
                       height="50px"
                       fontWeight="bold"
                       fontSize="18px"
                       borderRadius="17px"
                       margin="0"
+                      handleSubmit={() => setShowItinerary(!showItinerary)}
                     />
                   </div>
-                  <div className="form-information">
-                    <Span fontSize="25px" fontWeight="bold">
-                      Accommodation
-                    </Span>
-                    <div className="line">
-                      <Span>Hotel</Span>
-                      <div></div>
-                      <Span>Warwick Fiji Resort & Spa</Span>
+                  <div style={{
+                    display: showItinerary ? "block" : "none",
+                  }}>
+                    <div className="form-information">
+                      <Span fontSize="25px" fontWeight="bold">
+                        Accommodation
+                      </Span>
+                      <div className="line">
+                        <Span>Hotel</Span>
+                        <div></div>
+                        <Span>Warwick Fiji Resort & Spa</Span>
+                      </div>
+                      <div className="line">
+                        <Span>Check-in</Span>
+                        <div></div>
+                        <Span>Day | Date | Month</Span>
+                      </div>
+                      <div className="line">
+                        <Span>Check-out</Span>
+                        <div></div>
+                        <Span>Day | Date | Month</Span>
+                      </div>
+                      <div className="line">
+                        <Span>Room Type</Span>
+                        <div></div>
+                        <Span>Garden view room</Span>
+                      </div>
                     </div>
-                    <div className="line">
-                      <Span>Check-in</Span>
-                      <div></div>
-                      <Span>Day | Date | Month</Span>
+                    <div className="form-information">
+                      <Span fontSize="25px" fontWeight="bold">
+                        Home Extras
+                      </Span>
+                      <div className="line">
+                        <Span>Extras 1</Span>
+                        <div></div>
+                        <Span>Half board meal plan</Span>
+                      </div>
+                      <div className="line">
+                        <Span>Extras 2</Span>
+                        <div></div>
+                        <Span>Half board meal plan</Span>
+                      </div>
                     </div>
-                    <div className="line">
-                      <Span>Check-out</Span>
-                      <div></div>
-                      <Span>Day | Date | Month</Span>
+                    <div className="form-information">
+                      <Span fontSize="25px" fontWeight="bold">
+                        Transfer
+                      </Span>
+                      <div className="line">
+                        <Span>Tewaka Fiji</Span>
+                        <div></div>
+                        <Span>Return: Airport Transfer</Span>
+                      </div>
                     </div>
-                    <div className="line">
-                      <Span>Room Type</Span>
-                      <div></div>
-                      <Span>Garden view room</Span>
-                    </div>
-                  </div>
-                  <div className="form-information">
-                    <Span fontSize="25px" fontWeight="bold">
-                      Home Extras
-                    </Span>
-                    <div className="line">
-                      <Span>Extras 1</Span>
-                      <div></div>
-                      <Span>Half board meal plan</Span>
-                    </div>
-                    <div className="line">
-                      <Span>Extras 2</Span>
-                      <div></div>
-                      <Span>Half board meal plan</Span>
-                    </div>
-                  </div>
-                  <div className="form-information">
-                    <Span fontSize="25px" fontWeight="bold">
-                      Transfer
-                    </Span>
-                    <div className="line">
-                      <Span>Tewaka Fiji</Span>
-                      <div></div>
-                      <Span>Return: Airport Transfer</Span>
-                    </div>
-                  </div>
-                  <div className="form-information">
-                    <Span fontSize="25px" fontWeight="bold">
-                      Tours
-                    </Span>
-                    <div className="line">
-                      <Span>Sigatoka River Safari</Span>
-                      <div></div>
-                      <Span>Jet boat safari</Span>
+                    <div className="form-information">
+                      <Span fontSize="25px" fontWeight="bold">
+                        Tours
+                      </Span>
+                      <div className="line">
+                        <Span>Sigatoka River Safari</Span>
+                        <div></div>
+                        <Span>Jet boat safari</Span>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,11 +1,12 @@
-import { Tooltip, TooltipProps } from "@mui/material";
+import { Tooltip, TooltipProps, tooltipClasses } from "@mui/material";
 import styled from "styled-components";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface ITooltip extends TooltipProps {}
 
 export default function Tooltips({ title, ...props }: ITooltip) {
   return (
-    <Tooltip
+    <CustomMaxWidthTooltip
       className="tooltip"
       {...props}
       title={<StyledTooltip>{title}</StyledTooltip>}
@@ -13,9 +14,23 @@ export default function Tooltips({ title, ...props }: ITooltip) {
   );
 }
 
+const CustomMaxWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    maxWidth: '100%',
+  },
+  [`@media ${BREAKPOINTS.mobileLg}`]: {
+    [`& .${tooltipClasses.tooltip}`]: {
+      maxWidth: '300px',
+    },
+  }
+});
+
 const StyledTooltip = styled.div`
   background-color: white;
   width: 696px;
+  max-width: 100%;
   box-sizing: border-box;
   padding: 20px;
   border-radius: 17px;
