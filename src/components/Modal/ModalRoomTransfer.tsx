@@ -309,7 +309,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
               </Span>
             </Span>
             <GradientButton
-              className="btn"
+              className="btn update-trip-button"
               isSelected
               text="Update trip"
               color={COLORS.gradient2}
@@ -484,6 +484,16 @@ const Details = styled.div`
     .fine-print {
       font-weight: 700;
     }
+    .disable {
+      span {
+        color: ${COLORS.parkinglotGray};
+      }
+      .dropdown {
+        path {
+          stroke: ${COLORS.parkinglotGray};
+        }
+      }
+    }
   }
 `;
 
@@ -564,6 +574,11 @@ const Action = styled.div`
     background-color: ${COLORS.white};
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    .update-trip-button{
+      span {
+        font-size: 14px;
+      }
+    }
   }
 `;
 
@@ -611,6 +626,7 @@ const Options = styled.div`
         input {
           height: 39px;
           font-size: 12px;
+          border-width: 1px;
         }
       }
       .dropdown {

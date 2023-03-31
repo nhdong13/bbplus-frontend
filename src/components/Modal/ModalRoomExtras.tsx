@@ -115,7 +115,7 @@ export default function RoomExtras({
               </Span>
             </Span>
             <GradientButton
-              className="btn"
+              className="btn update-trip-button"
               isSelected
               text="Update trip"
               color={COLORS.gradient2}
@@ -318,6 +318,11 @@ const Action = styled.div`
     background-color: ${COLORS.white};
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    .update-trip-button{
+      span {
+        font-size: 14px;
+      }
+    }
   }
 `;
 
