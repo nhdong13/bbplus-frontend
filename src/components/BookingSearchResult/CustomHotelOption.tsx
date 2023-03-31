@@ -104,7 +104,7 @@ export default function CustomHotelOption({
                     height="62px"
                     borderRadius="17px"
                     color={COLORS.gradient2}
-                    visibility={(isMobile && ['itinerary', 'quick-book'].includes(bookingType || "")) ? "hidden" : "initial"}
+                    visibility={(isMobile && bookingType === "quick-book") ? "hidden" : "initial"}
                   />
                   <div className="hotel-result__action">
                     <Span
