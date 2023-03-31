@@ -48,7 +48,7 @@ export default function Confirm() {
                   </Span>
                   <Span>
                     <Span fontWeight="bold" className="label">Guest name:</Span>{" "}
-                    <Span>Mr.John Wick</Span>
+                    <Span>Mr. John Wick</Span>
                   </Span>
                   <Span>
                     <Span fontWeight="bold" className="label">Guest email address:</Span>{" "}
@@ -92,20 +92,20 @@ export default function Confirm() {
                 <div className="summary">
                   <div>
                     <Span fontWeight="bold" fontSize="18px" className="label">
-                      Guest Name(s)
+                      Guest Name:
                     </Span>
-                    <Span>Mr.Jack Smith</Span>
+                    <Span>Mr. Jack Smith</Span>
                   </div>
                   <div>
                     <Span fontWeight="bold" fontSize="18px" className="label">
                       Description
                     </Span>
                     <Span>Warwick Fiji Resort</Span>
-                    <Span>
+                    <Span className="small-text">
                       <Span fontWeight="bold" className="label">2 Rooms</Span>: Garden view room,
                       2 Adults, 2 Children
                     </Span>
-                    <div>
+                    <div className="small-text">
                       <Span>
                         <Span fontWeight="bold" className="label">Check-in</Span>: Fri, Mar 3,
                       </Span>
@@ -113,7 +113,7 @@ export default function Confirm() {
                         <Span fontWeight="bold" className="label"> Check-out</Span>: Fri, Mar 12,
                       </Span>
                     </div>
-                    <Span>6-night stay</Span>
+                    <Span className="small-text">6-night stay</Span>
                   </div>
                   <div>
                     <Span fontWeight="bold" fontSize="18px" className="label">

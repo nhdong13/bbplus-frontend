@@ -33,6 +33,7 @@ const StyledButton = styled.div.attrs((props: {
   padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
   width: ${props => props.borderGradient ? "fit-content" : props.width};
   margin: ${props => props.margin || "initial"};
+  box-sizing: border-box;
   span {
     color: ${props => props.textColor || COLORS.white};
     display: flex;

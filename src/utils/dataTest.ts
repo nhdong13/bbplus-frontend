@@ -448,4 +448,4 @@ site you booked on, retain as part of the compensation for our
 and/or their services, which varies based on factors such as
 location, the amount, and how you booked.`;
 
-export const HOTELS_NAME = ["Warwick Fiji Beach Resort", "Fiji Hotel Gateway"];
+export const HOTELS_NAME = ["Warwick Fiji Beach Resort", "Fiji Gateway Hotel"];

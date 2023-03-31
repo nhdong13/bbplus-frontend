@@ -2,7 +2,7 @@ import { Container } from "@/styles";
 import { Typography as Span } from "../Typography";
 import styled from "styled-components";
 import { COLORS } from "@/utils/colors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
@@ -277,8 +277,17 @@ interface ClickToScrollHrefOptions {
   faq: string;
 }
 
-export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string}) {  
+export default function AboutHotel(
+  {clickToScrollHrefOptions, bookingType, selectedHotelIndex} :
+  {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string, selectedHotelIndex?: number}
+) {
   const [expanded, setExpanded] = useState<string[]>(EXPAND);
+  const [selectedHotel, setSelectedHotel] = useState<number>(0)
+
+  useEffect(() => {
+    setSelectedHotel(selectedHotelIndex || 0)
+  }, [selectedHotelIndex])
+
   const expandAll = () => {
     setExpanded(EXPAND);
   };
@@ -302,23 +311,28 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
               isSelected
               text="Warwick Fiji Beach Resort"
               fontSize="18px"
-              height="62px"
               borderRadius="17px"
-              color={COLORS.gradient2}
-              borderGradient={COLORS.gradient2}
+              height="64px"
+              color={selectedHotel === 0 ? COLORS.gradient2 : COLORS.white}
+              borderGradient={selectedHotel === 0 ? COLORS.gradient2 : ''}
+              textColor={selectedHotel === 0 ? '' : COLORS.blueRibbon}
+              borderColor={selectedHotel === 0 ? '' : COLORS.greenBlue}
+              borderWidth={selectedHotel === 0 ? '' : "2px"}
               margin={"0px 15px 0px 0px"}
+              handleSubmit={() => setSelectedHotel(0)}
             />
             <GradientButton
               isSelected
               text="Fiji Gateway Hotel"
               fontSize="18px"
-              height="58px"
               borderRadius="17px"
-              borderWidth="2px"
-              textColor={COLORS.blueRibbon}
-              color={COLORS.white}
-              borderGradient={COLORS.white}
-              borderColor={COLORS.greenBlue}
+              height="64px"
+              color={selectedHotel === 1 ? COLORS.gradient2 : COLORS.white}
+              borderGradient={selectedHotel === 1 ? COLORS.gradient2 : COLORS.white}
+              textColor={selectedHotel === 1 ? '' : COLORS.blueRibbon}
+              borderColor={selectedHotel === 1 ? '' : COLORS.greenBlue}
+              borderWidth={selectedHotel === 1 ? '' : "2px"}
+              handleSubmit={() => setSelectedHotel(1)}
             />
           </WrapperHotelAmenities>
           )}
@@ -349,7 +363,11 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
                   Most popular facilities
                 </Span>
                 <div className="facilities">
-                  {FACILITIES.map((item) => {
+                  {FACILITIES.map((item, index) => {
+                    if (selectedHotel === 1 && index === 0) {
+                      return ''
+                    }
+
                     return (
                       <div key={item.name} className="facility-item">
                         <ReactSVG className="facility-icon" src={item.icon} />
@@ -361,7 +379,10 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
                   })}
                 </div>
                 <div className="amenities">
-                  {AMENITIES.map((amenity) => {
+                  {AMENITIES.map((amenity, index) => {
+                    if (selectedHotel === 1 && index === 0) {
+                      return ''
+                    }
                     return (
                       <div key={amenity.name}>
                         <Span
@@ -393,7 +414,10 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
             }}
             details={
               <>
-                {HOTEL_RULES.map((item) => {
+                {HOTEL_RULES.map((item, index) => {
+                  if (selectedHotel === 1 && index === 0) {
+                    return ''
+                  }
                   return (
                     <div key={item.name} className="rule-item">
                       <Span fontWeight="bold">{item.name}</Span>

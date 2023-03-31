@@ -53,7 +53,7 @@ export default function CustomHotelOption({
 
   const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
     if (type === "single") {
-      setSelectedOption((option) => 
+      setSelectedOption((option) =>
         option.includes(selectedOpt) ? option : [selectedOpt]
       );
     }
@@ -63,7 +63,7 @@ export default function CustomHotelOption({
     if (type === "room_another") {
       return showModal(MODAL_TYPES.ADD_HOTEL, {
         title: "Add Another Hotel",
-        hotels: ["Fiji Hotel Gateway"],
+        hotels: ["Fiji Gateway Hotel"],
         callback: () => {
           setExpanded((expanded) => [...expanded, ...listExpanded(index + 1)]);
           setAddedComponent((added) => [

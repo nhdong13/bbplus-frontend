@@ -57,15 +57,14 @@ export const StyledConfirmationPage = styled.div`
     .group-btn {
       margin: 2px 0 20px 0;
       width: 100%;
-      display: grid;
-      grid-template-columns: calc(50% - 10px) calc(50% + 10px);
+      display: flex;
       gap: 10px;
 
       .btn {
-        padding: 10px 48px;
+        padding: 0;
         border-radius: 5px;
         height: 39px;
-        width: calc(50% - 10px);
+        width: 100%;
         margin: 0;
       }
     }
@@ -270,6 +269,19 @@ export const Board = styled.div`
               padding: 0;
             }
           }
+
+          > div {
+            margin-bottom: 10px;
+            padding-bottom: 0;
+          }
+
+          .small-text {
+            font-size: 14px;
+          }
+
+          .big-booking-label {
+            font-size: 16px;
+          }
         }
 
         >:last-child {
@@ -287,10 +299,16 @@ export const Board = styled.div`
     }
 
     .itinerary {
+      box-shadow: none;
+
       .form-header {
         padding: 10px;
         margin-bottom: 20px;
         margin-top: 0;
+
+        span {
+          font-size: 18px;
+        }
 
         .btn {
           padding: 10px;
@@ -301,6 +319,7 @@ export const Board = styled.div`
 
             span {
               font-size: 14px;
+              font-weight: 600;
             }
           }
         }
@@ -308,17 +327,27 @@ export const Board = styled.div`
 
       .form-information {
         padding: 0 10px 20px 10px;
-        font-size: 16px;
+        > span {
+          font-size: 16px;
+        }
 
         .line {
           font-size: 14px;
           margin-bottom: 10px;
           padding-bottom: 0;
+
+          span {
+            line-height: 19px;
+          }
         }
 
         div:last-child {
           margin-bottom: 0px;
         }
+      }
+
+      .form-information:nth-child(2), .form-information:nth-child(3) {
+        padding-bottom: 30px;
       }
     }
 
@@ -338,6 +367,10 @@ export const Board = styled.div`
 
         span {
           line-height: 18px;
+        }
+
+        span.label {
+          font-weight: 700;
         }
       }
     }
