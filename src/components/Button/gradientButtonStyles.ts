@@ -28,7 +28,7 @@ const StyledButton = styled.div.attrs((props: {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${props => props.height || "52px"};
+  height: ${props => props.height || "54px"};
   max-width: ${props => props.maxWidth};
   padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
   width: ${props => props.borderGradient ? "fit-content" : props.width};
