@@ -97,27 +97,36 @@ const GridRoomItem = styled.div`
     font-weight: bold;
 
     @media ${BREAKPOINTS.laptop} {
-      min-width: 80px;
-      margin-right: 8px;
+      
+    }
+    @media ${BREAKPOINTS.mobileLg} {
+      min-width: initial;
+      width: 66.5px;
+      font-size: 8px;
+      margin-right: 5px;
     }
   }
   .horizontal-room {
     @media ${BREAKPOINTS.laptop} {
       display: flex;
-      gap: 3px;
-      max-width: 222px;
-      overflow-x: auto;
+      gap: 2px;
+      max-width: 240px;
+      overflow-x: hidden;
       /* &::-webkit-scrollbar {
         display: none;
       } */
     }
   }
-  .haha {
+  .room-price-list {
     @media ${BREAKPOINTS.laptop} {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      overflow-x: auto;
+      /* overflow-x: auto; */
+    }
+    font-size: 12px;
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 6px;
     }
   }
   .room-item {
@@ -131,11 +140,12 @@ const GridRoomItem = styled.div`
       border-right: 0;
     }
     @media ${BREAKPOINTS.laptop} {
-      width: auto;
+      min-width: 26.5px;
+      width: 26.5px;
       height: 14px;
       line-height: 14px;
       border-right: 0;
-      padding: 4px;
+      padding: 4px 3px;
       &:last-child {
         margin-right: 0;
       }
@@ -180,7 +190,7 @@ const ListContainer = styled.div`
       font-size: 18px;
     }
     @media ${BREAKPOINTS.laptop} {
-      width: 396px;
+      width: 345px;
       display: flex;
       align-items: center;
       p {
@@ -213,7 +223,7 @@ const GridDateItem = styled.div`
       border-right: 0;
     }
     @media ${BREAKPOINTS.laptop} {
-      width: 29px;
+      width: 32.5px;
       font-size: 10px;
       border-right: 0;
       .day {
@@ -228,8 +238,11 @@ const GridDateItem = styled.div`
   .horizontal-date {
     display: flex;
     @media ${BREAKPOINTS.laptop} {
-      gap: 4px;
+      gap: 2px;
     }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    width: 485px;
   }
 `
 const SDate = styled.div`
@@ -251,7 +264,7 @@ const SDate = styled.div`
     }
     .disabled {
       color: ${COLORS.doveGray};
-      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 `

@@ -318,6 +318,7 @@ const useFullSearchWidget = () => {
     //new
     dates, setDates,
     totalDay, setTotalDay,
+    checkInParam
   }
 }
 

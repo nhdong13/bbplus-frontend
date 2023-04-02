@@ -29,7 +29,6 @@ export default function SearchResult() {
   const [valueFilter, setValueFilter] = useState<any>()
   const [valueSort, setValueSort] = useState<any>()
   const [searchMode, setSearchMode] = useState<number>(0);
-  
   const checkIn: string = searchParam.get('checkIn') || 'Day|Date|Month';
 
   return (
@@ -110,7 +109,7 @@ export default function SearchResult() {
         {
           type === 0
             ?
-            <GridView checkIn={checkIn} />
+            <GridView/>
             :
             <Package />
 

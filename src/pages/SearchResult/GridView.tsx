@@ -19,20 +19,27 @@ import { Icon } from '@mui/material';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
-interface IProps {
-  checkIn: string,
-}
-export default function GridView({ checkIn }: IProps) {
+export default function GridView() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
-
+  const [currentTotalDay, setCurrentTotalDay] = useState<number>(0);
+  const [isPrevButtonDisabled, setPrevButtonDisabled] = useState<boolean>(true)
+  const [isNextButtonDisabled, setNextButtonDisabled] = useState<boolean>(false)
   const {
-    dates
+    checkInParam,
+    totalDay
   } = useFullSearchWidget();
+  const checkInDate = new Date(checkInParam)
 
   useEffect(() => {
-    setCurrentDate(new Date(checkIn))
+    setCurrentDate(new Date(checkInParam))
+    setCurrentTotalDay(totalDay)
     getDates();
-  }, [checkIn]);
+  }, [checkInParam, totalDay]);
+
+  useEffect(() => {
+    setNextButtonDisabled(currentTotalDay <= 15)
+    setPrevButtonDisabled(checkInDate.getTime() === currentDate.getTime())
+  },[checkInParam, currentDate, currentTotalDay])
 
   const getDates = (): DateObject[] => {
     const dates = [];
@@ -46,11 +53,16 @@ export default function GridView({ checkIn }: IProps) {
   const handleNext = (): void => {
     const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 15)
     setCurrentDate(nextDate)
+    setCurrentTotalDay(currentTotalDay - 15)
   }
 
   const handlePrev = (): void => {
-    const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
-    setCurrentDate(nextDate)
+    const prevDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 15)
+    if(checkInDate.getTime() > currentDate.getTime()) {
+      setCurrentDate(prevDate)
+    }
+    setCurrentDate(prevDate)
+    setCurrentTotalDay(currentTotalDay + 15)
   }
   return (
     <>
@@ -58,11 +70,11 @@ export default function GridView({ checkIn }: IProps) {
         <SDate>
           <ListContainer>
             <div className="content">
-              <div onClick={handlePrev} className="prev-next-link">
+              <div onClick={handlePrev} className={`prev-next-link ${isPrevButtonDisabled ? "disabled" : ""}`}>
                 <Icon component={KeyboardDoubleArrowLeftIcon} />
                 Previous 15 days
               </div>
-              <div onClick={handleNext} className="prev-next-link">
+              <div onClick={handleNext} className={`prev-next-link ${isNextButtonDisabled ? "disabled" : ""}`}>
                 Next 15 days
                 <Icon component={KeyboardDoubleArrowRightIcon} />
               </div>
@@ -71,8 +83,6 @@ export default function GridView({ checkIn }: IProps) {
         </SDate>
         <ListContainer>
           <div className="flex-date">
-
-            <>
               <div className="empty">
                 <p>Fiji: 134 properties found</p>
               </div>
@@ -93,7 +103,6 @@ export default function GridView({ checkIn }: IProps) {
                   }
                 </div>
               </GridDateItem>
-            </>
           </div>
         </ListContainer>
       </ListDate>
@@ -117,13 +126,13 @@ export default function GridView({ checkIn }: IProps) {
                       return (
                         <GridRoomItem key={index}>
                           <div className="room">Room Category {index + 1}</div>
-                          <div className="haha">
+                          <div className="room-price-list">
                             <div className="horizontal-room">
                               {
                                 getDates().map((date: DateObject, index2) => {
                                   const isWeekend = date.toDate().getDay() % 6 === 0
                                   return (
-                                    <div className={`room-item ${isWeekend ? 'room-active' : ''}`} key={index2}>$XXX</div>
+                                    <div className={`room-item ${isWeekend ? 'room-active' : ''}`} key={index2}>$XXXX.XX</div>
                                   )
                                 })
                               }
