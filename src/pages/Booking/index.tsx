@@ -396,7 +396,7 @@ export default function Booking() {
                         <Button
                           width="100%"
                           border="none"
-                          backgroundColor="#ff8003"
+                          backgroundColor={COLORS.flushOrange}
                           padding="16px 20px"
                           borderRadius="17px"
                         >
@@ -533,7 +533,7 @@ export default function Booking() {
                       <Button
                         width="100%"
                         border="none"
-                        backgroundColor="#ff8003"
+                        backgroundColor={COLORS.flushOrange}
                         padding="16px 20px"
                         borderRadius="17px"
                       >

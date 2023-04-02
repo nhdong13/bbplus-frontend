@@ -124,7 +124,7 @@ const Link = styled.div`
 `;
 
 const ButtonNextStep = styled.button`
-  background-color: #ff8003;
+  background-color: ${COLORS.flushOrange};
   color: white;
   width: fit-content;
   height: fit-content;
