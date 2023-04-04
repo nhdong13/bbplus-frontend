@@ -12,6 +12,7 @@ import { Typography as Span } from "../Typography";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IModalAddHotel extends IModal {
   hotels: string[];
@@ -127,10 +128,86 @@ const StyledModalAddHotel = styled.div`
       height: fit-content;
     }
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: calc(100% - 20px);
+    outline: 1px solid ${COLORS.parkinglotGray};
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+
+    .close-btn {
+      svg {
+        path {
+          fill: ${COLORS.parkinglotGray};
+        }
+      }
+    }
+
+    .header {
+      padding: 6px 0 16px 0;
+      border-bottom: 1px solid ${COLORS.parkinglotGray};
+      margin-bottom: 10px;
+
+      span {
+        font-size: 16px;
+      }
+    }
+
+    .content {
+      padding: 0;
+      margin-bottom: 10px;
+      height: 36px;
+      box-sizing: border-box;
+
+      .MuiInputBase-root {
+        height: auto;
+        line-height: unset;
+
+        .MuiSelect-select {
+          padding: 10px 20px;
+          min-height: unset;
+          box-sizing: border-box;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+    }
+
+    .footer {
+      padding: 0;
+      padding-top: 10px;
+
+      > span {
+        font-size: 12px;
+      }
+
+      .gradient-button {
+        height: auto;
+
+        div {
+          height: auto;
+          padding: 10px;
+
+          span {
+            font-size: 14px;
+            line-height: 19px;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
 `;
 
 const Divider = styled.div`
   width: 100%;
   height: 2px;
   background-color: ${COLORS.grayAf};
+
+  @media ${BREAKPOINTS.mobileLg} {
+    height: 1px;
+    background-color: ${COLORS.parkinglotGray};
+  }
 `;
