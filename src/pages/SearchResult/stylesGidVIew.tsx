@@ -76,6 +76,7 @@ const GridRoom = styled.div`
     }
   }
   .flex-room {
+    
     @media ${BREAKPOINTS.laptop} {
       font-size: 10px;
       display: grid;
@@ -118,6 +119,9 @@ const GridRoomItem = styled.div`
     }
   }
   .room-price-list {
+    max-width: 100%;
+    overflow-x: auto;
+
     @media ${BREAKPOINTS.laptop} {
       display: flex;
       align-items: center;

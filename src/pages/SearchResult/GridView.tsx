@@ -12,29 +12,50 @@ import {
   GridDateItem,
   SDate,
 } from './stylesGidVIew'
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import { DateObject } from "react-multi-date-picker"
 import { Icon } from '@mui/material';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import useWindowSize from "@/utils/windowResize";
+import { SCREEN_SIZES } from "@/utils/breakpoints";
+
+const daysCount = 15
+const daysCountMobile = 7
 
 export default function GridView() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [currentTotalDay, setCurrentTotalDay] = useState<number>(0);
   const [isPrevButtonDisabled, setPrevButtonDisabled] = useState<boolean>(true)
   const [isNextButtonDisabled, setNextButtonDisabled] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   const {
     checkInParam,
     totalDay
   } = useFullSearchWidget();
   const checkInDate = new Date(checkInParam)
 
+  const screenWidth = useWindowSize();
+  useEffect(() => {
+    if (screenWidth > SCREEN_SIZES.mobileLg) {
+      setIsMobile(false)
+    } else {
+      setIsMobile(true);
+   }
+  }, [screenWidth, isMobile])
+
+  const daysCalendarCount = useMemo(() => {
+    if (isMobile) return daysCountMobile
+    return daysCount
+  }, [isMobile])
+
   useEffect(() => {
     setCurrentDate(new Date(checkInParam))
     setCurrentTotalDay(totalDay)
     getDates();
-  }, [checkInParam, totalDay]);
+  }, [checkInParam, totalDay, daysCalendarCount]);
 
   useEffect(() => {
     setNextButtonDisabled(currentTotalDay <= 15)
@@ -43,7 +64,7 @@ export default function GridView() {
 
   const getDates = (): DateObject[] => {
     const dates = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < daysCalendarCount; i++) {
       const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + i)
       dates.push(new DateObject(date));
     }
@@ -53,7 +74,7 @@ export default function GridView() {
   const handleNext = (): void => {
     const nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 15)
     setCurrentDate(nextDate)
-    setCurrentTotalDay(currentTotalDay - 15)
+    setCurrentTotalDay(currentTotalDay - daysCalendarCount)
   }
 
   const handlePrev = (): void => {
@@ -62,7 +83,7 @@ export default function GridView() {
       setCurrentDate(prevDate)
     }
     setCurrentDate(prevDate)
-    setCurrentTotalDay(currentTotalDay + 15)
+    setCurrentTotalDay(currentTotalDay + daysCalendarCount)
   }
   return (
     <>
