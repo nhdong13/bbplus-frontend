@@ -42,7 +42,7 @@ export default function ModalCalendar({
           </Span>
         </div>
 
-        {isMobile ? <ListDays /> : <Calendar />}
+        {!isMobile ? <Calendar /> : <ListDays />}
       </StyledModalCalender>
     </Modal>
   );

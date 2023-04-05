@@ -85,7 +85,7 @@ export default function RoomModal({
                 ))}
               </Facilities>
               <Span margin="28px 0 0 0" fontSize="14px" fontWeight="500">
-                <Span fontWeight="bold" fontSize="22px" className="title">Smocking: &nbsp;</Span>No smocking
+                <Span fontWeight="bold" fontSize="22px" className="title">Smoking: &nbsp;</Span>No smoking
               </Span>
             </Details>
             <RoomImage>
