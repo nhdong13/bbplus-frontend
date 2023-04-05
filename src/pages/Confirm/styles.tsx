@@ -66,6 +66,9 @@ export const StyledConfirmationPage = styled.div`
         height: 39px;
         width: 100%;
         margin: 0;
+        span {
+          font-size: 14px;
+        }
       }
     }
   }

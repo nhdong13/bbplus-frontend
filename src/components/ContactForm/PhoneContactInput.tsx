@@ -50,6 +50,8 @@ const StyledSelectContainer = styled.div.attrs(
     z-index: 10;
     background: ${COLORS.white};
     min-width: 87px;
+    border-radius: 11.366px;
+
     li {
       cursor: pointer;
       padding: 10px 20px;
@@ -64,6 +66,8 @@ const StyledSelectContainer = styled.div.attrs(
     .selected {
       background: ${COLORS.blueRibbon};
       color: ${COLORS.white};
+      border-top-left-radius: 11.366px;
+      border-top-right-radius: 11.366px;
     }
   }
 
@@ -195,7 +199,7 @@ const PhoneContactInput = ({ options }: PhoneContactInput) => {
         />
       </div>
       <div className="email-address">
-        <Span fontWeight="bold">Email address</Span>
+        <Span fontWeight="bold">Email Address</Span>
         <FormInput
           label="Watch out for typos in the email"
           marginTop="0"

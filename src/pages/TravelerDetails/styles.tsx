@@ -117,6 +117,10 @@ const TravelerDetailsFormContainer = styled.div`
       }
       .input-container span {
         margin-bottom: 13.4px;
+
+        .red {
+          color: ${COLORS.red}
+        }
       }
 
       .code-container {
@@ -179,6 +183,10 @@ const TravelerDetailsFormContainer = styled.div`
           margin-left: 30px;
         }
       }
+
+      .additional-info {
+        margin-bottom: 10px;
+      }
     }
 
     .important-information {
@@ -188,6 +196,10 @@ const TravelerDetailsFormContainer = styled.div`
           box-sizing: border-box;
         }
       }
+    }
+
+    > div:first-child {
+      margin-bottom: 33px;
     }
   }
 
@@ -284,7 +296,6 @@ const TravelerDetailsFormContainer = styled.div`
           background: linear-gradient(#fff, #fff) padding-box,
             ${COLORS.gradient2};
           border-radius: 6px;
-          border: 2px solid transparent;
         }
         .MuiCheckbox-root {
           .MuiSvgIcon-root {
@@ -501,6 +512,9 @@ const TravelerDetailsFormContainer = styled.div`
 
             .input-container {
               width 100%;
+              input {
+                font-size: 14px;
+              }
             }
           }
         }
@@ -508,6 +522,10 @@ const TravelerDetailsFormContainer = styled.div`
         .second-line-container {
           margin-bottom: 0;
         }
+      }
+
+      > div:first-child {
+        margin-bottom: 0;
       }
     }
 
@@ -637,6 +655,7 @@ const TravelerDetailsFormContainer = styled.div`
                 font-weight: bold;
                 padding: 10px;
                 margin: auto;
+                font-size: 14px;
               }
             }
           }
@@ -649,6 +668,7 @@ const TravelerDetailsFormContainer = styled.div`
         width: 100%;
         box-sizing: border-box;
         margin-bottom: 60px;
+        box-shadow: none;
 
         span.sub-header {
           font-size: 16px;

@@ -14,7 +14,7 @@ const ContactForm = ({
   return (
     <>
       <ContactFormContainer isPrimaryContact={isPrimaryContact} className={isPrimaryContact ? "" : "not-primary-contact"}>
-        <H3>Primary Contact</H3>
+        <H3 fontSize="25px">Primary Contact</H3>
         <p className={`sub-header ${orderNumber > 1 ? "no-margin" : ""}`}>
           <Span fontWeight="bold">Room  {orderNumber}</Span>: {numberAdult} Adults, {numberChild} Child, Room
           category name
@@ -29,7 +29,7 @@ const ContactForm = ({
           input1Label="(e.g. John)"
           input2Label="(e.g. Smith)"
         />
-        {isPrimaryContact && <PhoneContactInput options={[{ id: 1, label: "+84" }]} />}
+        {isPrimaryContact && <PhoneContactInput options={[{ id: 1, label: "+84" }, { id: 2, label: "+11" }]} />}
         <div className="divider"></div>
         <Span className="sub-header header_c" fontWeight="bold">Child 1</Span>
         <PersonDetailInput

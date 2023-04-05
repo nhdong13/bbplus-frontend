@@ -50,6 +50,8 @@ const StyledSelectContainer = styled.div.attrs(
     z-index: 10;
     background: ${COLORS.white};
     min-width: 87px;
+    border-radius: 11.366px;
+
     li {
       cursor: pointer;
       padding: 10px 20px;
@@ -64,6 +66,8 @@ const StyledSelectContainer = styled.div.attrs(
     .selected {
       background: ${COLORS.blueRibbon};
       color: ${COLORS.white};
+      border-top-left-radius: 11.366px;
+      border-top-right-radius: 11.366px;
     }
   }
 
@@ -185,6 +189,10 @@ const PersonDetailInputContainer = styled.div`
 
         .select-container {
           margin-bottom: 0;
+
+          .label {
+            gap: 10px;
+          }
         }
       }
 

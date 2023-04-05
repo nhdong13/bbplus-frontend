@@ -132,7 +132,7 @@ export default function TravellerDetails() {
               </div>
             </div>
           </BookingProgressBar>
-          <H3 padding="76.8px 0 0 42px">Traveller Details</H3>
+          <H3 padding="76.8px 0 0 42px" fontSize="25px" fontWeight="bold">Traveller Details</H3>
           <TravelerDetailsFormContainer>
             <div className="detail-form">
               <ContactForm
@@ -220,7 +220,7 @@ export default function TravellerDetails() {
                 </div>
                 <div className="first-line-container">
                   <div className="input-container">
-                    <Span fontWeight="bold">Name on Card Holder*</Span>
+                    <Span fontWeight="bold">Name on Card Holder<Span className="red">*</Span></Span>
                     <FormInput
                       label="Name on the card"
                       marginTop="0"
@@ -230,7 +230,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <Span fontWeight="bold">Card Number*</Span>
+                    <Span fontWeight="bold">Card Number<Span className="red">*</Span></Span>
                     <FormInput
                       label="xxxx-xxxx-xxxx-xxxx"
                       marginTop="0"
@@ -243,7 +243,7 @@ export default function TravellerDetails() {
 
                 <div className="second-line-container">
                   <div className="input-container">
-                    <Span fontWeight="bold">Expiration Date*</Span>
+                    <Span fontWeight="bold">Expiration Date<Span className="red">*</Span></Span>
                     <FormInput
                       label="(MM/YYYY)"
                       marginTop="0"
@@ -253,7 +253,7 @@ export default function TravellerDetails() {
                     />
                   </div>
                   <div className="input-container">
-                    <Span fontWeight="bold">CVV*</Span>
+                    <Span fontWeight="bold">CVV<Span className="red">*</Span></Span>
                     <FormInput
                       label="xxx"
                       marginTop="0"
