@@ -5,8 +5,11 @@ import IMAGES from "@/assets/images";
 import { ReactSVG } from "react-svg";
 import { Typography as Span } from "../Typography";
 import Calendar from "../Calendar";
+import ListDays from "../ListDays";
 import { COLORS } from "@/utils/colors";
 import Select from "../Select";
+import { BREAKPOINTS } from "@/utils/breakpoints";
+import { isMobileResponsive } from "@/utils/constant";
 
 interface IModalCalendar extends IModal {}
 
@@ -14,6 +17,8 @@ export default function ModalCalendar({
   isOpen,
   onCloseModal,
 }: IModalCalendar) {
+  const isMobile = isMobileResponsive()
+
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
       <StyledModalCalender>
@@ -37,7 +42,7 @@ export default function ModalCalendar({
           </Span>
         </div>
 
-        <Calendar />
+        {isMobile ? <ListDays /> : <Calendar />}
       </StyledModalCalender>
     </Modal>
   );
@@ -64,5 +69,38 @@ const StyledModalCalender = styled.div`
     gap: 40px;
     padding-bottom: 20px;
     border-bottom: 1px solid ${COLORS.grayAf};
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: calc(100% - 20px);
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #CECFD1;
+    border-radius: 5px;
+    box-shadow: none;
+    height: calc(100vh - 20px);
+    overflow: auto;
+
+    .modal-header {
+      justify-content: space-between;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid ${COLORS.parkinglotGray};
+
+      .select-container {
+        margin-top: 0;
+        width: 185px;
+        height: 39px;
+
+        .label {
+          padding: 10px;
+          height: auto;
+          font-size: 14px;
+          line-height: 19px;
+          outline: 1px solid ${COLORS.greenBlue};
+          border: none;
+        }
+      }
+    }
   }
 `;
