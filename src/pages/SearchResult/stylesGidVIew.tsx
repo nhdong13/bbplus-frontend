@@ -103,7 +103,11 @@ const GridRoomContainer = styled.div`
   width: 100%;
 
   @media ${BREAKPOINTS.fromLaptop} {
-    height: 41px;
+    height: 40px;
+    border-bottom: 1px solid ${COLORS.silver};
+    &:last-child {
+      border-bottom-color: transparent;
+    }
   }
 `;
 
@@ -128,6 +132,10 @@ const GridRoomCategoryTitle = styled.div`
     font-size: 16px;
     height: 40px;
     min-width: 170px;
+
+    &:last-child {
+      border-bottom-color: transparent;
+    }
   }
 
   @media ${BREAKPOINTS.fromDesktopSm} {
@@ -154,7 +162,7 @@ const GridRoomItem = styled.div`
 
   @media ${BREAKPOINTS.fromLaptop} {
     width: 100%;
-    border-bottom: 1px solid ${COLORS.silver};
+    border-bottom-color: transparent;
   }
 
   .horizontal-room {
@@ -321,7 +329,7 @@ const GridDateItem = styled.div`
       min-width: 57px !important;
     }
     
-    
+
     @media ${BREAKPOINTS.laptop} {
       width: 32.5px;
       font-size: 10px;
