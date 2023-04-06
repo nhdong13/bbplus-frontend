@@ -12,7 +12,7 @@ const StyledSelectLocationDropDown = styled.div.attrs((props: {
   padding: 33px 0;
   max-width: 555px;
   position: absolute;
-  top: 100px;
+  top: 92px;
   left: ${({ isLeaving }) => isLeaving ? 0 : "21%"};
   max-height: 200px;
   overflow-y: auto;
