@@ -127,6 +127,13 @@ const GridRoomCategoryTitle = styled.div`
   align-items: center;
   font-size: 14px;
   height: 22px;
+
+  @media only screen and (min-width: ${SCREEN_SIZES.mobileLg}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+    font-size: 10px;
+    padding-left: 10px;
+    min-width: 117px;
+  }
+
   @media ${BREAKPOINTS.fromLaptop} {
     border-bottom: 1px solid ${COLORS.silver};
     font-size: 16px;
@@ -169,11 +176,6 @@ const GridRoomItem = styled.div`
     @media ${BREAKPOINTS.laptop} {
       display: flex;
       gap: 2px;
-      max-width: 240px;
-      overflow-x: hidden;
-      /* &::-webkit-scrollbar {
-        display: none;
-      } */
     }
 
     @media ${BREAKPOINTS.fromLaptop} {
@@ -215,6 +217,10 @@ const GridRoomItem = styled.div`
 
     @media ${BREAKPOINTS.fromMobileLg} {
       width: 50.5px;
+    }
+
+    @media only screen and (min-width: ${SCREEN_SIZES.mobileLg}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+      font-size: 10px;
     }
 
     @media ${BREAKPOINTS.fromLaptop} {
@@ -286,7 +292,7 @@ const ListContainer = styled.div`
     }
 
     @media ${BREAKPOINTS.laptop} {
-      width: 345px;
+      // width: 345px;
       display: flex;
       align-items: center;
       p {
@@ -324,7 +330,7 @@ const GridDateItem = styled.div`
     @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
       min-width: 57.5px;
     }
-    
+
     @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
       min-width: 80px;
     }
@@ -332,7 +338,6 @@ const GridDateItem = styled.div`
     @media ${BREAKPOINTS.fromDesktopSm} {
       min-width: 59px !important;
     }
-    
 
     @media ${BREAKPOINTS.laptop} {
       width: 32.5px;

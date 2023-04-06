@@ -49,9 +49,12 @@ export default function GridView() {
   }, [screenWidth, isMobile]);
 
   const daysCalendarCount = useMemo(() => {
-    if (isMobile) return daysCountMobile;
+    if (isMobile) {
+      if (currentTotalDay > daysCountMobile) return currentTotalDay
+      return daysCountMobile
+    };
     return daysCount;
-  }, [isMobile]);
+  }, [isMobile, currentTotalDay, daysCountMobile]);
 
   useEffect(() => {
     setCurrentDate(new Date(checkInParam));
@@ -105,7 +108,7 @@ export default function GridView() {
     propertyRoomContainerRef.current.forEach(
       (roomRef: HTMLDivElement | null) => {
         if (!roomRef) return;
-        roomRef.scrollLeft = scrollAmount + 20;
+        roomRef.scrollLeft = scrollAmount;
       }
     );
   };
