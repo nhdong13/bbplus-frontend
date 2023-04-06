@@ -116,7 +116,7 @@ const GridRoomTitleContainer = styled.div`
   flex-direction: column;
 
   @media ${BREAKPOINTS.fromDesktopSm} {
-    margin-left: 82px;
+    margin-left: 23px;
   }
 `;
 
@@ -139,7 +139,7 @@ const GridRoomCategoryTitle = styled.div`
   }
 
   @media ${BREAKPOINTS.fromDesktopSm} {
-    min-width: 250px;
+    min-width: 281px;
   }
 
   @media ${BREAKPOINTS.mobileLg} {
@@ -200,25 +200,21 @@ const GridRoomItem = styled.div`
   }
   .room-item {
     display: inline-block;
-    height: 40px;
-    width: 57px;
     text-align: center;
-    line-height: 40px;
     border-right: 1px solid ${COLORS.silver};
     font-weight: bold;
+    min-width: 26.5px;
+    width: 26.5px;
+    height: 14px;
+    padding: 4px 3px;
+    line-height: 14px;
     &:last-child {
       border-right: 0;
+      margin-right: 0;
     }
-    @media ${BREAKPOINTS.laptop} {
-      min-width: 26.5px;
-      width: 26.5px;
-      height: 14px;
-      line-height: 14px;
-      border-right: 0;
-      padding: 4px 3px;
-      &:last-child {
-        margin-right: 0;
-      }
+
+    @media ${BREAKPOINTS.fromMobileLg} {
+      width: 50.5px;
     }
 
     @media ${BREAKPOINTS.fromLaptop} {
@@ -226,12 +222,16 @@ const GridRoomItem = styled.div`
       align-items: center;
       justify-content: center;
       border-right: 1px solid ${COLORS.silver};
-      font-size: 16px;
+      font-size: 12px;
       height: -webkit-fill-available;
-      width: 57px;
+      width: 72px;
       &:last-child {
         border-right: 0;
       }
+    }
+
+    @media ${BREAKPOINTS.fromDesktopSm} {
+      min-width: 53px;
     }
   }
   .room-active {
@@ -307,7 +307,7 @@ const GridDateItem = styled.div`
   overflow-x: auto;
 
   @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
-    margin-left: 99px;
+    margin-left: 103px;
   }
 
   .date-item {
@@ -320,13 +320,17 @@ const GridDateItem = styled.div`
     &:last-child {
       border-right: 0;
     }
+
+    @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+      min-width: 57.5px;
+    }
     
     @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
-      min-width: 64px;
+      min-width: 80px;
     }
 
     @media ${BREAKPOINTS.fromDesktopSm} {
-      min-width: 57px !important;
+      min-width: 59px !important;
     }
     
 
@@ -359,7 +363,7 @@ const GridDateItem = styled.div`
   }
 
   @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
-    width: 521px;
+    width: 543px;
   }
 
   @media ${BREAKPOINTS.fromLaptop} {
@@ -377,7 +381,7 @@ const SDate = styled.div`
     align-items: center;
     height: 100%;
     justify-content: space-between;
-    margin-left: 540px;
+    margin-left: 500px;
     color: ${COLORS.blueRibbon};
     div {
       cursor: pointer;
