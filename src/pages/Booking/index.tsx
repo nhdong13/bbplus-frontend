@@ -44,6 +44,7 @@ import { GradientButton } from "@/components/Button";
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import FullSearchWidget from "@/components/Search/FullSearchWidget";
 import { isMobileResponsive } from "@/utils/constant";
+import SearchView from "@/pages/SearchResult/SearchView";
 
 const clickToScrollHrefOptions = {
   hotelRules: "hotel_rules_href",
@@ -86,61 +87,7 @@ export default function Booking() {
           searchMode === 0
           ?
             <SearchResultBackground>
-              <SearchBar>
-                <SearchItem>
-                  <div className="group-h5">
-                    <H5 lineHeight="10px" fontWeight="700">
-                      Leaving from
-                    </H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                      Search by city or airport
-                    </H5>
-                  </div>
-                </SearchItem>
-                <SearchItem>
-                  <div>
-                    <H5 lineHeight="10px" fontWeight="700">
-                      Going to
-                    </H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                      Search by destination or hotel
-                    </H5>
-                  </div>
-                </SearchItem>
-                <SearchItem className="arrive-days">
-                  <div className="group-h5">
-                    <H5 lineHeight="10px" fontWeight="700">
-                      Arrival Date
-                    </H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                      Day|Date|Month
-                    </H5>
-                  </div>
-                </SearchItem>
-                <SearchItem>
-                  <div className="group-h5">
-                    <H5 lineHeight="10px" fontWeight="700">
-                      No. of days
-                    </H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                      X nights
-                    </H5>
-                  </div>
-                </SearchItem>
-                <SearchItem className="arrive-days border-0">
-                  <div className="group-h5">
-                    <H5 lineHeight="10px" fontWeight="700">
-                      Travellers
-                    </H5>
-                    <H5 lineHeight="10px" color={COLORS.outerSpace}>
-                      X guests (X rooms)
-                    </H5>
-                  </div>
-                </SearchItem>
-                <SearchItem className="arrive-days border-0 btn-edit">
-                  <ButtonEditSearch onClick={() => setSearchMode(1)}>Edit Search</ButtonEditSearch>
-                </SearchItem>
-              </SearchBar>
+              <SearchView onClickEditSearch={() => setSearchMode(1)}></SearchView>
               <div className="btn-mobile" onClick={() => setSearchMode(1)}>Edit Search</div>
             </SearchResultBackground>
             :
