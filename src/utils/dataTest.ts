@@ -423,7 +423,7 @@ export const RoomModalDetail = {
     "Toiletries",
     "Hairdryer",
   ],
-  smocking: "No smocking",
+  smocking: "No smorking",
 };
 
 export const ONE_WAY_SEAT = [
