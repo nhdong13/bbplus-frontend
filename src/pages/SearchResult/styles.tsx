@@ -355,6 +355,7 @@ const ListResultContainer = styled.div`
   margin: auto;
   margin-bottom: 34px;
   display: flex;
+  justify-content: space-between;
   &:last-child {
     margin-bottom: 145px;
   }
@@ -407,6 +408,10 @@ const HotelCardContainer = styled.div`
     @media ${BREAKPOINTS.laptop} {
       margin: 0 auto;
       width: auto;
+    }
+
+    @media ${BREAKPOINTS.fromDesktopLg} {
+      margin-left: 35px;
     }
   }
 
