@@ -12,6 +12,7 @@ import { Typography as Span } from "../Typography";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
+import { FONTS } from "@/utils/fonts";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IModalAddHotel extends IModal {
@@ -52,17 +53,19 @@ export default function ModalAddHotel({
               )}
             >
               <MenuItem disabled value="">
-                Select the second hotel from the list
+                <Text>Select the second hotel from the list</Text>
               </MenuItem>
               {hotels.map((hotel, index) => (
-                <MenuItem key={index} value={hotel}>{hotel}</MenuItem>
+                <MenuItem key={index} value={hotel}>
+                  <Text>{hotel}</Text>
+                  </MenuItem>
               ))}
             </Select>
           </FormControl>
         </div>
         <Divider />
         <div className="footer">
-          <Span>Fiji Gateway Hotel</Span>
+          <Span><Text>Fiji Gateway Hotel</Text></Span>
           <GradientButton
             isSelected
             text="Update trip"
@@ -211,3 +214,13 @@ const Divider = styled.div`
     background-color: ${COLORS.parkinglotGray};
   }
 `;
+
+const Text = styled.p`
+  font-family: ${FONTS.manrope};
+  font-size: 12px;
+  font-weight: 400;
+
+  @media ${BREAKPOINTS.fromTablet} {
+    font-size: 16px;
+  }
+`
