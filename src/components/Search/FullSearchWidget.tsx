@@ -215,7 +215,7 @@ export default function FullSearchWidget({
                           selectedLeaving && !selectLeavingPlaces
                             ?
                             <>
-                              <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>                            
+                              <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>           
                               <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>
                             </>
                             :
@@ -230,7 +230,10 @@ export default function FullSearchWidget({
                                   :
                                   selectLeavingPlaces
                                     ?
-                                    <input className="input-search" autoFocus={true} value={filterLeaving} onChange={(e) => onChangeLeaving(e)} />
+                                    <>
+                                      <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                                      <input className="input-search" autoFocus={true} value={filterLeaving} onChange={(e) => onChangeLeaving(e)} />
+                                    </>
                                     :
                                     <>
                                       <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
