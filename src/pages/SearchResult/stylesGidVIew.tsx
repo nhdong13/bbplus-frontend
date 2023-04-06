@@ -76,7 +76,13 @@ const GridRoom = styled.div`
     }
   }
   .flex-room {
-    
+    max-width: 100%;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    } */
+
     @media ${BREAKPOINTS.laptop} {
       font-size: 10px;
       display: grid;
@@ -84,6 +90,36 @@ const GridRoom = styled.div`
     }
   }
 `
+
+const GridRoomContainer = styled.div`
+  display: flex;
+  width: 100%;
+`
+
+const GridRoomTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const GridRoomCategoryTitle = styled.div`
+  min-width: 250px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  height: 22px;
+  @media ${BREAKPOINTS.fromLaptop} {
+    border-bottom: 1px solid ${COLORS.silver};
+    height: 40px;
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    min-width: initial;
+    width: 66.5px;
+    font-size: 8px;
+    margin-right: 5px;
+  }
+`;
+
 const GridRoomItem = styled.div`
   border-bottom: 1px solid ${COLORS.silver};
   height: 40px;
@@ -93,20 +129,7 @@ const GridRoomItem = styled.div`
     height: auto;
     border-bottom: 0;
   }
-  .room {
-    min-width: 250px;
-    font-weight: bold;
 
-    @media ${BREAKPOINTS.laptop} {
-      
-    }
-    @media ${BREAKPOINTS.mobileLg} {
-      min-width: initial;
-      width: 66.5px;
-      font-size: 8px;
-      margin-right: 5px;
-    }
-  }
   .horizontal-room {
     @media ${BREAKPOINTS.laptop} {
       display: flex;
@@ -140,6 +163,7 @@ const GridRoomItem = styled.div`
     text-align: center;
     line-height: 40px;
     border-right: 1px solid ${COLORS.silver};
+    font-weight: bold;
     &:last-child {
       border-right: 0;
     }
@@ -193,6 +217,19 @@ const ListContainer = styled.div`
       color: ${COLORS.cyprus};
       font-size: 18px;
     }
+
+    @media ${BREAKPOINTS.mobileSm} {
+      min-width: 165px;
+    }
+
+    @media ${BREAKPOINTS.fromMobileSm} {
+      min-width: 170px;
+    }
+
+    @media ${BREAKPOINTS.fromMobileLg} {
+      min-width: 160px;
+    }
+
     @media ${BREAKPOINTS.laptop} {
       width: 345px;
       display: flex;
@@ -245,8 +282,16 @@ const GridDateItem = styled.div`
       gap: 2px;
     }
   }
-  @media ${BREAKPOINTS.mobileLg} {
+  width: 93%;
+  @media ${BREAKPOINTS.fromMobileSm} {
+    width: 100%;
+  }
+  @media ${BREAKPOINTS.fromMobileLg} {
     width: 485px;
+  }
+  
+  @media ${BREAKPOINTS.fromLaptop} {
+    width: auto;
   }
 `
 const SDate = styled.div`
@@ -286,6 +331,14 @@ const GridViewContainer = styled.div `
     padding: 0 10px;
   }
 `
+
+const RoomInfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+`
+
 export {
     GridViewItem,
     GridViewTitle,
@@ -295,5 +348,9 @@ export {
     ListContainer,
     GridViewContainer,
     GridDateItem,
-    SDate
+    SDate,
+    GridRoomCategoryTitle,
+    GridRoomContainer,
+    GridRoomTitleContainer,
+    RoomInfoContainer
 }
