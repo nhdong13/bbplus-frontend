@@ -19,4 +19,6 @@ export const BREAKPOINTS = {
   fromMobileLg: `only screen and (min-width: ${SCREEN_SIZES.mobileLg}px)`,
   fromLaptop: `only screen and (min-width: ${SCREEN_SIZES.laptop}px)`,
   fromTablet: `only screen and (min-width: ${SCREEN_SIZES.tablet}px)`,
+  fromDesktopSm: `only screen and (min-width: ${SCREEN_SIZES.desktopSm}px)`,
+  fromDesktopLg: `only screen and (min-width: ${SCREEN_SIZES.desktopLg}px)`
 };

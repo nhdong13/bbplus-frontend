@@ -1,14 +1,14 @@
 import { COLORS } from "@/utils/colors";
 import styled from "styled-components";
-import { BREAKPOINTS } from "@/utils/breakpoints"
+import { BREAKPOINTS, SCREEN_SIZES } from "@/utils/breakpoints";
 import { FONTS } from "@/utils/fonts";
 
 const GridViewItem = styled.div`
   margin-bottom: 10px;
-  .first{
+  .first {
     background: ${COLORS.darkGreen};
   }
-`
+`;
 const GridViewTitle = styled.div`
   height: 40px;
   color: ${COLORS.white};
@@ -48,18 +48,22 @@ const GridViewTitle = styled.div`
     }
   }
   .p2 {
-    color: #FFBD29;
+    color: #ffbd29;
     margin-left: 19px;
     @media ${BREAKPOINTS.laptop} {
       margin-left: 10px;
     }
   }
-`
+`;
 const GridRoom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 17px 0;
+  @media ${BREAKPOINTS.fromLaptop} {
+    display: flex;
+    align-items: center !important;
+  }
   @media ${BREAKPOINTS.laptop} {
     justify-content: flex-start;
     align-items: flex-start;
@@ -81,28 +85,39 @@ const GridRoom = styled.div`
 
     &::-webkit-scrollbar {
       display: none;
-    } */
-
-    @media ${BREAKPOINTS.laptop} {
+    }
+    */ @media ${BREAKPOINTS.laptop} {
       font-size: 10px;
       display: grid;
       flex: 1 1 auto;
     }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      width: 100%;
+    }
   }
-`
+`;
 
 const GridRoomContainer = styled.div`
   display: flex;
   width: 100%;
-`
+
+  @media ${BREAKPOINTS.fromLaptop} {
+    height: 41px;
+  }
+`;
 
 const GridRoomTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+
+  @media ${BREAKPOINTS.fromDesktopSm} {
+    margin-left: 82px;
+  }
+`;
 
 const GridRoomCategoryTitle = styled.div`
-  min-width: 250px;
+  min-width: 127px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -110,8 +125,15 @@ const GridRoomCategoryTitle = styled.div`
   height: 22px;
   @media ${BREAKPOINTS.fromLaptop} {
     border-bottom: 1px solid ${COLORS.silver};
+    font-size: 16px;
     height: 40px;
+    min-width: 170px;
   }
+
+  @media ${BREAKPOINTS.fromDesktopSm} {
+    min-width: 250px;
+  }
+
   @media ${BREAKPOINTS.mobileLg} {
     min-width: initial;
     width: 66.5px;
@@ -130,6 +152,11 @@ const GridRoomItem = styled.div`
     border-bottom: 0;
   }
 
+  @media ${BREAKPOINTS.fromLaptop} {
+    width: 100%;
+    border-bottom: 1px solid ${COLORS.silver};
+  }
+
   .horizontal-room {
     @media ${BREAKPOINTS.laptop} {
       display: flex;
@@ -140,10 +167,17 @@ const GridRoomItem = styled.div`
         display: none;
       } */
     }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      display: flex;
+      height: 100%;
+    }
   }
   .room-price-list {
-    max-width: 100%;
-    overflow-x: auto;
+    @media ${BREAKPOINTS.fromLaptop} {
+      width: 100%;
+      height: 100%;
+    }
 
     @media ${BREAKPOINTS.laptop} {
       display: flex;
@@ -178,11 +212,24 @@ const GridRoomItem = styled.div`
         margin-right: 0;
       }
     }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid ${COLORS.silver};
+      font-size: 16px;
+      height: -webkit-fill-available;
+      width: 57px;
+      &:last-child {
+        border-right: 0;
+      }
+    }
   }
   .room-active {
-    background: #E8F4FF;
+    background: #e8f4ff;
   }
-`
+`;
 const ListDate = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${COLORS.silver};
@@ -193,7 +240,7 @@ const ListDate = styled.div`
     border-top: 1px solid ${COLORS.silver};
     margin-top: 15px;
   }
-`
+`;
 const ListContainer = styled.div`
   max-width: 1400px;
   padding: 0 20px;
@@ -244,15 +291,17 @@ const ListContainer = styled.div`
     display: flex;
     justify-content: center;
   }
-`
+`;
 const GridDateItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   overflow-x: auto;
-  /* .room {
-    min-width: 250px;
-  } */
+
+  @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
+    margin-left: 99px;
+  }
+
   .date-item {
     display: inline-block;
     padding: 10px 0;
@@ -263,6 +312,11 @@ const GridDateItem = styled.div`
     &:last-child {
       border-right: 0;
     }
+    
+    @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
+      min-width: 64px;
+    }
+
     @media ${BREAKPOINTS.laptop} {
       width: 32.5px;
       font-size: 10px;
@@ -274,7 +328,7 @@ const GridDateItem = styled.div`
   }
 
   .room-active {
-    background: #E8F4FF;
+    background: #e8f4ff;
   }
   .horizontal-date {
     display: flex;
@@ -286,14 +340,19 @@ const GridDateItem = styled.div`
   @media ${BREAKPOINTS.fromMobileSm} {
     width: 100%;
   }
+  
   @media ${BREAKPOINTS.fromMobileLg} {
     width: 485px;
   }
-  
+
+  @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+    width: 521px;
+  }
+
   @media ${BREAKPOINTS.fromLaptop} {
     width: auto;
   }
-`
+`;
 const SDate = styled.div`
   height: 43px;
   background: ${COLORS.antiFlashWhite};
@@ -316,8 +375,8 @@ const SDate = styled.div`
       pointer-events: none;
     }
   }
-`
-const GridViewContainer = styled.div `
+`;
+const GridViewContainer = styled.div`
   max-width: 1400px;
   padding: 0 20px;
   margin: auto;
@@ -330,27 +389,27 @@ const GridViewContainer = styled.div `
   @media ${BREAKPOINTS.laptop} {
     padding: 0 10px;
   }
-`
+`;
 
 const RoomInfoContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   overflow-x: hidden;
-`
+`;
 
 export {
-    GridViewItem,
-    GridViewTitle,
-    GridRoom,
-    GridRoomItem,
-    ListDate,
-    ListContainer,
-    GridViewContainer,
-    GridDateItem,
-    SDate,
-    GridRoomCategoryTitle,
-    GridRoomContainer,
-    GridRoomTitleContainer,
-    RoomInfoContainer
-}
+  GridViewItem,
+  GridViewTitle,
+  GridRoom,
+  GridRoomItem,
+  ListDate,
+  ListContainer,
+  GridViewContainer,
+  GridDateItem,
+  SDate,
+  GridRoomCategoryTitle,
+  GridRoomContainer,
+  GridRoomTitleContainer,
+  RoomInfoContainer,
+};
