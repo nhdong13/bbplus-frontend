@@ -9,6 +9,8 @@ export default function Tooltips({ title, ...props }: ITooltip) {
       className="tooltip"
       {...props}
       title={<StyledTooltip>{title}</StyledTooltip>}
+      leaveTouchDelay={5000}
+      enterTouchDelay={50}
     />
   );
 }

@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import useWindowSize from "./windowResize"
 
 export const isMobileResponsive = () => {
-  const screenWidth = useWindowSize()
-  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+
   useEffect(() => {
-    if (screenWidth < 1024) {
-      setIsMobile(true);
-    } else setIsMobile(false);
-  }, [screenWidth, isMobile])
-  return isMobile
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+
+  return width <= 768;
 }

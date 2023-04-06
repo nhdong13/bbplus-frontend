@@ -60,8 +60,6 @@ export default function ListDays({ events }: IListDays) {
     </WrapperButton>
   )
 
-  console.log('currentDate', currentDate)
-
   return (
     <StyledListDays>
       { renderButtonGroup() }
