@@ -14,7 +14,7 @@ const GridViewTitle = styled.div`
   color: ${COLORS.white};
   padding-left: 34px;
   line-height: 40px;
-  background: ${COLORS.greenBlue};
+  background: ${COLORS.gradient1};
   display: flex;
   align-items: center;
   font-family: ${FONTS.manrope};

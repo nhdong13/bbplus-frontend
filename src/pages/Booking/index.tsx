@@ -40,7 +40,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 import { GradientButton } from "@/components/Button";
- 
+
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import FullSearchWidget from "@/components/Search/FullSearchWidget";
 import { isMobileResponsive } from "@/utils/constant";
@@ -57,6 +57,8 @@ export default function Booking() {
   const [hotels, setHotels] = useState<string[]>([]);
   const [searchMode, setSearchMode] = useState<number>(0);
   const isMobile = isMobileResponsive()
+  const [selectedHotel, setSelectedHotel] = useState<number>(0)
+
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
@@ -536,22 +538,27 @@ export default function Booking() {
             <div className="selected-hotels">
               {hotels.map((hotelName, index) => (
                 <GradientButton
+                  key={index}
                   isSelected
                   text={hotelName}
-                  color={index === 1 ? "white" : COLORS.gradient2}
+                  color={selectedHotel === index ? COLORS.gradient2 : "white"}
                   borderRadius="17px"
                   fontWeight="bold"
-                  borderGradient={index === 1 ? COLORS.borderGradient : ""}
-                  borderWidth={index === 1 ? "2px" : ""}
-                  textColor={index === 1 ? COLORS.blueRibbon : ""}
+                  height="64px"
+                  textPadding="0 50px 0 38px"
+                  borderGradient={selectedHotel === index ? "" : COLORS.borderGradient}
+                  borderWidth={selectedHotel === index ? "" : "2px"}
+                  textColor={selectedHotel === index ? "" : COLORS.blueRibbon}
                   fontSize="18px"
+                  handleSubmit={() => setSelectedHotel(index)}
                 />
               ))}
             </div>
           )}
           <AboutHotel
-            clickToScrollHrefOptions = {clickToScrollHrefOptions}
-            bookingType = {bookingType || ""}
+            clickToScrollHrefOptions={clickToScrollHrefOptions}
+            bookingType={bookingType || ""}
+            selectedHotelIndex={selectedHotel}
           />
         </BookingContainer>
       </MainLayout>

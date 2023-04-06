@@ -676,7 +676,7 @@ const BookingContainer = styled.div`
     .gradient-button {
       box-sizing: border-box;
       span {
-        padding: 0 10px;
+        font-weight: normal;
       }
     }
   }

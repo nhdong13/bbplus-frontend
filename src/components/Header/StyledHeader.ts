@@ -12,6 +12,10 @@ const HeaderContainer = styled.div.attrs((props: {
   margin: auto;
   justify-content: center;
 
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+  }
+
   .header-horizontal-container {
     height: auto;
     max-width: 1400px;
@@ -28,6 +32,9 @@ const HeaderContainer = styled.div.attrs((props: {
 
     @media ${BREAKPOINTS.mobileLg} {
       padding: 0 25px;
+      border-bottom: 1px solid;
+      border-image-slice: 1;
+      border-image-source: ${COLORS.gradient1};
     }
 
     .logo {
@@ -168,6 +175,10 @@ const DividerContainer = styled(VerticalContainer)`
     @media ${BREAKPOINTS.mobileLg} {
       max-width: 95%;
     }
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    display: none;
   }
 `
 

@@ -1,11 +1,12 @@
-import { Tooltip, TooltipProps } from "@mui/material";
+import { Tooltip, TooltipProps, tooltipClasses } from "@mui/material";
 import styled from "styled-components";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface ITooltip extends TooltipProps {}
 
 export default function Tooltips({ title, ...props }: ITooltip) {
   return (
-    <Tooltip
+    <CustomMaxWidthTooltip
       className="tooltip"
       {...props}
       title={<StyledTooltip>{title}</StyledTooltip>}
@@ -15,9 +16,26 @@ export default function Tooltips({ title, ...props }: ITooltip) {
   );
 }
 
+const CustomMaxWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    maxWidth: '100%',
+  },
+  [`@media ${BREAKPOINTS.mobileLg}`]: {
+    [`& .${tooltipClasses.tooltip}`]: {
+      maxWidth: '100vw',
+      boxSizing: 'border-box',
+      padding: '10px',
+      margin: 0,
+    },
+  }
+});
+
 const StyledTooltip = styled.div`
   background-color: white;
   width: 696px;
+  max-width: 100%;
   box-sizing: border-box;
   padding: 20px;
   border-radius: 17px;
@@ -25,5 +43,19 @@ const StyledTooltip = styled.div`
   span {
     display: block;
     color: black;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    border-radius: 5px;
+    padding: 10px;
+
+    span {
+      line-height: 22px;
+    }
+
+    .text-content {
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 `;

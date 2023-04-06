@@ -54,8 +54,8 @@ export default function ModalAddHotel({
               <MenuItem disabled value="">
                 Select the second hotel from the list
               </MenuItem>
-              {hotels.map((hotel) => (
-                <MenuItem value={hotel}>{hotel}</MenuItem>
+              {hotels.map((hotel, index) => (
+                <MenuItem key={index} value={hotel}>{hotel}</MenuItem>
               ))}
             </Select>
           </FormControl>
