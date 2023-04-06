@@ -5,7 +5,7 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H5, Typography } from "@/components/Typography";
 import { Breadcrumb, BreadcrumbItem } from "@/styles";
 import { COLORS } from "@/utils/colors";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   BookingContainer,
@@ -76,6 +76,17 @@ export default function Booking() {
       return hotel;
     });
   };
+
+  const isMultiHotel: Boolean = useMemo(() => {
+    // Check booking type
+    if (bookingType === 'multi-hotel') return true
+
+    // Check selected hotels, if more than 1 hotel selected -> mutli hotel layout
+    if (hotels.length > 1) return true
+
+    return false
+  }, [bookingType, hotels])
+
   return (
     <>
       <Helmet>
@@ -264,7 +275,7 @@ export default function Booking() {
                         <Typography>Free selected watersport</Typography>
                       </li>
                     </ul>
-                    {bookingType !== "multi-hotel" && (
+                    {!isMultiHotel && (
                       <HotelPrice>
                         <Typography className="total-price" fontWeight="bold">
                           Total Price
@@ -301,7 +312,7 @@ export default function Booking() {
                         </div>
                       </HotelPrice>
                     )}
-                    {bookingType !== "multi-hotel" && (
+                    {!isMultiHotel && (
                       <div className="flex col group-btn">
                         <Button
                           width="100%"
@@ -337,7 +348,7 @@ export default function Booking() {
                   </HotelDetail>
                 </HotelInformation>
                 {/* hotel 2 */}
-                {bookingType === "multi-hotel" && (
+                {isMultiHotel && (
                 <HotelInformation>
                   <div className="divider" />
                   <div className="hotel-info-container">
@@ -401,7 +412,7 @@ export default function Booking() {
                         <Typography>Garden view room</Typography>
                       </li>
                     </ul>
-                      {bookingType === "multi-hotel" && (
+                      {isMultiHotel && (
                         <HotelPrice>
                           <Typography className="total-price" fontWeight="bold">
                             Total Price
@@ -474,7 +485,7 @@ export default function Booking() {
               </Left>
               <Right width="">
                 <CustomHotelOption onChangeHotels={onChangeHotels} />
-                {bookingType === "multi-hotel" && (
+                {isMultiHotel && (
                   <CustomHotelOption onChangeHotels={onChangeHotels} />
                 )}
               </Right>
