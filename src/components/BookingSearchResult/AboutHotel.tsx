@@ -2,13 +2,14 @@ import { Container } from "@/styles";
 import { Typography as Span } from "../Typography";
 import styled from "styled-components";
 import { COLORS } from "@/utils/colors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
 import { AMENITIES, FACILITIES, FAQ, HOTEL_RULES } from "../../utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
+import useFullSearchWidget from "../Search/useFullSearch";
 
 const StyledAboutHotel = styled.div`
   padding-bottom: 48px;
@@ -134,6 +135,7 @@ const StyledAboutHotel = styled.div`
   @media ${BREAKPOINTS.tablet} {
     padding-bottom: 15px;
     .about-hotel__action {
+      display: none;
       padding-top: 0px;
       span {
         font-size: 14px;
@@ -264,8 +266,17 @@ const StyledAboutHotel = styled.div`
   }
 `;
 
-const WrapperHotelAmenities = styled.div`
+const WrapperMultiHotelButton = styled.div`
   display: flex;
+  @media ${BREAKPOINTS.mobileLg} {
+    justify-content: space-around;
+    span {
+      font-size: 10px;
+    }
+    .gradient-button {
+      width: 195px;
+    }
+  }
 `;
 
 const EXPAND = ["amenities", "rules", "faq"];
@@ -277,8 +288,18 @@ interface ClickToScrollHrefOptions {
   faq: string;
 }
 
-export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string}) {  
+export default function AboutHotel(
+  {clickToScrollHrefOptions, bookingType, selectedHotelIndex} :
+  {clickToScrollHrefOptions: ClickToScrollHrefOptions, bookingType: string, selectedHotelIndex?: number}
+) {
   const [expanded, setExpanded] = useState<string[]>(EXPAND);
+  const {isMobile} = useFullSearchWidget()
+  const [selectedHotel, setSelectedHotel] = useState<number>(0)
+
+  useEffect(() => {
+    setSelectedHotel(selectedHotelIndex || 0)
+  }, [selectedHotelIndex])
+
   const expandAll = () => {
     setExpanded(EXPAND);
   };
@@ -297,30 +318,40 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
     <StyledAboutHotel>
       <Container display="block" padding="0 20px 0px 20px">
         {bookingType == "multi-hotel" && (
-          <WrapperHotelAmenities>
+          
+<WrapperMultiHotelButton>
             <GradientButton
               isSelected
               text="Warwick Fiji Beach Resort"
               fontSize="18px"
-              height="62px"
-              borderRadius="17px"
-              color={COLORS.gradient2}
-              borderGradient={COLORS.gradient2}
-              margin={"0px 15px 0px 0px"}
+              height={isMobile ? "34px" : "62px"}
+              borderRadius={isMobile ? "5px" : "17px"}
+              color={selectedHotel === 0 ? COLORS.gradient2 : COLORS.white}
+              borderGradient={selectedHotel === 0 ? COLORS.gradient2 : ''}
+              textColor={selectedHotel === 0 ? '' : isMobile ? COLORS.blueFrench : COLORS.blueRibbon}
+              borderColor={selectedHotel === 0 ? '' : COLORS.greenBlue}
+              borderWidth={selectedHotel === 0 ? '' : isMobile ? "1px" : "2px"}
+              margin={isMobile ? "initial" : "0px 15px 0px 0px"}
+              handleSubmit={() => setSelectedHotel(0)}
+              fontWeight={"700"}
             />
             <GradientButton
               isSelected
               text="Fiji Gateway Hotel"
               fontSize="18px"
-              height="58px"
-              borderRadius="17px"
-              borderWidth="2px"
-              textColor={COLORS.blueRibbon}
-              color={COLORS.white}
-              borderGradient={COLORS.white}
-              borderColor={COLORS.greenBlue}
+              height={isMobile ? "34px" : "62px"}
+              borderRadius={isMobile ? "5px" : "17px"}
+              color={selectedHotel === 1 ? COLORS.gradient2 : COLORS.white}
+              borderGradient={selectedHotel === 1 ? COLORS.gradient2 : ''}
+              textColor={selectedHotel === 1 ? '' : isMobile ? COLORS.blueFrench : COLORS.blueRibbon}
+              borderColor={selectedHotel === 1 ? '' : COLORS.greenBlue}
+              borderWidth={selectedHotel === 1 ? '' : isMobile ? "1px" : "2px"}
+              margin={isMobile ? "initial" : "0px 15px 0px 0px"}
+              handleSubmit={() => setSelectedHotel(1)}
+              fontWeight={"700"}
             />
-          </WrapperHotelAmenities>
+          </WrapperMultiHotelButton>
+
           )}
         <div className="about-hotel__action">
           <Span color={COLORS.blueFrench} fontWeight="400" onClick={expandAll}>
@@ -349,7 +380,11 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
                   Most popular facilities
                 </Span>
                 <div className="facilities">
-                  {FACILITIES.map((item) => {
+                  {FACILITIES.map((item, index) => {
+                    if (selectedHotel === 1 && index === 0) {
+                      return ''
+                    }
+
                     return (
                       <div key={item.name} className="facility-item">
                         <ReactSVG className="facility-icon" src={item.icon} />
@@ -361,7 +396,10 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
                   })}
                 </div>
                 <div className="amenities">
-                  {AMENITIES.map((amenity) => {
+                  {AMENITIES.map((amenity, index) => {
+                    if (selectedHotel === 1 && index === 0) {
+                      return ''
+                    }
                     return (
                       <div key={amenity.name}>
                         <Span
@@ -393,7 +431,10 @@ export default function AboutHotel({clickToScrollHrefOptions, bookingType} : {cl
             }}
             details={
               <>
-                {HOTEL_RULES.map((item) => {
+                {HOTEL_RULES.map((item, index) => {
+                  if (selectedHotel === 1 && index === 0) {
+                    return ''
+                  }
                   return (
                     <div key={item.name} className="rule-item">
                       <Span fontWeight="bold">{item.name}</Span>

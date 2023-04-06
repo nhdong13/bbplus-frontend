@@ -19,20 +19,23 @@ const StyledButton = styled.div.attrs((props: {
   borderWidth?: string
   borderColor?: string
   margin?: string
+  visibility?: string
 }) => props)`
   align-items: center;
   background: ${props => props.borderGradient || props.color};
   border: ${props => props.borderWidth || 0} solid ${props => props.borderColor || "transparent"};
   border-radius: ${props => props.borderRadius || "17px"};
   cursor: pointer;
+  visibility: ${props => props.visibility || "initial"};
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${props => props.height || "52px"};
+  height: ${props => props.height || "54px"};
   max-width: ${props => props.maxWidth};
   padding: ${props => !props.borderGradient && props.padding ? props.padding : props.borderWidth || "1px"};
   width: ${props => props.borderGradient ? "fit-content" : props.width};
   margin: ${props => props.margin || "initial"};
+  box-sizing: border-box;
   span {
     color: ${props => props.textColor || COLORS.white};
     display: flex;

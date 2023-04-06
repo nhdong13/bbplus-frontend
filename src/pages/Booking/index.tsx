@@ -5,7 +5,7 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { H1, H5, Typography } from "@/components/Typography";
 import { Breadcrumb, BreadcrumbItem } from "@/styles";
 import { COLORS } from "@/utils/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   BookingContainer,
@@ -40,9 +40,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { MODAL_TYPES, useGlobalModalContext } from "@/components/Modal";
 import { GradientButton } from "@/components/Button";
- 
+
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import FullSearchWidget from "@/components/Search/FullSearchWidget";
+import { isMobileResponsive } from "@/utils/constant";
 
 const clickToScrollHrefOptions = {
   hotelRules: "hotel_rules_href",
@@ -55,6 +56,8 @@ export default function Booking() {
   const [selectedImage, setSelectedImage] = useState<string>(IMAGES.hotelBg);
   const [hotels, setHotels] = useState<string[]>([]);
   const [searchMode, setSearchMode] = useState<number>(0);
+  const isMobile = isMobileResponsive()
+  const [selectedHotel, setSelectedHotel] = useState<number>(0)
 
   const onSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -193,7 +196,7 @@ export default function Booking() {
                       FJ$XXX
                     </Typography>
                     <Typography
-                      color="#e00000"
+                      color={isMobile ? "#FF0000" : "#e00000"}
                       fontSize="16px"
                       fontWeight="normal"
                     >
@@ -209,7 +212,7 @@ export default function Booking() {
                     >
                       FJ$X,XXX
                     </Typography>
-                    <Typography color="#e00000" fontWeight="normal">
+                    <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
                       Total cost pay for X pax
                     </Typography>
                   </div>
@@ -246,7 +249,7 @@ export default function Booking() {
                       <div className="location">
                         <ReactSVG
                           className="icon"
-                          src={IMAGES.locationIcon}
+                          src={isMobile? IMAGES.mobileLocation : IMAGES.locationIcon}
                           width="17px"
                           height="25px"
                         />
@@ -270,7 +273,7 @@ export default function Booking() {
                         IMAGES.thumb4,
                         IMAGES.hotelBg,
                       ]}
-                      borderRadius="17px"
+                      borderRadius={isMobile ? "5px" : "17px"}
                       onSelectImage={onSelectImage}
                     />
                     <div>
@@ -278,87 +281,10 @@ export default function Booking() {
                       <div className="overlay"></div>
                     </div>
                   </HotelImage>
-                  {bookingType !== "multi-hotel" && (
-                    <HotelPrice>
-                      <Typography className="total-price" fontWeight="bold">
-                        Total Price
-                      </Typography>
-                      <div className="price-line">
-                        <Typography
-                          className="price-p-person"
-                          color="#104c94"
-                          fontSize="28px"
-                          fontWeight="800"
-                        >
-                          FJ$XXX
-                        </Typography>
-                        <Typography
-                          color="#e00000"
-                          fontSize="16px"
-                          fontWeight="normal"
-                        >
-                          Per person
-                        </Typography>
-                      </div>
-
-                      <div className="price-line">
-                        <Typography
-                          className="price-f-pax"
-                          fontWeight="800"
-                          lineHeight="16px"
-                        >
-                          FJ$X,XXX
-                        </Typography>
-                        <Typography color="#e00000" fontWeight="normal">
-                          Total cost pay for X pax
-                        </Typography>
-                      </div>
-                    </HotelPrice>
-                  )}
                   <HotelDetail>
-                    <div className="most-popular">
-                      <Typography color={COLORS.toryBlue} fontWeight="500" className="most-popular-text">
-                        Most Popular
-                      </Typography>
-                      <div className="most-popular-button">
-                        <Button
-                          width="120px"
-                          height="40px"
-                          border="2px"
-                          backgroundColor="transparent"
-                          borderRadius="17px"
-                          padding="0"
-                          className="room-only"
-                        >
-                          <Typography
-                            fontSize="16px"
-                            fontWeight="normal"
-                          >
-                            Room Only
-                          </Typography>
-                        </Button>
-
-                        <Button
-                          width="170px"
-                          height="40px"
-                          border="2px"
-                          backgroundColor="transparent"
-                          borderRadius="17px"
-                          padding="0"
-                        >
-                          <Typography
-                            fontSize="16px"
-                            fontWeight="normal"
-                          >
-                            Ultimate Holiday
-                          </Typography>
-                        </Button>
-                      </div>
-
-                    </div>
                     <Typography
                       className="holiday-includes"
-                      fontSize="24px"
+                      fontSize={isMobile ? "12px" : "24px"}
                       fontWeight="bold"
                     >
                       Holiday includes
@@ -392,11 +318,48 @@ export default function Booking() {
                       </li>
                     </ul>
                     {bookingType !== "multi-hotel" && (
+                      <HotelPrice>
+                        <Typography className="total-price" fontWeight="bold">
+                          Total Price
+                        </Typography>
+                        <div className="price-line">
+                          <Typography
+                            className="price-p-person"
+                            color="#104c94"
+                            fontSize="28px"
+                            fontWeight="800"
+                          >
+                            FJ$XXX
+                          </Typography>
+                          <Typography
+                            color={isMobile ? "#FF0000" : "#e00000"}
+                            fontSize="16px"
+                            fontWeight="normal"
+                          >
+                            Per person
+                          </Typography>
+                        </div>
+
+                        <div className="price-line">
+                          <Typography
+                            className="price-f-pax"
+                            fontWeight="800"
+                            lineHeight="16px"
+                          >
+                            FJ$X,XXX
+                          </Typography>
+                          <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
+                            Total cost pay for X pax
+                          </Typography>
+                        </div>
+                      </HotelPrice>
+                    )}
+                    {bookingType !== "multi-hotel" && (
                       <div className="flex col group-btn">
                         <Button
                           width="100%"
                           border="none"
-                          backgroundColor="#ff8003"
+                          backgroundColor={COLORS.flushOrange}
                           padding="16px 20px"
                           borderRadius="17px"
                         >
@@ -416,7 +379,7 @@ export default function Booking() {
                         >
                           <Typography
                             fontSize="18px"
-                            fontWeight="bold"
+                            fontWeight={isMobile ? "600" : "bold"}
                             color="black"
                           >
                             Quick Quote
@@ -473,7 +436,7 @@ export default function Booking() {
                   <HotelDetail>
                     <Typography
                       className="holiday-includes"
-                      fontSize="24px"
+                      fontSize={isMobile ? "12px" : "24px"}
                       fontWeight="bold"
                     >
                       Holiday includes
@@ -491,8 +454,6 @@ export default function Booking() {
                         <Typography>Garden view room</Typography>
                       </li>
                     </ul>
-
-                    <div className="flex col group-btn">
                       {bookingType === "multi-hotel" && (
                         <HotelPrice>
                           <Typography className="total-price" fontWeight="bold">
@@ -508,7 +469,7 @@ export default function Booking() {
                               FJ$XXX
                             </Typography>
                             <Typography
-                              color="#e00000"
+                              color={isMobile ? "#FF0000" : "#e00000"}
                               fontSize="16px"
                               fontWeight="normal"
                             >
@@ -524,16 +485,17 @@ export default function Booking() {
                             >
                               FJ$X,XXX
                             </Typography>
-                            <Typography color="#e00000" fontWeight="normal">
+                            <Typography color={isMobile ? "#FF0000" : "#e00000"} fontWeight="normal">
                               Total cost pay for X pax
                             </Typography>
                           </div>
                         </HotelPrice>
                       )}
+                    <div className="flex col group-btn">
                       <Button
                         width="100%"
                         border="none"
-                        backgroundColor="#ff8003"
+                        backgroundColor={COLORS.flushOrange}
                         padding="16px 20px"
                         borderRadius="17px"
                       >
@@ -553,7 +515,7 @@ export default function Booking() {
                       >
                         <Typography
                           fontSize="18px"
-                          fontWeight="bold"
+                          fontWeight={isMobile ? "600" : "bold"}
                           color="black"
                         >
                           Quick Quote
@@ -576,22 +538,27 @@ export default function Booking() {
             <div className="selected-hotels">
               {hotels.map((hotelName, index) => (
                 <GradientButton
+                  key={index}
                   isSelected
                   text={hotelName}
-                  color={index === 1 ? "white" : COLORS.gradient2}
+                  color={selectedHotel === index ? COLORS.gradient2 : "white"}
                   borderRadius="17px"
                   fontWeight="bold"
-                  borderGradient={index === 1 ? COLORS.borderGradient : ""}
-                  borderWidth={index === 1 ? "2px" : ""}
-                  textColor={index === 1 ? COLORS.blueRibbon : ""}
+                  height="64px"
+                  textPadding="0 50px 0 38px"
+                  borderGradient={selectedHotel === index ? "" : COLORS.borderGradient}
+                  borderWidth={selectedHotel === index ? "" : "2px"}
+                  textColor={selectedHotel === index ? "" : COLORS.blueRibbon}
                   fontSize="18px"
+                  handleSubmit={() => setSelectedHotel(index)}
                 />
               ))}
             </div>
           )}
           <AboutHotel
-            clickToScrollHrefOptions = {clickToScrollHrefOptions}
-            bookingType = {bookingType || ""}
+            clickToScrollHrefOptions={clickToScrollHrefOptions}
+            bookingType={bookingType || ""}
+            selectedHotelIndex={selectedHotel}
           />
         </BookingContainer>
       </MainLayout>

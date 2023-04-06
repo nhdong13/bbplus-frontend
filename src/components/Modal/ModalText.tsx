@@ -5,6 +5,7 @@ import { Modal } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import styled from "styled-components";
 import { Typography as Span } from "../Typography";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface ITextModal extends IModal {
   paragraph?: string;
@@ -29,7 +30,7 @@ export default function TextModal({
         </div>
 
         <Container display="flex" flexDirection="column" maxWidth="100%">
-          <Span fontSize="14px">{paragraph}</Span>
+          <Span fontSize="14px" className="paragraph">{paragraph}</Span>
         </Container>
       </StyledTextModal>
     </Modal>
@@ -44,6 +45,7 @@ const StyledTextModal = styled.div`
   outline: none;
   background-color: white;
   width: 696px;
+  max-width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,5 +58,11 @@ const StyledTextModal = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    .paragraph {
+      font-size: 12px;
+    }
   }
 `;

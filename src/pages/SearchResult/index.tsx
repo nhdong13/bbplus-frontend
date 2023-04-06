@@ -13,13 +13,14 @@ import {
   SearchOptionItem,
   SearchOptionSelect,
   SearchWidgetBackground,
-  SearchWidgetContainer
+  SearchWidgetContainer,
+  ButtonNextStep
 } from "./styles";
 import SearchView from './SearchView'
 import GridView from "./GridView";
 import Package from "./PackageView";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import FullSearchWidget from "@/components/Search/FullSearchWidget";
 import { optionFilter, optionSort } from "@/utils/tempData";
 
@@ -29,7 +30,7 @@ export default function SearchResult() {
   const [valueFilter, setValueFilter] = useState<any>()
   const [valueSort, setValueSort] = useState<any>()
   const [searchMode, setSearchMode] = useState<number>(0);
-  const checkIn: string = searchParam.get('checkIn') || 'Day|Date|Month';
+  const navigate = useNavigate();
 
   return (
     <>
@@ -88,20 +89,26 @@ export default function SearchResult() {
               <SearchOptionSelect>
                 <SearchOptionItem>
                   <div className="mt-10">Markup</div>
-                  <div className="flex">
+                  <div className="flex apply-wrap">
                     <input value={"20%"} />
-                    <div>
-                      <GradientButton
-                        color={COLORS.gradient1}
-                        text="Apply"
-                        isSelected={true}
-                        maxWidth="90px"
-                        height="48px"
-                      />
-                    </div>
+                    <GradientButton
+                      color={COLORS.gradient1}
+                      text="Apply"
+                      isSelected={true}
+                      maxWidth="90px"
+                      height="48px"
+                      borderRadius="5px"
+                    />
                   </div>
                 </SearchOptionItem>
               </SearchOptionSelect>
+              <ButtonNextStep
+                  onClick={() => {
+                    navigate("/step2");
+                  }}
+                >
+                  Next Step
+                </ButtonNextStep>
             </div>
             {type === 1 && <div className="title-mobile">Fiji: 134 properties found</div>}
           </SearchOption>

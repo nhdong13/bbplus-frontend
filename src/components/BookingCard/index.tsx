@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { HotelData } from "@/utils/types/CardHotel";
 import { StyledBookingButtonContainer, StyledBookingCard } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 
 interface BookingCardData {
   data?: HotelData
@@ -13,6 +14,8 @@ interface BookingCardData {
 }
 
 export default function BookingCard({ data, index, onClickCard }: BookingCardData) {
+  const { showModal } = useGlobalModalContext();
+
   return (
     <StyledBookingCard key={index} onClick={onClickCard}>
       <div className="booking-card__container">
@@ -36,7 +39,9 @@ export default function BookingCard({ data, index, onClickCard }: BookingCardDat
           {
             index && index % 2 === 0
               ?
-              <div className="empty">No avaialability</div>
+              <div className="empty">
+                <span onClick={() => showModal(MODAL_TYPES.CALENDAR)}>No availability</span>
+              </div>
               :
               <>
                 <div className="booking-card__price-container">

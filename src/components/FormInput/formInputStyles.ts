@@ -35,7 +35,7 @@ const StyledInputContainer = styled.div.attrs(
     background-repeat: no-repeat;
   }
 
-  input {
+  input, textarea {
     height: ${(props) => (props.maxHeight ? props.maxHeight : "71px")};
     width: 100%;
     box-sizing: border-box;

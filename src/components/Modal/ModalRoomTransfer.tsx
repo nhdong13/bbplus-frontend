@@ -13,7 +13,7 @@ import { Typography as Span } from "../Typography";
 import styled from "styled-components";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@/assets/images";
-import { StyledModal, StyledModalContent } from "./styles";
+import { Divider, StyledModal, StyledModalContent } from "./styles";
 import { Container } from "@/styles";
 import { useState } from "react";
 import { GradientButton } from "../Button";
@@ -21,6 +21,8 @@ import { COLORS } from "@/utils/colors";
 import { ONE_WAY_SEAT, RETURN_SEAT } from "@/utils/dataTest";
 import Dropdown from "../Dropdown/Dropdown";
 import DatePicker from "react-multi-date-picker";
+import { isMobileResponsive } from "@/utils/constant";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 
 interface IRoomTransfer extends IModal {
   transferType?: string;
@@ -33,10 +35,11 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
   const [selectedTab, setSelectedTab] = useState<string>(TAB[0]);
   const [selectedOption, setSelectedOption] = useState<string>(OPTION[0]);
   const [expand, setExpand] = useState<string[]>([]);
+  const isMobile = isMobileResponsive()
 
   return (
     <Modal open={isOpen} onClose={onCloseModal}>
-      <StyledModal width="820px">
+      <StyledModal width={isMobile ? "410px" : "820px"}>
         <StyledModalContent>
           <div className="header">
             <Span fontSize="24px" fontWeight="bold">
@@ -57,7 +60,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
               />
             </Span>
           </div>
-
+          {isMobile && <Divider />}
           <Container display="block" maxWidth="820px">
             <Image src={transferType === "air" ? IMAGES.airportTransfer : IMAGES.landTransfer} alt="" />
             <TabContainer>
@@ -87,6 +90,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                       selectedOption !== OPTION[0] ? "white" : COLORS.gradient2
                     }
                     handleSubmit={() => setSelectedOption(OPTION[0])}
+                    className={selectedOption === OPTION[0] ? "active-button" : "inactive-button"}
                   />
                   <GradientButton
                     isSelected
@@ -103,6 +107,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                       selectedOption !== OPTION[1] ? "white" : COLORS.gradient2
                     }
                     handleSubmit={() => setSelectedOption(OPTION[1])}
+                    className={selectedOption === OPTION[1] ? "active-button" : "inactive-button"}
                   />
                 </GroupButton>
                 <Options>
@@ -128,18 +133,39 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                           <Span>{item}</Span>
                           <Span fontWeight="bold">$XXX</Span>
                           <FormControl fullWidth>
-                            <Select
-                              label="qty"
-                              displayEmpty
-                              defaultValue={0}
-                              input={<OutlinedInput />}
-                              disabled={selectedOption !== OPTION[0]}
-                            >
-                              <MenuItem value={0}>0</MenuItem>
-                              <MenuItem value={10}>10</MenuItem>
-                              <MenuItem value={20}>20</MenuItem>
-                              <MenuItem value={30}>30</MenuItem>
-                            </Select>
+                            {isMobile ? (
+                              <Select
+                                label="qty"
+                                displayEmpty
+                                defaultValue={0}
+                                input={<OutlinedInput />}
+                                disabled={selectedOption !== OPTION[0]}
+                                IconComponent={(props) => (
+                                  <ReactSVG
+                                    className="dropdown"
+                                    src={IMAGES.iconDropDownBlue}
+                                  ></ReactSVG>
+                                )}
+                              >
+                                <MenuItem value={0}>0</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={20}>20</MenuItem>
+                                <MenuItem value={30}>30</MenuItem>
+                              </Select>
+                            ) : (
+                              <Select
+                                label="qty"
+                                displayEmpty
+                                defaultValue={0}
+                                input={<OutlinedInput />}
+                                disabled={selectedOption !== OPTION[0]}
+                              >
+                                <MenuItem value={0}>0</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={20}>20</MenuItem>
+                                <MenuItem value={30}>30</MenuItem>
+                              </Select>
+                            )}
                           </FormControl>
                         </div>
                       );
@@ -170,18 +196,39 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                           <Span>{item}</Span>
                           <Span fontWeight="bold">$XXX</Span>
                           <FormControl fullWidth>
-                            <Select
-                              label="qty"
-                              displayEmpty
-                              defaultValue={0}
-                              input={<OutlinedInput />}
-                              disabled={selectedOption !== OPTION[1]}
-                            >
-                              <MenuItem value={0}>0</MenuItem>
-                              <MenuItem value={10}>10</MenuItem>
-                              <MenuItem value={20}>20</MenuItem>
-                              <MenuItem value={30}>30</MenuItem>
-                            </Select>
+                            {isMobile ? (
+                              <Select
+                                label="qty"
+                                displayEmpty
+                                defaultValue={0}
+                                input={<OutlinedInput />}
+                                disabled={selectedOption !== OPTION[1]}
+                                IconComponent={(props) => (
+                                  <ReactSVG
+                                    className="dropdown"
+                                    src={IMAGES.iconDropDownBlue}
+                                  ></ReactSVG>
+                                )}
+                              >
+                                <MenuItem value={0}>0</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={20}>20</MenuItem>
+                                <MenuItem value={30}>30</MenuItem>
+                              </Select>
+                            ) : (
+                              <Select
+                                label="qty"
+                                displayEmpty
+                                defaultValue={0}
+                                input={<OutlinedInput />}
+                                disabled={selectedOption !== OPTION[0]}
+                              >
+                                <MenuItem value={0}>0</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={20}>20</MenuItem>
+                                <MenuItem value={30}>30</MenuItem>
+                              </Select>
+                            )}
                           </FormControl>
                         </div>
                       );
@@ -189,7 +236,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                   </div>
                 </Options>
               </div>
-              <div className="tab-panel" hidden={selectedTab !== TAB[1]}>
+              <div className="tab-panel supplier-tab" hidden={selectedTab !== TAB[1]}>
                 <Span className="paragraph" fontSize="14px">
                   Tewaka Fiji provides genuinely unique experiences for travel in
                   Fiji. From the very moment you arrive at Nadi International
@@ -204,12 +251,14 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                   <br />
                   Head back to the airport in style with an included return.
                   <br />
-                  <br />
+                </Span>
+                <Span className="paragraph fine-print">
                   Fine Print
                 </Span>
                 <Dropdown
                   className="dropdown"
                   title="Cancellation policy"
+                  titleColor={COLORS.black}
                   expand={expand.includes(EXPAND[0])}
                   onExpand={() => {}}
                   details={<></>}
@@ -223,6 +272,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                 <Dropdown
                   className="dropdown"
                   title="Luggage"
+                  titleColor={COLORS.black}
                   expand={expand.includes(EXPAND[1])}
                   onExpand={() => {}}
                   details={<></>}
@@ -236,6 +286,7 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
                 <Dropdown
                   className="dropdown"
                   title="Waiting time changes"
+                  titleColor={COLORS.black}
                   expand={expand.includes(EXPAND[2])}
                   onExpand={() => {}}
                   details={<></>}
@@ -249,24 +300,25 @@ export default function RoomTransfer({ isOpen, onCloseModal, transferType }: IRo
               </div>
             </Details>
           </Container>
+          <div>
           <Action>
-            <Span fontSize="24px" fontWeight="bold">
+            <Span fontSize={isMobile ? "16px" : "24px"} fontWeight="bold" padding={isMobile ? "0 0 0 10px" : "0"}>
               $XXX&nbsp;
-              <Span fontSize="16px" fontWeight="normal">
+              <Span fontSize={isMobile ? "12px" : "16px"} fontWeight="normal">
                 total
               </Span>
             </Span>
             <GradientButton
+              className="btn update-trip-button"
               isSelected
               text="Update trip"
               color={COLORS.gradient2}
               handleSubmit={onCloseModal}
               fontWeight="bold"
-              borderRadius="17px"
-              textPadding="0 38.5px 0 38.5px"
-              height="62px"
+              borderRadius={isMobile ? "5px" : "17px"}
             />
           </Action>
+          </div>
         </StyledModalContent>
       </StyledModal>
     </Modal>
@@ -301,6 +353,22 @@ const TabContainer = styled.div`
     height: 4px;
     box-sizing: border-box;
     width: 50% !important;
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .MuiTabs-flexContainer button {
+      color: ${COLORS.black};
+    }
+    .MuiButtonBase-root {
+      font-size: 14px;
+      text-transform: none;
+    }
+    margin-bottom: 10px;
+    .MuiTabs-indicator {
+      background-color: ${COLORS.toryBlue};
+    }
+    .MuiButtonBase-root.MuiTab-root.Mui-selected {
+      color: ${COLORS.toryBlue};
+    }
   }
 `;
 
@@ -374,12 +442,69 @@ const Details = styled.div`
       left: 0px;
     }
   }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 0;
+    .MuiInputBase-root {
+      min-width: 67px;
+    }
+    .option {
+      .dropdown {
+      position: absolute;
+      pointer-events: none;
+      right: 4px;
+      width: fit-content;
+      height: fit-content;
+      svg {
+        width: 12px;
+        height: 8px;
+      }
+      }
+      @media ${BREAKPOINTS.mobileLg} {
+        width: 100%;
+        .dropdown {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+      .MuiSelect-select {
+      font-size: 12px;
+      font-family: Manrope;
+      }
+    }
+    .supplier-tab {
+      max-height: calc(100vh - 360px);
+      overflow-y: scroll;
+    }
+    .paragraph {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+    .fine-print {
+      font-weight: 700;
+    }
+    .disable {
+      span {
+        color: ${COLORS.parkinglotGray};
+      }
+      .dropdown {
+        path {
+          stroke: ${COLORS.parkinglotGray};
+        }
+      }
+    }
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 240px;
   object-fit: cover;
+  @media ${BREAKPOINTS.mobileLg} {
+    height: 120px;
+    margin-top: 10px;
+  }
 `;
 
 const GroupButton = styled.div`
@@ -403,6 +528,18 @@ const GroupButton = styled.div`
       font-weight: 600;
       padding: 0;
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      height: 39px;
+      width: 190px;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .inactive-button {
+      span {
+        color: ${COLORS.blueFrench};
+        font-weight: 400;
+      }
+    }
   }
 `;
 
@@ -412,7 +549,37 @@ const Action = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 28px;
-  border-top: 1px solid black;
+  border-top: 1px solid ${COLORS.gray81};
+  .btn {
+    height: 62px;
+    box-sizing: border-box;
+    span {
+      padding: 0 38px;
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px 0;
+    margin: 0 10px;
+    .btn {
+      height: 42px;
+      width: 96px;
+      span {
+        padding: 0 38px;
+      }
+    }
+    flex-grow: 1;
+    position: fixed;
+    bottom: 20px;
+    width: 385px;
+    background-color: ${COLORS.white};
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    .update-trip-button{
+      span {
+        font-size: 14px;
+      }
+    }
+  }
 `;
 
 const Options = styled.div`
@@ -453,6 +620,19 @@ const Options = styled.div`
         height: 100%;
       }
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      .rmdp-container {
+        padding-right: 0;
+        input {
+          height: 39px;
+          font-size: 12px;
+          border-width: 1px;
+        }
+      }
+      .dropdown {
+        right: 15px;
+      }
+    }
   }
   .option {
     width: 100%;
@@ -472,10 +652,31 @@ const Options = styled.div`
     &:last-child {
       border-bottom: 0px solid #aaa;
     }
+    @media ${BREAKPOINTS.mobileLg} {
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 10px 0 10px 10px;
+      margin: 10px 0;
+      &:last-child {
+        border-bottom: 1px solid #aaa;
+      }
+      fieldset {
+        border-width: 1px;
+        border-color: #aaa;
+      }
+    }
   }
   .active {
     .rmdp-container input {
       border-color: black;
+      border-width: 1px;
     }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 405px);
+    overflow-y: scroll;
   }
 `;

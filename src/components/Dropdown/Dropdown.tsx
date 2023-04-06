@@ -16,6 +16,7 @@ const StyledDropdown = styled.div.attrs(
       padding: 0;
       min-height: unset !important;
       margin-bottom: 20px;
+      color: ${COLORS.black}
     }
     .MuiAccordionSummary-content {
       span {
@@ -43,6 +44,7 @@ interface IDropdown {
   expand: boolean;
   onExpand: () => void;
   id?: string;
+  titleColor?: string;
 }
 export default function Dropdown({
   className,
@@ -53,7 +55,8 @@ export default function Dropdown({
   expandIcon,
   onExpand,
   boxShadow,
-  id
+  id,
+  titleColor
 }: IDropdown) {
   return (
     <StyledDropdown
@@ -91,7 +94,7 @@ export default function Dropdown({
               className="title"
               fontSize="30px"
               fontWeight="bold"
-              color={COLORS.cyprus}
+              color={titleColor || COLORS.cyprus}
             >
               {title}
             </Span>

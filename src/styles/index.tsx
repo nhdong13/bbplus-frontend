@@ -80,6 +80,7 @@ const Container = styled.div<IContainer>`
     width: 100%;
     padding: 0 10px;
     box-sizing: border-box;
+    margin: initial;
   }
 `;
 

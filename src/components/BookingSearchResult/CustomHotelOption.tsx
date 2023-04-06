@@ -13,6 +13,7 @@ import { BREAKPOINTS } from "@/utils/breakpoints";
 import { GradientButton } from "../Button";
 import { MODAL_TYPES, useGlobalModalContext } from "../Modal";
 import { useParams } from "react-router-dom";
+import { isMobileResponsive } from "@/utils/constant";
 
 interface ICustomHotelOption {
   onChangeHotels?: (hotelName: string) => void;
@@ -31,6 +32,7 @@ export default function CustomHotelOption({
   const [hotelOptions, setHotelOptions] = useState([HOTEL_RESULT_DATA]);
   const { showModal } = useGlobalModalContext();
   const { bookingType } = useParams();
+  const isMobile = isMobileResponsive()
 
   const onExpand = (accordion: string) => {
     setExpanded((expand) => {
@@ -53,7 +55,7 @@ export default function CustomHotelOption({
 
   const onSelectOption = (type: SelectedRoomType, selectedOpt: number) => {
     if (type === "single") {
-      setSelectedOption((option) => 
+      setSelectedOption((option) =>
         option.includes(selectedOpt) ? option : [selectedOpt]
       );
     }
@@ -63,7 +65,7 @@ export default function CustomHotelOption({
     if (type === "room_another") {
       return showModal(MODAL_TYPES.ADD_HOTEL, {
         title: "Add Another Hotel",
-        hotels: ["Fiji Hotel Gateway"],
+        hotels: ["Fiji Gateway Hotel"],
         callback: () => {
           setExpanded((expanded) => [...expanded, ...listExpanded(index + 1)]);
           setAddedComponent((added) => [
@@ -102,6 +104,7 @@ export default function CustomHotelOption({
                     height="62px"
                     borderRadius="17px"
                     color={COLORS.gradient2}
+                    visibility={(isMobile && bookingType === "quick-book") ? "hidden" : "initial"}
                   />
                   <div className="hotel-result__action">
                     <Span
@@ -222,7 +225,7 @@ export default function CustomHotelOption({
                       </Span>
                       <GradientButton
                         isSelected
-                        text="ADD Component"
+                        text={isMobile ? "+ ADD Component" : "ADD Component"}
                         fontSize="25px"
                         height="62px"
                         borderRadius="17px"
@@ -344,9 +347,10 @@ const StyledHotelResult = styled.div`
           padding: 0 10px;
         }
       }
+      padding-top: 10px;
+      padding-right: 0px;
     }
     .hotel-result__action {
-      padding-top: 30px;
       span {
         font-size: 14px;
         line-height: 19px;
@@ -376,14 +380,26 @@ const StyledHotelResult = styled.div`
       }
       .gradient-button {
         height: fit-content;
+        width: 200px;
         & > div {
           height: 34px;
         }
         span {
-          font-size: 12px;
-          padding: 0 12px;
+          font-size: 10px;
         }
       }
+    }
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .hotel-result__separate{
+      margin: 0 12.5px;
+    } 
+    .MuiPaper-root {
+      margin-bottom: 0px !important;
+      margin-top: 0px !important;
+    }
+    .inactive-component {
+      padding-top: 0;
     }
   }
 `;

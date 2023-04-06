@@ -191,6 +191,7 @@ const SearchOption = styled.div`
   margin-bottom: 27px;
   align-items: center;
   justify-content: space-between;
+  align-items: flex-end;
   .title, .title-mobile{
     font-size: 28px;
     font-family: ${FONTS.manropeBold};
@@ -210,6 +211,12 @@ const SearchOption = styled.div`
     input {
       border: 2px solid ${COLORS.greenBlue};
     }
+    .gradient-button {
+        span {
+          padding-left: 50px;
+          font-weight: 600;
+        }
+      }
     @media ${BREAKPOINTS.laptop} {
       gap: 10px;
       input {
@@ -224,6 +231,7 @@ const SearchOption = styled.div`
         padding: 0;
         span {
           padding: 0;
+          font-weight: 400;
         }
       }
     }
@@ -235,9 +243,12 @@ const SearchOption = styled.div`
     .mt-10 {
       font-family: ${FONTS.manropeBold};
     }
+    align-items: flex-end;
+    padding-right: 20px;
     @media ${BREAKPOINTS.laptop} {
       display: block;
       gap: 0;
+      padding-right: 0;
     }
   }
 
@@ -267,6 +278,10 @@ const SearchOption = styled.div`
   .active {
     background: ${COLORS.cyprus};
     color: ${COLORS.white}
+  }
+
+  .flex.apply-wrap {
+    gap: 10px;
   }
 
   @media ${BREAKPOINTS.laptop} {
@@ -309,6 +324,9 @@ const SearchOption = styled.div`
       text-align: center;
       font-size: 12px;
     }
+    .flex.apply-wrap {
+      align-items: center;
+    }
   }
 `;
 
@@ -328,7 +346,6 @@ const SearchOptionSelect = styled.div`
   align-items: center;
   input {
     width: 74px;
-    height: 44px;
     position: relative;
     border-radius: 4.5px;
     border: 2px solid ${COLORS.black};
@@ -355,6 +372,7 @@ const ListResultContainer = styled.div`
   margin: auto;
   margin-bottom: 34px;
   display: flex;
+  justify-content: space-between;
   &:last-child {
     margin-bottom: 145px;
   }
@@ -407,6 +425,10 @@ const HotelCardContainer = styled.div`
     @media ${BREAKPOINTS.laptop} {
       margin: 0 auto;
       width: auto;
+    }
+
+    @media ${BREAKPOINTS.fromDesktopLg} {
+      margin-left: 35px;
     }
   }
 
@@ -654,7 +676,7 @@ const BookingContainer = styled.div`
     .gradient-button {
       box-sizing: border-box;
       span {
-        padding: 0 10px;
+        font-weight: normal;
       }
     }
   }
@@ -667,6 +689,28 @@ const BookingContainer = styled.div`
         height: 34px;
       }
     }
+  }
+`;
+
+const ButtonNextStep = styled.button`
+  background-color: ${COLORS.flushOrange};
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 16px 42px;
+  border-radius: 17px;
+  font-weight: bold;
+  font-size: 16px;
+  width: 194px;
+  height: 48.6px;
+  font-family: ${FONTS.manrope}
+  @media ${BREAKPOINTS.laptop} {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 0px;
+    line-height: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
   }
 `;
 
@@ -688,4 +732,5 @@ export {
   BookingContainer,
   SearchWidgetBackground,
   SearchWidgetContainer,
+  ButtonNextStep
 };

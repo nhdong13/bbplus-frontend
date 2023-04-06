@@ -124,7 +124,7 @@ const Link = styled.div`
 `;
 
 const ButtonNextStep = styled.button`
-  background-color: #ff8003;
+  background-color: ${COLORS.flushOrange};
   color: white;
   width: fit-content;
   height: fit-content;
@@ -141,6 +141,8 @@ const ButtonNextStep = styled.button`
     line-height: 16px;
     border-radius: 5px;
     margin-top: 10px;
+    height: 36px;
+    font-family: Manrope;
   }
 `;
 
@@ -217,6 +219,12 @@ const HotelInformation = styled.div`
     border-bottom-style: dotted;
     margin-top: 36.6px;
     margin-bottom: 40px;
+  }
+  @media ${BREAKPOINTS.mobileLg} {
+    .divider {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
   }
   @media ${BREAKPOINTS.tablet} {
     box-sizing: border-box;
@@ -323,6 +331,7 @@ const HotelImage = styled.div`
     }
     .hotel__image {
       margin-right: 10px;
+      border-radius: 5px;
     }
     .overlay {
       display: none;
@@ -346,7 +355,6 @@ const HotelPrice = styled.div`
     }
   }
   @media ${BREAKPOINTS.tablet} {
-    padding-bottom: 10px;
     .total-price {
       font-size: 12px;
       font-weight: normal;
@@ -380,6 +388,10 @@ const HotelPrice = styled.div`
         margin-top: 10px;
       }
     }
+    padding-bottom: 0;
+    padding-top: 10px;
+    border-bottom: none;
+    border-top: 2px dotted #b1b1b1;;
   }
 `;
 
@@ -404,6 +416,10 @@ const Button = styled.button<IButton>`
   background-color: ${(props) => props.backgroundColor || "white"};
   font-weight: bold;
   font-size: ${(props) => props.fontSize};
+  @media ${BREAKPOINTS.mobileLg} {
+    border-radius: 5px;
+    border-width: 1px;
+  }
 `;
 
 const HotelDetail = styled.div`
@@ -448,6 +464,12 @@ const HotelDetail = styled.div`
         border: 2px solid #00B492;
       }
 
+      @media ${BREAKPOINTS.mobileLg} {
+        button {
+          border: 1px solid #00B492;
+        }
+      }
+
       .room-only {
         margin-right: 13px;
       }
@@ -455,14 +477,27 @@ const HotelDetail = styled.div`
   }
 
   @media ${BREAKPOINTS.tablet} {
+    margin-top: 10px;
+    margin-bottom: 20px;
     & > div:first-child {
       justify-content: flex-start;
       gap: 10px;
       span {
         font-size: 12px;
         line-height: 16px;
-        color: #000000;
       }
+    }
+    .most-popular {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .most-popular-button span {
+      color: ${COLORS.blueFrench};
+    }
+    .most-popular-text {
+      color: ${COLORS.black};
+      font-weight: 700;
     }
     .action {
       margin-bottom: 10px;
@@ -496,7 +531,6 @@ const HotelDetail = styled.div`
         height: 39px;
         width: 143.5px;
         span {
-          font-weight: 700;
           font-size: 14px;
           line-height: 14px;
         }

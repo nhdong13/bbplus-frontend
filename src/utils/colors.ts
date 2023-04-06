@@ -56,6 +56,7 @@ export const COLORS: StyledColors = {
   toryBlue: "#104C94",
   red: "#FF0000",
   red2: "#BA0000",
+  redHighlight: "#FFDFDF",
   rustyNail: "#7F5108",
   white: "#ffffff",
   darkGreen: "#003630",
@@ -128,6 +129,7 @@ interface StyledColors {
   toryBlue: string;
   red: string;
   red2: string;
+  redHighlight: string;
   rustyNail: string;
   white: string;
   darkGreen: string;

@@ -1,5 +1,6 @@
 import IMAGES from "@/assets/images";
 import { COLORS } from "@/utils/colors";
+import { BREAKPOINTS } from "@/utils/breakpoints"
 import styled from "styled-components";
 import { useState } from "react";
 import useComponentVisible from "@/utils/clickOutSide";
@@ -49,6 +50,8 @@ const StyledSelectContainer = styled.div.attrs(
     z-index: 10;
     background: ${COLORS.white};
     min-width: 87px;
+    border-radius: 11.366px;
+
     li {
       cursor: pointer;
       padding: 10px 20px;
@@ -63,7 +66,15 @@ const StyledSelectContainer = styled.div.attrs(
     .selected {
       background: ${COLORS.blueRibbon};
       color: ${COLORS.white};
+      border-top-left-radius: 11.366px;
+      border-top-right-radius: 11.366px;
     }
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -131,6 +142,40 @@ const PhoneContactInputContainer = styled.div`
     margin-left: 46px;
     width: 309px;
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    flex-direction: column;
+    margin-top: 20px;
+
+    p {
+      display: none;
+    }
+
+    .country-code, .phonenumber, .email-address {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .input-container {
+      margin-top: 0;
+      margin-bottom: 30px;
+      border: 1px solid ${COLORS.black};
+      border-radius: 5px;
+
+      input {
+        font-size: 14px;
+        padding: 10px;
+        height: auto;
+      }
+    }
+
+    .email-address {
+      .input-container {
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+    }
+  }
 `;
 
 interface PhoneContactInput {
@@ -154,7 +199,7 @@ const PhoneContactInput = ({ options }: PhoneContactInput) => {
         />
       </div>
       <div className="email-address">
-        <Span fontWeight="bold">Email address</Span>
+        <Span fontWeight="bold">Email Address</Span>
         <FormInput
           label="Watch out for typos in the email"
           marginTop="0"

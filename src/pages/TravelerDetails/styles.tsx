@@ -1,6 +1,7 @@
 
 import { COLORS } from "@/utils/colors";
 import { FONTS } from "@/utils/fonts";
+import { BREAKPOINTS } from "@/utils/breakpoints";
 import styled from "styled-components";
 
 const BookingProgressBar = styled.div`
@@ -71,6 +72,10 @@ const BookingProgressBar = styled.div`
       stroke: ${COLORS.asexualGrey};
     }
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    display: none;
+  }
 `;
 
 const TravelerDetailsFormContainer = styled.div`
@@ -112,6 +117,10 @@ const TravelerDetailsFormContainer = styled.div`
       }
       .input-container span {
         margin-bottom: 13.4px;
+
+        .red {
+          color: ${COLORS.red}
+        }
       }
 
       .code-container {
@@ -140,7 +149,6 @@ const TravelerDetailsFormContainer = styled.div`
         span {
           margin-left: 29px;
           font-size: 16px;
-          display: flex;
           align-items: center;
           padding-left: 36px;
           line-height: 32px;
@@ -175,6 +183,10 @@ const TravelerDetailsFormContainer = styled.div`
           margin-left: 30px;
         }
       }
+
+      .additional-info {
+        margin-bottom: 10px;
+      }
     }
 
     .important-information {
@@ -185,6 +197,14 @@ const TravelerDetailsFormContainer = styled.div`
         }
       }
     }
+
+    > div:first-child {
+      margin-bottom: 33px;
+    }
+  }
+
+  .mobile-only {
+    display: none !important;
   }
 
   .trip-summary {
@@ -276,7 +296,6 @@ const TravelerDetailsFormContainer = styled.div`
           background: linear-gradient(#fff, #fff) padding-box,
             ${COLORS.gradient2};
           border-radius: 6px;
-          border: 2px solid transparent;
         }
         .MuiCheckbox-root {
           .MuiSvgIcon-root {
@@ -357,12 +376,347 @@ const TravelerDetailsFormContainer = styled.div`
       }
     }
   }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: auto;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 0;
+    gap: 0;
+
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-only {
+      display: block !important;
+    }
+
+    .detail-form {
+      width: 100%;
+
+      .other-details,
+      .payment-information,
+      .important-information {
+        width: auto;
+        padding: 10px;
+        border: none;
+        margin-top: 10px;
+        font-size: 14px;
+
+        > span {
+          font-size: 16px;
+        }
+      }
+
+      .divider {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .other-details {
+        > span {
+          margin-bottom: 20px;
+        }
+
+        .code-container {
+          flex-direction: column;
+          margin-bottom: 0;
+
+          .input-container {
+            width: 100%;
+
+            span {
+              margin-bottom: 10px;
+            }
+
+            .input-container {
+              margin-top: 0;
+              margin-bottom: 30px;
+              border: 1px solid ${COLORS.black};
+              border-radius: 5px;
+            }
+          }
+        }
+
+        .additional-notes {
+          span {
+            font-size: 14px;
+          }
+
+          .input-container {
+            width: 100%;
+            margin-bottom: 0;
+
+            textarea {
+              height: 80px;
+              padding: 10px;
+              border: 1px solid ${COLORS.black};
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+
+      .payment-information {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding-bottom: 0;
+
+        > p {
+          margin-bottom: 30px;
+
+          span {
+            vertical-align: top;
+          }
+
+          span.image {
+            margin-left: 10px;
+          }
+        }
+
+        .additional-info {
+          margin-bottom: 30px;
+
+          span {
+            font-size: 12px;
+            line-height: 16px;
+            width: 50%;
+            padding-left: 27px;
+            margin-left: 0;
+
+            img {
+              width: 20px;
+              height: 20px;
+              transform: translate(-28px,0px);
+            }
+          }
+        }
+
+        .first-line-container, .second-line-container {
+          margin-bottom: 30px;
+          width: 100%;
+          gap: 10px;
+
+          div:nth-child(2) {
+            margin-left: 0;
+          }
+
+          > .input-container {
+            margin-left: 0;
+            width: 50%;
+
+            span {
+              margin-bottom: 0;
+            }
+
+            .input-container {
+              width 100%;
+              input {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+
+        .second-line-container {
+          margin-bottom: 0;
+        }
+      }
+
+      > div:first-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .trip-summary {
+      width: 100%;
+      font-size: 12px;
+      line-height: 16px;
+      padding: 0;
+      box-sizing: border-box;
+
+      .total-price-container {
+        width: 100%;
+        padding: 20px 10px;
+        box-sizing: border-box;
+
+        > p:first-child {
+          font-size: 14px;
+        }
+
+        p.total-price-value {
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        p:nth-child(3) {
+          font-size: 12px;
+          margin-bottom: 30px;
+        }
+
+        .price-details {
+          p {
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          .line {
+            padding: 10px 0 2px 0;
+          }
+
+          .last {
+            padding-bottom: 0;
+            margin-bottom: 15px;
+          }
+        }
+
+        .action-bottom {
+          margin-bottom: 0;
+
+          .checkbox-group {
+            span {
+              font-size: 12px;
+              margin-bottom: 0;
+            }
+
+            .MuiButtonBase-root {
+              width: 16px;
+              height: 16px;
+              border-radius: 3px;
+              margin-bottom: 0;
+            }
+          }
+
+          .btn {
+            border-radius: 3px;
+            padding: 0 12px;
+            margin-right: 0;
+            width: auto;
+            height: 16px;
+          }
+        }
+      }
+
+      .section {
+        font-size: 14px;
+      }
+
+      .divider {
+        border: 0.5px dashed ${COLORS.white};
+        margin-bottom: 2.5px;
+      }
+
+      .detail-form .important-information {
+        width: auto;
+        padding: 10px;
+        border: none;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        display: flex !important;
+
+        > span {
+          padding-bottom: 0;
+          margin-bottom: 30px;
+        }
+
+        .line-info {
+          margin-bottom: 10px;
+
+          span {
+            font-size: 12px;
+            line-height: 16px;
+            padding-left: 27px;
+            display: block;
+
+            img {
+              width: 20px;
+              height: 20px;
+              transform: translate(-28px,0px);
+            }
+          }
+        }
+
+        .payment-btn {
+          margin: 10px 0 20px 0;
+
+          .gradient-button {
+            width: 100%;
+            max-width: unset;
+            height: auto;
+
+            > div {
+              height: auto;
+              display: block;
+
+              span {
+                font-weight: bold;
+                padding: 10px;
+                margin: auto;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+
+      .accommodation-container {
+        margin-top: 0;
+        padding: 20px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 60px;
+        box-shadow: none;
+
+        span.sub-header {
+          font-size: 16px;
+          line-height: 22px;
+          margin-bottom: 30px;
+          display: block;
+        }
+
+        p {
+          margin-top: 10px;
+
+          span {
+            font-size: 12px;
+            line-height: 16px;
+            width: 50%;
+          }
+
+          span:first-child {
+            width: 50%;
+          }
+        }
+
+        .divider {
+          border: 0.5px dashed ${COLORS.parkinglotGray};
+          margin: 10px 0 20px 0;
+        }
+      }
+    }
+  }
 `;
+
 
 const TravelerDetailsPageContainer = styled.div`
   width: 1440px;
   padding: 50px 0;
   margin: auto;
+
+  @media ${BREAKPOINTS.mobileLg} {
+    width: auto;
+    padding: 0;
+    margin: 0;
+
+    h3 {
+      padding: 15px 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
 `;
 
 export {

@@ -214,7 +214,10 @@ export default function FullSearchWidget({
                         {
                           selectedLeaving && !selectLeavingPlaces
                             ?
-                            <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>
+                            <>
+                              <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>                            
+                              <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>
+                            </>
                             :
                             <>
                               {
@@ -258,7 +261,10 @@ export default function FullSearchWidget({
                             {
                               selectedGoing && !selectGoingPlaces
                                 ?
-                                <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedGoing?.label}</H5>
+                                <>
+                                  <H5 lineHeight="10px" fontWeight="700">Going to</H5>                            
+                                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedGoing?.label}</H5>
+                                </>
                                 :
                                 <>
                                   {
@@ -271,7 +277,10 @@ export default function FullSearchWidget({
                                       :
                                       selectGoingPlaces
                                         ?
-                                        <input className="input-search" autoFocus={true} value={filterGoing} onChange={(e) => onChangeGoing(e)} />
+                                        <>
+                                          <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                                          <input className="input-search" autoFocus={true} value={filterGoing} onChange={(e) => onChangeGoing(e)} />
+                                        </>
                                         :
                                         <>
                                           <H5 lineHeight="10px" fontWeight="700">Going to</H5>
