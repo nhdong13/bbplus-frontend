@@ -317,6 +317,11 @@ const GridDateItem = styled.div`
       min-width: 64px;
     }
 
+    @media ${BREAKPOINTS.fromDesktopSm} {
+      min-width: 57px !important;
+    }
+    
+    
     @media ${BREAKPOINTS.laptop} {
       width: 32.5px;
       font-size: 10px;
@@ -340,7 +345,7 @@ const GridDateItem = styled.div`
   @media ${BREAKPOINTS.fromMobileSm} {
     width: 100%;
   }
-  
+
   @media ${BREAKPOINTS.fromMobileLg} {
     width: 485px;
   }
