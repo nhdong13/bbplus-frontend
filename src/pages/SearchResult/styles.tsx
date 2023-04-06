@@ -703,6 +703,7 @@ const ButtonNextStep = styled.button`
   font-size: 16px;
   width: 194px;
   height: 48.6px;
+  font-family: ${FONTS.manrope}
   @media ${BREAKPOINTS.laptop} {
     width: 100%;
     font-size: 12px;
