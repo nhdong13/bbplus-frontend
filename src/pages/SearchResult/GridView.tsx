@@ -12,7 +12,7 @@ import {
   GridDateItem,
   SDate,
 } from './stylesGidVIew'
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState, useRef } from "react"
 import useFullSearchWidget from "@/components/Search/useFullSearch";
 import { DateObject } from "react-multi-date-picker"
 import { Icon } from '@mui/material';
@@ -85,6 +85,24 @@ export default function GridView() {
     setCurrentDate(prevDate)
     setCurrentTotalDay(currentTotalDay + daysCalendarCount)
   }
+
+  const handleScrollDate = (e: any) => {
+    const scrollAmount = e.target.scrollLeft
+    propertyRoomContainerRef.current.forEach((roomRef: HTMLDivElement | null) => {
+      if (!roomRef) return
+      roomRef.scrollLeft = scrollAmount + 20
+    })
+  }
+
+  const properties = useMemo(() => _.range(4), [])
+
+  const propertyRoomContainerRef = useRef<Array<HTMLDivElement | null>>([]);
+
+  // Update room container refs with properties change
+  useEffect(() => {
+    propertyRoomContainerRef.current = propertyRoomContainerRef.current.slice(0, properties.length);
+  }, [properties]);
+
   return (
     <>
       <ListDate>
@@ -107,7 +125,7 @@ export default function GridView() {
               <div className="empty">
                 <p>Fiji: 134 properties found</p>
               </div>
-              <GridDateItem>
+              <GridDateItem onScroll={handleScrollDate}>
                 <div className="horizontal-date">
                   {
                     getDates().map((date: DateObject, index2) => {
@@ -129,7 +147,7 @@ export default function GridView() {
       </ListDate>
       <GridViewContainer>
         {
-          _.range(4).map((el, idx) => {
+          properties.map((el, idx) => {
             return <GridViewItem key={idx}>
               <GridViewTitle className={idx === 0 ? 'first' : ''}>
                 <div>Warwick Fiji Beach Resort</div>
@@ -141,7 +159,7 @@ export default function GridView() {
               </GridViewTitle>
               <GridRoom>
                 <img src={IMAGES.imgListView} width={230} height={160} className="bg" />
-                <div className="flex-room">
+                <div className="flex-room" ref={el => propertyRoomContainerRef.current[idx] = el}>
                   {
                     _.range(4).map((el2, index) => {
                       return (
