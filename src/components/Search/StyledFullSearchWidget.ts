@@ -103,7 +103,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
 
   .selected-value {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     height: 100%;
     max-width: 160px;
     h5 {
@@ -115,7 +115,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
 
   .show-input-search{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: initial;
     padding: 0 20px;
     height: 92px;
@@ -125,8 +125,7 @@ const SelectBookingDateTimeContainer = styled(HorizontalContainer).attrs((props:
     border: 0;
     font-size: 16px;
     line-height: 25px;
-    min-height: 50px;
-    padding-left: 10px;
+    min-height: 36px;
     width: 160px;
     &:focus {
       outline: none; 

@@ -26,7 +26,10 @@ export default function SearchView({ onClickEditSearch }: IPops) {
             {
               selectedLeaving
                 ?
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>
+                <>
+                  <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedLeaving?.label}</H5>                
+                </>
                 :
                 <>
                   <H5 lineHeight="10px" fontWeight="700">Leaving from</H5>
@@ -41,7 +44,10 @@ export default function SearchView({ onClickEditSearch }: IPops) {
             {
               selectedGoing
                 ?
-                <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedGoing?.label}</H5>
+                <>
+                  <H5 lineHeight="10px" fontWeight="700">Going to</H5>
+                  <H5 lineHeight="10px" color={COLORS.outerSpace}>{selectedGoing?.label}</H5>                
+                </>
                 :
                 <>
                   <H5 lineHeight="10px" fontWeight="700">Going to</H5>
