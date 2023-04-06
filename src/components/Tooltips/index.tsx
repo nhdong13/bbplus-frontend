@@ -22,7 +22,10 @@ const CustomMaxWidthTooltip = styled(({ className, ...props }: TooltipProps) => 
   },
   [`@media ${BREAKPOINTS.mobileLg}`]: {
     [`& .${tooltipClasses.tooltip}`]: {
-      maxWidth: '300px',
+      maxWidth: '100vw',
+      boxSizing: 'border-box',
+      padding: '10px',
+      margin: 0,
     },
   }
 });
@@ -38,5 +41,19 @@ const StyledTooltip = styled.div`
   span {
     display: block;
     color: black;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    border-radius: 5px;
+    padding: 10px;
+
+    span {
+      line-height: 22px;
+    }
+
+    .text-content {
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 `;

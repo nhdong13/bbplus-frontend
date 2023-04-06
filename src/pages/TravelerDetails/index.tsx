@@ -295,7 +295,7 @@ export default function TravellerDetails() {
                       title={
                         <>
                           <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
-                          <Span fontSize="14px">{TAXES_AND_FEES}</Span>
+                          <Span fontSize="14px" className="text-content">{TAXES_AND_FEES}</Span>
                         </>
                       }
                     >
@@ -329,7 +329,7 @@ export default function TravellerDetails() {
                       title={
                         <>
                           <Span padding="0 0 10px" fontSize="16px" fontWeight="800">Taxes & fees</Span>
-                          <Span fontSize="14px">{TAXES_AND_FEES}</Span>
+                          <Span fontSize="14px" className="text-content">{TAXES_AND_FEES}</Span>
                         </>
                       }
                     >
