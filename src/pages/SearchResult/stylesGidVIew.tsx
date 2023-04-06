@@ -1,14 +1,14 @@
 import { COLORS } from "@/utils/colors";
 import styled from "styled-components";
-import { BREAKPOINTS } from "@/utils/breakpoints"
+import { BREAKPOINTS, SCREEN_SIZES } from "@/utils/breakpoints";
 import { FONTS } from "@/utils/fonts";
 
 const GridViewItem = styled.div`
   margin-bottom: 10px;
-  .first{
+  .first {
     background: ${COLORS.darkGreen};
   }
-`
+`;
 const GridViewTitle = styled.div`
   height: 40px;
   color: ${COLORS.white};
@@ -48,18 +48,22 @@ const GridViewTitle = styled.div`
     }
   }
   .p2 {
-    color: #FFBD29;
+    color: #ffbd29;
     margin-left: 19px;
     @media ${BREAKPOINTS.laptop} {
       margin-left: 10px;
     }
   }
-`
+`;
 const GridRoom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 17px 0;
+  @media ${BREAKPOINTS.fromLaptop} {
+    display: flex;
+    align-items: center !important;
+  }
   @media ${BREAKPOINTS.laptop} {
     justify-content: flex-start;
     align-items: flex-start;
@@ -76,13 +80,83 @@ const GridRoom = styled.div`
     }
   }
   .flex-room {
-    @media ${BREAKPOINTS.laptop} {
+    max-width: 100%;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    */ @media ${BREAKPOINTS.laptop} {
       font-size: 10px;
       display: grid;
       flex: 1 1 auto;
     }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      width: 100%;
+    }
   }
-`
+`;
+
+const GridRoomContainer = styled.div`
+  display: flex;
+  width: 100%;
+
+  @media ${BREAKPOINTS.fromLaptop} {
+    height: 40px;
+    border-bottom: 1px solid ${COLORS.silver};
+    &:last-child {
+      border-bottom-color: transparent;
+    }
+  }
+`;
+
+const GridRoomTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${BREAKPOINTS.fromDesktopSm} {
+    margin-left: 23px;
+  }
+`;
+
+const GridRoomCategoryTitle = styled.div`
+  min-width: 127px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  height: 22px;
+
+  @media only screen and (min-width: ${SCREEN_SIZES.mobileLg}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+    font-size: 10px;
+    padding-left: 10px;
+    min-width: 117px;
+  }
+
+  @media ${BREAKPOINTS.fromLaptop} {
+    border-bottom: 1px solid ${COLORS.silver};
+    font-size: 16px;
+    height: 40px;
+    min-width: 170px;
+
+    &:last-child {
+      border-bottom-color: transparent;
+    }
+  }
+
+  @media ${BREAKPOINTS.fromDesktopSm} {
+    min-width: 281px;
+  }
+
+  @media ${BREAKPOINTS.mobileLg} {
+    min-width: initial;
+    width: 66.5px;
+    font-size: 8px;
+    margin-right: 5px;
+  }
+`;
+
 const GridRoomItem = styled.div`
   border-bottom: 1px solid ${COLORS.silver};
   height: 40px;
@@ -92,59 +166,84 @@ const GridRoomItem = styled.div`
     height: auto;
     border-bottom: 0;
   }
-  .room {
-    min-width: 250px;
-    font-weight: bold;
 
-    @media ${BREAKPOINTS.laptop} {
-      min-width: 80px;
-      margin-right: 8px;
-    }
+  @media ${BREAKPOINTS.fromLaptop} {
+    width: 100%;
+    border-bottom-color: transparent;
   }
+
   .horizontal-room {
     @media ${BREAKPOINTS.laptop} {
       display: flex;
-      gap: 3px;
-      max-width: 222px;
-      overflow-x: auto;
-      /* &::-webkit-scrollbar {
-        display: none;
-      } */
+      gap: 2px;
+    }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      display: flex;
+      height: 100%;
     }
   }
-  .haha {
+  .room-price-list {
+    @media ${BREAKPOINTS.fromLaptop} {
+      width: 100%;
+      height: 100%;
+    }
+
     @media ${BREAKPOINTS.laptop} {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      overflow-x: auto;
+      /* overflow-x: auto; */
+    }
+    font-size: 12px;
+    @media ${BREAKPOINTS.mobileLg} {
+      font-size: 6px;
     }
   }
   .room-item {
     display: inline-block;
-    height: 40px;
-    width: 57px;
     text-align: center;
-    line-height: 40px;
     border-right: 1px solid ${COLORS.silver};
+    font-weight: bold;
+    min-width: 26.5px;
+    width: 26.5px;
+    height: 14px;
+    padding: 4px 3px;
+    line-height: 14px;
     &:last-child {
       border-right: 0;
+      margin-right: 0;
     }
-    @media ${BREAKPOINTS.laptop} {
-      width: auto;
-      height: 14px;
-      line-height: 14px;
-      border-right: 0;
-      padding: 4px;
+
+    @media ${BREAKPOINTS.fromMobileLg} {
+      width: 50.5px;
+    }
+
+    @media only screen and (min-width: ${SCREEN_SIZES.mobileLg}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+      font-size: 10px;
+    }
+
+    @media ${BREAKPOINTS.fromLaptop} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid ${COLORS.silver};
+      font-size: 12px;
+      height: -webkit-fill-available;
+      width: 72px;
       &:last-child {
-        margin-right: 0;
+        border-right: 0;
       }
+    }
+
+    @media ${BREAKPOINTS.fromDesktopSm} {
+      min-width: 53px;
     }
   }
   .room-active {
-    background: #E8F4FF;
+    background: #e8f4ff;
   }
-`
+`;
 const ListDate = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${COLORS.silver};
@@ -155,7 +254,7 @@ const ListDate = styled.div`
     border-top: 1px solid ${COLORS.silver};
     margin-top: 15px;
   }
-`
+`;
 const ListContainer = styled.div`
   max-width: 1400px;
   padding: 0 20px;
@@ -179,8 +278,21 @@ const ListContainer = styled.div`
       color: ${COLORS.cyprus};
       font-size: 18px;
     }
+
+    @media ${BREAKPOINTS.mobileSm} {
+      min-width: 165px;
+    }
+
+    @media ${BREAKPOINTS.fromMobileSm} {
+      min-width: 170px;
+    }
+
+    @media ${BREAKPOINTS.fromMobileLg} {
+      min-width: 160px;
+    }
+
     @media ${BREAKPOINTS.laptop} {
-      width: 396px;
+      // width: 345px;
       display: flex;
       align-items: center;
       p {
@@ -193,15 +305,17 @@ const ListContainer = styled.div`
     display: flex;
     justify-content: center;
   }
-`
+`;
 const GridDateItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   overflow-x: auto;
-  /* .room {
-    min-width: 250px;
-  } */
+
+  @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
+    margin-left: 103px;
+  }
+
   .date-item {
     display: inline-block;
     padding: 10px 0;
@@ -212,8 +326,21 @@ const GridDateItem = styled.div`
     &:last-child {
       border-right: 0;
     }
+
+    @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+      min-width: 57.5px;
+    }
+
+    @media only screen and (min-width: ${SCREEN_SIZES.laptop}px) and (max-width: ${SCREEN_SIZES.desktopSm}px) {
+      min-width: 80px;
+    }
+
+    @media ${BREAKPOINTS.fromDesktopSm} {
+      min-width: 59px !important;
+    }
+
     @media ${BREAKPOINTS.laptop} {
-      width: 29px;
+      width: 32.5px;
       font-size: 10px;
       border-right: 0;
       .day {
@@ -223,15 +350,31 @@ const GridDateItem = styled.div`
   }
 
   .room-active {
-    background: #E8F4FF;
+    background: #e8f4ff;
   }
   .horizontal-date {
     display: flex;
     @media ${BREAKPOINTS.laptop} {
-      gap: 4px;
+      gap: 2px;
     }
   }
-`
+  width: 93%;
+  @media ${BREAKPOINTS.fromMobileSm} {
+    width: 100%;
+  }
+
+  @media ${BREAKPOINTS.fromMobileLg} {
+    width: 485px;
+  }
+
+  @media only screen and (min-width: ${SCREEN_SIZES.tablet}px) and (max-width: ${SCREEN_SIZES.laptop}px) {
+    width: 543px;
+  }
+
+  @media ${BREAKPOINTS.fromLaptop} {
+    width: auto;
+  }
+`;
 const SDate = styled.div`
   height: 43px;
   background: ${COLORS.antiFlashWhite};
@@ -243,7 +386,7 @@ const SDate = styled.div`
     align-items: center;
     height: 100%;
     justify-content: space-between;
-    margin-left: 540px;
+    margin-left: 500px;
     color: ${COLORS.blueRibbon};
     div {
       cursor: pointer;
@@ -251,11 +394,11 @@ const SDate = styled.div`
     }
     .disabled {
       color: ${COLORS.doveGray};
-      cursor: not-allowed;
+      pointer-events: none;
     }
   }
-`
-const GridViewContainer = styled.div `
+`;
+const GridViewContainer = styled.div`
   max-width: 1400px;
   padding: 0 20px;
   margin: auto;
@@ -268,15 +411,27 @@ const GridViewContainer = styled.div `
   @media ${BREAKPOINTS.laptop} {
     padding: 0 10px;
   }
-`
+`;
+
+const RoomInfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+`;
+
 export {
-    GridViewItem,
-    GridViewTitle,
-    GridRoom,
-    GridRoomItem,
-    ListDate,
-    ListContainer,
-    GridViewContainer,
-    GridDateItem,
-    SDate
-}
+  GridViewItem,
+  GridViewTitle,
+  GridRoom,
+  GridRoomItem,
+  ListDate,
+  ListContainer,
+  GridViewContainer,
+  GridDateItem,
+  SDate,
+  GridRoomCategoryTitle,
+  GridRoomContainer,
+  GridRoomTitleContainer,
+  RoomInfoContainer,
+};
