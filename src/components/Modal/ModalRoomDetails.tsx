@@ -324,7 +324,7 @@ const RoomImage = styled.div`
 
     .room-image {
       width: 100%;
-      height: auto;
+      height: 282px;
       border-radius: 5px;
       margin-bottom: 10px;
     }
